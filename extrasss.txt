@@ -1,0 +1,344 @@
+<div class="acf-input">
+<div class="acf-image-uploader" data-preview_size="medium" data-library="all" data-mime_types="" data-uploader="wp">
+<input type="hidden" name="acf[field_6915a91c03e00]" value="">	<div class="show-if-value image-wrap" style="max-width: 300px" tabindex="0" role="button" aria-label="Selected image. Press tab to access image options.">
+<img src="" alt="" data-name="image" style="max-height: 300px;">
+<div class="acf-actions -hover">
+<a class="acf-icon -pencil dark" data-name="edit" href="#" title="Edit" aria-label="Edit image"></a>
+<a class="acf-icon -cancel dark" data-name="remove" href="#" title="Remove" aria-label="Remove image"></a>
+</div>
+</div>
+<div class="hide-if-value">
+<p>No image selected <a data-name="add" class="acf-button button" href="#">Add Image</a></p>
+</div>
+</div>
+</div>
+
+
+71279
+
+
+there is hidden field name="acf[field_6915a91c03e00]" on the wp-admin/post.php 
+write down code to 
+- add '71279' to value attr 
+- add class "has-value" to parent div having class "acf-image-uploader"
+- add src="https://dev.ithena.io/wp-content/uploads/2025/08/pexels-cookiecutter-1148820-scaled.jpg" 
+to <img> which is inside the 'image-wrap' class div which exactly next to the hidden field
+
+
+// custom code - paste here
+add_action('admin_footer', function() { ?>
+    <script>
+    jQuery(document).ready(function($) {
+        // Target the specific ACF image hidden field
+        const $input = $('input[name="acf[field_6915a91c03e00]"]');
+
+        if ($input.length) {
+            // 1️⃣ Add value
+            $input.val('72789').trigger('change'); // ensure ACF detects change
+            // 2️⃣ Add class to parent uploader div
+            $input.closest('.acf-image-uploader').addClass('has-value');
+
+            // 3️⃣ Update image inside the image-wrap div
+            const imageURL = 'https://dev.ithena.io/wp-content/uploads/2025/11/use-case-block-ref.png';
+            $input.closest('.acf-image-uploader')
+                .find('.image-wrap img')
+                .attr('src', imageURL);
+        }
+    });
+    </script>
+<?php });
+
+
+modify the code in the following way
+there will array as
+loop this array and perform the same actions
+
+use case cards
+field_name = acf[field_6915a91c03e00]
+img_id = 72789
+imageURL = https://dev.ithena.io/wp-content/uploads/2025/11/use-case-block-ref.png
+
+metrics Cards
+field_name = acf[field_6915c836a6580]
+img_id = 72812
+imageURL = https://dev.ithena.io/wp-content/uploads/2025/11/metrics-block-white-bg.png
+
+Industries we serve Block - Reference IMG
+field_name = acf[field_6915c90d25098]
+img_id = 72811
+imageURL = https://dev.ithena.io/wp-content/uploads/2025/11/Industries-We-Serve-Block-grey-bg.png
+
+Industries we serve Block - Reference IMG
+field_name = acf[field_6915c90d25098]
+img_id = 72811
+imageURL = https://dev.ithena.io/wp-content/uploads/2025/11/Industries-We-Serve-Block-grey-bg.png
+
+application cards 
+field_name = acf[field_6915c94b86841]
+img_id = 72805
+imageURL = https://dev.ithena.io/wp-content/uploads/2025/11/Applications-block-case-study-grey-BG.png
+
+Feature + Visual Layout Block cards
+field_name = acf[field_6915cb3a42864]
+img_id = 72808
+imageURL = https://dev.ithena.io/wp-content/uploads/2025/11/Feature-Visual-Block-Grey-bg.png
+
+accordian block Cards
+field_name = acf[field_6915d94d4bd71]
+img_id = 72804
+imageURL = https://dev.ithena.io/wp-content/uploads/2025/11/accordian-block-grey-BG.png
+
+
+
+72817
+
+
+
+enable_hero_slider_order
+enable_product_banner_order
+enable_use_cases_section_order
+enable_industries_we_serve_order
+enable_metrics_section_order
+enable_feature_visual_section_order
+enable_testimonials_section_order
+enable_applications_case_study_section_order 
+enable_tab_panel_section_order
+enable_accordian_order
+enable_overview_section_order
+enable_block_rotator_partners_2_order
+enable_explore_block_order
+enable_success_story_order
+enable_four_thumbanils_block_order
+
+
+<!-- FORMIDABLE CORE CSS -->
+<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/plugins/formidable/css/formidableforms.css">>
+<!-- CAPTCHA SUPPORT CSS -->
+<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/plugins/formidable/css/recaptcha.css">
+
+
+<!-- FORMIDABLE CORE CSS & JS-->
+<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/plugins/formidable/css/formidableforms.css">
+<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/plugins/formidable/css/frm_blocks.css">
+<script src="<?php echo site_url(); ?>/wp-content/plugins/formidable/js/formidable.min.js"></script>
+<script src="<?php echo site_url(); ?>/wp-content/plugins/formidable/js/frm.min.js"></script>
+
+
+/* main menu custom js from elementor - solutions */
+const link1 = document.getElementById("new1");
+const link2 = document.getElementById("new2");
+const link3 = document.getElementById("new3");
+
+link1.addEventListener("click", function () {
+window.location.href = "#smg";
+location.reload();
+});
+
+link2.addEventListener("click", function () {
+window.location.href = "#sie";
+location.reload();
+});
+
+link3.addEventListener("click", function () {
+window.location.href = "#sm";
+location.reload();
+});
+
+/* main menu custom js from elementor - services */
+const link4 = document.getElementById("new4");
+const link5 = document.getElementById("new5");
+const link6 = document.getElementById("new6");
+const link7 = document.getElementById("new7");
+
+link4.addEventListener("click", function () {
+window.location.href = "#bt";
+location.reload();
+});
+
+link5.addEventListener("click", function () {
+window.location.href = "#mgi";
+location.reload();
+});
+
+link6.addEventListener("click", function () {
+window.location.href = "#dam";
+location.reload();
+});
+
+link7.addEventListener("click", function () {
+window.location.href = "#ci";
+location.reload();
+});
+
+
+/* header - js */
+document.addEventListener("DOMContentLoaded", () => {
+  ["37450","36693","36692","37500","34841","36265"].forEach(i => {
+    let a = document.querySelector(`#menu-item-${i} > a.menu-link`);
+    if (a) {
+      a.removeAttribute("href");
+    }
+  });
+});
+
+/* footer extra js */
+const link55 = document.getElementById("manufacturing");
+const link56 = document.getElementById("infrastructure");
+const link57 = document.getElementById("marketplace");
+const link58 = document.getElementById("business");
+const link59 = document.getElementById("integration");
+const link60 = document.getElementById("management");
+const link61 = document.getElementById("modernization");
+const link62 = document.getElementById("industrial");
+const link63 = document.getElementById("automotive");
+const link64 = document.getElementById("healthcare");
+const link65 = document.getElementById("energy");
+const link66 = document.getElementById("media");
+const link67 = document.getElementById("factory");
+const link68 = document.getElementById("green");
+const link69 = document.getElementById("modernize");
+const link70 = document.getElementById("data");
+const link71 = document.getElementById("who");
+
+link55.addEventListener("click", function () {
+window.location.href = "#smg";
+});
+
+link56.addEventListener("click", function () {
+window.location.href = "#sie";
+});
+
+link57.addEventListener("click", function () {
+window.location.href = "#sm";
+});
+
+link58.addEventListener("click", function () {
+window.location.href = "#bt";
+});
+
+link59.addEventListener("click", function () {
+window.location.href = "#mgi";
+});
+
+link60.addEventListener("click", function () {
+window.location.href = "#dam";
+});
+
+link61.addEventListener("click", function () {
+window.location.href = "#ci";
+});
+
+link62.addEventListener("click", function () {
+window.location.href = "#im";
+});
+
+link63.addEventListener("click", function () {
+window.location.href = "#am";
+});
+
+link64.addEventListener("click", function () {
+window.location.href = "#hl";
+});
+
+link65.addEventListener("click", function () {
+window.location.href = "#eu";
+});
+
+link66.addEventListener("click", function () {
+window.location.href = "#me";
+});
+
+link67.addEventListener("click", function () {
+window.location.href = "#a";
+});
+
+link68.addEventListener("click", function () {
+window.location.href = "#b";
+});
+
+link69.addEventListener("click", function () {
+window.location.href = "#c";
+});
+
+link70.addEventListener("click", function () {
+window.location.href = "#d";
+});
+
+link71.addEventListener("click", function () {
+window.location.href = "#about";
+});
+
+
+/* main menu - about us js */
+const link50 = document.getElementById("new50");
+
+link50.addEventListener("click", function () {
+window.location.href = "#about ";
+location.reload();
+});
+
+
+//*********** linux cmds ****************//////
+
+sudo tail -n 100 /var/log/httpd/error_log
+
+cd pratikt/ithena_website/html/
+
+sudo mv plugins_disabled plugins 
+
+sudo mv .htaccess_old .htaccess
+
+sudo mv mu-plugins-disabled mu-plugins
+
+sudo touch wp-minimal-test.php
+
+nano wp-minimal-test.php
+
+sudo mv wp-config.php wp-config-old.php
+
+sudo chown -R www-data:www-data pratikt/ithena_website/html/wp-content
+sudo find /wp-content -type d -exec chmod 755 {} \;
+sudo find wp-content -type f -exec chmod 644 {} \;
+
+sudo rm -rf mu-plugins_old
+
+cd /var/log/apache2
+
+cd /var/www/html/wp-content
+
+sudo mv plugins plugins-disabled
+sudo mkdir plugins
+sudo chown www-data:www-data plugins
+
+sudo rm -rf plugins
+sudo mv plugins-disabled plugins
+
+sudo mv astra-child astra-child.disabled
+sudo mv astra-child.disabled astra-child
+
+php -l astra-child/functions.php
+
+find astra-child \
+-type f \
+-name "*.php" \
+-print
+
+
+find astra-child \
+-type f \
+-name "*.php" \
+-exec php -l {} \;
+
+
+grep -nEi "require|require_once|include|include_once" \
+astra-child/functions.php
+
+
+sudo chown -R www-data:www-data astra-child && \
+sudo find astra-child -type d -exec chmod 755 {} \; && \
+sudo find astra-child -type f -exec chmod 644 {} \; && \
+sudo systemctl restart apache2
+sudo systemctl status apache2
+
+
+mysql - 77a1fc0d97e4

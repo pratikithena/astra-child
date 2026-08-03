@@ -1,0 +1,2051 @@
+<style>
+    /* DESIGN SYSTEM VARIABLES */
+    :root {
+        --primary: #0083c8;
+        --secondary: #0077b6;
+        --background-dark: #0a1628;
+        --background-light: #f5f7fa;
+        --surface: #ffffff;
+        --surface-dark: #112240;
+        --text-primary: #ffffff;
+        --text-dark: #1a1a2e;
+        --text-secondary: #4a5568;
+        --text-muted: #718096;
+        --border: #e2e8f0;
+        --border-dark: #1e293b;
+        --accent: #0083c8;
+        --brand-orange: #c00000;
+        --brand-red: #c00000;
+        --font-headings: 'Noto Sans', sans-serif;
+        --font-body: 'Noto Sans', sans-serif;
+        --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --shadow-glow: 0 8px 32px rgba(0, 180, 216, 0.25);
+        --radius-card: 8px;
+        --radius-btn: 4px;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: var(--font-body) !important;
+        background-color: var(--background-dark);
+        color: var(--text-primary);
+        /* Changed overflow-x from hidden to clip to allow sticky navbar to function */
+        overflow-x: clip;
+        line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-headings) !important;
+    }
+
+    /* GLOBAL TITLES AND SUBTITLES STANDARDIZATION */
+    .section-title {
+        font-size: 2.25rem !important;
+        text-align: center !important;
+        margin-bottom: 15px !important;
+        color: var(--text-primary);
+        line-height: 1.3;
+    }
+
+    .section-title span {
+        color: var(--primary);
+    }
+
+    .section-subtitle {
+        font-size: 1.1rem !important;
+        color: #b0c4de !important;
+        text-align: center !important;
+        max-width: 800px;
+        margin: 0 auto 50px auto !important; 
+        line-height: 1.6;
+    }
+
+    /* GLOBAL SECTION SPACING */
+    .panel-content > .container > div,
+    .panel-content > .container > section,
+    .panel-content > section {
+        margin-top: 80px !important;
+        margin-bottom: 80px !important;
+    }
+
+    #imex-custom-block h1, 
+    #imex-custom-block h2, 
+    #imex-custom-block h3, 
+    #imex-custom-block h4 {
+        font-weight: 700 !important; 
+        line-height: 1.25 !important; 
+        margin-bottom: 15px !important;
+    }
+    
+    #imex-custom-block h2 {font-size: 30px !important;}
+    #imex-custom-block h3 {font-size: 26px !important; text-align: center;}
+    #imex-custom-block h4 {font-size: 20px !important;}
+    @media (max-width: 991px) {#imex-custom-block h2 {font-size: 26px !important;} #imex-custom-block h3 {font-size: 24px !important;} #imex-custom-block h4 {font-size: 22px !important;}}
+    @media (max-width: 767px) {#imex-custom-block h2 {font-size: 26px !important;} #imex-custom-block h3 {font-size: 22px !important;} #imex-custom-block h4 {font-size: 20px !important;}}
+    @media (max-width: 480px) {#imex-custom-block h2 {font-size: 26px !important;} #imex-custom-block h3 {font-size: 20px !important;} #imex-custom-block h4 {font-size: 16px !important;}}
+
+    .container {
+        max-width: 1200px;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /* HERO SECTION */
+    .hero {
+        position: relative;
+        padding: 60px 0 40px; 
+        background: linear-gradient(135deg, #0a1628 0%, #060d18 100%);
+        border-bottom: 1px solid var(--border-dark);
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-image: 
+            radial-gradient(circle at 15% 30%, rgba(0, 180, 216, 0.1) 0%, transparent 40%),
+            radial-gradient(circle at 85% 70%, rgba(0, 212, 255, 0.1) 0%, transparent 40%),
+            linear-gradient(rgba(30, 41, 59, 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(30, 41, 59, 0.3) 1px, transparent 1px);
+        background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+        z-index: 1;
+    }
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 30px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    @media (max-width: 992px) {
+        .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    }
+
+    .badge {
+        display: inline-block;
+        background: rgba(0, 180, 216, 0.15);
+        border: 1px solid var(--primary);
+        color: var(--accent);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+
+    .badge-red{
+        display: inline-block;
+        background: rgb(17 20 20 / 15%);
+        border: 1px solid var(--brand-red);
+        color: var(--brand-red);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+
+    .hero h1 {
+        font-size: 3.25rem;
+        line-height: 1.15;
+        margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+        color: var(--accent);
+        text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+
+    .hero p {
+        font-size: 1.05rem;
+        color: #b0c4de;
+        margin-bottom: 25px;
+        max-width: 650px;
+    }
+
+    .hero-metrics {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        background: rgba(17, 34, 64, 0.6);
+        border: 1px solid rgba(0, 180, 216, 0.2);
+        padding: 15px;
+        border-radius: var(--radius-card);
+        backdrop-filter: blur(10px);
+    }
+
+    @media (max-width: 576px) { .hero-metrics { grid-template-columns: repeat(2, 1fr); } }
+
+    .metric-pill {
+        text-align: center;
+    }
+
+    .metric-pill .num {
+        font-family: var(--font-headings);
+        font-size: 1.5rem;
+        color: var(--accent);
+        display: block;
+        font-weight: 700;
+    }
+
+    .metric-pill .lbl {
+        font-size: 0.75rem;
+        color: #8fa0b5;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    /* INTERACTIVE TABS STRUCTURE */
+    .tabs-navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: rgba(10, 22, 40, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .tabs-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .tab-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-primary);
+        font-family: var(--font-headings);
+        font-size: 1.5rem;
+        font-weight: 600;
+        padding: 20px 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        position: relative;
+        outline: none;
+    }
+
+    @media (max-width: 1024px) {
+        .tab-btn{ font-size: 16px;}
+    }
+    @media (max-width: 426px) {
+        .tab-btn{ font-size: 14px;}
+    }
+
+    .tab-btn:hover {
+        color: var(--text-primary);
+        background: rgba(255,255,255,0.02);
+    }
+
+    .tab-btn.active {
+        color: var(--accent);
+        background: rgba(0, 180, 216, 0.05);
+    }
+
+    .tab-btn.active::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--accent);
+        box-shadow: 0 0 12px var(--accent);
+    }
+
+    /* PANELS CONTAINER */
+    .panel-content {
+        display: none;
+        padding: 40px 0;
+    }
+
+    .panel-content.active {
+        display: block;
+    }
+
+    /* CORE GRID PATTERNS */
+    .split-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    @media (max-width: 992px) {
+        .split-layout { grid-template-columns: 1fr; gap: 30px; }
+        .split-layout.reverse { display: flex; flex-direction: column-reverse; }
+    }
+
+    /* WHY iMEX COMPONENT */
+    .why-imex-block {
+        background: linear-gradient(135deg, rgba(0, 119, 182, 0.15) 0%, rgba(0, 180, 216, 0.05) 100%);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        border-left: 6px solid var(--secondary);
+        border-radius: var(--radius-card);
+        padding: 30px;
+        margin-top: 60px;
+        text-align: left;
+    }
+
+    .why-imex-block h3 {
+        font-size: 1.75rem;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+        letter-spacing: 0.03em;
+    }
+
+    .why-imex-block h4 {
+        font-size: 1.15rem;
+        color: var(--accent);
+        margin-bottom: 15px;
+        font-weight: 500;
+    }
+
+    .why-imex-block p {
+        color: #b0c4de;
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
+
+    .why-imex-block p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* SCROLL REVEAL OVERLAPPING CARDS LAYER - 50:50 RATIO */
+    .scroll-stack-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        margin-top: 30px;
+    }
+
+    .scroll-stack-card {
+        background: var(--surface-dark);
+        border: 1px solid var(--border-dark);
+        border-top: 3px solid var(--primary);
+        border-radius: var(--radius-card);
+        padding: 30px;
+        width: 100%;
+        max-width: 950px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+        position: sticky;
+        top: 100px;
+        margin-bottom: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+        .scroll-stack-card {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+    }
+
+    .scroll-stack-card:hover {
+        border-color: var(--accent);
+        box-shadow: var(--shadow-glow);
+    }
+
+    .scroll-stack-card .icon-wrap {
+        width: 48px;
+        height: 48px;
+        background: rgba(0, 180, 216, 0.1);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent);
+        margin-bottom: 15px;
+    }
+
+    .scroll-stack-card h4 {
+        font-size: 1.35rem; 
+        margin-bottom: 10px;
+    }
+
+    .scroll-stack-card p {
+        color: #8fa0b5;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    /* DESKTOP SCREEN MOCKUP FOR OEE STEPS */
+    .desktop-mockup {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+        align-items: end;
+    }
+    
+    .desktop-header {
+        height: 24px;
+        background: #1f2937;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        gap: 6px;
+        border-bottom: 1px solid #374151;
+        flex-shrink: 0;
+    }
+    
+    .mac-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .mac-dot.red { background: #ff5f56; }
+    .mac-dot.yellow { background: #ffbd2e; }
+    .mac-dot.green { background: #27c93f; }
+    
+    .desktop-body {
+        flex-grow: 1;
+        background: var(--surface-dark);
+        padding: 12px;
+        display: flex;
+        gap: 12px;
+        position: relative;
+    }
+
+    /* PERFORMANCE MANAGEMENT SECTION */
+    .perf-header {
+        text-align: center;
+    }
+
+    .statement-heading-primary{
+        color: var(--primary) !important;
+    }
+    .statement-heading-red{
+        color: var(--brand-red) !important;
+    }
+
+    .perf-overline {
+        color: var(--primary); /* brand red */
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        display: block;
+    }
+    .perf-title {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: var(--text-primary);
+        line-height: 1.3;
+        text-align: left;
+    }
+    .perf-text {
+        color: #8fa0b5;
+        margin-bottom: 25px !important;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    .perf-tags {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 35px;
+        flex-wrap: wrap;
+    }
+    .perf-tag {
+        padding: 6px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        font-size: 0.75rem;
+        color: #b0c4de;
+        background: rgba(0, 0, 0, 0.2);
+    }
+    .perf-feature-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    @media (max-width: 600px) {
+        .perf-feature-grid { grid-template-columns: 1fr; }
+    }
+    .perf-card {
+        background: var(--surface-dark);
+        padding: 15px;
+        border-radius: 8px;
+        display: flex;
+        gap: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: background 0.3s ease;
+    }
+    .perf-card:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+    .perf-card-icon {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+        background: rgba(0, 180, 216, 0.1);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent);
+    }
+    .perf-card h5 {
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+        color: var(--text-primary);
+    }
+    .perf-card p {
+        font-size: 0.8rem;
+        color: #8fa0b5;
+        line-height: 1.4;
+    }
+    
+    /* Dashboard Mockup - Live Visibility */
+    .perf-mockup {
+        background: #0f172a;
+        border-radius: 8px;
+        border: 1px solid #1e293b;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .perf-mockup::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #ef4444 0%, #00b4d8 100%);
+        z-index: 2;
+    }
+    .perf-mockup-inner {
+        padding: 25px 20px;
+    }
+    .perf-mockup-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+        align-items: center;
+    }
+    .perf-mockup-title {
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: #f1f5f9;
+    }
+    .perf-mockup-live {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #10b981;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+    }
+    .perf-mockup-dot {
+        width: 8px;
+        height: 8px;
+        background: #10b981;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #10b981;
+        animation: pm-blink 1.5s infinite;
+    }
+    @keyframes pm-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    
+    .perf-mockup-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .pm-card {
+        background: #1e293b;
+        border-radius: 6px;
+        padding: 15px;
+        position: relative;
+        border-top: 3px solid transparent;
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+    .pm-card.ok { border-top-color: #10b981; }
+    .pm-card.warn { border-top-color: #f59e0b; }
+    .pm-card-title {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #f8fafc;
+        margin-bottom: 12px;
+    }
+    .pm-card-label {
+        font-size: 0.65rem;
+        color: #64748b;
+        margin-bottom: 2px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .pm-card-val {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #38bdf8;
+        margin-bottom: 8px;
+        line-height: 1;
+    }
+    .pm-card.warn .pm-card-val { color: #fbbf24; }
+    .pm-card-sub {
+        font-size: 0.65rem;
+        color: #94a3b8;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+    
+    .perf-mockup-chart {
+        background: #1e293b;
+        border-radius: 6px;
+        padding: 15px;
+        height: 140px;
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+        display: flex;
+        flex-direction: column;
+    }
+    .pm-chart-title {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #f8fafc;
+        margin-bottom: auto;
+    }
+    .pm-chart-svg {
+        width: 100%;
+        height: 60px;
+        margin-top: 10px;
+    }
+
+    /* AI PREDICT MOCKUP */
+    .predict-mockup {
+        background: #0f172a;
+        border-radius: 8px;
+        border: 1px solid #1e293b;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        padding: 25px;
+        font-family: var(--font-body);
+    }
+    .predict-mockup::before {
+        content: '';
+        position: absolute; top: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(90deg, #ef4444 0%, #00b4d8 100%);
+    }
+    .predict-header {
+        display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+    }
+    .predict-title { font-size: 1rem; font-weight: 700; color: #f8fafc; }
+    .predict-badge {
+        background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; display: flex; align-items: center; gap: 6px;
+    }
+    .predict-chart-box {
+        background: #1e293b; border-radius: 6px; padding: 15px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);
+    }
+    .predict-chart-title { font-size: 0.75rem; color: #94a3b8; margin-bottom: 10px; }
+    .predict-chart-svg { width: 100%; height: 80px; overflow: visible; }
+    .predict-recom-box {
+        background: linear-gradient(180deg, #0f172a 0%, #112240 100%); border: 1px solid rgba(0, 180, 216, 0.3); border-top: 3px solid #00b4d8; border-radius: 6px; padding: 15px;
+    }
+    .predict-recom-header { display: flex; align-items: center; gap: 8px; color: #00b4d8; font-weight: 700; font-size: 0.85rem; margin-bottom: 10px; }
+    .predict-recom-text { font-size: 0.85rem; color: #f1f5f9; margin-bottom: 5px; }
+    .predict-recom-prob { color: #ef4444; font-weight: 700; }
+    .predict-recom-window { font-size: 0.75rem; color: #94a3b8; margin-bottom: 15px; }
+    .predict-btn { background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #ef4444; padding: 6px 15px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.3s; }
+    .predict-btn:hover { background: #ef4444; color: #fff; }
+
+    /* AI VISION MOCKUP (NEW) */
+    .vision-mockup {
+        background: #0f172a;
+        border-radius: 8px;
+        border: 1px solid #1e293b;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        padding: 20px;
+        font-family: var(--font-body);
+    }
+    .vision-mockup::before {
+        content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(90deg, #ef4444 0%, #00b4d8 100%);
+    }
+    .vision-header { font-size: 0.95rem; font-weight: 700; color: #f8fafc; margin-bottom: 15px; }
+    .vision-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 15px; margin-bottom: 15px; }
+    @media(max-width: 650px) { .vision-grid { grid-template-columns: 1fr; } }
+    .vision-cam { background: #0b1120; border-radius: 6px; position: relative; padding: 20px; display: flex; align-items: center; justify-content: center; border: 1px solid #1e293b; min-height: 200px; }
+    .vision-scan-box { width: 80%; height: 80%; border: 1.5px dashed #00b4d8; border-radius: 4px; position: relative; background: rgba(0,180,216,0.02); }
+    
+    .vision-defect-marker { position: absolute; top: 30%; left: 30%; }
+    .marker-circle { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; position: relative; z-index: 2; }
+    .marker-circle.red { border: 2px solid #ef4444; color: #ef4444; background: rgba(239,68,68,0.1); box-shadow: 0 0 10px rgba(239,68,68,0.4); }
+    .marker-circle.green { border: 2px solid #10b981; color: #10b981; background: rgba(16,185,129,0.1); box-shadow: 0 0 10px rgba(16,185,129,0.4); }
+    .marker-line { position: absolute; top: 12px; left: 24px; width: 60px; height: 1px; background: #ef4444; transform-origin: left center; transform: rotate(-15deg); z-index: 1; }
+    .marker-text { position: absolute; top: -10px; left: 80px; color: #ef4444; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.05em; background: rgba(15,23,42,0.8); padding: 2px 4px; border-radius: 2px; white-space: nowrap; }
+
+    .vision-results { background: #1e293b; border-radius: 6px; padding: 15px; border: 1px solid rgba(255,255,255,0.05); }
+    .vision-results h6 { font-size: 0.85rem; color: #f1f5f9; margin-bottom: 15px; }
+    .res-label { font-size: 0.65rem; color: #94a3b8; margin-bottom: 5px; }
+    .res-bar-bg { height: 6px; background: #0b1120; border-radius: 3px; overflow: hidden; margin-bottom: 5px; }
+    .res-bar-fill { height: 100%; width: 97.4%; background: #00b4d8; }
+    .res-val { font-size: 1.25rem; font-weight: 800; color: #38bdf8; }
+    .res-reject-btn { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; cursor: pointer; display: inline-block; margin-top: 4px;}
+    .res-defect-list { font-size: 0.75rem; color: #eab308; margin-top: 4px; }
+
+    .vision-spc-chart { background: #1e293b; border-radius: 6px; padding: 15px; border: 1px solid rgba(255,255,255,0.05); }
+    .spc-title { font-size: 0.7rem; color: #94a3b8; }
+
+
+    /* IGEMBA CUSTOM STYLES */
+    .igemba-mockup-container {
+        background: #0f172a;
+        border-radius: 8px;
+        border: 1px solid #1e293b;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        padding: 25px;
+        font-family: var(--font-body);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .igemba-mockup-container::before {
+        content: '';
+        position: absolute; top: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+    }
+    .igemba-mockup-container img {
+        width: 100%;
+        border-radius: 6px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        display: block;
+    }
+
+    .igemba-monitor-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .igemba-monitor-stand {
+        width: 120px;
+        height: 40px;
+        background: linear-gradient(to bottom, #d1d5db 0%, #9ca3af 100%);
+        margin: 0 auto;
+        clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+        position: relative;
+    }
+    
+    .igemba-monitor-base {
+        width: 200px;
+        height: 12px;
+        background: #6b7280;
+        border-radius: 4px 4px 0 0;
+        margin: 0 auto;
+    }
+
+    .igemba-screen {
+        background: #ffffff;
+        border: 12px solid #1f2937;
+        border-bottom-width: 24px;
+        border-radius: 12px;
+        height: 300px;
+        padding: 15px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .igemba-screen-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .igemba-screen-header .logo { color: #00b4d8; font-weight: bold; font-size: 1rem; }
+    .igemba-screen-header .title { color: #4a5568; font-size: 0.6rem; font-weight: 600; }
+
+    .igemba-speqc-arcs {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 20px;
+        height: 80px;
+    }
+
+    .igemba-arc {
+        width: 18%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .igemba-arc-svg {
+        width: 100%;
+        height: auto;
+    }
+
+    .igemba-arc span {
+        font-size: 2rem;
+        font-weight: 900;
+        color: #1a202c;
+        margin-top: -15px;
+        z-index: 2;
+    }
+
+    .igemba-bars-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        height: 60px;
+        gap: 10px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .igemba-bar-chart {
+        display: flex;
+        align-items: flex-end;
+        gap: 2px;
+        height: 100%;
+        width: 18%;
+    }
+
+    .i-bar { background: #fbd38d; width: 100%; border-radius: 1px 1px 0 0; }
+    .i-bar.red { background: #feb2b2; }
+
+    .igemba-features-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+        .igemba-features-grid { grid-template-columns: 1fr; }
+    }
+
+    .igemba-feature-card {
+        background: var(--surface-dark);
+        border-bottom: 2px solid rgba(0, 180, 216, 0.2);
+        padding: 20px 25px;
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .igemba-feature-card:hover {
+        background: rgba(17, 34, 64, 0.8);
+        border-color: var(--accent);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .igemba-num {
+        font-family: var(--font-headings);
+        font-size: 1.75rem;
+        font-weight: 800;
+        line-height: 1;
+        color: var(--primary);
+    }
+
+    .igemba-content h4 {
+        font-size: 1.1rem;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+    }
+
+    .igemba-content p {
+        font-size: 0.9rem;
+        color: #b0c4de;
+    }
+
+    /* factory gpt conversational maintenance mockup */
+    .factorygpt-chat-text{
+        text-align: left;
+        margin-bottom: 30px;
+    }
+
+    /* DATA ECOSYSTEM HUB COMPONENT */
+    .ecosystem-hub {
+        text-align: center;
+        position: relative;
+    }
+
+    /* TWO COLUMNS CAPABILITIES ARCHITECTURE */
+    .cascade-container {
+        display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+        max-width: 1000px; margin: 20px auto 0;
+    }
+
+    @media (max-width: 768px) { .cascade-container { grid-template-columns: 1fr; } }
+
+    .cascade-card {
+        background: linear-gradient(90deg, #112240 0%, #0d1b3a 100%);
+        border: 1px solid rgba(0, 180, 216, 0.2); border-left: 5px solid var(--primary);
+        border-radius: var(--radius-card); padding: 24px; display: grid;
+        grid-template-columns: 50px 1fr; gap: 20px; align-items: flex-start; position: relative;
+        opacity: 0; transform: translateY(30px);
+        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cascade-container.animated .cascade-card { opacity: 1; transform: translateY(0); }
+    .cascade-container.animated .cascade-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--shadow-glow); }
+
+    .cascade-card .card-icon {
+        width: 44px; height: 44px; background: rgba(0, 180, 216, 0.1); border-radius: 6px;
+        display: flex; align-items: center; justify-content: center; color: var(--accent);
+    }
+
+    .cascade-card h4 { font-size: 1.2rem; color: var(--text-primary); margin-bottom: 4px; }
+    .cascade-card p { font-size: 0.9rem; color: #b0c4de; line-height: 1.5; }
+
+    /* BUTTONS */
+    .btn {
+        display: inline-flex; align-items: center; gap: 8px;
+        background-color: var(--primary); color: var(--text-primary);
+        border: none; padding: 10px 24px; font-family: var(--font-headings);
+        font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em;
+        text-transform: uppercase; border-radius: var(--radius-btn);
+        cursor: pointer; text-decoration: none; transition: all 0.3s ease;
+    }
+
+    .btn:hover { background-color: var(--secondary); box-shadow: 0 4px 12px rgba(0, 180, 216, 0.35); }
+    .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: var(--text-primary); }
+
+    /* CMMS MOCKUP IMG */
+    .mockups-cmms-div, .igemba-mockup-dig, 
+    .factorygpt-chat-dig, .factorygpt-fig-grid{ text-align: center;}
+
+    img.igemba-mockup-fig, 
+    img.factorygpt-chat-fig, img.imex-fig{ 
+        width: 60%;  border-radius: 8px;
+    }
+
+    img.factorygpt-grid-fig, img.igemba-fig{
+        width: 80%
+    }
+
+    @media (max-width: 1024px) {
+        img.igemba-mockup-fig, 
+        img.factorygpt-chat-fig, img.imex-fig{ 
+            width: 50%;  border-radius: 8px;
+        }
+        img.factorygpt-grid-fig, img.igemba-fig{ width: 90%; }
+    }
+
+    @media (max-width: 768px) {
+        img.igemba-mockup-fig, img.factorygpt-chat-fig, 
+        img.factorygpt-grid-fig, img.igemba-fig{ width: 100%; }
+    }
+
+    .cmms-cap-header {
+        text-align: center;
+    }
+
+    .cmms-stack-container{ padding: 0 15%; }
+    @media (max-width: 1024px) {
+        .cmms-stack-container{ padding: 0 5%; }
+    }
+    @media (max-width: 426px) {
+        .cmms-stack-container{ padding: 0 0; }
+    }
+
+    .cmms-stack-card {
+        background: var(--surface-dark);
+        border: 1px solid var(--border-dark);
+        border-top: 4px solid var(--primary);
+        border-radius: 16px;
+        padding: 40px;
+        width: 100%;
+        max-width: 850px;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        position: sticky;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cmms-stack-container .cmms-stack-card:nth-child(1) { top: 120px; z-index: 1;}
+    .cmms-stack-container .cmms-stack-card:nth-child(2) { top: 140px; z-index: 2;}
+    .cmms-stack-container .cmms-stack-card:nth-child(3) { top: 160px; z-index: 3;}
+    .cmms-stack-container .cmms-stack-card:nth-child(4) { top: 180px; z-index: 4;}
+    .cmms-stack-container .cmms-stack-card:nth-child(5) { top: 200px; z-index: 5;}
+    .cmms-stack-container .cmms-stack-card:nth-child(6) { top: 220px; z-index: 6;}
+
+    @media (max-width: 768px) {
+        .cmms-stack-card { flex-direction: column; text-align: center; gap: 20px; padding: 30px 20px; }
+    }
+
+    .cmms-stack-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent);
+        box-shadow: var(--shadow-glow);
+    }
+
+    /* Light Theme Modifier */
+    .cmms-stack-card.theme-light {
+        background: var(--background-light);
+        border-color: #cbd5e1;
+        border-top: 4px solid var(--secondary);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+    .cmms-stack-card.theme-light:hover {
+        box-shadow: 0 15px 35px rgba(0, 180, 216, 0.2);
+    }
+    .cmms-stack-card.theme-light h4 {
+        color: var(--text-dark);
+    }
+    .cmms-stack-card.theme-light p {
+        color: var(--text-secondary);
+    }
+
+    /* Card Content Layout */
+    .cmms-stack-card .cmms-icon-side {
+        flex: 0 0 100px;
+        height: 100px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.2);
+    }
+    .cmms-stack-card.theme-light .cmms-icon-side {
+        background: rgba(0, 131, 200, 0.05);
+        border-color: rgba(0, 131, 200, 0.2);
+    }
+    
+    .cmms-stack-card .cmms-icon-side svg {
+        width: 120px;
+        height: 60px;
+        color: var(--accent);
+    }
+
+    @media (max-width: 426px) {
+        .cmms-stack-card .cmms-icon-side svg {
+            width: 80px;
+            height: 50px;
+        }
+    }
+
+    .cmms-stack-card .cmms-text-side h4 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+    .cmms-stack-card .cmms-text-side p {
+        font-size: 1rem;
+        color: #b0c4de;
+        line-height: 1.6;
+    }
+    .cmms-stack-card.theme-light .cmms-text-side p {
+        color: var(--text-secondary);
+    }
+
+    /* CMMS ROLES SECTION */
+    .cmms-role-section {
+        text-align: center;
+    }
+    .cmms-role-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 40px;
+    }
+    @media (max-width: 992px) { .cmms-role-grid { grid-template-columns: 1fr; } }
+    .cmms-role-card {
+        background: var(--surface-dark);
+        border: 1px solid var(--border-dark);
+        border-radius: 12px;
+        padding: 30px 25px;
+        text-align: left;
+        transition: all 0.3s ease;
+    }
+    .cmms-role-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent);
+        box-shadow: var(--shadow-glow);
+    }
+    .cmms-role-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 180, 216, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent);
+        margin-bottom: 20px;
+    }
+    .cmms-role-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+    .cmms-role-card h4 {
+        font-size: 1.2rem;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+    }
+    .cmms-role-card p {
+        font-size: 0.9rem;
+        color: #b0c4de;
+        line-height: 1.6;
+    }
+
+    /* DIGITAL WORK INSTRUCTIONS (CWI) STYLES */
+    .cwi-mockup {
+        background: #0f172a;
+        border-radius: 8px;
+        border: 1px solid #1e293b;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        padding: 25px;
+        font-family: var(--font-body);
+        transition: transform 0.3s ease;
+    }
+    .cwi-mockup:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-glow);
+    }
+    .cwi-mockup::before {
+        content: '';
+        position: absolute; top: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(90deg, var(--brand-red) 0%, var(--primary) 100%);
+    }
+    .cwi-header {
+        font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 20px;
+    }
+    .cwi-grid {
+        display: grid; grid-template-columns: 1.5fr 1fr; gap: 15px; margin-bottom: 20px;
+    }
+    @media(max-width: 650px) { .cwi-grid { grid-template-columns: 1fr; } }
+    .cwi-panel {
+        background: #1e293b; border: 1px solid rgba(0, 180, 216, 0.3); border-radius: 8px; padding: 15px;
+    }
+    .cwi-panel-dark {
+        background: #0b1120; border: 1px solid #1e293b; border-radius: 8px; padding: 15px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .cwi-step-header {
+        display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #94a3b8; margin-bottom: 15px; border-bottom: 1px solid #334155; padding-bottom: 8px;
+    }
+    .cwi-step-badge {
+        background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 12px; font-weight: 700;
+    }
+    .cwi-task { font-size: 1.1rem; color: #f1f5f9; font-weight: 700; margin-bottom: 5px; }
+    .cwi-spec { font-size: 0.8rem; color: #64748b; margin-bottom: 20px; }
+    .cwi-circles { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .cwi-circle {
+        width: 28px; height: 28px; border-radius: 50%; border: 1px solid #475569; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: #94a3b8;
+        transition: all 0.3s ease; cursor: default;
+    }
+    .cwi-circle:hover { background: rgba(255,255,255,0.05); }
+    .cwi-circle.active {
+        border-color: #10b981; color: #10b981; background: rgba(16, 185, 129, 0.1); box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+    }
+    .cwi-live-box {
+        background: rgba(0, 180, 216, 0.05); border: 1px dashed rgba(0, 180, 216, 0.3); border-radius: 6px; padding: 12px; transition: all 0.3s ease;
+    }
+    .cwi-live-box:hover { background: rgba(0, 180, 216, 0.1); }
+    .cwi-live-label { font-size: 0.65rem; color: #94a3b8; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+    .cwi-live-val { font-size: 1.8rem; font-weight: 800; color: #38bdf8; display: flex; align-items: baseline; gap: 5px; text-shadow: 0 0 10px rgba(0, 180, 216, 0.4);}
+    .cwi-live-val span { font-size: 0.8rem; font-weight: 400; color: #64748b; text-shadow: none; }
+    .cwi-status { color: #10b981; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; display: flex; align-items: center; gap: 4px; margin-top: 5px; }
+    .cwi-status::before { content:''; width: 6px; height: 6px; border-radius: 50%; background: #10b981; animation: cwi-pulse 1.5s infinite;}
+    @keyframes cwi-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    
+    .cwi-user { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .cwi-avatar { width: 36px; height: 36px; border-radius: 50%; background: #0083c8; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; }
+    .cwi-user-info h6 { font-size: 0.85rem; color: #f1f5f9; margin: 0; }
+    .cwi-user-info p { font-size: 0.7rem; color: #64748b; margin: 0; }
+    .cwi-comp { color: #10b981; font-size: 0.75rem; font-weight: 600; }
+    
+    .cwi-ai-box { margin-top: auto; border-top: 1px solid #1e293b; padding-top: 10px; }
+    .cwi-ai-header { display: flex; align-items: center; gap: 5px; color: var(--brand-red); font-size: 0.75rem; font-weight: 700; margin-bottom: 5px; }
+    .cwi-ai-text { font-size: 0.8rem; color: #94a3b8; line-height: 1.4; font-style: italic; }
+
+    .cwi-footer { background: #1e293b; border-radius: 6px; padding: 15px; }
+    .cwi-footer-top { display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; margin-bottom: 8px; }
+    .cwi-progress-bg { height: 6px; background: #0b1120; border-radius: 3px; overflow: hidden; }
+    .cwi-progress-bar { height: 100%; background: #00b4d8; width: 37.5%; border-radius: 3px; transition: width 1s ease; }
+    .cwi-mockup:hover .cwi-progress-bar { width: 45%; }
+
+
+    /* MANUFACTURING SERVICE BUS ARCHITECTURE SECTION */
+    .msb-section {
+        padding: 0 0 40px 0;
+        text-align: center;
+    }
+
+    /* 6-DOMAIN MANUFACTURING SPANNING SECTION */
+    .domain-spanning-section { 
+        text-align: center;
+    }
+    .domain-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; }
+    @media (max-width: 1200px) { .domain-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 768px) { .domain-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .domain-grid { grid-template-columns: 1fr; } }
+    .domain-card {
+        background: var(--surface-dark); border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: var(--radius-card); padding: 30px 15px; transition: all 0.3s ease;
+    }
+    .domain-card:hover { background: var(--surface-dark); transform: translateY(-4px); }
+    .domain-num { font-size: 2.5rem; font-family: var(--font-headings); font-weight: 800; font-style: italic; color: var(--primary); margin-bottom: 10px; line-height: 1; }
+    .domain-card h4 { font-size: 1rem; color: var(--text-primary); margin-bottom: 10px; }
+    .domain-card p { font-size: 0.8rem; color: #8fa0b5; line-height: 1.4; }
+
+    /* SIX-STAGE MATRIX ROADMAP STYLING */
+    .continuous-oee-block{text-align: center;}
+    
+    .roadmap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; position: relative; margin-top: 30px; }
+    @media (max-width: 992px) { .roadmap-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 650px) { .roadmap-grid { grid-template-columns: 1fr; } }
+    .roadmap-node {
+        background: var(--surface-dark); border: 1px solid rgba(255, 255, 255, 0.03);
+        border-radius: var(--radius-card); padding: 25px 15px; text-align: center; transition: all 0.3s ease;
+    }
+    .roadmap-node:hover { background: var(--surface-dark); border-color: rgba(0, 180, 216, 0.2); }
+    .roadmap-node .step-circle {
+        width: 48px; height: 48px; border: 2px solid rgba(0, 180, 216, 0.6); border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 15px; font-family: var(--font-headings); font-weight: 700; font-size: 1.15rem; color: var(--accent);
+        background: var(--background-dark); box-shadow: 0 0 10px rgba(0, 180, 216, 0.2);
+    }
+    .roadmap-node h4 { font-size: 1.15rem; color: var(--text-primary); margin-bottom: 8px; font-weight: 600; }
+    .roadmap-node .sub-metrics { font-size: 0.8rem; color: #8fa0b5; line-height: 1.5; }
+    .roadmap-footer-lead { font-size: 1rem; color: #b0c4de; margin-top: 35px; font-weight: 500; }
+    .roadmap-footer-lead span { color: #ffffff; font-weight: 700; }
+</style>
+
+<div class="tabs-navbar">
+    <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab(event, 'imex')">Manufacturing OPs</button>
+        <button class="tab-btn" onclick="switchTab(event, 'factory-gpt')">FactoryGPT</button>
+        <button class="tab-btn" onclick="switchTab(event, 'cmms')">CMMS</button>
+        <button class="tab-btn" onclick="switchTab(event, 'msb')">MSB</button> 
+    </div>
+</div>
+
+<section class="tab-section">
+    
+    <div id="imex" class="panel-content active">      
+        <div class="container">
+
+            <div class="connect-visual-predict custom-section">
+                
+                <h2 class="section-title">
+                    Intelligent Manufacturing <span> Connected in Real Time </span>
+                </h2>
+                <p class="section-subtitle">
+                    Connect machines, visualize operations, and predict failures with AI-driven industrial intelligence built for modern manufacturing.
+                </p>
+                
+                <div class="scroll-stack-container">
+                    <div class="scroll-stack-card">
+                        
+                        <div class="desktop-mockup">
+                            <img src="https://dev-website.ithena.app/wp-content/uploads/2026/05/insights-actionable-clean.png" 
+                            alt="Connect Visualize Predict" style="width: 80%; border-radius: 8px;"/>
+                        </div>
+
+                        <div style="text-align: left;">
+                            <h4>Connect & Collect</h4>
+                            <p>Built on state-of-the-art communication protocols, leveraging industry-standard connectivity technologies such as OPC UA, Euromap 63, and other leading integration standards for seamless and reliable system interoperability.</p>
+                        </div>
+                    </div>
+
+                    <div class="scroll-stack-card">
+                        <div class="desktop-mockup">
+                            <img src="https://dev-website.ithena.app/wp-content/uploads/2026/05/visual-act-e1779109965239.png" 
+                            alt="Connect Visualize Predict" style="width: 80%; border-radius: 8px;"/>
+                        </div>
+                        <div style="text-align: left;">
+                            <h4>Visualize & Act</h4>
+                            <p>Unique, intuitive, and persona-driven dashboards designed for manufacturing KPIs, enabling deep drill-down analysis with out-of-the-box alerting, reporting, and actionable operational insights.</p>
+                        </div>
+                    </div>
+
+                    <div class="scroll-stack-card">
+                        <div class="desktop-mockup">
+                            <img src="https://dev-website.ithena.app/wp-content/uploads/2026/05/predict-prevent-clean.png" 
+                            alt="Connect Visualize Predict" style="width: 80%; border-radius: 8px;"/>
+                        </div>
+                        <div style="text-align: left;">
+                            <h4>Predict & Prevent</h4>
+                            <p>Equipped with an out-of-the-box AI/ML engine to enable anomaly detection and predictive insights, driving planned maintenance strategies and fostering a proactive, predictive operational culture.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="perf-management-section">
+                
+                <div class="perf-header">
+                    <h2 class="section-title"> <span class="statement-heading-red">The obvious!</span> The Regular!</h2>
+                    <p class="section-subtitle">Unified real-time manufacturing intelligence for complete visibility across machines, processes, and production performance.</p>
+                </div>
+
+                <div class="split-layout">
+                    <div class="perf-content">
+                        <span class="perf-overline">Visibility & feeds</span>
+                        <h4 class="perf-title">See Every Machine, Line, and Operator — Live</h4>
+                        <p class="perf-text">System streams data from PLCs, sensors, IoT gateways, and MES systems into a single pane of glass. Monitor OEE, cycle times, yield, and throughput in real time across your entire production network.</p>
+                        
+                        <div class="perf-tags">
+                            <span class="perf-tag">OPC-UA</span>
+                            <span class="perf-tag">MQTT</span>
+                            <span class="perf-tag">Modbus</span>
+                            <span class="perf-tag">REST APIs</span>
+                            <span class="perf-tag">MTConnect</span>
+                        </div>
+                        
+                        <div class="perf-feature-grid">
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                </div>
+                                <div>
+                                    <h5>Live Machine Feeds</h5>
+                                    <p>Sub-second data ingestion from any industrial protocol</p>
+                                </div>
+                            </div>
+                            
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                                </div>
+                                <div>
+                                    <h5>Multi-Plant Views</h5>
+                                    <p>Unified dashboards across global facilities</p>
+                                </div>
+                            </div>
+                            
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                                </div>
+                                <div>
+                                    <h5>Smart Alerts</h5>
+                                    <p>Threshold, anomaly, and trend-based notifications</p>
+                                </div>
+                            </div>
+                            
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                                </div>
+                                <div>
+                                    <h5>Mobile Access</h5>
+                                    <p>Full visibility on tablet, phone, or wearable</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="perf-mockup">
+                        <div class="perf-mockup-inner">
+                            <div class="perf-mockup-header">
+                                <span class="perf-mockup-title">Real-Time Production Monitor</span>
+                                <div class="perf-mockup-live">LIVE <div class="perf-mockup-dot"></div></div>
+                            </div>
+                            
+                            <div class="perf-mockup-cards">
+                                <div class="pm-card ok">
+                                    <div class="pm-card-title">CNC Mill A-01</div>
+                                    <div class="pm-card-label">RPM</div>
+                                    <div class="pm-card-val">4,850</div>
+                                    <div class="pm-card-sub">
+                                        <span>Temp: 42.3°C</span>
+                                        <span>Vibr: 0.8mm/s</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="pm-card ok">
+                                    <div class="pm-card-title">Laser Cutter B-03</div>
+                                    <div class="pm-card-label">POWER</div>
+                                    <div class="pm-card-val" style="margin-top: 15px;">2.4 kW</div>
+                                </div>
+                                
+                                <div class="pm-card warn">
+                                    <div class="pm-card-title">Press C-02</div>
+                                    <div class="pm-card-label">FORCE</div>
+                                    <div class="pm-card-val">187 kN</div>
+                                    <div class="pm-card-sub">
+                                        <span style="color:#fbbf24;">Temp: 81.2°C ⚠</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="perf-mockup-chart">
+                                <span class="pm-chart-title">OEE Trend — All Lines</span>
+                                <svg class="pm-chart-svg" viewBox="0 0 300 60" preserveAspectRatio="none">
+                                    <defs>
+                                        <linearGradient id="oeeGrad" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="rgba(0,180,216,0.3)" />
+                                            <stop offset="100%" stop-color="rgba(0,180,216,0)" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M0,50 C50,45 100,45 150,35 C200,25 250,20 300,10 L300,60 L0,60 Z" fill="url(#oeeGrad)" />
+                                    <path d="M0,50 C50,45 100,45 150,35 C200,25 250,20 300,10" fill="none" stroke="#00b4d8" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="300" cy="10" r="3" fill="#00b4d8" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="perf-header" style="margin-top: 80px;">
+                    <h2 class="section-title">And Now, <span class="statement-heading-primary"> The ITHENA Way!</span></h2>
+                </div>
+
+                <div class="split-layout animated">
+                    
+                    <div class="predict-mockup">
+                        <div class="predict-header">
+                            <span class="predict-title">AI Predictive Maintenance</span>
+                            <div class="predict-badge"><div class="perf-mockup-dot" style="background:#ef4444; box-shadow:0 0 8px #ef4444;"></div> AI Model Active</div>
+                        </div>
+                        
+                        <div class="predict-chart-box">
+                            <div class="predict-chart-title">Spindle Vibration — CNC-A02</div>
+                            <svg class="predict-chart-svg" viewBox="0 0 400 100" preserveAspectRatio="none">
+                                <path d="M0,70 L50,75 L100,72 L150,74 L200,65" fill="none" stroke="#eab308" stroke-width="2"/>
+                                <path d="M200,65 C250,55 280,40 350,20 L400,10" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4"/>
+                                <path d="M200,65 C250,55 280,40 350,20 L400,10 L400,100 L200,100 Z" fill="rgba(239, 68, 68, 0.05)" />
+                                <text x="235" y="30" fill="#ef4444" font-size="10" font-weight="700" letter-spacing="0.05em">PREDICTED FAILURE ZONE &rarr;</text>
+                            </svg>
+                        </div>
+                        
+                        <div class="predict-recom-box">
+                            <div class="predict-recom-header">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                AI Recommendation
+                            </div>
+                            <div class="predict-recom-text">Schedule spindle bearing replacement within 72 hours.</div>
+                            <div class="predict-recom-text">Predicted failure probability: <span class="predict-recom-prob">87%</span></div>
+                            <div class="predict-recom-window">Optimal window: Friday 22:00 — Saturday 06:00</div>
+                            <button class="predict-btn">Schedule Now</button>
+                        </div>
+                    </div>
+
+                    <div class="perf-content">
+                        <span class="perf-overline">Exact and Real Time</span> 
+                        <h4 class="perf-title">Predict Failures Before They Happen</h4>
+                        <p class="perf-text">IMEX uses machine learning models trained on your historical and real-time data to detect anomalies, predict equipment failures, and recommend optimal maintenance windows — reducing unplanned downtime by up to 40%.</p>
+                        
+                        <div class="perf-feature-grid">
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                                </div>
+                                <div>
+                                    <h5>Anomaly Detection</h5>
+                                    <p>Auto-learns normal operating patterns and flags deviations</p>
+                                </div>
+                            </div>
+                            
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                </div>
+                                <div>
+                                    <h5>Predictive Maintenance</h5>
+                                    <p>AI-scheduled maintenance windows minimize production impact</p>
+                                </div>
+                            </div>
+                            
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                                </div>
+                                <div>
+                                    <h5>Root Cause Analysis</h5>
+                                    <p>Automated correlation across machine, process, and quality data</p>
+                                </div>
+                            </div>
+                            
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 12l3-3 3 3 4-4M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                                </div>
+                                <div>
+                                    <h5>Continuous Optimization</h5>
+                                    <p>Models improve with every cycle, shift, and event</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="split-layout" style="margin-top: 80px;">
+                    
+                    <div class="perf-content">
+                        <span class="perf-overline">New age of quality</span>
+                        <h4 class="perf-title">Zero-Defect Manufacturing, Powered by AI Vision</h4>
+                        <p class="perf-text">Deploy computer vision and inline quality inspection at every stage. IMEX detects surface defects, dimensional deviations, and assembly errors in real time.</p>
+                        
+                        <div class="perf-tags">
+                            <span class="perf-tag">Computer Vision</span>
+                            <span class="perf-tag">SPC Charts</span>
+                            <span class="perf-tag">CAPA Workflows</span>
+                            <span class="perf-tag">Inline Inspection</span>
+                        </div>
+                        
+                        <div class="perf-feature-grid">
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </div>
+                                <div>
+                                    <h5>AI Visual Inspection</h5>
+                                    <p>Detects micro-defects invisible to human operators</p>
+                                </div>
+                            </div>
+                            
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h5>Auto-Disposition</h5>
+                                    <p>Instantly classifies pass/fail with confidence scores</p>
+                                </div>
+                            </div>
+                            
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                </div>
+                                <div>
+                                    <h5>Digital SPC</h5>
+                                    <p>Control charts with rule-based alerts and trending</p>
+                                </div>
+                            </div>
+                            
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                                </div>
+                                <div>
+                                    <h5>Full Traceability</h5>
+                                    <p>Lot, serial, and batch genealogy across operations</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vision-mockup">
+                        <div class="vision-header">
+                            Quality Inspection — AI Vision
+                        </div>
+                        <div class="vision-grid">
+                            <div class="vision-cam">
+                                <div class="vision-scan-box">
+                                    <div class="vision-defect-marker">
+                                        <div class="marker-circle red">!</div>
+                                        <div class="marker-line"></div>
+                                        <div class="marker-text">SCRATCH 0.3mm</div>
+                                    </div>
+                                    <div class="vision-defect-marker" style="top:60%; left:60%;">
+                                        <div class="marker-circle green">✓</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vision-results">
+                                <h6>Inspection Results</h6>
+                                <div class="res-label">Confidence</div>
+                                <div class="res-bar-bg"><div class="res-bar-fill"></div></div>
+                                <div class="res-val">97.4%</div>
+                                
+                                <div class="res-label" style="margin-top:15px;">Classification</div>
+                                <div class="res-reject-btn">REJECT</div>
+                                
+                                <div class="res-label" style="margin-top:15px;">Defects Detected</div>
+                                <div class="res-defect-list">
+                                    <span>• Surface scratch (0.3mm)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vision-spc-chart">
+                            <div class="spc-title">Defect Rate — SPC Control Chart</div>
+                            <svg viewBox="0 0 400 40" preserveAspectRatio="none" style="width:100%; height:40px; margin-top:10px;">
+                                <path d="M0,20 L50,25 L100,18 L150,22 L200,15 L250,28 L300,10 L350,20 L380,18 L400,5" fill="none" stroke="#00b4d8" stroke-width="2"/>
+                                <circle cx="350" cy="20" r="3" fill="#eab308" />
+                                <circle cx="380" cy="18" r="3" fill="#eab308" />
+                                <circle cx="400" cy="5" r="4" fill="#ef4444" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="igemba-section">
+                
+                <div class="perf-header animated">
+                    <h2 class="section-title">Experience the Next Era of <span>AI-Driven Shopfloor Operations</span></h2>
+                    <p class="section-subtitle">Discover how ITHENA transforms traditional manufacturing into a continuous, intelligent, and fully digitized ecosystem.</p>
+                </div>
+
+                <div class="split-layout animated">
+                    <div class="perf-content">
+                        <span class="perf-overline" style="color: var(--primary);">New Age Shopfloor</span>
+                        <h4 class="perf-title">iGEMBA: Continuous AI-Driven Digital Operations</h4>
+                        <p class="perf-text">iGEMBA transforms traditional Gemba walks into a continuous, AI-powered digital operation—capturing real-time shop floor data, digitizing KPIs instantly, and enabling frontline teams with actionable operational insights.</p>
+                        
+                        <div class="perf-tags">
+                            <span class="perf-tag">Digital Checklists</span>
+                            <span class="perf-tag">Live KPIs</span>
+                            <span class="perf-tag">Actionable Insights</span>
+                        </div>
+                        
+                        <div class="perf-feature-grid">
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                                </div>
+                                <div>
+                                    <h5>Dynamic Digitization</h5>
+                                    <p>Replace static clipboards with real-time, interactive screens.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                                </div>
+                                <div>
+                                    <h5>AI Actionable Insights</h5>
+                                    <p>Translate raw floor data into prescriptive performance actions.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
+                                </div>
+                                <div>
+                                    <h5>Seamless Interaction</h5>
+                                    <p>Intuitive input screens for instant issue logging and resolution.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="perf-card">
+                                <div class="perf-card-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                </div>
+                                <div>
+                                    <h5>Continuous Tracking</h5>
+                                    <p>End-to-end visibility of plans, performance, and bottlenecks.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="igemba-mockup-container">
+                        <div class="predict-header" style="margin-bottom: 30px;width: 100%;">
+                            <span class="predict-title">iGEMBA Digital Dashboard</span>
+                            <div class="predict-badge" style="color: var(--primary); background: rgba(0, 180, 216, 0.1); border-color: rgba(0, 180, 216, 0.3);">
+                                <div class="perf-mockup-dot" style="background:var(--primary); box-shadow:0 0 8px var(--primary);"></div> Live Sync
+                            </div>
+                        </div>
+                        <img src="https://dev-website.ithena.app/wp-content/uploads/2023/05/Group-3.webp" 
+                           class="igemba-fig" alt="iGEMBA Digital Gemba Walks">
+                    </div>
+                </div>
+
+                <div class="igema-smarter-view">
+                    <div style="text-align: center;">
+                        <h2 class="section-title"><span style="color: var(--primary);">Smarter View</span> of Shop Floor Data</h2>
+                        <p class="section-subtitle">
+                            <a href="/digital-shopfloor-igemba/" target="_blank" style="color: var(--primary);"> 
+                            iGEMBA <i aria-hidden="true" class="fas fa-external-link-alt"></i> 
+                            </a>  digitizes daily Gemba floor walks so the teams can be productive, fix problems at hand, and focus on the quality and scale of operations on the factory floor!
+                        </p>
+                    </div>
+                    
+                    <div class="igemba-features-grid">
+                        <div class="igemba-feature-card">
+                            <div class="igemba-num">01.</div>
+                            <div class="igemba-content">
+                                <h4>Checklist</h4>
+                                <p>Create GEMBA Checklist</p>
+                            </div>
+                        </div>
+                        
+                        <div class="igemba-feature-card">
+                            <div class="igemba-num">02.</div>
+                            <div class="igemba-content">
+                                <h4>KPI Generation & View</h4>
+                                <p>Single-view of shop-floor KPIs</p>
+                            </div>
+                        </div>
+
+                        <div class="igemba-feature-card">
+                            <div class="igemba-num">03.</div>
+                            <div class="igemba-content">
+                                <h4>Insight</h4>
+                                <p>Generate Actionable Insight</p>
+                            </div>
+                        </div>
+
+                        <div class="igemba-feature-card">
+                            <div class="igemba-num">04.</div>
+                            <div class="igemba-content">
+                                <h4>Interaction</h4>
+                                <p>Data Input Screens</p>
+                            </div>
+                        </div>
+
+                        <div class="igemba-feature-card">
+                            <div class="igemba-num">05.</div>
+                            <div class="igemba-content">
+                                <h4>Management</h4>
+                                <p>Track issues | plans | Performance</p>
+                            </div>
+                        </div>
+
+                        <div class="igemba-feature-card">
+                            <div class="igemba-num">06.</div>
+                            <div class="igemba-content">
+                                <h4>Integrated</h4>
+                                <p>First step to Industry 4.0 journey</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="factory-gpt" class="panel-content">
+        <div class="container">
+            <div class="split-layout reverse">
+                
+                <div class="factorygpt-chat-dig" style="text-align: -webkit-center;">
+                    <img src="https://dev-website.ithena.app/wp-content/uploads/2026/05/factorygpt-chat.webp" 
+                    alt="FactoryGPT Chat Interface" class="factorygpt-chat-fig">
+                </div>
+                
+                <div class="factorygpt-chat-text">
+                    <h2 class="section-title"><span>FactoryGPT: </span>AI-Powered Operational Intelligence for Modern Factories</h2>
+                    <p class="section-subtitle" style="text-align: left !important; margin: 0 0 20px 0 !important;">Empower maintenance teams with AI-driven conversations that connect telemetry, documentation, and diagnostics into one seamless operational experience.</p>
+                </div>
+            </div>
+
+            <div class="ecosystem-hub">
+                <h2 class="section-title">Every data source. <span>One intelligent platform.</span></h2>
+                <p class="section-subtitle">FactoryGPT connects your entire operational data ecosystem to a conversational AI that understands context and takes autonomous action.</p>
+                
+                <div class="factorygpt-fig-grid">
+                    <img src="https://dev-website.ithena.app/wp-content/uploads/2026/05/factorygpt-grid-dig.png" 
+                        alt="FactoryGPT Ecosystem Diagram" class="factorygpt-grid-fig">
+                </div>
+            </div>
+
+            <div class="core-intelligence-section">
+                <div class="cascade-container animated">
+                    <div class="cascade-card">
+                        <div class="card-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                        </div>
+                        <div>
+                            <h4>NLP Chat Engine</h4>
+                            <p>Type normal language questions. The core translates intent into precise database queries, explaining data outputs with traceable citations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cascade-card">
+                        <div class="card-icon" style="color: #10b981; background: rgba(16,185,129,0.1);">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Gen-AI Diagnostics</h4>
+                            <p>Analyzes systemic data arrays, exposes complex production anomalies, and surface operational risks ahead of failures.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cascade-card">
+                        <div class="card-icon" style="color: #eab308; background: rgba(234,179,8,0.1);">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 12l3-3 3 3 4-4M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Auto-Visualization</h4>
+                            <p>Converts processed query parameters into dynamically rendered charts and persistent analytics dashboard layouts instantly.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cascade-card">
+                        <div class="card-icon" style="color: var(--accent);">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H17m0 0V4m0 4h4"/></svg>
+                        </div>
+                        <div>
+                            <h4>Agentic Workflows</h4>
+                            <p>Connects conversational directives to direct operational ecosystem actions like issuing maintenance tickets or alerting teams.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cmms" class="panel-content">
+        <div class="container">
+            <div class="split-layout">
+                <div class="lhs-text-content">
+                    <h2 class="section-title" style="text-align: left !important;">Intelligent <span>Computerized Maintenance</span> Management</h2>
+                    <p class="section-subtitle" style="text-align: left !important; margin: 0 0 20px 0 !important;">Transition your facilities from passive fix-on-failure protocols to completely algorithmic scheduling optimization. Intelligently cross-reference component lifetime wear, dispatch teams via skill-routing protocols, and manage internal spare parts buffers dynamically.</p>
+                </div>
+                
+                <div class="mockups-cmms-div">   
+                    <img src="https://dev-website.ithena.app/wp-content/uploads/2026/05/cmms-top-img.webp" alt="mockups-cmms"
+                    class="mockups-cmms"/>
+                </div>
+            </div>
+
+            <div class="cmms-cap-section animate-on-scroll">
+                <div class="cmms-cap-header">
+                    <h2 class="section-title">Every CMMS capability <span>your team needs</span></h2>
+                    <p class="section-subtitle">Streamline workflows, extend asset life, and reduce downtime with a comprehensive suite of tools designed for modern maintenance teams.</p>
+                </div>
+
+                <div class="cmms-stack-container">
+                    
+                    <div class="cmms-stack-card">
+                        <div class="cmms-icon-side">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <div class="cmms-text-side">
+                            <h4>Work Order Management</h4>
+                            <p>Simplify work execution with centralized work order management. Create, assign, and track tasks across sites while enabling frontline teams with AI-powered insights for smoother operations.</p>
+                        </div>
+                    </div>
+    
+                    <div class="cmms-stack-card">
+                        <div class="cmms-icon-side">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <line x1="18" y1="20" x2="18" y2="10"/>
+                                <line x1="12" y1="20" x2="12" y2="4"/>
+                                <line x1="6" y1="20" x2="6" y2="14"/>
+                                <line x1="2" y1="22" x2="22" y2="22"/>
+                            </svg>
+                        </div>
+                        <div class="cmms-text-side">
+                            <h4>Analytics & Reporting</h4>
+                            <p>Turn operational data into actionable intelligence. Generate reports instantly with AI-powered analytics, natural language queries, and automated insights that highlight performance opportunities.</p>
+                        </div>
+                    </div>
+
+                    <div class="cmms-stack-card">
+                        <div class="cmms-icon-side">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <rect x="2" y="4" width="20" height="6" rx="1"/>
+                                <rect x="2" y="14" width="20" height="6" rx="1"/>
+                                <line x1="6" y1="7" x2="6" y2="7" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="6" y1="17" x2="6" y2="17" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="cmms-text-side">
+                            <h4>Asset Management</h4>
+                            <p>Maximize equipment reliability and uptime with AI-driven asset monitoring. Detect root causes faster, improve asset performance, and make smarter maintenance decisions.</p>
+                        </div>
+                    </div>
+
+                    <div class="cmms-stack-card theme-light">
+                        <div class="cmms-icon-side">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                        </div>
+                        <div class="cmms-text-side">
+                            <h4>Preventive Maintenance</h4>
+                            <p>Reduce unplanned downtime with intelligent preventive and predictive maintenance. Automate scheduling, trigger condition-based actions, and identify anomalies before they impact production.</p>
+                        </div>
+                    </div>
+
+                    <div class="cmms-stack-card theme-light">
+                        <div class="cmms-icon-side">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <div class="cmms-text-side">
+                            <h4>Parts & Inventory</h4>
+                            <p>Optimize inventory management with automated stock monitoring, low-stock alerts, and predictive parts planning to avoid shortages and control inventory costs.</p>
+                        </div>
+                    </div>
+
+                    <div class="cmms-stack-card theme-light">
+                        <div class="cmms-icon-side">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="cmms-text-side">
+                            <h4>Mobile CMMS</h4>
+                            <p>Access complete CMMS capabilities on the go with offline support and automatic syncing for uninterrupted maintenance operations.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="cmms-role-section">
+                <div class="cmms-cap-header">
+                    <h2 class="section-title">Built for Every Member of <span>Your Maintenance Team</span></h2>
+                    <p class="section-subtitle">From frontline technicians to operations leadership, ITHENA CMMS serves every role in your maintenance program with the right tools and visibility.</p>
+                </div>
+                
+                <div class="cmms-role-grid">
+                    <div class="cmms-role-card">
+                        <div class="cmms-role-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <h4>For Maintenance Managers</h4>
+                        <p>Real-time work order dashboards, AI-powered scheduling, and cross-site analytics. See everything happening across your facilities and direct resources where they matter most.</p>
+                    </div>
+                    
+                    <div class="cmms-role-card">
+                        <div class="cmms-role-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                <line x1="12" y1="18" x2="12.01" y2="18"/>
+                                <path d="M9 10l2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <h4>For Technicians</h4>
+                        <p>Mobile-first work orders, parts lookup, guided procedures and offline capability. Everything you need at the point of work. No trips back to the office.</p>
+                    </div>
+                    
+                    <div class="cmms-role-card">
+                        <div class="cmms-role-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 13V6a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h8m-2-10l5-5 5 5m-5-5v12"/>
+                            </svg>
+                        </div>
+                        <h4>For Operations Leaders</h4>
+                        <p>Executive dashboards with live data across every location. Track maintenance costs, asset reliability, and uptime KPIs without waiting on manual reports.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="msb" class="panel-content">
+        <section class="msb-section">
+            <div class="container">
+                <h2 class="section-title">The service bus that<br><span>connects your entire manufacturing operation</span></h2>
+                <p class="section-subtitle">
+                    <a href="/manufacturing-service-bus/" target="_blank" style="color: var(--primary);">
+                        ITHENA MSB <i aria-hidden="true" class="fas fa-external-link-alt"></i> 
+                    </a>  sits between your top-floor business systems and shop-floor operational technology, enabling seamless bi-directional data exchange.
+                </p>
+                <img src="https://dev-website.ithena.app/wp-content/uploads/2026/05/msb-fig-transp-e1779802434921.png" alt="MSB Diagram" 
+                    style="width: 100%; border-radius: 8px; margin-top: 20px;"> 
+            </div>
+        </section>
+
+        <section class="domain-spanning-section">
+            <div class="container">
+                <h2 class="section-title">Spanning every domain of manufacturing</h2>
+                <p class="section-subtitle">Unlike point solutions, ITHENA MSB provides a unified data layer across all six core domains.</p>
+                
+                <div class="domain-grid">
+                    <div class="domain-card">
+                        <div class="domain-num">1</div>
+                        <h4>Planning</h4>
+                        <p>Orders, schedules, BOMs from ERP flow into production context.</p>
+                    </div>
+                    <div class="domain-card">
+                        <div class="domain-num">2</div>
+                        <h4>Production</h4>
+                        <p>Run records, OEE, cycle times captured from MES and SCADA.</p>
+                    </div>
+                    <div class="domain-card">
+                        <div class="domain-num">3</div>
+                        <h4>Quality</h4>
+                        <p>SPC, inspections, holds — linked to lots and process data.</p>
+                    </div>
+                    <div class="domain-card">
+                        <div class="domain-num">4</div>
+                        <h4>Safety</h4>
+                        <p>EHS checklists, near-miss reports, audit trails, compliance.</p>
+                    </div>
+                    <div class="domain-card">
+                        <div class="domain-num">5</div>
+                        <h4>Delivery</h4>
+                        <p>Inventory, shipments, consumption tied to production output.</p>
+                    </div>
+                    <div class="domain-card">
+                        <div class="domain-num">6</div>
+                        <h4>Maintenance</h4>
+                        <p>Alarms → work orders, PM triggers, MTTR/MTBF automated.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</section>
+
+<script>
+    function switchTab(event, tabId) {
+        const buttons = document.querySelectorAll('.tab-btn');
+        const panels = document.querySelectorAll('.panel-content');
+        
+        buttons.forEach(btn => btn.classList.remove('active'));
+        panels.forEach(panel => panel.classList.remove('active'));
+        
+        event.currentTarget.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const observerOptions = { root: null, rootMargin: "0px", threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animated");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const animatedSections = document.querySelectorAll('.');
+        animatedSections.forEach(section => { observer.observe(section); });
+    });
+</script>

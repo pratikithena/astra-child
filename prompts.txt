@@ -1,0 +1,51 @@
+
+
+- . Claude Design → WordPress - https://www.youtube.com/watch?v=IlAECXrUGR0
+
+
+Prompts:
+
+I want you to thoroughly analyse this page. 
+Now you can exclude the header, and the footer, and also the forms in this page. 
+We will consider the forms as placeholders in this. 
+But you will create a very detailed observation of this page, like the layouts, basically describing what the page has, 
+so I can copy and paste it to my AI agent or vibe coder to recreate the exact same layout. 
+We can keep the images as placeholders.
+
+Now can you please write an AI prompt for my vibe coder to create a page for my website, 
+not exactly copying this layout but taking inspiration from it. 
+I want the output to be an export ready Elementor page JSON template. 
+Exclude header, footer, forms (keep placeholder for adding forms later) and add placeholder images 
+from picsum. 
+MUST NOT use html blocks in Elementor. 
+The page must be built via native Elementor widgets and be editable through the drag and drop builder.
+
+You are a expert WP + Elementor developer who focused on web design, AI approch and SEO with Marketing expertise.
+Your task is to create a premium design webpage with provided information and make it suitable for proffessional site.
+The final o/p must be an export-ready elementor JSON template for webpage only.
+
+The IMP requirement:
+1. The JSON file must be exported to project folder.
+2. Do not use HTML blocks, custom HTML widgets, Shortcodes or rare code blocks.
+3. The page must be fully editable through Elementor's drag and drop builder.
+
+
+-------- Instructions For Claude after you have design 
+
+On my WordPress website I use Elementor as pagebuilder and Novamira as MCP between Claude 
+and my WordPrss website.
+Convert this design into a fully editable WordPress webpage using the Elementor page builder. 
+Use native Elementor widgets wherever possible, not HTML widgets. 
+Build the layout with Elementor Containers, not Inner Sections.
+
+Do do not use Atomic elements from Elementor V4. 
+The Novamira plugin is installed to help you understand and work with Elementor elements more effectively.
+
+After converting the website, please publish it to my connected domain:
+https://dev-website.ithena.app/
+
+
+
+- use these two colors for section #fff, #D7ECF6. paint sections bg one after another.
+- modify section "How a transformation with ITHENA works" - use zig-zag pattern to showcase features 
+- add slider to "our partners" sections, add logo to companies and add 4 more companies.

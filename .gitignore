@@ -1,0 +1,18 @@
+# Composer-managed dependencies (regenerate with `composer install`)
+vendor/
+
+# Backup / scratch copies
+bkps/
+*bkp*
+*copy*
+*.zip
+
+# Contains hardcoded secrets pending rotation - see README note before re-adding
+functions.php
+page-stripe-thank-you.php
+page-stripe-thank-you-trialnerror.php
+page-stripe-sync-products.php
+
+# OS files
+Thumbs.db
+desktop.ini

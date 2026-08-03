@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manufacturing Excellence — IMEX (Elementor build)</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Mono:wght@400;500;600;700&display=swap');
+
+    :root{
+      --bg:#090c11;
+      --bg-1:#0d1117;
+      --panel:#12161f;
+      --panel-2:#161c27;
+      --panel-3:#1b2230;
+      --border:#232b3a;
+      --border-soft:#1a212e;
+      --text:#e8ecf3;
+      --text-dim:#a6b0c2;
+      --text-mute:#707c92;
+      --accent:#0083c8;
+      --accent-dim:#ff7a3322;
+      --accent-2:#0083c8;
+      --accent-2-dim:#22d3c522;
+      --success:#3ed598;
+      --warn:#f2c94c;
+      --danger:#ff5c5c;
+      --radius:16px;
+      --radius-sm:10px;
+      --mono:'Noto Sans Mono', 'Noto Sans', monospace;
+      --sans:'Noto Sans', sans-serif;
+    }
+    /* All rules are scoped under .imex so they can never leak into a theme or other widgets */
+    .imex *{box-sizing:border-box;}
+    .imex{
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--sans);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.5;
+      overflow-x:hidden;
+      position:relative;
+    }
+    .imex::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:
+        radial-gradient(circle at 15% 8%, rgba(255,122,51,0.07), transparent 40%),
+        radial-gradient(circle at 85% 18%, rgba(34,211,197,0.06), transparent 45%),
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size:auto, auto, 42px 42px, 42px 42px;
+      pointer-events:none;
+      z-index:0;
+    }
+    .imex .wrap{max-width:1280px;margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+    .imex img,.imex svg{display:block;max-width:100%;}
+    .imex button{font-family:inherit;}
+    .imex a{color:inherit;}
+
+    /* Eyebrow / labels */
+    .imex .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      font-family:var(--mono);
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--accent);
+      font-weight:600;
+    }
+    .imex .eyebrow::before{
+      content:"";
+      width:7px;height:7px;border-radius:2px;
+      background:var(--accent);
+      box-shadow:0 0 10px var(--accent);
+    }
+
+    /* Hero */
+    .imex .hero{padding:88px 0 64px;position:relative;z-index:1;}
+    .imex .hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+    .imex .hero h1{font-size:clamp(34px,4.4vw,56px);line-height:1.08;letter-spacing:-.02em;margin:18px 0 20px;font-weight:800;}
+    .imex .hero h1 .line-accent{color:var(--accent);font-style:italic;}
+    .imex .hero p.lede{font-size:17px;color:var(--text-dim);max-width:520px;margin:0 0 30px;}
+    .imex .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px;}
+    .imex .btn{
+      padding:14px 26px;border-radius:10px;font-weight:700;font-size:14.5px;cursor:pointer;
+      border:1px solid transparent;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+      display:inline-flex;align-items:center;gap:10px;
+    }
+    .imex .btn-primary{background:linear-gradient(135deg,#0083c8,#0083c9);color:#fff;box-shadow:0 8px 24px -8px rgba(255,105,40,.65);}
+    .imex .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(255,105,40,.8);}
+    .imex .btn-ghost{background:#fff;border-color:var(--border);color:var(--bg);}
+    .imex .btn-ghost:hover{border-color:var(--accent-2);color:var(--accent-2);transform:translateY(-2px);}
+    .imex .hero-stats{display:grid;grid-template-columns:repeat(3,auto);gap:36px;}
+    .imex .stat b{display:block;font-family:var(--mono);font-size:26px;font-weight:700;color:var(--text);}
+    .imex .stat span{font-size:12.5px;color:var(--text-mute);}
+
+    /* Hero console panel — signature element */
+    .imex .console{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.7);}
+    .imex .console-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border);background:var(--panel-2);}
+    .imex .console-bar .id{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;font-weight:600;color:var(--text);}
+    .imex .dot-live{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 8px var(--success);animation:imexPulse 1.8s infinite;}
+    @keyframes imexPulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+    .imex .console-bar .status{font-family:var(--mono);font-size:11.5px;color:var(--success);}
+    .imex .console-body{padding:18px;}
+    .imex .msg{max-width:80%;padding:10px 14px;border-radius:12px;font-size:13.5px;margin-bottom:14px;}
+    .imex .msg.user{margin-left:auto;background:var(--accent);color:#181005;font-weight:600;border-bottom-right-radius:3px;}
+    .imex .msg.bot{background:var(--panel-3);border:1px solid var(--border);color:var(--text-dim);border-bottom-left-radius:3px;}
+    .imex .msg.bot b{color:var(--accent-2);}
+    .imex .readout{display:grid;grid-template-columns:1.3fr 1fr;gap:12px;margin:14px 0;}
+    .imex .card-mini{background:var(--panel-3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;}
+    .imex .card-mini h5{margin:0 0 10px;font-size:11px;color:var(--text-mute);text-transform:uppercase;letter-spacing:.08em;font-weight:700;}
+    .imex .trend-line{width:100%;height:52px;}
+    .imex .donut{width:76px;height:76px;border-radius:50%;background:conic-gradient(var(--accent) 0% 71.5%, var(--border) 71.5% 100%);display:flex;align-items:center;justify-content:center;margin:0 auto 6px;position:relative;}
+    .imex .donut::before{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--panel-3);}
+    .imex .donut span{position:relative;font-family:var(--mono);font-weight:700;font-size:14px;z-index:1;}
+    .imex .donut-label{text-align:center;font-size:11px;color:var(--text-mute);}
+    .imex .loss-table{width:100%;border-collapse:collapse;font-size:12px;font-family:var(--mono);}
+    .imex .loss-table td{padding:6px 0;border-top:1px solid var(--border-soft);color:var(--text-dim);}
+    .imex .loss-table td.name{color:var(--text);}
+    .imex .loss-table td.val{color:var(--danger);text-align:right;}
+    .imex .console-input{display:flex;align-items:center;gap:10px;border-top:1px solid var(--border);padding:12px 18px;background:var(--panel-2);}
+    .imex .console-input input{flex:1;background:transparent;border:none;outline:none;color:var(--text-mute);font-size:13px;font-family:var(--sans);}
+    .imex .console-input .send{width:30px;height:30px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+    /* Module tabs */
+    .imex .module-nav{
+      position:relative;z-index:2;display:flex;gap:6px;border:1px solid var(--border);background:var(--panel);
+      border-radius:14px;padding:6px;margin:0 auto 56px;max-width:fit-content;flex-wrap:wrap;justify-content:center;
+    }
+    .imex .module-nav button{background:transparent;border:none;color:var(--text-mute);padding:12px 22px;border-radius:10px;font-size:14.5px;font-weight:700;cursor:pointer;transition:all .2s ease;letter-spacing:.01em;}
+    .imex .module-nav button:hover{color:var(--text);}
+    .imex .module-nav button.active{
+      background:linear-gradient(135deg,#0083c8,#0083c0);color:#fff;box-shadow:0 8px 20px -8px rgba(255,105,40,.55);
+    }
+
+    /* Section shared */
+    .imex .section{padding:0 0 96px;position:relative;z-index:1;}
+    .imex .section-head{text-align:center;max-width:680px;margin:0 auto 48px;}
+    .imex .section-head h2{font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-.01em;margin:14px 0 12px;}
+    .imex .section-head h2 em{color:var(--accent-2);font-style:italic;}
+    .imex .section-head p{color:var(--text-dim);font-size:15.5px;margin:0;}
+    .imex .tab-panel{display:none;animation:imexFadeUp .5s ease both;}
+    .imex .tab-panel.active{display:block;}
+    @keyframes imexFadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+    /* Feature block (Ops / CMMS) */
+    .imex .feature-block{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:28px;}
+    .imex .feature-block.reverse .fb-visual{order:2;}
+    .imex .fb-visual{background:var(--panel-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:22px;min-height:220px;display:flex;flex-direction:column;justify-content:center;gap:14px;}
+    .imex .fb-copy .index{font-family:var(--mono);color:var(--accent-2);font-size:13px;font-weight:700;letter-spacing:.1em;}
+    .imex .fb-copy h3{font-size:23px;margin:10px 0 12px;font-weight:800;}
+    .imex .fb-copy p{color:var(--text-dim);font-size:14.5px;margin:0 0 20px;}
+    .imex .subgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .imex .subitem{display:flex;gap:10px;align-items:flex-start;}
+    .imex .subitem .ico{width:34px;height:34px;border-radius:8px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);}
+    .imex .subitem strong{display:block;font-size:13.5px;margin-bottom:2px;}
+    .imex .subitem span{font-size:12px;color:var(--text-mute);}
+    .imex .bars-mini{display:flex;align-items:flex-end;gap:6px;height:80px;}
+    .imex .bars-mini i{flex:1;background:linear-gradient(180deg,var(--accent-2),transparent);border-radius:3px 3px 0 0;opacity:.85;}
+    .imex .fb-visual .caption{font-family:var(--mono);font-size:11px;color:var(--text-mute);display:flex;justify-content:space-between;}
+
+    /* Live feed / quad grid */
+    .imex .quad-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:28px;}
+    .imex .quad-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;transition:border-color .2s ease, transform .2s ease;}
+    .imex .quad-card:hover{border-color:var(--accent-2);transform:translateY(-4px);}
+    .imex .quad-card .ico-lg{width:40px;height:40px;border-radius:10px;background:var(--accent-2-dim);color:var(--accent-2);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+    .imex .quad-card h4{font-size:14.5px;margin:0 0 6px;font-weight:700;}
+    .imex .quad-card p{font-size:12.5px;color:var(--text-mute);margin:0;}
+
+    /* FactoryGPT hub diagram */
+    .imex .hub-diagram{position:relative;display:grid;grid-template-columns:1fr 200px 1fr;align-items:center;gap:0;padding:50px 20px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:56px;}
+    .imex .hub-col{display:flex;flex-direction:column;gap:16px;}
+    .imex .hub-node{background:var(--panel-2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:center;position:relative;}
+    .imex .hub-node .ico-sm{width:32px;height:32px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+    .imex .hub-col.left .ico-sm{background:var(--accent-dim);color:var(--accent);}
+    .imex .hub-col.right .ico-sm{background:var(--accent-2-dim);color:var(--accent-2);}
+    .imex .hub-node strong{font-size:13px;display:block;}
+    .imex .hub-node span{font-size:11px;color:var(--text-mute);}
+    .imex .hub-core{width:170px;height:170px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #1f2635, #10141c);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto;position:relative;}
+    .imex .hub-core::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px dashed var(--accent-2);opacity:.35;animation:imexSpin 18s linear infinite;}
+    @keyframes imexSpin{to{transform:rotate(360deg);}}
+    .imex .hub-core .core-ico{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#ff8a45,#22d3c5);display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
+    .imex .hub-core strong{font-size:14px;letter-spacing:.04em;}
+    .imex .hub-core span{font-size:10.5px;color:var(--text-mute);text-align:center;padding:0 14px;}
+    .imex .hub-diagram svg.connectors{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+    .imex .connectors path{fill:none;stroke:var(--border);stroke-width:1.5;}
+    .imex .connectors path.flow{stroke:var(--accent-2);stroke-dasharray:5 7;animation:imexDash 2.4s linear infinite;opacity:.7;}
+    @keyframes imexDash{to{stroke-dashoffset:-24;}}
+    .imex .quad-cards-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+    .imex .feature-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-sm);padding:24px;transition:transform .2s ease, border-color .2s ease;}
+    .imex .feature-card:hover{transform:translateY(-4px);border-color:var(--accent);}
+    .imex .feature-card .ico-lg{background:var(--accent-dim);color:var(--accent);}
+    .imex .feature-card h4{font-size:16px;margin:0 0 8px;font-weight:800;}
+    .imex .feature-card p{font-size:13.5px;color:var(--text-dim);margin:0;}
+
+    /* CMMS */
+    .imex .stack{display:flex;flex-direction:column;gap:24px;margin-bottom:56px;}
+    .imex .stack .feature-block{margin-bottom:0;}
+    .imex .role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .imex .role-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-sm);padding:26px;}
+    .imex .role-card .ico-lg{margin-bottom:16px;}
+    .imex .role-card h4{font-size:16px;margin:0 0 8px;}
+    .imex .role-card p{font-size:13px;color:var(--text-mute);margin:0 0 16px;}
+    .imex .role-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
+    .imex .role-card li{font-size:13px;color:var(--text-dim);display:flex;gap:8px;align-items:flex-start;}
+    .imex .role-card li::before{content:"✓";color:var(--success);font-weight:700;flex-shrink:0;}
+
+    /* MSB bus diagram */
+    .imex .bus-wrap{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:36px;margin-bottom:56px;position:relative;}
+    .imex .bus-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;z-index:2;}
+    .imex .bus-card{background:var(--panel-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px;}
+    .imex .bus-card .head{display:flex;gap:10px;align-items:center;margin-bottom:12px;}
+    .imex .bus-card .ico-sm{width:30px;height:30px;border-radius:8px;background:var(--accent-dim);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .imex .bus-card h5{margin:0;font-size:13.5px;font-weight:700;}
+    .imex .bus-card ul{list-style:none;margin:0 0 12px;padding:0;font-size:12px;color:var(--text-dim);display:flex;flex-direction:column;gap:5px;}
+    .imex .bus-card .proto{font-family:var(--mono);font-size:10.5px;color:var(--text-mute);border-top:1px solid var(--border-soft);padding-top:10px;}
+    .imex .proto b{color:var(--text-dim);font-weight:600;}
+    .imex .bus-bar{margin:26px 0;background:linear-gradient(90deg,#c00000,#c00001,#c00002);border-radius:12px;padding:16px 24px;display:flex;align-items:center;justify-content:center;gap:12px;font-weight:800;color:#1a0e04;letter-spacing:.03em;position:relative;overflow:hidden;}
+    .imex .bus-bar span.sub{font-weight:600;font-size:12px;opacity:.75;}
+    .imex .bus-bar .flow-dot{position:absolute;top:50%;width:6px;height:6px;border-radius:50%;background:#1a0e04;opacity:.5;animation:imexTravel 3s linear infinite;}
+    @keyframes imexTravel{from{left:-2%;}to{left:102%;}}
+    .imex .connector-col{position:absolute;left:0;right:0;display:flex;justify-content:space-around;z-index:1;pointer-events:none;}
+    .imex .connector-col.top{top:calc(50% - 62px);height:62px;}
+    .imex .connector-col.bottom{bottom:calc(50% - 62px);height:62px;}
+    .imex .connector-col i{width:1.5px;background:var(--border-soft);height:100%;position:relative;}
+    .imex .connector-col i::after{content:"";position:absolute;left:-2px;width:5px;height:5px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 6px var(--accent-2);animation:imexFlowV 2.2s linear infinite;}
+    .imex .connector-col.top i::after{animation-direction:reverse;}
+    @keyframes imexFlowV{from{top:0%;}to{top:100%;}}
+    .imex .domain-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+    .imex .domain-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px 16px;text-align:center;}
+    .imex .domain-card .n{font-family:var(--mono);font-weight:800;font-size:22px;color:var(--accent);margin-bottom:8px;}
+    .imex .domain-card h5{font-size:13.5px;margin:0 0 8px;}
+    .imex .domain-card p{font-size:11.5px;color:var(--text-mute);margin:0;}
+
+    /* Icons */
+    .imex svg.i{width:18px;height:18px;}
+
+    /* Responsive */
+    @media (max-width:1024px){
+      .imex .hero-inner{grid-template-columns:1fr;}
+      .imex .hero-stats{grid-template-columns:repeat(3,1fr);gap:20px;}
+      .imex .feature-block{grid-template-columns:1fr;padding:28px;}
+      .imex .feature-block.reverse .fb-visual{order:0;}
+      .imex .quad-grid{grid-template-columns:repeat(2,1fr);}
+      .imex .hub-diagram{grid-template-columns:1fr;justify-items:center;gap:28px;}
+      .imex .hub-diagram svg.connectors{display:none;}
+      .imex .quad-cards-2{grid-template-columns:1fr;}
+      .imex .role-grid{grid-template-columns:1fr;}
+      .imex .bus-row{grid-template-columns:repeat(2,1fr);}
+      .imex .connector-col{display:none;}
+      .imex .domain-grid{grid-template-columns:repeat(3,1fr);}
+      .imex .wrap{padding:0 24px;}
+    }
+    @media (max-width:640px){
+      .imex .hero{padding:56px 0 40px;}
+      .imex .hero-stats{grid-template-columns:1fr 1fr;}
+      .imex .quad-grid{grid-template-columns:1fr;}
+      .imex .subgrid{grid-template-columns:1fr;}
+      .imex .module-nav{width:100%;overflow-x:auto;justify-content:flex-start;}
+      .imex .module-nav button{padding:10px 16px;font-size:13px;white-space:nowrap;}
+      .imex .bus-row{grid-template-columns:1fr;}
+      .imex .domain-grid{grid-template-columns:repeat(2,1fr);}
+      .imex .wrap{padding:0 18px;}
+      .imex .section-head{margin-bottom:34px;}
+      .imex .section{padding-bottom:64px;}
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- ============================================================
+      SECTION 1 START — HERO  (Elementor HTML widget #1)
+      ============================================================ -->
+  <div class="imex">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">Manufacturing Excellence · IMEX</span>
+          <h1>Talk to your factory.<br><span class="line-accent">Turn plant data into action.</span></h1>
+          <p class="lede">Combining the power of human and artificial intelligence to connect every machine, system, and shift to one conversational layer — so problems surface before they cost you a line.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary">Start free trial</button>
+            <button class="btn btn-ghost">Watch the demo</button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><b>40%</b><span>Less unplanned downtime</span></div>
+            <div class="stat"><b>22%</b><span>Line downtime cut in 30 days</span></div>
+            <div class="stat"><b>6</b><span>Domains, one data layer</span></div>
+          </div>
+        </div>
+
+        <div class="console">
+          <div class="console-bar">
+            <div class="id"><span class="dot-live"></span> FACTORYGPT</div>
+            <span class="status">● Online</span>
+          </div>
+          <div class="console-body">
+            <div class="msg user">Why is OEE low on Line 3?</div>
+            <div class="msg bot">Performance loss of <b>71.5%</b> detected on Line 3. Micro-stoppages total 3.8h, traced to sensor misalignment on the packaging unit.</div>
+            <div class="readout">
+              <div class="card-mini">
+                <h5>OEE Trend — Line 3</h5>
+                <svg class="trend-line" viewBox="0 0 220 52" preserveAspectRatio="none">
+                  <polyline points="0,14 40,20 80,24 120,30 160,38 220,44" fill="none" stroke="#ff7a33" stroke-width="2.5"/>
+                </svg>
+              </div>
+              <div class="card-mini">
+                <div class="donut"><span>71.5%</span></div>
+                <div class="donut-label">Current OEE</div>
+              </div>
+            </div>
+            <div class="card-mini">
+              <h5>Top Losses — Current Shift</h5>
+              <table class="loss-table">
+                <tr><td class="name">Micro-stoppages</td><td>3.8h</td><td class="val">−52.1%</td></tr>
+                <tr><td class="name">Speed loss</td><td>1.2h</td><td class="val">−12.6%</td></tr>
+                <tr><td class="name">Defects</td><td>0.6h</td><td class="val">−6.8%</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="console-input">
+            <input type="text" placeholder="Ask FactoryGPT anything about your plant…" disabled>
+            <div class="send">
+              <svg class="i" viewBox="0 0 24 24" fill="none" stroke="#181005" stroke-width="2.2"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- SECTION 1 END — HERO -->
+
+
+  <!-- ============================================================
+      SECTION 2 START — MODULE NAVIGATION  (Elementor HTML widget #2)
+      Buttons use data-tab to match panel ids in sections 3–6.
+      ============================================================ -->
+  <div class="imex">
+    <div class="wrap">
+      <nav class="module-nav" id="moduleNav">
+        <button data-tab="ops" class="active">Manufacturing Ops</button>
+        <button data-tab="gpt">FactoryGPT</button>
+        <button data-tab="cmms">CMMS</button>
+        <button data-tab="msb">MSB</button>
+      </nav>
+    </div>
+  </div>
+  <!-- SECTION 2 END — MODULE NAVIGATION -->
+
+
+  <!-- ============================================================
+      SECTION 3 START — MANUFACTURING OPS PANEL  (Elementor HTML widget #3)
+      Visible by default (has "active" class).
+      ============================================================ -->
+  <div class="imex">
+    <section class="section wrap">
+      <div class="tab-panel active" id="panel-ops">
+        <div class="section-head">
+          <span class="eyebrow">Manufacturing Ops - Custom</span>
+          <h2>Intelligent manufacturing, <em>connected in real time</em></h2>
+          <p>Connect machines, visualize operations, and predict failures with AI-driven industrial intelligence built for the modern plant floor.</p>
+        </div>
+
+        <div class="feature-block">
+          <div class="fb-copy">
+            <span class="index">STAGE 01 — CONNECT & COLLECT</span>
+            <h3>Every protocol, every asset, one integration layer</h3>
+            <p>Built on industry-standard technologies — OPC UA, Euromap 63, Modbus, Siemens S7 — IMEX connects industrial equipment and enterprise systems reliably, at scale.</p>
+            <div class="subgrid">
+              <div class="subitem"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v6H4zM4 14h16v6H4z"/><path d="M8 10v4M16 10v4"/></svg></div><div><strong>Equipment connectivity</strong><span>Sensors and controllers, standard protocols</span></div></div>
+              <div class="subitem"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l2-8 4 16 2-8h6"/></svg></div><div><strong>Enterprise-ready</strong><span>Integrates with existing systems and databases</span></div></div>
+            </div>
+          </div>
+          <div class="fb-visual">
+            <div class="caption"><span>OPC UA</span><span>MQTT</span><span>MODBUS</span><span>S7</span></div>
+            <div class="bars-mini">
+              <i style="height:40%"></i><i style="height:65%"></i><i style="height:52%"></i><i style="height:80%"></i>
+              <i style="height:34%"></i><i style="height:70%"></i><i style="height:58%"></i><i style="height:90%"></i>
+              <i style="height:46%"></i><i style="height:62%"></i>
+            </div>
+            <div class="caption"><span>Live throughput</span><span>98.4% uptime</span></div>
+          </div>
+        </div>
+
+        <div class="feature-block reverse">
+          <div class="fb-copy">
+            <span class="index">STAGE 02 — VISUALIZE & ACT</span>
+            <h3>Role-based dashboards for every seat on the floor</h3>
+            <p>From operators to executives, everyone gets the view relevant to their decisions — with drill-down KPIs, automated alerts, and one-click reports.</p>
+            <div class="subgrid">
+              <div class="subitem"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><div><strong>Operational visibility</strong><span>Role-specific dashboards, live</span></div></div>
+              <div class="subitem"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></div><div><strong>Real-time KPIs</strong><span>Drill-down analytics for faster calls</span></div></div>
+            </div>
+          </div>
+          <div class="fb-visual">
+            <h5 style="font-size:11px;color:var(--text-mute);text-transform:uppercase;letter-spacing:.08em;margin:0 0 8px;">Live overview</h5>
+            <div class="quad-grid" style="grid-template-columns:repeat(2,1fr);gap:10px;">
+              <div class="quad-card" style="padding:12px;"><h4 style="font-size:12px;">OEE</h4><p style="color:var(--accent);font-family:var(--mono);font-size:18px;font-weight:700;">67.95%</p></div>
+              <div class="quad-card" style="padding:12px;"><h4 style="font-size:12px;">Output</h4><p style="color:var(--accent-2);font-family:var(--mono);font-size:18px;font-weight:700;">3600</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-block">
+          <div class="fb-copy">
+            <span class="index">STAGE 03 — PREDICT & PREVENT</span>
+            <h3>Failures flagged before they happen</h3>
+            <p>A predictive AI/ML engine trained on your historical and real-time data detects anomalies, forecasts equipment failure, and recommends maintenance windows.</p>
+            <div class="subgrid">
+              <div class="subitem"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div><div><strong>Anomaly detection</strong><span>Auto-learns normal operating patterns</span></div></div>
+              <div class="subitem"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="5"/></svg></div><div><strong>Predictive maintenance</strong><span>AI-scheduled windows, minimal disruption</span></div></div>
+            </div>
+          </div>
+          <div class="fb-visual">
+            <svg class="trend-line" viewBox="0 0 260 70" preserveAspectRatio="none" style="height:70px;">
+              <polyline points="0,50 30,48 60,45 90,20 120,55 150,15 180,58 210,12 240,60 260,10" fill="none" stroke="var(--accent-2)" stroke-width="2"/>
+              <polyline points="0,52 260,52" stroke="var(--border)" stroke-dasharray="3 3" stroke-width="1"/>
+            </svg>
+            <div class="caption"><span>Predicted anomaly window</span><span style="color:var(--danger)">Confidence 94%</span></div>
+          </div>
+        </div>
+
+        <div class="quad-grid" style="margin-top:8px;">
+          <div class="quad-card">
+            <div class="ico-lg"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
+            <h4>Live machine feeds</h4>
+            <p>Sub-second data ingestion from any industrial protocol.</p>
+          </div>
+          <div class="quad-card">
+            <div class="ico-lg"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="14" y="4" width="7" height="10" rx="1"/></svg></div>
+            <h4>Multi-plant views</h4>
+            <p>Unified dashboards across global facilities.</p>
+          </div>
+          <div class="quad-card">
+            <div class="ico-lg"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+            <h4>Smart alerts</h4>
+            <p>Threshold, anomaly, and trend-based notifications.</p>
+          </div>
+          <div class="quad-card">
+            <div class="ico-lg"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg></div>
+            <h4>Mobile access</h4>
+            <p>Full visibility on tablet, phone, or wearable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- SECTION 3 END — MANUFACTURING OPS PANEL -->
+
+
+  <!-- ============================================================
+      SECTION 4 START — FACTORYGPT PANEL  (Elementor HTML widget #4)
+      Hidden until "ops" tab is switched away from (no "active" class).
+      ============================================================ -->
+  <div class="imex">
+    <section class="section wrap">
+      <div class="tab-panel" id="panel-gpt">
+        <div class="section-head">
+          <span class="eyebrow">FactoryGPT</span>
+          <h2>AI-powered operational <em>intelligence</em></h2>
+          <p>Empower maintenance teams with AI-driven conversations that connect telemetry, documentation, and diagnostics into one seamless operational experience.</p>
+        </div>
+
+        <div class="hub-diagram">
+          <svg class="connectors" viewBox="0 0 900 420" preserveAspectRatio="none">
+            <path d="M 220 60 C 340 60 340 210 400 210" />
+            <path class="flow" d="M 220 60 C 340 60 340 210 400 210" />
+            <path d="M 220 150 C 320 150 320 210 400 210" />
+            <path class="flow" d="M 220 150 C 320 150 320 210 400 210" />
+            <path d="M 220 270 C 320 270 320 210 400 210" />
+            <path class="flow" d="M 220 270 C 320 270 320 210 400 210" />
+            <path d="M 220 360 C 340 360 340 210 400 210" />
+            <path class="flow" d="M 220 360 C 340 360 340 210 400 210" />
+            <path d="M 680 60 C 560 60 560 210 500 210" />
+            <path class="flow" d="M 680 60 C 560 60 560 210 500 210" />
+            <path d="M 680 150 C 580 150 580 210 500 210" />
+            <path class="flow" d="M 680 150 C 580 150 580 210 500 210" />
+            <path d="M 680 270 C 580 270 580 210 500 210" />
+            <path class="flow" d="M 680 270 C 580 270 580 210 500 210" />
+            <path d="M 680 360 C 560 360 560 210 500 210" />
+            <path class="flow" d="M 680 360 C 560 360 560 210 500 210" />
+          </svg>
+          <div class="hub-col left">
+            <div class="hub-node"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div><div><strong>IoT data</strong><span>Sensors, devices, edge streams</span></div></div>
+            <div class="hub-node"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM4 9h16"/></svg></div><div><strong>Flat files</strong><span>CSV, Excel, JSON, PDF</span></div></div>
+            <div class="hub-node"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div><div><strong>Enterprise apps</strong><span>Salesforce, Workday, SAP</span></div></div>
+            <div class="hub-node"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div><div><strong>Data warehouses</strong><span>Databricks, Postgres, MySQL</span></div></div>
+          </div>
+          <div class="hub-core">
+            <div class="core-ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="#0d0704" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.5 4.5l2 2M17.5 17.5l2 2M4.5 19.5l2-2M17.5 6.5l2-2"/></svg></div>
+            <strong>AETHER</strong>
+            <span>Industrial AI · unified intelligence</span>
+          </div>
+          <div class="hub-col right">
+            <div class="hub-node"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6"/></svg></div><div><strong>Insights by role</strong><span>Exec ROI, sales, marketing</span></div></div>
+            <div class="hub-node"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 1 1-4-7.2L21 3l-1.3 4.3a8.4 8.4 0 0 1 .3 4.2Z"/></svg></div><div><strong>Conversational intel</strong><span>Query, root cause, forecast</span></div></div>
+            <div class="hub-node"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div><div><strong>Enterprise intel</strong><span>Context-aware SLM processing</span></div></div>
+            <div class="hub-node"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><div><strong>Agentic actions</strong><span>Campaigns, optimization, alerts</span></div></div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-bottom:32px;">
+          <h2 style="font-size:26px;">AI-powered analytics that <em>understand your data</em></h2>
+          <p>From raw CSV to boardroom-ready dashboards, without writing a single line of SQL.</p>
+        </div>
+        <div class="quad-cards-2">
+          <div class="feature-card">
+            <div class="ico-lg" style="width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 1 1-4-7.2L21 3l-1.3 4.3a8.4 8.4 0 0 1 .3 4.2Z"/></svg></div>
+            <h4>NLP chat engine</h4>
+            <p>Type normal-language questions. The core translates intent into precise queries and explains outputs with traceable citations.</p>
+          </div>
+          <div class="feature-card">
+            <div class="ico-lg" style="width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2v6L4 20a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-5-12V2"/></svg></div>
+            <h4>Gen-AI diagnostics</h4>
+            <p>Analyzes systemic data arrays, exposes complex production anomalies, and surfaces operational risk ahead of failure.</p>
+          </div>
+          <div class="feature-card">
+            <div class="ico-lg" style="width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></div>
+            <h4>Auto-visualization</h4>
+            <p>Converts processed query parameters into dynamically rendered charts and persistent dashboard layouts, instantly.</p>
+          </div>
+          <div class="feature-card">
+            <div class="ico-lg" style="width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+            <h4>Agentic workflows</h4>
+            <p>Connects conversational directives to real actions — issuing maintenance tickets or alerting the right team.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- SECTION 4 END — FACTORYGPT PANEL -->
+
+
+  <!-- ============================================================
+      SECTION 5 START — CMMS PANEL  (Elementor HTML widget #5)
+      Hidden by default (no "active" class).
+      ============================================================ -->
+  <div class="imex">
+    <section class="section wrap">
+      <div class="tab-panel" id="panel-cmms">
+        <div class="section-head">
+          <span class="eyebrow">CMMS</span>
+          <h2>Every capability your <em>maintenance team</em> needs</h2>
+          <p>Transition your facilities from passive fix-on-failure protocols to fully algorithmic scheduling — streamlining workflows and extending asset life.</p>
+        </div>
+
+        <div class="stack">
+          <div class="feature-block">
+            <div class="fb-copy">
+              <span class="index">WORK ORDERS</span>
+              <h3>Create, assign, and track — from one platform</h3>
+              <p>Smart forms turn a reported issue into an assigned, trackable work order in seconds.</p>
+              <div class="subgrid">
+                <div class="subitem"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div><strong>Create & assign</strong><span>Smart forms within seconds</span></div></div>
+                <div class="subitem"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></div><div><strong>Organize & track</strong><span>Visualize status, act on it</span></div></div>
+                <div class="subitem"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div><div><strong>Complete visibility</strong><span>Real-time status, any time</span></div></div>
+                <div class="subitem"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></div><div><strong>Team collaboration</strong><span>Communicate in context</span></div></div>
+              </div>
+            </div>
+            <div class="fb-visual">
+              <div class="caption"><span>Open</span><span>In progress</span><span>Done</span></div>
+              <div class="bars-mini"><i style="height:70%;background:linear-gradient(180deg,var(--accent),transparent)"></i><i style="height:45%;background:linear-gradient(180deg,var(--warn),transparent)"></i><i style="height:85%;background:linear-gradient(180deg,var(--success),transparent)"></i></div>
+              <div class="caption"><span>128 open</span><span>73 in progress</span><span>1,240 closed</span></div>
+            </div>
+          </div>
+
+          <div class="feature-block reverse">
+            <div class="fb-copy">
+              <span class="index">ANALYTICS</span>
+              <h3>Operational data, turned into action</h3>
+              <p>Actionable dashboards, reports, and drill-down performance insight — click any chart element for deeper investigation.</p>
+              <div class="subgrid">
+                <div class="subitem"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></div><div><strong>Analytics navigation</strong><span>Dashboards, reports, KPIs</span></div></div>
+                <div class="subitem"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></div><div><strong>Actionable intelligence</strong><span>Monitor trends and metrics</span></div></div>
+              </div>
+            </div>
+            <div class="fb-visual">
+              <div class="donut" style="margin:0 auto 10px;"><span>84</span></div>
+              <div class="donut-label">Equipment health score</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="fb-copy">
+              <span class="index">ASSET MANAGEMENT</span>
+              <h3>Monitor health, improve reliability</h3>
+              <p>Create, organize, and maintain assets with complete visibility, mapped to plants, systems, and related resources.</p>
+              <div class="subgrid">
+                <div class="subitem"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg></div><div><strong>Asset lifecycle</strong><span>Full visibility, start to end</span></div></div>
+                <div class="subitem"><div class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div><div><strong>Provision tracking</strong><span>Assets mapped to plants</span></div></div>
+              </div>
+            </div>
+            <div class="fb-visual">
+              <div class="quad-grid" style="grid-template-columns:repeat(2,1fr);gap:10px;">
+                <div class="quad-card" style="padding:12px;"><h4 style="font-size:12px;">Assets tracked</h4><p style="color:var(--accent-2);font-family:var(--mono);font-size:18px;font-weight:700;">2,410</p></div>
+                <div class="quad-card" style="padding:12px;"><h4 style="font-size:12px;">MTBF</h4><p style="color:var(--accent);font-family:var(--mono);font-size:18px;font-weight:700;">118h</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-bottom:32px;">
+          <h2 style="font-size:26px;">Built for every member of your <em>maintenance team</em></h2>
+          <p>From frontline technicians to operations leadership — ITHENA CMMS serves every role with the tools and visibility they need.</p>
+        </div>
+        <div class="role-grid">
+          <div class="role-card">
+            <div class="ico-lg" style="width:40px;height:40px;border-radius:10px;background:var(--accent-dim);color:var(--accent);display:flex;align-items:center;justify-content:center;"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+            <h4>Maintenance managers</h4>
+            <p>See everything happening across your facilities, direct resources without waiting on manual updates.</p>
+            <ul><li>Real-time work order dashboards</li><li>AI-powered team scheduling</li><li>Cross-site performance metrics</li></ul>
+          </div>
+          <div class="role-card">
+            <div class="ico-lg" style="width:40px;height:40px;border-radius:10px;background:var(--accent-2-dim);color:var(--accent-2);display:flex;align-items:center;justify-content:center;"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg></div>
+            <h4>Field technicians</h4>
+            <p>Everything you need at the point of work. Stop trips to the office and eliminate paperwork friction.</p>
+            <ul><li>Mobile-first work execution</li><li>Instant digital parts lookup</li><li>True offline capability</li></ul>
+          </div>
+          <div class="role-card">
+            <div class="ico-lg" style="width:40px;height:40px;border-radius:10px;background:var(--accent-dim);color:var(--accent);display:flex;align-items:center;justify-content:center;"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+            <h4>Operations leaders</h4>
+            <p>Track maintenance costs, asset reliability, and uptime KPIs instantly for data-driven capital decisions.</p>
+            <ul><li>Enterprise executive dashboards</li><li>Uptime & reliability tracking</li><li>Financial maintenance KPIs</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- SECTION 5 END — CMMS PANEL -->
+
+
+  <!-- ============================================================
+      SECTION 6 START — MSB PANEL  (Elementor HTML widget #6)
+      Hidden by default (no "active" class).
+      ============================================================ -->
+  <div class="imex">
+    <section class="section wrap">
+      <div class="tab-panel" id="panel-msb">
+        <div class="section-head">
+          <span class="eyebrow">MSB · Manufacturing Service Bus</span>
+          <h2>The service bus that <em>connects your entire operation</em></h2>
+          <p>ITHENA MSB sits between your top-floor business systems and shop-floor operational technology, enabling seamless bi-directional data exchange.</p>
+        </div>
+
+        <div class="bus-wrap">
+          <div class="connector-col top"><i></i><i></i><i></i><i></i></div>
+          <div class="bus-row">
+            <div class="bus-card">
+              <div class="head"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><h5>ERP / systems of record</h5></div>
+              <ul><li>SAP S/4HANA</li><li>Oracle EBS</li><li>Dynamics 365</li><li>Infor CSI</li></ul>
+              <div class="proto"><b>Protocols:</b> HTTPS, API · <b>Formats:</b> XML, JSON</div>
+            </div>
+            <div class="bus-card">
+              <div class="head"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.6V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.6 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.6 1Z"/></svg></div><h5>Maintenance & asset mgmt</h5></div>
+              <ul><li>IBM Maximo</li><li>Infor EAM</li><li>SAP PM</li><li>UpKeep · Fiix</li></ul>
+              <div class="proto"><b>Protocols:</b> API, HTTPS · <b>Formats:</b> XML, JSON</div>
+            </div>
+            <div class="bus-card">
+              <div class="head"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 6v6c0 5 4 8 9 10 5-2 9-5 9-10V6Z"/></svg></div><h5>Quality, safety & compliance</h5></div>
+              <ul><li>QMS · EHS systems</li><li>Document mgmt</li><li>Audit & compliance</li><li>Training & certs</li></ul>
+              <div class="proto"><b>Protocols:</b> HTTPS, API · <b>Formats:</b> XML, JSON</div>
+            </div>
+            <div class="bus-card">
+              <div class="head"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></div><h5>Analytics & data platforms</h5></div>
+              <ul><li>Power BI · Tableau</li><li>Snowflake</li><li>Databricks</li><li>Custom dashboards</li></ul>
+              <div class="proto"><b>Protocols:</b> API, WebSockets · <b>Formats:</b> JSON, XML</div>
+            </div>
+          </div>
+
+          <div class="bus-bar">
+            <span class="flow-dot" style="animation-delay:0s;"></span>
+            <span class="flow-dot" style="animation-delay:1s;"></span>
+            <span class="flow-dot" style="animation-delay:2s;"></span>
+            ITHENA MANUFACTURING BUS <span class="sub">← bi-directional →</span>
+          </div>
+
+          <div class="bus-row">
+            <div class="bus-card">
+              <div class="head"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div><h5>SCADA / HMI / MES</h5></div>
+              <ul><li>Ignition</li><li>Rockwell FactoryTalk</li><li>Siemens WinCC</li><li>AVEVA · Custom MES</li></ul>
+              <div class="proto"><b>Protocols:</b> OPC, MQTT, HTTPS · <b>Formats:</b> XML, JSON</div>
+            </div>
+            <div class="bus-card">
+              <div class="head"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h5>Historians & time-series</h5></div>
+              <ul><li>OSIsoft PI</li><li>AVEVA Historian</li><li>InfluxDB</li><li>TimescaleDB · Kepware</li></ul>
+              <div class="proto"><b>Protocols:</b> API, HTTPS · <b>Formats:</b> XML, JSON</div>
+            </div>
+            <div class="bus-card">
+              <div class="head"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.5a7 7 0 0 1 14 0M2 9a11 11 0 0 1 20 0M8.5 16a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="20" r="1"/></svg></div><h5>IoT & telemetry</h5></div>
+              <ul><li>MQTT brokers</li><li>OPC UA servers</li><li>MBIOT gateways</li><li>Azure IoT · AWS IoT</li></ul>
+              <div class="proto"><b>Protocols:</b> MQTT, OPC, HTTPS · <b>Formats:</b> JSON, XML</div>
+            </div>
+            <div class="bus-card">
+              <div class="head"><div class="ico-sm"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg></div><h5>Edge & field devices</h5></div>
+              <ul><li>PLCs (Allen-Bradley, Siemens)</li><li>RTUs · Sensors</li><li>VFDs & drives</li><li>Vision systems</li></ul>
+              <div class="proto"><b>Protocols:</b> Modbus, OPC, MQTT · <b>Formats:</b> XML, JSON</div>
+            </div>
+          </div>
+          <div class="connector-col bottom"><i></i><i></i><i></i><i></i></div>
+        </div>
+
+        <div class="section-head" style="margin-bottom:28px;">
+          <h2 style="font-size:26px;">Spanning every <em>domain of manufacturing</em></h2>
+          <p>Unlike point solutions, ITHENA MSB provides a unified data layer across all six core domains.</p>
+        </div>
+        <div class="domain-grid">
+          <div class="domain-card"><div class="n">01</div><h5>Planning</h5><p>Orders, schedules, BOMs from ERP flow into production context.</p></div>
+          <div class="domain-card"><div class="n">02</div><h5>Production</h5><p>Run records, OEE, cycle times captured from MES and SCADA.</p></div>
+          <div class="domain-card"><div class="n">03</div><h5>Quality</h5><p>SPC, inspections, and holds linked to lots and process data.</p></div>
+          <div class="domain-card"><div class="n">04</div><h5>Safety</h5><p>EHS checklists, near-miss reports, audit trails, compliance.</p></div>
+          <div class="domain-card"><div class="n">05</div><h5>Delivery</h5><p>Inventory, shipments, consumption tied to production output.</p></div>
+          <div class="domain-card"><div class="n">06</div><h5>Maintenance</h5><p>Alarms to work orders, PM triggers, MTTR/MTBF automated.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- SECTION 6 END — MSB PANEL -->
+
+
+  <!-- ============================================================
+      SECTION 7 START — TAB SWITCHING SCRIPT  (Elementor HTML widget #7)
+      IMPORTANT: this must be the LAST widget on the page, placed after
+      sections 3–6, so getElementById can find all four panels already
+      rendered in the DOM before this script runs.
+      ============================================================ -->
+  <script>
+    (function(){
+      var buttons = document.querySelectorAll('.module-nav button');
+      var panels = {
+        ops: document.getElementById('panel-ops'),
+        gpt: document.getElementById('panel-gpt'),
+        cmms: document.getElementById('panel-cmms'),
+        msb: document.getElementById('panel-msb'),
+      };
+      buttons.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          buttons.forEach(function(b){ b.classList.remove('active'); });
+          btn.classList.add('active');
+          Object.values(panels).forEach(function(p){ if(p) p.classList.remove('active'); });
+          var target = panels[btn.dataset.tab];
+          if(target){
+            target.classList.add('active');
+            target.scrollIntoView({behavior:'smooth', block:'start', inline:'nearest'});
+          }
+        });
+      });
+    })();
+  </script>
+  <!-- SECTION 7 END — TAB SWITCHING SCRIPT -->
+
+</body>
+</html>

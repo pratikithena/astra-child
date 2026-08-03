@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iSERV eCommerce — B2B eeCommerce for Manufacturers, OEMs &amp; Dealers | ITHENA</title>
+<meta name="description" content="iSERV eCommerce is an AI-powered B2B eeCommerce platform for manufacturers, OEMs, distributors and dealers. Live ERP pricing, real stock, 2D/3D catalogues and order automation in one storefront.">
+<meta name="theme-color" content="#000000" id="metaTheme">
+<meta property="og:title" content="iSERV eCommerce — A storefront that thinks in part numbers">
+<meta property="og:description" content="Live ERP pricing, real-time stock and interactive 3D catalogues for aftermarket and spare-parts commerce.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://www.ithena.com/solutions/b2b-ecommerce">
+<style>
+
+
+
+/* =============================================================================
+   ITHENA / iSERV eCommerce - B2B eeCommerce landing page
+
+   SCOPING
+   Every rule is scoped to  main.iserv-commerce  and marked !important, so a
+   host theme, plugin or parent stylesheet cannot override it. all:revert
+   seals the boundary against inherited styling; SVG is excluded from that
+   reset so icon fill/stroke presentation attributes survive.
+
+   DELIBERATELY NOT !important - these must stay overridable or the page breaks:
+     transform, max-height, stroke-dashoffset ... driven by @keyframes and JS
+     box-shadow on .live / .hotspot::after ...... driven by @keyframes ping
+     custom properties ......................... swapped by [data-theme]
+
+   Only two rules live outside the scope: html scroll behaviour, and the body
+   background that fills the overscroll area. Both are safe to delete.
+   ============================================================================= */
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:#000}
+body:has(main.iserv-commerce[data-theme="light"]){background:#fff}
+
+/* ---------- isolation boundary ---------- */
+main.iserv-commerce,main.iserv-commerce *:not(svg):not(svg *){all:revert}
+main.iserv-commerce,main.iserv-commerce *,main.iserv-commerce *::before,main.iserv-commerce *::after{box-sizing:border-box!important}
+
+/* ---------- design tokens - dark is the default ---------- */
+main.iserv-commerce{--c-blue:0,131,200;--c-red:192,0,0;--c-fg:255,255,255;--c-bg:0,0,0;color-scheme:dark!important;--bg:#000000;--bg-alt:#070708;--panel:#0D0E10;--panel-2:#151618;--stage-floor:#050506;
+  --band:#06080B;
+  --band-edge:rgba(var(--c-fg),.07);
+  --tint-blue:rgba(var(--c-blue),.075);
+  --tint-red:rgba(var(--c-red),.075);
+  --hero-blue:.30;--hero-red:.15;--hero-lift:.17;--hero-sweep:.10;
+  --elev:0 26px 52px -26px rgba(0,0,0,.9),0 6px 16px -10px rgba(0,0,0,.8);--text:rgb(var(--c-fg));--text-2:rgba(var(--c-fg),.70);--text-3:rgba(var(--c-fg),.60);--line:rgba(var(--c-fg),.12);--line-2:rgba(var(--c-fg),.22);--blue:#0083c8;--blue-ink:#0083c8;--blue-deep:#00527D;--blue-btn:#0079B8;--red:#c00000;--red-ink:#E45252;--glow:rgba(var(--c-blue),.20);--grad-h1:linear-gradient(100deg,#7ACBEF,#0083c8 58%,#0083c8);--shadow:0 24px 60px -24px rgba(0,0,0,.85);--card-shadow:none;--r:16px;--r-lg:22px;--mono:ui-monospace,"SF Mono",SFMono-Regular,"JetBrains Mono","Roboto Mono",Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;--ease:cubic-bezier(.22,.61,.36,1);--pad:clamp(46px,4.6vw,76px)}
+
+/* ---------- design tokens - light ---------- */
+main.iserv-commerce[data-theme="light"]{--c-fg:0,0,0;--c-bg:255,255,255;color-scheme:light!important;--bg:#ffffff;--bg-alt:#F4F5F7;--panel:#ffffff;--panel-2:#F7F8FA;--stage-floor:#E8EBEF;
+  --band:#F3F6FA;
+  --band-edge:rgba(var(--c-fg),.08);
+  --tint-blue:rgba(var(--c-blue),.055);
+  --tint-red:rgba(var(--c-red),.035);
+  --hero-blue:.17;--hero-red:.07;--hero-lift:.11;--hero-sweep:.07;
+  --elev:0 22px 44px -24px rgba(0,0,0,.22),0 4px 12px -8px rgba(0,0,0,.14);--blue-ink:#0083c8;--blue-deep:#00456B;--red-ink:#A50000;--glow:rgba(var(--c-blue),.13);--grad-h1:linear-gradient(100deg,#0083c8,#00618F 60%,#00456B);--shadow:0 20px 46px -24px rgba(0,0,0,.22);--card-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -18px rgba(0,0,0,.14)}
+
+/* ---------- reset and base elements ---------- */
+main.iserv-commerce *,main.iserv-commerce *::before,main.iserv-commerce *::after{box-sizing:border-box!important}
+html{scroll-behavior:smooth!important;-webkit-text-size-adjust:100%!important}
+main.iserv-commerce{margin:0!important;background:var(--bg)!important;color:var(--text)!important;font-family:var(--sans)!important;font-size:16px!important;line-height:1.65!important;letter-spacing:-.005em!important;-webkit-font-smoothing:antialiased!important}
+main.iserv-commerce img,main.iserv-commerce svg{max-width:100%!important;display:block!important}
+main.iserv-commerce a{color:inherit!important;text-decoration:none!important}
+main.iserv-commerce button{font:inherit!important;color:inherit!important;background:none!important;border:0!important;cursor:pointer!important}
+main.iserv-commerce h1,main.iserv-commerce h2,main.iserv-commerce h3,main.iserv-commerce h4{margin:0!important;letter-spacing:-.032em!important;line-height:1.06!important;font-weight:800!important}
+main.iserv-commerce p{margin:0!important}
+main.iserv-commerce ul{margin:0!important;padding:0!important;list-style:none!important}
+main.iserv-commerce ::selection{background:var(--blue)!important;color:#fff!important}
+main.iserv-commerce :focus-visible{outline:2px solid var(--blue-ink)!important;outline-offset:3px!important;border-radius:4px!important}
+
+/* ---------- layout primitives ---------- */
+main.iserv-commerce .wrap{width:min(1200px,calc(100% - 44px))!important;margin-inline:auto!important}
+main.iserv-commerce .sec{padding-block:var(--pad)!important;position:relative!important}
+main.iserv-commerce .sec--tight{padding-block:clamp(32px,3.2vw,48px)!important}
+main.iserv-commerce .sec--alt{background:radial-gradient(120% 55% at 50% 0%,rgba(var(--c-blue),.055),transparent 62%),var(--band)!important;border-top:1px solid var(--band-edge)!important;border-bottom:1px solid var(--band-edge)!important}
+main.iserv-commerce .hr{height:1px!important;background:linear-gradient(90deg,transparent,var(--line-2),transparent)!important;border:0!important;margin:0!important}
+
+/* ---------- section furniture - eyebrow, heading, lede ---------- */
+main.iserv-commerce .eyebrow{font-family:var(--mono)!important;font-size:11px!important;letter-spacing:.34em!important;text-transform:uppercase!important;color:var(--red-ink)!important;display:inline-flex!important;align-items:center!important;gap:9px!important;margin-bottom:13px!important}
+main.iserv-commerce .eyebrow::before{content:""!important;width:6px!important;height:6px!important;border-radius:50%!important;background:var(--red)!important;box-shadow:0 0 10px var(--red)!important}
+main.iserv-commerce .h-sec{font-size:clamp(30px,4.4vw,52px)!important}
+main.iserv-commerce .h-sec .accent{color:var(--blue-ink)!important}
+main.iserv-commerce .h-sec .accent-red{color:var(--red-ink)!important}
+main.iserv-commerce .lede{color:var(--text-2)!important;font-size:clamp(15px,1.35vw,17.5px)!important;max-width:62ch!important;margin-top:14px!important}
+main.iserv-commerce .head-center{text-align:center!important;max-width:760px!important;margin-inline:auto!important;margin-bottom:clamp(26px,2.8vw,42px)!important}
+main.iserv-commerce .head-center .lede{margin-inline:auto!important}
+
+/* ---------- eyebrow accent, stats counter, hover elevation, demo dialog ---------- */
+main.iserv-commerce .eyebrow--blue{color:var(--blue-ink)!important; font-size: 18px!important;font-weight:600 !important;}
+main.iserv-commerce .eyebrow--blue::before{background:var(--blue)!important;box-shadow:0 0 10px var(--blue)!important}
+main.iserv-commerce .stat-n{transition:opacity .5s var(--ease),transform .5s var(--ease)!important}
+main.iserv-commerce .stat::after{content:""!important;position:absolute!important;left:50%!important;bottom:-4px!important;width:0!important;height:2px!important;transform:translateX(-50%);border-radius:2px!important;background:linear-gradient(90deg,transparent,var(--blue),transparent)!important;transition:width 1.5s var(--ease)!important}
+main.iserv-commerce .stat.counted::after{width:62%!important}
+main.iserv-commerce .step.on:hover,main.iserv-commerce .adv:hover,main.iserv-commerce .ind:hover,main.iserv-commerce .quote:hover,main.iserv-commerce .cmp-col:hover{transform:translateY(-6px);box-shadow:var(--elev),0 0 0 1px rgba(var(--c-blue),.16)!important;border-color:rgba(var(--c-blue),.42)!important}
+main.iserv-commerce .step.on,main.iserv-commerce .adv,main.iserv-commerce .ind,main.iserv-commerce .quote,main.iserv-commerce .cmp-col{transition:transform .34s var(--ease),box-shadow .34s var(--ease),
+             border-color .34s var(--ease),background .34s var(--ease)!important}
+main.iserv-commerce .cmp-col.win:hover{box-shadow:var(--elev),0 0 0 1px rgba(var(--c-blue),.34),0 0 46px -22px rgba(var(--c-blue),.6)!important}
+main.iserv-commerce .cmp-row{transition:background .22s var(--ease),padding-left .22s var(--ease)!important}
+main.iserv-commerce .cmp-row:hover{padding-left:30px!important}
+main.iserv-commerce .modal{position:fixed!important;inset:0!important;width:100%!important;max-width:100%!important;height:100%!important;max-height:100%;margin:0!important;padding:20px!important;border:0!important;background:transparent!important;overflow-y:auto!important;overscroll-behavior:contain!important}
+main.iserv-commerce .modal:not([open]){display:none!important}
+main.iserv-commerce .modal[open]{display:flex!important;align-items:center!important;justify-content:center!important}
+main.iserv-commerce .modal::backdrop{background:rgba(0,0,0,.72)!important;backdrop-filter:blur(6px)!important}
+main.iserv-commerce .modal-card{position:relative!important;width:min(560px,100%)!important;border-radius:var(--r-lg)!important;border:1px solid rgba(var(--c-blue),.28)!important;background:linear-gradient(180deg,var(--panel-2),var(--panel))!important;box-shadow:0 50px 100px -30px rgba(0,0,0,.95),0 0 70px -24px rgba(var(--c-blue),.45)!important;padding:28px 28px 26px!important;animation:modalIn .34s var(--ease)!important}
+main.iserv-commerce .modal-x{position:absolute!important;top:14px!important;right:14px!important;width:34px!important;height:34px!important;border-radius:9px!important;border:1px solid var(--line-2)!important;display:grid!important;place-items:center!important;color:var(--text-2)!important;transition:color .22s,border-color .22s,background .22s!important}
+main.iserv-commerce .modal-x:hover{color:var(--text)!important;border-color:rgba(var(--c-red),.55)!important;background:rgba(var(--c-red),.12)!important}
+main.iserv-commerce .modal-x svg{width:15px!important;height:15px!important}
+main.iserv-commerce .modal-title{font-size:clamp(21px,2.4vw,27px)!important;margin-bottom:8px!important}
+main.iserv-commerce .modal-sub{color:var(--text-2)!important;font-size:14px!important;margin-bottom:20px!important}
+main.iserv-commerce .modal-form{display:grid!important;grid-template-columns:1fr 1fr!important;gap:13px!important}
+main.iserv-commerce .field{display:flex!important;flex-direction:column!important;gap:6px!important}
+main.iserv-commerce .field--full{grid-column:1/-1!important}
+main.iserv-commerce .field label{font-family:var(--mono)!important;font-size:9.5px!important;letter-spacing:.18em!important;text-transform:uppercase!important;color:var(--text-3)!important}
+main.iserv-commerce .field input,main.iserv-commerce .field textarea{width:100%!important;padding:11px 13px!important;border-radius:10px!important;border:1px solid var(--line-2)!important;background:rgba(var(--c-fg),.04)!important;color:var(--text)!important;font-family:var(--sans)!important;font-size:14.5px!important;line-height:1.45!important;resize:vertical!important;transition:border-color .22s,background .22s,box-shadow .22s!important}
+main.iserv-commerce .field input:focus,main.iserv-commerce .field textarea:focus{outline:0!important;border-color:rgba(var(--c-blue),.7)!important;background:rgba(var(--c-blue),.07)!important;box-shadow:0 0 0 3px rgba(var(--c-blue),.18)!important}
+main.iserv-commerce .field input:invalid:not(:placeholder-shown){border-color:rgba(var(--c-red),.6)!important}
+main.iserv-commerce .modal-submit{grid-column:1/-1!important;justify-content:center!important;margin-top:4px!important}
+main.iserv-commerce .modal-note{margin-top:14px!important;font-size:12px!important;color:var(--text-3)!important;text-align:center!important}
+main.iserv-commerce .modal-done{display:none!important;text-align:center!important;padding:26px 0 10px!important}
+main.iserv-commerce .modal-done svg{width:44px!important;height:44px!important;color:var(--blue)!important;margin:0 auto 14px!important}
+main.iserv-commerce .modal-done b{display:block!important;font-size:19px!important;letter-spacing:-.02em!important;margin-bottom:7px!important}
+main.iserv-commerce .modal-done p{color:var(--text-2)!important;font-size:14px!important}
+main.iserv-commerce .modal-card.is-done .modal-form,main.iserv-commerce .modal-card.is-done .modal-sub,main.iserv-commerce .modal-card.is-done .modal-note{display:none!important}
+main.iserv-commerce .modal-card.is-done .modal-done{display:block!important}
+@keyframes modalIn{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+
+/* ---------- buttons ---------- */
+main.iserv-commerce .btn{display:inline-flex!important;align-items:center!important;gap:10px!important;padding:14px 24px!important;border-radius:12px!important;font-weight:650!important;font-size:15px!important;letter-spacing:-.01em!important;position:relative!important;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease)!important}
+main.iserv-commerce .btn svg{width:17px!important;height:17px!important;transition:transform .3s var(--ease)!important}
+main.iserv-commerce .btn:hover svg{transform:translateX(4px)}
+main.iserv-commerce .btn-primary{background:linear-gradient(135deg,var(--blue-btn),var(--blue-deep))!important;color:#fff!important;box-shadow:0 12px 30px -12px rgba(var(--c-blue),.75),inset 0 1px 0 rgba(255,255,255,.22)!important}
+main.iserv-commerce .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 40px -14px rgba(var(--c-blue),.9),inset 0 1px 0 rgba(255,255,255,.28)!important}
+main.iserv-commerce .btn-ghost{border:1px solid var(--line-2)!important;background:rgba(var(--c-fg),.04)!important;color:var(--text)!important;backdrop-filter:blur(8px)!important}
+main.iserv-commerce .btn-ghost:hover{border-color:rgba(var(--c-blue),.55)!important;background:rgba(var(--c-blue),.09)!important;transform:translateY(-2px)}
+main.iserv-commerce .btn-row{display:flex!important;flex-wrap:wrap!important;gap:14px!important;margin-top:26px!important}
+
+/* ---------- section background variants ---------- */
+main.iserv-commerce .sec--tint{background:
+    radial-gradient(70% 65% at 12% 22%,var(--tint-blue),transparent 64%),
+    radial-gradient(55% 55% at 92% 84%,rgba(var(--c-blue),.045),transparent 68%),
+    var(--band)!important;border-top:1px solid var(--band-edge)!important;border-bottom:1px solid var(--band-edge)!important}
+main.iserv-commerce .sec--warm{background:
+    radial-gradient(65% 55% at 50% 0%,var(--tint-red),transparent 62%),
+    radial-gradient(45% 45% at 88% 92%,rgba(var(--c-red),.035),transparent 70%),
+    var(--bg)!important}
+main.iserv-commerce .sec--alt::before,main.iserv-commerce .sec--tint::before{content:""!important;position:absolute!important;inset:0!important;pointer-events:none!important;opacity:.55!important;background-image:linear-gradient(rgba(var(--c-fg),.04) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(var(--c-fg),.04) 1px,transparent 1px)!important;background-size:64px 64px!important;-webkit-mask-image:radial-gradient(75% 60% at 50% 50%,#000,transparent 78%)!important;mask-image:radial-gradient(75% 60% at 50% 50%,#000,transparent 78%)!important}
+main.iserv-commerce .sec--alt>.wrap,main.iserv-commerce .sec--tint>.wrap{position:relative!important;z-index:1!important}
+
+/* ---------- hero ---------- */
+main.iserv-commerce .hero{position:relative!important;padding-top:5%!important;padding-bottom:clamp(36px,4vw,60px)!important;overflow:hidden!important;background:
+    linear-gradient(180deg,transparent 56%,rgba(var(--c-bg),.92) 100%),
+    radial-gradient(78% 58% at 6% -10%,rgba(var(--c-blue),var(--hero-blue)),transparent 58%),
+    radial-gradient(46% 40% at 97% 94%,rgba(var(--c-red),var(--hero-red)),transparent 64%),
+    linear-gradient(112deg,transparent 30%,rgba(var(--c-blue),var(--hero-sweep)) 52%,transparent 74%),
+    linear-gradient(168deg,rgba(var(--c-blue),var(--hero-lift)),rgba(var(--c-blue),.03) 48%,transparent 100%),
+    var(--bg)!important;border-bottom:1px solid var(--band-edge)!important}
+main.iserv-commerce .hero::before{content:""!important;position:absolute!important;top:-300px!important;left:50%!important;width:1150px!important;height:780px!important;transform:translateX(-56%);background:radial-gradient(50% 50% at 50% 50%,var(--glow),transparent 70%)!important;filter:blur(24px)!important;pointer-events:none!important;animation:heroDrift 22s ease-in-out infinite alternate!important}
+main.iserv-commerce .hero::after{content:""!important;position:absolute!important;inset:0!important;pointer-events:none!important;opacity:.5!important;background-image:linear-gradient(rgba(var(--c-fg),.055) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--c-fg),.055) 1px,transparent 1px)!important;background-size:58px 58px!important;-webkit-mask-image:radial-gradient(80% 60% at 50% 30%,#000,transparent 78%)!important;mask-image:radial-gradient(80% 60% at 50% 30%,#000,transparent 78%)!important}
+main.iserv-commerce .hero-grid{position:relative!important;z-index:2!important;display:grid!important;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr)!important;gap:clamp(28px,3.4vw,52px)!important;align-items:center!important}
+main.iserv-commerce .hero h1{font-size:clamp(38px,5.6vw,68px)!important;line-height:1.02!important}
+main.iserv-commerce .hero h1 .l2{display:block!important;background:var(--grad-h1)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+main.iserv-commerce .hero-sub{color:var(--text-2)!important;font-size:clamp(15.5px,1.4vw,18px)!important;max-width:53ch!important;margin-top:18px!important}
+main.iserv-commerce .hero-sub b{color:var(--text)!important;font-weight:650!important}
+main.iserv-commerce .hero-note{margin-top:16px!important;color:var(--text-3)!important;font-size:14.5px!important;max-width:50ch!important}
+main.iserv-commerce .trust{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:10px 22px!important;margin-top:26px!important;padding-top:19px!important;border-top:1px solid var(--line)!important}
+main.iserv-commerce .trust li{font-family:var(--mono)!important;font-size:11px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--text-3)!important;display:flex!important;align-items:center!important;gap:8px!important}
+main.iserv-commerce .trust svg{width:14px!important;height:14px!important;color:var(--blue)!important}
+
+/* ---------- hero signature - the commerce mesh ---------- */
+main.iserv-commerce .mesh{position:relative!important;width:100%!important;aspect-ratio:620/560!important;max-width:620px!important;margin-inline:auto!important}
+main.iserv-commerce .node{position:absolute!important;z-index:2!important;transform:translate(-50%,-50%);display:flex!important;align-items:center!important;gap:8px!important;white-space:nowrap!important;padding:9px 13px!important;border-radius:11px!important;border:1px solid rgba(var(--c-blue),.30)!important;background:linear-gradient(180deg,rgba(var(--c-bg),.90),rgba(var(--c-bg),.96))!important;backdrop-filter:blur(10px)!important;box-shadow:0 18px 34px -16px rgba(0,0,0,.95),0 4px 10px -6px rgba(0,0,0,.9),
+             0 0 22px -8px rgba(var(--c-blue),.45),inset 0 1px 0 rgba(var(--c-fg),.07)!important;font-family:var(--mono)!important;font-size:10.5px!important;letter-spacing:.1em!important;text-transform:uppercase!important;color:var(--text-2)!important;animation:bob 7s var(--ease) infinite!important}
+main.iserv-commerce .node svg{width:14px!important;height:14px!important;color:var(--blue)!important;flex:none!important}
+main.iserv-commerce .node.red svg{color:var(--red)!important}
+main.iserv-commerce .node:nth-of-type(2n){animation-duration:8.4s!important;animation-delay:-2s!important}
+main.iserv-commerce .node:nth-of-type(3n){animation-duration:9.6s!important;animation-delay:-4s!important}
+@keyframes bob{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,calc(-50% - 8px))}}
+@keyframes ping{70%{box-shadow:0 0 0 8px rgba(var(--c-blue),0)}100%{box-shadow:0 0 0 0 rgba(var(--c-blue),0)}}
+
+main.iserv-commerce .mesh::before{content:""!important;position:absolute!important;z-index:0!important;pointer-events:none!important;inset:8% 6% 6%!important;border-radius:50%!important;background:radial-gradient(50% 50% at 50% 50%,rgba(var(--c-blue),.20),transparent 70%)!important;filter:blur(30px)!important}
+main.iserv-commerce .mesh::after{content:""!important;position:absolute!important;z-index:0!important;pointer-events:none!important;left:50%!important;bottom:2%!important;width:62%!important;height:34px!important;transform:translateX(-50%);border-radius:50%!important;background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.75),transparent 72%)!important;filter:blur(16px)!important}
+main.iserv-commerce .node{box-shadow:0 14px 30px -14px rgba(0,0,0,.9),0 0 0 1px rgba(var(--c-fg),.02)!important}
+@keyframes heroDrift{from{transform:translateX(-60%) scale(1)}to{transform:translateX(-50%) scale(1.12)}}
+
+main.iserv-commerce .cart{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:1!important;overflow:visible!important;filter:drop-shadow(0 26px 34px rgba(0,0,0,.55))!important}
+main.iserv-commerce .cart-parts{animation:partsFloat 7s var(--ease) infinite!important}
+main.iserv-commerce .node--price{border-color:rgba(var(--c-blue),.55)!important;color:var(--text)!important}
+main.iserv-commerce .node--price svg{color:var(--blue-ink)!important}
+main.iserv-commerce .to-top{position:fixed!important;right:20px!important;bottom:20px!important;z-index:80!important;width:44px!important;height:44px!important;border-radius:12px!important;display:grid!important;place-items:center!important;border:1px solid var(--line-2)!important;background:rgba(var(--c-bg),.72)!important;backdrop-filter:blur(14px)!important;box-shadow:var(--shadow)!important;color:var(--text-2)!important;opacity:0!important;visibility:hidden!important;transform:translateY(12px);transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s,
+             color .22s,border-color .22s,background .22s!important}
+main.iserv-commerce .to-top.is-on{opacity:1!important;visibility:visible!important;transform:none}
+main.iserv-commerce .to-top:hover{color:var(--text)!important;border-color:rgba(var(--c-blue),.55)!important;background:rgba(var(--c-blue),.14)!important}
+main.iserv-commerce .to-top svg{width:18px!important;height:18px!important}
+@keyframes partsFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+
+/* ---------- stats bar ---------- */
+main.iserv-commerce .stats{background:linear-gradient(180deg,rgba(var(--c-blue),.10),rgba(var(--c-blue),.02) 70%,transparent),var(--band)!important;border-top:1px solid var(--band-edge)!important;border-bottom:1px solid var(--band-edge)!important}
+main.iserv-commerce .stat-grid{display:grid!important;grid-template-columns:repeat(5,1fr)!important;gap:20px!important;text-align:center!important}
+main.iserv-commerce .stat{padding:8px 6px!important;position:relative!important}
+main.iserv-commerce .stat+.stat::before{content:""!important;position:absolute!important;left:-10px!important;top:14%!important;height:72%!important;width:1px!important;background:var(--line)!important}
+main.iserv-commerce .stat-n{font-family:var(--mono)!important;font-size:clamp(30px,3.6vw,46px)!important;font-weight:700!important;line-height:1!important;letter-spacing:-.03em!important;background:linear-gradient(180deg,rgb(var(--c-fg)),var(--blue))!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+main.iserv-commerce .stat-l{margin-top:12px!important;font-size:13px!important;color:var(--text-3)!important;line-height:1.45!important}
+
+/* ---------- audience cards ---------- */
+main.iserv-commerce .aud-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:14px!important}
+main.iserv-commerce .aud{position:relative!important;padding:25px 22px 24px!important;border-radius:var(--r)!important;border:1px solid var(--line)!important;background:linear-gradient(180deg,var(--panel-2),var(--panel))!important;overflow:hidden!important;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s!important}
+main.iserv-commerce .aud::before{content:""!important;position:absolute!important;inset:0!important;border-radius:inherit!important;padding:1px!important;opacity:0!important;transition:opacity .35s!important;background:linear-gradient(140deg,rgba(var(--c-blue),.7),transparent 42%,rgba(var(--c-red),.35))!important;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;-webkit-mask-composite:xor!important;mask-composite:exclude!important}
+main.iserv-commerce .aud:hover{transform:translateY(-6px);box-shadow:var(--shadow)!important}
+main.iserv-commerce .aud:hover::before{opacity:1!important}
+main.iserv-commerce .aud-role{font-family:var(--mono)!important;font-size:10px!important;letter-spacing:.24em!important;text-transform:uppercase!important;color:var(--text-3)!important}
+main.iserv-commerce .aud h3{font-size:21px!important;margin:14px 0 12px!important}
+main.iserv-commerce .aud p{color:var(--text-2)!important;font-size:14.5px!important}
+main.iserv-commerce .aud-fix{margin-top:18px!important;padding-top:16px!important;border-top:1px dashed var(--line-2)!important;display:flex!important;gap:9px!important;font-size:13.5px!important;color:var(--text)!important}
+main.iserv-commerce .aud-fix svg{width:16px!important;height:16px!important;color:var(--blue)!important;flex:none!important;margin-top:3px!important}
+main.iserv-commerce .aud-ico{width:42px!important;height:42px!important;border-radius:11px!important;display:grid!important;place-items:center!important;border:1px solid var(--line-2)!important;background:rgba(var(--c-blue),.09)!important;margin-bottom:20px!important}
+main.iserv-commerce .aud-ico svg{width:20px!important;height:20px!important;color:var(--blue)!important}
+
+/* ---------- capability stack - tabbed module groups ---------- */
+main.iserv-commerce .stack{border:1px solid var(--line)!important;border-radius:var(--r-lg)!important;background:var(--panel)!important;overflow:hidden!important}
+main.iserv-commerce .stack-tabs{display:grid!important;grid-template-columns:repeat(4,1fr)!important;border-bottom:1px solid var(--line)!important}
+main.iserv-commerce .stack-tab{position:relative!important;padding:16px 20px!important;text-align:left!important;border-right:1px solid var(--line)!important;transition:background .28s var(--ease),color .28s var(--ease)!important}
+main.iserv-commerce .stack-tab:last-child{border-right:0!important}
+main.iserv-commerce .stack-tab b{display:block!important;font-size:14.5px!important;font-weight:700!important;letter-spacing:-.02em!important;color:var(--text-2)!important;transition:color .28s var(--ease)!important}
+main.iserv-commerce .stack-tab small{display:block!important;margin-top:4px!important;font-family:var(--mono)!important;font-size:9.5px!important;letter-spacing:.18em!important;text-transform:uppercase!important;color:var(--text-3)!important}
+main.iserv-commerce .stack-tab::after{content:""!important;position:absolute!important;left:0!important;right:0!important;bottom:-1px!important;height:2px!important;background:var(--blue)!important;transform:scaleX(0);transition:transform .32s var(--ease)!important}
+main.iserv-commerce .stack-tab:hover{background:rgba(var(--c-fg),.03)!important}
+main.iserv-commerce .stack-tab:hover b{color:var(--text)!important}
+main.iserv-commerce .stack-tab[aria-selected="true"]{background:rgba(var(--c-blue),.08)!important}
+main.iserv-commerce .stack-tab[aria-selected="true"] b{color:var(--text)!important}
+main.iserv-commerce .stack-tab[aria-selected="true"] small{color:var(--blue-ink)!important}
+main.iserv-commerce .stack-tab[aria-selected="true"]::after{transform:scaleX(1)}
+main.iserv-commerce .stack-panel{display:none!important;padding:24px!important;grid-template-columns:1fr 1fr!important;gap:20px 32px!important}
+main.iserv-commerce .stack-panel.is-on{display:grid!important}
+main.iserv-commerce .cap{display:flex!important;gap:13px!important;align-items:flex-start!important}
+main.iserv-commerce .cap-ico{width:32px!important;height:32px!important;border-radius:9px!important;flex:none!important;display:grid!important;place-items:center!important;background:rgba(var(--c-blue),.1)!important;border:1px solid rgba(var(--c-blue),.2)!important}
+main.iserv-commerce .cap-ico svg{width:16px!important;height:16px!important;color:var(--blue)!important}
+main.iserv-commerce .cap b{display:block!important;font-size:14.5px!important;font-weight:700!important;letter-spacing:-.02em!important}
+main.iserv-commerce .cap p{margin-top:4px!important;font-size:13.2px!important;color:var(--text-2)!important;line-height:1.55!important}
+
+/* ---------- product visualization - stage and controls ---------- */
+main.iserv-commerce .viz{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)!important;gap:clamp(26px,3.2vw,46px)!important;align-items:center!important}
+main.iserv-commerce .stage{position:relative!important;aspect-ratio:1/.86!important;border-radius:var(--r-lg)!important;border:1px solid var(--line-2)!important;background:radial-gradient(90% 80% at 50% 20%,rgba(var(--c-blue),.13),transparent 62%),linear-gradient(180deg,var(--panel-2),var(--stage-floor))!important;overflow:hidden!important;cursor:grab!important;touch-action:pan-y!important;box-shadow:var(--shadow)!important}
+main.iserv-commerce .stage:active{cursor:grabbing!important}
+main.iserv-commerce .stage::before{content:""!important;position:absolute!important;inset:0!important;opacity:.55!important;background-image:linear-gradient(rgba(var(--c-fg),.06) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--c-fg),.06) 1px,transparent 1px)!important;background-size:34px 34px!important}
+main.iserv-commerce .scene{position:absolute!important;inset:0!important;display:grid!important;place-items:center!important;perspective:1100px!important}
+@keyframes spin{from{transform:rotateX(-14deg) rotateY(0) scale(var(--zm,1))}to{transform:rotateX(-14deg) rotateY(360deg) scale(var(--zm,1))}}
+main.iserv-commerce .hotspot{position:absolute!important;z-index:5!important;width:20px!important;height:20px!important;border-radius:50%!important;transform:translate(-50%,-50%);border:1px solid rgba(var(--c-blue),.75)!important;background:rgba(var(--c-blue),.18)!important;display:grid!important;place-items:center!important;transition:.25s var(--ease)!important}
+main.iserv-commerce .hotspot::after{content:""!important;width:6px!important;height:6px!important;border-radius:50%!important;background:var(--blue-ink)!important;box-shadow:0 0 0 0 rgba(var(--c-blue),.5);animation:ping 2.6s infinite!important}
+main.iserv-commerce .hotspot span{position:absolute!important;left:28px!important;top:50%!important;transform:translateY(-50%) translateX(-6px);opacity:0!important;pointer-events:none!important;white-space:nowrap!important;font-family:var(--mono)!important;font-size:10px!important;letter-spacing:.12em!important;text-transform:uppercase!important;padding:6px 10px!important;border-radius:7px!important;border:1px solid var(--line-2)!important;background:rgba(var(--c-bg),.94)!important;color:var(--text-2)!important;transition:.25s var(--ease)!important}
+main.iserv-commerce .hotspot:hover,main.iserv-commerce .hotspot:focus-visible{background:rgba(var(--c-blue),.45)!important;transform:translate(-50%,-50%) scale(1.15)}
+main.iserv-commerce .hotspot:hover span,main.iserv-commerce .hotspot:focus-visible span{opacity:1!important;transform:translateY(-50%) translateX(0)}
+main.iserv-commerce .hotspot.flip span{left:auto!important;right:28px!important}
+main.iserv-commerce .stage-bar{position:absolute!important;z-index:6!important;left:16px!important;right:16px!important;bottom:16px!important;display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:8px!important;padding:10px 12px!important;border-radius:13px!important;border:1px solid var(--line-2)!important;background:rgba(var(--c-bg),.84)!important;backdrop-filter:blur(12px)!important}
+main.iserv-commerce .tool{display:inline-flex!important;align-items:center!important;gap:7px!important;padding:7px 12px!important;border-radius:8px!important;border:1px solid var(--line)!important;font-family:var(--mono)!important;font-size:10px!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:var(--text-2)!important;transition:.22s!important}
+main.iserv-commerce .tool:hover{color:var(--text)!important;border-color:var(--line-2)!important;background:rgba(var(--c-fg),.05)!important}
+main.iserv-commerce .tool[aria-pressed="true"]{color:#fff!important;border-color:rgba(var(--c-blue),.6)!important;background:rgba(var(--c-blue),.2)!important}
+main.iserv-commerce .zoom{display:flex!important;align-items:center!important;gap:9px!important;margin-left:auto!important;font-family:var(--mono)!important;font-size:10px!important;letter-spacing:.14em!important;color:var(--text-3)!important}
+main.iserv-commerce .zoom input{width:92px!important;accent-color:var(--blue)!important;background:transparent!important}
+main.iserv-commerce .stage-hint{position:absolute!important;z-index:6!important;top:16px!important;left:16px!important;font-family:var(--mono)!important;font-size:10px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--text-3)!important;border:1px solid var(--line)!important;border-radius:7px!important;padding:6px 10px!important;background:rgba(var(--c-bg),.62)!important}
+
+/* ---------- product visualization - robotic arm geometry ---------- */
+main.iserv-commerce .rig{position:relative!important;width:240px!important;height:240px!important;transform-style:preserve-3d!important;transform:rotateX(var(--rx,-14deg)) rotateY(var(--ry,26deg)) scale(var(--zm,1));transition:transform .12s linear!important}
+main.iserv-commerce .rig.spin{animation:spin 26s linear infinite!important;transition:none!important}
+main.iserv-commerce .seg{position:absolute!important;left:50%!important;top:50%!important;transform-style:preserve-3d!important;transition:transform .55s var(--ease)!important}
+main.iserv-commerce .face{position:absolute!important;left:50%!important;top:50%!important;border-radius:3px!important;border:1px solid rgba(var(--c-blue),.55)!important;background:linear-gradient(180deg,rgba(var(--c-blue),.42),rgba(var(--c-blue),.1))!important}
+main.iserv-commerce .face.b{background:linear-gradient(180deg,rgba(var(--c-blue),.22),rgba(var(--c-blue),.05))!important}
+main.iserv-commerce .joint{position:absolute!important;left:50%!important;top:50%!important;border-radius:50%!important;transform-style:preserve-3d!important;border:1.5px solid rgba(var(--c-blue),.85)!important;background:radial-gradient(circle,rgba(var(--c-blue),.3),transparent 70%)!important;box-shadow:0 0 16px -2px rgba(var(--c-blue),.7)!important;transition:transform .55s var(--ease)!important}
+main.iserv-commerce .joint.hot{border-color:rgba(var(--c-red),.9)!important;box-shadow:0 0 18px -2px rgba(var(--c-red),.75)!important;background:radial-gradient(circle,rgba(var(--c-red),.35),transparent 70%)!important}
+main.iserv-commerce .plate{position:absolute!important;left:50%!important;top:50%!important;border-radius:50%!important;border:1.5px solid rgba(var(--c-blue),.5)!important;background:radial-gradient(circle,rgba(var(--c-blue),.14),transparent 72%)!important;transition:transform .55s var(--ease)!important}
+main.iserv-commerce .rig-annot{position:absolute!important;left:50%!important;top:50%!important;width:240px!important;height:240px!important;margin:-120px 0 0 -120px!important;z-index:5!important;pointer-events:none!important}
+main.iserv-commerce .rig-annot .hotspot{pointer-events:auto!important}
+
+/* ---------- product visualization - supporting copy ---------- */
+main.iserv-commerce .viz-list{margin-top:22px!important;display:grid!important;gap:13px!important}
+main.iserv-commerce .viz-list li{display:flex!important;gap:14px!important}
+main.iserv-commerce .viz-list b{display:block!important;font-size:15.5px!important;font-weight:680!important;letter-spacing:-.015em!important}
+main.iserv-commerce .viz-list p{color:var(--text-2)!important;font-size:14.2px!important;margin-top:4px!important}
+main.iserv-commerce .viz-num{font-family:var(--mono)!important;font-size:11px!important;color:var(--blue-ink)!important;border:1px solid rgba(var(--c-blue),.3)!important;border-radius:7px!important;width:30px!important;height:26px!important;display:grid!important;place-items:center!important;flex:none!important;background:rgba(var(--c-blue),.07)!important}
+
+/* ---------- smart commerce cards ---------- */
+main.iserv-commerce .smart-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:14px!important}
+main.iserv-commerce .smart{position:relative!important;padding:24px 21px 23px!important;border-radius:var(--r)!important;overflow:hidden!important;border:1px solid var(--line)!important;background:linear-gradient(180deg,var(--panel-2),var(--panel))!important;transition:transform .35s var(--ease),border-color .35s!important}
+main.iserv-commerce .smart:hover{transform:translateY(-6px);border-color:rgba(var(--c-blue),.4)!important}
+main.iserv-commerce .smart-glow{position:absolute!important;width:180px!important;height:180px!important;border-radius:50%!important;filter:blur(48px)!important;top:-90px!important;right:-60px!important;background:rgba(var(--c-blue),.32)!important;opacity:.5!important;transition:opacity .4s!important}
+main.iserv-commerce .smart:hover .smart-glow{opacity:.9!important}
+main.iserv-commerce .smart.r .smart-glow{background:rgba(var(--c-red),.28)!important}
+main.iserv-commerce .smart-ico{position:relative!important;width:44px!important;height:44px!important;border-radius:12px!important;display:grid!important;place-items:center!important;border:1px solid var(--line-2)!important;background:rgba(var(--c-fg),.05)!important;margin-bottom:22px!important}
+main.iserv-commerce .smart-ico svg{width:21px!important;height:21px!important;color:var(--blue-ink)!important}
+main.iserv-commerce .smart.r .smart-ico svg{color:var(--red)!important}
+main.iserv-commerce .smart h3{position:relative!important;font-size:18.5px!important}
+main.iserv-commerce .smart p{position:relative!important;margin-top:11px!important;font-size:14.2px!important;color:var(--text-2)!important}
+main.iserv-commerce .smart-kpi{position:relative!important;margin-top:20px!important;padding-top:16px!important;border-top:1px solid var(--line)!important;font-family:var(--mono)!important;font-size:11px!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:var(--blue-ink)!important}
+main.iserv-commerce .smart.r .smart-kpi{color:var(--red-ink)!important}
+
+/* ---------- commerce workflow ---------- */
+main.iserv-commerce .flow{position:relative!important;display:grid!important;grid-template-columns:repeat(5,1fr)!important;gap:16px 14px!important}
+main.iserv-commerce .step{position:relative!important;padding:20px 18px!important;border-radius:14px!important;border:1px solid var(--line)!important;background:var(--panel)!important;opacity:.35!important;transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease),border-color .4s,background .4s!important}
+main.iserv-commerce .step.on{opacity:1!important;transform:none;border-color:var(--line-2)!important;background:var(--panel-2)!important}
+main.iserv-commerce .step.on:nth-child(6n) .step-n{color:var(--red-ink)!important;border-color:rgba(var(--c-red),.4)!important;background:rgba(var(--c-red),.09)!important}
+main.iserv-commerce .step-n{font-family:var(--mono)!important;font-size:10.5px!important;color:var(--blue-ink)!important;border:1px solid rgba(var(--c-blue),.3)!important;background:rgba(var(--c-blue),.08)!important;border-radius:6px!important;padding:2px 7px!important;display:inline-block!important;transition:.4s!important}
+main.iserv-commerce .step h4{font-size:15px!important;margin-top:14px!important;font-weight:700!important;letter-spacing:-.02em!important}
+main.iserv-commerce .step p{margin-top:7px!important;font-size:13px!important;color:var(--text-3)!important;line-height:1.55!important}
+main.iserv-commerce .step::after{content:""!important;position:absolute!important;right:-14px!important;top:50%!important;width:14px!important;height:1px!important;background:var(--line-2)!important;z-index:1!important}
+main.iserv-commerce .step:nth-child(5)::after,main.iserv-commerce .step:nth-child(10)::after{display:none!important}
+main.iserv-commerce .flow-legend{display:flex!important;justify-content:space-between!important;gap:16px!important;margin-top:18px!important;font-family:var(--mono)!important;font-size:10.5px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--text-3)!important;border-top:1px solid var(--line)!important;padding-top:16px!important}
+
+/* ---------- advantages ---------- */
+main.iserv-commerce .adv-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:14px!important}
+main.iserv-commerce .adv{padding:25px 22px!important;border-radius:var(--r)!important;border:1px solid var(--line)!important;background:var(--panel)!important;transition:transform .35s var(--ease),background .35s,border-color .35s!important}
+main.iserv-commerce .adv:hover{transform:translateY(-5px);background:var(--panel-2)!important;border-color:var(--line-2)!important}
+main.iserv-commerce .adv-top{display:flex!important;align-items:center!important;gap:13px!important;margin-bottom:16px!important}
+main.iserv-commerce .adv-ico{width:40px!important;height:40px!important;border-radius:11px!important;display:grid!important;place-items:center!important;flex:none!important;border:1px solid rgba(var(--c-blue),.24)!important;background:rgba(var(--c-blue),.09)!important}
+main.iserv-commerce .adv-ico svg{width:19px!important;height:19px!important;color:var(--blue)!important}
+main.iserv-commerce .adv h3{font-size:18px!important}
+main.iserv-commerce .adv p{color:var(--text-2)!important;font-size:14.3px!important}
+
+/* ---------- comparison table ---------- */
+main.iserv-commerce .cmp{display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px!important}
+main.iserv-commerce .cmp-col{border-radius:var(--r-lg)!important;border:1px solid var(--line)!important;background:var(--panel)!important;overflow:hidden!important}
+main.iserv-commerce .cmp-col.win{border-color:rgba(var(--c-blue),.35)!important;background:linear-gradient(180deg,rgba(var(--c-blue),.07),var(--panel) 42%)!important;box-shadow:0 26px 60px -30px rgba(var(--c-blue),.55)!important}
+main.iserv-commerce .cmp-head{padding:22px 26px!important;border-bottom:1px solid var(--line)!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important}
+main.iserv-commerce .cmp-head h3{font-family:var(--mono)!important;font-size:11px!important;letter-spacing:.24em!important;text-transform:uppercase!important;font-weight:600!important;color:var(--text-3)!important}
+main.iserv-commerce .cmp-col.win .cmp-head h3{color:var(--blue-ink)!important}
+main.iserv-commerce .cmp-tag{font-family:var(--mono)!important;font-size:9.5px!important;letter-spacing:.14em!important;text-transform:uppercase!important;padding:4px 9px!important;border-radius:6px!important;border:1px solid var(--line-2)!important;color:var(--text-3)!important}
+main.iserv-commerce .cmp-col.win .cmp-tag{border-color:rgba(var(--c-blue),.4)!important;color:var(--blue-ink)!important;background:rgba(var(--c-blue),.1)!important}
+main.iserv-commerce .cmp-row{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:16px!important;padding:15px 26px!important;border-bottom:1px solid rgba(var(--c-fg),.07)!important;font-size:14px!important}
+main.iserv-commerce .cmp-row:last-child{border-bottom:0!important}
+main.iserv-commerce .cmp-row span:first-child{color:var(--text-2)!important}
+main.iserv-commerce .cmp-val{font-family:var(--mono)!important;font-size:12.5px!important;text-align:right!important;color:var(--red-ink)!important}
+main.iserv-commerce .cmp-col.win .cmp-val{color:var(--blue-ink)!important}
+main.iserv-commerce .cmp-row:hover{background:rgba(var(--c-fg),.03)!important}
+
+/* ---------- industries ---------- */
+main.iserv-commerce .ind-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:14px!important}
+main.iserv-commerce .ind{padding:22px 19px!important;border-radius:var(--r)!important;border:1px solid var(--line)!important;background:var(--panel)!important;position:relative!important;overflow:hidden!important;transition:transform .32s var(--ease),border-color .32s!important}
+main.iserv-commerce .ind:hover{transform:translateY(-5px);border-color:rgba(var(--c-blue),.4)!important}
+main.iserv-commerce .ind::before{content:""!important;position:absolute!important;inset:auto -30% -60% auto!important;width:150px!important;height:150px!important;border-radius:50%!important;background:radial-gradient(circle,rgba(var(--c-blue),.22),transparent 70%)!important;opacity:0!important;transition:opacity .35s!important}
+main.iserv-commerce .ind:hover::before{opacity:1!important}
+main.iserv-commerce .ind svg{width:26px!important;height:26px!important;color:var(--blue-ink)!important;margin-bottom:16px!important}
+main.iserv-commerce .ind h3{font-size:16px!important;position:relative!important}
+main.iserv-commerce .ind p{margin-top:8px!important;font-size:13.2px!important;color:var(--text-3)!important;position:relative!important}
+
+/* ---------- testimonials ---------- */
+main.iserv-commerce .quote-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:14px!important}
+main.iserv-commerce .quote{padding:25px 22px!important;border-radius:var(--r)!important;border:1px solid var(--line)!important;background:linear-gradient(180deg,var(--panel-2),var(--panel))!important;display:flex!important;flex-direction:column!important;gap:18px!important;transition:transform .35s var(--ease),border-color .35s!important}
+main.iserv-commerce .quote:hover{transform:translateY(-5px);border-color:var(--line-2)!important}
+main.iserv-commerce .stars{display:flex!important;gap:4px!important}
+main.iserv-commerce .stars svg{width:15px!important;height:15px!important;color:var(--blue)!important}
+main.iserv-commerce .quote blockquote{margin:0!important;font-size:15.5px!important;line-height:1.68!important;color:var(--text)!important}
+main.iserv-commerce .quote blockquote::before{content:"“"!important;font-size:38px!important;line-height:0!important;color:var(--blue-ink)!important;vertical-align:-8px!important;margin-right:4px!important}
+main.iserv-commerce .who{margin-top:auto!important;padding-top:18px!important;border-top:1px solid var(--line)!important;display:flex!important;align-items:center!important;gap:13px!important}
+main.iserv-commerce .avatar{width:40px!important;height:40px!important;border-radius:11px!important;flex:none!important;display:grid!important;place-items:center!important;font-family:var(--mono)!important;font-size:13px!important;color:var(--blue-ink)!important;border:1px solid rgba(var(--c-blue),.3)!important;background:rgba(var(--c-blue),.1)!important}
+main.iserv-commerce .who b{display:block!important;font-size:14.5px!important;font-weight:650!important}
+main.iserv-commerce .who span{font-size:12.5px!important;color:var(--text-3)!important}
+
+/* ---------- faq - grouped accordion ---------- */
+main.iserv-commerce .faq-wrap{max-width:900px!important;margin-inline:auto!important;display:grid!important;gap:30px!important}
+main.iserv-commerce .faq-head{display:flex!important;align-items:center!important;gap:12px!important;font-family:var(--mono)!important;font-size:10.5px!important;letter-spacing:.24em!important;text-transform:uppercase!important;font-weight:600!important;color:var(--blue-ink)!important;margin-bottom:4px!important}
+main.iserv-commerce .faq-head span{font-size:9.5px!important;padding:2px 7px!important;border-radius:5px!important;border:1px solid var(--line-2)!important;color:var(--text-3)!important}
+main.iserv-commerce .faq-head::after{content:""!important;flex:1!important;height:1px!important;background:var(--line)!important}
+main.iserv-commerce .faq{max-width:860px!important;margin-inline:auto!important;border-top:1px solid var(--line)!important}
+main.iserv-commerce .q{border-bottom:1px solid var(--line)!important}
+main.iserv-commerce .q-btn{width:100%!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:20px!important;text-align:left!important;padding:18px 4px!important;font-size:16.5px!important;font-weight:650!important;letter-spacing:-.02em!important;transition:color .25s!important}
+main.iserv-commerce .q-btn:hover{color:var(--blue-ink)!important}
+main.iserv-commerce .q-ico{width:26px!important;height:26px!important;flex:none!important;border-radius:8px!important;border:1px solid var(--line-2)!important;display:grid!important;place-items:center!important;position:relative!important;transition:.3s var(--ease)!important}
+main.iserv-commerce .q-ico::before,main.iserv-commerce .q-ico::after{content:""!important;position:absolute!important;background:var(--text-2)!important;transition:.3s var(--ease)!important}
+main.iserv-commerce .q-ico::before{width:11px!important;height:1.5px!important}
+main.iserv-commerce .q-ico::after{width:1.5px!important;height:11px!important}
+main.iserv-commerce .q[open] .q-ico,main.iserv-commerce .q.open .q-ico{background:rgba(var(--c-blue),.16)!important;border-color:rgba(var(--c-blue),.5)!important;transform:rotate(180deg)}
+main.iserv-commerce .q.open .q-ico::after{transform:scaleY(0)}
+main.iserv-commerce .q-body{max-height:0;overflow:hidden!important;transition:max-height .4s var(--ease)!important}
+main.iserv-commerce .q-body p{padding:0 54px 20px 4px!important;color:var(--text-2)!important;font-size:15px!important}
+
+/* ---------- final call to action ---------- */
+main.iserv-commerce .cta{position:relative!important;overflow:hidden!important;text-align:center!important;border-top:1px solid var(--line)!important}
+main.iserv-commerce .cta::before{content:""!important;position:absolute!important;left:50%!important;top:-40%!important;width:1200px!important;height:900px!important;transform:translateX(-50%);background:radial-gradient(45% 45% at 50% 50%,var(--glow),transparent 70%)!important;animation:drift 16s ease-in-out infinite alternate!important}
+main.iserv-commerce .cta::after{content:""!important;position:absolute!important;inset:0!important;background-image:linear-gradient(rgba(var(--c-fg),.05) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--c-fg),.05) 1px,transparent 1px)!important;background-size:52px 52px!important;-webkit-mask-image:radial-gradient(60% 60% at 50% 50%,#000,transparent 75%)!important;mask-image:radial-gradient(60% 60% at 50% 50%,#000,transparent 75%)!important}
+@keyframes drift{from{transform:translateX(-56%) scale(1)}to{transform:translateX(-44%) scale(1.14)}}
+main.iserv-commerce .cta-in{position:relative!important;z-index:2!important}
+main.iserv-commerce .cta h2{font-size:clamp(32px,5vw,58px)!important}
+main.iserv-commerce .cta .lede{margin-inline:auto!important;text-align:center!important}
+main.iserv-commerce .cta .btn-row{justify-content:center!important}
+main.iserv-commerce .cta-meta{margin-top:20px!important;font-family:var(--mono)!important;font-size:10.5px!important;letter-spacing:.2em!important;text-transform:uppercase!important;color:var(--text-3)!important}
+
+/* ---------- theme switch ---------- */
+main.iserv-commerce .theme-switch{position:fixed!important;right:20px!important;top:20px!important;z-index:80!important;padding:6px!important;border-radius:999px!important;border:1px solid var(--line-2)!important;background:rgba(var(--c-bg),.72)!important;backdrop-filter:blur(14px)!important;box-shadow:var(--shadow)!important;transition:border-color .25s var(--ease),transform .25s var(--ease)!important}
+main.iserv-commerce .theme-switch:hover{border-color:rgba(var(--c-blue),.55)!important;transform:translateY(-2px)}
+main.iserv-commerce .ts-track{position:relative!important;display:flex!important;width:64px!important;height:28px!important;border-radius:999px!important;background:rgba(var(--c-fg),.08)!important}
+main.iserv-commerce .ts-knob{position:absolute!important;top:2px!important;left:2px!important;width:24px!important;height:24px!important;border-radius:50%!important;background:var(--blue)!important;box-shadow:0 2px 8px rgba(0,0,0,.35)!important;transition:transform .34s var(--ease)!important}
+main.iserv-commerce[data-theme="light"] .ts-knob{transform:translateX(36px)}
+main.iserv-commerce .ts-ico{position:relative!important;z-index:1!important;flex:1!important;display:grid!important;place-items:center!important;color:var(--text-3)!important;transition:color .3s var(--ease)!important}
+main.iserv-commerce .ts-ico svg{width:14px!important;height:14px!important}
+main.iserv-commerce[data-theme="dark"] .ts-moon{color:#fff!important}
+main.iserv-commerce[data-theme="light"] .ts-sun{color:#fff!important}
+main.iserv-commerce.theming *,main.iserv-commerce.theming *::before,main.iserv-commerce.theming *::after{transition:background-color .3s ease,color .3s ease,border-color .3s ease,box-shadow .3s ease!important}
+
+/* ---------- light theme corrections ---------- */
+main.iserv-commerce[data-theme="light"] .aud,main.iserv-commerce[data-theme="light"] .smart,main.iserv-commerce[data-theme="light"] .adv,main.iserv-commerce[data-theme="light"] .ind,main.iserv-commerce[data-theme="light"] .quote,main.iserv-commerce[data-theme="light"] .cmp-col{box-shadow:var(--card-shadow)!important}
+main.iserv-commerce[data-theme="light"] .smart-glow{opacity:.28!important}
+main.iserv-commerce[data-theme="light"] .smart:hover .smart-glow{opacity:.5!important}
+main.iserv-commerce[data-theme="light"] .node{box-shadow:0 8px 20px -12px rgba(0,0,0,.28)!important}
+main.iserv-commerce[data-theme="light"] .hero::after,main.iserv-commerce[data-theme="light"] .cta::after,main.iserv-commerce[data-theme="light"] .stage::before{opacity:.9!important}
+
+main.iserv-commerce[data-theme="light"] .node{box-shadow:0 10px 22px -12px rgba(0,0,0,.3),0 0 0 1px rgba(var(--c-fg),.04)!important}
+main.iserv-commerce[data-theme="light"] .mesh::before{background:radial-gradient(50% 50% at 50% 50%,rgba(var(--c-blue),.16),transparent 70%)!important}
+main.iserv-commerce[data-theme="light"] .mesh::after{background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.2),transparent 72%)!important}
+main.iserv-commerce[data-theme="light"] .sec--alt::before,main.iserv-commerce[data-theme="light"] .sec--tint::before{opacity:.75!important}
+
+main.iserv-commerce[data-theme="light"] .node{background:linear-gradient(180deg,rgba(var(--c-bg),.94),rgba(var(--c-bg),.99))!important;box-shadow:0 14px 26px -14px rgba(0,0,0,.3),0 3px 8px -5px rgba(0,0,0,.18),
+             0 0 18px -8px rgba(var(--c-blue),.3),inset 0 1px 0 rgba(255,255,255,.6)!important}
+main.iserv-commerce[data-theme="light"] .modal::backdrop{background:rgba(0,0,0,.4)!important}
+main.iserv-commerce[data-theme="light"] .modal-card{box-shadow:0 40px 80px -30px rgba(0,0,0,.32),0 0 50px -26px rgba(var(--c-blue),.35)!important}
+main.iserv-commerce[data-theme="light"] .field input,main.iserv-commerce[data-theme="light"] .field textarea{background:rgba(var(--c-fg),.03)!important}
+
+main.iserv-commerce[data-theme="light"] .cart{filter:drop-shadow(0 22px 28px rgba(0,0,0,.22))!important}
+
+/* ---------- scroll reveal ---------- */
+main.iserv-commerce [data-reveal]{opacity:0!important;transform:translateY(20px)}
+main.iserv-commerce [data-reveal].in{opacity:1!important;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)!important;transition-delay:var(--d,0ms)!important}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  main.iserv-commerce .hero-grid{grid-template-columns:1fr!important;gap:48px!important}
+  main.iserv-commerce .mesh{max-width:520px!important}
+  main.iserv-commerce .smart-grid,main.iserv-commerce .ind-grid{grid-template-columns:repeat(2,1fr)!important}
+  main.iserv-commerce .aud-grid{grid-template-columns:repeat(2,1fr)!important}
+  main.iserv-commerce .adv-grid{grid-template-columns:repeat(2,1fr)!important}
+  main.iserv-commerce .quote-grid{grid-template-columns:1fr!important}
+  main.iserv-commerce .viz{grid-template-columns:1fr!important}
+  main.iserv-commerce .flow{grid-template-columns:repeat(2,1fr)!important}
+  main.iserv-commerce .step::after{display:none!important}
+  main.iserv-commerce .stat-grid{grid-template-columns:repeat(3,1fr)!important;gap:26px 12px!important}
+  main.iserv-commerce .stat+.stat::before{display:none!important}
+}
+@media (max-width:860px){
+  main.iserv-commerce .cmp{grid-template-columns:1fr!important}
+  main.iserv-commerce .stack-tabs{grid-template-columns:repeat(2,1fr)!important}
+  main.iserv-commerce .stack-tab:nth-child(2n){border-right:0!important}
+  main.iserv-commerce .stack-tab:nth-child(-n+2){border-bottom:1px solid var(--line)!important}
+}
+@media (max-width:620px){
+  main.iserv-commerce .wrap{width:calc(100% - 32px)!important}
+  main.iserv-commerce .smart-grid,main.iserv-commerce .ind-grid,main.iserv-commerce .aud-grid,main.iserv-commerce .adv-grid,main.iserv-commerce .flow{grid-template-columns:1fr!important}
+  main.iserv-commerce .stat-grid{grid-template-columns:repeat(2,1fr)!important}
+  main.iserv-commerce .node{font-size:9px!important;padding:7px 9px!important;gap:6px!important}
+  main.iserv-commerce .node svg{width:12px!important;height:12px!important}
+  main.iserv-commerce .btn{width:100%!important;justify-content:center!important}
+  main.iserv-commerce .btn-row{gap:10px!important}
+  main.iserv-commerce .stage-bar{gap:6px!important;padding:8px!important}
+  main.iserv-commerce .tool{padding:6px 9px!important;font-size:9px!important}
+  main.iserv-commerce .zoom{width:100%!important;margin-left:0!important;justify-content:space-between!important}
+  main.iserv-commerce .q-body p{padding-right:10px!important}
+  main.iserv-commerce .stack-tabs{grid-template-columns:1fr!important}
+  main.iserv-commerce .stack-tab{border-right:0!important;border-bottom:1px solid var(--line)!important}
+  main.iserv-commerce .stack-panel{grid-template-columns:1fr!important;padding:20px!important;gap:18px!important}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  main.iserv-commerce *,main.iserv-commerce *::before,main.iserv-commerce *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  main.iserv-commerce [data-reveal]{opacity:1!important;transform:none}
+}
+@media (max-width:620px){main.iserv-commerce .modal{padding:12px!important}
+main.iserv-commerce .modal-card{padding:22px 18px 20px!important}
+main.iserv-commerce .modal-form{grid-template-columns:1fr!important}}
+@media (max-width:620px){main.iserv-commerce .hero{padding-top:74px!important}
+main.iserv-commerce .to-top{right:14px!important;bottom:14px!important;width:40px!important;height:40px!important}}
+
+</style>
+</head>
+<body>
+
+<main class="iserv-commerce" id="top" data-theme="dark">
+
+<!-- ===== inline icon sprite (stroke set, 24px grid) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-catalogue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3.5h2.8l2.4 11.1a1.8 1.8 0 0 0 1.8 1.4h7.7a1.8 1.8 0 0 0 1.8-1.4L21 7.4H6.2"/></symbol>
+  <symbol id="i-orders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4" width="15" height="17" rx="2.2"/><path d="M9 4V2.8h6V4"/><path d="M8.5 10.5h7M8.5 14.5h4.5"/></symbol>
+  <symbol id="i-inventory" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="13" width="8" height="8" rx="1.4"/><rect x="13.5" y="13" width="8" height="8" rx="1.4"/><rect x="8" y="3" width="8" height="8" rx="1.4"/></symbol>
+  <symbol id="i-account" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.2"/><circle cx="8" cy="11" r="2"/><path d="M14 10.5h5M14 14h5M5 16.2c.9-1.7 5.1-1.7 6 0"/></symbol>
+  <symbol id="i-profile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.8 20.2c1.4-4.2 13-4.2 14.4 0"/></symbol>
+  <symbol id="i-roles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6 20 6.1v5.8c0 5-3.5 8.4-8 9.5-4.5-1.1-8-4.5-8-9.5V6.1z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.2"/><path d="m3.4 7.2 8.6 5.7 8.6-5.7"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.2"/><circle cx="8.6" cy="9.4" r="1.6"/><path d="m4.2 17.4 4.8-4.8 4 4 3-2.4 3.8 3.2"/></symbol>
+  <symbol id="i-2d" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.8 4h18.4M2.8 20h18.4M5 4v2.5M19 4v2.5M5 17.5V20M19 17.5V20"/><rect x="6" y="8" width="12" height="8" rx="1.4"/></symbol>
+  <symbol id="i-3d" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 20.5 7.4v9.2L12 21.2 3.5 16.6V7.4z"/><path d="M3.5 7.4 12 12l8.5-4.6M12 12v9.2"/></symbol>
+  <symbol id="i-erp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><circle cx="4.2" cy="5" r="1.9"/><circle cx="19.8" cy="5" r="1.9"/><circle cx="4.2" cy="19" r="1.9"/><circle cx="19.8" cy="19" r="1.9"/><path d="m5.7 6.5 3.9 3.4M18.3 6.5l-3.9 3.4M5.7 17.5l3.9-3.4M18.3 17.5l-3.9-3.4"/></symbol>
+  <symbol id="i-price" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.8V4.6a1.1 1.1 0 0 1 1.1-1.1h6.2c.5 0 1 .2 1.4.6l8 8a2 2 0 0 1 0 2.8l-5 5a2 2 0 0 1-2.8 0l-8-8a2 2 0 0 1-.9-1.1z"/><circle cx="8" cy="8" r="1.3"/></symbol>
+  <symbol id="i-portal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9 5.2 4.5h13.6L20.5 9"/><path d="M4.5 9v10.5h15V9"/><path d="M3.5 9a2.4 2.4 0 0 0 4.2 1.7A2.4 2.4 0 0 0 12 10.7a2.4 2.4 0 0 0 4.3 0A2.4 2.4 0 0 0 20.5 9"/><path d="M9.8 19.5v-5h4.4v5"/></symbol>
+  <symbol id="i-track" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6.5" width="11" height="9.5" rx="1.4"/><path d="M13.5 10h3.9l3.1 3.1V16h-7z"/><circle cx="7" cy="18.4" r="1.7"/><circle cx="17.4" cy="18.4" r="1.7"/></symbol>
+  <symbol id="i-analytics" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20.5h18"/><path d="M6 20.5v-8M11 20.5V6M16 20.5v-5M21 20.5V9.5"/></symbol>
+  <symbol id="i-ai" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.8 11.7 8 17 9.7 11.7 11.4 10 16.6 8.3 11.4 3 9.7 8.3 8z"/><path d="m17.8 15 .8 2.5 2.5.8-2.5.8-.8 2.5-.8-2.5-2.5-.8 2.5-.8z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m16.2 16.2 4.6 4.6"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.4 2.5 4.8 13.6h6L10 21.5l8.8-11.3h-6.1z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.2"/><path d="M8 10V7.2a4 4 0 0 1 8 0V10"/><circle cx="12" cy="15.4" r="1.3"/></symbol>
+  <symbol id="i-api" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.4 5 3.8 12l4.6 7M15.6 5l4.6 7-4.6 7M13.6 4 10.4 20"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5V4h5.5M20 9.5V4h-5.5M4 14.5V20h5.5M20 14.5V20h-5.5"/></symbol>
+  <symbol id="i-factory" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20.5V10l6 3.6V10l6 3.6V4.5h6v16z"/><path d="M8 20.5v-3.4M14 20.5v-3.4"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.3"/><path d="M12 2.6v3M12 18.4v3M2.6 12h3M18.4 12h3M5.4 5.4l2.1 2.1M16.5 16.5l2.1 2.1M18.6 5.4l-2.1 2.1M7.5 16.5l-2.1 2.1"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5v-3.2l2-5.3h14l2 5.3v3.2z"/><path d="M3 16.5h18"/><circle cx="7.6" cy="16.8" r="1.7"/><circle cx="16.4" cy="16.8" r="1.7"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></symbol>
+  <symbol id="i-medical" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.4 3h5.2v6.4H21v5.2h-6.4V21H9.4v-6.4H3V9.4h6.4z"/></symbol>
+  <symbol id="i-heavy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6 20 7v10l-8 4.4L4 17V7z"/><circle cx="12" cy="12" r="3.4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"/><path d="M2.6 19.4c1.2-4 11.6-4 12.8 0"/><path d="M16.4 5.2a3.3 3.3 0 0 1 0 5.6M17.6 13.4c2 .6 3.4 1.8 3.8 3.2"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6.2 5.6 12 5.6 21.5 12 21.5 12 17.8 18.4 12 18.4 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.9"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.6 4.9 4.9L19.6 7.3"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 3 2.7 5.7 6.3.8-4.6 4.3 1.2 6.2L12 17.1 6.4 20l1.2-6.2L3 9.5l6.3-.8z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.8 6.2 18.6 12l-5.8 5.8"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.8v5.6l3.6 2.1"/></symbol>
+</svg>
+
+<!-- ===== theme switch (dark is the default) ===== -->
+<button class="theme-switch" id="themeSwitch" type="button" role="switch" aria-checked="true"
+        aria-label="Dark theme. Activate to switch to light theme.">
+  <span class="ts-track" aria-hidden="true">
+    <span class="ts-knob"></span>
+    <span class="ts-ico ts-moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.6 8.6 0 1 0 10.7 10.7z"/></svg></span>
+    <span class="ts-ico ts-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6"/></svg></span>
+  </span>
+</button>
+
+<!-- ===== hero ===== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow eyebrow--blue">AI-Powered B2B eCommerce</p>
+      <h1>A storefront that<span class="l2">thinks in part numbers.</span></h1>
+      <p class="hero-sub">iSERV eCommerce turns spare parts and aftermarket sales into a self-serve channel your customers actually want to use — with <b>live ERP pricing</b>, <b>real stock</b>, and <b>3D catalogues</b> that make the right part obvious the first time.</p>
+      <p class="hero-note">Built for manufacturers, OEMs, distributors, dealers and aftermarket service teams selling complex, configurable products.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#demo" data-demo>Schedule a demo <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#capabilities">Explore the platform</a>
+      </div>
+      <ul class="trust">
+        <li><svg aria-hidden="true"><use href="#i-erp"/></svg>SAP · Oracle · Dynamics · Infor</li>
+        <li><svg aria-hidden="true"><use href="#i-clock"/></svg>Live in 6–10 weeks</li>
+      </ul>
+    </div>
+
+    <!-- SIGNATURE: the commerce mesh — every system that has to agree before a part can ship -->
+    <!-- Asset note: this is CSS/SVG-native by design. If you swap in imagery, use a 1240×1120 WebP of the buyer portal. -->
+    <div class="mesh" role="img" aria-label="Illustration: a parts trolley loaded with gears, a bearing, a cylinder and a spring, annotated with live catalogue, ERP, pricing, 3D model and order tracking labels.">
+        <svg class="cart" viewBox="0 0 620 560" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <defs>
+        <linearGradient id="mtl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgb(var(--c-blue))" stop-opacity=".55"/><stop offset=".55" stop-color="rgb(var(--c-blue))" stop-opacity=".18"/><stop offset="1" stop-color="rgb(var(--c-blue))" stop-opacity=".06"/></linearGradient>
+        <linearGradient id="mtl2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="rgb(var(--c-blue))" stop-opacity=".42"/><stop offset="1" stop-color="rgb(var(--c-blue))" stop-opacity=".08"/></linearGradient>
+        <linearGradient id="red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgb(var(--c-red))" stop-opacity=".95"/><stop offset="1" stop-color="rgb(var(--c-red))" stop-opacity=".55"/></linearGradient>
+        <linearGradient id="floor" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="rgb(var(--c-blue))" stop-opacity="0"/><stop offset=".5" stop-color="rgb(var(--c-blue))" stop-opacity=".5"/><stop offset="1" stop-color="rgb(var(--c-blue))" stop-opacity="0"/></linearGradient>
+        <filter id="bok" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="13"/></filter>
+        <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3.5"/></filter>
+        </defs>
+        <g filter="url(#bok)" opacity=".55">
+        <circle cx="78" cy="92" r="34" fill="rgb(var(--c-blue))" opacity="0.3"/>
+        <circle cx="168" cy="54" r="20" fill="rgb(var(--c-blue))" opacity="0.22"/>
+        <circle cx="536" cy="106" r="40" fill="rgb(var(--c-blue))" opacity="0.26"/>
+        <circle cx="470" cy="44" r="18" fill="rgb(var(--c-red))" opacity="0.3"/>
+        <circle cx="596" cy="232" r="26" fill="rgb(var(--c-blue))" opacity="0.18"/>
+        <circle cx="44" cy="250" r="22" fill="rgb(var(--c-blue))" opacity="0.16"/>
+        <circle cx="562" cy="402" r="30" fill="rgb(var(--c-blue))" opacity="0.16"/>
+        <circle cx="58" cy="430" r="26" fill="rgb(var(--c-red))" opacity="0.16"/>
+        <circle cx="300" cy="40" r="26" fill="rgb(var(--c-blue))" opacity="0.14"/>
+        <circle cx="390" cy="470" r="22" fill="rgb(var(--c-blue))" opacity="0.14"/>
+        </g>
+        <ellipse cx="305" cy="497" rx="196" ry="15" fill="rgb(var(--c-blue))" opacity=".12"/>
+        <rect x="86" y="494" width="448" height="2" fill="url(#floor)"/>
+        <g fill="none" stroke="rgb(var(--c-blue))" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M168 252a132 30 0 0 1 264 0" opacity=".55"/>
+        </g>
+        <g class="cart-parts">
+        <g transform="translate(0,0)">
+        <path d="M293.0 196.0 L292.9 199.1 L304.7 202.0 L303.3 209.8 L291.3 208.4 L290.3 211.4 L289.1 214.3 L299.2 221.0 L295.3 227.9 L284.4 222.5 L282.5 224.9 L280.4 227.3 L287.6 237.0 L281.5 242.1 L273.2 233.3 L270.5 235.0 L267.7 236.4 L271.2 248.1 L263.7 250.8 L258.9 239.7 L255.8 240.3 L252.7 240.8 L252.0 252.9 L244.0 252.9 L243.3 240.8 L240.2 240.3 L237.1 239.7 L232.3 250.8 L224.8 248.1 L228.3 236.4 L225.5 235.0 L222.8 233.3 L214.5 242.1 L208.4 237.0 L215.6 227.3 L213.5 224.9 L211.6 222.5 L200.7 227.9 L196.8 221.0 L206.9 214.3 L205.7 211.4 L204.7 208.4 L192.7 209.8 L191.3 202.0 L203.1 199.1 L203.0 196.0 L203.1 192.9 L191.3 190.0 L192.7 182.2 L204.7 183.6 L205.7 180.6 L206.9 177.7 L196.8 171.0 L200.7 164.1 L211.6 169.5 L213.5 167.1 L215.6 164.7 L208.4 155.0 L214.5 149.9 L222.8 158.7 L225.5 157.0 L228.3 155.6 L224.8 143.9 L232.3 141.2 L237.1 152.3 L240.2 151.7 L243.3 151.2 L244.0 139.1 L252.0 139.1 L252.7 151.2 L255.8 151.7 L258.9 152.3 L263.7 141.2 L271.2 143.9 L267.7 155.6 L270.5 157.0 L273.2 158.7 L281.5 149.9 L287.6 155.0 L280.4 164.7 L282.5 167.1 L284.4 169.5 L295.3 164.1 L299.2 171.0 L289.1 177.7 L290.3 180.6 L291.3 183.6 L303.3 182.2 L304.7 190.0 L292.9 192.9 Z" fill="url(#mtl)" stroke="rgb(var(--c-blue))" stroke-width="2.4" stroke-linejoin="round"/>
+        <circle cx="248" cy="196" r="27" fill="none" stroke="rgb(var(--c-blue))" stroke-width="2.2" opacity=".85"/>
+        <circle cx="248" cy="196" r="12" fill="none" stroke="rgb(var(--c-blue))" stroke-width="2.2" opacity=".7"/>
+        <line x1="260.4" y1="199.8" x2="272.8" y2="203.7" stroke="rgb(var(--c-blue))" stroke-width="1.8" opacity=".5"/>
+        <line x1="248.2" y1="209.0" x2="248.4" y2="222.0" stroke="rgb(var(--c-blue))" stroke-width="1.8" opacity=".5"/>
+        <line x1="235.7" y1="200.2" x2="223.4" y2="204.4" stroke="rgb(var(--c-blue))" stroke-width="1.8" opacity=".5"/>
+        <line x1="240.2" y1="185.6" x2="232.4" y2="175.2" stroke="rgb(var(--c-blue))" stroke-width="1.8" opacity=".5"/>
+        <line x1="255.5" y1="185.4" x2="263.0" y2="174.8" stroke="rgb(var(--c-blue))" stroke-width="1.8" opacity=".5"/>
+        </g>
+        <path d="M380.2 179.4 L379.4 182.4 L387.3 186.9 L384.0 193.9 L375.5 190.6 L373.7 193.1 L371.7 195.4 L376.9 202.9 L370.8 207.8 L364.6 201.1 L361.9 202.6 L359.1 203.8 L360.5 212.8 L353.0 214.6 L350.2 205.8 L347.1 206.0 L344.1 205.9 L341.4 214.6 L333.9 213.0 L335.2 203.9 L332.4 202.7 L329.7 201.3 L323.5 208.0 L317.4 203.2 L322.5 195.6 L320.5 193.3 L318.7 190.9 L310.2 194.2 L306.8 187.3 L314.7 182.6 L313.9 179.7 L313.3 176.7 L304.2 176.0 L304.2 168.3 L313.3 167.6 L313.8 164.6 L314.6 161.6 L306.7 157.1 L310.0 150.1 L318.5 153.4 L320.3 150.9 L322.3 148.6 L317.1 141.1 L323.2 136.2 L329.4 142.9 L332.1 141.4 L334.9 140.2 L333.5 131.2 L341.0 129.4 L343.8 138.2 L346.9 138.0 L349.9 138.1 L352.6 129.4 L360.1 131.0 L358.8 140.1 L361.6 141.3 L364.3 142.7 L370.5 136.0 L376.6 140.8 L371.5 148.4 L373.5 150.7 L375.3 153.1 L383.8 149.8 L387.2 156.7 L379.3 161.4 L380.1 164.3 L380.7 167.3 L389.8 168.0 L389.8 175.7 L380.7 176.4 Z" fill="url(#mtl2)" stroke="rgb(var(--c-blue))" stroke-width="2.2" stroke-linejoin="round"/>
+        <circle cx="347" cy="172" r="17" fill="none" stroke="rgb(var(--c-red))" stroke-width="2.2" opacity=".9"/>
+        <circle cx="347" cy="172" r="6.5" fill="rgb(var(--c-red))" opacity=".85"/>
+        <path d="M326.1 242.5 L324.7 244.6 L329.5 249.9 L325.1 254.6 L319.6 250.1 L317.5 251.5 L315.3 252.7 L316.8 259.7 L310.6 261.5 L308.1 254.8 L305.6 255.0 L303.1 254.9 L300.9 261.7 L294.6 260.2 L295.8 253.1 L293.5 252.1 L291.4 250.7 L286.1 255.5 L281.4 251.1 L285.9 245.6 L284.5 243.5 L283.3 241.3 L276.3 242.8 L274.5 236.6 L281.2 234.1 L281.0 231.6 L281.1 229.1 L274.3 226.9 L275.8 220.6 L282.9 221.8 L283.9 219.5 L285.3 217.4 L280.5 212.1 L284.9 207.4 L290.4 211.9 L292.5 210.5 L294.7 209.3 L293.2 202.3 L299.4 200.5 L301.9 207.2 L304.4 207.0 L306.9 207.1 L309.1 200.3 L315.4 201.8 L314.2 208.9 L316.5 209.9 L318.6 211.3 L323.9 206.5 L328.6 210.9 L324.1 216.4 L325.5 218.5 L326.7 220.7 L333.7 219.2 L335.5 225.4 L328.8 227.9 L329.0 230.4 L328.9 232.9 L335.7 235.1 L334.2 241.4 L327.1 240.2 Z" fill="url(#mtl2)" stroke="rgb(var(--c-blue))" stroke-width="2" stroke-linejoin="round" opacity=".9"/>
+        <circle cx="305" cy="231" r="9" fill="none" stroke="rgb(var(--c-blue))" stroke-width="2" opacity=".7"/>
+        <g transform="rotate(-14 408 206)">
+        <circle cx="408" cy="206" r="39" fill="url(#mtl)" stroke="rgb(var(--c-blue))" stroke-width="2.4"/>
+        <circle cx="408" cy="206" r="30" fill="none" stroke="rgb(var(--c-blue))" stroke-width="1.8" opacity=".7"/>
+        <circle cx="408" cy="206" r="15" fill="none" stroke="rgb(var(--c-blue))" stroke-width="2.2" opacity=".85"/>
+        <g fill="none" stroke="rgb(var(--c-blue))" stroke-width="1.7" opacity=".8"><circle cx="430.5" cy="206.0" r="5.4"/><circle cx="425.2" cy="220.5" r="5.4"/><circle cx="411.9" cy="228.2" r="5.4"/><circle cx="396.8" cy="225.5" r="5.4"/><circle cx="386.9" cy="213.7" r="5.4"/><circle cx="386.9" cy="198.3" r="5.4"/><circle cx="396.8" cy="186.5" r="5.4"/><circle cx="411.9" cy="183.8" r="5.4"/><circle cx="425.2" cy="191.5" r="5.4"/></g>
+        </g>
+        <g transform="rotate(-13 196 212)">
+        <rect x="168" y="176" width="57" height="80" rx="9" fill="url(#mtl)" stroke="rgb(var(--c-blue))" stroke-width="2.4"/>
+        <line x1="173" y1="192" x2="220" y2="192" stroke="rgb(var(--c-blue))" stroke-width="1.7" opacity=".6"/>
+        <line x1="173" y1="205" x2="220" y2="205" stroke="rgb(var(--c-blue))" stroke-width="1.7" opacity=".6"/>
+        <line x1="173" y1="218" x2="220" y2="218" stroke="rgb(var(--c-blue))" stroke-width="1.7" opacity=".6"/>
+        <rect x="185" y="246" width="23" height="26" rx="4" fill="none" stroke="rgb(var(--c-blue))" stroke-width="2" opacity=".8"/>
+        </g>
+        <path d="M452 250c14-10 30-2 16 10s2 20 16 10s30-2 16 10" fill="none" stroke="rgb(var(--c-blue))" stroke-width="2.4" stroke-linecap="round" opacity=".75"/>
+        </g>
+        <g fill="none" stroke="rgb(var(--c-blue))" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M168 252 200 372 400 372 432 252" fill="url(#mtl)" fill-opacity=".55" stroke-width="3"/>
+        <path d="M168 252a132 30 0 0 0 264 0" stroke-width="3"/>
+        <line x1="192.0" y1="256" x2="218.2" y2="370" stroke-width="1.7" opacity=".62"/>
+        <line x1="216.0" y1="256" x2="236.4" y2="370" stroke-width="1.7" opacity=".62"/>
+        <line x1="240.0" y1="256" x2="254.5" y2="370" stroke-width="1.7" opacity=".62"/>
+        <line x1="264.0" y1="256" x2="272.7" y2="370" stroke-width="1.7" opacity=".62"/>
+        <line x1="288.0" y1="256" x2="290.9" y2="370" stroke-width="1.7" opacity=".62"/>
+        <line x1="312.0" y1="256" x2="309.1" y2="370" stroke-width="1.7" opacity=".62"/>
+        <line x1="336.0" y1="256" x2="327.3" y2="370" stroke-width="1.7" opacity=".62"/>
+        <line x1="360.0" y1="256" x2="345.5" y2="370" stroke-width="1.7" opacity=".62"/>
+        <line x1="384.0" y1="256" x2="363.6" y2="370" stroke-width="1.7" opacity=".62"/>
+        <line x1="408.0" y1="256" x2="381.8" y2="370" stroke-width="1.7" opacity=".62"/>
+        <line x1="176.5" y1="286" x2="423.5" y2="286" stroke-width="1.9" opacity=".72"/>
+        <line x1="184.5" y1="318" x2="415.5" y2="318" stroke-width="1.9" opacity=".72"/>
+        <line x1="192.5" y1="350" x2="407.5" y2="350" stroke-width="1.9" opacity=".72"/>
+        <line x1="200" y1="372" x2="400" y2="372" stroke-width="3"/>
+        </g>
+        <path d="M197 300 289 294 293 356 201 361Z" fill="url(#red)" stroke="rgb(var(--c-red))" stroke-width="2.2" stroke-linejoin="round"/>
+        <line x1="206" y1="312" x2="278" y2="307" stroke="rgb(var(--c-bg))" stroke-width="2" opacity=".45"/>
+        <line x1="207" y1="326" x2="279" y2="321" stroke="rgb(var(--c-bg))" stroke-width="2" opacity=".3"/>
+        <path d="M432 250C500 238 530 202 521 152" fill="none" stroke="rgb(var(--c-blue))" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M424 258C494 246 522 208 513 158" fill="none" stroke="rgb(var(--c-blue))" stroke-width="1.6" stroke-linecap="round" opacity=".45"/>
+        <g transform="rotate(-16 517 143)">
+        <rect x="480" y="131" width="76" height="24" rx="12" fill="url(#red)" stroke="rgb(var(--c-red))" stroke-width="2.2"/>
+        <line x1="492" y1="139" x2="544" y2="139" stroke="rgb(var(--c-bg))" stroke-width="2" opacity=".4"/>
+        </g>
+        <g fill="none" stroke="rgb(var(--c-blue))" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M204 372 218 452M396 372 384 452M212 452 390 452"/>
+        <path d="M236 372 246 452M368 372 358 452" stroke-width="1.8" opacity=".45"/>
+        <path d="M224 452v10M382 452v10"/>
+        </g>
+        <g><circle cx="224" cy="477" r="16" fill="url(#mtl2)" stroke="rgb(var(--c-blue))" stroke-width="2.6"/><circle cx="224" cy="477" r="6" fill="none" stroke="rgb(var(--c-blue))" stroke-width="2" opacity=".8"/></g>
+        <g><circle cx="382" cy="477" r="16" fill="url(#mtl2)" stroke="rgb(var(--c-blue))" stroke-width="2.6"/><circle cx="382" cy="477" r="6" fill="none" stroke="rgb(var(--c-blue))" stroke-width="2" opacity=".8"/></g>
+        <g filter="url(#soft)" opacity=".5">
+        <path d="M176 258 206 366" stroke="rgb(var(--c-fg))" stroke-width="2.4" fill="none" opacity=".5"/>
+        <path d="M436 246C498 234 524 204 517 160" stroke="rgb(var(--c-fg))" stroke-width="1.8" fill="none" opacity=".4"/>
+        </g>
+        </svg>
+
+        <div class="node" style="left:13%;top:13%"><svg aria-hidden="true"><use href="#i-catalogue"/></svg>Catalogue</div>
+        <div class="node" style="left:87%;top:19%"><svg aria-hidden="true"><use href="#i-erp"/></svg>ERP synced</div>
+        <div class="node node--price" style="left:80%;top:47%">
+          <svg aria-hidden="true"><use href="#i-price"/></svg>$1240 in stock
+        </div>
+        <div class="node" style="left:12%;top:72%"><svg aria-hidden="true"><use href="#i-3d"/></svg>2D / 3D models</div>
+        <div class="node" style="left:84%;top:80%"><svg aria-hidden="true"><use href="#i-track"/></svg>Order tracking</div>
+      </div>
+  </div>
+</section>
+
+<!-- ===== stats ===== -->
+<section class="sec sec--tight stats">
+  <div class="wrap">
+    <div class="stat-grid">
+      <div class="stat" data-reveal><div class="stat-n" data-count="3.4" data-dec="1" data-suffix="&times;">3.4&times;</div><div class="stat-l">Faster order<br>processing</div></div>
+      <div class="stat" data-reveal style="--d:70ms"><div class="stat-n" data-count="99.4" data-dec="1" data-suffix="%">99.4%</div><div class="stat-l">Order accuracy<br>at entry</div></div>
+      <div class="stat" data-reveal style="--d:140ms"><div class="stat-n" data-count="250" data-suffix="+">250+</div><div class="stat-l">Enterprise dealer<br>networks served</div></div>
+      <div class="stat" data-reveal style="--d:210ms"><div class="stat-n" data-count="99.98" data-dec="2" data-suffix="%">99.98%</div><div class="stat-l">Platform<br>uptime</div></div>
+      <div class="stat" data-reveal style="--d:280ms"><div class="stat-n">Live</div><div class="stat-l">Inventory visibility<br>across all plants</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== business challenges ===== -->
+<section class="sec sec--alt" id="platform">
+  <div class="wrap">
+    <div class="head-center" data-reveal>
+      <p class="eyebrow">Built for your side of the supply chain</p>
+      <h2 class="h-sec">Generic webstores <span class="accent">break</span> on real parts.</h2>
+      <p class="lede">Consumer commerce assumes one price, one warehouse and one buyer. Industrial commerce assumes none of that. iSERV was built for contract pricing, superseded part numbers, multi-plant stock and the people who actually place the order.</p>
+    </div>
+    <div class="aud-grid">
+      <article class="aud" data-reveal>
+        <div class="aud-ico"><svg aria-hidden="true"><use href="#i-factory"/></svg></div>
+        <p class="aud-role">OEMs</p>
+        <h3>Aftermarket revenue is leaking</h3>
+        <p>Customers can't find the right part for a 12-year-old machine, so they buy a copy from someone else. Every lost order takes the service relationship with it.</p>
+        <p class="aud-fix"><svg aria-hidden="true"><use href="#i-check"/></svg><span>Serial-number-driven catalogues put the exact part in front of the right customer — and keep the spend on your channel.</span></p>
+      </article>
+      <article class="aud" data-reveal style="--d:80ms">
+        <div class="aud-ico"><svg aria-hidden="true"><use href="#i-track"/></svg></div>
+        <p class="aud-role">Distributors</p>
+        <h3>Quoting eats the margin</h3>
+        <p>Teams rekey enquiries into the ERP, chase stock by phone and quote from a spreadsheet that went stale last quarter. Speed decides the deal, and you're not fast.</p>
+        <p class="aud-fix"><svg aria-hidden="true"><use href="#i-check"/></svg><span>Live availability and rule-based pricing return a firm quote in seconds, with zero rekeying.</span></p>
+      </article>
+      <article class="aud" data-reveal style="--d:160ms">
+        <div class="aud-ico"><svg aria-hidden="true"><use href="#i-users"/></svg></div>
+        <p class="aud-role">Dealers</p>
+        <h3>Ordering still runs on email</h3>
+        <p>Dealers wait on your office hours, order the wrong revision, and can't see where their shipment is. Then they call — and someone spends the afternoon answering.</p>
+        <p class="aud-fix"><svg aria-hidden="true"><use href="#i-check"/></svg><span>A branded dealer portal with their contracted prices, credit limits and order history, open every hour of the week.</span></p>
+      </article>
+      <article class="aud" data-reveal style="--d:240ms">
+        <div class="aud-ico"><svg aria-hidden="true"><use href="#i-gear"/></svg></div>
+        <p class="aud-role">Service teams</p>
+        <h3>Downtime is measured in hours</h3>
+        <p>A technician on site needs one component now. Identifying it from a PDF exploded view and a paper BOM turns a two-hour fix into a two-day outage.</p>
+        <p class="aud-fix"><svg aria-hidden="true"><use href="#i-check"/></svg><span>Interactive 3D views on mobile: tap the component, see stock, order it before leaving the site.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== features ===== -->
+<section class="sec" id="capabilities">
+  <div class="wrap">
+    <div class="head-center" data-reveal>
+      <p class="eyebrow">The whole commerce stack</p>
+      <h2 class="h-sec">Sixteen modules,<br><span class="accent">four things to understand.</span></h2>
+      <p class="lede">They ship together, share one data model, and talk to your ERP from day one. Grouped here by the job they do.</p>
+    </div>
+    <div class="stack" data-reveal>
+      <div class="stack-tabs" role="tablist" aria-label="Capability groups"><button class="stack-tab" role="tab" id="stab-1" aria-controls="spanel-1" aria-selected="true" tabindex="0"><b>Catalogue &amp; content</b><small>What the buyer sees</small></button><button class="stack-tab" role="tab" id="stab-2" aria-controls="spanel-2" aria-selected="false" tabindex="-1"><b>Ordering</b><small>From cart to doorstep</small></button><button class="stack-tab" role="tab" id="stab-3" aria-controls="spanel-3" aria-selected="false" tabindex="-1"><b>Accounts &amp; access</b><small>Who can do what</small></button><button class="stack-tab" role="tab" id="stab-4" aria-controls="spanel-4" aria-selected="false" tabindex="-1"><b>Data &amp; systems</b><small>Where the truth lives</small></button></div>
+      <div class="stack-panel is-on" role="tabpanel" id="spanel-1" aria-labelledby="stab-1"><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-catalogue"/></svg></span><div><b>Product catalogues</b><p>Model hierarchies, machine-to-part links and supersessions, so buyers land on the current part.</p></div></article><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-image"/></svg></span><div><b>Image rendering</b><p>High-resolution photography with zoom and multi-angle sets to verify a part before ordering.</p></div></article><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-2d"/></svg></span><div><b>2D drawings</b><p>Dimensioned diagrams with clickable callouts mapped straight to purchasable line items.</p></div></article><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-3d"/></svg></span><div><b>3D models</b><p>Native CAD in the browser. Rotate, section and explode, then add the highlighted component.</p></div></article></div><div class="stack-panel" role="tabpanel" id="spanel-2" aria-labelledby="stab-2" hidden><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-cart"/></svg></span><div><b>Cart management</b><p>Saved carts, bulk part-number paste and CSV upload. A 200-line order takes a minute.</p></div></article><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-orders"/></svg></span><div><b>Order management</b><p>Approvals, partial shipments, back-orders and returns in one place.</p></div></article><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-track"/></svg></span><div><b>Order tracking</b><p>Carrier milestones tied to the order line, so service teams can plan a repair window.</p></div></article><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-mail"/></svg></span><div><b>Email notifications</b><p>Confirmed, shipped, invoiced, back-ordered — automatic updates cut the status calls.</p></div></article></div><div class="stack-panel" role="tabpanel" id="spanel-3" aria-labelledby="stab-3" hidden><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-account"/></svg></span><div><b>Customer accounts</b><p>Company accounts with credit terms, ship-to networks and contract scope.</p></div></article><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-profile"/></svg></span><div><b>User profiles</b><p>Buyers keep their machines, favourites and reorder history, so the second order is faster.</p></div></article><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-roles"/></svg></span><div><b>Roles &amp; permissions</b><p>Requisitioner, approver, admin — with spending limits and approval chains.</p></div></article><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-portal"/></svg></span><div><b>Dealer portal</b><p>Your brand, their terms. Dealers self-serve on quotes, claims and stock.</p></div></article></div><div class="stack-panel" role="tabpanel" id="spanel-4" aria-labelledby="stab-4" hidden><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-erp"/></svg></span><div><b>ERP integration</b><p>Bi-directional sync with SAP, Oracle, Dynamics and Infor across every object.</p></div></article><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-inventory"/></svg></span><div><b>Inventory status</b><p>ATP and CTP straight from the ERP, per plant and per warehouse.</p></div></article><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-price"/></svg></span><div><b>Pricing engine</b><p>Contract rates, volume breaks, currency and tax resolved per customer at request time.</p></div></article><article class="cap"><span class="cap-ico"><svg aria-hidden="true"><use href="#i-analytics"/></svg></span><div><b>Analytics dashboard</b><p>See what sells, who's slipping and which parts stall in the cart.</p></div></article></div>
+    </div>
+  </div>
+</section>
+<!-- ===== product visualization ===== -->
+<section class="sec sec--tint" id="visualization">
+  <div class="wrap viz">
+    <!-- SIGNATURE 2: a live, draggable assembly viewer — the thing a PDF catalogue can never do -->
+    <div data-reveal>
+      <div class="stage" id="stage">
+        <span class="stage-hint">Drag to rotate</span>
+        <div class="scene"><div class="rig spin" id="asm" aria-hidden="true"></div></div>
+        <div class="rig-annot">
+        <button class="hotspot" style="left:120px;top:164px" aria-label="Shoulder servo joint, part SJ-400"><span>Shoulder servo · SJ-400</span></button>
+        <button class="hotspot" style="left:90px;top:90px" aria-label="Elbow harmonic drive, part HD-2010"><span>Harmonic drive · HD-2010</span></button>
+        <button class="hotspot flip" style="left:136px;top:35px" aria-label="Gripper jaw set, 41 in stock"><span>Gripper jaw · 41 in stock</span></button>
+
+        </div>
+
+        <div class="stage-bar">
+          <button class="tool" id="tSpin" aria-pressed="true">Auto-rotate</button>
+          <button class="tool" id="tExplode" aria-pressed="false">Exploded view</button>
+          <button class="tool" id="tReset">Reset</button>
+          <label class="zoom">Zoom <input type="range" id="tZoom" min="70" max="150" value="100" aria-label="Zoom the model"></label>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal style="--d:120ms">
+      <p class="eyebrow">Product visualization</p>
+      <h2 class="h-sec">Let them see the part<br>before they buy it.</h2>
+      <p class="lede">Photography, dimensioned 2D drawings and interactive 3D models sit on the same product record. Buyers rotate an assembly, explode it, tap the component they need, and it drops into the cart with the right revision attached.</p>
+      <ul class="viz-list">
+        <li><span class="viz-num">01</span><div><b>Fewer wrong orders</b><p>When a buyer can see the component in context, ordering the neighbouring part number stops happening. Returns fall and so does the credit-note workload behind them.</p></div></li>
+        <li><span class="viz-num">02</span><div><b>Shorter buying decisions</b><p>No drawing request, no email thread, no waiting for an engineer to confirm. The visual answers the question at the moment it's asked.</p></div></li>
+        <li><span class="viz-num">03</span><div><b>Confidence that closes the sale</b><p>Interactive hotspots carry fitment, revision and live stock, so the buyer commits without a phone call to your sales desk.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== smart commerce ===== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="head-center" data-reveal>
+      <p class="eyebrow">Smart commerce</p>
+      <h2 class="h-sec">Four things that quietly<br>change the numbers.</h2>
+    </div>
+    <div class="smart-grid">
+      <article class="smart" data-reveal><span class="smart-glow"></span>
+        <div class="smart-ico"><svg aria-hidden="true"><use href="#i-search"/></svg></div>
+        <h3>AI-powered search</h3>
+        <p>Buyers search the way they talk — a machine serial, a half-remembered description, a competitor's code. The engine resolves it to your part and suggests what's usually ordered with it.</p>
+        <p class="smart-kpi">Cuts search abandonment</p>
+      </article>
+      <article class="smart" data-reveal style="--d:80ms"><span class="smart-glow"></span>
+        <div class="smart-ico"><svg aria-hidden="true"><use href="#i-eye"/></svg></div>
+        <h3>Real-time inventory</h3>
+        <p>Stock reads from the ERP at the moment of the request, across every plant and warehouse. Promise dates hold, and oversells stop being a monthly conversation.</p>
+        <p class="smart-kpi">Protects the promise date</p>
+      </article>
+      <article class="smart" data-reveal style="--d:160ms"><span class="smart-glow"></span>
+        <div class="smart-ico"><svg aria-hidden="true"><use href="#i-price"/></svg></div>
+        <h3>Personalized pricing</h3>
+        <p>Every account sees its own contracted rates, volume breaks, currency and tax — applied automatically. Margin policy is enforced by the platform, not by discipline.</p>
+        <p class="smart-kpi">Ends off-contract discounting</p>
+      </article>
+      <article class="smart r" data-reveal style="--d:240ms"><span class="smart-glow"></span>
+        <div class="smart-ico"><svg aria-hidden="true"><use href="#i-lock"/></svg></div>
+        <h3>Enterprise security</h3>
+        <p>SOC 2 Type II, SSO and role-based access, AES-256 encryption at rest and in transit, full audit trails and regional data residency. Procurement's questionnaire is already answered.</p>
+        <p class="smart-kpi">Passes security review</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== workflow ===== -->
+<section class="sec sec--alt" id="workflow">
+  <div class="wrap">
+    <div class="head-center" data-reveal>
+      <p class="eyebrow">End to end</p>
+      <h2 class="h-sec">From search to invoice,<br><span class="accent">without a rekey.</span></h2>
+      <p class="lede">Ten steps that used to touch six systems and four people. Now they run on one record and hand off automatically.</p>
+    </div>
+    <div class="flow" id="flow">
+      <div class="step"><span class="step-n">01</span><h4>Customer</h4><p>Signs in to an account that already knows their machines, terms and ship-to sites.</p></div>
+      <div class="step"><span class="step-n">02</span><h4>Product search</h4><p>Finds the part by serial, description or code — AI resolves the rest.</p></div>
+      <div class="step"><span class="step-n">03</span><h4>Configuration</h4><p>Confirms fitment in 2D or 3D, picks options, checks compatible revisions.</p></div>
+      <div class="step"><span class="step-n">04</span><h4>Quotation</h4><p>Contract pricing and lead times return instantly. Approvals route by rule.</p></div>
+      <div class="step"><span class="step-n">05</span><h4>Order placed</h4><p>The quote becomes an order with PO reference, no manual re-entry.</p></div>
+      <div class="step"><span class="step-n">06</span><h4>ERP posted</h4><p>The sales order lands in SAP, Oracle, Dynamics or Infor within seconds.</p></div>
+      <div class="step"><span class="step-n">07</span><h4>Inventory allocated</h4><p>Stock is committed at the right plant and the promise date is locked.</p></div>
+      <div class="step"><span class="step-n">08</span><h4>Shipping</h4><p>Pick, pack and carrier milestones flow back to the order line automatically.</p></div>
+      <div class="step"><span class="step-n">09</span><h4>Invoice</h4><p>Invoices and credit notes publish to the portal with payment status attached.</p></div>
+      <div class="step"><span class="step-n">10</span><h4>Support</h4><p>Claims, returns and service requests open against the original order record.</p></div>
+    </div>
+    <div class="flow-legend"><span>Customer-facing</span><span>Automated handoff</span><span>ERP system of record</span></div>
+  </div>
+</section>
+
+<!-- ===== why choose ===== -->
+<section class="sec sec--warm">
+  <div class="wrap">
+    <div class="head-center" data-reveal>
+      <p class="eyebrow ">Why iSERV eCommerce</p>
+      <h2 class="h-sec">The <span class="accent">unfair advantage</span></h2>
+      <p class="lede">Most commerce platforms were built for retail and bent into shape for industry. This one started in the plant.</p>
+    </div>
+    <div class="adv-grid">
+      <article class="adv" data-reveal>
+        <div class="adv-top"><span class="adv-ico"><svg aria-hidden="true"><use href="#i-factory"/></svg></span><h3>Built for manufacturing</h3></div>
+        <p>Superseded parts, serial-linked BOMs, multi-plant ATP and contract pricing are core objects here — not custom fields bolted onto a retail cart.</p>
+      </article>
+      <article class="adv" data-reveal style="--d:70ms">
+        <div class="adv-top"><span class="adv-ico"><svg aria-hidden="true"><use href="#i-api"/></svg></span><h3>Open APIs</h3></div>
+        <p>REST and webhooks across every object, with documented ERP connectors. Your integrators build what they need without waiting on our roadmap.</p>
+      </article>
+      <article class="adv" data-reveal style="--d:140ms">
+        <div class="adv-top"><span class="adv-ico"><svg aria-hidden="true"><use href="#i-ai"/></svg></span><h3>AI-powered automation</h3></div>
+        <p>Part identification, reorder prediction and quote drafting run in the background, so your team handles exceptions instead of data entry.</p>
+      </article>
+      <article class="adv" data-reveal style="--d:210ms">
+        <div class="adv-top"><span class="adv-ico"><svg aria-hidden="true"><use href="#i-bolt"/></svg></span><h3>Fast deployment</h3></div>
+        <p>A working storefront with live ERP data in 6–10 weeks. Catalogue enrichment and 3D content roll out afterwards, in parallel with real orders.</p>
+      </article>
+      <article class="adv" data-reveal style="--d:280ms">
+        <div class="adv-top"><span class="adv-ico"><svg aria-hidden="true"><use href="#i-roles"/></svg></span><h3>Enterprise-grade security</h3></div>
+        <p>SOC 2 Type II, SSO and SCIM, granular role permissions, immutable audit trails and data residency options that satisfy your legal team.</p>
+      </article>
+      <article class="adv" data-reveal style="--d:350ms">
+        <div class="adv-top"><span class="adv-ico"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><h3>Scalable architecture</h3></div>
+        <p>Cloud-native and horizontally scaled. Millions of SKUs, seasonal ordering peaks and new dealer regions add capacity, not a replatform.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== comparison ===== -->
+<section class="sec sec--tint">
+  <div class="wrap">
+    <div class="head-center" data-reveal>
+      <p class="eyebrow">Total cost of ownership</p>
+      <h2 class="h-sec">Stop paying for a platform<br>that fights your ERP.</h2>
+    </div>
+    <div class="cmp">
+      <div class="cmp-col" data-reveal>
+        <div class="cmp-head"><h3>Legacy B2B webstore</h3><span class="cmp-tag">Today</span></div>
+        <div class="cmp-row"><span>Implementation time</span><span class="cmp-val">9–18 months</span></div>
+        <div class="cmp-row"><span>Customization</span><span class="cmp-val">Vendor-dependent</span></div>
+        <div class="cmp-row"><span>ERP integration</span><span class="cmp-val">Custom middleware</span></div>
+        <div class="cmp-row"><span>Product visualization</span><span class="cmp-val">Static PDF diagrams</span></div>
+        <div class="cmp-row"><span>Inventory visibility</span><span class="cmp-val">Nightly batch</span></div>
+        <div class="cmp-row"><span>Automation</span><span class="cmp-val">Manual rekeying</span></div>
+        <div class="cmp-row"><span>Pricing</span><span class="cmp-val">Uploaded price lists</span></div>
+        <div class="cmp-row"><span>Security</span><span class="cmp-val">Add-on modules</span></div>
+        <div class="cmp-row"><span>Scalability</span><span class="cmp-val">Replatform to grow</span></div>
+        <div class="cmp-row"><span>Maintenance</span><span class="cmp-val">Agency retainer</span></div>
+        <div class="cmp-row"><span>Cost of ownership</span><span class="cmp-val">Licence + infra + consulting</span></div>
+      </div>
+      <div class="cmp-col win" data-reveal style="--d:100ms">
+        <div class="cmp-head"><h3>ITHENA iSERV eCommerce</h3><span class="cmp-tag">AI-powered</span></div>
+        <div class="cmp-row"><span>Implementation time</span><span class="cmp-val">6–10 weeks</span></div>
+        <div class="cmp-row"><span>Customization</span><span class="cmp-val">Open API + low-code</span></div>
+        <div class="cmp-row"><span>ERP integration</span><span class="cmp-val">Native connectors</span></div>
+        <div class="cmp-row"><span>Product visualization</span><span class="cmp-val">Live 2D + 3D viewer</span></div>
+        <div class="cmp-row"><span>Inventory visibility</span><span class="cmp-val">Real-time ATP / CTP</span></div>
+        <div class="cmp-row"><span>Automation</span><span class="cmp-val">Quote to invoice</span></div>
+        <div class="cmp-row"><span>Pricing</span><span class="cmp-val">Contract rules engine</span></div>
+        <div class="cmp-row"><span>Security</span><span class="cmp-val">SOC 2 included</span></div>
+        <div class="cmp-row"><span>Scalability</span><span class="cmp-val">Elastic, millions of SKUs</span></div>
+        <div class="cmp-row"><span>Maintenance</span><span class="cmp-val">Managed, continuous</span></div>
+        <div class="cmp-row"><span>Cost of ownership</span><span class="cmp-val">One predictable subscription</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== industries ===== -->
+<section class="sec" id="industries">
+  <div class="wrap">
+    <div class="head-center" data-reveal>
+      <p class="eyebrow">Where it earns its keep</p>
+      <h2 class="h-sec">Industries that sell<br>complicated things.</h2>
+    </div>
+    <div class="ind-grid">
+      <article class="ind" data-reveal><svg aria-hidden="true"><use href="#i-factory"/></svg><h3>Manufacturing</h3><p>Spare parts revenue captured on the same platform that runs production data.</p></article>
+      <article class="ind" data-reveal style="--d:50ms"><svg aria-hidden="true"><use href="#i-gear"/></svg><h3>OEMs</h3><p>Serial-linked catalogues that keep the aftermarket inside your own channel.</p></article>
+      <article class="ind" data-reveal style="--d:100ms"><svg aria-hidden="true"><use href="#i-heavy"/></svg><h3>Industrial equipment</h3><p>Configurable assemblies with fitment rules buyers can check themselves.</p></article>
+      <article class="ind" data-reveal style="--d:150ms"><svg aria-hidden="true"><use href="#i-car"/></svg><h3>Automotive</h3><p>Dealer and workshop networks ordering against live stock and contract terms.</p></article>
+      <article class="ind" data-reveal style="--d:200ms"><svg aria-hidden="true"><use href="#i-chip"/></svg><h3>Electronics</h3><p>Deep SKU catalogues, lifecycle status and alternate-part suggestions at scale.</p></article>
+      <article class="ind" data-reveal style="--d:250ms"><svg aria-hidden="true"><use href="#i-medical"/></svg><h3>Medical devices</h3><p>Traceable ordering with lot control and validated audit trails end to end.</p></article>
+      <article class="ind" data-reveal style="--d:300ms"><svg aria-hidden="true"><use href="#i-scale"/></svg><h3>Heavy engineering</h3><p>Long-life equipment served with revision-accurate BOMs, decades after delivery.</p></article>
+      <article class="ind" data-reveal style="--d:350ms"><svg aria-hidden="true"><use href="#i-bolt"/></svg><h3>Energy</h3><p>Field-first ordering for remote sites where downtime cost dwarfs part cost.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== testimonials ===== -->
+<section class="sec sec--alt">
+  <div class="wrap">
+    <div class="head-center" data-reveal>
+      <p class="eyebrow">Customer outcomes</p>
+      <h2 class="h-sec">What changed after go-live</h2>
+    </div>
+    <div class="quote-grid">
+      <article class="quote" data-reveal>
+        <div class="stars" aria-label="Rated 5 out of 5"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+        <blockquote>Our dealers used to email 400 orders a week and we rekeyed every one. Nine weeks after go-live, 78% of them were placing orders themselves — and the errors basically disappeared.</blockquote>
+        <div class="who"><span class="avatar">RK</span><div><b>Rahul Kulkarni</b><span>VP Aftermarket · Industrial pump manufacturer</span></div></div>
+      </article>
+      <article class="quote" data-reveal style="--d:90ms">
+        <div class="stars" aria-label="Rated 5 out of 5"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+        <blockquote>The 3D catalogue is what sold it internally. Service engineers identify the component on site and order it before they leave. Wrong-part returns dropped by more than half.</blockquote>
+        <div class="who"><span class="avatar">EM</span><div><b>Elena Marchetti</b><span>Director of Service Operations · Packaging OEM</span></div></div>
+      </article>
+      <article class="quote" data-reveal style="--d:180ms">
+        <div class="stars" aria-label="Rated 5 out of 5"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+        <blockquote>We'd budgeted a year for this. The storefront was live on real SAP pricing in ten weeks, and the integration didn't need a middleware layer we'd have to maintain forever.</blockquote>
+        <div class="who"><span class="avatar">DS</span><div><b>Daniel Storey</b><span>CIO · Heavy equipment distributor</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- ===== faq ===== -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="head-center" data-reveal>
+      <p class="eyebrow">Questions we get in week one</p>
+      <h2 class="h-sec">Straight answers</h2>
+    </div>
+    <div class="faq-wrap" id="faq-list">
+      <div class="faq-group" data-reveal>
+        <h3 class="faq-head">Integration &amp; data<span>3</span></h3>
+        <div class="faq"><div class="q">
+        <button class="q-btn" aria-expanded="false">Which ERPs do you integrate with, and how deep does it go?<span class="q-ico" aria-hidden="true"></span></button>
+        <div class="q-body"><p>Native connectors ship for SAP (ECC and S/4HANA), Oracle, Microsoft Dynamics 365 and Infor, with a documented REST layer for anything else. Sync is bi-directional and covers material master, customer master, contract pricing, ATP/CTP stock, sales orders, deliveries and invoices. Most customers are exchanging live data in the first three weeks of the project.</p></div>
+      </div><div class="q">
+        <button class="q-btn" aria-expanded="false">Our catalogue data is messy. Is that a blocker?<span class="q-ico" aria-hidden="true"></span></button>
+        <div class="q-body"><p>It's the normal starting point, not a blocker. We import what exists in the ERP and PLM, then use AI-assisted enrichment to deduplicate descriptions, map supersessions and build machine-to-part relationships. You go live with a working catalogue and improve depth in parallel with real orders rather than delaying launch for a perfect dataset.</p></div>
+      </div><div class="q">
+        <button class="q-btn" aria-expanded="false">What do we need to publish 3D models?<span class="q-ico" aria-hidden="true"></span></button>
+        <div class="q-body"><p>Your existing CAD. The viewer handles STEP, IGES, JT, SolidWorks, Creo and Inventor files, converting them to a lightweight web format that streams to a browser or phone without a plugin. Hotspots are linked to purchasable line items, so any component a customer can see is a component they can order — including on assemblies you shipped fifteen years ago.</p></div>
+      </div></div>
+      </div>
+      <div class="faq-group" data-reveal>
+        <h3 class="faq-head">Security &amp; access<span>2</span></h3>
+        <div class="faq"><div class="q">
+        <button class="q-btn" aria-expanded="false">How is customer and pricing data secured?<span class="q-ico" aria-hidden="true"></span></button>
+        <div class="q-body"><p>SOC 2 Type II certified, with AES-256 encryption at rest and TLS 1.3 in transit. Access is role-based with SSO and SCIM provisioning, every pricing and order action is written to an immutable audit trail, and data residency can be pinned to a specific region. Penetration tests run annually and reports are available under NDA for your security review.</p></div>
+      </div><div class="q">
+        <button class="q-btn" aria-expanded="false">Can customers manage their own users?<span class="q-ico" aria-hidden="true"></span></button>
+        <div class="q-body"><p>Yes. Each account gets a delegated administrator who can invite colleagues, assign roles, set spending limits and define approval chains for their own organisation. Your team keeps oversight and can step in at any level, but nobody has to open a ticket with you to add a buyer — which is usually the first support queue to disappear.</p></div>
+      </div></div>
+      </div>
+      <div class="faq-group" data-reveal>
+        <h3 class="faq-head">Commercials &amp; rollout<span>2</span></h3>
+        <div class="faq"><div class="q">
+        <button class="q-btn" aria-expanded="false">How does pricing work — ours and yours?<span class="q-ico" aria-hidden="true"></span></button>
+        <div class="q-body"><p>Your customer pricing stays where it belongs: contract rates, volume breaks, currency and tax resolve per account at request time, either from your ERP condition records or from rules configured in the platform. Our own commercial model is a single annual subscription based on order volume and connected entities, with implementation quoted once and no per-transaction fees.</p></div>
+      </div><div class="q">
+        <button class="q-btn" aria-expanded="false">What does implementation actually involve?<span class="q-ico" aria-hidden="true"></span></button>
+        <div class="q-body"><p>Six to ten weeks for a standard rollout. Weeks 1–2 cover discovery and ERP connection, weeks 3–6 catalogue import, pricing rules and portal branding, weeks 7–8 user acceptance testing with a pilot dealer group, then go-live and a phased dealer onboarding. You need a product data owner, an ERP contact and a commercial decision-maker — roughly a day a week each.</p></div>
+      </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== final cta ===== -->
+<section class="sec cta" id="demo">
+  <div class="wrap cta-in">
+    <p class="eyebrow " style="justify-content:center">Get started</p>
+    <h2>Ready to sell parts<br>the way people buy them?</h2>
+    <p class="lede">A 40-minute working session with your catalogue, your ERP and your pricing rules on screen. No slideware, no twelve-month sales cycle — you'll see exactly what go-live looks like for your business.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#demo" data-demo>Schedule a demo <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-ghost" href="#capabilities">Explore the platform</a>
+    </div>
+    <p class="cta-meta">Typical go-live 6–10 weeks · SOC 2 Type II · SAP · Oracle · Dynamics · Infor</p>
+  </div>
+</section>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg>
+</button>
+
+<!-- ===== schedule-demo dialog ===== -->
+<dialog class="modal" id="demoModal" aria-labelledby="demoModalTitle">
+  <div class="modal-card" id="demoCard">
+    <button class="modal-x" id="demoClose" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <p class="eyebrow">Schedule a demo</p>
+    <h2 class="modal-title" id="demoModalTitle">See it running on your own data</h2>
+    <p class="modal-sub">Forty minutes with your catalogue, ERP and pricing rules on screen. We confirm a slot within one business day.</p>
+
+    <!-- ===================================================================
+         REPLACE THIS <form> WITH YOUR SHORTCODE.
+         The dialog needs nothing from it: opening, closing, Esc and focus
+         are handled outside. If your form posts normally, also delete the
+         demoForm submit handler in the script at the end of this file.
+         =================================================================== -->
+    <form class="modal-form" id="demoForm" novalidate>
+      <div class="field"><label for="df-name">Full name</label><input id="df-name" name="name" type="text" placeholder=" " required autocomplete="name"></div>
+      <div class="field"><label for="df-email">Work email</label><input id="df-email" name="email" type="email" placeholder=" " required autocomplete="email"></div>
+      <div class="field"><label for="df-company">Company</label><input id="df-company" name="company" type="text" placeholder=" " required autocomplete="organization"></div>
+      <div class="field"><label for="df-phone">Phone</label><input id="df-phone" name="phone" type="tel" placeholder=" " autocomplete="tel"></div>
+      <div class="field field--full"><label for="df-msg">What would you like to see?</label><textarea id="df-msg" name="message" rows="3" placeholder=" "></textarea></div>
+      <button class="btn btn-primary modal-submit" type="submit">Request demo <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </form>
+    <!-- ===================== END FORM BLOCK ===================== -->
+
+    <p class="modal-note">No sales sequence. We reply from a real address.</p>
+    <div class="modal-done" role="status">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.4 2.7 2.7L16 9.8"/></svg>
+      <b>Request received</b>
+      <p>We'll be in touch within one business day to confirm a time.</p>
+    </div>
+  </div>
+</dialog>
+
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- theme switch: dark by default, light on demand ---- */
+  var root = document.querySelector("main.iserv-commerce"),
+      swBtn = document.getElementById("themeSwitch"),
+      metaTheme = document.getElementById("metaTheme"),
+      themeTimer;
+
+  var setTheme = function(name){
+    if (!reduced){
+      root.classList.add("theming");
+      clearTimeout(themeTimer);
+      themeTimer = setTimeout(function(){ root.classList.remove("theming"); }, 340);
+    }
+    root.setAttribute("data-theme", name);
+    var dark = name === "dark";
+    swBtn.setAttribute("aria-checked", String(dark));
+    swBtn.setAttribute("aria-label", dark
+      ? "Dark theme. Activate to switch to light theme."
+      : "Light theme. Activate to switch to dark theme.");
+    if (metaTheme) metaTheme.setAttribute("content", dark ? "#000000" : "#ffffff");
+    /* To remember the choice between visits, uncomment:
+       try { localStorage.setItem("ithena-theme", name); } catch (e) {} */
+  };
+
+  swBtn.addEventListener("click", function(){
+    setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+  });
+
+  /* ---- schedule-demo dialog ---- */
+  var dlg = document.getElementById("demoModal"),
+      dcard = document.getElementById("demoCard"),
+      dform = document.getElementById("demoForm"),
+      lastFocus = null;
+
+  var openDemo = function(e){
+    if (e) e.preventDefault();
+    lastFocus = document.activeElement;
+    if (dcard) dcard.classList.remove("is-done");
+    if (dform) dform.reset();
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","");
+    var first = dlg.querySelector("input");
+    if (first) setTimeout(function(){ first.focus(); }, 60);
+  };
+  var closeDemo = function(){
+    if (dlg.close) dlg.close(); else dlg.removeAttribute("open");
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  };
+
+  if (dlg){
+    document.querySelectorAll("[data-demo]").forEach(function(b){
+      b.addEventListener("click", openDemo);
+    });
+    document.getElementById("demoClose").addEventListener("click", closeDemo);
+    /* click outside the card closes it; Esc is handled natively by <dialog> */
+    dlg.addEventListener("click", function(e){ if (e.target === dlg) closeDemo(); });
+    if (dform){
+      dform.addEventListener("submit", function(e){
+        e.preventDefault();
+        if (!dform.checkValidity()){ dform.reportValidity(); return; }
+        dcard.classList.add("is-done");
+        setTimeout(closeDemo, 2600);
+      });
+    }
+  }
+
+  /* ---- back to top ---- */
+  var toTop = document.getElementById("toTop");
+  if (toTop){
+    var toggleTop = function(){ toTop.classList.toggle("is-on", window.scrollY > 620); };
+    toggleTop();
+    window.addEventListener("scroll", toggleTop, {passive:true});
+    toTop.addEventListener("click", function(){
+      window.scrollTo({top:0, behavior: reduced ? "auto" : "smooth"});
+      var h = document.querySelector("h1");
+      if (h){ h.setAttribute("tabindex","-1"); h.focus({preventScroll:true}); }
+    });
+  }
+
+  /* ---- scroll reveal ---- */
+  var revealables = document.querySelectorAll("[data-reveal]");
+  if ("IntersectionObserver" in window && !reduced){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, {rootMargin:"0px 0px -8% 0px", threshold:.12});
+    revealables.forEach(function(el){ io.observe(el); });
+  } else {
+    revealables.forEach(function(el){ el.classList.add("in"); });
+  }
+
+  /* ---- animated counters ---- */
+  var counters = document.querySelectorAll("[data-count]");
+  var runCount = function(el){
+    var target = parseFloat(el.getAttribute("data-count")),
+        dec = parseInt(el.getAttribute("data-dec") || "0", 10),
+        suffix = el.getAttribute("data-suffix") || "",
+        dur = 1900, start = 0;
+    if (reduced){ el.innerHTML = target.toFixed(dec) + suffix; return; }
+    var step = function(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1),
+          eased = 1 - Math.pow(1 - p, 3);
+      el.innerHTML = (target * eased).toFixed(dec) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  if ("IntersectionObserver" in window){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        runCount(en.target);
+        var box = en.target.closest(".stat");
+        if (box) box.classList.add("counted");
+        cio.unobserve(en.target);
+      });
+    }, {threshold:.25, rootMargin:"0px 0px -10% 0px"});
+    counters.forEach(function(el){ cio.observe(el); });
+  } else {
+    counters.forEach(function(el){ runCount(el); });
+  }
+
+  /* ---- workflow: light the steps in sequence ---- */
+  var steps = document.querySelectorAll("#flow .step");
+  if ("IntersectionObserver" in window){
+    var fio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var i = Array.prototype.indexOf.call(steps, en.target);
+        setTimeout(function(){ en.target.classList.add("on"); }, reduced ? 0 : (i % 5) * 110);
+        fio.unobserve(en.target);
+      });
+    }, {threshold:.35});
+    steps.forEach(function(el){ fio.observe(el); });
+  } else {
+    steps.forEach(function(el){ el.classList.add("on"); });
+  }
+
+  /* ---- FAQ accordion ---- */
+  var qs = document.querySelectorAll("#faq-list .q");
+  qs.forEach(function(q){
+    var btn = q.querySelector(".q-btn"), body = q.querySelector(".q-body");
+    btn.addEventListener("click", function(){
+      var isOpen = q.classList.contains("open");
+      qs.forEach(function(other){
+        other.classList.remove("open");
+        other.querySelector(".q-body").style.maxHeight = null;
+        other.querySelector(".q-btn").setAttribute("aria-expanded","false");
+      });
+      if (!isOpen){
+        q.classList.add("open");
+        body.style.maxHeight = body.scrollHeight + "px";
+        btn.setAttribute("aria-expanded","true");
+      }
+    });
+  });
+
+  window.addEventListener("resize", function(){
+    var open = document.querySelector("#faq-list .q.open");
+    if (open){ var b = open.querySelector(".q-body"); b.style.maxHeight = b.scrollHeight + "px"; }
+  }, {passive:true});
+
+  /* ---- capability stack: grouped tabs ---- */
+  var stabs = Array.prototype.slice.call(document.querySelectorAll(".stack-tab"));
+  var spanels = Array.prototype.slice.call(document.querySelectorAll(".stack-panel"));
+  var showGroup = function(n){
+    stabs.forEach(function(t,k){
+      var on = k === n;
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+      spanels[k].classList.toggle("is-on", on);
+      if (on) spanels[k].removeAttribute("hidden"); else spanels[k].setAttribute("hidden","");
+    });
+  };
+  stabs.forEach(function(t,k){
+    t.addEventListener("click", function(){ showGroup(k); });
+    t.addEventListener("keydown", function(e){
+      var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var next = (k + d + stabs.length) % stabs.length;
+      showGroup(next); stabs[next].focus();
+    });
+  });
+
+  /* ---- robotic arm viewer: drag to rotate, explode, zoom ---- */
+  var rig = document.getElementById("asm"), stage = document.getElementById("stage");
+  if (rig && stage){
+    /* pose is fixed; geometry is measured in a 240x240 rig space, origin at centre.
+       x,y = centre of the link · L = length · T = thickness · A = angle from vertical
+       ex,ey = where the link travels in the exploded view                            */
+    var LINKS = [
+      {x:  0,   y:  68,  L: 52, T: 30, A:   0, ex:  0, ey: 10},   /* column        */
+      {x:-15,   y:   6.9,L: 80, T: 24, A: -22, ex:-14, ey: -6},   /* upper arm     */
+      {x: -6.85,y: -57.8,L: 72, T: 20, A:  40, ex: -4, ey:-22},   /* forearm       */
+      {x: 20.8, y: -96.5,L: 24, T:  7, A:  22, ex: 10, ey:-38},   /* gripper jaw A */
+      {x: 26.5, y: -91.8,L: 24, T:  7, A:  58, ex: 14, ey:-34}    /* gripper jaw B */
+    ];
+    var JOINTS = [
+      {x: 0,   y:  44,   d: 38, hot:false, ex:  0, ey:  2},       /* shoulder      */
+      {x:-30,  y: -30.2, d: 30, hot:true,  ex:-20, ey:-10},       /* elbow         */
+      {x: 16.3,y: -85.4, d: 22, hot:false, ex:  6, ey:-30}        /* wrist         */
+    ];
+
+    var html = '';
+    /* base: two stacked discs lying flat */
+    html += '<div class="plate" data-ex="0,18" style="width:104px;height:104px;margin:-52px 0 0 -52px"></div>';
+    html += '<div class="plate" data-ex="0,14" style="width:62px;height:62px;margin:-31px 0 0 -31px"></div>';
+
+    LINKS.forEach(function(k){
+      /* each link is two crossed planes — reads solid from any angle at a fraction of the nodes */
+      html += '<div class="seg" data-x="'+k.x+'" data-y="'+k.y+'" data-a="'+k.A+'" data-ex="'+k.ex+','+k.ey+'">'
+            +   '<div class="face"   style="width:'+k.T+'px;height:'+k.L+'px;margin:'+(-k.L/2)+'px 0 0 '+(-k.T/2)+'px"></div>'
+            +   '<div class="face b" style="width:'+k.T+'px;height:'+k.L+'px;margin:'+(-k.L/2)+'px 0 0 '+(-k.T/2)+'px;transform:rotateY(90deg)"></div>'
+            + '</div>';
+    });
+    JOINTS.forEach(function(j){
+      html += '<div class="joint'+(j.hot?' hot':'')+'" data-x="'+j.x+'" data-y="'+j.y+'" data-ex="'+j.ex+','+j.ey+'"'
+            + ' style="width:'+j.d+'px;height:'+j.d+'px;margin:'+(-j.d/2)+'px 0 0 '+(-j.d/2)+'px"></div>';
+    });
+    rig.innerHTML = html;
+
+    var segs   = rig.querySelectorAll(".seg"),
+        joints = rig.querySelectorAll(".joint"),
+        plates = rig.querySelectorAll(".plate"),
+        rx = -14, ry = 26, zoom = 1, exploded = false, spinning = true,
+        dragging = false, lastX = 0, lastY = 0;
+
+    var ex = function(el){
+      if (!exploded) return "translate(0,0)";
+      var v = (el.dataset.ex || "0,0").split(",");
+      return "translate(" + v[0] + "px," + v[1] + "px)";
+    };
+    var layout = function(){
+      /* base discs sit flat: rotateX(90deg) */
+      plates.forEach(function(el){
+        var v = (el.dataset.ex || "0,0").split(",");
+        var d = exploded ? parseFloat(v[1]) : 0;
+        el.style.transform = "translateY(" + (96 + d) + "px) rotateX(90deg)";
+      });
+      segs.forEach(function(el){
+        el.style.transform = ex(el) + " translate(" + el.dataset.x + "px," + el.dataset.y + "px) rotate(" + el.dataset.a + "deg)";
+      });
+      joints.forEach(function(el){
+        el.style.transform = ex(el) + " translate(" + el.dataset.x + "px," + el.dataset.y + "px)";
+      });
+    };
+    var apply = function(){
+      rig.style.setProperty("--rx", rx + "deg");
+      rig.style.setProperty("--ry", ry + "deg");
+      rig.style.setProperty("--zm", zoom);
+    };
+    layout(); apply();
+    if (reduced){ rig.classList.remove("spin"); spinning = false; document.getElementById("tSpin").setAttribute("aria-pressed","false"); }
+
+    var stopSpin = function(){
+      if (!spinning) return;
+      spinning = false; rig.classList.remove("spin");
+      document.getElementById("tSpin").setAttribute("aria-pressed","false");
+    };
+    var down = function(x,y){ dragging = true; lastX = x; lastY = y; stopSpin(); };
+    var move = function(x,y){
+      if (!dragging) return;
+      ry += (x - lastX) * 0.5;
+      rx = Math.max(-70, Math.min(70, rx - (y - lastY) * 0.4));
+      lastX = x; lastY = y; apply();
+    };
+    var up = function(){ dragging = false; };
+
+    stage.addEventListener("mousedown", function(e){ down(e.clientX, e.clientY); });
+    window.addEventListener("mousemove", function(e){ move(e.clientX, e.clientY); });
+    window.addEventListener("mouseup", up);
+    stage.addEventListener("touchstart", function(e){ down(e.touches[0].clientX, e.touches[0].clientY); }, {passive:true});
+    stage.addEventListener("touchmove", function(e){ move(e.touches[0].clientX, e.touches[0].clientY); }, {passive:true});
+    stage.addEventListener("touchend", up);
+
+    document.getElementById("tSpin").addEventListener("click", function(){
+      spinning = !spinning;
+      rig.classList.toggle("spin", spinning);
+      this.setAttribute("aria-pressed", String(spinning));
+    });
+    document.getElementById("tExplode").addEventListener("click", function(){
+      exploded = !exploded;
+      this.setAttribute("aria-pressed", String(exploded));
+      this.textContent = exploded ? "Collapse view" : "Exploded view";
+      layout();
+    });
+    document.getElementById("tReset").addEventListener("click", function(){
+      rx = -14; ry = 26; zoom = 1; exploded = false;
+      document.getElementById("tZoom").value = 100;
+      document.getElementById("tExplode").setAttribute("aria-pressed","false");
+      document.getElementById("tExplode").textContent = "Exploded view";
+      layout(); apply();
+    });
+    document.getElementById("tZoom").addEventListener("input", function(){
+      zoom = this.value / 100; stopSpin(); apply();
+    });
+  }
+})();
+</script>
+</body>
+</html>

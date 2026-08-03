@@ -1,0 +1,645 @@
+
+3 explore block cards
+eb_card_group (3)
+    - eb_card_icon, eb_card_icon, eb_card_title, eb_card_subtitle
+    - eb_card_bullets_group (4)
+        - bulletpt_1_icon (img), bulletpt_1_text 
+        - bulletpt_2_icon (img), bulletpt_2_text 
+        - bulletpt_3_icon (img), bulletpt_3_text 
+        - bulletpt_4_icon (img), bulletpt_4_text 
+
+
+eb_card_group (3)
+    eb_card1_icon
+    eb_card1_title
+    eb_card1_subtitle
+    eb_card1_bullets_group (4)
+        eb_card1_icon
+        eb_card1_text
+
+
+
+add page
+name the page - be precise since it will be title of the tab
+select template as - "Custom Block Page v2"
+save the page
+now you will have all added blocks in the panel below the black editor
+open - CB - Custom block Page and check "yes" (this will indicate system that you're forming page using custom blocks)
+
+all blocks which are listed here are customisable for content.
+(I am working on sequencing them so that they can be ordered as per the requirement)
+
+which ever block you want to add
+ - open the block
+ - check the enable to yes
+ - boom, you're block will be there on the page
+
+about section class filed 
+- as these block can have more customisation in future for that class field is there 
+- if you want block in grey bg add = "py-20 bg-gray-fade"
+- similary if you want block in white bg add = "py-20 bg-white-fade"
+
+- py-10 and py-20 = these classes for spacing (py-10 - compact, py-20 - more spacious)
+
+
+
+
+Create a quiz of 20 questions where people need to guess the brand from the given tagline. 
+Hint = type of that brand (like clothing, technology) etc 
+10 - easy (actual brand tagline) & 10 - medium (reverse spllet tagline)
+use different brand and respective taglines for easy and medium.
+
+Quiz card format - 
+tagline - 
+type of brand - 
+answer - (brand) + (tagline) [hidden under reveal answer]
+
+Each slide will have 2 questions.
+Animation will follow as
+1 question with "reveal answer" button
+
+
+CB - Use Case block = bg-white-fade
+CB – Industries We Serve Block = bg-gray-fade
+CB – Metrics Block = bg-white-fade
+CB – Block Rotator - Partners - 2 = bg-gray-fade
+CB – FEATURE + VISUAL LAYOUT SECTION = bg-gray-fade
+CB – Testimonial section block = bg-gray-fade
+
+
+
+Enabling this option will display the block on your page.
+Add your custom class for this block.
+
+Enable Four Thumbnail Block
+Add your custom class for this block. (default classes are - py-10 bg-white-fade use_cases_section)
+Add your custom class for this block. (default classes are - py-10 bg-gray-fade use_cases_section)
+
+
+This appears as SECTION TITLE - LARGER FONT, BOLD, BLACK IN COLOR
+This appears as SECTION TITLE - LARGER FONT, BOLD, MAROON IN COLOR
+This appears as SECTION DESCRIPTION - XL font and size
+
+Slide 1 - IMG
+This appears as a bg img for slide 1
+
+Slide 1 - Title 
+This appears as TITLE on IMG - LARGER FONT, BOLD, WHITE IN COLOR
+
+Slide 1 - Description Text
+This appears as TITLE on IMG below Title - XL font, White 
+
+Slide 1 - Button Text
+This appears as Button Text - White Text, Blue Button 
+
+Slide 1 - Button Link
+Users will be redirected to THIS link upon clicking.
+
+
+
+use case - card 1 - image
+This appears on use case - card 1 (card top section)
+
+use case - card 1 - title
+This appears on use case - card 1, below the card image - BOLDER
+
+use case - card 1 - description text 
+This appears on use case - card 1, below the card title - regular text and size
+
+use case - card 1 - Link
+Users will be redirected to THIS link upon clicking Card 1.
+
+
+Industries - card 1 - Icon
+This appears on Industries - card 1 (top section)
+
+Industries - card 1 - Title
+This appears on Industries- card 1, below the card Icon- BOLDER
+
+Industries - card 1 - description
+This appears on Industries - card 1, below the card title - regular text and size
+
+
+Metric - card 1 - Icon
+This appears on Metric- card 1 (top section)
+
+Metric - card 1 - Count
+This appears on Metric- card 1, below the card Icon - Counter Number - BOLDER
+
+Metric - card 1 - Label
+This appears on Metric- card 1, below the card Icon - Counter Label - SEMI-BOLD
+
+
+
+Explore Block - Card 1 - Icon
+This appears on Explore Block - card 1 (top section) (Upload a White Icon)
+
+Explore Block - Card 1 - Title 
+This appears on Explore- card 1, below the card Icon - BOLDER
+
+Explore Block - Card 1 - SubTitle 
+This appears on Explore- card 1, below the card Title - Regular Text
+
+Explore Block - Card 1 - Bullet Group 
+This appears on Explore- card 1, below the card SubTitle - Regular Text list with Icons
+
+Card 1 - Point 1 - Icon 
+(Upload a Blue [#0082c8] Icon)
+
+Card 1 - Point 1 - Text
+
+
+Testimonials Feature
+Feature 1 - icon
+Upload a White color Icon 
+
+Feature 1 - Title
+This appears on Feature - 1, below the Icon - BOLDER
+
+Feature 1 - Description
+This appears on Feature - 1, below the title - Regular Text
+
+Testimonials cards
+Card 1 - Image
+Card 1 - Name
+Card 1 - Designation
+Card 1 - Content - You can write max 300 characters.
+
+
+
+ACSB - Card 1 Image
+This image is displayed on Card 1 - Top Section 
+
+ACSB - Card 1 Title
+This appears on ACSB - Card 1, Below The Image - SEMIBOLD
+
+ACSB - Card 1 Description
+This appears on ACSB - Card 1, below the title - Regular Text 
+(You can write max 130 characters)
+
+
+CB – Feature + Visual Layout Block
+
+Feature + Visual Block - Image
+This Image appears on the RHS of the block with White BG and floating labels (top and bottom)
+
+Feature + Visual Block - Image - Alt text
+Add Alt text for the image
+
+Feature + Visual Block - Image - Top Label (RHS top corner)
+This label appears on the Image - RHS top corner
+
+Feature + Visual Block - Image - Bottom Label (LHS bottom corner)\
+This label appears on the Image - LHS Bottom corner
+
+
+Feature + Visual Block - Feature List 
+This content appears on the left-hand side (LHS) of the block, displayed in a list format.
+
+Feature + Visual Block - Feature 1 - Icon
+This content appears on the LHS feature list - List Item 1 - icon
+
+Feature + Visual Block - Feature 1 - Headline
+This content appears on the LHS feature list - List Item 1 - Headline - BOLDER
+
+Feature + Visual Block - Feature 1 - Description
+This content appears on the LHS feature list - List Item 1 - Description text (Max - 120 charc) 
+
+
+Tab-Panel Section - Title 
+
+Tab Head 1 - Icon
+This image is displayed on Tab 1 - Top Section 
+
+Tab Head 1 - Title
+This appears on Tab 1 - Below The Image - BOLD
+
+Tab Head 1 - Subtitle
+This appears on Tab 1 - Below The Title - Regular text
+
+Tab Head 1 - Slug
+
+
+
+Panel 1 - Image
+This appears on Panel 1 - RHS
+
+Panel 1 - Title
+This appears on Panel 1, Below The Image - SEMIBOLD
+
+Panel 1 - Description
+This appears on Panel 1, LHS - Below The Panel Title - XL font
+
+Panel 1 - Content - List item 1 (panel_1_list1)
+This appears on Panel 1, LHS - Below The Panel Description - Smaller font
+
+Panel 1 - Button text 
+This appears on Panel 1, LHS - Below The Panel List - XL button
+
+Panel 1 - Button link
+Users will be redirected to THIS link upon clicking.
+
+// showTab('<?= esc_js($tabs[0]['slug'] ?? 'tab1'); ?>');
+
+
+
+Rotator Card 1 - Image
+Rotator Card 1 - Image alt text
+
+Overview Block - Cards
+This content appears on the RHS Overview Block  - Grey Cards (Icon, Title, Description)
+
+Overview Card 1 - Icon 
+This appears on RHS overview block - Top Center - (Upload Blue[#0082c8] icon)
+
+Overview Card 1 - Title  
+This appears on RHS overview block - Below The Icon - SemiBold, Black
+
+Overview Card 1 - Description
+This appears on RHS overview block - Below The title - Regular Text, Black
+
+
+Overview Card 2 - Icon
+This appears on RHS overview block Card 2 - Top Center - (Upload Blue[#0082c8] icon)
+
+
+
+Success Story Block
+
+Success Story Block - Class
+Add your custom class for this block. (default classes are - py-10 bg-gray-fade success_story_block)
+
+Success Story Block - Title - Black
+Success Story Block - Title - Maroon
+
+Success Story Block - SubTitle
+
+Story Card 1 - Title
+This appears on Story Card 1, LHS - Title - SEMIBOLD, Black
+
+Story Card 1 - Description
+This appears on Story Card 1, LHS - Below the Title - Regular text, Black
+
+Story Card 1 - Hightlight Value - Numeric
+This appears on Story Card 1, LHS - Below the description - XL Font, Maroon
+
+Story Card 1 - Hightlight Value - Label
+This appears on Story Card 1, LHS - Below the description - Regular Font, Maroon
+
+Story Card 1 - Image
+This appears on Story Card 1, RHS - Rounded Corners
+
+
+
+Accordion Block - Class
+Accordion Block - Title - Black
+Accordion Block - Title - Maroon
+Accordion Block - Subtitle
+
+This appears as SECTION TITLE - LARGER FONT, BOLD, BLACK IN COLOR
+This appears as SECTION TITLE - LARGER FONT, BOLD, MAROON IN COLOR
+This appears as SECTION DESCRIPTION - XL font and size
+
+
+Accordion Tab and Cards
+This content appears as accordion tab and RHS Image Panel
+
+Accordion 1 - Title 
+This appears as Tab 1 TITLE - BOLD, Blue IN COLOR
+
+Accordion 1 - Description
+This appears as Tab 1 Content - Regular text, Black (Max - 390 charc, Do not paste any HTML or IMG)
+
+Accordion 1 - IMG
+This appears as RHS Tab 1 IMG - rounded corners
+
+Accordion 1 - IMG Title
+This appears as Title - Below the IMG  
+
+Accordion 1 - IMG Description
+This appears as Subtitle - Below the IMG Title 
+
+
+Enable Four Thumbnail Block
+Add your custom class for this block. (default classes are - py-10 bg-white-fade use_cases_section)
+
+Four Thumbnail Block - Class
+Add your custom class for this block. (default classes are - py-10 bg-white-fade four_thumbanils_block)
+
+Four Thumbnail Block - Title - Black
+This appears as SECTION TITLE - LARGER FONT, BOLD, BLACK IN COLOR
+
+Four Thumbnail Block - Title - Maroon
+This appears as SECTION TITLE - LARGER FONT, BOLD, MAROON IN COLOR
+
+Four Thumbnail Block - SubTitle
+This appears as SECTION DESCRIPTION - XL font and size
+
+Four Thumbnail Block - Button Text
+This appears as Button Text - White Text, Blue Button 
+
+Four Thumbnail Block - Button Link
+Users will be redirected to THIS link upon clicking.
+
+Thumbnail Cards
+This appears as  4 Cards - RHS of block - card 2 below card 1 and card 4 below card 3
+
+Thumbnail Card 1 - IMG
+This appears as Thumbnail Card 1 - Icon IMG ( Top center)
+
+Thumbnail Card 1 - Title
+This appears as Thumbnail Card 1 Title - BOLD, BLACK IN COLOR
+
+Thumbnail Card 1 - Description Text
+This appears as Thumbnail Card 1 DESCRIPTION - Regular font and size (Max 205 chr - do not paste HTML)
+
+
+
+Accordion Block - Reference IMG
+This image is representation of block design on the page
+
+
+Hero slide - Order
+Add your order number (at which position you want this block to be on the page).
+
+Add the order number indicating the position where you want this block to appear on the page.
+
+
+/** dev server login **/
+- ssh -i .\ith-onprem-rich.pem pratikt@10.1.20.16
+
+Act as a web developer.
+consider the following case. You have 6 cards - 3x3 grid.
+parent - div.feature-card
+    child - div.industry-focus-btns
+
+every parent have class feature-card and child div class is industry-focus-btns.
+now write down js for this as 
+whenever you hover on parent card child will change display to block
+this is display change will happen only to card on which hover is happening.
+else all card will be as it is.
+
+
+consider the screenshot and php file
+the php file consist the code for footer.
+currently all links and elements are static.
+write the code in which it will fetch menu from wp as 'custom-footer' and represent them into same html.
+main parent child relation, no anchors for parent and links will there for child menus.
+
+consider ACF fields for 
+social media links 
+copyright text
+privacy policy link
+
+
+try this extension if you download and use imgs of any format
+
+
+Act as a WP developer.
+You made custom template for your pages in WP.
+That custom template is using custom header and footer as well as custom content.
+You are also using formmidable form and embedding them in your modal.
+now that form is not getting triggred correctly. Css and submission are not working.
+captcha is not working and with-out captcha submission error is - "This page isn't loading JavaScript properly, and the form will not be able to submit."
+
+Now, prepare a wise and correct solution for this.
+
+
+old dev turnstile keys
+0x4AAAAAABZA-FVpfFqUn8rr
+0x4AAAAAABZA-NDZC_FgzcwIMXQFv-d-24o
+
+
+live plugin Update
+- Yoast SEO
+- WP File Manager
+- WP Mail SMTP
+- Smooth Back To Top Button
+- Simple History
+- Prevent Direct Access
+- popup maker
+- formidable
+- forminator
+- filter and grids
+
+
+design html page with dark theme root colors as       
+--color-black: #000;
+                    --color-white: #fff;
+                    --color-blue: #0082c8;
+                    --color-blue-dark: #005b94;
+                    --color-gray: #e7e6e6;
+                    --color-speechred: #c00000;
+
+
+page will contain
+1) hero banner with title, subtitle and CTA - left aligned 
+2) tab and panel section 
+3 tabs - Manufacturing End Users , Machine Builders & OEMs,  Strategic Industries
+3 panel will contain products in zig-zag fashion - img and context text
+panel 1 - 4 products - Digital Shopfloor, Manufacturing Excellence, Energy Management, AI MRO
+panel 2 - 4 products - Smart Service , B2B eCommerce , Smart ERP , The Agentic OEM
+panel 3 - 3 products - Analytics AI Platform , Social Intelligence Platform
+
+
+
+A flat, ht - 400, width - 700 vector-style illustration representing an "ITHENA'S iSIP"
+
+Central element: "ITHENA’s Social Intelligence Platform (iSIP) is an AI – powered middleware application that interacts with social media platforms such as LinkedIn, Google and Facebook. It acts as a bridge between the backend and frontend and helps in connecting different applications seamlessly, despite their heterogenous nature.
+User Engagement
+Product Engagement
+Revenue Growth
+Support and Self Service
+Feedback Collection"
+
+Color palette: colors -  #000, #fff, #0082c8, #c00000
+Use icons and text as per the context only.
+Mood: intelligent, dynamic, and data-driven.
+Resolution: 400 x 700 px, optimised for website block or section display.
+
+
+chatbot code
+<script>
+  if (!document.getElementById('chatBubbleRoot')) {
+    const root = document.createElement('div');
+    root.id = 'chatBubbleRoot';
+    document.body.appendChild(root);
+  }
+
+  window.agx = '69cc188e3bb01c2b60dd69e2typSG+E4Sf46ygBNE1sTHA==|My1CIfUUphb1HBUc0xL+O6oitSCGn87v9gBdOR6oZro=';
+
+  if (!document.querySelector('script[src="https://storage.googleapis.com/agentx-cdn-01/agentx-chat.js"]')) {
+    const s = document.createElement('script');
+    s.src = 'https://storage.googleapis.com/agentx-cdn-01/agentx-chat.js';
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+</script>
+
+
+
+tab structure - for "AI-Powered Analytics That Understands Your Data" (https://aether.ithena.app/)
+
+Title - Make Your Factory Reliable!
+content - next 3 blocks
+
+text arman for gifs
+
+
+- make blog footer cutomized - with text heading and CTA
+- Events on Hero will be replaced by "Highlights"
+- Check email 
+- Add CTA for annooucemnets
+
+- Add POI videos in about us
+- Update about us with latest content
+
+- Recheck the blogs content and reform the layour for them.
+
+- Case study - add search bar, reduce the font size and weight 
+
+- iMEX page new design 
+    - add tab panel view
+        1) plant view
+        2) factory GPT
+        3) CMMS
+    - service bus (MSB)
+
+- Chat bot edit 
+- List: demo portals and their respective links (https://demos.ithena.app/)
+
+
+- retain pc images with rockwell
+- check Thumbnail ref solutions and text of blog
+
+https://chatgpt.com/?prompt=tell+me+about+ITHENA
+https://claude.ai/new?q=tell+me+about+ITHENA
+https://grok.com/?q=tell+me+about+ITHENA
+https://www.perplexity.ai/search?q=tell+me+about+ITHENA
+https://gemini.google.com/app?prompt=tell+me+about+ITHENA
+https://gemini.google.com/app?q=tell+me+about+ITHENA
+
+
+Dark theme cards
+
+approval draft
+
+
+Approval Required – Homepage & Footer Enhancements
+
+Footer Updates - https://dev-website.ithena.app/ (Footer Section)
+    - Added a new "Research Us" menu section in the footer.
+    - Users can navigate to various AI and LLM platforms to explore and research ITHENA.
+
+Homepage Updates
+    - Added a new "Milestones" card and corresponding slide in the Hero section.
+    - Content can be updated as required.
+    - CTA will redirect users to the respective milestone landing page and then to the associated external website, if applicable.
+
+    - Added a new "Practical AI: Delivered!" section. 
+        - Provides a brief introduction to ITHENA and its value proposition.
+    - Added a Customer Logo Slider to showcase customer and partner brands.
+    - Added a Latest Upcoming Event banner. 
+        - Displays event information and includes a CTA for registrations or additional details.
+        
+Kindly review the above changes and provide approval for migration to the live environment. 
+
+
+Approval Required - Homepage changes
+
+hello probodh 
+
+- since PACK EXPO needs to be promoted, I have add "Event" slide on homepage hero slider.
+- Changes are as follows
+    - Event card added for pack expo content.
+    - Cards are vertically scrollable
+    - The event card is first, and the use case is last.
+    - BG - blue + transparent background.
+    - Active card - red top progress bar + transparent BG.
+
+Please review and let me know 
+
+
+
+exp layer - group-1014.webp
+
+
+isems-brochure
+Smart-Energy-Management-brochure
+
+iserv-brochure
+smart-service-brochure
+
+igemba-brochure
+digital-shopfloor-brochure
+
+igemba bro - https://ithena.ai/wp-content/uploads/2025/08/iGEMBA-BROCHURES-FINAL.pdf
+imex bro - https://ithena.ai/wp-content/uploads/2025/11/iMEX-brochure.pdf
+isems bro - https://ithena.ai/wp-content/uploads/2025/08/Copy-of-iSEMS-brochure.pdf
+iserv bro - https://ithena.ai/wp-content/uploads/2025/08/iSERV-brochure-digital.pdf
+
+Homapge - our partners - logo - 
+Partnerships page - https://ithena.ai/partnerships/
+RA Partnership page - https://ithena.ai/rockwell-automation-partnership/
+
+
+
+https://pagespeed.web.dev/analysis/https-dev-website-ithena-app-panelops/67ma7ljxve?form_factor=desktop
+
+https://pagespeed.web.dev/analysis/https-ithena-ai-industrial-erp/fxh3nzw6ag?form_factor=desktop
+
+
+RND 
+- Novamira + elementor
+
+
+- Menu is not working well - do not make it transparent 
+- dark to light switch - apply to menus and submenu also 
+- Remove Resources form menu
+
+
+Solutions menu - distribution is as follows
+
+1) OEM | Distributors (Production | After Market)
+   
+   - front office ops
+     - iCRM (SubTitle - Customer relationship management for distributors and OEMs.)
+     - iCPQ (subtitle - Configure, price, and quote workflows.)
+     - iERP (subtitle - ERP integrations and operational workflows.)
+    
+    - After Market services
+     - Performance Monitoring (subtitle - Real-time connectivity into asset performance with proactive alerts and alarms)
+     - Service Portal (subtitle - Support your service operations with real-time visibility and workflows)]
+     - B2B eCommerce (subtitle - Commerce experience for parts, services, and customer self-service.)
+
+2) Manufacturer (Plan → Produce → Improve)
+ 
+ - Planning
+  - iPLAN (subtitle - Planning workflows and decision support to improve throughput.)
+ 
+ - Production
+  - iGEMBA (subtitle - Digitize Gemba walks to maximize shop floor productivity and resolve issues fast.)
+  - Performance Monitoring (subtitle - Real-time performance visibility with alerts and alarms.)
+  - MES (subtitle - Smarter shop-floor view: standardize, measure, improve quality and scale operations.)
+ 
+ - Quality
+  - QMS (subtitle - Quality management workflows to prevent defects and improve compliance.)
+
+ - Maintenance
+  - CMMS (subtitle - Single view of critical KPIs with standardized checklists to resolve issues faster.)
+  - iSEM (SubTitle - Service + equipment management workflows and integrations.)
+
+3) Enterprise (Analytics | CX | SCM)
+ 
+ - Supply Chain 
+  - iTMS (Transportation management and logistics workflows.)
+  - iPLAN (Planning workflows and decision support.)
+
+ - Data Analytics
+  - Aether (Practical AI)
+  - Analytics (Enterprise data anyalytics)
+  - iHub (Enterprise data hub and insights.)
+
+ - apps
+  - iSIP (Integrated service experience platform.)
+  - CRM (Customer relationship management.)

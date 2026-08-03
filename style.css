@@ -1,0 +1,444 @@
+/*
+Theme Name: Astra Child
+Theme URI: https://wpastra.com/
+Description: Child theme for Astra
+Template: astra
+Version: 1.0
+*/
+
+/********* ----------- aether-page : start ----------- *********/
+
+/* Global Variables */
+:root {
+    /* Colors */
+    --color-black: #000;
+    --color-white: #fff;
+    --color-blue: #0082c8;
+    --color-blue-dark: #005b94;
+
+    /* Borders & Radius */
+    --border-radius-small: 5px;
+    --border-radius-medium: 6px;
+    --border-width: 1px;
+    --border-width-thick: 4px;
+
+    /* Spacing */
+    --padding-xs: 2px;
+    --padding-s: 7px;
+    --padding-m: 15px;
+    --padding-l: 20px;
+    --padding-xl: 25px;
+
+    /* Font Sizes */
+    --font-size-xs: 16px;
+    --font-size-s: 18px;
+    --font-size-m: 20px;
+    --font-size-ml: 24px;
+    --font-size-l: 28px;
+    --font-size-xl: 30px;
+    --font-size-35: 35px;
+    --font-size-xxl: 32px;
+    --font-size-xxxl: 80px;
+    --font-size-xxxxl: 90px;
+
+    /* Font Weights */
+    --font-weight-normal: 400;
+    --font-weight-bold: 600;
+    --font-weight-light: 300;
+
+    /* Card Variables */
+    --card-bg: var(--color-black);
+    --card-border: var(--color-blue);
+    --card-radius: var(--border-radius-medium);
+    --card-padding: var(--padding-l);
+    --card-color: var(--color-white);
+    --card-width: 300px;
+    --card-height: 160px;
+    --card-gap: var(--padding-l);
+    --card-font-size: var(--font-size-m);
+    --card-font-size-hover: var(--font-size-s);
+    --card-font-weight: var(--font-weight-light);
+    --icon-size: 60px;
+    --card-after-bg: var(--color-blue);
+    --hover-bg: var(--color-blue-dark);
+
+    /* Custom Variables for direct values */
+    --font-size-banner-title: 60px;
+    --font-size-banner-subtitle: 38px;
+    --font-size-accordion-title: 24px;
+    --font-weight-accordion-title: 600;
+    --padding-accordion-title: 15px 0px;
+    --margin-bottom-accordion-title: 0px;
+    --margin-right-icon-list: 10%;
+    --icon-list-radius: 50%;
+    --icon-list-size: 40px;
+    --icon-list-scale-active: 2.25;
+}
+
+.aether-title {
+	font-weight: var(--font-weight-bold);
+	font-size: var(--font-size-banner-title);
+}
+
+.aether-subtitle {
+	color: var(--color-blue);
+}
+
+.sub-sub-title {
+	font-size: var(--font-size-xs);
+	display: contents;
+	.sub-title-span{
+		color: var(--color-white) !important;
+	}
+}
+
+.aether-desc {
+	font-size: var(--font-size-xxl);
+	line-height: 1.25;
+	overflow-wrap: break-word;
+}
+
+.aether-highlight {
+	font-weight: var(--font-weight-bold);
+}
+
+
+/* Top Anchor Section */
+.top-anchor-section {
+    .elementor-widget-wrap {
+        padding: var(--padding-xs) 0 0 0 !important;
+    }
+    .elementor-icon-box-content {
+        background-color: var(--color-black) !important;
+    }
+    .elementor-icon-box-title {
+        padding: var(--padding-m) !important;
+        border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
+        border: solid var(--border-width) var(--color-black);
+    }
+}
+
+/* Intro Block */
+#intro-block {
+    line-height: 1.5;
+
+    .intro-title {
+        font-size: var(--font-size-s);
+    }
+    .main-title {
+        font-size: var(--font-size-xxxxl);
+        margin: var(--padding-xs) 0 var(--padding-xs) 0;
+    }
+    .subtitle {
+        font-size: var(--font-size-xxl);
+    }
+    .greek {
+        font-weight: var(--font-weight-normal);
+        color: var(--color-blue);
+    }
+    .god-of-light {
+        font-weight: var(--font-weight-bold);
+        color: var(--color-blue);
+    }
+    .pronunciation {
+        font-size: var(--font-size-xl);
+        margin-top: var(--padding-xs);
+        font-weight: var(--font-weight-normal);
+    }
+    .pronunciation-highlight {
+        color: var(--color-blue);
+    }
+
+    @media (max-width: 768px) {
+        margin: 0 var(--padding-m);
+        .main-title {
+            font-size: var(--font-size-xxxl);
+        }
+        .subtitle {
+            font-size: var(--font-size-l);
+        }
+        .pronunciation {
+            font-size: var(--font-size-m);
+        }
+    }
+}
+
+
+/* IMPACTING INDUSTRIES SECTION - START */
+#impacting-industries {
+    .elementor-accordion-item:last-of-type {
+        border-bottom: var(--border-width) solid var(--color-white) !important;
+    }
+    .elementor-accordion-item {
+        border: none !important;
+        border-top: var(--border-width) solid var(--color-white) !important;
+
+        #process-indus, #discrete-manu, #ai-in-finserv{
+            font-size: var(--font-size-accordion-title);
+            font-weight: var(--font-weight-accordion-title);
+            padding: var(--padding-accordion-title);
+            margin-bottom: var(--margin-bottom-accordion-title);
+        }
+    }
+    .elementor-tab-content {
+        border-top: none !important;
+    }
+}
+/* IMPACTING INDUSTRIES SECTION - end */
+
+
+/* AI in action section - start */
+#data-tile-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--card-gap);
+        justify-content: center;
+
+        .card {
+            position: relative;
+            width: var(--card-width);
+            height: var(--card-height);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            border: var(--border-width-thick) solid var(--card-border);
+            background-color: var(--card-bg);
+            transition: background-color 0.3s;
+            color: var(--card-color);
+            cursor: pointer;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 60%;
+                height: 90%;
+                background-color: var(--card-after-bg);
+                border-top-left-radius: 100%;
+                z-index: 0;
+            }
+
+            .card-normal,
+            .card-hover {
+                position: absolute;
+                inset: 0;
+                padding: var(--card-padding);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                z-index: 1;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            .card-normal {
+                z-index: 2;
+            }
+
+            .card-hover {
+                background-color: var(--hover-bg);
+                opacity: 0;
+                z-index: 1;
+                transform: scale(0.98);
+
+                .text {
+                    .title {
+                        font-size: var(--card-font-size);
+                        margin-bottom: var(--padding-s);
+                    }
+                    .description {
+                        font-size: var(--font-size-xs);
+                        line-height: 1.4;
+                    }
+                }
+            }
+
+            &:hover{
+                background-color: var(--card-border);
+
+                .card-hover {
+                    opacity: 1;
+                    z-index: 3;
+                    transform: scale(1);
+                }
+
+                .card-normal {
+                    opacity: 0;
+                    z-index: 1;
+                    transform: scale(1.02);
+                }
+            }
+
+            .text {
+                font-size: var(--card-font-size);
+                font-weight: var(--card-font-weight);
+            }
+
+            .icon {
+                position: absolute;
+                bottom: var(--card-padding);
+                right: var(--card-padding);
+                z-index: 1;
+                img {
+                    width: var(--icon-size);
+                    height: var(--icon-size);
+                    align-self: flex-end;
+                }
+            }
+        }
+    }
+}
+/*  AI in action section - end */
+
+/* Feature Tile */
+.feature-tile {
+    .elementor-widget:not(:last-child) {
+        margin-block-end: 0 !important;
+    }
+    .elementor-widget-wrap.elementor-element-populated {
+        padding: var(--padding-s) !important;
+    }
+}
+
+/* Section: What Can You Do - start */
+.section-what-can-you-do {
+    .elementor-icon-list-item {
+        margin-top: var(--padding-m) !important;
+        padding: var(--padding-m) 0 var(--padding-xl) var(--padding-l) !important;
+        border-bottom: var(--border-width) solid var(--color-white);
+        position: relative;
+    }
+
+    .elementor-icon-list-items:first-child {
+        border-top: var(--border-width) solid var(--color-white);
+    }
+
+    .icon-sub-text {
+        display: block !important;
+        font-size: var(--font-size-m) !important;
+        line-height: 1.5 !important;
+    }
+
+    .elementor-icon-list-icon {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-right: var(--margin-right-icon-list);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-blue);
+        border-radius: var(--icon-list-radius);
+        width: var(--icon-list-size);
+        height: var(--icon-list-size);
+        padding-right: 0 !important;
+        transform: scale(1);
+    }
+
+    .elementor-icon-list-item.active {
+        .elementor-icon-list-icon {
+            transform: scale(var(--icon-list-scale-active));
+            z-index: 1;
+        }
+        .elementor-icon-list-text {
+            font-weight: var(--font-weight-bold) !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+		
+		.elementor-icon-list-item {
+			margin-top: 0px !important;
+            padding: var(--padding-m) !important;
+        }
+		
+        .elementor-icon-list-icon{
+            width: 70px;
+            height: 70px;
+        }
+        .elementor-icon-list-text {
+            font-size: var(--font-size-s) !important;
+			.icon-sub-text{
+				font-size: 14px !important;
+			}
+        }
+    }
+
+    @keyframes progressBarBottom {
+        from {
+            transform: scaleX(0);
+        }
+        to {
+            transform: scaleX(1);
+        }
+    }
+}
+/* Section: What Can You Do - end */
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+	
+	#aether-banner {
+    	.aether-title{
+            font-size: 70px;
+        }
+        .aether-subtitle {
+            font-size: var(--font-size-l);
+        }
+        .aether-desc {
+        	font-size: var(--font-size-s);
+		}
+	}
+	
+    .level-2-title .elementor-heading-title {
+        font-size: var(--font-size-l) !important;
+    }
+    .txt-para.elementor-element {
+        font-size: var(--font-size-xs) !important;
+    }
+
+	#impacting-industries {
+    	& .elementor-accordion-item {
+    		#process-indus, #discrete-manu, #ai-in-finserv{
+        		line-height: normal;
+				font-size: var(--font-size-m);
+    		}
+			.elementor-tab-content {
+				font-size: 14px;
+			}
+		}
+	}
+    
+    .feature-tile {
+        margin-bottom: var(--padding-xs) !important;
+        .vert-hover-effect {
+            .elementor-icon-box-icon {
+                margin-bottom: 0 !important;
+            }
+            .elementor-icon-box-wrapper {
+                display: inline-flex !important;
+            }
+            .elementor-icon-box-content {
+                margin-left: var(--padding-m) !important;
+                margin-top: var(--padding-xs) !important;
+            }
+        }
+    }
+	
+	#mobile-anchor-flag {
+		position: fixed;
+		top: 50%;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background-color: transparent;
+		z-index: 100;
+		pointer-events: none;
+	  }
+}
+
+/********* ----------- aether-page : end ----------- *********/
+
+

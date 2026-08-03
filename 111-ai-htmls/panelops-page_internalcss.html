@@ -1,0 +1,634 @@
+<style>.c1{position: fixed !important; top: 90px !important; right: 24px !important; z-index: 99999 !important; width: 48px !important; height: 48px !important; border-radius: 14px !important; background: var(--toggle-bg) !important; border: 1px solid var(--border) !important; cursor: pointer !important; display: flex !important; align-items: center !important; justify-content: center !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; transition: background 0.3s !important;}
+.c2{display:block !important;}
+.c3{display:none !important;}
+.c4{min-height: 100vh !important; display: flex !important; align-items: center !important; overflow: hidden !important; padding: 120px 60px 80px !important; background: var(--bg) !important;}
+.c5{position: absolute !important; inset: 0 !important; background-image: linear-gradient(rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.06) 1px, transparent 1px) !important; background-size: 60px 60px !important; animation: ierpGridScroll 20s linear infinite !important;}
+.c6{position: absolute !important; top: -20% !important; left: -10% !important; width: 800px !important; height: 800px !important; background: radial-gradient(circle, rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.12) 0%, transparent 70%) !important; pointer-events: none !important; animation: ierpPulseGlow 6s ease-in-out infinite !important;}
+.c7{position: absolute !important; bottom: -30% !important; right: -10% !important; width: 700px !important; height: 700px !important; background: radial-gradient(circle, rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.08) 0%, transparent 70%) !important; pointer-events: none !important; animation: ierpPulseGlow 8s ease-in-out infinite 2s !important;}
+.c8{max-width: 1400px !important; margin-left: auto !important; margin-right: auto !important; display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 80px !important; align-items: center !important; position: relative !important; z-index: 2 !important; width: 100% !important;}
+.c9{animation: ierpFadeUp 0.8s ease-out !important; text-align: left !important;}
+.c10{display: inline-flex !important; align-items: center !important; gap: 8px !important; background: var(--pill-bg) !important; border: 1px solid var(--pill-border) !important; border-radius: 100px !important; padding: 6px 18px 6px 12px !important; margin-bottom: 28px !important;}
+.c11{width: 8px !important; height: 8px !important; border-radius: 50% !important; background: var(--pill-dot) !important; display: inline-block !important; box-shadow: 0 0 8px rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.6) !important;}
+.c12{font-family: 'Space Mono', monospace !important; font-size: 11px !important; letter-spacing: 1.5px !important; color: var(--pill-text) !important; text-transform: uppercase !important;}
+.c13{font-size: clamp(40px, 5.5vw, 72px) !important; font-weight: 800 !important; line-height: 1.08 !important; letter-spacing: -0.03em !important; margin-bottom: 24px !important;}
+.c14{color: var(--text) !important;}
+.c15{background: var(--grad-hero) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important;}
+.c16{font-size: 18px !important; max-width: 520px !important; margin-bottom: 16px !important; line-height: 1.7 !important;}
+.c17{color: var(--text-sub) !important;}
+.c18{font-size: 15px !important; color: var(--faint) !important; max-width: 520px !important; margin-bottom: 40px !important; line-height: 1.7 !important;}
+.c19{display: flex !important; gap: 16px !important; flex-wrap: wrap !important;}
+.c20{display: inline-flex !important; align-items: center !important; gap: 8px !important; padding: 16px 36px !important; background: var(--grad-primary) !important; color: #fff !important; font-family: 'Outfit', sans-serif !important; font-weight: 600 !important; font-size: 15px !important; border-radius: 10px !important; letter-spacing: 0.3px !important; box-shadow: 0 8px 30px var(--glow-primary) !important; transition: all 0.3s ease !important;}
+.c21{display: inline-flex !important; align-items: center !important; gap: 8px !important; padding: 16px 36px !important; background: rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.08) !important; color: var(--primary-lt) !important; font-family: 'Outfit', sans-serif !important; font-weight: 600 !important; font-size: 15px !important; border-radius: 10px !important; letter-spacing: 0.3px !important; border: 1px solid rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.2) !important; transition: all 0.3s ease !important;}
+.c22{animation: ierpFadeIn 1.2s ease-out 0.3s both !important;}
+.c23{width: 100% !important; max-width: 500px !important; margin: 0 auto !important; display: block !important; filter: drop-shadow(0 20px 60px var(--glow-soft)) !important;}
+.c24{position: absolute !important; bottom: 32px !important; left: 50% !important; transform: translateX(-50%) !important; display: flex !important; flex-direction: column !important; align-items: center !important; gap: 8px !important; animation: ierpFloat 3s ease-in-out infinite !important; z-index: 2 !important;}
+.c25{font-family: 'Space Mono', monospace !important; font-size: 10px !important; color: var(--dim) !important; letter-spacing: 2px !important; text-transform: uppercase !important;}
+.c26{background: rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.04) !important; border-top: 1px solid rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.1) !important; border-bottom: 1px solid rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.1) !important; padding: 50px 60px !important;}
+.c27{max-width: 1400px !important; margin: 0 auto !important; display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 40px !important; text-align: center !important;}
+.c28{animation: ierpCountUp 0.6s ease-out !important;}
+.c29{font-family: 'Space Mono', monospace !important; font-size: clamp(36px, 4vw, 52px) !important; font-weight: 700 !important; color: var(--primary) !important; line-height: 1 !important;}
+.c30{font-size: 13px !important; color: var(--muted) !important; margin-top: 8px !important;}
+.c31{animation: ierpCountUp 0.6s ease-out 0.1s both !important;}
+.c32{animation: ierpCountUp 0.6s ease-out 0.2s both !important;}
+.c33{animation: ierpCountUp 0.6s ease-out 0.3s both !important;}
+.c34{padding: 100px 60px !important; background: var(--bg) !important;}
+.c35{max-width: 1400px !important; margin: 0 auto !important;}
+.c36{text-align: center !important; margin-bottom: 64px !important;}
+.c37{font-family: 'Space Mono', monospace !important; font-size: 11px !important; letter-spacing: 2px !important; color: var(--primary) !important; text-transform: uppercase !important; display: block !important; margin-bottom: 16px !important;}
+.c38{font-size: clamp(32px, 4vw, 54px) !important; font-weight: 800 !important; letter-spacing: -0.02em !important;}
+.c39{font-size: 16px !important; max-width: 640px !important; margin: 16px auto 0 !important; line-height: 1.7 !important;}
+.c40{display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 24px !important;}
+.c41{background: rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.04) !important; border: 1px solid rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.12) !important; border-radius: 16px !important; padding: 44px 36px !important; position: relative !important; overflow: hidden !important; transition: all 0.3s ease !important;}
+.c42{position: absolute !important; top: -20px !important; right: -20px !important; font-family: 'Outfit', sans-serif !important; font-size: 120px !important; font-weight: 900 !important; color: var(--watermark) !important; line-height: 1 !important; pointer-events: none !important;}
+.c43{width: 44px !important; height: 44px !important; border-radius: 12px !important; background: var(--icon-bg) !important; display: flex !important; align-items: center !important; justify-content: center !important; margin-bottom: 20px !important;}
+.c44{font-weight: 700 !important; font-size: 22px !important; margin-bottom: 12px !important;}
+.c45{font-size: 14px !important; line-height: 1.7 !important;}
+.c46{padding: 100px 60px !important; background: var(--bg-alt) !important;}
+.c47{position: absolute !important; inset: 0 !important; background: radial-gradient(ellipse at 30% 20%, rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.05) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.03) 0%, transparent 50%) !important; pointer-events: none !important;}
+.c48{max-width: 1400px !important; margin: 0 auto !important; position: relative !important; z-index: 2 !important;}
+.c49{color: var(--primary) !important;}
+.c50{display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 20px !important;}
+.c51{background: var(--surface) !important; border: 1px solid var(--border) !important; border-radius: 14px !important; padding: 32px 28px !important; transition: all 0.3s !important;}
+.c52{width: 40px !important; height: 40px !important; border-radius: 10px !important; background: var(--icon-bg) !important; display: flex !important; align-items: center !important; justify-content: center !important; margin-bottom: 18px !important;}
+.c53{font-weight: 700 !important; font-size: 16px !important; margin-bottom: 8px !important;}
+.c54{font-size: 13px !important; line-height: 1.6 !important;}
+.c55{width: 40px !important; height: 40px !important; border-radius: 10px !important; background: var(--icon-accent-bg) !important; display: flex !important; align-items: center !important; justify-content: center !important; margin-bottom: 18px !important;}
+.c56{font-family: 'Space Mono', monospace !important; font-size: 11px !important; letter-spacing: 2px !important; color: var(--accent) !important; text-transform: uppercase !important; display: block !important; margin-bottom: 16px !important;}
+.c57{color: var(--accent-lt) !important;}
+.c58{display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important;}
+.c59{background: linear-gradient(135deg, rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.06) 0%, rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.04) 100%) !important; border: 1px solid var(--border-acc) !important; border-radius: 16px !important; padding: 44px 40px !important; display: flex !important; gap: 24px !important; align-items: flex-start !important; animation: ierpBorderPulse 4s ease-in-out infinite !important;}
+.c60{min-width: 56px !important; height: 56px !important; border-radius: 14px !important; background: var(--icon-bg) !important; display: flex !important; align-items: center !important; justify-content: center !important;}
+.c61{font-weight: 700 !important; font-size: 20px !important; margin-bottom: 8px !important;}
+.c62{background: linear-gradient(135deg, rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.06) 0%, rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.04) 100%) !important; border: 1px solid var(--border-acc) !important; border-radius: 16px !important; padding: 44px 40px !important; display: flex !important; gap: 24px !important; align-items: flex-start !important; animation: ierpBorderPulse 4s ease-in-out infinite 1s !important;}
+.c63{background: linear-gradient(135deg, rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.06) 0%, rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.04) 100%) !important; border: 1px solid var(--border-acc) !important; border-radius: 16px !important; padding: 44px 40px !important; display: flex !important; gap: 24px !important; align-items: flex-start !important; animation: ierpBorderPulse 4s ease-in-out infinite 2s !important;}
+.c64{min-width: 56px !important; height: 56px !important; border-radius: 14px !important; background: var(--icon-accent-bg) !important; display: flex !important; align-items: center !important; justify-content: center !important;}
+.c65{background: linear-gradient(135deg, rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.06) 0%, rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.04) 100%) !important; border: 1px solid var(--border-acc) !important; border-radius: 16px !important; padding: 44px 40px !important; display: flex !important; gap: 24px !important; align-items: flex-start !important; animation: ierpBorderPulse 4s ease-in-out infinite 3s !important;}
+.c66{max-width: 1100px !important; margin: 0 auto !important;}
+.c67{text-align: center !important; margin-bottom: 56px !important;}
+.c68{font-size: clamp(28px, 3.5vw, 44px) !important; font-weight: 800 !important; letter-spacing: -0.02em !important;}
+.c69{display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 24px !important;}
+.c70{background: var(--surface) !important; border: 1px solid var(--border) !important; border-radius: 16px !important; padding: 40px !important;}
+.c71{font-family: 'Space Mono', monospace !important; font-size: 10px !important; letter-spacing: 1.5px !important; color: var(--dim) !important; text-transform: uppercase !important; margin-bottom: 20px !important;}
+.c72{display: flex !important; flex-direction: column !important; gap: 16px !important;}
+.c73{display: flex !important; justify-content: space-between !important; align-items: center !important; padding-bottom: 12px !important; border-bottom: 1px solid var(--border) !important;}
+.c74{font-size: 14px !important;}
+.c75{font-family: 'Space Mono', monospace !important; font-size: 14px !important; color: var(--legacy-val) !important;}
+.c76{display: flex !important; justify-content: space-between !important; align-items: center !important;}
+.c77{background: var(--ierp-bg) !important; border: 1.5px solid var(--ierp-border) !important; border-radius: 16px !important; padding: 40px !important; position: relative !important; box-shadow: var(--ierp-shadow) !important;}
+.c78{position: absolute !important; top: -12px !important; right: 24px !important; background: var(--rec-badge-bg) !important; color: #fff !important; font-family: 'Space Mono', monospace !important; font-size: 10px !important; letter-spacing: 1px !important; padding: 5px 14px !important; border-radius: 100px !important; text-transform: uppercase !important;}
+.c79{font-family: 'Space Mono', monospace !important; font-size: 10px !important; letter-spacing: 1.5px !important; color: var(--primary) !important; text-transform: uppercase !important; margin-bottom: 20px !important;}
+.c80{display: flex !important; justify-content: space-between !important; align-items: center !important; padding-bottom: 12px !important; border-bottom: 1px solid var(--ierp-row-border) !important;}
+.c81{font-family: 'Space Mono', monospace !important; font-size: 14px !important; color: var(--ierp-val) !important; font-weight: 700 !important;}
+.c82{padding: 100px 60px !important; background: var(--bg) !important; overflow: hidden !important;}
+.c83{position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: 800px !important; height: 400px !important; background: radial-gradient(ellipse, var(--glow-soft) 0%, transparent 70%) !important; pointer-events: none !important;}
+.c84{max-width: 800px !important; margin: 0 auto !important; text-align: center !important; position: relative !important; z-index: 2 !important;}
+.c85{display: inline-flex !important; align-items: center !important; gap: 8px !important; background: var(--cta-pill-bg) !important; border: 1px solid var(--cta-pill-border) !important; border-radius: 100px !important; padding: 6px 18px 6px 12px !important; margin-bottom: 28px !important;}
+.c86{width: 8px !important; height: 8px !important; border-radius: 50% !important; background: var(--cta-pill-dot) !important; display: inline-block !important; box-shadow: 0 0 8px rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.6) !important;}
+.c87{font-family: 'Space Mono', monospace !important; font-size: 11px !important; letter-spacing: 1.5px !important; color: var(--cta-pill-text) !important; text-transform: uppercase !important;}
+.c88{font-size: clamp(32px, 4vw, 52px) !important; font-weight: 800 !important; letter-spacing: -0.02em !important; margin-bottom: 20px !important;}
+.c89{font-size: 17px !important; max-width: 560px !important; margin: 0 auto 40px !important; line-height: 1.7 !important;}
+.c90{display: flex !important; gap: 16px !important; justify-content: center !important; flex-wrap: wrap !important;}
+.c91{display: inline-flex !important; align-items: center !important; gap: 10px !important; padding: 18px 44px !important; background: var(--grad-primary) !important; color: #fff !important; font-family: 'Outfit', sans-serif !important; font-weight: 600 !important; font-size: 16px !important; border-radius: 12px !important; letter-spacing: 0.3px !important; box-shadow: 0 8px 30px var(--glow-primary), 0 0 80px var(--glow-soft) !important; transition: all 0.3s ease !important;}</style><!-- ═══════════════════════════════════════════════════════════════
+     ITHENA iERP LANDING — WordPress Embeddable
+     Paste this entire block into a Custom HTML block in WP.
+     Everything is scoped under .ierp-landing to avoid WP theme conflicts.
+═══════════════════════════════════════════════════════════════ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+/* ── RESET: Kill all WP theme inheritance ── */
+.ierp-landing,
+.ierp-landing *,
+.ierp-landing *::before,
+.ierp-landing *::after {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    border: none !important;
+    outline: none !important;
+    text-decoration: none !important;
+    list-style: none !important;
+    float: none !important;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0;
+    text-shadow: none;
+    box-shadow: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Re-apply border/shadow/padding/margin via our own classes */
+.ierp-landing { --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* ── DARK THEME (default) ── */
+.ierp-landing[data-theme="dark"] {
+    --bg:           #111111;
+    --bg-alt:       #0e0e0e;
+    --surface:      #161616;
+    --text:         #f0f0f0;
+    --text-sub:     #d0d0d0;
+    --muted:        #888888;
+    --faint:        #666666;
+    --dim:          #555555;
+    --border:       rgba(255,255,255,0.06);
+    --border-acc:   rgba(0,130,200,0.15);
+    --primary:      #0082c8;
+    --primary-lt:   #33a1e0;
+    --primary-dk:   #006aa3;
+    --accent:       #8B1A2B;
+    --accent-lt:    #c4405a;
+    --primary-r: 0; --primary-g: 130; --primary-b: 200;
+    --accent-r: 139; --accent-g: 26; --accent-b: 43;
+    --grad-primary: linear-gradient(135deg, #0082c8, #006aa3);
+    --grad-hero:    linear-gradient(135deg, #0082c8, #33a1e0);
+    --glow-primary: rgba(0,130,200,0.3);
+    --glow-soft:    rgba(0,130,200,0.1);
+    --svg-hub-fill: #111111; --svg-node-fill:#111111;
+    --svg-primary-stroke: #0082c8; --svg-primary-text: #33a1e0;
+    --svg-accent-stroke:  #8B1A2B; --svg-accent-text:  #c4405a;
+    --svg-muted: #888888; --svg-dim: #555555;
+    --card-hover-bg: rgba(0,130,200,0.05);
+    --card-accent-bg: rgba(139,26,43,0.05);
+    --icon-bg: rgba(0,130,200,0.1);
+    --icon-accent-bg: rgba(139,26,43,0.1);
+    --pill-bg: rgba(0,130,200,0.1); --pill-border: rgba(0,130,200,0.25);
+    --pill-dot: #0082c8; --pill-text: #33a1e0;
+    --legacy-val: #c4405a;
+    --rec-badge-bg: linear-gradient(135deg, #0082c8, #006aa3);
+    --ierp-border: rgba(0,130,200,0.2); --ierp-bg: rgba(0,130,200,0.05);
+    --ierp-val: #33a1e0; --ierp-row-border: rgba(0,130,200,0.1);
+    --ierp-shadow: 0 8px 40px rgba(0,130,200,0.08);
+    --cta-pill-bg: rgba(139,26,43,0.1); --cta-pill-border: rgba(139,26,43,0.2);
+    --cta-pill-dot: #8B1A2B; --cta-pill-text: #c4405a;
+    --sec-btn-bg: rgba(255,255,255,0.04); --sec-btn-text: #d0d0d0;
+    --sec-btn-border: rgba(255,255,255,0.1); --sec-btn-hover: rgba(255,255,255,0.08);
+    --watermark: rgba(0,130,200,0.04);
+    --toggle-bg: rgba(255,255,255,0.06); --toggle-hover: rgba(255,255,255,0.1);
+}
+
+/* ── LIGHT THEME ── */
+.ierp-landing[data-theme="light"] {
+    --bg:           #ffffff;
+    --bg-alt:       #f7f7f7;
+    --surface:      #f0f0f0;
+    --text:         #1a1a1a;
+    --text-sub:     #333333;
+    --muted:        #666666;
+    --faint:        #888888;
+    --dim:          #aaaaaa;
+    --border:       rgba(0,0,0,0.08);
+    --border-acc:   rgba(188,26,0,0.15);
+    --primary:      #bc1a00;
+    --primary-lt:   #e83e00;
+    --primary-dk:   #d92000;
+    --accent:       #0082c8;
+    --accent-lt:    #33a1e0;
+    --primary-r: 188; --primary-g: 26; --primary-b: 0;
+    --accent-r: 0; --accent-g: 130; --accent-b: 200;
+    --grad-primary: linear-gradient(135deg, #bc1a00, #d92000);
+    --grad-hero:    linear-gradient(135deg, #bc1a00, #e83e00);
+    --glow-primary: rgba(188,26,0,0.25);
+    --glow-soft:    rgba(188,26,0,0.08);
+    --svg-hub-fill: #ffffff; --svg-node-fill: #ffffff;
+    --svg-primary-stroke: #bc1a00; --svg-primary-text: #d92000;
+    --svg-accent-stroke: #0082c8; --svg-accent-text: #006aa3;
+    --svg-muted: #888888; --svg-dim: #bbbbbb;
+    --card-hover-bg: rgba(188,26,0,0.04);
+    --card-accent-bg: rgba(0,130,200,0.04);
+    --icon-bg: rgba(188,26,0,0.08);
+    --icon-accent-bg: rgba(0,130,200,0.08);
+    --pill-bg: rgba(188,26,0,0.07); --pill-border: rgba(188,26,0,0.2);
+    --pill-dot: #bc1a00; --pill-text: #d92000;
+    --legacy-val: #bc1a00;
+    --rec-badge-bg: linear-gradient(135deg, #bc1a00, #d92000);
+    --ierp-border: rgba(188,26,0,0.2); --ierp-bg: rgba(188,26,0,0.04);
+    --ierp-val: #d92000; --ierp-row-border: rgba(188,26,0,0.1);
+    --ierp-shadow: 0 8px 40px rgba(188,26,0,0.06);
+    --cta-pill-bg: rgba(0,130,200,0.07); --cta-pill-border: rgba(0,130,200,0.18);
+    --cta-pill-dot: #0082c8; --cta-pill-text: #006aa3;
+    --sec-btn-bg: rgba(0,0,0,0.04); --sec-btn-text: #333333;
+    --sec-btn-border: rgba(0,0,0,0.12); --sec-btn-hover: rgba(0,0,0,0.08);
+    --watermark: rgba(188,26,0,0.035);
+    --toggle-bg: rgba(0,0,0,0.06); --toggle-hover: rgba(0,0,0,0.1);
+}
+
+/* ── BASE ── */
+.ierp-landing {
+    font-family: 'DM Sans', sans-serif !important;
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    line-height: 1.65 !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    transition: background var(--transition), color var(--transition);
+}
+.ierp-landing a { color: inherit !important; }
+.ierp-landing img { max-width: 100% !important; height: auto !important; }
+.ierp-landing h1,.ierp-landing h2,.ierp-landing h3,.ierp-landing h4,.ierp-landing h5,.ierp-landing h6 {
+    font-family: 'Outfit', sans-serif !important;
+    line-height: 1.15 !important;
+    color: var(--text) !important;
+}
+.ierp-landing p { font-family: 'DM Sans', sans-serif !important; color: var(--muted) !important; }
+.ierp-landing strong { font-weight: 700 !important; }
+
+/* ── ANIMATIONS ── */
+@keyframes ierpFadeUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+@keyframes ierpFadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes ierpPulseGlow { 0%,100% { opacity:0.4; } 50% { opacity:0.8; } }
+@keyframes ierpGridScroll { 0% { transform:translate(0,0); } 100% { transform:translate(60px,60px); } }
+@keyframes ierpFloat { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
+@keyframes ierpCountUp { from { opacity:0; transform:scale(0.8); } to { opacity:1; transform:scale(1); } }
+@keyframes ierpBorderPulse {
+    0%,100% { border-color: var(--border-acc) !important; }
+    50%     { border-color: rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.35) !important; }
+}
+
+/* ── SECTIONS ── */
+.ierp-section {
+    width: 100% !important;
+    position: relative !important;
+    transition: background var(--transition) !important;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+    .ierp-hero-grid   { grid-template-columns: 1fr !important; text-align: center !important; }
+    .ierp-hero-grid > div:first-child { text-align: center !important; }
+    .ierp-hero-grid > div:first-child p { margin-left: auto !important; margin-right: auto !important; }
+    .ierp-hero-grid > div:first-child > div:last-child { justify-content: center !important; }
+    .ierp-hero-visual { display: none !important; }
+    .ierp-modules-grid{ grid-template-columns: repeat(2, 1fr) !important; }
+    .ierp-diff-grid   { grid-template-columns: 1fr !important; }
+    .ierp-compare-grid{ grid-template-columns: 1fr !important; }
+    .ierp-section     { padding-left: 24px !important; padding-right: 24px !important; }
+}
+@media (max-width: 640px) {
+    .ierp-modules-grid{ grid-template-columns: 1fr !important; }
+    .ierp-stats-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+    .ierp-hero-section{ padding: 100px 20px 60px !important; }
+    .ierp-who-grid    { grid-template-columns: 1fr !important; }
+}
+</style>
+<!-- ═══ WRAPPER (data-theme lives here for WP) ═══ -->
+<div class="ierp-landing" data-theme="dark">
+<!-- THEME TOGGLE -->
+<button class="c1" onclick="(function(){var w=document.querySelector('.ierp-landing');var n=w.getAttribute('data-theme')==='dark'?'light':'dark';w.setAttribute('data-theme',n);w.querySelector('.ierp-sun').style.display=n==='dark'?'block':'none';w.querySelector('.ierp-moon').style.display=n==='light'?'block':'none';})()">
+<svg class="ierp-sun c2" fill="none" height="22" viewbox="0 0 22 22" width="22">
+<circle cx="11" cy="11" r="4" stroke="var(--muted)" stroke-width="1.5"></circle>
+<path d="M11 2v2M11 18v2M2 11h2M18 11h2M4.93 4.93l1.41 1.41M15.66 15.66l1.41 1.41M4.93 17.07l1.41-1.41M15.66 6.34l1.41-1.41" stroke="var(--muted)" stroke-linecap="round" stroke-width="1.3"></path>
+</svg>
+<svg class="ierp-moon c3" fill="none" height="20" viewbox="0 0 20 20" width="20">
+<path d="M17.3 12.3A7.5 7.5 0 117.7 2.7a5.5 5.5 0 009.6 9.6z" stroke="var(--muted)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</button>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- HERO                                                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="ierp-section ierp-hero-section c4">
+<!-- Grid bg -->
+<div class="c5"></div>
+<!-- Glows -->
+<div class="c6"></div>
+<div class="c7"></div>
+<div class="ierp-hero-grid c8">
+<!-- Copy -->
+<div class="c9">
+<!-- Pill -->
+<div class="c10">
+<span class="c11"></span>
+<span class="c12">Purpose-Built ERP</span>
+</div>
+<h1 class="c13">
+<span class="c14"> PanelOps:</span><br/>
+<span class="c15">Solution That Thinks Like You</span>
+</h1>
+<p class="c16">
+                    Built from the ground up for <strong class="c17">OEMs</strong>, <strong class="c17">System Integrators</strong>, and <strong class="c17">Panel Builders</strong> who need a nimble, affordable ERP — not a bloated monolith.
+                </p>
+<p class="c18">
+                    From quote to cash, BOM to shipment — PanelOps covers your entire value chain with the lowest total cost of ownership in its class.
+                </p>
+<!-- CTAs -->
+<div class="c19">
+<a class="c20" href="https://ithena.ai/contact-us" onmouseout="this.style.transform='translateY(0)'" onmouseover="this.style.transform='translateY(-2px)'">
+                        Schedule a Demo
+                        <svg fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+<a class="c21" href="#ierp-modules" onmouseout="this.style.transform='translateY(0)'" onmouseover="this.style.transform='translateY(-2px)'">
+                        Explore Modules
+                    </a>
+</div>
+</div>
+<!-- SVG schematic -->
+<div class="ierp-hero-visual c22">
+<svg class="c23" fill="none" viewbox="0 0 500 460" xmlns="http://www.w3.org/2000/svg">
+<rect fill="var(--svg-hub-fill)" height="110" rx="16" stroke="var(--svg-primary-stroke)" stroke-width="1.5" width="160" x="170" y="175"></rect>
+<rect fill="url(#ierpHubGrad)" height="110" opacity="0.15" rx="16" width="160" x="170" y="175"></rect>
+<text fill="var(--svg-primary-stroke)" font-family="Outfit, sans-serif" font-size="18" font-weight="700" text-anchor="middle" x="250" y="218">PanelOps</text>
+<text fill="var(--svg-muted)" font-family="Space Mono, monospace" font-size="9" letter-spacing="1.5" text-anchor="middle" x="250" y="242">ITHENA.AI</text>
+<text fill="var(--svg-dim)" font-family="DM Sans, sans-serif" font-size="10" text-anchor="middle" x="250" y="268">Quote → Build → Ship → Cash</text>
+<line opacity="0.4" stroke="var(--svg-primary-stroke)" stroke-dasharray="4 3" stroke-width="0.8" x1="250" x2="250" y1="175" y2="80"></line>
+<rect fill="var(--svg-node-fill)" height="40" opacity="0.8" rx="10" stroke="var(--svg-primary-stroke)" stroke-width="1" width="80" x="210" y="40"></rect>
+<text fill="var(--svg-primary-text)" font-family="Space Mono, monospace" font-size="10" font-weight="700" text-anchor="middle" x="250" y="65">CRM</text>
+<line opacity="0.4" stroke="var(--svg-primary-stroke)" stroke-dasharray="4 3" stroke-width="0.8" x1="330" x2="420" y1="195" y2="130"></line>
+<rect fill="var(--svg-node-fill)" height="40" opacity="0.8" rx="10" stroke="var(--svg-primary-stroke)" stroke-width="1" width="80" x="390" y="110"></rect>
+<text fill="var(--svg-primary-text)" font-family="Space Mono, monospace" font-size="10" font-weight="700" text-anchor="middle" x="430" y="135">CPQ</text>
+<line opacity="0.4" stroke="var(--svg-primary-stroke)" stroke-dasharray="4 3" stroke-width="0.8" x1="330" x2="420" y1="260" y2="310"></line>
+<rect fill="var(--svg-node-fill)" height="40" opacity="0.8" rx="10" stroke="var(--svg-primary-stroke)" stroke-width="1" width="100" x="385" y="290"></rect>
+<text fill="var(--svg-primary-text)" font-family="Space Mono, monospace" font-size="9" font-weight="700" text-anchor="middle" x="435" y="315">SUPPLIERS</text>
+<line opacity="0.4" stroke="var(--svg-primary-stroke)" stroke-dasharray="4 3" stroke-width="0.8" x1="250" x2="250" y1="285" y2="370"></line>
+<rect fill="var(--svg-node-fill)" height="40" opacity="0.8" rx="10" stroke="var(--svg-primary-stroke)" stroke-width="1" width="80" x="210" y="370"></rect>
+<text fill="var(--svg-primary-text)" font-family="Space Mono, monospace" font-size="10" font-weight="700" text-anchor="middle" x="250" y="395">BOM</text>
+<line opacity="0.4" stroke="var(--svg-primary-stroke)" stroke-dasharray="4 3" stroke-width="0.8" x1="170" x2="80" y1="260" y2="310"></line>
+<rect fill="var(--svg-node-fill)" height="40" opacity="0.8" rx="10" stroke="var(--svg-primary-stroke)" stroke-width="1" width="100" x="20" y="290"></rect>
+<text fill="var(--svg-primary-text)" font-family="Space Mono, monospace" font-size="9" font-weight="700" text-anchor="middle" x="70" y="315">INVENTORY</text>
+<line opacity="0.4" stroke="var(--svg-primary-stroke)" stroke-dasharray="4 3" stroke-width="0.8" x1="170" x2="80" y1="195" y2="130"></line>
+<rect fill="var(--svg-node-fill)" height="40" opacity="0.8" rx="10" stroke="var(--svg-primary-stroke)" stroke-width="1" width="100" x="20" y="110"></rect>
+<text fill="var(--svg-primary-text)" font-family="Space Mono, monospace" font-size="9" font-weight="700" text-anchor="middle" x="70" y="135">SCHEDULING</text>
+<line opacity="0.35" stroke="var(--svg-accent-stroke)" stroke-dasharray="4 3" stroke-width="0.8" x1="195" x2="140" y1="175" y2="60"></line>
+<rect fill="var(--svg-node-fill)" height="36" opacity="0.7" rx="10" stroke="var(--svg-accent-stroke)" stroke-width="1" width="70" x="100" y="30"></rect>
+<text fill="var(--svg-accent-text)" font-family="Space Mono, monospace" font-size="10" font-weight="700" text-anchor="middle" x="135" y="53">WIP</text>
+<line opacity="0.35" stroke="var(--svg-accent-stroke)" stroke-dasharray="4 3" stroke-width="0.8" x1="305" x2="370" y1="175" y2="60"></line>
+<rect fill="var(--svg-node-fill)" height="36" opacity="0.7" rx="10" stroke="var(--svg-accent-stroke)" stroke-width="1" width="90" x="340" y="30"></rect>
+<text fill="var(--svg-accent-text)" font-family="Space Mono, monospace" font-size="9" font-weight="700" text-anchor="middle" x="385" y="53">FINANCIALS</text>
+<circle cx="250" cy="230" fill="none" opacity="0.15" r="90" stroke="var(--svg-primary-stroke)" stroke-width="0.5">
+<animate attributename="r" dur="4s" repeatcount="indefinite" values="90;100;90"></animate>
+<animate attributename="opacity" dur="4s" repeatcount="indefinite" values="0.15;0.05;0.15"></animate>
+</circle>
+<circle cx="250" cy="230" fill="none" opacity="0.08" r="130" stroke="var(--svg-primary-stroke)" stroke-width="0.3">
+<animate attributename="r" dur="5s" repeatcount="indefinite" values="130;142;130"></animate>
+<animate attributename="opacity" dur="5s" repeatcount="indefinite" values="0.08;0.03;0.08"></animate>
+</circle>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="ierpHubGrad" x1="170" x2="330" y1="175" y2="285">
+<stop offset="0%" stop-color="var(--primary)"></stop>
+<stop offset="100%" stop-color="var(--accent)"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+<!-- Scroll -->
+<div class="c24">
+<span class="c25">Scroll</span>
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><path d="M10 4v12M6 12l4 4 4-4" stroke="var(--dim)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- STATS                                                   -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="ierp-section c26">
+<div class="ierp-stats-grid c27">
+<div class="c28">
+<div class="c29">60%</div>
+<div class="c30">Lower TCO vs.<br/>Legacy ERPs</div>
+</div>
+<div class="c31">
+<div class="c29">4wk</div>
+<div class="c30">Average<br/>Go-Live</div>
+</div>
+<div class="c32">
+<div class="c29">100%</div>
+<div class="c30">Open API<br/>Customizable</div>
+</div>
+<div class="c33">
+<div class="c29">SOC2</div>
+<div class="c30">Enterprise-Grade<br/>Security</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- WHO IT'S FOR                                            -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="ierp-section c34">
+<div class="c35">
+<div class="c36">
+<span class="c37">Built For Your World</span>
+<h2 class="c38">Not Another Generic ERP</h2>
+<p class="c39">PanelOps understands configure-to-order workflows, multi-level BOMs, project-based costing, and supplier orchestration — because that's all we do.</p>
+</div>
+<div class="ierp-who-grid c40">
+<!-- OEM -->
+<div class="c41" onmouseout="this.style.borderColor='rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.12)';this.style.transform='translateY(0)'" onmouseover="this.style.borderColor='rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.3)';this.style.transform='translateY(-4px)'">
+<div class="c42">01</div>
+<div class="c43">
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><path d="M4 8h12M4 12h12M4 16h8" stroke="var(--primary)" stroke-linecap="round" stroke-width="1.5"></path><rect height="4" rx="1" stroke="var(--primary-lt)" stroke-width="1.2" width="4" x="14" y="14"></rect></svg>
+</div>
+<h3 class="c44">OEMs</h3>
+<p class="c45">Manage engineer-to-order and configure-to-order products with multi-level BOMs, revision control, and integrated costing from quote through production.</p>
+</div>
+<!-- SI -->
+<div class="c41" onmouseout="this.style.borderColor='rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.12)';this.style.transform='translateY(0)'" onmouseover="this.style.borderColor='rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.3)';this.style.transform='translateY(-4px)'">
+<div class="c42">02</div>
+<div class="c43">
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><circle cx="10" cy="7" r="3" stroke="var(--primary)" stroke-width="1.3"></circle><path d="M5 17c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="var(--primary)" stroke-linecap="round" stroke-width="1.3"></path><path d="M15 9l2.5 2.5-2.5 2.5" stroke="var(--primary-lt)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></path></svg>
+</div>
+<h3 class="c44">System Integrators</h3>
+<p class="c45">Orchestrate multi-vendor projects with procurement tracking, sub-assembly scheduling, and real-time margin visibility across every customer engagement.</p>
+</div>
+<!-- Panel Builders -->
+<div class="c41" onmouseout="this.style.borderColor='rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.12)';this.style.transform='translateY(0)'" onmouseover="this.style.borderColor='rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.3)';this.style.transform='translateY(-4px)'">
+<div class="c42">03</div>
+<div class="c43">
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="2" stroke="var(--primary)" stroke-width="1.3" width="10" x="5" y="3"></rect><line stroke="var(--primary)" stroke-width="1" x1="5" x2="15" y1="8" y2="8"></line><circle cx="8" cy="12" fill="var(--primary-lt)" r="1.2"></circle><circle cx="10" cy="12" fill="var(--primary-lt)" r="1.2"></circle><circle cx="12" cy="12" fill="var(--primary-lt)" r="1.2"></circle></svg>
+</div>
+<h3 class="c44">Panel Builders</h3>
+<p class="c45">Streamline panel configuration, wiring schedules, component sourcing, and shop-floor tracking with purpose-built workflows that match how you actually work.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- MODULES                                                 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="ierp-section c46" id="ierp-modules">
+<div class="c47"></div>
+<div class="c48">
+<div class="c36">
+<span class="c37">Integrated Modules</span>
+<h2 class="c38">
+                    Everything You Need.<br/><span class="c49">Nothing You Don't.</span>
+</h2>
+</div>
+<div class="ierp-modules-grid c50">
+<!-- CRM -->
+<div class="c51" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--surface)'" onmouseover="this.style.borderColor='rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.3)';this.style.background='var(--card-hover-bg)'">
+<div class="c52">
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><circle cx="10" cy="7" r="3" stroke="var(--primary)" stroke-width="1.3"></circle><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="var(--primary)" stroke-linecap="round" stroke-width="1.3"></path></svg>
+</div>
+<h4 class="c53">CRM</h4>
+<p class="c54">Lead-to-order pipeline, account management, activity tracking, and customer-project linking.</p>
+</div>
+<!-- CPQ -->
+<div class="c51" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--surface)'" onmouseover="this.style.borderColor='rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.3)';this.style.background='var(--card-hover-bg)'">
+<div class="c52">
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="12" rx="2" stroke="var(--primary)" stroke-width="1.3" width="14" x="3" y="4"></rect><path d="M7 9h6M7 12h4" stroke="var(--primary)" stroke-linecap="round" stroke-width="1.2"></path><circle cx="15" cy="7" fill="var(--primary-lt)" r="1"></circle></svg>
+</div>
+<h4 class="c53">CPQ</h4>
+<p class="c54">Configure-price-quote engine with rules-based configurator, margin analysis, and approval workflows.</p>
+</div>
+<!-- Supplier Mgmt -->
+<div class="c51" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--surface)'" onmouseover="this.style.borderColor='rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.3)';this.style.background='var(--card-hover-bg)'">
+<div class="c52">
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><path d="M4 10h4l2-3 2 6 2-3h4" stroke="var(--primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"></path></svg>
+</div>
+<h4 class="c53">Supplier Mgmt</h4>
+<p class="c54">Vendor scorecards, PO management, lead-time tracking, and multi-source procurement optimization.</p>
+</div>
+<!-- BOM -->
+<div class="c51" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--surface)'" onmouseover="this.style.borderColor='rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.3)';this.style.background='var(--card-hover-bg)'">
+<div class="c52">
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="4" rx="1" stroke="var(--primary)" stroke-width="1.2" width="6" x="7" y="3"></rect><rect height="4" rx="1" stroke="var(--primary)" stroke-width="1.2" width="6" x="2" y="13"></rect><rect height="4" rx="1" stroke="var(--primary)" stroke-width="1.2" width="6" x="12" y="13"></rect><line stroke="var(--primary-lt)" stroke-width="1" x1="10" x2="10" y1="7" y2="10"></line><line stroke="var(--primary-lt)" stroke-width="1" x1="5" x2="15" y1="10" y2="10"></line><line stroke="var(--primary-lt)" stroke-width="1" x1="5" x2="5" y1="10" y2="13"></line><line stroke="var(--primary-lt)" stroke-width="1" x1="15" x2="15" y1="10" y2="13"></line></svg>
+</div>
+<h4 class="c53">BOM Mgmt</h4>
+<p class="c54">Multi-level BOMs with revision control, where-used analysis, ECO tracking, and cost roll-ups.</p>
+</div>
+<!-- Inventory -->
+<div class="c51" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--surface)'" onmouseover="this.style.borderColor='rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.3)';this.style.background='var(--card-hover-bg)'">
+<div class="c52">
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="5" rx="1" stroke="var(--primary)" stroke-width="1.2" width="5" x="4" y="11"></rect><rect height="5" rx="1" stroke="var(--primary)" stroke-width="1.2" width="5" x="11" y="11"></rect><rect height="5" rx="1" stroke="var(--primary)" stroke-width="1.2" width="5" x="4" y="4"></rect><rect height="5" rx="1" stroke="var(--primary-lt)" stroke-dasharray="2 1.5" stroke-width="1.2" width="5" x="11" y="4"></rect></svg>
+</div>
+<h4 class="c53">Inventory</h4>
+<p class="c54">Multi-warehouse, lot/serial tracking, min-max replenishment, and real-time stock visibility.</p>
+</div>
+<!-- Scheduling -->
+<div class="c51" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--surface)'" onmouseover="this.style.borderColor='rgba(var(--primary-r),var(--primary-g),var(--primary-b),0.3)';this.style.background='var(--card-hover-bg)'">
+<div class="c52">
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="11" rx="2" stroke="var(--primary)" stroke-width="1.3" width="14" x="3" y="5"></rect><line stroke="var(--primary)" stroke-width="1" x1="3" x2="17" y1="9" y2="9"></line><line stroke="var(--primary-lt)" stroke-linecap="round" stroke-width="1.2" x1="7" x2="7" y1="5" y2="3"></line><line stroke="var(--primary-lt)" stroke-linecap="round" stroke-width="1.2" x1="13" x2="13" y1="5" y2="3"></line><rect fill="var(--primary)" height="2" opacity="0.6" rx="0.5" width="3" x="6" y="11"></rect></svg>
+</div>
+<h4 class="c53">Scheduling</h4>
+<p class="c54">Visual Gantt scheduling, capacity planning, resource allocation, and constraint-based optimization.</p>
+</div>
+<!-- WIP -->
+<div class="c51" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--surface)'" onmouseover="this.style.borderColor='rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.3)';this.style.background='var(--card-accent-bg)'">
+<div class="c55">
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><path d="M4 16l4-4 3 2 5-7" stroke="var(--accent)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path><circle cx="16" cy="7" r="2" stroke="var(--accent-lt)" stroke-width="1.2"></circle></svg>
+</div>
+<h4 class="c53">WIP Tracking</h4>
+<p class="c54">Real-time work-in-progress visibility, labor tracking, routing operations, and shop-floor data capture.</p>
+</div>
+<!-- Financials -->
+<div class="c51" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--surface)'" onmouseover="this.style.borderColor='rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.3)';this.style.background='var(--card-accent-bg)'">
+<div class="c55">
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><path d="M10 4v12M7 7l3-3 3 3M7 13l3 3 3-3" stroke="var(--accent)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"></path></svg>
+</div>
+<h4 class="c53">Financials</h4>
+<p class="c54">GL, AP/AR, project costing, job profitability, cash-flow forecasting, and multi-currency support.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- DIFFERENTIATORS                                         -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="ierp-section c34">
+<div class="c35">
+<div class="c36">
+<span class="c56">Why PanelOps</span>
+<h2 class="c38">
+                    The <span class="c57">Unfair Advantage</span>
+</h2>
+</div>
+<div class="ierp-diff-grid c58">
+<!-- Nimble -->
+<div class="c59">
+<div class="c60">
+<svg fill="none" height="28" viewbox="0 0 28 28" width="28"><path d="M7 21l7-14 7 14" stroke="var(--primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path><path d="M9.5 17h9" stroke="var(--primary-lt)" stroke-linecap="round" stroke-width="1.5"></path></svg>
+</div>
+<div>
+<h3 class="c61">Nimble by Design</h3>
+<p class="c45">No bloat. No shelf-ware. Every module earns its place. Deploy only what you need, expand when you're ready. Typical go-live in 4 weeks — not 12 months.</p>
+</div>
+</div>
+<!-- Frugal -->
+<div class="c62">
+<div class="c60">
+<svg fill="none" height="28" viewbox="0 0 28 28" width="28"><circle cx="14" cy="14" r="9" stroke="var(--primary)" stroke-width="1.8"></circle><path d="M14 9v10M11 12h6M11 16h6" stroke="var(--primary-lt)" stroke-linecap="round" stroke-width="1.5"></path></svg>
+</div>
+<div>
+<h3 class="c61">Frugal Pricing</h3>
+<p class="c45">Transparent per-user pricing with no hidden infrastructure costs. No surprise "platform fees." Enterprise capability at SMB-friendly price points — the lowest TCO in its class.</p>
+</div>
+</div>
+<!-- Open -->
+<div class="c63">
+<div class="c64">
+<svg fill="none" height="28" viewbox="0 0 28 28" width="28"><path d="M8 8l4 4-4 4" stroke="var(--accent)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path><line stroke="var(--accent-lt)" stroke-linecap="round" stroke-width="1.8" x1="15" x2="22" y1="16" y2="16"></line></svg>
+</div>
+<div>
+<h3 class="c61">Open Customization</h3>
+<p class="c45">REST APIs, webhooks, and a low-code extension framework. Build custom screens, integrations, and automations without waiting on a vendor. Your PanelOps, your rules.</p>
+</div>
+</div>
+<!-- Secure -->
+<div class="c65">
+<div class="c64">
+<svg fill="none" height="28" viewbox="0 0 28 28" width="28"><path d="M14 5l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V9l8-4z" stroke="var(--accent)" stroke-linejoin="round" stroke-width="1.8"></path><path d="M11 14l2 2 4-4" stroke="var(--accent-lt)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+</div>
+<div>
+<h3 class="c61">Enterprise-Grade Security</h3>
+<p class="c45">SOC 2 Type II compliant. AES-256 encryption at rest and in transit. Role-based access, SSO, audit trails, and data residency options. Your data stays yours.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- TCO COMPARISON                                          -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="ierp-section c46">
+<div class="c66">
+<div class="c67">
+<span class="c37">Total Cost of Ownership</span>
+<h2 class="c68">Stop Overpaying for Features You'll Never Use</h2>
+</div>
+<div class="ierp-compare-grid c69">
+<!-- Legacy -->
+<div class="c70">
+<div class="c71">Legacy ERPs</div>
+<div class="c72">
+<div class="c73"><span class="c74">Implementation</span><span class="c75">6–18 months</span></div>
+<div class="c73"><span class="c74">Customization</span><span class="c75">Vendor-dependent</span></div>
+<div class="c73"><span class="c74">Hidden Costs</span><span class="c75">Licensing + infra + consulting</span></div>
+<div class="c76"><span class="c74">Shelf-ware</span><span class="c75">60–70% unused</span></div>
+</div>
+</div>
+<!-- iERP -->
+<div class="c77">
+<div class="c78">Recommended</div>
+<div class="c79">ITHENA PanelOps</div>
+<div class="c72">
+<div class="c80"><span class="c74">Implementation</span><span class="c81">2–4 weeks</span></div>
+<div class="c80"><span class="c74">Customization</span><span class="c81">Open API + low-code</span></div>
+<div class="c80"><span class="c74">Hidden Costs</span><span class="c81">Zero. All-inclusive.</span></div>
+<div class="c76"><span class="c74">Shelf-ware</span><span class="c81">Pay only for what you use</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- CTA                                                     -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="ierp-section c82">
+<div class="c83"></div>
+<div class="c84">
+<div class="c85">
+<span class="c86"></span>
+<span class="c87">Get Started</span>
+</div>
+<h2 class="c88">Ready to Ditch the<br/>ERP Tax?</h2>
+<p class="c89">See how PanelOps can streamline your operations in a personalized demo. No pressure, no 12-month sales cycle — just answers.</p>
+<div class="c90">
+<a class="c91" href="https://ithena.ai/contact-us" onmouseout="this.style.transform='translateY(0)'" onmouseover="this.style.transform='translateY(-3px)'">
+                    Schedule a Demo
+                    <svg fill="none" height="18" viewbox="0 0 18 18" width="18"><path d="M3.5 9h11M10 4.5L14.5 9 10 13.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div></div></div></div>

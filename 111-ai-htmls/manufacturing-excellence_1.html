@@ -1,0 +1,786 @@
+<!-- ============================================================
+     ITHENA MANUFACTURING EXCELLENCE — Elementor HTML Widget Block
+     Paste this entire block into an Elementor "HTML" widget.
+     No theme header/footer dependency — fully self-contained.
+     Font: Noto Sans (loaded via Google Fonts import below)
+============================================================ -->
+<div class="me-root">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800;900&family=Noto+Sans+Mono:wght@400;600&display=swap');
+
+.me-root, .me-root * , .me-root *::before, .me-root *::after{ box-sizing:border-box; }
+
+.me-root{
+  --bg:            #070b14;
+  --bg-soft:       #0c1220;
+  --surface:       #121a2c;
+  --surface-2:     #17203570;
+  --border:        rgba(255,255,255,0.09);
+  --border-soft:   rgba(255,255,255,0.05);
+  --blue:          #0082c8;
+  --blue-soft:     #6ea8ff;
+  --cyan:          #22d3ee;
+  --bus:           #C00000;
+  --bus-soft:      #ff8a94;
+  --text:          #eef2f9;
+  --text-dim:      #a3aec4;
+  --text-mute:     #6d7891;
+  --radius:        18px;
+  --radius-sm:     12px;
+  --maxw:          1240px;
+  font-family: 'Noto Sans', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.me-root section{ position:relative; padding: 96px 24px; }
+.me-wrap{ max-width: var(--maxw); margin: 0 auto; }
+
+.me-root h1,.me-root h2,.me-root h3,.me-root h4{ font-weight:800; letter-spacing:-0.02em; margin:0; color:var(--text); }
+.me-root p{ color:var(--text-dim); }
+.me-eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:12.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+  color: var(--cyan); margin-bottom:18px;
+}
+.me-eyebrow::before{ content:''; width:7px; height:7px; border-radius:50%; background:var(--cyan); box-shadow:0 0 12px var(--cyan); }
+
+.me-headline{ font-size: clamp(2.1rem, 4.6vw, 3.4rem); line-height:1.06; }
+.me-sub{ font-size: 1.08rem; max-width: 640px; margin-top:18px; }
+.me-center{ text-align:center; margin-left:auto; margin-right:auto; }
+
+/* ---------- background ambience ---------- */
+.me-root::before{
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(700px 500px at 12% -5%, rgba(61,127,255,0.16), transparent 60%),
+    radial-gradient(900px 600px at 100% 10%, rgba(34,211,238,0.10), transparent 60%),
+    radial-gradient(700px 500px at 50% 100%, rgba(255,77,94,0.07), transparent 60%);
+}
+.me-root > *{ position:relative; z-index:1; }
+
+/* ================= HERO ================= */
+.me-hero{ padding-top: 72px; }
+.me-hero-grid{
+  display:grid; grid-template-columns: 1.05fr 0.95fr; gap:56px; align-items:center;
+}
+.me-cta-row{ display:flex; gap:14px; margin-top: 34px; flex-wrap:wrap; }
+.me-btn{
+  font-family:inherit; font-weight:700; font-size:0.95rem; letter-spacing:0.01em;
+  border-radius: 999px; padding: 14px 28px; cursor:pointer; border:1px solid transparent;
+  display:inline-flex; align-items:center; gap:8px; transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.me-btn-primary{ background: linear-gradient(135deg, var(--blue), #0083c8); color:#fff; box-shadow: 0 10px 30px -8px rgba(61,127,255,0.65); }
+.me-btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 16px 36px -8px rgba(61,127,255,0.8); }
+.me-btn-ghost{ background: rgba(255,255,255,0.03); color:var(--text); border-color: var(--border); }
+.me-btn-ghost:hover{ background: rgba(255,255,255,0.07); transform: translateY(-2px); }
+.me-btn svg{ width:16px; height:16px; }
+
+/* hero mock chat panel — the signature element */
+.me-chatcard{
+  background: linear-gradient(180deg, var(--surface), var(--bg-soft));
+  border:1px solid var(--border); border-radius: 20px; overflow:hidden;
+  box-shadow: 0 40px 80px -30px rgba(0,0,0,0.7);
+}
+.me-chat-head{
+  display:flex; align-items:center; justify-content:space-between; padding:16px 20px;
+  border-bottom:1px solid var(--border-soft); background: rgba(255,255,255,0.015);
+}
+.me-chat-head-left{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:0.9rem; }
+.me-dot-live{ width:8px; height:8px; border-radius:50%; background:#38e07a; box-shadow:0 0 10px #38e07a; animation: me-pulse 1.8s infinite; }
+.me-chat-head-badge{ font-size:11px; color:var(--text-mute); font-weight:600; }
+.me-chat-body{ padding:20px; display:flex; flex-direction:column; gap:14px; }
+.me-bubble-user{
+  align-self:flex-end; background: linear-gradient(135deg, var(--blue), #6a8bff); color:#fff;
+  padding:10px 16px; border-radius: 14px 14px 3px 14px; font-size:0.88rem; max-width:78%;
+}
+.me-bubble-ai{
+  background: var(--surface-2); border:1px solid var(--border-soft); border-radius:14px 14px 14px 3px;
+  padding:14px 16px; font-size:0.85rem; color:var(--text-dim); max-width:92%;
+}
+.me-bubble-ai b{ color:var(--cyan); font-weight:700; }
+.me-kpi-row{ display:grid; grid-template-columns: repeat(4,1fr); gap:8px; margin-top:6px; }
+.me-kpi{ background: rgba(255,255,255,0.03); border:1px solid var(--border-soft); border-radius:10px; padding:10px 8px; text-align:center; }
+.me-kpi span{ display:block; font-size:1.05rem; font-weight:800; color:var(--text); }
+.me-kpi small{ font-size:10px; color:var(--text-mute); letter-spacing:0.03em; }
+.me-chart-mini{ height:52px; display:flex; align-items:flex-end; gap:4px; margin-top:10px; }
+.me-chart-mini i{ flex:1; border-radius:3px 3px 0 0; background: linear-gradient(180deg, var(--bus), rgba(255,77,94,0.15)); }
+.me-chat-input{ display:flex; align-items:center; gap:10px; padding:14px 20px; border-top:1px solid var(--border-soft); }
+.me-chat-input input{
+  flex:1; background: rgba(255,255,255,0.03); border:1px solid var(--border-soft); border-radius:999px;
+  padding:10px 16px; color:var(--text-mute); font-size:0.83rem; font-family:inherit;
+}
+.me-send{ width:34px; height:34px; border-radius:50%; background: var(--blue); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.me-send svg{ width:15px; height:15px; fill:#fff; }
+
+@keyframes me-pulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+
+/* ================= STATS BAR ================= */
+.me-stats-outer{ padding: 0 24px; margin-top: 70px; }
+.me-stats{
+  max-width: var(--maxw); margin: 0 auto;
+  background: linear-gradient(135deg, rgba(61,127,255,0.10), rgba(34,211,238,0.05));
+  border:1px solid var(--border); border-radius: var(--radius);
+  display:grid; grid-template-columns: repeat(4,1fr);
+  padding: 38px 20px;
+}
+.me-stat{ text-align:center; border-right:1px solid var(--border-soft); padding: 0 12px; }
+.me-stat:last-child{ border-right:none; }
+.me-stat b{ display:block; font-size: clamp(1.7rem,3vw,2.3rem); font-weight:900;
+  background: linear-gradient(135deg,#fff, var(--blue-soft)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.me-stat span{ font-size:0.8rem; color:var(--text-mute); font-weight:600; }
+
+/* ================= TAB NAV ================= */
+.me-tabsection{ padding-top: 96px; padding-bottom: 30px; }
+.me-tabnav{
+  display:flex; justify-content:center; gap:6px; margin: 42px auto 0; flex-wrap:wrap;
+  border:1px solid var(--border); border-radius: 999px; padding:6px; background: rgba(255,255,255,0.02); width:fit-content; max-width:100%;
+}
+.me-tab-btn{
+  font-family:inherit; border:none; cursor:pointer; background:transparent; color:var(--text-mute);
+  font-weight:700; font-size:0.88rem; padding: 12px 24px; border-radius:999px; transition: all .22s ease; white-space:nowrap;
+}
+.me-tab-btn.is-active{ background: linear-gradient(135deg, var(--blue), #5b6cff); color:#fff; box-shadow: 0 8px 20px -6px rgba(61,127,255,0.6); }
+.me-tab-btn:not(.is-active):hover{ color:var(--text); }
+
+.me-panel{ display:none; padding-top: 64px; animation: me-fade .5s ease; }
+.me-panel.is-active{ display:block; }
+@keyframes me-fade{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+
+/* ================= CARD PRIMITIVES ================= */
+.me-card{
+  background: linear-gradient(180deg, var(--surface), var(--bg-soft));
+  border:1px solid var(--border); border-radius: var(--radius); padding: 30px;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.me-card:hover{ transform: translateY(-4px); border-color: rgba(61,127,255,0.4); box-shadow: 0 24px 50px -24px rgba(61,127,255,0.4); }
+.me-icon{
+  width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(135deg, rgba(61,127,255,0.22), rgba(34,211,238,0.14)); margin-bottom:16px; flex-shrink:0;
+}
+.me-icon svg{ width:22px; height:22px; stroke: var(--cyan); }
+
+/* Ops: three stage rows */
+.me-stage{
+  display:grid; grid-template-columns: 0.85fr 1.15fr; gap:36px; align-items:center;
+  border:1px solid var(--border); border-radius: var(--radius); padding: 34px; margin-bottom:22px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), transparent);
+}
+.me-stage-num{ font-size:0.72rem; font-weight:800; letter-spacing:0.16em; color:var(--cyan); margin-bottom:10px; }
+.me-stage h3{ font-size:1.5rem; margin-bottom:12px; }
+.me-stage p{ font-size:0.95rem; margin-bottom:18px; }
+.me-chip-row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.me-chip{ background: rgba(255,255,255,0.03); border:1px solid var(--border-soft); border-radius:10px; padding:12px 14px; }
+.me-chip b{ display:block; font-size:0.85rem; color:var(--text); margin-bottom:3px; }
+.me-chip span{ font-size:0.76rem; color:var(--text-mute); }
+
+.me-mock{ border:1px solid var(--border); border-radius: 14px; overflow:hidden; background:#0a1120; }
+.me-mock-head{ display:flex; gap:6px; padding:10px 14px; border-bottom:1px solid var(--border-soft); }
+.me-mock-head i{ width:9px; height:9px; border-radius:50%; background: var(--text-mute); opacity:.5; }
+.me-mock-body{ padding:18px; }
+.me-mock-line{ height:9px; border-radius:5px; background: rgba(255,255,255,0.06); margin-bottom:10px; }
+.me-mock-graph{ display:flex; align-items:flex-end; gap:5px; height:70px; margin-top:14px; }
+.me-mock-graph i{ flex:1; background: linear-gradient(180deg, var(--blue), rgba(61,127,255,0.1)); border-radius:3px 3px 0 0; }
+
+/* feature grid (4-up chips) */
+.me-featgrid{ display:grid; grid-template-columns: repeat(4,1fr); gap:16px; margin-top: 34px; }
+.me-feat{ border:1px solid var(--border); border-radius: var(--radius-sm); padding:20px; background: rgba(255,255,255,0.015); }
+.me-feat b{ display:block; font-size:0.92rem; margin-bottom:6px; }
+.me-feat span{ font-size:0.8rem; color:var(--text-mute); }
+
+.me-block-head{ margin-bottom: 8px; }
+.me-block-tag{ font-size:11.5px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:var(--bus-soft); margin-bottom:10px; display:block; }
+
+.me-6grid{ display:grid; grid-template-columns: repeat(6,1fr); gap:14px; margin-top:34px; }
+.me-6grid .me-feat{ padding:18px 16px; }
+.me-6grid .me-feat em{ font-style:normal; font-size:1.3rem; font-weight:900; color:var(--cyan); display:block; margin-bottom:8px; }
+
+/* ================= FactoryGPT hub-spoke ================= */
+.me-hub{
+  display:grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 26px; align-items:center; margin-top: 52px;
+}
+.me-hub-col{ display:flex; flex-direction:column; gap:14px; }
+.me-hub-node{
+  border:1px solid var(--border); border-radius: 14px; padding:16px 18px; background: rgba(255,255,255,0.02);
+  display:flex; gap:12px; align-items:flex-start; position:relative;
+}
+.me-hub-node .me-icon{ width:36px; height:36px; margin-bottom:0; }
+.me-hub-node .me-icon svg{ width:18px; height:18px; }
+.me-hub-node b{ display:block; font-size:0.86rem; }
+.me-hub-node span{ font-size:0.74rem; color:var(--text-mute); }
+.me-hub-col-left .me-hub-node::after{ content:''; position:absolute; right:-26px; top:50%; width:26px; height:1.5px; background: linear-gradient(90deg, rgba(61,127,255,0.6), rgba(61,127,255,0)); }
+.me-hub-col-right .me-hub-node::before{ content:''; position:absolute; left:-26px; top:50%; width:26px; height:1.5px; background: linear-gradient(270deg, rgba(34,211,238,0.6), rgba(34,211,238,0)); }
+
+.me-hub-center{ display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.me-hub-core{
+  width:170px; height:170px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background: radial-gradient(circle at 30% 25%, #1a2a55, #0b1226 70%);
+  border:1.5px solid rgba(61,127,255,0.5); box-shadow: 0 0 0 10px rgba(61,127,255,0.05), 0 0 60px rgba(61,127,255,0.25);
+  position:relative;
+}
+.me-hub-core::before{
+  content:''; position:absolute; inset:-14px; border-radius:50%; border:1px dashed rgba(61,127,255,0.25); animation: me-spin 18s linear infinite;
+}
+@keyframes me-spin{ to{ transform: rotate(360deg); } }
+.me-hub-core svg{ width:34px; height:34px; stroke:var(--cyan); margin-bottom:8px; }
+.me-hub-core b{ font-size:0.92rem; }
+.me-hub-core span{ font-size:0.68rem; color: var(--text-mute); letter-spacing:0.06em; text-transform:uppercase; margin-top:2px; }
+
+/* ================= CMMS role cards ================= */
+.me-rolegrid{ display:grid; grid-template-columns: repeat(3,1fr); gap:20px; margin-top:36px; }
+.me-role-card{ border:1px solid var(--border); border-radius: var(--radius); padding:28px; background: rgba(255,255,255,0.015); }
+.me-role-card h4{ font-size:1.1rem; margin-bottom: 6px; }
+.me-role-card > p{ font-size:0.86rem; margin-bottom: 16px; }
+.me-role-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+.me-role-list li{ display:flex; gap:9px; align-items:flex-start; font-size:0.85rem; color:var(--text-dim); }
+.me-role-list svg{ width:15px; height:15px; stroke:var(--cyan); flex-shrink:0; margin-top:2px; }
+
+/* ================= MSB bus diagram ================= */
+.me-bus-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:16px; margin-top:44px; }
+.me-bus-node{
+  border:1px solid var(--border); border-radius: var(--radius-sm); padding:18px; background: rgba(255,255,255,0.02);
+  display:flex; flex-direction:column; gap:10px;
+}
+.me-bus-node-head{ display:flex; align-items:center; gap:10px; }
+.me-bus-node-head .me-icon{ width:34px; height:34px; margin-bottom:0; background: linear-gradient(135deg, rgba(255,77,94,0.22), rgba(255,77,94,0.06)); }
+.me-bus-node-head .me-icon svg{ stroke: var(--bus-soft); width:17px; height:17px; }
+.me-bus-node-head b{ font-size:0.86rem; line-height:1.2; }
+.me-bus-node ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5px; }
+.me-bus-node li{ font-size:0.76rem; color:var(--text-mute); padding-left:12px; position:relative; }
+.me-bus-node li::before{ content:''; position:absolute; left:0; top:6px; width:4px; height:4px; border-radius:50%; background:var(--text-mute); }
+.me-bus-meta{ display:flex; gap:14px; margin-top:8px; padding-top:10px; border-top:1px solid var(--border-soft); }
+.me-bus-meta div{ font-size:0.68rem; color:var(--text-mute); }
+.me-bus-meta b{ display:block; color:var(--bus-soft); font-size:0.68rem; font-weight:700; }
+
+.me-bus-bar{
+  position:relative; margin: 22px 0; border-radius: 999px; padding: 18px 30px;
+  background: linear-gradient(90deg, #b31f2c, var(--bus), #b31f2c);
+  display:flex; align-items:center; justify-content:center; gap:14px; overflow:hidden;
+  box-shadow: 0 20px 50px -18px rgba(255,77,94,0.55);
+}
+.me-bus-bar b{ color:#fff; font-weight:800; font-size:1rem; letter-spacing:0.03em; z-index:2; }
+.me-bus-bar span{ color: rgba(255,255,255,0.75); font-size:0.75rem; font-weight:600; z-index:2; }
+.me-bus-track{ position:absolute; inset:0; }
+.me-bus-pulse{
+  position:absolute; top:50%; width:10px; height:10px; margin-top:-5px; border-radius:50%;
+  background:#fff; box-shadow:0 0 12px #fff, 0 0 24px rgba(255,255,255,0.7); opacity:0.9;
+  animation: me-travel 3.2s linear infinite;
+}
+.me-bus-pulse.rev{ animation-direction: reverse; animation-delay: 1.6s; }
+@keyframes me-travel{ from{ left:2%; } to{ left:96%; } }
+
+.me-domain-grid{ display:grid; grid-template-columns: repeat(6,1fr); gap:14px; margin-top:34px; }
+.me-domain{ border:1px solid var(--border); border-radius: var(--radius-sm); padding:20px 16px; text-align:left; background: rgba(255,255,255,0.015); }
+.me-domain em{ font-style:normal; display:block; font-size:1.4rem; font-weight:900; color: var(--bus-soft); margin-bottom:10px; }
+.me-domain b{ display:block; font-size:0.92rem; margin-bottom:6px; }
+.me-domain span{ font-size:0.76rem; color:var(--text-mute); line-height:1.4; }
+
+/* ================= FINAL CTA ================= */
+.me-cta{
+  border:1px solid var(--border); border-radius: 24px; padding: 64px 40px; text-align:center;
+  background: radial-gradient(600px 300px at 50% 0%, rgba(61,127,255,0.16), transparent 70%), var(--surface);
+  margin-top: 40px;
+}
+.me-cta h2{ font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
+.me-cta p{ max-width:520px; margin: 16px auto 0; }
+.me-cta .me-btn-primary{ margin-top: 30px; }
+
+/* ================= responsive ================= */
+@media (max-width: 1024px){
+  .me-hero-grid{ grid-template-columns: 1fr; }
+  .me-stats{ grid-template-columns: repeat(2,1fr); row-gap:26px; }
+  .me-stat{ border-right:none; border-bottom:1px solid var(--border-soft); padding-bottom:20px; }
+  .me-stage{ grid-template-columns: 1fr; }
+  .me-featgrid{ grid-template-columns: repeat(2,1fr); }
+  .me-6grid{ grid-template-columns: repeat(3,1fr); }
+  .me-hub{ grid-template-columns: 1fr; }
+  .me-hub-col-left .me-hub-node::after, .me-hub-col-right .me-hub-node::before{ display:none; }
+  .me-hub-center{ order:-1; margin-bottom: 10px; }
+  .me-rolegrid{ grid-template-columns: 1fr; }
+  .me-bus-grid{ grid-template-columns: repeat(2,1fr); }
+  .me-domain-grid{ grid-template-columns: repeat(3,1fr); }
+}
+@media (max-width: 640px){
+  .me-root section{ padding: 64px 18px; }
+  .me-hero{ padding-top:40px; }
+  .me-stats{ grid-template-columns: 1fr 1fr; padding: 28px 16px; }
+  .me-tab-btn{ padding:10px 16px; font-size:0.8rem; }
+  .me-featgrid{ grid-template-columns: 1fr 1fr; }
+  .me-6grid{ grid-template-columns: 1fr 1fr; }
+  .me-bus-grid{ grid-template-columns: 1fr; }
+  .me-domain-grid{ grid-template-columns: 1fr 1fr; }
+  .me-bus-bar{ flex-direction:column; gap:4px; padding:16px 18px; text-align:center; }
+  .me-kpi-row{ grid-template-columns: repeat(2,1fr); }
+}
+</style>
+
+<!-- ================= HERO ================= -->
+<section class="me-hero">
+  <div class="me-wrap me-hero-grid">
+    <div>
+      <span class="me-eyebrow">Manufacturing Excellence · IMEX</span>
+      <h1 class="me-headline">Talk to your factory.<br>Turn plant data into action.</h1>
+      <p class="me-sub">ITHENA unifies your shop floor, your enterprise systems, and a conversational AI copilot into one operational brain — combining human expertise with artificial intelligence for better outcomes, shift after shift.</p>
+      <div class="me-cta-row">
+        <button class="me-btn me-btn-primary">Start Free Trial
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <button class="me-btn me-btn-ghost">Watch the Demo</button>
+      </div>
+    </div>
+
+    <div class="me-chatcard">
+      <div class="me-chat-head">
+        <div class="me-chat-head-left"><span class="me-dot-live"></span> FactoryGPT</div>
+        <span class="me-chat-head-badge">Line 3 · Packaging Cell</span>
+      </div>
+      <div class="me-chat-body">
+        <div class="me-bubble-user">Why is OEE low on Line 3?</div>
+        <div class="me-bubble-ai">Performance loss of <b>71.5%</b> detected on Line 3. Micro-stoppages totaled <b>3.8 hrs</b>, traced to sensor misalignment on the packaging unit.
+          <div class="me-kpi-row">
+            <div class="me-kpi"><span>82%</span><small>AVAILABILITY</small></div>
+            <div class="me-kpi"><span>71.5%</span><small>PERFORMANCE</small></div>
+            <div class="me-kpi"><span>91%</span><small>QUALITY</small></div>
+            <div class="me-kpi"><span>88%</span><small>UTILIZATION</small></div>
+          </div>
+          <div class="me-chart-mini">
+            <i style="height:70%"></i><i style="height:58%"></i><i style="height:64%"></i><i style="height:40%"></i><i style="height:46%"></i><i style="height:30%"></i><i style="height:22%"></i>
+          </div>
+        </div>
+      </div>
+      <div class="me-chat-input">
+        <input type="text" placeholder="Ask FactoryGPT anything about your plant…" readonly>
+        <div class="me-send"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<div class="me-stats-outer">
+  <div class="me-stats">
+    <div class="me-stat"><b class="me-count" data-count="22" data-suffix="%">0%</b><span>Line downtime reduced in 30 days</span></div>
+    <div class="me-stat"><b class="me-count" data-count="6">0</b><span>Core manufacturing domains unified</span></div>
+    <div class="me-stat"><b class="me-count" data-count="100" data-suffix="%">0%</b><span>Natural‑language queries, zero SQL</span></div>
+    <div class="me-stat"><b>24/7</b><span>Autonomous anomaly detection</span></div>
+  </div>
+</div>
+
+<!-- ================= TAB NAV + PANELS ================= -->
+<section class="me-tabsection">
+  <div class="me-wrap me-center">
+    <span class="me-eyebrow">One Platform, Four Views</span>
+    <h2 class="me-headline" style="font-size:clamp(1.7rem,3.2vw,2.5rem);">See it the way your role needs to see it</h2>
+    <p class="me-sub me-center">Every mode below runs on the same live plant data — pick the lens that matches what you're trying to do.</p>
+
+    <div class="me-tabnav" role="tablist">
+      <button class="me-tab-btn is-active" data-tab="ops">Manufacturing Ops</button>
+      <button class="me-tab-btn" data-tab="gpt">FactoryGPT</button>
+      <button class="me-tab-btn" data-tab="cmms">CMMS</button>
+      <button class="me-tab-btn" data-tab="msb">MSB</button>
+    </div>
+  </div>
+
+  <div class="me-wrap">
+
+    <!-- ============ PANEL: MANUFACTURING OPS ============ -->
+    <div class="me-panel is-active" id="panel-ops">
+      <div class="me-center" style="margin-bottom:10px;">
+        <h3 style="font-size:1.9rem;">Intelligent manufacturing, connected in real time</h3>
+        <p class="me-sub me-center">Connect machines, visualize operations, and predict failures with AI-driven industrial intelligence.</p>
+      </div>
+
+      <div style="margin-top:40px;">
+        <div class="me-stage">
+          <div>
+            <div class="me-stage-num">STAGE 01 · CONNECT & COLLECT</div>
+            <h3>Every asset, one connectivity layer</h3>
+            <p>Built on industry-standard protocols like OPC UA, Euromap 63, Modbus and MQTT, IMEX links shop-floor equipment to your enterprise systems reliably and at scale.</p>
+            <div class="me-chip-row">
+              <div class="me-chip"><b>Equipment Connectivity</b><span>Connect industrial assets through standard protocols.</span></div>
+              <div class="me-chip"><b>Enterprise-Ready Integration</b><span>Plug straight into existing systems and databases.</span></div>
+            </div>
+          </div>
+          <div class="me-mock">
+            <div class="me-mock-head"><i></i><i></i><i></i></div>
+            <div class="me-mock-body">
+              <div class="me-mock-line" style="width:70%"></div>
+              <div class="me-mock-line" style="width:45%"></div>
+              <div class="me-mock-line" style="width:60%"></div>
+              <div class="me-mock-graph">
+                <i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:35%"></i><i style="height:60%"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="me-stage">
+          <div class="me-mock" style="order:2;">
+            <div class="me-mock-head"><i></i><i></i><i></i></div>
+            <div class="me-mock-body">
+              <div class="me-mock-line" style="width:55%"></div>
+              <div class="me-mock-line" style="width:80%"></div>
+              <div class="me-mock-graph">
+                <i style="height:75%; background:linear-gradient(180deg, var(--cyan), rgba(34,211,238,0.1));"></i>
+                <i style="height:50%; background:linear-gradient(180deg, var(--cyan), rgba(34,211,238,0.1));"></i>
+                <i style="height:65%; background:linear-gradient(180deg, var(--cyan), rgba(34,211,238,0.1));"></i>
+                <i style="height:40%; background:linear-gradient(180deg, var(--cyan), rgba(34,211,238,0.1));"></i>
+                <i style="height:85%; background:linear-gradient(180deg, var(--cyan), rgba(34,211,238,0.1));"></i>
+                <i style="height:58%; background:linear-gradient(180deg, var(--cyan), rgba(34,211,238,0.1));"></i>
+              </div>
+            </div>
+          </div>
+          <div style="order:1;">
+            <div class="me-stage-num">STAGE 02 · VISUALIZE & ACT</div>
+            <h3>Role-based dashboards for every level</h3>
+            <p>Persona-based views for operators, supervisors, plant managers, and executives — with drill-down KPIs, automated alerts, and customizable reports.</p>
+            <div class="me-chip-row">
+              <div class="me-chip"><b>Operational Visibility</b><span>Role-relevant dashboards for every job on the floor.</span></div>
+              <div class="me-chip"><b>Real-Time KPI Intelligence</b><span>Track OEE, cycle time, and throughput as it happens.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="me-stage" style="margin-bottom:0;">
+          <div>
+            <div class="me-stage-num">STAGE 03 · PREDICT & PREVENT</div>
+            <h3>Catch failures before they happen</h3>
+            <p>An AI/ML engine trained on your historical and real-time data detects anomalies, predicts equipment failure, and recommends maintenance windows — cutting unplanned downtime by up to 40%.</p>
+            <div class="me-chip-row">
+              <div class="me-chip"><b>Maintenance Intelligence</b><span>Predict equipment failure early to minimize downtime.</span></div>
+              <div class="me-chip"><b>Anomaly Detection & Insights</b><span>Spot operational anomalies in real time.</span></div>
+            </div>
+          </div>
+          <div class="me-mock">
+            <div class="me-mock-head"><i></i><i></i><i></i></div>
+            <div class="me-mock-body">
+              <div class="me-mock-line" style="width:65%"></div>
+              <div class="me-mock-graph">
+                <i style="height:30%; background:linear-gradient(180deg, var(--bus), rgba(255,77,94,0.1));"></i>
+                <i style="height:45%; background:linear-gradient(180deg, var(--bus), rgba(255,77,94,0.1));"></i>
+                <i style="height:38%; background:linear-gradient(180deg, var(--bus), rgba(255,77,94,0.1));"></i>
+                <i style="height:70%; background:linear-gradient(180deg, var(--bus), rgba(255,77,94,0.1));"></i>
+                <i style="height:52%; background:linear-gradient(180deg, var(--bus), rgba(255,77,94,0.1));"></i>
+                <i style="height:90%; background:linear-gradient(180deg, var(--bus), rgba(255,77,94,0.1));"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:56px;">
+        <span class="me-block-tag">NEW AGE OF QUALITY</span>
+        <h3 style="font-size:1.5rem;">Zero-defect manufacturing, powered by AI vision</h3>
+        <p style="max-width:640px; margin-top:8px;">Computer vision inspects every stage inline, catching micro-defects, dimensional deviations, and assembly errors invisible to the human eye.</p>
+        <div class="me-featgrid">
+          <div class="me-feat"><b>AI Visual Inspection</b><span>Detects micro-defects invisible to human operators.</span></div>
+          <div class="me-feat"><b>Auto-Disposition</b><span>Instantly classifies parts with confidence scores.</span></div>
+          <div class="me-feat"><b>Digital SPC</b><span>Rule-based alerts and trending control charts.</span></div>
+          <div class="me-feat"><b>Full Traceability</b><span>Log serial and batch genealogy across operations.</span></div>
+        </div>
+      </div>
+
+      <div style="margin-top:56px;">
+        <span class="me-block-tag">NEW AGE SHOPFLOOR</span>
+        <h3 style="font-size:1.5rem;">iGEMBA: continuous AI-driven digital operations</h3>
+        <p style="max-width:640px; margin-top:8px;">Replace static clipboards with real-time, interactive Gemba walks — digitizing KPIs instantly and giving frontline teams actionable insight.</p>
+        <div class="me-featgrid">
+          <div class="me-feat"><b>Dynamic Digitization</b><span>Replace static clipboards with interactive screens.</span></div>
+          <div class="me-feat"><b>AI Actionable Insights</b><span>Translate raw floor data into prescriptive actions.</span></div>
+          <div class="me-feat"><b>Seamless Interaction</b><span>Intuitive input screens for faster logging and resolution.</span></div>
+          <div class="me-feat"><b>Continuous Tracking</b><span>End-to-end visibility of plans and bottlenecks.</span></div>
+        </div>
+      </div>
+
+      <div style="margin-top:56px;">
+        <h3 style="font-size:1.5rem;">A smarter view of shop floor data</h3>
+        <p style="max-width:640px; margin-top:8px;">iGEMBA digitizes daily floor walks so teams stay productive, fix problems on the spot, and focus on quality and scale.</p>
+        <div class="me-6grid">
+          <div class="me-feat"><em>01</em><b>Checklist</b><span>Create the Gemba checklist.</span></div>
+          <div class="me-feat"><em>02</em><b>KPI Generation</b><span>Single view of shop-floor KPIs.</span></div>
+          <div class="me-feat"><em>03</em><b>Insight</b><span>Generate actionable insight.</span></div>
+          <div class="me-feat"><em>04</em><b>Interaction</b><span>Data input screens.</span></div>
+          <div class="me-feat"><em>05</em><b>Management</b><span>Track issues, plans, performance.</span></div>
+          <div class="me-feat"><em>06</em><b>Integrated</b><span>First step to Industry 4.0.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ PANEL: FACTORYGPT ============ -->
+    <div class="me-panel" id="panel-gpt">
+      <div class="me-center" style="margin-bottom:10px;">
+        <h3 style="font-size:1.9rem;">FactoryGPT: AI-powered operational intelligence</h3>
+        <p class="me-sub me-center">Empower maintenance teams with AI-driven conversations that connect telemetry, documentation, and diagnostics into one seamless experience.</p>
+      </div>
+
+      <div class="me-hub">
+        <div class="me-hub-col me-hub-col-left">
+          <div class="me-hub-node">
+            <div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+            <div><b>IoT Data</b><span>Sensors, devices, edge streams</span></div>
+          </div>
+          <div class="me-hub-node">
+            <div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
+            <div><b>Flat Files</b><span>CSV, Excel, JSON, PDF</span></div>
+          </div>
+          <div class="me-hub-node">
+            <div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg></div>
+            <div><b>Enterprise Apps</b><span>Salesforce, Workday, SAP</span></div>
+          </div>
+          <div class="me-hub-node">
+            <div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/></svg></div>
+            <div><b>Data Warehouses</b><span>Databricks, PostgreSQL, MySQL</span></div>
+          </div>
+          <div class="me-hub-node">
+            <div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z"/></svg></div>
+            <div><b>External Sources</b><span>APIs, social, web data</span></div>
+          </div>
+        </div>
+
+        <div class="me-hub-center">
+          <div class="me-hub-core">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
+            <b>AETHER</b>
+            <span>Unified Intelligence Core</span>
+          </div>
+        </div>
+
+        <div class="me-hub-col me-hub-col-right">
+          <div class="me-hub-node">
+            <div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+            <div><b>Insights by Role</b><span>Exec ROI, sales reports, marketing analytics</span></div>
+          </div>
+          <div class="me-hub-node">
+            <div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+            <div><b>Conversational Intelligence</b><span>Query, root cause, forecasting</span></div>
+          </div>
+          <div class="me-hub-node">
+            <div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <div><b>Enterprise Intelligence</b><span>Context-aware SLM processing</span></div>
+          </div>
+          <div class="me-hub-node">
+            <div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+            <div><b>Agentic Actions</b><span>Campaigns, optimization, risk alerts</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:60px;">
+        <div class="me-center" style="margin-bottom:6px;">
+          <h3 style="font-size:1.6rem;">AI-powered analytics that understands your data</h3>
+          <p class="me-sub me-center">From raw CSV to boardroom-ready dashboards, without writing a single line of SQL.</p>
+        </div>
+        <div class="me-featgrid">
+          <div class="me-feat"><b>NLP Chat Engine</b><span>Type plain-language questions; get precise queries with traceable citations.</span></div>
+          <div class="me-feat"><b>Gen-AI Diagnostics</b><span>Analyzes systemic data to expose anomalies and surface risk ahead of failures.</span></div>
+          <div class="me-feat"><b>Auto-Visualization</b><span>Converts query parameters into dynamically rendered dashboards instantly.</span></div>
+          <div class="me-feat"><b>Agentic Workflows</b><span>Turns conversational directives into action — tickets, alerts, and more.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ PANEL: CMMS ============ -->
+    <div class="me-panel" id="panel-cmms">
+      <div class="me-center" style="margin-bottom:10px;">
+        <h3 style="font-size:1.9rem;">Intelligent computerized maintenance management</h3>
+        <p class="me-sub me-center">Move from passive fix-on-failure to fully algorithmic scheduling — cross-referencing component lifetime wear, routing teams by skill, and managing spare parts dynamically.</p>
+      </div>
+
+      <div class="me-featgrid" style="grid-template-columns:repeat(5,1fr); margin-top:44px;">
+        <div class="me-feat"><b>Work Order Management</b><span>Create, assign, and track maintenance tasks from one platform.</span></div>
+        <div class="me-feat"><b>Analytics Reporting</b><span>Turn operational data into real-time insight and actionable reports.</span></div>
+        <div class="me-feat"><b>Asset Management</b><span>Monitor asset health, improve reliability, reduce downtime.</span></div>
+        <div class="me-feat"><b>Preventive Maintenance</b><span>Automate schedules and prevent unexpected failures.</span></div>
+        <div class="me-feat"><b>Mobile CMMS</b><span>Manage operations anywhere with offline auto-sync.</span></div>
+      </div>
+
+      <div style="margin-top:56px;">
+        <div class="me-center" style="margin-bottom:6px;">
+          <span class="me-eyebrow me-center" style="display:inline-flex;">Role-Based Intelligence</span>
+          <h3 style="font-size:1.6rem;">Built for every member of your maintenance team</h3>
+        </div>
+        <div class="me-rolegrid">
+          <div class="me-role-card">
+            <h4>Maintenance Managers</h4>
+            <p>See everything happening across your facilities and direct resources where they matter most.</p>
+            <ul class="me-role-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Real-time work order dashboards</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>AI-powered team scheduling</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Cross-site performance metrics</li>
+            </ul>
+          </div>
+          <div class="me-role-card">
+            <h4>Field Technicians</h4>
+            <p>Everything needed exactly at the point of work — no more trips back to the office.</p>
+            <ul class="me-role-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Mobile-first work execution</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Instant digital parts lookup</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>True offline capability</li>
+            </ul>
+          </div>
+          <div class="me-role-card">
+            <h4>Operations Leaders</h4>
+            <p>Track maintenance costs, asset reliability, and uptime KPIs for data-driven capital decisions.</p>
+            <ul class="me-role-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Enterprise executive dashboards</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Uptime & reliability tracking</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Financial maintenance KPIs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ PANEL: MSB ============ -->
+    <div class="me-panel" id="panel-msb">
+      <div class="me-center" style="margin-bottom:10px;">
+        <h3 style="font-size:1.9rem;">The service bus that connects your entire operation</h3>
+        <p class="me-sub me-center">ITHENA MSB sits between your top-floor business systems and shop-floor operational technology, enabling seamless bi-directional data exchange.</p>
+      </div>
+
+      <div style="margin-top:44px;">
+        <div class="me-bus-grid">
+          <div class="me-bus-node">
+            <div class="me-bus-node-head"><div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></div><b>ERP / Systems of Record</b></div>
+            <ul><li>SAP S/4HANA</li><li>Oracle EBS</li><li>Dynamics 365</li><li>Infor CSI</li></ul>
+            <div class="me-bus-meta"><div><b>Protocols</b>HTTPS, API</div><div><b>Formats</b>XML, JSON</div></div>
+          </div>
+          <div class="me-bus-node">
+            <div class="me-bus-node-head"><div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.6V21a2 2 0 11-4 0v-.2a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.6-1H3a2 2 0 110-4h.2a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.6V3a2 2 0 114 0v.2a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.6 1H21a2 2 0 110 4h-.2a1.7 1.7 0 00-1.5 1z"/></svg></div><b>Maintenance & Asset Mgmt</b></div>
+            <ul><li>IBM Maximo</li><li>Infor EAM</li><li>SAP PM</li><li>UpKeep · Fiix</li></ul>
+            <div class="me-bus-meta"><div><b>Protocols</b>API, HTTPS</div><div><b>Formats</b>XML, JSON</div></div>
+          </div>
+          <div class="me-bus-node">
+            <div class="me-bus-node-head"><div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.4 8.7-8 10-4.6-1.3-8-5-8-10V6z"/></svg></div><b>Quality, Safety & Compliance</b></div>
+            <ul><li>QMS</li><li>EHS Systems</li><li>Document Mgmt</li><li>Audit & Compliance</li></ul>
+            <div class="me-bus-meta"><div><b>Protocols</b>HTTPS, API</div><div><b>Formats</b>XML, JSON</div></div>
+          </div>
+          <div class="me-bus-node">
+            <div class="me-bus-node-head"><div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-4"/></svg></div><b>Analytics & Data Platforms</b></div>
+            <ul><li>Power BI · Tableau</li><li>Snowflake</li><li>Databricks</li><li>Custom Dashboards</li></ul>
+            <div class="me-bus-meta"><div><b>Protocols</b>API, WebSockets</div><div><b>Formats</b>JSON, XML</div></div>
+          </div>
+        </div>
+
+        <div class="me-bus-bar">
+          <div class="me-bus-track">
+            <div class="me-bus-pulse" style="animation-delay:0s;"></div>
+            <div class="me-bus-pulse rev" style="animation-delay:1s;"></div>
+          </div>
+          <b>ITHENA MANUFACTURING BUS</b>
+          <span>← BI-DIRECTIONAL →</span>
+        </div>
+
+        <div class="me-bus-grid">
+          <div class="me-bus-node">
+            <div class="me-bus-node-head"><div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><b>SCADA / HMI / MES</b></div>
+            <ul><li>Ignition</li><li>Rockwell FactoryTalk</li><li>Siemens WinCC</li><li>AVEVA System Platform</li></ul>
+            <div class="me-bus-meta"><div><b>Protocols</b>OPC, MQTT, HTTPS</div><div><b>Formats</b>XML, JSON</div></div>
+          </div>
+          <div class="me-bus-node">
+            <div class="me-bus-node-head"><div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><b>Historians & Time-Series</b></div>
+            <ul><li>OSIsoft PI</li><li>AVEVA Historian</li><li>InfluxDB</li><li>TimescaleDB</li></ul>
+            <div class="me-bus-meta"><div><b>Protocols</b>API, HTTPS</div><div><b>Formats</b>XML, JSON</div></div>
+          </div>
+          <div class="me-bus-node">
+            <div class="me-bus-node-head"><div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20a8 8 0 100-16 8 8 0 000 16z"/><path d="M12 8a4 4 0 100 8"/></svg></div><b>IoT & Telemetry</b></div>
+            <ul><li>MQTT Brokers</li><li>OPC UA Servers</li><li>MBIOT Gateways</li><li>Azure IoT · AWS IoT</li></ul>
+            <div class="me-bus-meta"><div><b>Protocols</b>MQTT, OPC, HTTPS</div><div><b>Formats</b>JSON, XML</div></div>
+          </div>
+          <div class="me-bus-node">
+            <div class="me-bus-node-head"><div class="me-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></div><b>Edge & Field Devices</b></div>
+            <ul><li>PLCs (Allen-Bradley, Siemens)</li><li>RTUs</li><li>Sensors & Actuators</li><li>VFDs & Vision Systems</li></ul>
+            <div class="me-bus-meta"><div><b>Protocols</b>Modbus, OPC, MQTT</div><div><b>Formats</b>XML, JSON</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:60px;">
+        <div class="me-center" style="margin-bottom:6px;">
+          <h3 style="font-size:1.6rem;">Spanning every domain of manufacturing</h3>
+          <p class="me-sub me-center">Unlike point solutions, ITHENA MSB provides a unified data layer across all six core domains.</p>
+        </div>
+        <div class="me-domain-grid">
+          <div class="me-domain"><em>1</em><b>Planning</b><span>Orders, schedules, BOMs from ERP flow into production context.</span></div>
+          <div class="me-domain"><em>2</em><b>Production</b><span>Run records, OEE, cycle times captured from MES and SCADA.</span></div>
+          <div class="me-domain"><em>3</em><b>Quality</b><span>SPC, inspections, holds — linked to lots and process data.</span></div>
+          <div class="me-domain"><em>4</em><b>Safety</b><span>EHS checklists, near-miss reports, audit trails, compliance.</span></div>
+          <div class="me-domain"><em>5</em><b>Delivery</b><span>Inventory, shipments, consumption tied to production output.</span></div>
+          <div class="me-domain"><em>6</em><b>Maintenance</b><span>Alarms to work orders, PM triggers, MTTR/MTBF automated.</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section style="padding-top:20px;">
+  <div class="me-wrap">
+    <div class="me-cta">
+      <span class="me-eyebrow" style="justify-content:center;">Get Started</span>
+      <h2>Ready to talk to your factory?</h2>
+      <p>See how ITHENA can streamline your operations in a personalized demo. No pressure, no 12-month sales cycle — just answers.</p>
+      <button class="me-btn me-btn-primary">Schedule a Demo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.me-root -->
+
+<script>
+(function(){
+  var root = document.currentScript.previousElementSibling;
+  if(!root || !root.classList || !root.classList.contains('me-root')){
+    root = document.querySelector('.me-root');
+  }
+
+  /* ---- tab switching ---- */
+  var tabBtns = root.querySelectorAll('.me-tab-btn');
+  var panels = { ops: root.querySelector('#panel-ops'), gpt: root.querySelector('#panel-gpt'), cmms: root.querySelector('#panel-cmms'), msb: root.querySelector('#panel-msb') };
+  tabBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabBtns.forEach(function(b){ b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      Object.keys(panels).forEach(function(k){ panels[k].classList.remove('is-active'); });
+      panels[btn.getAttribute('data-tab')].classList.add('is-active');
+    });
+  });
+
+  /* ---- animated stat counters on scroll into view ---- */
+  var counters = root.querySelectorAll('.me-count');
+  var counted = false;
+  function runCounters(){
+    if(counted) return;
+    counted = true;
+    counters.forEach(function(el){
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      var cur = 0;
+      var step = Math.max(1, Math.round(target / 40));
+      var t = setInterval(function(){
+        cur += step;
+        if(cur >= target){ cur = target; clearInterval(t); }
+        el.textContent = cur + suffix;
+      }, 24);
+    });
+  }
+  if('IntersectionObserver' in window){
+    var statsEl = root.querySelector('.me-stats');
+    if(statsEl){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){ if(entry.isIntersecting) runCounters(); });
+      }, { threshold: 0.4 });
+      io.observe(statsEl);
+    }
+  } else {
+    runCounters();
+  }
+})();
+</script>
