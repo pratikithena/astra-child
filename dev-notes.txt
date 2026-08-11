@@ -519,51 +519,6 @@ https://www.perplexity.ai/search?q=tell+me+about+ITHENA
 https://gemini.google.com/app?prompt=tell+me+about+ITHENA
 https://gemini.google.com/app?q=tell+me+about+ITHENA
 
-
-Dark theme cards
-
-approval draft
-
-
-Approval Required – Homepage & Footer Enhancements
-
-Footer Updates - https://dev-website.ithena.app/ (Footer Section)
-    - Added a new "Research Us" menu section in the footer.
-    - Users can navigate to various AI and LLM platforms to explore and research ITHENA.
-
-Homepage Updates
-    - Added a new "Milestones" card and corresponding slide in the Hero section.
-    - Content can be updated as required.
-    - CTA will redirect users to the respective milestone landing page and then to the associated external website, if applicable.
-
-    - Added a new "Practical AI: Delivered!" section. 
-        - Provides a brief introduction to ITHENA and its value proposition.
-    - Added a Customer Logo Slider to showcase customer and partner brands.
-    - Added a Latest Upcoming Event banner. 
-        - Displays event information and includes a CTA for registrations or additional details.
-        
-Kindly review the above changes and provide approval for migration to the live environment. 
-
-
-Approval Required - Homepage changes
-
-hello probodh 
-
-- since PACK EXPO needs to be promoted, I have add "Event" slide on homepage hero slider.
-- Changes are as follows
-    - Event card added for pack expo content.
-    - Cards are vertically scrollable
-    - The event card is first, and the use case is last.
-    - BG - blue + transparent background.
-    - Active card - red top progress bar + transparent BG.
-
-Please review and let me know 
-
-
-
-exp layer - group-1014.webp
-
-
 isems-brochure
 Smart-Energy-Management-brochure
 
@@ -582,24 +537,18 @@ Homapge - our partners - logo -
 Partnerships page - https://ithena.ai/partnerships/
 RA Partnership page - https://ithena.ai/rockwell-automation-partnership/
 
-
-
 https://pagespeed.web.dev/analysis/https-dev-website-ithena-app-panelops/67ma7ljxve?form_factor=desktop
-
 https://pagespeed.web.dev/analysis/https-ithena-ai-industrial-erp/fxh3nzw6ag?form_factor=desktop
 
 
 RND 
-- Novamira + elementor
-
-
+- Novamira + elemento
 - Menu is not working well - do not make it transparent 
 - dark to light switch - apply to menus and submenu also 
 - Remove Resources form menu
 
 
 Solutions menu - distribution is as follows
-
 1) OEM | Distributors (Production | After Market)
    
    - front office ops
@@ -611,7 +560,6 @@ Solutions menu - distribution is as follows
      - Performance Monitoring (subtitle - Real-time connectivity into asset performance with proactive alerts and alarms)
      - Service Portal (subtitle - Support your service operations with real-time visibility and workflows)]
      - B2B eCommerce (subtitle - Commerce experience for parts, services, and customer self-service.)
-
 2) Manufacturer (Plan → Produce → Improve)
  
  - Planning
@@ -628,7 +576,6 @@ Solutions menu - distribution is as follows
  - Maintenance
   - CMMS (subtitle - Single view of critical KPIs with standardized checklists to resolve issues faster.)
   - iSEM (SubTitle - Service + equipment management workflows and integrations.)
-
 3) Enterprise (Analytics | CX | SCM)
  
  - Supply Chain 
@@ -643,3 +590,13 @@ Solutions menu - distribution is as follows
  - apps
   - iSIP (Integrated service experience platform.)
   - CRM (Customer relationship management.)
+
+
+.hero::after {linear-gradient(180deg, rgb(0 0 0 / 0%) 0%, rgb(0 0 0 / 55%) 50%, #0D1B2E 96%);}
+
+transform: translateY(-6px);
+box-shadow: var(--elev), 0 0 0 1px rgba(var(--c-blue), .16) !important
+
+background-color: var(--ff-panel) !important;
+
+
