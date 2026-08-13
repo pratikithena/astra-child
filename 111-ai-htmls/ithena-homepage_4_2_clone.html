@@ -1,0 +1,3389 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ITHENA - AI-Driven Digital Transformation for Manufacturing &amp; Enterprise</title>
+        <meta name="description" content="ITHENA helps manufacturers and enterprises modernize with AI, Industrial ERP, IoT, Cloud and Analytics - reducing cost, raising throughput, and shortening time-to-value.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+        
+        <style>
+            /*
+            * Stylesheet split into HEADER / BODY / FOOTER sections.
+            * All var(--token) custom-property references have been resolved to their
+            * literal computed values (light-theme default; html.dark rules use the
+            * dark-theme values; .hero-scoped rules use its local light-on-dark override).
+            * The former :root / html.dark variable blocks are removed; only the actual
+            * color-scheme switch is kept below.
+            */
+
+            html {
+                color-scheme: light;
+            }
+
+            html.dark {
+                color-scheme: dark;
+            }
+
+
+            /* ======================================================================
+            HEADER
+            ====================================================================== */
+
+            html.dark .logo .mark {
+                box-shadow: 0 6px 18px -4px rgba(0, 168, 232, .6);
+            }
+
+            html.dark .mega {
+                box-shadow: 0 40px 70px -20px rgba(0, 0, 0, .6), 0 16px 32px -12px rgba(0, 0, 0, .35);
+            }
+
+            .nav-link {
+                display: inline-flex;
+                align-items: center;
+                transition: .3s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .nav-link svg {
+                transition: transform .3s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 200;
+                padding: 20px 0;
+                transition: padding .4s cubic-bezier(.16, .8, .24, 1), background .4s cubic-bezier(.16, .8, .24, 1), box-shadow .4s cubic-bezier(.16, .8, .24, 1), border-color .4s cubic-bezier(.16, .8, .24, 1);
+                background: transparent;
+                border-bottom: 1px solid transparent;
+            }
+
+            header.scrolled {
+                padding: 12px 0;
+                background: #F6F8FA;
+                box-shadow: 0 12px 30px -18px rgba(20, 40, 70, .16);
+                border-bottom: 1px solid rgba(10, 25, 45, 0.10);
+            }
+
+            header:not(.scrolled) .logo,
+            header:not(.scrolled) .nav-link,
+            header:not(.scrolled) .nav-item.open .nav-link svg {
+                color: #fff;
+            }
+
+            header:not(.scrolled) .nav-link {
+                color: rgba(255, 255, 255, .88);
+                transition: color .25s, background .25s;
+            }
+
+            header:not(.scrolled) .icon-btn,
+            header:not(.scrolled) .mobile-toggle {
+                background: rgba(255, 255, 255, .1);
+                border-color: rgba(255, 255, 255, .3);
+                color: #fff;
+            }
+
+            header:not(.scrolled) .mobile-toggle span {
+                background: #fff;
+            }
+
+            header:not(.scrolled) .nav-link:hover,
+            header:not(.scrolled) .nav-item.open .nav-link {
+                color: #fff;
+                background: rgba(255, 255, 255, .14);
+            }
+
+            .nav-inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 24px;
+            }
+
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-family: "Sora", sans-serif;
+                font-weight: 800;
+                font-size: 21px;
+                letter-spacing: -0.01em;
+            }
+
+            .logo .mark {
+                width: 34px;
+                height: 34px;
+                border-radius: 10px;
+                background: linear-gradient(135deg, #0083C8, #4FE0D0);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                box-shadow: 0 6px 18px -4px rgba(0, 168, 232, .6);
+            }
+
+            .nav-menu {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .nav-item {
+                position: relative;
+            }
+
+            .nav-link {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                padding: 10px 15px;
+                border-radius: 10px;
+                font-size: 14.5px;
+                font-weight: 600;
+                color: #4A5A6E;
+                transition: .25s;
+            }
+
+            .nav-link:hover,
+            .nav-item.open .nav-link {
+                color: #0A1626;
+                background: rgba(10, 25, 45, .06);
+            }
+
+            .nav-link svg {
+                width: 12px;
+                height: 12px;
+                transition: transform .3s;
+            }
+
+            .nav-item.open .nav-link svg {
+                transform: rotate(180deg);
+            }
+
+            .nav-actions {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+            }
+
+            .icon-btn {
+                width: 38px;
+                height: 38px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(10, 25, 45, .05);
+                border: 1px solid rgba(10, 25, 45, 0.10);
+                color: #4A5A6E;
+            }
+
+            .icon-btn:hover {
+                color: #0A1626;
+                border-color: rgba(10, 25, 45, .2);
+            }
+
+            .mega {
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 78px;
+                background: #F6F8FA;
+                border-bottom: 1px solid rgba(10, 25, 45, 0.10);
+                border-top: 1px solid rgba(10, 25, 45, .09);
+                box-shadow: 0 40px 70px -20px rgba(20, 40, 70, .16), 0 16px 32px -12px rgba(20, 40, 70, .10), inset 0 1px 0 rgba(10, 25, 45, .09);
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transform: translateY(-10px);
+                transition: opacity .32s cubic-bezier(.16, .8, .24, 1), transform .32s cubic-bezier(.16, .8, .24, 1), visibility .32s;
+                z-index: 150;
+            }
+
+            .mega::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, #0083C8, #4FE0D0, #0083C8, transparent);
+                opacity: .7;
+            }
+
+            .nav-item.open .mega {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                transform: translateY(0);
+            }
+
+            .mega-wide {
+                padding: 0;
+            }
+
+            .mega-inner {
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 38px 32px 42px;
+            }
+
+            .mega-sol-cols {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0;
+            }
+
+            .mega-sol-col {
+                padding: 0 28px;
+                border-right: 1px solid rgba(10, 25, 45, 0.10);
+            }
+
+            .mega-sol-col:first-child {
+                padding-left: 0;
+            }
+
+            .mega-sol-col:last-child {
+                padding-right: 0;
+                border-right: none;
+            }
+
+            .mega-sol-col-head {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 16px;
+                padding-bottom: 16px;
+                border-bottom: 2px solid #0083C8;
+            }
+
+            .mega-sol-col-icon {
+                width: 38px;
+                height: 38px;
+                border-radius: 10px;
+                flex-shrink: 0;
+                background: linear-gradient(135deg, #0083C8, #4FE0D0);
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .mega-sol-col-head h4 {
+                font-size: 15px;
+                color: #0A1626;
+                margin-bottom: 2px;
+            }
+
+            .mega-sol-col-head .mega-sol-col-sub {
+                display: block;
+                font-size: 11.5px;
+                font-weight: 600;
+                color: #76889C;
+            }
+
+            .mega-sol-group {
+                border-bottom: 1px solid rgba(10, 25, 45, 0.08);
+            }
+
+            .mega-sol-group:last-child {
+                border-bottom: none;
+            }
+
+            .mega-sol-group summary {
+                list-style: none;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+                padding: 12px 2px;
+                font-family: "Manrope", sans-serif;
+                font-size: 12.5px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: .04em;
+                color: #4A5A6E;
+                transition: color .2s;
+            }
+
+            .mega-sol-group summary::-webkit-details-marker {
+                display: none;
+            }
+
+            .mega-sol-group summary::marker {
+                content: "";
+            }
+
+            .mega-sol-group summary:hover {
+                color: #0083C8;
+            }
+
+            .mega-sol-group summary .chev {
+                flex-shrink: 0;
+                color: #76889C;
+                transition: transform .25s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .mega-sol-group[open] summary {
+                color: #0083C8;
+            }
+
+            .mega-sol-group[open] summary .chev {
+                transform: rotate(180deg);
+                color: #0083C8;
+            }
+
+            .mega-sol-group-items {
+                padding: 2px 2px 14px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .mega-sol-item {
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 7px 8px;
+                border-radius: 8px;
+                transition: background .2s;
+            }
+
+            .mega-sol-item:hover {
+                background: rgba(10, 25, 45, .05);
+            }
+
+            .mega-sol-item-icon {
+                width: 26px;
+                height: 26px;
+                border-radius: 8px;
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(0, 130, 200, .12);
+                color: #0083C8;
+                transition: transform .25s cubic-bezier(.16, .8, .24, 1), background .2s, color .2s;
+            }
+
+            .mega-sol-item:hover .mega-sol-item-icon {
+                transform: scale(1.08) rotate(-4deg);
+                background: #0083C8;
+                color: #fff;
+            }
+
+            .mega-sol-item-text {
+                min-width: 0;
+            }
+
+            .mega-sol-item .mega-sol-item-name {
+                display: block;
+                font-size: 13.5px;
+                font-weight: 700;
+                color: #0A1626;
+                margin-bottom: 2px;
+                transition: color .2s;
+            }
+
+            .mega-sol-item:hover .mega-sol-item-name {
+                color: #0083C8;
+            }
+
+            .mega-sol-item .mega-sol-item-sub {
+                display: block;
+                font-size: 11.5px;
+                color: #76889C;
+                line-height: 1.4;
+            }
+
+            .mega-feat-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 26px 30px;
+                padding-bottom: 22px;
+                margin-bottom: 20px;
+                border-bottom: 1px solid rgba(10, 25, 45, 0.10);
+            }
+
+            .mega-feat {
+                display: flex;
+                gap: 13px;
+                align-items: flex-start;
+                opacity: 0;
+                transform: translateY(10px);
+                transition: opacity .4s cubic-bezier(.16, .8, .24, 1), transform .4s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .nav-item.open .mega-feat {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .mega-feat-grid .mega-feat:nth-child(1) {
+                transition-delay: .06s;
+            }
+
+            .mega-feat-grid .mega-feat:nth-child(2) {
+                transition-delay: .11s;
+            }
+
+            .mega-feat-grid .mega-feat:nth-child(3) {
+                transition-delay: .16s;
+            }
+
+            .mega-feat-grid .mega-feat:nth-child(4) {
+                transition-delay: .21s;
+            }
+
+            .mega-feat-grid .mega-feat:nth-child(5) {
+                transition-delay: .26s;
+            }
+
+            .mega-feat-grid .mega-feat:nth-child(6) {
+                transition-delay: .31s;
+            }
+
+            .mega-feat-grid .mega-feat:nth-child(7) {
+                transition-delay: .36s;
+            }
+
+            .mega-feat-grid .mega-feat:nth-child(8) {
+                transition-delay: .41s;
+            }
+
+            .mega-feat-grid .mega-feat:nth-child(9) {
+                transition-delay: .46s;
+            }
+
+            .mega-feat-icon {
+                width: 42px;
+                height: 42px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 19px;
+                flex-shrink: 0;
+                transition: transform .3s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .mega-feat:hover .mega-feat-icon {
+                transform: scale(1.1) rotate(-5deg);
+            }
+
+            .mega-feat-icon.c1 {
+                background: #DCEBFC;
+                color: #1C64D1;
+            }
+
+            .mega-feat-icon.c2 {
+                background: #EFE6FB;
+                color: #7C3AED;
+            }
+
+            .mega-feat-icon.c3 {
+                background: #E1F5EA;
+                color: #0E9F6E;
+            }
+
+            .mega-feat-icon.c4 {
+                background: #FDE9D8;
+                color: #C9670E;
+            }
+
+            .mega-feat-icon.c5 {
+                background: #E3ECFB;
+                color: #2563EB;
+            }
+
+            .mega-feat-icon.c6 {
+                background: #FCE4EE;
+                color: #DB2777;
+            }
+
+            .mega-feat-body h4 {
+                font-size: 14.5px;
+                color: #0A1626;
+                margin-bottom: 4px;
+            }
+
+            .mega-feat-body p {
+                font-size: 12px;
+                color: #76889C;
+                line-height: 1.5;
+                margin-bottom: 7px;
+            }
+
+            .mega-feat-explore {
+                font-size: 12px;
+                font-weight: 700;
+                color: #0083C8;
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .mega-feat-explore svg {
+                transition: transform .25s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .mega-feat:hover .mega-feat-explore svg {
+                transform: translateX(3px);
+            }
+
+            .mega-other {
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+
+            .mega-other-label {
+                font-size: 11px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: .08em;
+                color: #76889C;
+                margin-bottom: 12px;
+            }
+
+            .mega-pill-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .mega-pill {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 9px 16px;
+                border-radius: 100px;
+                background: rgba(10, 25, 45, .03);
+                border: 1px solid rgba(10, 25, 45, 0.10);
+                font-size: 13px;
+                font-weight: 600;
+                color: #0A1626;
+                transition: background .25s, border-color .25s, transform .25s;
+            }
+
+            .mega-pill:hover {
+                background: rgba(10, 25, 45, .09);
+                border-color: #0083C8;
+                transform: translateY(-2px);
+            }
+
+            .mega-pill .pill-ic {
+                font-size: 14px;
+            }
+
+            .mega-feat-grid.cols-5 {
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            .mega-feat-grid.no-border {
+                border-bottom: none;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+
+            .mobile-toggle {
+                display: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 10px;
+                background: rgba(10, 25, 45, .06);
+                border: 1px solid rgba(10, 25, 45, 0.10);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+            }
+
+            .mobile-toggle span {
+                display: block;
+                width: 18px;
+                height: 2px;
+                background: #0A1626;
+                border-radius: 2px;
+                transition: background .2s;
+            }
+
+            .theme-toggle svg {
+                transition: opacity .2s, transform .3s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            html.dark .theme-toggle .ic-moon {
+                display: inline-block !important;
+            }
+
+            html.dark .theme-toggle .ic-sun {
+                display: none !important;
+            }
+
+            .mobile-panel {
+                position: fixed;
+                inset: 0 0 0 auto;
+                width: min(360px, 86vw);
+                top: 0;
+                height: 100vh;
+                background: #E4EAF1;
+                transform: translateX(100%);
+                transition: transform .4s cubic-bezier(.16, .8, .24, 1);
+                z-index: 300;
+                padding: 26px;
+                overflow-y: auto;
+                border-left: 1px solid rgba(10, 25, 45, 0.10);
+            }
+
+            .mobile-panel.open {
+                transform: translateX(0);
+            }
+
+            .mobile-panel .m-top {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 30px;
+            }
+
+            .mobile-panel a {
+                display: block;
+                padding: 14px 4px;
+                font-size: 16.5px;
+                font-weight: 600;
+                color: #0A1626;
+                border-bottom: 1px solid rgba(10, 25, 45, 0.10);
+            }
+
+            .mobile-panel .btn {
+                width: 100%;
+                justify-content: center;
+                margin-top: 22px;
+            }
+
+            .mobile-panel .m-item {
+                border-bottom: 1px solid rgba(10, 25, 45, 0.10);
+            }
+
+            .mobile-panel .m-toggle {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+                background: none;
+                border: none;
+                padding: 14px 4px;
+                font-family: inherit;
+                font-size: 16.5px;
+                font-weight: 600;
+                color: #0A1626;
+                cursor: pointer;
+                text-align: left;
+            }
+
+            .mobile-panel .m-toggle svg {
+                flex-shrink: 0;
+                color: #76889C;
+                transition: transform .3s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .mobile-panel .m-item.open .m-toggle svg {
+                transform: rotate(180deg);
+                color: #0083C8;
+            }
+
+            .mobile-panel .m-submenu {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height .4s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .mobile-panel .m-item.open .m-submenu {
+                max-height: 900px;
+                padding-bottom: 8px;
+            }
+
+            .mobile-panel .m-sub-label {
+                display: block;
+                padding: 12px 4px 6px;
+                font-size: 11px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: .07em;
+                color: #76889C;
+            }
+
+            .mobile-panel .m-sub-link {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 11px 4px 11px 6px;
+                font-size: 14.5px;
+                font-weight: 500;
+                color: #4A5A6E;
+                border-bottom: 1px solid rgba(10, 25, 45, 0.10);
+            }
+
+            .mobile-panel .m-sub-link:last-child {
+                border-bottom: none;
+            }
+
+            .mobile-panel .m-sub-link .ic {
+                width: 22px;
+                height: 22px;
+                border-radius: 6px;
+                background: rgba(0, 130, 200, .15);
+                color: #0083C8;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                font-size: 11.5px;
+            }
+
+            .mobile-panel .m-sub-link:hover {
+                color: #0083C8;
+            }
+
+            .mobile-panel .m-item-nested {
+                border-bottom: none;
+                padding-left: 4px;
+                border-left: 2px solid rgba(10, 25, 45, 0.10);
+            }
+
+            .mobile-panel .m-item-nested .m-toggle-sub {
+                padding: 12px 4px;
+                font-size: 14.5px;
+            }
+
+            .mobile-panel .m-toggle-sub > span:first-child {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .mobile-panel .m-toggle-tag {
+                font-size: 11px;
+                font-weight: 500;
+                text-transform: none;
+                letter-spacing: 0;
+                color: #76889C;
+            }
+
+            .mobile-panel .m-item-nested .m-submenu {
+                padding-left: 10px;
+            }
+
+            #m-solutions .m-sub-link {
+                align-items: flex-start;
+            }
+
+            .mobile-panel .m-sub-text {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .mobile-panel .m-sub-text small {
+                font-size: 11.5px;
+                font-weight: 400;
+                color: #76889C;
+                line-height: 1.4;
+            }
+
+            .scrim {
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, .5);
+                z-index: 250;
+                opacity: 0;
+                visibility: hidden;
+                transition: .3s;
+            }
+
+            .scrim.open {
+                opacity: 1;
+                visibility: visible;
+            }
+
+
+            /* -- header media queries -- */
+
+            @media (max-width:1180px) {
+                .mega-sol-cols {
+                    grid-template-columns: 1fr;
+                }
+
+                .mega-sol-col {
+                    padding: 18px 0;
+                    border-right: none;
+                    border-bottom: 1px solid rgba(10, 25, 45, 0.10);
+                }
+
+                .mega-sol-col:first-child {
+                    padding-top: 0;
+                }
+
+                .mega-sol-col:last-child {
+                    padding-bottom: 0;
+                    border-bottom: none;
+                }
+
+                .mega-feat-grid.cols-5 {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+
+            @media (max-width:980px) {
+                .mega,
+                .nav-menu,
+                .nav-actions .btn-ghost,
+                .nav-actions .icon-btn:not(.theme-toggle),
+                .nav-actions .btn-primary {
+                    display: none;
+                }
+
+                .mobile-toggle {
+                    display: flex;
+                }
+            }
+
+
+            /* ======================================================================
+            BODY
+            ====================================================================== */
+
+            html.dark body::before {
+                background: radial-gradient(1100px 620px at 82% -10%, rgba(0, 130, 200, 0.22), transparent 60%), radial-gradient(900px 500px at -10% 20%, rgba(79, 224, 208, 0.10), transparent 55%), linear-gradient(180deg, #050A11 0%, #0A1626 40%, #050A11 100%);
+            }
+
+            html.dark .noise {
+                opacity: .035;
+            }
+
+            html.dark .cta-banner {
+                background: linear-gradient(120deg, #04101F, #0A2C46, #04101F, #083048);
+                border-color: rgba(0, 168, 232, .3);
+            }
+
+            html.dark::selection {
+                background: rgba(0, 168, 232, .35);
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                background: #F6F8FA;
+                color: #0A1626;
+                font-family: "Inter", sans-serif;
+                line-height: 1.6;
+                overflow-x: hidden;
+                -webkit-font-smoothing: antialiased;
+            }
+
+            img {
+                max-width: 100%;
+                display: block;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            button {
+                font-family: inherit;
+                cursor: pointer;
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            .wrap {
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 15px 30px;
+            }
+
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background: radial-gradient(1100px 620px at 82% -10%, rgba(0, 130, 200, 0.10), transparent 60%), radial-gradient(900px 500px at -10% 20%, rgba(79, 224, 208, 0.08), transparent 55%), linear-gradient(180deg, #F6F8FA 0%, #EEF2F6 40%, #F6F8FA 100%);
+                z-index: -2;
+            }
+
+            .noise {
+                position: fixed;
+                inset: 0;
+                z-index: -1;
+                opacity: .02;
+                pointer-events: none;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            }
+
+            h1,
+            h2,
+            h3,
+            h4 {
+                font-family: "Sora", sans-serif;
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                line-height: 1.08;
+            }
+
+            .eyebrow {
+                font-family: "Manrope", sans-serif;
+                font-weight: 700;
+                font-size: 12.5px;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: #0083C8;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 16px;
+            }
+
+            .eyebrow::before {
+                content: "";
+                width: 22px;
+                height: 2px;
+                background: linear-gradient(90deg, #0083C8, #4FE0D0);
+                border-radius: 2px;
+            }
+
+            .section-head {
+                max-width: 750px;
+                margin-bottom: 56px;
+            }
+
+            .section-head h2 {
+                font-size: clamp(30px, 4vw, 46px);
+                color: #0A1626;
+                margin-bottom: 16px;
+            }
+
+            .section-head p {
+                color: #4A5A6E;
+                font-size: 17px;
+                max-width: 600px;
+            }
+
+            .grad-text {
+                background: #0083c8;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+
+            section {
+                position: relative;
+                padding: 50px 0;
+            }
+
+            .bg-white {
+                background: #FFFFFF;
+            }
+
+            .bg-black {
+                background: #F6F8FA;
+            }
+
+            .bg-soft {
+                background: linear-gradient(180deg, #FFFFFF 0%, #D7ECF6 14%, #D7ECF6 86%, #FFFFFF 100%);
+            }
+
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 9px;
+                font-family: "Manrope", sans-serif;
+                font-weight: 700;
+                font-size: 14.5px;
+                padding: 14px 26px;
+                border-radius: 100px;
+                border: 1px solid transparent;
+                transition: all .35s cubic-bezier(.16, .8, .24, 1);
+                white-space: nowrap;
+            }
+
+            .btn-primary,
+            .btn-white {
+                box-shadow: 0 8px 24px -8px rgba(0, 130, 200, 0.6);
+            }
+
+            .btn-primary {
+                background: linear-gradient(100deg, #0083C8, #0067A0);
+                color: #fff;
+            }
+
+            .btn-white {
+                background: linear-gradient(100deg, #ceeeff, #ffffff);
+                color: #000;
+            }
+
+            .btn-primary:hover,
+            .btn-white:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 14px 32px -8px rgba(0, 168, 232, 0.7);
+            }
+
+            .btn-ghost {
+                background: #c00000;
+                color: #0A1626;
+                border-color: rgba(10, 25, 45, 0.10);
+                backdrop-filter: blur(6px);
+            }
+
+            .btn-ghost:hover {
+                background: rgba(10, 25, 45, .09);
+                border-color: rgba(10, 25, 45, .2);
+            }
+
+            .btn-text {
+                display: inline-flex;
+                align-items: center;
+                transition: .3s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .btn-text {
+                color: #0083C8;
+                font-weight: 700;
+                font-size: 14.5px;
+                gap: 6px;
+            }
+
+            .btn-text svg,
+            .impact-card .num {
+                transition: transform .3s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .btn-text:hover svg {
+                transform: translateX(4px);
+            }
+
+            .btn-sm {
+                padding: 9px 18px;
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 190px 0 100px;
+                position: relative;
+                overflow: hidden;
+                isolation: isolate;
+                background: #050A11;
+            }
+
+            .hero-bg-video {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                overflow: hidden;
+            }
+
+            .hero-bg-video video {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            /* Fades the bottom of the hero video/background into the white
+               background of the section that follows (#trusted), so the two
+               sections melt into each other instead of showing a hard edge. */
+            .hero::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 260px;
+                background: linear-gradient(180deg, rgba(5, 10, 17, 0) 0%, rgba(5, 10, 17, .55) 45%, #FFFFFF 100%);
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            .hero-grid {
+                position: relative;
+                z-index: 2;
+                display: grid;
+                grid-template-columns: 1.05fr 0.95fr;
+                gap: 56px;
+                align-items: center;
+            }
+
+            .hero h1 {
+                font-size: clamp(38px, 5.2vw, 64px);
+                margin-bottom: 22px;
+                color: #fff;
+            }
+
+            .hero p.lead {
+                font-size: 18px;
+                color: rgba(255, 255, 255, .85);
+                max-width: 520px;
+                margin-bottom: 34px;
+            }
+
+            .hero-ctas {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 14px;
+                margin-bottom: 30px;
+            }
+
+            .impact-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+
+            .impact-card {
+                padding: 30px 24px;
+                border-radius: 16px;
+                background: #fff;
+                border: 1px solid rgba(10, 25, 45, 0.10);
+                transition: .35s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .impact-card:hover {
+                transform: translateY(-6px);
+                border-color: rgba(0, 168, 232, .35);
+                box-shadow: 0 20px 40px -20px rgba(0, 130, 200, .4);
+            }
+
+            .impact-card .ic {
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
+                background: rgba(0, 130, 200, .15);
+                color: #0083C8;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+                font-size: 20px;
+            }
+
+            .impact-card .num {
+                font-family: "Sora", sans-serif;
+                font-size: 38px;
+                font-weight: 800;
+                color: #0A1626;
+                margin-bottom: 6px;
+            }
+
+            .impact-card .num span,
+            .trusted-name:hover {
+                color: #c00000;
+            }
+
+            .impact-card h4 {
+                font-size: 14.5px;
+                font-weight: 700;
+                color: #0A1626;
+                margin-bottom: 8px;
+            }
+
+            .impact-card p {
+                font-size: 13px;
+                color: #76889C;
+            }
+
+            .sol-grid,
+            .tm-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 22px;
+            }
+
+            .sol-card {
+                border-radius: 16px;
+                border: 1px solid rgba(10, 25, 45, 0.10);
+                background: rgba(10, 25, 45, .03);
+                padding: 0;
+                overflow: hidden;
+                transition: .4s cubic-bezier(.16, .8, .24, 1);
+                display: flex;
+                flex-direction: column;
+            }
+
+            .sol-card:hover {
+                transform: translateY(-6px);
+                border-color: rgba(0, 168, 232, .4);
+                box-shadow: 0 24px 50px -22px #0083C8;
+            }
+
+            .sol-visual {
+                height: 150px;
+                position: relative;
+                background: linear-gradient(150deg, rgba(0, 130, 200, .28), rgba(9, 17, 28, .6));
+                overflow: hidden;
+            }
+
+            .sol-visual::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: radial-gradient(rgba(10, 25, 45, .14) 1px, transparent 1px);
+                background-size: 16px 16px;
+                opacity: .4;
+            }
+
+            .sol-visual .sol-ic {
+                position: absolute;
+                bottom: 16px;
+                left: 20px;
+                width: 46px;
+                height: 46px;
+                border-radius: 13px;
+                background: rgba(8, 15, 25, .7);
+                backdrop-filter: blur(8px);
+                border: 1px solid rgba(10, 25, 45, .16);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 21px;
+                color: #4FE0D0;
+            }
+
+            .sol-body {
+                padding: 22px 22px 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                flex: 1;
+            }
+
+            .sol-body h3 {
+                font-size: 18.5px;
+            }
+
+            .sol-body p {
+                font-size: 13.5px;
+                color: #4A5A6E;
+            }
+
+            .sol-body ul {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                margin: 4px 0 8px;
+            }
+
+            .sol-body li {
+                font-size: 12.5px;
+                color: #76889C;
+                display: flex;
+                gap: 8px;
+                align-items: flex-start;
+            }
+
+            .sol-body li::before {
+                content: "✓";
+                color: #3ED598;
+                font-weight: 700;
+                flex-shrink: 0;
+            }
+
+            .ind-grid,
+            .why-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+
+            .ind-card {
+                border-radius: 16px;
+                border: 1px solid rgba(10, 25, 45, 0.10);
+                padding: 26px 22px;
+                background: #fff;
+                transition: .35s cubic-bezier(.16, .8, .24, 1);
+                position: relative;
+            }
+
+            .ind-card:hover,
+            .why-card:hover,
+            .tm-card:hover {
+                border-color: rgba(0, 168, 232, .4);
+                box-shadow: 0 24px 50px -22px #0083C8;
+            }
+
+            .ind-card .ic {
+                width: 48px;
+                height: 48px;
+                border-radius: 13px;
+                background: linear-gradient(135deg, rgba(0, 130, 200, .3), rgba(79, 224, 208, .15));
+                color: #4FE0D0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 21px;
+                margin-bottom: 18px;
+            }
+
+            .ind-card h4 {
+                font-size: 15.5px;
+                margin-bottom: 8px;
+            }
+
+            .ind-card p {
+                font-size: 13px;
+                color: #76889C;
+                margin-bottom: 14px;
+            }
+
+            .ind-card .stat {
+                font-family: "Manrope", sans-serif;
+                font-size: 12.5px;
+                font-weight: 700;
+                color: #0083C8;
+                margin-bottom: 14px;
+            }
+
+            .why-card {
+                padding: 28px;
+                border-radius: 16px;
+                border: 1px solid rgba(10, 25, 45, 0.10);
+                background: rgba(10, 25, 45, .02);
+                transition: .3s;
+            }
+
+            .why-card .ic {
+                width: 42px;
+                height: 42px;
+                border-radius: 11px;
+                background: rgba(0, 130, 200, .15);
+                color: #0083C8;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 19px;
+                margin-bottom: 16px;
+            }
+
+            .why-card h4 {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+
+            .why-card p,
+            .zz-card p {
+                font-size: 13.5px;
+                color: #76889C;
+            }
+
+            .zigzag {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                overflow-x: hidden;
+            }
+
+            .zigzag::before {
+                content: "";
+                position: absolute;
+                left: 50%;
+                top: 6px;
+                bottom: 6px;
+                width: 2px;
+                transform: translateX(-50%);
+                background: linear-gradient(180deg, #c00000, #4FE0D0, #c00000);
+                opacity: .35;
+            }
+
+            .zz-item {
+                position: relative;
+                display: grid;
+                grid-template-columns: 1fr 64px 1fr;
+                align-items: center;
+                gap: 0 32px;
+                padding: 26px 0;
+            }
+
+            .zz-card {
+                opacity: 0;
+                transition: opacity 1s cubic-bezier(.16, .8, .2, 1), transform 1s cubic-bezier(.16, .8, .2, 1);
+                will-change: transform, opacity;
+                border: 1px solid rgba(10, 25, 45, 0.10);
+                background: #FFFFFF;
+                border-radius: 16px;
+                padding: 22px 24px;
+                box-shadow: 0 18px 40px -24px rgba(20, 40, 70, .16);
+            }
+
+            .zz-card .zz-ic {
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
+                background: rgba(0, 130, 200, .12);
+                color: #0083C8;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 17px;
+                margin-bottom: 12px;
+            }
+
+            .zz-card h4 {
+                font-size: 17px;
+                margin-bottom: 6px;
+            }
+
+            .zz-item.reveal-left .zz-card {
+                transform: translateX(min(-45vw, -420px));
+            }
+
+            .zz-item.reveal-right .zz-card {
+                transform: translateX(min(45vw, 420px));
+            }
+
+            .zz-item.in .zz-card,
+            .line-anim.in .eyebrow,
+            .line-anim.in h2 {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .zz-num {
+                position: relative;
+                width: 52px;
+                height: 52px;
+                border-radius: 50%;
+                background: #E4EAF1;
+                border: 2px solid #c00000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: "Sora", sans-serif;
+                font-weight: 800;
+                font-size: 17px;
+                color: #0A1626;
+                z-index: 2;
+                justify-self: center;
+                box-shadow: 0 0 0 6px #D7ECF6;
+            }
+
+            .zz-item .zz-side-l {
+                grid-column: 1;
+                text-align: right;
+            }
+
+            .zz-item .zz-side-r {
+                grid-column: 3;
+                text-align: left;
+            }
+
+            .zz-item .zz-side-l .zz-ic,
+            .zz-item .zz-side-l h4,
+            .zz-item .zz-side-l p {
+                margin-left: auto;
+            }
+
+            .counter-band {
+                border-radius: 24px;
+                border: 1px solid rgba(10, 25, 45, 0.10);
+                background: #0083c8;
+                padding: 56px 40px;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+                text-align: center;
+            }
+
+            .counter-band .cnum {
+                font-family: "Sora", sans-serif;
+                font-size: clamp(30px, 3.4vw, 42px);
+                font-weight: 800;
+                color: #fff;
+                margin-bottom: 6px;
+            }
+
+            .counter-band .clabel {
+                font-size: 12.5px;
+                color: #fff;
+                font-weight: 600;
+            }
+
+            .tm-card {
+                border-radius: 16px;
+                border: 1px solid rgba(10, 25, 45, 0.10);
+                padding: 26px;
+                background: #fff;
+            }
+
+            .tm-stars {
+                color: #FFC24B;
+                font-size: 14px;
+                margin-bottom: 14px;
+                letter-spacing: 2px;
+            }
+
+            .tm-card p {
+                font-size: 14.5px;
+                color: #4A5A6E;
+                margin-bottom: 20px;
+                font-style: italic;
+            }
+
+            .tm-person {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .tm-ava {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #0083C8, #4FE0D0);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+                font-size: 14px;
+                color: #03121F;
+            }
+
+            .tm-person strong {
+                display: block;
+                font-size: 13.5px;
+                color: #0A1626;
+            }
+
+            .tm-person span {
+                font-size: 12px;
+                color: #76889C;
+            }
+
+            .trusted-label {
+                font-size: 13px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: .08em;
+                color: #76889C;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .trusted-marquee {
+                overflow: hidden;
+                position: relative;
+                width: 100%;
+                -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+                mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+            }
+
+            .trusted-track {
+                display: flex;
+                width: max-content;
+                animation: trusted-scroll 34s linear infinite;
+            }
+
+            .trusted-marquee:hover .trusted-track {
+                animation-play-state: paused;
+            }
+
+            .trusted-name {
+                max-width: 280px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0 30px;
+                font-family: "Sora", sans-serif;
+                font-weight: 700;
+                font-size: 25px;
+                color: #0083C8;
+                white-space: nowrap;
+                transition: opacity .3s, color .3s;
+            }
+
+            .trusted-img {
+                width: auto;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0 30px;
+                font-family: "Sora", sans-serif;
+                font-weight: 700;
+                font-size: 25px;
+                color: #0083C8;
+                white-space: nowrap;
+                transition: opacity .3s, color .3s;
+            }
+
+            html.dark .trusted-name {
+                color: #fff;
+            }
+
+            .trusted-marquee:hover .trusted-name,
+            .line-anim.in p {
+                opacity: 1;
+            }
+
+            .tp-logo-grid {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 40px 32px;
+                align-items: center;
+                justify-items: center;
+            }
+
+            .tp-logo-img {
+                width: auto !important;
+                height: 60px !important;
+                object-fit: contain;
+                filter: grayscale(1);
+                opacity: .7;
+                transition: filter .35s, opacity .35s, transform .35s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .tp-logo-img:hover {
+                filter: grayscale(0);
+                opacity: 1;
+                transform: scale(1.08);
+            }
+
+            .cta-banner {
+                border-radius: 28px;
+                padding: 70px 50px;
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+                border: 1px solid rgba(0, 168, 232, .3);
+                background: #0083C8;
+            }
+
+            .cta-banner h2 {
+                font-size: clamp(28px, 4vw, 42px);
+                margin-bottom: 16px;
+                color: #fff;
+            }
+
+            .cta-banner p {
+                color: #fff;
+                max-width: 520px;
+                margin: 0 auto 34px;
+                font-size: 16px;
+            }
+
+            .cta-row {
+                display: flex;
+                justify-content: center;
+                gap: 14px;
+                flex-wrap: wrap;
+            }
+
+            .reveal {
+                opacity: 0;
+                transform: translateY(28px);
+                transition: opacity .8s cubic-bezier(.16, .8, .24, 1), transform .8s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .reveal.in {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .sol-card.reveal {
+                transform: translateY(-36px);
+            }
+
+            .sol-card.reveal.in {
+                transform: translateY(0);
+            }
+
+            .line-anim .eyebrow {
+                opacity: 0;
+                transform: translateX(-70px);
+                transition: opacity .7s cubic-bezier(.16, .8, .24, 1), transform .7s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .line-anim h2 {
+                opacity: 0;
+                transform: translateX(70px);
+                transition: opacity .7s cubic-bezier(.16, .8, .24, 1) .12s, transform .7s cubic-bezier(.16, .8, .24, 1) .12s;
+            }
+
+            .line-anim p {
+                opacity: 0;
+                transition: opacity .6s cubic-bezier(.16, .8, .24, 1) .32s;
+            }
+
+            :is(.impact-card, .sol-card, .ind-card, .why-card, .tm-card, .tp-logo-img):nth-child(1) {
+                transition-delay: 0s;
+            }
+
+            :is(.impact-card, .sol-card, .ind-card, .why-card, .tm-card, .tp-logo-img):nth-child(2) {
+                transition-delay: .07s;
+            }
+
+            :is(.impact-card, .sol-card, .ind-card, .why-card, .tm-card, .tp-logo-img):nth-child(3) {
+                transition-delay: .14s;
+            }
+
+            :is(.impact-card, .sol-card, .ind-card, .why-card, .tm-card, .tp-logo-img):nth-child(4) {
+                transition-delay: .21s;
+            }
+
+            :is(.sol-card, .ind-card, .why-card, .tp-logo-img):nth-child(5) {
+                transition-delay: .28s;
+            }
+
+            :is(.sol-card, .ind-card, .why-card, .tp-logo-img):nth-child(6) {
+                transition-delay: .35s;
+            }
+
+            :is(.ind-card, .tp-logo-img):nth-child(7) {
+                transition-delay: .42s;
+            }
+
+            :is(.ind-card, .tp-logo-img):nth-child(8) {
+                transition-delay: .49s;
+            }
+
+            :is(.tp-logo-img):nth-child(9) {
+                transition-delay: .56s;
+            }
+
+            :is(.tp-logo-img):nth-child(10) {
+                transition-delay: .63s;
+            }
+
+            :is(.tp-logo-img):nth-child(11) {
+                transition-delay: .7s;
+            }
+
+            .impact-card .ic,
+            .ind-card .ic,
+            .why-card .ic {
+                transition: transform .4s cubic-bezier(.16, .8, .24, 1), background .3s, color .3s;
+            }
+
+            .impact-card:hover .ic,
+            .why-card:hover .ic {
+                transform: scale(1.12) rotate(-6deg);
+                background: #0083C8;
+                color: #fff;
+            }
+
+            .ind-card:hover .ic {
+                transform: scale(1.12) rotate(6deg);
+            }
+
+            .sol-visual .sol-ic {
+                transition: transform .4s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .sol-card:hover .sol-visual .sol-ic {
+                transform: scale(1.12) rotate(-8deg);
+            }
+
+            .impact-card:hover .num {
+                transform: scale(1.05);
+            }
+
+            .btn-primary {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .btn-primary::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -60%;
+                width: 40%;
+                height: 100%;
+                background: linear-gradient(115deg, transparent, rgba(255, 255, 255, .35), transparent);
+                transform: skewX(-20deg);
+                transition: left .6s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .btn-primary:hover::after {
+                left: 130%;
+            }
+
+            .eyebrow::before {
+                animation: eyebrowPulse 2.6s ease-in-out infinite;
+            }
+
+            .counter-band > div {
+                transition: transform .35s cubic-bezier(.16, .8, .24, 1);
+            }
+
+            .counter-band > div:hover {
+                transform: translateY(-4px);
+            }
+
+
+            @keyframes trusted-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+
+            @keyframes eyebrowPulse { 0%, 100% { opacity: 1; transform: scaleX(1) } 50% { opacity: .55; transform: scaleX(1.3) } }
+
+
+            /* -- body media queries -- */
+
+            @media (max-width:980px) {
+                .hero {
+                    padding: 150px 0 60px;
+                }
+
+                .hero::after {
+                    height: 140px;
+                }
+
+                .hero-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .impact-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                .sol-grid,
+                .ind-grid,
+                .tm-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+
+            @media (max-width:900px) {
+                section {
+                    padding: 76px 0;
+                }
+
+                .why-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                .counter-band,
+                .tp-logo-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                .trusted-name {
+                    flex-basis: 50%;
+                }
+            }
+
+            @media (max-width:760px) {
+                .zigzag::before {
+                    left: 24px;
+                }
+
+                .zz-item {
+                    grid-template-columns: 48px 1fr;
+                    gap: 0 18px;
+                    padding: 16px 0;
+                }
+
+                .zz-num {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 14px;
+                    grid-column: 1;
+                    justify-self: start;
+                }
+
+                .zz-item .zz-side-l,
+                .zz-item .zz-side-r {
+                    grid-column: 2;
+                    grid-row: 1;
+                    text-align: left;
+                }
+
+                .zz-item .zz-side-l .zz-ic,
+                .zz-item .zz-side-l h4,
+                .zz-item .zz-side-l p {
+                    margin-left: 0;
+                }
+
+                .zz-item .zz-side-l,
+                .zz-item.zz-odd .zz-side-r,
+                .zz-item.zz-even .zz-side-l {
+                    display: none;
+                }
+
+                .zz-item.zz-even .zz-side-r,
+                .zz-item.zz-odd .zz-side-l {
+                    display: block;
+                }
+            }
+
+            @media (max-width:640px) {
+                .wrap {
+                    padding: 0 20px;
+                }
+
+                .sol-grid,
+                .tm-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            @media (max-width:560px) {
+                .impact-grid,
+                .ind-grid,
+                .why-grid,
+                .counter-band,
+                .tp-logo-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .trusted-name {
+                    flex-basis: 70%;
+                    font-size: 16px;
+                }
+            }
+
+            @media (prefers-reduced-motion:reduce) {
+                * {
+                    animation-duration: 0.001ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.001ms !important;
+                    scroll-behavior: auto !important;
+                }
+            }
+
+
+            /* ======================================================================
+            FOOTER
+            ====================================================================== */
+
+            footer {
+                padding: 80px 0 30px;
+            }
+
+            .foot-top {
+                display: grid;
+                grid-template-columns: 1.3fr repeat(4, 1fr);
+                gap: 30px;
+                margin-bottom: 56px;
+            }
+
+            .foot-brand p {
+                color: #76889C;
+                font-size: 13.5px;
+                margin: 16px 0 22px;
+                max-width: 280px;
+            }
+
+            .foot-social {
+                display: flex;
+                gap: 10px;
+            }
+
+            .foot-col h5 {
+                font-size: 14px;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: #0083C8;
+                margin-bottom: 18px;
+            }
+
+            .foot-col a {
+                display: block;
+                font-size: 13.5px;
+                color: #4A5A6E;
+                margin-bottom: 12px;
+                transition: .2s;
+            }
+
+            .foot-col a:hover {
+                color: #0A1626;
+            }
+
+            .foot-news {
+                display: flex;
+                gap: 8px;
+                margin-top: 20px;
+            }
+
+            .foot-news input {
+                flex: 1;
+                padding: 11px 14px;
+                border-radius: 10px;
+                background: rgba(10, 25, 45, .04);
+                border: 1px solid rgba(10, 25, 45, 0.10);
+                color: #0A1626;
+                font-size: 13px;
+            }
+
+            .foot-bottom {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-top: 26px;
+                border-top: 1px solid rgba(10, 25, 45, 0.10);
+                font-size: 12.5px;
+                color: #76889C;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .foot-bottom .legal {
+                display: flex;
+                gap: 20px;
+            }
+
+
+            /* -- footer media queries -- */
+
+            @media (max-width:900px) {
+                .foot-top {
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+
+            @media (max-width:560px) {
+                .foot-top {
+                    grid-template-columns: 1fr;
+                }
+            }
+ 
+        </style>
+
+    </head>
+   
+    <body>
+        <div class="noise"></div>
+
+        <!-- ===================== HEADER ===================== -->
+        <header id="site-header">
+            <div class="wrap nav-inner">
+                <a class="logo" href="https://dev-website.ithena.app/">
+                <img fetchpriority="high" width="136" height="45" src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" 
+                    class="attachment-full size-full wp-image-71412" alt="" 
+                    srcset="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp 568w, https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new-300x99.webp 300w" sizes="(max-width: 568px) 100vw, 568px">								
+                </a>
+                <nav class="nav-menu" id="nav-menu">
+                    
+                    <div class="nav-item solutions-menu">
+                        <a class="nav-link" href="#solutions">
+                            Solutions 
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+
+                        <div class="mega mega-wide">
+                            <div class="mega-inner">
+                                <div class="mega-sol-cols">
+
+                                    <!-- ============ 1. OEM | Distributors ============ -->
+                                    <div class="mega-sol-col">
+                                        <div class="mega-sol-col-head">
+                                            <div class="mega-sol-col-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg></div>
+                                            <div>
+                                                <h4>OEM | Distributors</h4>
+                                                <span class="mega-sol-col-sub">Production | After Market</span>
+                                            </div>
+                                        </div>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Front Office Ops
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-4h4v4"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iCRM</span>
+                                                        <span class="mega-sol-item-sub">Customer relationship management for distributors and OEMs.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3h6a2 2 0 012 2v6L11 20l-8-8L12 3z"/><circle cx="15.5" cy="8.5" r="1.3"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iCPQ</span>
+                                                        <span class="mega-sol-item-sub">Configure, price, and quote workflows.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="5" rx="1.5"/><rect x="4" y="10.5" width="16" height="5" rx="1.5"/><rect x="4" y="17" width="16" height="3" rx="1.5"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iERP</span>
+                                                        <span class="mega-sol-item-sub">ERP integrations and operational workflows.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                After Market Services
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">Performance Monitoring</span>
+                                                        <span class="mega-sol-item-sub">Real-time connectivity into asset performance with proactive alerts and alarms.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">Service Portal</span>
+                                                        <span class="mega-sol-item-sub">Support your service operations with real-time visibility and workflows.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="/b2b-ecommerce-solution/" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/><path d="M2 3h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L21 8H6"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">B2B eCommerce</span>
+                                                        <span class="mega-sol-item-sub">Commerce experience for parts, services, and customer self-service.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+                                    </div>
+
+                                    <!-- ============ 2. Manufacturer ============ -->
+                                    <div class="mega-sol-col">
+                                        <div class="mega-sol-col-head">
+                                            <div class="mega-sol-col-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l6 4v-4l6 4V7l6 4v10H3z"/><path d="M7 21v-4M13 21v-4"/></svg></div>
+                                            <div>
+                                                <h4>Manufacturer</h4>
+                                                <span class="mega-sol-col-sub">Plan &rarr; Produce &rarr; Improve</span>
+                                            </div>
+                                        </div>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Planning
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iPLAN</span>
+                                                        <span class="mega-sol-item-sub">Planning workflows and decision support to improve throughput.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Production
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="/digital-shopfloor-igemba/" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l6 4v-4l6 4V7l6 4v10H3z"/><path d="M7 21v-4M13 21v-4"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iGEMBA</span>
+                                                        <span class="mega-sol-item-sub">Digitize Gemba walks to maximize shop floor productivity and resolve issues fast.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">Performance Monitoring</span>
+                                                        <span class="mega-sol-item-sub">Real-time performance visibility with alerts and alarms.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">MES</span>
+                                                        <span class="mega-sol-item-sub">Smarter shop-floor view: standardize, measure, improve quality and scale operations.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Quality
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">QMS</span>
+                                                        <span class="mega-sol-item-sub">Quality management workflows to prevent defects and improve compliance.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Maintenance
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2z"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">CMMS</span>
+                                                        <span class="mega-sol-item-sub">Single view of critical KPIs with standardized checklists to resolve issues faster.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.5 5.5l2 2M16.5 16.5l2 2M18.5 5.5l-2 2M7.5 16.5l-2 2"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iSEM</span>
+                                                        <span class="mega-sol-item-sub">Service + equipment management workflows and integrations.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+                                    </div>
+
+                                    <!-- ============ 3. Enterprise ============ -->
+                                    <div class="mega-sol-col">
+                                        <div class="mega-sol-col-head">
+                                            <div class="mega-sol-col-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></div>
+                                            <div>
+                                                <h4>Enterprise</h4>
+                                                <span class="mega-sol-col-sub">Analytics | CX | SCM</span>
+                                            </div>
+                                        </div>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Supply Chain
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="13" height="9" rx="1"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iTMS</span>
+                                                        <span class="mega-sol-item-sub">Transportation management and logistics workflows.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iPLAN</span>
+                                                        <span class="mega-sol-item-sub">Planning workflows and decision support.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Data Analytics
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="/aether-ai-platform/" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6L12 2z"/><path d="M19 15l.7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15z"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">Aether</span>
+                                                        <span class="mega-sol-item-sub">Practical AI.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">Analytics</span>
+                                                        <span class="mega-sol-item-sub">Enterprise data analytics.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 000 7M15.5 8.5a5 5 0 010 7M5.5 5.5a9 9 0 000 13M18.5 5.5a9 9 0 010 13"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iHub</span>
+                                                        <span class="mega-sol-item-sub">Enterprise data hub and insights.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Apps
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4V5z"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iSIP</span>
+                                                        <span class="mega-sol-item-sub">Integrated service experience platform.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-4h4v4"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">CRM</span>
+                                                        <span class="mega-sol-item-sub">Customer relationship management.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="nav-item services-menu">
+                        <a class="nav-link" href="#process">
+                            Services 
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                        <div class="mega mega-wide">
+                            <div class="mega-inner">
+                                <div class="mega-feat-grid no-border">
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>AI Strategy</h4>
+                                            <p>Define a clear, ROI-driven roadmap for enterprise AI adoption.</p>
+                                            <a href="#process" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Big Data &amp; Analytics</h4>
+                                            <p>Turn scattered operational data into a single trusted source of truth.</p>
+                                            <a href="#process" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.5 5.5l2 2M16.5 16.5l2 2M18.5 5.5l-2 2M7.5 16.5l-2 2"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>AI/ML | Data Science</h4>
+                                            <p>Custom models that predict, optimize, and automate plant decisions.</p>
+                                            <a href="#process" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 000-8 5.5 5.5 0 00-10.6 1.6A3.5 3.5 0 007 18z"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Cloud Adoption</h4>
+                                            <p>Migrate and modernize workloads on a secure, scalable cloud foundation.</p>
+                                            <a href="#process" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M11 6l1-1a3.5 3.5 0 015 5l-1 1M13 18l-1 1a3.5 3.5 0 01-5-5l1-1"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Process Integration</h4>
+                                            <p>Connect ERP, MES, PLCs, and SCADA into one seamless data flow.</p>
+                                            <a href="#process" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Systems of Engagement</h4>
+                                            <p>Modern interfaces that put real-time data in front of the right people.</p>
+                                            <a href="#process" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4V5z"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Customer Experience</h4>
+                                            <p>Design digital journeys that keep customers connected to your business.</p>
+                                            <a href="#process" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l6 4v-4l6 4V7l6 4v10H3z"/><path d="M7 21v-4M13 21v-4"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Manufacturing Execution</h4>
+                                            <p>Real-time execution systems that keep production on schedule.</p>
+                                            <a href="#process" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 000 7M15.5 8.5a5 5 0 010 7M5.5 5.5a9 9 0 000 13M18.5 5.5a9 9 0 010 13"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Industrial IoT</h4>
+                                            <p>Connect every sensor and machine into a unified operational view.</p>
+                                            <a href="#process" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a class="nav-link" href="/case-studies/">Case Studies</a>
+                    
+                    <div class="nav-item company-menu">
+                        <a class="nav-link" href="#company">
+                            Company 
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                        <div class="mega mega-wide">
+                            <div class="mega-inner">
+                                <div class="mega-feat-grid cols-5 no-border">
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-4h4v4"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Who We Are</h4>
+                                            <p>Our mission, values, and the team building ITHENA.</p>
+                                            <a href="https://dev-website.ithena.app/ithena-homepage-test/#" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5M9 13h6M9 17h6M9 9h2"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Blogs</h4>
+                                            <p>Insights on industrial AI and digital transformation.</p>
+                                            <a href="https://dev-website.ithena.app/ithena-homepage-test/#" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 002 2h1l3 5V4l-3 5H5a2 2 0 00-2 2z"/><path d="M14 8a4 4 0 010 8M18 5a8 8 0 010 14"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Announcements</h4>
+                                            <p>Product launches, releases, and company news.</p>
+                                            <a href="https://dev-website.ithena.app/ithena-homepage-test/#" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Partnerships</h4>
+                                            <p>Our technology and channel partner ecosystem.</p>
+                                            <a href="https://dev-website.ithena.app/ithena-homepage-test/#" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="1.5"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M3 12h18"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Careers</h4>
+                                            <p>Open roles and life at ITHENA.</p>
+                                            <a href="https://dev-website.ithena.app/ithena-homepage-test/#" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </nav>
+                <div class="nav-actions">
+                    <button class="icon-btn" aria-label="Search">
+                        <svg width="17" height="17" viewBox="0 0 20 20" fill="none">
+                            <circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.6"/>
+                            <path d="M18 18l-4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <!-- <button class="icon-btn theme-toggle" id="theme-toggle" aria-label="Switch to dark theme">
+                        <svg class="ic-moon" width="17" height="17" viewBox="0 0 20 20" fill="none" style="display:none"><path d="M17 11.5A7.5 7.5 0 018.5 3 7.5 7.5 0 1017 11.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                        <svg class="ic-sun" width="17" height="17" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M10 1.5v2M10 16.5v2M18.5 10h-2M3.5 10h-2M15.8 4.2l-1.4 1.4M5.6 14.4l-1.4 1.4M15.8 15.8l-1.4-1.4M5.6 5.6L4.2 4.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </button> -->
+                    <a href="/contact/" class="btn btn-primary">Contact Us</a>
+                    <button class="mobile-toggle" id="mobile-open" aria-label="Open menu"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </header>
+        
+        <div class="scrim" id="scrim"></div>
+        
+        <div class="mobile-panel" id="mobile-panel">
+            <div class="m-top">
+                <a class="logo" href="https://dev-website.ithena.app/">
+                <img fetchpriority="high" width="136" height="45" src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" 
+                    class="attachment-full size-full wp-image-71412" alt="" 
+                    srcset="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp 568w, https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new-300x99.webp 300w" sizes="(max-width: 568px) 100vw, 568px">								
+                </a>
+                <button class="icon-btn" id="mobile-close" aria-label="Close menu">✕</button>
+            </div>
+            <div class="m-item">
+                <button class="m-toggle" data-target="m-solutions">
+                    Solutions 
+                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="m-submenu" id="m-solutions">
+
+                    <div class="m-item m-item-nested">
+                        <button class="m-toggle m-toggle-sub" data-target="m-sol-oem">
+                            <span>OEM | Distributors<span class="m-toggle-tag">Production | After Market</span></span>
+                            <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="m-submenu" id="m-sol-oem">
+                            <span class="m-sub-label">Front Office Ops</span>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-4h4v4"/></svg></span><span class="m-sub-text"><strong>iCRM</strong><small>Customer relationship management for distributors and OEMs.</small></span></a>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3h6a2 2 0 012 2v6L11 20l-8-8L12 3z"/><circle cx="15.5" cy="8.5" r="1.3"/></svg></span><span class="m-sub-text"><strong>iCPQ</strong><small>Configure, price, and quote workflows.</small></span></a>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="5" rx="1.5"/><rect x="4" y="10.5" width="16" height="5" rx="1.5"/><rect x="4" y="17" width="16" height="3" rx="1.5"/></svg></span><span class="m-sub-text"><strong>iERP</strong><small>ERP integrations and operational workflows.</small></span></a>
+                            <span class="m-sub-label">After Market Services</span>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span><span class="m-sub-text"><strong>Performance Monitoring</strong><small>Real-time connectivity into asset performance with proactive alerts and alarms.</small></span></a>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg></span><span class="m-sub-text"><strong>Service Portal</strong><small>Support your service operations with real-time visibility and workflows.</small></span></a>
+                            <a class="m-sub-link" href="/b2b-ecommerce-solution/"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/><path d="M2 3h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L21 8H6"/></svg></span><span class="m-sub-text"><strong>B2B eCommerce</strong><small>Commerce experience for parts, services, and customer self-service.</small></span></a>
+                        </div>
+                    </div>
+
+                    <div class="m-item m-item-nested">
+                        <button class="m-toggle m-toggle-sub" data-target="m-sol-mfg">
+                            <span>Manufacturer<span class="m-toggle-tag">Plan &rarr; Produce &rarr; Improve</span></span>
+                            <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="m-submenu" id="m-sol-mfg">
+                            <span class="m-sub-label">Planning</span>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span><span class="m-sub-text"><strong>iPLAN</strong><small>Planning workflows and decision support to improve throughput.</small></span></a>
+                            <span class="m-sub-label">Production</span>
+                            <a class="m-sub-link" href="/digital-shopfloor-igemba/"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l6 4v-4l6 4V7l6 4v10H3z"/><path d="M7 21v-4M13 21v-4"/></svg></span><span class="m-sub-text"><strong>iGEMBA</strong><small>Digitize Gemba walks to maximize shop floor productivity and resolve issues fast.</small></span></a>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span><span class="m-sub-text"><strong>Performance Monitoring</strong><small>Real-time performance visibility with alerts and alarms.</small></span></a>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg></span><span class="m-sub-text"><strong>MES</strong><small>Smarter shop-floor view: standardize, measure, improve quality and scale operations.</small></span></a>
+                            <span class="m-sub-label">Quality</span>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="m-sub-text"><strong>QMS</strong><small>Quality management workflows to prevent defects and improve compliance.</small></span></a>
+                            <span class="m-sub-label">Maintenance</span>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2z"/></svg></span><span class="m-sub-text"><strong>CMMS</strong><small>Single view of critical KPIs with standardized checklists to resolve issues faster.</small></span></a>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.5 5.5l2 2M16.5 16.5l2 2M18.5 5.5l-2 2M7.5 16.5l-2 2"/></svg></span><span class="m-sub-text"><strong>iSEM</strong><small>Service + equipment management workflows and integrations.</small></span></a>
+                        </div>
+                    </div>
+
+                    <div class="m-item m-item-nested">
+                        <button class="m-toggle m-toggle-sub" data-target="m-sol-ent">
+                            <span>Enterprise<span class="m-toggle-tag">Analytics | CX | SCM</span></span>
+                            <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="m-submenu" id="m-sol-ent">
+                            <span class="m-sub-label">Supply Chain</span>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="13" height="9" rx="1"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg></span><span class="m-sub-text"><strong>iTMS</strong><small>Transportation management and logistics workflows.</small></span></a>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span><span class="m-sub-text"><strong>iPLAN</strong><small>Planning workflows and decision support.</small></span></a>
+                            <span class="m-sub-label">Data Analytics</span>
+                            <a class="m-sub-link" href="/aether-ai-platform/"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6L12 2z"/><path d="M19 15l.7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15z"/></svg></span><span class="m-sub-text"><strong>Aether</strong><small>Practical AI.</small></span></a>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span><span class="m-sub-text"><strong>Analytics</strong><small>Enterprise data analytics.</small></span></a>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 000 7M15.5 8.5a5 5 0 010 7M5.5 5.5a9 9 0 000 13M18.5 5.5a9 9 0 010 13"/></svg></span><span class="m-sub-text"><strong>iHub</strong><small>Enterprise data hub and insights.</small></span></a>
+                            <span class="m-sub-label">Apps</span>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4V5z"/></svg></span><span class="m-sub-text"><strong>iSIP</strong><small>Integrated service experience platform.</small></span></a>
+                            <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-4h4v4"/></svg></span><span class="m-sub-text"><strong>CRM</strong><small>Customer relationship management.</small></span></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="m-item">
+                <button class="m-toggle" data-target="m-services">
+                    Services 
+                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="m-submenu" id="m-services">
+                    <span class="m-sub-label">Advisory Consulting</span>
+                    <a class="m-sub-link" href="#process"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span>AI Strategy</a>
+                    <span class="m-sub-label">Data Management</span>
+                    <a class="m-sub-link" href="#process"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span>Big Data &amp; Analytics</a>
+                    <a class="m-sub-link" href="#process"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.5 5.5l2 2M16.5 16.5l2 2M18.5 5.5l-2 2M7.5 16.5l-2 2"/></svg></span>AI/ML | Data Science</a>
+                    <span class="m-sub-label">Cloud Modernization</span>
+                    <a class="m-sub-link" href="#process"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 000-8 5.5 5.5 0 00-10.6 1.6A3.5 3.5 0 007 18z"/></svg></span>Cloud Adoption</a>
+                    <a class="m-sub-link" href="#process"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M11 6l1-1a3.5 3.5 0 015 5l-1 1M13 18l-1 1a3.5 3.5 0 01-5-5l1-1"/></svg></span>Process Integration</a>
+                    <span class="m-sub-label">Business Transformation</span>
+                    <a class="m-sub-link" href="#process"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg></span>Systems of Engagement</a>
+                    <a class="m-sub-link" href="#process"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4V5z"/></svg></span>Customer Experience</a>
+                    <span class="m-sub-label">Manufacturing Integration</span>
+                    <a class="m-sub-link" href="#process"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l6 4v-4l6 4V7l6 4v10H3z"/><path d="M7 21v-4M13 21v-4"/></svg></span>Manufacturing Execution</a>
+                    <a class="m-sub-link" href="#process"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 000 7M15.5 8.5a5 5 0 010 7M5.5 5.5a9 9 0 000 13M18.5 5.5a9 9 0 010 13"/></svg></span>Industrial IoT</a>
+                </div>
+            </div>
+            <a href="#testimonials">Case Studies</a>
+            <div class="m-item">
+                <button class="m-toggle" data-target="m-company">
+                    Company 
+                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="m-submenu" id="m-company">
+                    <a class="m-sub-link" href="https://dev-website.ithena.app/ithena-homepage-test/#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-4h4v4"/></svg></span>Who We Are</a>
+                    <a class="m-sub-link" href="https://dev-website.ithena.app/ithena-homepage-test/#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5M9 13h6M9 17h6M9 9h2"/></svg></span>Blogs</a>
+                    <a class="m-sub-link" href="https://dev-website.ithena.app/ithena-homepage-test/#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 002 2h1l3 5V4l-3 5H5a2 2 0 00-2 2z"/><path d="M14 8a4 4 0 010 8M18 5a8 8 0 010 14"/></svg></span>Announcements</a>
+                    <a class="m-sub-link" href="https://dev-website.ithena.app/ithena-homepage-test/#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></span>Partnerships</a>
+                    <a class="m-sub-link" href="https://dev-website.ithena.app/ithena-homepage-test/#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="1.5"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M3 12h18"/></svg></span>Careers</a>
+                </div>
+            </div>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <!-- ===================== HERO ===================== -->
+        <section class="hero" id="top">
+            <div class="hero-bg-video" aria-hidden="true">
+                <video autoplay muted loop playsinline preload="auto">
+                    <source src="https://dev-website.ithena.app/wp-content/uploads/2026/07/website%20banner%20final.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="wrap hero-grid">
+                <div>
+                    <div class="eyebrow">AI-Driven Digital Transformation</div>
+                    <h1>Transform Manufacturing with <span class="grad-text">AI-Powered</span> Digital Solutions</h1>
+                    <p class="lead">ITHENA helps manufacturers and enterprises modernize operations with AI, Industrial ERP, IoT, Cloud and Analytics - cutting cost, lifting throughput, and shortening time-to-value across every plant.</p>
+                    <div class="hero-ctas">
+                        <a href="#contact" class="btn btn-primary">Book a Demo</a>
+                        <a href="#solutions" class="btn btn-ghost">Explore Solutions</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TRUSTED BY ===================== -->
+        <section id="trusted" class="bg-white">
+            <div class="wrap">
+                <div class="trusted-label">Trusted by manufacturers &amp; enterprises worldwide - Partnered by leading technology partners</div>
+                <div class="trusted-marquee">
+                    <div class="trusted-track" id="trusted-track">
+                        <!-- 
+                        <div class="trusted-name">Rockwell Automation</div>
+                        <div class="trusted-name">PTC</div>
+                        <div class="trusted-name">Oracle</div>
+                        <div class="trusted-name">Microsoft</div>
+                        <div class="trusted-name">Pozyx</div>
+                        <div class="trusted-name">Dassault Systemes</div>
+                        <div class="trusted-name">Brightcove</div>
+                        <div class="trusted-name">Google Cloud</div>
+                        <div class="trusted-name">AWS</div>
+                        <div class="trusted-name">Incorta</div>
+                        <div class="trusted-name">Infor</div> 
+                        -->
+                        <img class="trusted-img" src="https://dev-website.ithena.app/wp-content/uploads/2026/07/RA-Partner-Logo_System-Integrator_GOLD_rgb.png" alt="Brightcove Logo"  loading="lazy">
+                        <img class="trusted-img" src="https://dev-website.ithena.app/wp-content/uploads/2026/07/google-cloud-3-scaled.webp" alt="Google Cloud Logo"  loading="lazy">
+                        <img class="trusted-img" src="https://dev-website.ithena.app/wp-content/uploads/2026/07/aws-2-scaled.webp" alt="AWS Logo"  loading="lazy">
+                        <img class="trusted-img" src="https://ithena.ai/wp-content/uploads/2024/08/Rectangle-948-2.png" alt="Incorta Logo"  loading="lazy">
+                        <img class="trusted-img" src="https://ithena.ai/wp-content/uploads/2023/07/Group-467-1.png" alt="Infor Logo"  loading="lazy">
+                        <img class="trusted-img" src="https://dev-website.ithena.app/wp-content/uploads/2026/07/microsoft-6-scaled.webp" alt="Microsoft Logo"  loading="lazy">
+                        <img class="trusted-img" src="https://ithena.ai/wp-content/uploads/2023/07/Rectangle-950.png" alt="Dassault Systèmes Logo"  loading="lazy">
+                        <img class="trusted-img" src="https://dev-website.ithena.app/wp-content/uploads/2026/07/ptc-log.webp" alt="PTC Logo"  loading="lazy">
+                        <img class="trusted-img" src="https://ithena.ai/wp-content/uploads/2023/07/oracle-2.png" alt="Oracle Logo"  loading="lazy">
+                        <img class="trusted-img" src="https://ithena.ai/wp-content/uploads/2023/07/Rectangle-954-1.png" alt="pozyx Logo"  loading="lazy">
+                        <img class="trusted-img" src="https://dev-website.ithena.app/wp-content/uploads/2026/07/bc-logo.webp" alt="Brightcove Logo"  loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TECH PARTNERS ===================== -->
+        <section id="partners" class="bg-white">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div class="eyebrow">Technology Partners</div>
+                    <h2>Our Partners</h2>
+                    <p>ITHENA solutions are built on - and certified with - the platforms enterprises already trust.</p>
+                </div>
+                <div class="tp-logo-grid">
+                    <img class="tp-logo-img reveal" src="https://dev-website.ithena.app/wp-content/uploads/2026/07/RA-Partner-Logo_System-Integrator_GOLD_rgb.png" alt="Brightcove Logo"  loading="lazy">
+                    <img class="tp-logo-img reveal" src="https://dev-website.ithena.app/wp-content/uploads/2026/07/google-cloud-3-scaled.webp" alt="Google Cloud Logo"  loading="lazy">
+                    <img class="tp-logo-img reveal" src="https://dev-website.ithena.app/wp-content/uploads/2026/07/aws-2-scaled.webp" alt="AWS Logo"  loading="lazy">
+                    <img class="tp-logo-img reveal" src="https://ithena.ai/wp-content/uploads/2024/08/Rectangle-948-2.png" alt="Incorta Logo"  loading="lazy">
+                    <img class="tp-logo-img reveal" src="https://ithena.ai/wp-content/uploads/2023/07/Group-467-1.png" alt="Infor Logo"  loading="lazy">
+                    <img class="tp-logo-img reveal" src="https://dev-website.ithena.app/wp-content/uploads/2026/07/microsoft-6-scaled.webp" alt="Microsoft Logo"  loading="lazy">
+                    <img class="tp-logo-img reveal" src="https://ithena.ai/wp-content/uploads/2023/07/Rectangle-950.png" alt="Dassault Systèmes Logo"  loading="lazy">
+                    <img class="tp-logo-img reveal" src="https://dev-website.ithena.app/wp-content/uploads/2026/07/ptc-log.webp" alt="PTC Logo"  loading="lazy">
+                    <img class="tp-logo-img reveal" src="https://ithena.ai/wp-content/uploads/2023/07/oracle-2.png" alt="Oracle Logo"  loading="lazy">
+                    <img class="tp-logo-img reveal" src="https://ithena.ai/wp-content/uploads/2023/07/Rectangle-954-1.png" alt="pozyx Logo"  loading="lazy">
+                    <!-- <img class="tp-logo-img reveal" src="https://dev-website.ithena.app/wp-content/uploads/2026/07/bc-logo.webp" alt="Brightcove Logo"  loading="lazy"> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== INDUSTRIES ===================== -->
+        <section id="industries" class="bg-soft">
+            <div class="wrap">
+                <div class="section-head line-anim">
+                    <div class="eyebrow">Industries We Serve</div>
+                    <h2>Built for the sectors that run the world</h2>
+                    <p>Deep domain expertise across manufacturing-adjacent industries, not generic horizontal tooling.</p>
+                </div>
+                <div class="ind-grid">
+                    <div class="ind-card reveal">
+                        <div class="ic">🏗</div>
+                        <h4>Industrial Manufacturing</h4>
+                        <p>Transforming manufacturing through connected digital technologies.</p>
+                        <div class="stat">↑ 42% faster changeovers</div>
+                        <span class="btn-text">
+                            Read case study
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="ind-card reveal">
+                        <div class="ic">🩺</div>
+                        <h4>Healthcare &amp; Life Sciences</h4>
+                        <p>Driving transformation that meaningfully impacts patient outcomes.</p>
+                        <div class="stat">↓ 29% compliance overhead</div>
+                        <span class="btn-text">
+                            Read case study 
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="ind-card reveal">
+                        <div class="ic">🏦</div>
+                        <h4>Financial Services &amp; Fintech</h4>
+                        <p>Unified data and AI-driven analytics for banking and InsureTech.</p>
+                        <div class="stat">↑ 51% faster reporting</div>
+                        <span class="btn-text">
+                            Read case study 
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="ind-card reveal">
+                        <div class="ic">🔋</div>
+                        <h4>Energy &amp; Utilities</h4>
+                        <p>Optimizing grids and plants with AI-driven demand forecasting.</p>
+                        <div class="stat">↓ 18% energy waste</div>
+                        <span class="btn-text">
+                            Read case study 
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="ind-card reveal">
+                        <div class="ic">🛍</div>
+                        <h4>Retail &amp; B2B Commerce</h4>
+                        <p>Connecting supply chain and storefront on a single data layer.</p>
+                        <div class="stat">↑ 22% order accuracy</div>
+                        <span class="btn-text">
+                            Read case study 
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="ind-card reveal">
+                        <div class="ic">📡</div>
+                        <h4>Media &amp; Entertainment</h4>
+                        <p>Optimizing operations to improve audience acquisition and retention.</p>
+                        <div class="stat">↑ 2.1x engagement</div>
+                        <span class="btn-text">
+                            Read case study 
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SOLUTIONS ===================== -->
+        <section id="solutions" class="bg-white">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div class="eyebrow">Solutions</div>
+                    <h2>One platform, every layer of the enterprise</h2>
+                    <p>From the plant floor to the boardroom - modular solutions that connect data, people, and machines.</p>
+                </div>
+                <div class="sol-grid">
+                    <div class="sol-card reveal">
+                        <div class="sol-visual"><span class="sol-ic">🖥</span></div>
+                        <div class="sol-body">
+                            <h3>Digital Shopfloor</h3>
+                            <p>A browser-based digital twin of every line, machine, and shift.</p>
+                            <ul>
+                                <li>Real-time line visibility</li>
+                                <li>Andon &amp; alerting</li>
+                                <li>Mobile-ready for operators</li>
+                            </ul>
+                            <a href="/digital-shopfloor/" class="btn-text">
+                                Explore Digital Shopfloor 
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sol-card reveal">
+                        <div class="sol-visual"><span class="sol-ic">🔧</span></div>
+                        <div class="sol-body">
+                            <h3>Smart Service</h3>
+                            <p>Predictive field service that fixes issues before customers notice.</p>
+                            <ul>
+                                <li>Predictive maintenance</li>
+                                <li>Technician scheduling</li>
+                                <li>Parts &amp; inventory sync</li>
+                            </ul>
+                            <a href="/smart-service/" class="btn-text">
+                                Explore Smart Service 
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sol-card reveal">
+                        <div class="sol-visual"><span class="sol-ic">🏭</span></div>
+                        <div class="sol-body">
+                            <h3>Manufacturing Excellence</h3>
+                            <p>Close the loop between quality, OEE, and continuous improvement.</p>
+                            <ul>
+                                <li>Live OEE dashboards</li>
+                                <li>Root-cause analytics</li>
+                                <li>SPC &amp; quality gates</li>
+                            </ul>
+                            <a href="/manufacturing-excellence/" class="btn-text">
+                                Explore Manufacturing Excellence 
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sol-card reveal">
+                        <div class="sol-visual"><span class="sol-ic">⚡</span></div>
+                        <div class="sol-body">
+                            <h3>Energy Management</h3>
+                            <p>Monitor and reduce consumption across every site, in real time.</p>
+                            <ul>
+                                <li>Site-level energy dashboards</li>
+                                <li>Carbon reporting</li>
+                                <li>AI load forecasting</li>
+                            </ul>
+                            <a href="/smart-energy-management-isems/" class="btn-text">
+                                Explore Energy Management 
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sol-card reveal">
+                        <div class="sol-visual"><span class="sol-ic">⚙</span></div>
+                        <div class="sol-body">
+                            <h3>The Agentic OEM</h3>
+                            <p>Autonomous agents that support machine builders across the equipment lifecycle.</p>
+                            <ul>
+                                <li>Real-time context from across OEM ecosystem </li>
+                                <li>First-Line Customer Support</li>
+                                <li>Proactive Service Operations</li>
+                            </ul>
+                            <a href="/oem-ai-agents/" class="btn-text">
+                                Explore The Agentic OEM 
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sol-card reveal">
+                        <div class="sol-visual"><span class="sol-ic">🤖</span></div>
+                        <div class="sol-body">
+                            <h3>Analytics AI Platform</h3>
+                            <p>Autonomous agents that monitor, decide, and act across operations.</p>
+                            <ul>
+                                <li>Anomaly detection</li>
+                                <li>Natural-language shift reports</li>
+                                <li>Human-in-the-loop controls</li>
+                            </ul>
+                            <a href="/aether-ai-platform/" class="btn-text">
+                                Explore Analytics AI Platform 
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== BUSINESS IMPACT ===================== -->
+        <section id="impact" class="bg-soft">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div class="eyebrow">Business Impact</div>
+                    <h2>Outcomes our customers actually feel</h2>
+                    <p>Every ITHENA engagement is measured against operational KPIs, not vanity metrics - here's the impact across our portfolio.</p>
+                </div>
+                <div class="impact-grid">
+                    <div class="impact-card reveal">
+                        <div class="ic">⚡</div>
+                        <div class="num" data-count="42">0<span>%</span></div>
+                        <h4>Faster Operations</h4>
+                        <p>Average cycle-time reduction after digital shopfloor rollout.</p>
+                    </div>
+                    <div class="impact-card reveal">
+                        <div class="ic">💰</div>
+                        <div class="num" data-count="31">0<span>%</span></div>
+                        <h4>Reduced Costs</h4>
+                        <p>Lower operating cost from AI-driven energy &amp; maintenance planning.</p>
+                    </div>
+                    <div class="impact-card reveal">
+                        <div class="ic">📈</div>
+                        <div class="num" data-count="27">0<span>%</span></div>
+                        <h4>Increased Productivity</h4>
+                        <p>Output per shift gained through predictive scheduling.</p>
+                    </div>
+                    <div class="impact-card reveal">
+                        <div class="ic">🛡</div>
+                        <div class="num" data-count="99.6">0<span>%</span></div>
+                        <h4>System Reliability</h4>
+                        <p>Platform uptime across all managed ITHENA Cloud deployments.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== WHY ITHENA ===================== -->
+        <section id="why" class="bg-white">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div class="eyebrow">Why ITHENA</div>
+                    <h2>What makes ITHENA different</h2>
+                    <p>We're not a systems integrator that added "AI" to a slide deck - we build AI-first, manufacturing-native software.</p>
+                </div>
+                <div class="why-grid">
+                    <div class="why-card reveal">
+                        <div class="ic">🧠</div>
+                        <h4>AI-First Approach</h4>
+                        <p>Every module is designed around agentic AI from day one, not bolted on afterward.</p>
+                    </div>
+                    <div class="why-card reveal">
+                        <div class="ic">🏭</div>
+                        <h4>Manufacturing Expertise</h4>
+                        <p>100+ specialists who've worked the shopfloor, not just the software stack.</p>
+                    </div>
+                    <div class="why-card reveal">
+                        <div class="ic">🏢</div>
+                        <h4>Enterprise-Ready Architecture</h4>
+                        <p>Built to scale across sites, subsidiaries, and legacy systems without rip-and-replace.</p>
+                    </div>
+                    <div class="why-card reveal">
+                        <div class="ic">🔒</div>
+                        <h4>Security by Design</h4>
+                        <p>SOC 2-aligned controls, encrypted by default, with granular role-based access.</p>
+                    </div>
+                    <div class="why-card reveal">
+                        <div class="ic">🚀</div>
+                        <h4>Rapid Deployment</h4>
+                        <p>Pre-built accelerators cut typical go-live time by more than half.</p>
+                    </div>
+                    <div class="why-card reveal">
+                        <div class="ic">🌍</div>
+                        <h4>Global Support</h4>
+                        <p>Follow-the-sun support across time zones, with dedicated customer success teams.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== PROCESS ===================== -->
+        <section id="process" class="bg-soft">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div class="eyebrow">Implementation</div>
+                    <h2>How a transformation with ITHENA works</h2>
+                    <p>A proven six-stage journey, run by people who've done this before - not a generic PMO template.</p>
+                </div>
+                <div class="zigzag">
+                    <div class="zz-item zz-odd reveal-left">
+                        <div class="zz-side-l">
+                            <div class="zz-card">
+                                <div class="zz-ic">🔍</div>
+                                <h4>Discovery</h4>
+                                <p>We map your current systems, data flows, and biggest operational pain points on-site.</p>
+                            </div>
+                        </div>
+                        <div class="zz-num">1</div>
+                        <div class="zz-side-r"></div>
+                    </div>
+                    <div class="zz-item zz-even reveal-right">
+                        <div class="zz-side-l"></div>
+                        <div class="zz-num">2</div>
+                        <div class="zz-side-r">
+                            <div class="zz-card">
+                                <div class="zz-ic">📊</div>
+                                <h4>Analysis</h4>
+                                <p>Our team benchmarks your KPIs against industry peers and identifies the highest-impact opportunities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zz-item zz-odd reveal-left">
+                        <div class="zz-side-l">
+                            <div class="zz-card">
+                                <div class="zz-ic">🗺</div>
+                                <h4>Planning</h4>
+                                <p>A phased roadmap with clear milestones, ROI targets, and change-management plan.</p>
+                            </div>
+                        </div>
+                        <div class="zz-num">3</div>
+                        <div class="zz-side-r"></div>
+                    </div>
+                    <div class="zz-item zz-even reveal-right">
+                        <div class="zz-side-l"></div>
+                        <div class="zz-num">4</div>
+                        <div class="zz-side-r">
+                            <div class="zz-card">
+                                <div class="zz-ic">⚙</div>
+                                <h4>Implementation</h4>
+                                <p>Modular rollout using pre-built accelerators, with weekly stakeholder checkpoints.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zz-item zz-odd reveal-left">
+                        <div class="zz-side-l">
+                            <div class="zz-card">
+                                <div class="zz-ic">🎯</div>
+                                <h4>Optimization</h4>
+                                <p>We tune models, dashboards, and workflows against real production data.</p>
+                            </div>
+                        </div>
+                        <div class="zz-num">5</div>
+                        <div class="zz-side-r"></div>
+                    </div>
+                    <div class="zz-item zz-even reveal-right">
+                        <div class="zz-side-l"></div>
+                        <div class="zz-num">6</div>
+                        <div class="zz-side-r">
+                            <div class="zz-card">
+                                <div class="zz-ic">🤝</div>
+                                <h4>Continuous Support</h4>
+                                <p>Follow-the-sun support and a dedicated customer success partner, for the life of the account.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== COUNTER STATS ===================== -->
+        <section id="stats" class="bg-white">
+            <div class="wrap">
+                <div class="section-head center reveal">
+                    <div class="eyebrow">By the Numbers</div>
+                    <h2>A track record built plant by plant</h2>
+                </div>
+                <div class="counter-band reveal">
+                    <div>
+                        <div class="cnum" data-count="50">0<span>+</span></div>
+                        <div class="clabel">Enterprise Clients</div>
+                    </div>
+                    <div>
+                        <div class="cnum" data-count="70">0<span>+</span></div>
+                        <div class="clabel">Projects Delivered</div>
+                    </div>
+                    <div>
+                        <div class="cnum" data-count="8">0<span>+</span></div>
+                        <div class="clabel">Industrial Solutions</div>
+                    </div>
+                    <div>
+                        <div class="cnum" data-count="100">0<span>+</span></div>
+                        <div class="clabel">Team Members</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TESTIMONIALS ===================== -->
+        <section id="testimonials" class="bg-soft">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div class="eyebrow">Testimonials</div>
+                    <h2>What operations leaders say</h2>
+                </div>
+                <div class="tm-grid">
+                    <div class="tm-card reveal">
+                        <div class="tm-stars">★★★★★</div>
+                        <p>"ITHENA gave our plant managers a single source of truth. Decisions that took days now take minutes."</p>
+                        <div class="tm-person">
+                            <div class="tm-ava">RK</div>
+                            <div><strong>Rina Kapoor</strong><span>VP Operations, Meridian Auto</span></div>
+                        </div>
+                    </div>
+                    <div class="tm-card reveal">
+                        <div class="tm-stars">★★★★★</div>
+                        <p>"The AI agents caught a quality drift we would not have seen for another two shifts. That alone paid for the platform."</p>
+                        <div class="tm-person">
+                            <div class="tm-ava">DM</div>
+                            <div><strong>Daniel Moss</strong><span>Plant Director, Norhaven Foods</span></div>
+                        </div>
+                    </div>
+                    <div class="tm-card reveal">
+                        <div class="tm-stars">★★★★★</div>
+                        <p>"Implementation was faster than any ERP rollout we've done before - and support has been genuinely responsive."</p>
+                        <div class="tm-person">
+                            <div class="tm-ava">SA</div>
+                            <div><strong>Sofia Alvarez</strong><span>CIO, Arden Energy</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== CTA BANNER ===================== -->
+        <section id="contact" class="bg-white">
+            <div class="wrap">
+                <div class="cta-banner reveal">
+                    <h2>Ready to transform your enterprise?</h2>
+                    <p>Talk to an ITHENA specialist about your plants, your systems, and where AI can move the needle fastest.</p>
+                    <div class="cta-row">
+                        <a href="#" class="btn btn-white">Schedule a Demo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== FOOTER ===================== -->
+        <footer id="company" class="bg-black">
+            <div class="wrap">
+                <div class="foot-top">
+                    <div class="foot-brand">
+                        <a class="logo" href="https://dev-website.ithena.app/">
+                        <img fetchpriority="high" width="136" height="45" src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" 
+                            class="attachment-full size-full wp-image-71412" alt="" 
+                            srcset="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp 568w, https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new-300x99.webp 300w" sizes="(max-width: 568px) 100vw, 568px">								
+                        </a>
+                        <p>AI-driven digital transformation for manufacturing and enterprise - ERP, AI, IoT, Cloud, and Analytics on one platform.</p>
+                        <div class="foot-social">
+                            <a class="icon-btn" href="#" aria-label="LinkedIn">in</a>
+                            <a class="icon-btn" href="#" aria-label="YouTube">▶</a>
+                            <a class="icon-btn" href="#" aria-label="Facebook">f</a>
+                            <a class="icon-btn" href="#" aria-label="X">𝕏</a>
+                        </div>
+                        <div class="foot-news">
+                            <input type="email" placeholder="Work email">
+                            <button class="btn btn-primary btn-sm">Subscribe</button>
+                        </div>
+                    </div>
+                    <div class="foot-col">
+                        <h5>Solutions</h5>
+                        <a href="#">Digital Shopfloor</a>
+                        <a href="#">Analytics AI Platform</a>
+                        <a href="#">Manufacturing Excellence</a>
+                        <a href="#">Smart Service</a>
+                        <a href="#">Energy Management</a>
+                        <a href="#">The Agentic OEM</a>
+                    </div>
+                    <div class="foot-col">
+                        <h5>Services</h5>
+                        <a href="#">AI Strategy</a><a href="#">Data Management</a><a href="#">Cloud Modernization</a><a href="#">Business Transformation</a><a href="#">Manufacturing Integration</a>
+                    </div>
+                    <div class="foot-col">
+                        <h5>Case Studies</h5>
+                        <a href="#">Technology</a><a href="#">Industries / Vertical</a><a href="#">Solutions</a><a href="#">Use Cases</a>
+                    </div>
+                    <div class="foot-col">
+                        <h5>About Us</h5>
+                        <a href="#">Who We Are</a><a href="#">Blogs</a><a href="#">Announcements</a><a href="#">Partnerships</a><a href="#">Careers</a>
+                    </div>
+                </div>
+                <div class="foot-bottom">
+                    <span>Copyright © 2026 ITHENA. All Rights Reserved.</span>
+                    <div class="legal"><a href="https://dev-website.ithena.app/privacy-policy/">Privacy Policy</a>
+                        <a href="https://ithena.ai/terms-of-service/">Terms of Service</a>
+                        <a href="https://ithena.ai/cookie-settings/">Cookie Settings</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        <script>
+
+            // header scroll state
+            const header = document.getElementById('site-header');
+            const heroEl = document.getElementById('top');
+            function syncHeaderHeight(){
+              document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+            }
+            function updateHeaderState(){
+              const threshold = heroEl ? heroEl.offsetHeight / 4 : 40;
+              header.classList.toggle('scrolled', window.scrollY > threshold);
+            }
+            window.addEventListener('scroll', () => {
+              updateHeaderState();
+              syncHeaderHeight();
+            }, {passive:true});
+            window.addEventListener('resize', () => { updateHeaderState(); syncHeaderHeight(); });
+            updateHeaderState();
+            syncHeaderHeight();
+            
+            // mega menu open/close (desktop)
+            let megaCloseTimer = null;
+            document.querySelectorAll('.nav-item').forEach(item=>{
+              const mega = item.querySelector('.mega');
+              function openItem(){
+                clearTimeout(megaCloseTimer);
+                document.querySelectorAll('.nav-item.open').forEach(i=>{ if(i!==item) i.classList.remove('open'); });
+                syncHeaderHeight();
+                item.classList.add('open');
+              }
+              function scheduleClose(){
+                clearTimeout(megaCloseTimer);
+                megaCloseTimer = setTimeout(()=> item.classList.remove('open'), 260);
+              }
+              item.addEventListener('mouseenter', openItem);
+              item.addEventListener('mouseleave', scheduleClose);
+              if(mega){
+                mega.addEventListener('mouseenter', ()=> clearTimeout(megaCloseTimer));
+                mega.addEventListener('mouseleave', scheduleClose);
+              }
+            });
+            
+            // light / dark theme toggle (light is default)
+            // const themeToggle = document.getElementById('theme-toggle');
+            // themeToggle.addEventListener('click', ()=>{
+            //   const isDark = document.documentElement.classList.toggle('dark');
+            //   themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+            // });
+            
+            // mobile menu
+            const mobileOpen = document.getElementById('mobile-open');
+            const mobileClose = document.getElementById('mobile-close');
+            const mobilePanel = document.getElementById('mobile-panel');
+            const scrim = document.getElementById('scrim');
+            function openMobile(){mobilePanel.classList.add('open'); scrim.classList.add('open');}
+            function closeMobile(){mobilePanel.classList.remove('open'); scrim.classList.remove('open');}
+            mobileOpen && mobileOpen.addEventListener('click', openMobile);
+            mobileClose && mobileClose.addEventListener('click', closeMobile);
+            scrim.addEventListener('click', closeMobile);
+            mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMobile));
+            mobilePanel.querySelectorAll('.m-toggle').forEach(btn=>{
+              btn.addEventListener('click', ()=>{
+                btn.closest('.m-item').classList.toggle('open');
+              });
+            });
+
+        </script>
+
+        <script>
+            // trusted-by marquee: duplicate logos for a seamless infinite loop
+            const trustedTrack = document.getElementById('trusted-track');
+            if (trustedTrack) {
+                const originalLogos = Array.from(trustedTrack.children);
+                originalLogos.forEach(logo => {
+                    const clone = logo.cloneNode(true);
+                    clone.setAttribute('aria-hidden', 'true');
+                    trustedTrack.appendChild(clone);
+                });
+            }
+
+            // scroll reveal
+            const revealEls = document.querySelectorAll('.reveal, .zz-item, .line-anim');
+            const io = new IntersectionObserver((entries)=>{
+              entries.forEach(e=>{
+                if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+              });
+            },{threshold:0.15});
+            revealEls.forEach(el=>io.observe(el));
+            
+            // count-up animation
+            function animateCount(el){
+              const target = parseFloat(el.dataset.count);
+              const isDecimal = target % 1 !== 0;
+              const suffixEl = el.querySelector('span');
+              const suffix = suffixEl ? suffixEl.outerHTML : '';
+              let start = 0;
+              const dur = 1400;
+              const t0 = performance.now();
+              function tick(t){
+                const p = Math.min((t - t0)/dur, 1);
+                const eased = 1 - Math.pow(1-p, 3);
+                const val = start + (target-start)*eased;
+                el.innerHTML = (isDecimal ? val.toFixed(1) : Math.round(val)) + suffix;
+                if(p < 1) requestAnimationFrame(tick);
+              }
+              requestAnimationFrame(tick);
+            }
+            const counters = document.querySelectorAll('[data-count]');
+            const cio = new IntersectionObserver((entries)=>{
+              entries.forEach(e=>{
+                if(e.isIntersecting){ animateCount(e.target); cio.unobserve(e.target); }
+              });
+            },{threshold:0.4});
+            counters.forEach(c=>cio.observe(c));
+            
+        </script>
+
+    </body>
+</html>

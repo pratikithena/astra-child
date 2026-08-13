@@ -1,18 +1,30 @@
-# Composer-managed dependencies (regenerate with `composer install`)
-vendor/
+```
+# Build artifacts
+dist/
+build/
+*.pyc
+__pycache__/
 
-# Backup / scratch copies
-bkps/
-*bkp*
-*copy*
-*.zip
+# Dependencies
+node_modules/
+.venv/
+venv/
+.env
+.env.local
+*.env.*
 
-# Contains hardcoded secrets pending rotation - see README note before re-adding
-functions.php
-page-stripe-thank-you.php
-page-stripe-thank-you-trialnerror.php
-page-stripe-sync-products.php
+# Editors
+.vscode/
+.idea/
 
-# OS files
+# System files
+.DS_Store
 Thumbs.db
-desktop.ini
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.swp
+```
