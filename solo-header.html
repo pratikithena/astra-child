@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Header Component</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ======================================================================
+           SOLO HEADER - Universal Reusable Component
+           Works on any page, any system, fully responsive
+           ====================================================================== */
+        
+        /* Reset for header component isolation */
+        #site-header *, 
+        #site-header *::before, 
+        #site-header *::after,
+        .mega *, .mega *::before, .mega *::after,
+        .mobile-panel *, .mobile-panel *::before, .mobile-panel *::after,
+        .scrim {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Color scheme support */
+        html { color-scheme: light; }
+        html.dark { color-scheme: dark; }
+
+        /* Dark mode adjustments */
+        html.dark .logo .mark {
+            box-shadow: 0 6px 18px -4px rgba(0, 168, 232, .6);
+        }
+
+        html.dark .mega {
+            box-shadow: 0 40px 70px -20px rgba(0, 0, 0, .6), 0 16px 32px -12px rgba(0, 0, 0, .35);
+        }
+
+        /* Base header styles */
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            transition: .3s cubic-bezier(.16, .8, .24, 1);
+        }
+
+        .nav-link svg {
+            transition: transform .3s cubic-bezier(.16, .8, .24, 1);
+        }
+
+        #site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            padding: 20px 0;
+            transition: padding .4s cubic-bezier(.16, .8, .24, 1), background .4s cubic-bezier(.16, .8, .24, 1), box-shadow .4s cubic-bezier(.16, .8, .24, 1), border-color .4s cubic-bezier(.16, .8, .24, 1);
+            background: transparent;
+            border-bottom: 1px solid transparent;
+        }
+
+        #site-header.scrolled {
+            padding: 12px 0;
+            background: #F6F8FA;
+            box-shadow: 0 12px 30px -18px rgba(20, 40, 70, .16);
+            border-bottom: 1px solid rgba(10, 25, 45, 0.10);
+        }
+
+        #site-header:not(.scrolled) .logo,
+        #site-header:not(.scrolled) .nav-link,
+        #site-header:not(.scrolled) .nav-item.open .nav-link svg {
+            color: #fff;
+        }
+
+        #site-header:not(.scrolled) .nav-link {
+            color: rgba(255, 255, 255, .88);
+            transition: color .25s, background .25s;
+        }
+
+        #site-header:not(.scrolled) .icon-btn,
+        #site-header:not(.scrolled) .mobile-toggle {
+            background: rgba(255, 255, 255, .1);
+            border-color: rgba(255, 255, 255, .3);
+            color: #fff;
+        }
+
+        #site-header:not(.scrolled) .mobile-toggle span {
+            background: #fff;
+        }
+
+        #site-header:not(.scrolled) .nav-link:hover,
+        #site-header:not(.scrolled) .nav-item.open .nav-link {
+            color: #fff;
+            background: rgba(255, 255, 255, .14);
+        }
+
+        /* Navigation inner layout */
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Logo styles */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: "Sora", sans-serif;
+            font-weight: 800;
+            font-size: 21px;
+            letter-spacing: -0.01em;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo .mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0083C8, #4FE0D0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            box-shadow: 0 6px 18px -4px rgba(0, 168, 232, .6);
+        }
+
+        /* Nav menu */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: #4A5A6E;
+            transition: .25s;
+        }
+
+        .nav-link:hover,
+        .nav-item.open .nav-link {
+            color: #0A1626;
+            background: rgba(10, 25, 45, .06);
+        }
+
+        .nav-link svg {
+            width: 12px;
+            height: 12px;
+            transition: transform .3s;
+        }
+
+        .nav-item.open .nav-link svg {
+            transform: rotate(180deg);
+        }
+
+        /* Nav actions */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(10, 25, 45, .05);
+            border: 1px solid rgba(10, 25, 45, 0.10);
+            color: #4A5A6E;
+        }
+
+        .icon-btn:hover {
+            color: #0A1626;
+            border-color: rgba(10, 25, 45, .2);
+        }
+
+        /* Mega menu */
+        .mega {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 78px;
+            background: #F6F8FA;
+            border-bottom: 1px solid rgba(10, 25, 45, 0.10);
+            border-top: 1px solid rgba(10, 25, 45, .09);
+            box-shadow: 0 40px 70px -20px rgba(20, 40, 70, .16), 0 16px 32px -12px rgba(20, 40, 70, .10), inset 0 1px 0 rgba(10, 25, 45, .09);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-10px);
+            transition: opacity .32s cubic-bezier(.16, .8, .24, 1), transform .32s cubic-bezier(.16, .8, .24, 1), visibility .32s;
+            z-index: 150;
+        }
+
+        .mega::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #0083C8, #4FE0D0, #0083C8, transparent);
+            opacity: .7;
+        }
+
+        .nav-item.open .mega {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .mega-wide {
+            padding: 0;
+        }
+
+        .mega-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 38px 32px 42px;
+        }
+
+        .mega-sol-cols {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .mega-sol-col {
+            padding: 0 28px;
+            border-right: 1px solid rgba(10, 25, 45, 0.10);
+        }
+
+        .mega-sol-col:first-child {
+            padding-left: 0;
+        }
+
+        .mega-sol-col:last-child {
+            padding-right: 0;
+            border-right: none;
+        }
+
+        .mega-sol-col-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #0083C8;
+        }
+
+        .mega-sol-col-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #0083C8, #4FE0D0);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mega-sol-col-head h4 {
+            font-size: 15px;
+            color: #0A1626;
+            margin-bottom: 2px;
+        }
+
+        .mega-sol-col-head .mega-sol-col-sub {
+            display: block;
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #76889C;
+        }
+
+        .mega-sol-group {
+            border-bottom: 1px solid rgba(10, 25, 45, 0.08);
+        }
+
+        .mega-sol-group:last-child {
+            border-bottom: none;
+        }
+
+        .mega-sol-group summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 12px 2px;
+            font-family: "Manrope", sans-serif;
+            font-size: 12.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: #4A5A6E;
+            transition: color .2s;
+        }
+
+        .mega-sol-group summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .mega-sol-group summary::marker {
+            content: "";
+        }
+
+        .mega-sol-group summary:hover {
+            color: #0083C8;
+        }
+
+        .mega-sol-group summary .chev {
+            flex-shrink: 0;
+            color: #76889C;
+            transition: transform .25s cubic-bezier(.16, .8, .24, 1);
+        }
+
+        .mega-sol-group[open] summary {
+            color: #0083C8;
+        }
+
+        .mega-sol-group[open] summary .chev {
+            transform: rotate(180deg);
+            color: #0083C8;
+        }
+
+        .mega-sol-group-items {
+            padding: 2px 2px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .mega-sol-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 7px 8px;
+            border-radius: 8px;
+            transition: background .2s;
+        }
+
+        .mega-sol-item:hover {
+            background: rgba(10, 25, 45, .05);
+        }
+
+        .mega-sol-item-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 130, 200, .12);
+            color: #0083C8;
+            transition: transform .25s cubic-bezier(.16, .8, .24, 1), background .2s, color .2s;
+        }
+
+        .mega-sol-item:hover .mega-sol-item-icon {
+            transform: scale(1.08) rotate(-4deg);
+            background: #0083C8;
+            color: #fff;
+        }
+
+        .mega-sol-item-text {
+            min-width: 0;
+        }
+
+        .mega-sol-item .mega-sol-item-name {
+            display: block;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #0A1626;
+            margin-bottom: 2px;
+            transition: color .2s;
+        }
+
+        .mega-sol-item:hover .mega-sol-item-name {
+            color: #0083C8;
+        }
+
+        .mega-sol-item .mega-sol-item-sub {
+            display: block;
+            font-size: 11.5px;
+            color: #76889C;
+            line-height: 1.4;
+        }
+
+        .mega-feat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px 30px;
+            padding-bottom: 22px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(10, 25, 45, 0.10);
+        }
+
+        .mega-feat {
+            display: flex;
+            gap: 13px;
+            align-items: flex-start;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity .4s cubic-bezier(.16, .8, .24, 1), transform .4s cubic-bezier(.16, .8, .24, 1);
+        }
+
+        .nav-item.open .mega-feat {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mega-feat-grid .mega-feat:nth-child(1) { transition-delay: .06s; }
+        .mega-feat-grid .mega-feat:nth-child(2) { transition-delay: .11s; }
+        .mega-feat-grid .mega-feat:nth-child(3) { transition-delay: .16s; }
+        .mega-feat-grid .mega-feat:nth-child(4) { transition-delay: .21s; }
+        .mega-feat-grid .mega-feat:nth-child(5) { transition-delay: .26s; }
+        .mega-feat-grid .mega-feat:nth-child(6) { transition-delay: .31s; }
+        .mega-feat-grid .mega-feat:nth-child(7) { transition-delay: .36s; }
+        .mega-feat-grid .mega-feat:nth-child(8) { transition-delay: .41s; }
+        .mega-feat-grid .mega-feat:nth-child(9) { transition-delay: .46s; }
+
+        .mega-feat-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            flex-shrink: 0;
+            transition: transform .3s cubic-bezier(.16, .8, .24, 1);
+        }
+
+        .mega-feat:hover .mega-feat-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .mega-feat-icon.c1 { background: #DCEBFC; color: #1C64D1; }
+        .mega-feat-icon.c2 { background: #EFE6FB; color: #7C3AED; }
+        .mega-feat-icon.c3 { background: #E1F5EA; color: #0E9F6E; }
+        .mega-feat-icon.c4 { background: #FDE9D8; color: #C9670E; }
+        .mega-feat-icon.c5 { background: #E3ECFB; color: #2563EB; }
+        .mega-feat-icon.c6 { background: #FCE4EE; color: #DB2777; }
+
+        .mega-feat-body h4 {
+            font-size: 14.5px;
+            color: #0A1626;
+            margin-bottom: 4px;
+        }
+
+        .mega-feat-body p {
+            font-size: 12px;
+            color: #76889C;
+            line-height: 1.5;
+            margin-bottom: 7px;
+        }
+
+        .mega-feat-explore {
+            font-size: 12px;
+            font-weight: 700;
+            color: #0083C8;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .mega-feat-explore svg {
+            transition: transform .25s cubic-bezier(.16, .8, .24, 1);
+        }
+
+        .mega-feat:hover .mega-feat-explore svg {
+            transform: translateX(3px);
+        }
+
+        .mega-other {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .mega-other-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: #76889C;
+            margin-bottom: 12px;
+        }
+
+        .mega-pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .mega-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 16px;
+            border-radius: 100px;
+            background: rgba(10, 25, 45, .03);
+            border: 1px solid rgba(10, 25, 45, 0.10);
+            font-size: 13px;
+            font-weight: 600;
+            color: #0A1626;
+            transition: background .25s, border-color .25s, transform .25s;
+        }
+
+        .mega-pill:hover {
+            background: rgba(10, 25, 45, .09);
+            border-color: #0083C8;
+            transform: translateY(-2px);
+        }
+
+        .mega-pill .pill-ic {
+            font-size: 14px;
+        }
+
+        .mega-feat-grid.cols-5 {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .mega-feat-grid.no-border {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* Mobile toggle */
+        .mobile-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(10, 25, 45, .06);
+            border: 1px solid rgba(10, 25, 45, 0.10);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: #0A1626;
+            border-radius: 2px;
+            transition: background .2s;
+        }
+
+        .theme-toggle svg {
+            transition: opacity .2s, transform .3s cubic-bezier(.16, .8, .24, 1);
+        }
+
+        html.dark .theme-toggle .ic-moon {
+            display: inline-block !important;
+        }
+
+        html.dark .theme-toggle .ic-sun {
+            display: none !important;
+        }
+
+        /* Mobile panel */
+        .mobile-panel {
+            position: fixed;
+            inset: 0 0 0 auto;
+            width: min(360px, 86vw);
+            top: 0;
+            height: 100vh;
+            background: #E4EAF1;
+            transform: translateX(100%);
+            transition: transform .4s cubic-bezier(.16, .8, .24, 1);
+            z-index: 300;
+            padding: 26px;
+            overflow-y: auto;
+            border-left: 1px solid rgba(10, 25, 45, 0.10);
+        }
+
+        .mobile-panel.open {
+            transform: translateX(0);
+        }
+
+        .mobile-panel .m-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .mobile-panel a {
+            display: block;
+            padding: 14px 4px;
+            font-size: 16.5px;
+            font-weight: 600;
+            color: #0A1626;
+            border-bottom: 1px solid rgba(10, 25, 45, 0.10);
+        }
+
+        .mobile-panel .btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: 22px;
+        }
+
+        .mobile-panel .m-item {
+            border-bottom: 1px solid rgba(10, 25, 45, 0.10);
+        }
+
+        .mobile-panel .m-toggle {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background: none;
+            border: none;
+            padding: 14px 4px;
+            font-family: inherit;
+            font-size: 16.5px;
+            font-weight: 600;
+            color: #0A1626;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .mobile-panel .m-toggle svg {
+            flex-shrink: 0;
+            color: #76889C;
+            transition: transform .3s cubic-bezier(.16, .8, .24, 1);
+        }
+
+        .mobile-panel .m-item.open .m-toggle svg {
+            transform: rotate(180deg);
+            color: #0083C8;
+        }
+
+        .mobile-panel .m-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s cubic-bezier(.16, .8, .24, 1);
+        }
+
+        .mobile-panel .m-item.open .m-submenu {
+            max-height: 900px;
+            padding-bottom: 8px;
+        }
+
+        .mobile-panel .m-sub-label {
+            display: block;
+            padding: 12px 4px 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .07em;
+            color: #76889C;
+        }
+
+        .mobile-panel .m-sub-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 4px 11px 6px;
+            font-size: 14.5px;
+            font-weight: 500;
+            color: #4A5A6E;
+            border-bottom: 1px solid rgba(10, 25, 45, 0.10);
+        }
+
+        .mobile-panel .m-sub-link:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-panel .m-sub-link .ic {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            background: rgba(0, 130, 200, .15);
+            color: #0083C8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 11.5px;
+        }
+
+        .mobile-panel .m-sub-link:hover {
+            color: #0083C8;
+        }
+
+        .mobile-panel .m-item-nested {
+            border-bottom: none;
+            padding-left: 4px;
+            border-left: 2px solid rgba(10, 25, 45, 0.10);
+        }
+
+        .mobile-panel .m-item-nested .m-toggle-sub {
+            padding: 12px 4px;
+            font-size: 14.5px;
+        }
+
+        .mobile-panel .m-toggle-sub > span:first-child {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .mobile-panel .m-toggle-tag {
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: none;
+            letter-spacing: 0;
+            color: #76889C;
+        }
+
+        .mobile-panel .m-item-nested .m-submenu {
+            padding-left: 10px;
+        }
+
+        #m-solutions .m-sub-link {
+            align-items: flex-start;
+        }
+
+        .mobile-panel .m-sub-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .mobile-panel .m-sub-text small {
+            font-size: 11.5px;
+            font-weight: 400;
+            color: #76889C;
+            line-height: 1.4;
+        }
+
+        /* Scrim overlay */
+        .scrim {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .5);
+            z-index: 250;
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s;
+        }
+
+        .scrim.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive media queries */
+        @media (max-width:1180px) {
+            .mega-sol-cols {
+                grid-template-columns: 1fr;
+            }
+
+            .mega-sol-col {
+                padding: 18px 0;
+                border-right: none;
+                border-bottom: 1px solid rgba(10, 25, 45, 0.10);
+            }
+
+            .mega-sol-col:first-child {
+                padding-top: 0;
+            }
+
+            .mega-sol-col:last-child {
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+
+            .mega-feat-grid.cols-5 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width:980px) {
+            .mega,
+            .nav-menu,
+            .nav-actions .btn-ghost,
+            .nav-actions .icon-btn:not(.theme-toggle),
+            .nav-actions .btn-primary {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Placeholder body content for demo purposes -->
+    <div style="height: 200vh; background: linear-gradient(180deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-family: sans-serif;">
+        <div style="text-align: center;">
+            <h1 style="font-size: 48px; margin-bottom: 20px;">Page Content</h1>
+            <p style="font-size: 18px; opacity: 0.9;">Scroll down to see header state change</p>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SOLO HEADER COMPONENT START
+         Copy everything from here to use in any project
+         ================================================================ -->
+    
+    <header id="site-header">
+        <div class="wrap nav-inner">
+            <a class="logo" href="/">
+                <!-- Replace with your logo -->
+                <img fetchpriority="high" width="136" height="45" src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" 
+                    class="attachment-full size-full wp-image-71412" alt="Company Logo" 
+                    srcset="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp 568w, https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new-300x99.webp 300w" sizes="(max-width: 568px) 100vw, 568px">
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                
+                <!-- Solutions Menu Item -->
+                <div class="nav-item solutions-menu">
+                    <a class="nav-link" href="#solutions">
+                        Solutions 
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                        </svg>
+                    </a>
+
+                    <div class="mega mega-wide">
+                        <div class="mega-inner">
+                            <div class="mega-sol-cols">
+
+                                <!-- Column 1: OEM | Distributors -->
+                                <div class="mega-sol-col">
+                                    <div class="mega-sol-col-head">
+                                        <div class="mega-sol-col-icon">
+                                            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="3" y="4" width="18" height="12" rx="1.5"/>
+                                                <path d="M8 20h8M12 16v4"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4>OEM | Distributors</h4>
+                                            <span class="mega-sol-col-sub">Production | After Market</span>
+                                        </div>
+                                    </div>
+
+                                    <details class="mega-sol-group">
+                                        <summary>
+                                            Front Office Ops
+                                            <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none">
+                                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                            </svg>
+                                        </summary>
+                                        <div class="mega-sol-group-items">
+                                            <a href="#" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <rect x="5" y="3" width="14" height="18" rx="1"/>
+                                                        <path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-4h4v4"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">iCRM</span>
+                                                    <span class="mega-sol-item-sub">Customer relationship management.</span>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M12 3h6a2 2 0 012 2v6L11 20l-8-8L12 3z"/>
+                                                        <circle cx="15.5" cy="8.5" r="1.3"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">iCPQ</span>
+                                                    <span class="mega-sol-item-sub">Configure, price, and quote workflows.</span>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <rect x="4" y="4" width="16" height="5" rx="1.5"/>
+                                                        <rect x="4" y="10.5" width="16" height="5" rx="1.5"/>
+                                                        <rect x="4" y="17" width="16" height="3" rx="1.5"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">iERP</span>
+                                                    <span class="mega-sol-item-sub">ERP integrations and operational workflows.</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </details>
+
+                                    <details class="mega-sol-group">
+                                        <summary>
+                                            After Market Services
+                                            <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none">
+                                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                            </svg>
+                                        </summary>
+                                        <div class="mega-sol-group-items">
+                                            <a href="#" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M4 20V10M12 20V4M20 20v-7"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Performance Monitoring</span>
+                                                    <span class="mega-sol-item-sub">Real-time connectivity into asset performance.</span>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <rect x="3" y="4" width="18" height="12" rx="1.5"/>
+                                                        <path d="M8 20h8M12 16v4"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Service Portal</span>
+                                                    <span class="mega-sol-item-sub">Support service operations with real-time visibility.</span>
+                                                </span>
+                                            </a>
+                                            <a href="/b2b-ecommerce-solution/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <circle cx="9" cy="20" r="1.3"/>
+                                                        <circle cx="17" cy="20" r="1.3"/>
+                                                        <path d="M2 3h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L21 8H6"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">B2B eCommerce</span>
+                                                    <span class="mega-sol-item-sub">Commerce experience for parts and services.</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </details>
+                                </div>
+
+                                <!-- Column 2: Manufacturer -->
+                                <div class="mega-sol-col">
+                                    <div class="mega-sol-col-head">
+                                        <div class="mega-sol-col-icon">
+                                            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M3 21V11l6 4v-4l6 4V7l6 4v10H3z"/>
+                                                <path d="M7 21v-4M13 21v-4"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4>Manufacturer</h4>
+                                            <span class="mega-sol-col-sub">Plan → Produce → Improve</span>
+                                        </div>
+                                    </div>
+
+                                    <details class="mega-sol-group">
+                                        <summary>
+                                            Planning
+                                            <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none">
+                                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                            </svg>
+                                        </summary>
+                                        <div class="mega-sol-group-items">
+                                            <a href="#" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <circle cx="12" cy="12" r="9"/>
+                                                        <circle cx="12" cy="12" r="3"/>
+                                                        <path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">iPLAN</span>
+                                                    <span class="mega-sol-item-sub">Planning workflows and decision support.</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </details>
+
+                                    <details class="mega-sol-group">
+                                        <summary>
+                                            Production
+                                            <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none">
+                                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                            </svg>
+                                        </summary>
+                                        <div class="mega-sol-group-items">
+                                            <a href="/digital-shopfloor-igemba/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M3 21V11l6 4v-4l6 4V7l6 4v10H3z"/>
+                                                        <path d="M7 21v-4M13 21v-4"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">iGEMBA</span>
+                                                    <span class="mega-sol-item-sub">Digitize Gemba walks for shop floor productivity.</span>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M4 20V10M12 20V4M20 20v-7"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Performance Monitoring</span>
+                                                    <span class="mega-sol-item-sub">Real-time performance visibility.</span>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <rect x="3" y="3" width="8" height="8" rx="1"/>
+                                                        <rect x="13" y="3" width="8" height="8" rx="1"/>
+                                                        <rect x="3" y="13" width="8" height="8" rx="1"/>
+                                                        <rect x="13" y="13" width="8" height="8" rx="1"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">MES</span>
+                                                    <span class="mega-sol-item-sub">Smarter shop-floor view and operations.</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </details>
+
+                                    <details class="mega-sol-group">
+                                        <summary>
+                                            Quality
+                                            <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none">
+                                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                            </svg>
+                                        </summary>
+                                        <div class="mega-sol-group-items">
+                                            <a href="#" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/>
+                                                        <path d="M9 12l2 2 4-4"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">QMS</span>
+                                                    <span class="mega-sol-item-sub">Quality management workflows.</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </details>
+                                </div>
+
+                                <!-- Column 3: Features -->
+                                <div class="mega-sol-col">
+                                    <div class="mega-feat-grid cols-5 no-border">
+                                        <div class="mega-feat">
+                                            <div class="mega-feat-icon c1">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                                </svg>
+                                            </div>
+                                            <div class="mega-feat-body">
+                                                <h4>Fast Implementation</h4>
+                                                <p>Deploy in weeks, not months with pre-built templates.</p>
+                                                <a href="#" class="mega-feat-explore">
+                                                    Learn more
+                                                    <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+                                                        <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mega-feat">
+                                            <div class="mega-feat-icon c2">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="3" y="11" width="18" height="11" rx="2"/>
+                                                    <path d="M7 11V7a5 5 0 0110 0v4"/>
+                                                </svg>
+                                            </div>
+                                            <div class="mega-feat-body">
+                                                <h4>Enterprise Security</h4>
+                                                <p>Bank-grade encryption and compliance ready.</p>
+                                                <a href="#" class="mega-feat-explore">
+                                                    Learn more
+                                                    <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+                                                        <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mega-feat">
+                                            <div class="mega-feat-icon c3">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                                                    <circle cx="9" cy="7" r="4"/>
+                                                    <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                                                </svg>
+                                            </div>
+                                            <div class="mega-feat-body">
+                                                <h4>Scalable</h4>
+                                                <p>Grows with your business needs seamlessly.</p>
+                                                <a href="#" class="mega-feat-explore">
+                                                    Learn more
+                                                    <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+                                                        <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mega-other">
+                                        <div class="mega-other-label">Industries</div>
+                                        <div class="mega-pill-row">
+                                            <a href="#" class="mega-pill">
+                                                <span class="pill-ic">🏭</span> Manufacturing
+                                            </a>
+                                            <a href="#" class="mega-pill">
+                                                <span class="pill-ic">🚗</span> Automotive
+                                            </a>
+                                            <a href="#" class="mega-pill">
+                                                <span class="pill-ic">💊</span> Pharma
+                                            </a>
+                                            <a href="#" class="mega-pill">
+                                                <span class="pill-ic">✈️</span> Aerospace
+                                            </a>
+                                            <a href="#" class="mega-pill">
+                                                <span class="pill-ic">⚡</span> Energy
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Menu Item -->
+                <div class="nav-item products-menu">
+                    <a class="nav-link" href="#products">
+                        Products
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                        </svg>
+                    </a>
+
+                    <div class="mega mega-wide">
+                        <div class="mega-inner">
+                            <div class="mega-sol-cols">
+                                
+                                <div class="mega-sol-col">
+                                    <div class="mega-sol-col-head">
+                                        <div class="mega-sol-col-icon">
+                                            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4>Platform</h4>
+                                            <span class="mega-sol-col-sub">Core Products</span>
+                                        </div>
+                                    </div>
+
+                                    <details class="mega-sol-group" open>
+                                        <summary>
+                                            Core Platform
+                                            <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none">
+                                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                            </svg>
+                                        </summary>
+                                        <div class="mega-sol-group-items">
+                                            <a href="#" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <circle cx="12" cy="12" r="10"/>
+                                                        <path d="M12 6v6l4 2"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">iTIME</span>
+                                                    <span class="mega-sol-item-sub">Time tracking and workforce management.</span>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <line x1="18" y1="20" x2="18" y2="10"/>
+                                                        <line x1="12" y1="20" x2="12" y2="4"/>
+                                                        <line x1="6" y1="20" x2="6" y2="14"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">iANALYTICS</span>
+                                                    <span class="mega-sol-item-sub">Advanced analytics and reporting dashboards.</span>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                                        <line x1="8" y1="21" x2="16" y2="21"/>
+                                                        <line x1="12" y1="17" x2="12" y2="21"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">iCONNECT</span>
+                                                    <span class="mega-sol-item-sub">IoT connectivity and device management.</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </details>
+                                </div>
+
+                                <div class="mega-sol-col">
+                                    <div class="mega-feat-grid no-border">
+                                        <div class="mega-feat">
+                                            <div class="mega-feat-icon c4">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                                                </svg>
+                                            </div>
+                                            <div class="mega-feat-body">
+                                                <h4>API First</h4>
+                                                <p>Full REST API for custom integrations.</p>
+                                                <a href="#" class="mega-feat-explore">
+                                                    View Docs
+                                                    <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+                                                        <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mega-feat">
+                                            <div class="mega-feat-icon c5">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                                                </svg>
+                                            </div>
+                                            <div class="mega-feat-body">
+                                                <h4>24/7 Support</h4>
+                                                <p>Round-the-clock expert assistance.</p>
+                                                <a href="#" class="mega-feat-explore">
+                                                    Contact Us
+                                                    <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+                                                        <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mega-sol-col">
+                                    <div class="mega-other">
+                                        <div class="mega-other-label">Resources</div>
+                                        <div class="mega-pill-row">
+                                            <a href="#" class="mega-pill">
+                                                <span class="pill-ic">📚</span> Documentation
+                                            </a>
+                                            <a href="#" class="mega-pill">
+                                                <span class="pill-ic">🎓</span> Training
+                                            </a>
+                                            <a href="#" class="mega-pill">
+                                                <span class="pill-ic">💬</span> Community
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Nav Items -->
+                <div class="nav-item">
+                    <a class="nav-link" href="#industries">Industries</a>
+                </div>
+                
+                <div class="nav-item">
+                    <a class="nav-link" href="#resources">Resources</a>
+                </div>
+                
+                <div class="nav-item">
+                    <a class="nav-link" href="#company">Company</a>
+                </div>
+
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Theme Toggle Button (optional - uncomment JS below to enable) -->
+                <!--
+                <button class="icon-btn theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <svg class="ic-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg class="ic-moon" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                    </svg>
+                </button>
+                -->
+                
+                <button class="icon-btn" aria-label="Search">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                </button>
+                
+                <a href="#contact" class="btn-primary" style="background:linear-gradient(135deg,#0083C8,#4FE0D0);color:#fff;padding:11px 22px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.25s;">
+                    Get Started
+                    <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 6h7M5 2l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                </a>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-toggle" id="mobile-open" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Panel -->
+    <div class="mobile-panel" id="mobile-panel">
+        <div class="m-top">
+            <a class="logo" href="/">
+                <img width="120" height="40" src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" alt="Logo">
+            </a>
+            <button class="icon-btn" id="mobile-close" aria-label="Close menu" style="background:rgba(10,25,45,.08);border:none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+        
+        <a href="#solutions">Solutions</a>
+        <a href="#products">Products</a>
+        <a href="#industries">Industries</a>
+        <a href="#resources">Resources</a>
+        <a href="#company">Company</a>
+        
+        <div class="m-item" id="m-solutions">
+            <button class="m-toggle">
+                <span>Solutions</span>
+                <svg width="16" height="16" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <div class="m-submenu">
+                <span class="m-sub-label">OEM | Distributors</span>
+                <a href="#" class="m-sub-link">
+                    <span class="ic">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="3" width="14" height="18" rx="1"/>
+                        </svg>
+                    </span>
+                    <span class="m-sub-text">
+                        <span>iCRM</span>
+                        <small>Customer relationship management</small>
+                    </span>
+                </a>
+                <a href="#" class="m-sub-link">
+                    <span class="ic">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3h6a2 2 0 012 2v6L11 20l-8-8L12 3z"/>
+                        </svg>
+                    </span>
+                    <span class="m-sub-text">
+                        <span>iCPQ</span>
+                        <small>Configure, price, quote</small>
+                    </span>
+                </a>
+                <a href="#" class="m-sub-link">
+                    <span class="ic">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="4" width="16" height="5" rx="1.5"/>
+                        </svg>
+                    </span>
+                    <span class="m-sub-text">
+                        <span>iERP</span>
+                        <small>ERP integrations</small>
+                    </span>
+                </a>
+                
+                <span class="m-sub-label" style="margin-top:12px;">After Market</span>
+                <a href="#" class="m-sub-link">
+                    <span class="ic">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 20V10M12 20V4M20 20v-7"/>
+                        </svg>
+                    </span>
+                    <span class="m-sub-text">
+                        <span>Performance Monitoring</span>
+                        <small>Real-time asset monitoring</small>
+                    </span>
+                </a>
+                <a href="#" class="m-sub-link">
+                    <span class="ic">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="20" r="1.3"/>
+                            <circle cx="17" cy="20" r="1.3"/>
+                            <path d="M2 3h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L21 8H6"/>
+                        </svg>
+                    </span>
+                    <span class="m-sub-text">
+                        <span>B2B eCommerce</span>
+                        <small>Parts and services commerce</small>
+                    </span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="m-item">
+            <button class="m-toggle">
+                <span>Products</span>
+                <svg width="16" height="16" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <div class="m-submenu">
+                <a href="#" class="m-sub-link">
+                    <span class="ic">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </span>
+                    <span>iTIME</span>
+                </a>
+                <a href="#" class="m-sub-link">
+                    <span class="ic">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"/>
+                            <line x1="12" y1="20" x2="12" y2="4"/>
+                        </svg>
+                    </span>
+                    <span>iANALYTICS</span>
+                </a>
+                <a href="#" class="m-sub-link">
+                    <span class="ic">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        </svg>
+                    </span>
+                    <span>iCONNECT</span>
+                </a>
+            </div>
+        </div>
+        
+        <a href="#contact" class="btn btn-primary" style="background:linear-gradient(135deg,#0083C8,#4FE0D0);color:#fff;padding:14px 22px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:22px;">
+            Get Started
+        </a>
+    </div>
+
+    <!-- Scrim Overlay -->
+    <div class="scrim" id="scrim"></div>
+
+    <!-- Header JavaScript -->
+    <script>
+        // Header scroll state management
+        const header = document.getElementById('site-header');
+        const heroEl = document.getElementById('top');
+        
+        function syncHeaderHeight(){
+            document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+        }
+        
+        function updateHeaderState(){
+            const threshold = heroEl ? heroEl.offsetHeight / 4 : 40;
+            header.classList.toggle('scrolled', window.scrollY > threshold);
+        }
+        
+        window.addEventListener('scroll', () => {
+            updateHeaderState();
+            syncHeaderHeight();
+        }, {passive:true});
+        
+        window.addEventListener('resize', () => { 
+            updateHeaderState(); 
+            syncHeaderHeight(); 
+        });
+        
+        updateHeaderState();
+        syncHeaderHeight();
+
+        // Mega menu open/close (desktop)
+        let megaCloseTimer = null;
+        document.querySelectorAll('.nav-item').forEach(item=>{
+            const mega = item.querySelector('.mega');
+            function openItem(){
+                clearTimeout(megaCloseTimer);
+                document.querySelectorAll('.nav-item.open').forEach(i=>{ 
+                    if(i!==item) i.classList.remove('open'); 
+                });
+                syncHeaderHeight();
+                item.classList.add('open');
+            }
+            function scheduleClose(){
+                clearTimeout(megaCloseTimer);
+                megaCloseTimer = setTimeout(()=> item.classList.remove('open'), 260);
+            }
+            item.addEventListener('mouseenter', openItem);
+            item.addEventListener('mouseleave', scheduleClose);
+            if(mega){
+                mega.addEventListener('mouseenter', ()=> clearTimeout(megaCloseTimer));
+                mega.addEventListener('mouseleave', scheduleClose);
+            }
+        });
+
+        // Light/Dark theme toggle (optional - uncomment to enable)
+        // const themeToggle = document.getElementById('theme-toggle');
+        // themeToggle.addEventListener('click', ()=>{
+        //     const isDark = document.documentElement.classList.toggle('dark');
+        //     themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+        // });
+
+        // Mobile menu functionality
+        const mobileOpen = document.getElementById('mobile-open');
+        const mobileClose = document.getElementById('mobile-close');
+        const mobilePanel = document.getElementById('mobile-panel');
+        const scrim = document.getElementById('scrim');
+        
+        function openMobile(){
+            mobilePanel.classList.add('open'); 
+            scrim.classList.add('open');
+        }
+        
+        function closeMobile(){
+            mobilePanel.classList.remove('open'); 
+            scrim.classList.remove('open');
+        }
+        
+        mobileOpen && mobileOpen.addEventListener('click', openMobile);
+        mobileClose && mobileClose.addEventListener('click', closeMobile);
+        scrim.addEventListener('click', closeMobile);
+        mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMobile));
+        mobilePanel.querySelectorAll('.m-toggle').forEach(btn=>{
+            btn.addEventListener('click', ()=>{
+                btn.closest('.m-item').classList.toggle('open');
+            });
+        });
+    </script>
+    <!-- ================================================================
+         SOLO HEADER COMPONENT END
+         ================================================================ -->
+</body>
+</html>
