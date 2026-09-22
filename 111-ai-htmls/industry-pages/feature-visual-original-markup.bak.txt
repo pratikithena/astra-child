@@ -1,0 +1,452 @@
+# Original .feature-visual mockup markup (captured from live pages before img conversion)
+# Source: https://dev-website.ithena.app/<page>/  — restore by pasting a block back into the
+# corresponding <div class="feature-visual reveal"> in place of the <img>.
+
+
+===== /compressed-air/  (2 visuals) =====
+
+--- visual 1 ---
+
+        <div class="dash-head">
+          <span>Equipment Health</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#i-activity"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-thermo"/></svg>Compressor Thermal</span>
+            <span class="dash-tile-tag">Nominal</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-activity"/></svg>Vibration</span>
+            <span class="dash-tile-tag">Nominal</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-bell"/></svg>Anomaly Alerts</span>
+            <span class="dash-tile-tag tag-info">Monitoring</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-sliders"/></svg>Filtration Motor</span>
+            <span class="dash-tile-tag">Nominal</span>
+          </div>
+        </div>
+
+--- visual 2 ---
+
+        <div class="dash-head">
+          <span>Service Ticket #7204</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#i-ticket"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-ticket"/></svg>Trigger</span>
+            <span class="dash-tile-tag tag-info">Telemetry Alert</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-sliders"/></svg>Remote Tuning</span>
+            <span class="dash-tile-tag">Applied</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-clock"/></svg>Resolution</span>
+            <span class="dash-tile-tag">On Track</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-link"/></svg>Dispatch</span>
+            <span class="dash-tile-tag">Auto-Routed</span>
+          </div>
+        </div>
+
+
+===== /custom-tool-builders/  (2 visuals) =====
+
+--- visual 1 ---
+
+        <div class="dash-head">
+          <span>Build Workflow</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#td-cpu"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#td-cpu"/></svg>Workflow Status</span>
+            <span class="dash-tile-tag tag-info">Configured</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#td-check"/></svg>Quality Check</span>
+            <span class="dash-tile-tag">Passed</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#td-form"/></svg>Acceptance</span>
+            <span class="dash-tile-tag">Signed Off</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#td-gauge"/></svg>Build Cycle</span>
+            <span class="dash-tile-tag">Tracked</span>
+          </div>
+        </div>
+
+--- visual 2 ---
+
+        <div class="dash-head">
+          <span>Die Set DS-4471</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#td-database"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#td-database"/></svg>CAD Files</span>
+            <span class="dash-tile-tag">Available</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#td-box"/></svg>Wear-Parts List</span>
+            <span class="dash-tile-tag tag-info">Synced</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#td-link"/></svg>Maintenance History</span>
+            <span class="dash-tile-tag">Logged</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#td-form"/></svg>Service Record</span>
+            <span class="dash-tile-tag">Up to Date</span>
+          </div>
+        </div>
+
+
+===== /industrial/  (3 visuals) =====
+
+--- visual 1 ---
+
+        <div class="dash-head">
+          <span>Data Ingestion</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#ind-i-database"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#ind-i-database"/></svg>PLC/SCADA Feed</span>
+            <span class="dash-tile-tag">Connected</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#ind-i-link"/></svg>ERP Sync</span>
+            <span class="dash-tile-tag">Nominal</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#ind-i-activity"/></svg>Cloud Pipeline</span>
+            <span class="dash-tile-tag tag-info">Active</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#ind-i-lock"/></svg>Data Governance</span>
+            <span class="dash-tile-tag">Enforced</span>
+          </div>
+        </div>
+
+--- visual 2 ---
+
+        <div class="dash-head">
+          <span>Work Order #2214</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#ind-i-docs"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#ind-i-sliders"/></svg>Status</span>
+            <span class="dash-tile-tag tag-info">In Progress</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#ind-i-docs"/></svg>Digital Traveler</span>
+            <span class="dash-tile-tag">Attached</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#ind-i-check"/></svg>QC Checklist</span>
+            <span class="dash-tile-tag">Passed</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#ind-i-clock"/></svg>Deployment Time</span>
+            <span class="dash-tile-tag">-40%</span>
+          </div>
+        </div>
+
+--- visual 3 ---
+
+        <div class="dash-head">
+          <span>Asset Health</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#ind-i-wrench"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#ind-i-activity"/></svg>Asset Health</span>
+            <span class="dash-tile-tag tag-info">Monitoring</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#ind-i-bell"/></svg>Sensor Feed</span>
+            <span class="dash-tile-tag">Streaming</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#ind-i-docs"/></svg>Work Order Queue</span>
+            <span class="dash-tile-tag">Synced</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#ind-i-cpu"/></svg>Diagnostic Confidence</span>
+            <span class="dash-tile-tag">AI-Assisted</span>
+          </div>
+        </div>
+
+
+===== /discrete-automotive/  (2 visuals) =====
+
+--- visual 1 ---
+
+        <div class="dash-head">
+          <span>Line Monitoring</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#auto-i-activity"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#auto-i-clock"/></svg>Cycle Time</span>
+            <span class="dash-tile-tag">Nominal</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#auto-i-bell"/></svg>Halt Cause</span>
+            <span class="dash-tile-tag tag-info">Categorized</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#auto-i-activity"/></svg>Line OEE</span>
+            <span class="dash-tile-tag">Tracking</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#auto-i-eye"/></svg>Dashboard Feed</span>
+            <span class="dash-tile-tag">Live</span>
+          </div>
+        </div>
+
+--- visual 2 ---
+
+        <div class="dash-head">
+          <span>Service Ticket #3312</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#auto-i-ticket"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#auto-i-check"/></svg>Quality Gate</span>
+            <span class="dash-tile-tag tag-info">Triggered</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#auto-i-ticket"/></svg>Ticket</span>
+            <span class="dash-tile-tag">Opened</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#auto-i-sliders"/></svg>Supplier Sync</span>
+            <span class="dash-tile-tag">Connected</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#auto-i-docs"/></svg>Work Instructions</span>
+            <span class="dash-tile-tag">Digital</span>
+          </div>
+        </div>
+
+
+===== /pharmaceutical/  (2 visuals) =====
+
+--- visual 1 ---
+
+        <div class="dash-head">
+          <span>Batch Compliance Log</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#i-ticket"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-check"/></svg>SOP Adherence</span>
+            <span class="dash-tile-tag">Nominal</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-bell"/></svg>Deviation Alerts</span>
+            <span class="dash-tile-tag tag-info">Monitoring</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-wrench"/></svg>Maintenance Log</span>
+            <span class="dash-tile-tag">Up to Date</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-ticket"/></svg>Audit Trail</span>
+            <span class="dash-tile-tag">Complete</span>
+          </div>
+        </div>
+
+--- visual 2 ---
+
+        <div class="dash-head">
+          <span>Cleanroom Zone A</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#i-thermo"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-thermo"/></svg>Temperature</span>
+            <span class="dash-tile-tag">Nominal</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-activity"/></svg>Pressure Differential</span>
+            <span class="dash-tile-tag">Nominal</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-eye"/></svg>Particle Count</span>
+            <span class="dash-tile-tag tag-info">Monitoring</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-sliders"/></svg>Humidity</span>
+            <span class="dash-tile-tag">Nominal</span>
+          </div>
+        </div>
+
+
+===== /energy-utilities/  (2 visuals) =====
+
+--- visual 1 ---
+
+        <div class="dash-head">
+          <span>Grid Compliance Log</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#i-ticket"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-check"/></svg>Inspection Adherence</span>
+            <span class="dash-tile-tag">Nominal</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-bell"/></svg>Fault Alerts</span>
+            <span class="dash-tile-tag tag-info">Monitoring</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-wrench"/></svg>Maintenance Log</span>
+            <span class="dash-tile-tag">Up to Date</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-ticket"/></svg>Audit Trail</span>
+            <span class="dash-tile-tag">Complete</span>
+          </div>
+        </div>
+
+--- visual 2 ---
+
+        <div class="dash-head">
+          <span>Substation 4 — Feeder Bank</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#i-thermo"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-thermo"/></svg>Transformer Load</span>
+            <span class="dash-tile-tag">Nominal</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-activity"/></svg>Line Voltage</span>
+            <span class="dash-tile-tag">Nominal</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-eye"/></svg>Breaker Health</span>
+            <span class="dash-tile-tag tag-info">Monitoring</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-sliders"/></svg>Grid Frequency</span>
+            <span class="dash-tile-tag">Nominal</span>
+          </div>
+        </div>
+
+
+===== /fintech-insurance/  (2 visuals) =====
+
+--- visual 1 ---
+
+        <div class="dash-head">
+          <span>Customer Intelligence Profile</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#i-users"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-link"/></svg>Policy Records</span>
+            <span class="dash-tile-tag">Synced</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-ticket"/></svg>Claims History</span>
+            <span class="dash-tile-tag">Synced</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-activity"/></svg>Interaction Touchpoints</span>
+            <span class="dash-tile-tag tag-info">Live</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-target"/></svg>Cross-Sell Signals</span>
+            <span class="dash-tile-tag tag-info">3 New</span>
+          </div>
+        </div>
+
+--- visual 2 ---
+
+        <div class="dash-head">
+          <span>Risk &amp; Underwriting Dashboard</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#i-chart-bar"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-shield"/></svg>Risk Score</span>
+            <span class="dash-tile-tag">Nominal</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-clock"/></svg>Underwriting Queue</span>
+            <span class="dash-tile-tag tag-info">14 Active</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-bell"/></svg>Churn Risk Alerts</span>
+            <span class="dash-tile-tag tag-info">Monitoring</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-sliders"/></svg>Reporting Automation</span>
+            <span class="dash-tile-tag">Active</span>
+          </div>
+        </div>
+
+
+===== /government/  (2 visuals) =====
+
+--- visual 1 ---
+
+        <div class="dash-head">
+          <span>Accessibility Audit</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#i-accessibility"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-shield"/></svg>WCAG 2.1 AA</span>
+            <span class="dash-tile-tag">Passing</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-docs"/></svg>Section 508</span>
+            <span class="dash-tile-tag">Passing</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-accessibility"/></svg>ARIA Landmarks</span>
+            <span class="dash-tile-tag tag-info">Verified</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-sliders"/></svg>Keyboard Navigation</span>
+            <span class="dash-tile-tag tag-info">Verified</span>
+          </div>
+        </div>
+
+--- visual 2 ---
+
+        <div class="dash-head">
+          <span>Public Data Portal</span>
+          <svg class="icon" width="16" height="16" style="color:var(--color-primary)"><use href="#i-database"/></svg>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-lock"/></svg>Data Source</span>
+            <span class="dash-tile-tag tag-info">Verified</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-globe"/></svg>Publish Status</span>
+            <span class="dash-tile-tag">Live</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-docs"/></svg>Audit Trail</span>
+            <span class="dash-tile-tag">Complete</span>
+          </div>
+          <div class="dash-tile">
+            <span class="dash-tile-label"><svg class="icon" width="14" height="14"><use href="#i-link"/></svg>Departments Synced</span>
+            <span class="dash-tile-tag">Connected</span>
+          </div>
+        </div>

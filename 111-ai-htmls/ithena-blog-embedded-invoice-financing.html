@@ -1,0 +1,746 @@
+<!--
+  ITHENA - Blog post: Embedded invoice financing for healthcare software
+  Elementor-ready. Paste everything below into a single HTML widget inside a
+  full-width stretched section (gap: no, padding: 0). Main content only -
+  no header, no footer, no nav chrome. Spec: ithena-blog-embedded-invoice-financing-spec.md
+-->
+<div id="ith-post">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans:wght@700;800&display=swap');
+
+#ith-post{
+  /* brand */
+  --blue:#0083C8; --blue-d:#00679E; --red:#C00000;
+  --ink:#000000; --body:#333333; --muted:#666666;
+  --sa:#FFFFFF; --sb:#D7ECF6;
+  --slow:#8FA3B4; --slow-2:#A7B7C4; --slow-3:#BFCAD4; --slow-4:#D5DCE2;
+  --line:rgba(10,25,45,.12); --plate:#EEF6FB;
+  --card:0 18px 40px rgba(0,0,0,.10); --float:0 12px 28px rgba(0,0,0,.16);
+
+  --font-head:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --fs-label:12px; --fs-small:14px; --fs-body:16px; --fs-lede:18px;
+  --fs-sub:20px; --fs-h3:24px; --fs-h2:32px; --fs-h1:50px;
+
+  --wrap:1240px; --col:720px; --rail:56px;
+
+  font-family:var(--font-body); font-size:var(--fs-body); line-height:1.6; font-weight:400;
+  color:var(--body); background:var(--sa);
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-color-scheme:dark){#ith-post{
+  --ink:#FFFFFF; --body:rgba(215,236,246,.82); --muted:#8FAFC4;
+  --sa:#123049; --sb:#0D1B2E; --plate:#0B2135;
+  --slow:#5C7488; --slow-2:#4E6377; --slow-3:#405366; --slow-4:#334455;
+  --line:rgba(215,236,246,.16);
+  --card:0 18px 40px rgba(0,0,0,.45); --float:0 12px 28px rgba(0,0,0,.50);
+}}
+
+/* reset - Astra styles headings, lists and buttons; none of it may leak in */
+#ith-post *,#ith-post *::before,#ith-post *::after{box-sizing:border-box}
+#ith-post h1,#ith-post h2,#ith-post h3,#ith-post h4,#ith-post p,#ith-post ul,#ith-post ol,#ith-post li,#ith-post figure,#ith-post dl,#ith-post dd{margin:0;padding:0}
+#ith-post ul,#ith-post ol{list-style:none}
+#ith-post button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+#ith-post img,#ith-post svg{display:block;max-width:100%}
+#ith-post a{color:var(--blue);text-decoration:none}
+#ith-post a:hover{text-decoration:underline}
+#ith-post h1,#ith-post h2,#ith-post h3,#ith-post h4{font-family:var(--font-head);color:var(--ink);line-height:1.2;font-weight:700}
+#ith-post :focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
+
+#ith-post .wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,3vw,40px)}
+#ith-post .col{max-width:var(--col)}
+#ith-post .col p{max-width:66ch}
+#ith-post .col p + p{margin-top:18px}
+#ith-post .band{position:relative;padding:clamp(48px,6vw,88px) 0;scroll-margin-top:64px}
+#ith-post .band.tint{background:var(--sb)}
+/* brand rule: sections blend, they never butt against a hard seam */
+#ith-post .band.tint::before{content:"";position:absolute;left:0;right:0;top:0;height:90px;background:linear-gradient(180deg,var(--sa),rgba(0,0,0,0));pointer-events:none}
+
+#ith-post .eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--font-body);font-size:var(--fs-label);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+#ith-post .eyebrow::before{content:"";width:22px;height:2px;background:var(--blue);flex:none}
+#ith-post h2{font-size:clamp(26px,3.4vw,var(--fs-h2));font-weight:800;margin-bottom:14px}
+#ith-post h3{font-size:var(--fs-h3);margin-bottom:10px}
+#ith-post h4{font-size:var(--fs-lede);margin-bottom:6px}
+#ith-post .lede{font-size:var(--fs-lede);color:var(--body);max-width:64ch;margin-bottom:26px}
+#ith-post .cap{font-size:var(--fs-small);color:var(--muted);margin-top:14px}
+
+/* ---------------- day rail ---------------- */
+#ith-post .rail{position:fixed;left:14px;top:0;bottom:0;width:var(--rail);z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+#ith-post .rail-track{position:relative;width:3px;height:min(46vh,360px);border-radius:2px;background:var(--line);overflow:hidden}
+#ith-post .rail-fill{position:absolute;left:0;right:0;top:0;height:0;background:var(--slow);border-radius:2px}
+#ith-post .rail.fast .rail-fill{background:var(--blue)}
+#ith-post .rail-read{margin-top:14px;text-align:center;font-family:var(--font-head);font-weight:800;color:var(--slow);line-height:1.05}
+#ith-post .rail.fast .rail-read{color:var(--blue)}
+#ith-post .rail-num{display:block;font-size:22px;font-variant-numeric:tabular-nums}
+#ith-post .rail-unit{display:block;font-family:var(--font-body);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+@media (max-width:1180px){#ith-post .rail{display:none}}
+
+/* ---------------- hero ---------------- */
+#ith-post .hero{padding:clamp(40px,5vw,72px) 0 clamp(28px,4vw,48px)}
+#ith-post .kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--plate);color:var(--blue);font-size:var(--fs-label);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+#ith-post h1{font-size:clamp(34px,5.4vw,var(--fs-h1));font-weight:800;line-height:1.1;letter-spacing:-.01em;margin:18px 0 18px;max-width:17ch}
+#ith-post .deck{font-size:var(--fs-sub);color:var(--body);max-width:60ch}
+#ith-post .meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin-top:24px;font-size:var(--fs-small);color:var(--muted)}
+#ith-post .meta .dot{width:4px;height:4px;border-radius:50%;background:var(--muted)}
+
+/* payment race */
+#ith-post .race{margin-top:38px;border:1px solid var(--line);border-radius:10px;background:var(--sa);box-shadow:var(--card);padding:clamp(20px,3vw,32px)}
+#ith-post .race-head{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;margin-bottom:24px}
+#ith-post .race-head h2{font-size:var(--fs-h3);font-weight:700;margin:0}
+#ith-post .replay{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid var(--line);border-radius:999px;font-size:var(--fs-small);font-weight:500;color:var(--muted)}
+#ith-post .replay:hover{color:var(--blue);border-color:var(--blue)}
+#ith-post .replay svg{width:14px;height:14px}
+#ith-post .track + .track{margin-top:22px}
+#ith-post .track-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
+#ith-post .track-name{font-size:var(--fs-small);font-weight:700;color:var(--ink)}
+#ith-post .track-val{font-family:var(--font-head);font-weight:800;font-size:var(--fs-lede);font-variant-numeric:tabular-nums;color:var(--slow)}
+#ith-post .track.on .track-val{color:var(--blue)}
+#ith-post .bar{position:relative;height:10px;border-radius:999px;background:var(--plate)}
+#ith-post .bar i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;background:var(--slow)}
+#ith-post .track.on .bar i{background:var(--blue)}
+#ith-post .bar b{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--sa);border:3px solid var(--slow);opacity:0}
+#ith-post .track.on .bar b{border-color:var(--blue)}
+#ith-post .axis{display:flex;justify-content:space-between;margin-top:14px;padding-top:10px;border-top:1px solid var(--line);font-size:var(--fs-label);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+/* ---------------- toc ---------------- */
+#ith-post .toc{position:sticky;top:0;z-index:4;background:var(--sa);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#ith-post .toc ol{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:12px 0}
+#ith-post .toc ol::-webkit-scrollbar{display:none}
+#ith-post .toc a{display:block;white-space:nowrap;padding:8px 16px;border-radius:999px;font-size:var(--fs-small);font-weight:500;color:var(--muted);border:1px solid transparent}
+#ith-post .toc a:hover{color:var(--blue);text-decoration:none;border-color:var(--line)}
+#ith-post .toc a[aria-current="true"]{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+/* ---------------- photo band ---------------- */
+#ith-post .band.photo{overflow:hidden}
+#ith-post .band.photo > .bg{position:absolute;inset:0;z-index:0}
+#ith-post .band.photo > .bg img{width:100%;height:100%;object-fit:cover;opacity:.10}
+#ith-post .band.photo > .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--sa),rgba(0,0,0,0) 30%,var(--sa)),linear-gradient(90deg,var(--sa) 34%,rgba(0,0,0,0) 62%)}
+#ith-post .band.photo > .wrap{position:relative;z-index:1}
+
+/* ---------------- dso explorer ---------------- */
+#ith-post .panel{margin-top:34px;border:1px solid var(--line);border-radius:10px;background:var(--sa);box-shadow:var(--card);padding:clamp(20px,3vw,32px)}
+#ith-post .panel-head{margin-bottom:22px}
+#ith-post .panel-head h3{font-size:var(--fs-lede);font-weight:700}
+#ith-post .panel-head p{font-size:var(--fs-small);color:var(--muted);margin-top:4px}
+#ith-post .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+#ith-post .chip{padding:9px 16px;border:1px solid var(--line);border-radius:999px;font-size:var(--fs-small);font-weight:500;color:var(--body)}
+#ith-post .chip:hover{border-color:var(--blue);color:var(--blue)}
+#ith-post .chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+#ith-post .dso{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center}
+#ith-post .dso-bar{position:relative;height:52px;border-radius:8px;background:var(--plate);overflow:hidden}
+#ith-post .dso-bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--slow);transition:width .6s cubic-bezier(.16,.8,.24,1)}
+#ith-post .dso-bar u{position:absolute;top:0;bottom:0;left:27.4%;width:2px;background:var(--sa);opacity:.55;text-decoration:none}
+#ith-post .dso-fig{text-align:right}
+#ith-post .dso-fig strong{display:block;font-family:var(--font-head);font-weight:800;font-size:clamp(30px,4vw,44px);color:var(--slow);font-variant-numeric:tabular-nums;line-height:1}
+#ith-post .dso-fig span{display:block;font-size:var(--fs-label);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+#ith-post .dso-note{margin-top:18px;font-size:var(--fs-small);color:var(--muted);max-width:70ch}
+
+/* ---------------- definition callout ---------------- */
+#ith-post .callout{margin:30px 0;padding:24px 26px;border-left:3px solid var(--blue);background:var(--plate);border-radius:0 10px 10px 0}
+#ith-post .callout h4{color:var(--blue);font-family:var(--font-body);font-size:var(--fs-label);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+#ith-post .callout p{font-size:var(--fs-lede);color:var(--ink);font-weight:500;max-width:60ch}
+
+/* ---------------- comparison switch ---------------- */
+#ith-post .seg{display:inline-flex;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--sa);margin-bottom:26px}
+#ith-post .seg button{padding:10px 22px;border-radius:999px;font-size:var(--fs-small);font-weight:700;color:var(--muted);transition:.26s}
+#ith-post .seg button[aria-selected="true"]{color:#fff;background:var(--slow)}
+#ith-post .seg button[aria-selected="true"][data-side="new"]{background:var(--blue)}
+#ith-post .rows{display:grid;gap:2px}
+#ith-post .row{display:grid;grid-template-columns:210px minmax(0,1fr);gap:20px;padding:18px 22px;border-left:3px solid var(--slow);background:var(--plate);border-radius:0 8px 8px 0;transition:opacity .26s}
+#ith-post .rows.new .row{border-left-color:var(--blue)}
+#ith-post .row dt{font-size:var(--fs-small);font-weight:700;color:var(--ink)}
+#ith-post .row dd{font-size:var(--fs-small);color:var(--body)}
+#ith-post .rows.fade{opacity:0}
+
+/* ---------------- cost stack ---------------- */
+#ith-post .stacks{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);align-items:stretch;margin-top:8px}
+#ith-post .stack{display:flex;flex-direction:column}
+#ith-post .stack .layers{margin-top:auto}
+#ith-post .stack h4{font-size:var(--fs-small);font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+#ith-post .layers{display:flex;flex-direction:column-reverse;gap:4px}
+#ith-post .layer{position:relative;display:flex;align-items:center;padding:0 18px;border-radius:6px;color:#fff;font-size:var(--fs-small);font-weight:700;height:0;overflow:hidden;transition:height .5s cubic-bezier(.16,.8,.24,1),transform .18s}
+#ith-post .stack.go .layer{height:var(--h)}
+#ith-post .layer:hover,#ith-post .layer:focus-visible{transform:translateY(-4px)}
+#ith-post .layer span{position:absolute;right:18px;font-weight:400;font-size:var(--fs-label);opacity:0;transition:opacity .18s;max-width:58%;text-align:right}
+#ith-post .layer:hover span,#ith-post .layer:focus-visible span{opacity:.92}
+#ith-post .stack.old .layer:nth-child(1){background:var(--slow-4);color:var(--ink)}
+#ith-post .stack.old .layer:nth-child(2){background:var(--slow-3);color:var(--ink)}
+#ith-post .stack.old .layer:nth-child(3){background:var(--slow-2)}
+#ith-post .stack.old .layer:nth-child(4){background:var(--slow)}
+#ith-post .stack.new .layer{background:var(--blue)}
+#ith-post .stack-foot{margin-top:12px;font-size:var(--fs-small);color:var(--muted)}
+
+/* ---------------- checklist ---------------- */
+#ith-post .checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 34px;margin-top:34px}
+#ith-post .check{display:flex;gap:16px}
+#ith-post .badge{flex:none;width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center}
+#ith-post .badge svg{width:22px;height:22px}
+#ith-post .check p{font-size:var(--fs-small);color:var(--body);max-width:40ch}
+
+/* ---------------- stepper ---------------- */
+#ith-post .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:8px}
+#ith-post .step{position:relative;text-align:left;padding:18px 16px 20px;border-top:3px solid var(--line);background:transparent;transition:.24s}
+#ith-post .step em{display:block;font-family:var(--font-head);font-style:normal;font-weight:800;font-size:var(--fs-small);color:var(--muted);margin-bottom:6px;font-variant-numeric:tabular-nums}
+#ith-post .step strong{display:block;font-family:var(--font-head);font-size:var(--fs-small);font-weight:700;color:var(--ink)}
+#ith-post .step[aria-selected="true"]{border-top-color:var(--blue)}
+#ith-post .step[aria-selected="true"] em{color:var(--blue)}
+#ith-post .step-body{margin-top:24px;padding:26px 28px;border-radius:10px;background:var(--plate);min-height:132px}
+#ith-post .step-body h3{font-size:var(--fs-h3);margin-bottom:10px}
+#ith-post .step-body p{font-size:var(--fs-body);color:var(--body);max-width:64ch}
+#ith-post .step-body.fade{opacity:0;transition:opacity .24s}
+
+/* ---------------- reverse factoring diagram ---------------- */
+#ith-post .bridge{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;margin-top:34px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+#ith-post .bridge-side{padding:28px 26px;background:var(--sa)}
+#ith-post .bridge-side h4{font-size:var(--fs-body);margin-bottom:8px}
+#ith-post .bridge-side p{font-size:var(--fs-small);color:var(--muted)}
+#ith-post .bridge-side strong{display:block;font-family:var(--font-head);font-weight:800;font-size:var(--fs-h3);margin-bottom:10px}
+#ith-post .bridge-side.a strong{color:var(--blue)}
+#ith-post .bridge-side.b strong{color:var(--slow)}
+#ith-post .bridge-mid{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:28px 22px;background:var(--plate);text-align:center;min-width:190px}
+#ith-post .bridge-mid span{font-size:var(--fs-label);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+#ith-post .bridge-mid b{font-family:var(--font-head);font-size:var(--fs-body);color:var(--ink)}
+#ith-post .bridge-mid svg{width:120px;height:22px;color:var(--blue)}
+
+/* ---------------- results ---------------- */
+#ith-post .results{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:34px}
+#ith-post .result{padding:0 clamp(14px,2vw,28px)}
+#ith-post .result + .result{border-left:1px solid var(--line)}
+#ith-post .result strong{display:block;font-family:var(--font-head);font-weight:800;font-size:clamp(34px,4.2vw,50px);line-height:1;color:var(--blue);font-variant-numeric:tabular-nums;margin-bottom:10px}
+#ith-post .result p{font-size:var(--fs-small);color:var(--body);max-width:26ch}
+#ith-post .result span{display:block;margin-top:10px;font-size:var(--fs-label);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+#ith-post .caveat{margin-top:30px;padding:18px 22px;border:1px dashed var(--line);border-radius:10px;font-size:var(--fs-small);color:var(--muted);max-width:80ch}
+
+/* ---------------- faq ---------------- */
+#ith-post .faq{margin-top:8px;border-top:1px solid var(--line)}
+#ith-post details{border-bottom:1px solid var(--line)}
+#ith-post summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0;cursor:pointer;list-style:none;font-family:var(--font-head);font-size:var(--fs-lede);font-weight:700;color:var(--ink)}
+#ith-post summary::-webkit-details-marker{display:none}
+#ith-post summary::after{content:"";flex:none;width:11px;height:11px;border-right:2px solid var(--blue);border-bottom:2px solid var(--blue);transform:rotate(45deg);margin-right:6px;transition:transform .24s}
+#ith-post details[open] summary::after{transform:rotate(-135deg)}
+#ith-post details p{padding:0 0 24px;font-size:var(--fs-small);color:var(--body);max-width:66ch}
+
+/* ---------------- cta ---------------- */
+#ith-post .cta{position:relative;overflow:hidden;background:#0A192D}
+#ith-post .cta .bg img{width:100%;height:100%;object-fit:cover;opacity:.22}
+#ith-post .cta .bg{position:absolute;inset:0}
+#ith-post .cta .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0A192D 30%,rgba(10,25,45,.55) 70%,rgba(10,25,45,.35))}
+#ith-post .cta .wrap{position:relative;z-index:1;padding-top:clamp(48px,6vw,84px);padding-bottom:clamp(48px,6vw,84px)}
+#ith-post .cta h2,#ith-post .cta h3{color:#fff}
+#ith-post .cta p{color:rgba(215,236,246,.86);max-width:56ch;font-size:var(--fs-lede)}
+#ith-post .cta .eyebrow{color:#fff}
+#ith-post .cta .eyebrow::before{background:var(--blue)}
+#ith-post .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+#ith-post .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;border-radius:999px;font-size:var(--fs-body);font-weight:700;transition:transform .2s}
+#ith-post .btn:hover{transform:translateY(-2px);text-decoration:none}
+#ith-post .btn-p{background:var(--blue);color:#fff}
+#ith-post .btn-s{background:var(--red);color:#fff}
+
+/* ---------------- reveal ---------------- */
+#ith-post .rev{opacity:0;transform:translateY(14px);transition:opacity .42s ease-out,transform .42s ease-out}
+#ith-post .rev.in{opacity:1;transform:none}
+
+/* ---------------- responsive ---------------- */
+@media (max-width:900px){
+  #ith-post .stacks{grid-template-columns:1fr;align-items:start}
+  #ith-post .checks{grid-template-columns:1fr}
+  #ith-post .steps{grid-template-columns:1fr;gap:0}
+  #ith-post .step{border-top:0;border-left:3px solid var(--line);padding:14px 18px}
+  #ith-post .step[aria-selected="true"]{border-top-color:transparent;border-left-color:var(--blue);background:var(--plate)}
+  #ith-post .results{grid-template-columns:1fr 1fr;gap:26px 0}
+  #ith-post .result + .result{border-left:0}
+  #ith-post .result:nth-child(2n){border-left:1px solid var(--line)}
+  #ith-post .bridge{grid-template-columns:1fr}
+  #ith-post .bridge-mid{min-width:0;padding:22px}
+  #ith-post .bridge-mid svg{transform:rotate(90deg);width:70px}
+}
+@media (max-width:640px){
+  #ith-post .row{grid-template-columns:1fr;gap:6px}
+  #ith-post .dso{grid-template-columns:1fr}
+  #ith-post .dso-fig{text-align:left}
+  #ith-post .results{grid-template-columns:1fr}
+  #ith-post .result{padding:0}
+  #ith-post .result:nth-child(2n){border-left:0}
+  #ith-post .result + .result{border-top:1px solid var(--line);padding-top:24px}
+}
+@media (max-width:480px){
+  #ith-post .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  #ith-post *,#ith-post *::before,#ith-post *::after{transition-duration:.001ms !important;animation-duration:.001ms !important}
+  #ith-post .rev{opacity:1;transform:none}
+}
+</style>
+
+<!-- day rail: reading progress, told in the unit this article is about -->
+<div class="rail" id="ip-rail" aria-hidden="true">
+  <div class="rail-track"><span class="rail-fill" id="ip-rail-fill"></span></div>
+  <div class="rail-read"><span class="rail-num" id="ip-rail-num">0</span><span class="rail-unit" id="ip-rail-unit">days waiting</span></div>
+</div>
+
+<!-- ============================ HERO ============================ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="col">
+      <span class="kicker">Embedded finance</span>
+      <h1>Sixty days is a product problem</h1>
+      <p class="deck">Medical suppliers across the EU wait an average of 60.3 days to be paid. Healthcare software can close that gap from inside the product &#8212; without a lending licence, without capital, and without credit risk on the platform balance sheet.</p>
+      <div class="meta">
+        <span>9 min read</span><span class="dot"></span>
+        <span>Updated 10 September 2026</span><span class="dot"></span>
+        <span>For product and platform teams</span>
+      </div>
+    </div>
+
+    <div class="race" aria-hidden="true">
+      <div class="race-head">
+        <h2>The same invoice, paid two ways</h2>
+        <button type="button" class="replay" id="ip-replay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+          Replay
+        </button>
+      </div>
+
+      <div class="track on" id="ip-t-new">
+        <div class="track-top"><span class="track-name">Financed inside the platform</span><span class="track-val" id="ip-v-new">24 hours</span></div>
+        <div class="bar"><i></i><b></b></div>
+      </div>
+
+      <div class="track" id="ip-t-old">
+        <div class="track-top"><span class="track-name">Waiting for the buyer to pay</span><span class="track-val" id="ip-v-old">60.3 days</span></div>
+        <div class="bar"><i></i><b></b></div>
+      </div>
+
+      <div class="axis"><span>Invoice issued</span><span>Day 30</span><span>Day 60</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================ TOC ============================ -->
+<nav class="toc" id="ip-toc" aria-label="On this page">
+  <div class="wrap">
+    <ol>
+      <li><a href="#ip-gap">The sixty-day gap</a></li>
+      <li><a href="#ip-what">What embedded means</a></li>
+      <li><a href="#ip-vs">Against factoring</a></li>
+      <li><a href="#ip-cost">What it costs</a></li>
+      <li><a href="#ip-build">Without becoming a lender</a></li>
+      <li><a href="#ip-steps">Five steps</a></li>
+      <li><a href="#ip-buyer">The buyer's terms</a></li>
+      <li><a href="#ip-proof">What platforms saw</a></li>
+      <li><a href="#ip-faq">Questions</a></li>
+    </ol>
+  </div>
+</nav>
+
+<!-- ============================ 1. THE GAP ============================ -->
+<section class="band photo" id="ip-gap">
+  <div class="bg" aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/analysiss.webp" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="col rev">
+      <div class="eyebrow">The gap</div>
+      <h2>A hospital pays on its own schedule. The supplier cannot.</h2>
+      <p class="lede">The cash-flow gap in healthcare is not a billing failure. It is the arithmetic of two parties on different clocks.</p>
+      <p>A distributor delivers consumables in March. The health authority processes the invoice on a 30-, 60-, or 90-day term, and often longer if a purchase order line needs matching. Meanwhile the distributor has already paid its own manufacturer, its drivers and its warehouse. Nothing has gone wrong. The money simply is not there yet.</p>
+      <p>That gap is not rare and it is not shrinking. More than half of European companies &#8212; 52% &#8212; ran into late-payment problems in 2024. The EU Payment Observatory put the average B2B payment period at 60.3 days in 2025, and Atradius found 47% of B2B invoices in Western Europe were overdue. Healthcare sits at the wrong end of that distribution, because public buyers are slow buyers.</p>
+    </div>
+
+    <div class="panel rev" id="ip-dso">
+      <div class="panel-head">
+        <h3>Days sales outstanding, by market</h3>
+        <p>Average time between issuing an invoice and seeing the money. Pick a market.</p>
+      </div>
+      <div class="chips" role="group" aria-label="Choose a market">
+        <button type="button" class="chip" data-v="60.3" data-l="EU B2B average" data-n="The EU Payment Observatory&rsquo;s 2025 figure across all B2B sectors. Healthcare runs behind it." aria-pressed="true">EU B2B average</button>
+        <button type="button" class="chip" data-v="60" data-l="Healthcare, typical" data-n="DSO in healthcare routinely exceeds 60 days, driven by government and public-health buyers.">Healthcare</button>
+        <button type="button" class="chip" data-v="200" data-l="Greece" data-n="Greece recorded DSO above 200 days &#8212; more than half a year between delivery and payment.">Greece</button>
+        <button type="button" class="chip" data-v="200" data-l="Portugal" data-n="Portugal also recorded DSO above 200 days. At that length, financing is not optional for a small supplier.">Portugal</button>
+      </div>
+      <div class="dso">
+        <div class="dso-bar"><i id="ip-dso-bar" style="width:27.4%"></i><u title="60 days"></u></div>
+        <div class="dso-fig"><strong id="ip-dso-num">60.3</strong><span id="ip-dso-lab">EU B2B average</span></div>
+      </div>
+      <p class="dso-note" id="ip-dso-note">The EU Payment Observatory&rsquo;s 2025 figure across all B2B sectors. Healthcare runs behind it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 2. WHAT IT MEANS ============================ -->
+<section class="band tint" id="ip-what">
+  <div class="wrap">
+    <div class="col rev">
+      <div class="eyebrow">Definition</div>
+      <h2>Embedded means the supplier never leaves your product</h2>
+      <div class="callout">
+        <h4>Embedded invoice financing</h4>
+        <p>A payment option built into software the supplier already uses, letting them take the money when the invoice is issued instead of when the buyer gets round to paying it.</p>
+      </div>
+      <p>The distinction that matters is not the financing. Factoring has existed for centuries and European factoring turnover reached &euro;2.055 trillion in 2025 &#8212; 11.5% of regional GDP. The distinction is <em>where the decision happens</em>. In the embedded model the supplier is already inside your platform, looking at the invoice they just raised, and there is a button next to it. They press it. The money moves.</p>
+      <p>Three properties follow from that, and all three are what suppliers actually notice: funds arrive within 24 hours of issue rather than after an approval cycle; the advance is up to 100% of invoice value rather than a partial payment with a retention held back; and there is no application, no open-banking connector to authorise, no document pack to assemble.</p>
+      <p>The buyer&rsquo;s side is unchanged. The hospital pays on the date it always intended to pay. The financing provider stands in the middle and carries the wait.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 3. VS FACTORING ============================ -->
+<section class="band" id="ip-vs">
+  <div class="wrap">
+    <div class="col rev">
+      <div class="eyebrow">The comparison</div>
+      <h2>Factoring, honestly</h2>
+      <p class="lede">Seven dimensions where the two models genuinely diverge. Switch between them and read the same row twice.</p>
+    </div>
+
+    <div class="rev">
+      <div class="seg" role="tablist" aria-label="Financing model">
+        <button type="button" role="tab" id="ip-tab-old" data-side="old" aria-selected="false" aria-controls="ip-rows">Traditional factoring</button>
+        <button type="button" role="tab" id="ip-tab-new" data-side="new" aria-selected="true" aria-controls="ip-rows">Embedded financing</button>
+      </div>
+
+      <dl class="rows new" id="ip-rows" role="tabpanel" aria-live="polite">
+        <div class="row"><dt>Where it lives</dt><dd data-old="In a finance department, off your platform. Every client goes through its own approval, and every approval is a delay you do not control." data-new="In the product, beside the invoice that was just raised. It is a permanent component of the service, not an errand the supplier runs elsewhere.">In the product, beside the invoice that was just raised. It is a permanent component of the service, not an errand the supplier runs elsewhere.</dd></div>
+        <div class="row"><dt>Who gets underwritten</dt><dd data-old="The supplier. Their credit history, their filed accounts, their trading record." data-new="The debtor on the invoice &#8212; the hospital or the health authority. Their creditworthiness is the thing being assessed.">The debtor on the invoice &#8212; the hospital or the health authority. Their creditworthiness is the thing being assessed.</dd></div>
+        <div class="row"><dt>New and small suppliers</dt><dd data-old="Frequently declined. A thin file reads as risk, however solid the buyer behind the invoice is." data-new="Qualify on the strength of the buyer. A supplier onboarded last week can finance an invoice this week.">Qualify on the strength of the buyer. A supplier onboarded last week can finance an invoice this week.</dd></div>
+        <div class="row"><dt>Speed</dt><dd data-old="Days to weeks, per client, before anything is funded." data-new="Inside 24 hours of the invoice being issued.">Inside 24 hours of the invoice being issued.</dd></div>
+        <div class="row"><dt>How much arrives</dt><dd data-old="A partial advance, with a guarantee fund held back until the buyer settles. Credit insurance is often required on top." data-new="Up to 100% of invoice value, advanced against the invoice you chose to finance.">Up to 100% of invoice value, advanced against the invoice you chose to finance.</dd></div>
+        <div class="row"><dt>Who carries the risk</dt><dd data-old="Shared, and mostly not by the factor. Retentions, guarantee funds and insurance push exposure back towards the supplier." data-new="The provider absorbs credit, fraud, dispute and collections risk. The platform carries zero credit risk on its balance sheet.">The provider absorbs credit, fraud, dispute and collections risk. The platform carries zero credit risk on its balance sheet.</dd></div>
+        <div class="row"><dt>Who chases payment</dt><dd data-old="The factor, calling your customer directly. Recovery conversations happen outside your relationship and can strain it." data-new="The provider works through the operator who knows the client best &#8212; you &#8212; so the commercial relationship stays intact.">The provider works through the operator who knows the client best &#8212; you &#8212; so the commercial relationship stays intact.</dd></div>
+      </dl>
+      <p class="cap">There is a reputational dimension too, harder to tabulate: a supplier openly factoring its book can read to partners as financial strain, where an instant-payment option inside a platform reads as infrastructure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 4. COST ============================ -->
+<section class="band tint" id="ip-cost">
+  <div class="wrap">
+    <div class="col rev">
+      <div class="eyebrow">Pricing</div>
+      <h2>One fee, or four</h2>
+      <p class="lede">Factoring is not necessarily expensive. It is difficult to price, because the cost arrives in layers and one of them is not a fee at all &#8212; it is capital you cannot use.</p>
+    </div>
+
+    <div class="stacks rev" id="ip-stacks">
+      <div class="stack old" aria-hidden="true">
+        <h4>Traditional factoring</h4>
+        <div class="layers">
+          <div class="layer" style="--h:58px" tabindex="0">Processing fee<span>Charged to set the facility up</span></div>
+          <div class="layer" style="--h:78px" tabindex="0">Factoring commission<span>On the full invoiced amount, needed or not</span></div>
+          <div class="layer" style="--h:66px" tabindex="0">Finance commission<span>Accrues between advance and due date</span></div>
+          <div class="layer" style="--h:86px" tabindex="0">Guarantee fund<span>Your capital, frozen until the buyer pays</span></div>
+        </div>
+        <p class="stack-foot">Charged across the whole book, because the whole book has to be submitted.</p>
+      </div>
+
+      <div class="stack new" aria-hidden="true">
+        <h4>Embedded financing</h4>
+        <div class="layers">
+          <div class="layer" style="--h:84px" tabindex="0">Commission on the advance<span>Priced on volume, risk and duration</span></div>
+        </div>
+        <p class="stack-foot">Charged only on the invoices the supplier chooses to finance. Platforms take a share of it as a revenue line.</p>
+      </div>
+    </div>
+    <p class="cap">Block heights are illustrative, not a price quote &#8212; the point is the number of layers and who holds the capital, not their relative size.</p>
+  </div>
+</section>
+
+<!-- ============================ 5. BUILD ============================ -->
+<section class="band photo" id="ip-build">
+  <div class="bg" aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/implementn.webp" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="col rev">
+      <div class="eyebrow">The build</div>
+      <h2>You do not have to become a lender to ship this</h2>
+      <p class="lede">A financing infrastructure provider supplies the regulated permission, the balance sheet and the credit team through one API. Your product exposes a button.</p>
+      <p>This is the part most product teams assume is the blocker, and it is the part that has already been solved. McKinsey projects European embedded-finance revenues passing &euro;100 billion by the end of the decade, up from &euro;20&ndash;30 billion in 2023 &#8212; that growth is largely platforms offering financial products they are not themselves licensed to provide.</p>
+    </div>
+
+    <div class="checks rev">
+      <div class="check">
+        <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.4-3 8.1-7 9-4-.9-7-4.6-7-9V6z"/><path d="M9.5 12.2l1.8 1.8 3.4-3.6"/></svg></span>
+        <div><h4>No lending licence</h4><p>The provider holds the regulated permission. Your platform stays a software company.</p></div>
+      </div>
+      <div class="check">
+        <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6.5 12h.01M17.5 12h.01"/></svg></span>
+        <div><h4>No capital</h4><p>Every advance is funded off the provider&rsquo;s balance sheet, not yours.</p></div>
+      </div>
+      <div class="check">
+        <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-1.6a3.4 3.4 0 0 0-3.4-3.4H6.4A3.4 3.4 0 0 0 3 18.4V20"/><circle cx="9.5" cy="8" r="3.2"/><path d="M17 11.5l1.8 1.8 3.2-3.4"/></svg></span>
+        <div><h4>No credit team</h4><p>Buyer scoring, KYB, disputes and collections all sit with the provider.</p></div>
+      </div>
+      <div class="check">
+        <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9m5 10V5m5 14v-7m5 7V8"/><path d="M3 21h18"/></svg></span>
+        <div><h4>Zero credit risk</h4><p>Nothing lands on your balance sheet. The financing fee becomes a new revenue line instead.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 6. STEPS ============================ -->
+<section class="band tint" id="ip-steps">
+  <div class="wrap">
+    <div class="col rev">
+      <div class="eyebrow">Integration</div>
+      <h2>Five steps, two to four weeks</h2>
+      <p class="lede">This genuinely is a sequence, so it is numbered. Select a step.</p>
+    </div>
+
+    <div class="rev">
+      <div class="steps" role="tablist" aria-label="Integration steps">
+        <button type="button" class="step" role="tab" aria-selected="true" data-i="0"><em>01</em><strong>Connect</strong></button>
+        <button type="button" class="step" role="tab" aria-selected="false" data-i="1"><em>02</em><strong>Onboard and score</strong></button>
+        <button type="button" class="step" role="tab" aria-selected="false" data-i="2"><em>03</em><strong>Verify</strong></button>
+        <button type="button" class="step" role="tab" aria-selected="false" data-i="3"><em>04</em><strong>Get paid now</strong></button>
+        <button type="button" class="step" role="tab" aria-selected="false" data-i="4"><em>05</em><strong>Repayment</strong></button>
+      </div>
+      <div class="step-body" id="ip-step-body" role="tabpanel" aria-live="polite">
+        <h3>Connect</h3>
+        <p>One API call sits between your invoicing screen and the provider. If you already maintain an ERP integration, the invoice data is usually flowing through it and can be reused rather than rebuilt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 7. BUYER ============================ -->
+<section class="band photo" id="ip-buyer">
+  <div class="bg" aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/global-support.webp" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="col rev">
+      <div class="eyebrow">The other side</div>
+      <h2>Care providers keep the terms they negotiated</h2>
+      <p class="lede">The objection from the buyer&rsquo;s finance team is always the same: are we being asked to pay earlier? No.</p>
+      <p>In a reverse-factoring arrangement the buyer maintains &#8212; or extends &#8212; its normal payment terms while the supplier is paid immediately. The provider bridges the two dates and carries the exposure between them. Working-capital management on the buyer side is untouched, which is precisely why the buyer will agree to it.</p>
+      <p>The operational load is also lighter than a treasury team expects: one integration covers 100+ countries and currencies through a single settlement rail, and there is no supplier-onboarding programme to staff. For a healthcare platform selling into several national health systems at once, that is the difference between a product feature and a country-by-country project.</p>
+    </div>
+
+    <div class="bridge rev" aria-hidden="true">
+      <div class="bridge-side a"><strong>Day 1</strong><h4>Supplier is paid</h4><p>Up to 100% of the invoice, within 24 hours of issue.</p></div>
+      <div class="bridge-mid">
+        <span>Provider bridges</span>
+        <svg viewBox="0 0 120 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 11h108" stroke-dasharray="5 6"/><path d="M104 5l6 6-6 6"/></svg>
+        <b>Carries the wait, the credit risk and the collections</b>
+      </div>
+      <div class="bridge-side b"><strong>Day 60</strong><h4>Buyer pays</h4><p>On the original due date, on the terms already agreed.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 8. PROOF ============================ -->
+<section class="band" id="ip-proof">
+  <div class="wrap">
+    <div class="col rev">
+      <div class="eyebrow">Evidence</div>
+      <h2>What platforms have seen</h2>
+      <p class="lede">No healthcare platform has published results yet. The figures below come from vertical SaaS and marketplace deployments of the same infrastructure &#8212; read them as a shape, not as a healthcare benchmark.</p>
+    </div>
+
+    <div class="results rev" id="ip-results">
+      <div class="result"><strong data-to="24" data-suffix="h">24h</strong><p>Financing lead time at Job&amp;Talent, down from 14 days.</p><span>Job&amp;Talent</span></div>
+      <div class="result"><strong data-to="95" data-suffix="%">95%</strong><p>Of StaffMe suppliers paid within five days. Supplier NPS rose 0.8 points.</p><span>StaffMe</span></div>
+      <div class="result"><strong data-to="15" data-suffix="h">15h</strong><p>Average time to vendor payment at UrbanChain, across &pound;11M financed.</p><span>UrbanChain</span></div>
+      <div class="result"><strong data-to="100" data-suffix="%">100%</strong><p>Funding execution success at Comet, with no failed advances.</p><span>Comet</span></div>
+    </div>
+
+    <div class="col rev" style="margin-top:34px">
+      <p>The operational number is the one product teams tend to underestimate. Job&amp;Talent went from three full-time staff running financing to roughly an hour a week, launched in the UK in three weeks, and was live in four countries inside a year. Underneath, the infrastructure has processed over &euro;1 billion across 100+ countries and currencies.</p>
+    </div>
+
+    <p class="caveat rev">A note on what is missing: there is no published healthcare case study to point at. If your board asks for one, the honest answer is that the mechanism is proven in adjacent verticals with the same payment dynamics &#8212; long buyer terms, fragmented supplier bases, invoice-level transactions &#8212; and that healthcare&rsquo;s public buyers are, if anything, better credits than the SME debtors in those references.</p>
+  </div>
+</section>
+
+<!-- ============================ 9. FAQ ============================ -->
+<section class="band tint" id="ip-faq">
+  <div class="wrap">
+    <div class="col rev">
+      <div class="eyebrow">Questions</div>
+      <h2>The six that come up every time</h2>
+      <div class="faq">
+        <details open><summary>What is healthcare factoring?</summary><p>A medical supplier or care provider sells its unpaid invoices to a financing provider and receives the cash immediately, instead of waiting the usual 30 to 90 days for the buyer to settle.</p></details>
+        <details><summary>Does embedding invoice financing require a lending licence?</summary><p>No. The financing infrastructure provider holds the licence and supplies the capital, which lets the platform offer financing without becoming a regulated lender itself.</p></details>
+        <details><summary>Who takes the loss if a buyer does not pay?</summary><p>The financing provider. It absorbs credit, fraud, dispute and collections risk. The platform carries zero credit risk.</p></details>
+        <details><summary>What does it cost the people using it?</summary><p>A financing fee on the invoices they choose to fund &#8212; nothing on the ones they leave alone. Platforms typically share in that fee, which is what turns the feature into a revenue line rather than a cost centre.</p></details>
+        <details><summary>How quickly do suppliers actually get the money?</summary><p>Within 24 hours of issuing the invoice, for up to 100% of its value. Against 30- to 90-day terms, that is the entire proposition.</p></details>
+        <details><summary>Can a small or newly onboarded supplier qualify?</summary><p>Yes, because the underwriting looks at the buyer rather than the supplier. A supplier with no trading history can finance an invoice owed by a creditworthy hospital.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 10. CTA ============================ -->
+<section class="band cta">
+  <div class="bg" aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/fast-operation.webp" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="col">
+      <div class="eyebrow">Next step</div>
+      <h2>Bring one invoice flow and we will map the gap</h2>
+      <p>A working session with an ITHENA specialist: your invoice lifecycle, your buyer terms, and where a financing step would sit in the product you already ship.</p>
+      <div class="btns">
+        <a class="btn btn-p" href="https://dev-website.ithena.app/contact-us/">Talk to our team</a>
+        <a class="btn btn-s" href="mailto:sales@ithena.ai">Email sales@ithena.ai</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var root=document.getElementById('ith-post');
+  if(!root||root.dataset.bound)return;           /* a second paste must not double-bind */
+  root.dataset.bound='1';
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- day rail: counts days through the problem half, snaps to 24h at the pivot ---- */
+  var rail=document.getElementById('ip-rail'),
+      fill=document.getElementById('ip-rail-fill'),
+      num=document.getElementById('ip-rail-num'),
+      unit=document.getElementById('ip-rail-unit'),
+      pivot=document.getElementById('ip-build');
+  function onScroll(){
+    var r=root.getBoundingClientRect(), h=root.offsetHeight-innerHeight;
+    var p=h>0?Math.min(1,Math.max(0,-r.top/h)):0;
+    fill.style.height=(p*100)+'%';
+    var fast=pivot.getBoundingClientRect().top<innerHeight*0.5;
+    rail.classList.toggle('fast',fast);
+    if(fast){num.textContent='24';unit.textContent='hours instead';}
+    else{
+      var pv=pivot.getBoundingClientRect().top-innerHeight*0.5,
+          span=pivot.offsetTop-innerHeight*0.5;
+      var q=span>0?Math.min(1,Math.max(0,1-pv/span)):0;
+      num.textContent=Math.round(q*60);unit.textContent='days waiting';
+    }
+  }
+  function tick(){onScroll();reveal();}
+  addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);
+
+  /* ---- reveals + counters ----
+     driven by the scroll handler rather than IntersectionObserver: one
+     mechanism, and nothing can leave the article stuck at opacity 0 */
+  var counted=false;
+  function countUp(){
+    if(counted)return;counted=true;
+    [].forEach.call(root.querySelectorAll('#ip-results strong'),function(el){
+      var to=+el.dataset.to,sfx=el.dataset.suffix||'',t0=null;
+      if(reduce){el.textContent=to+sfx;return;}
+      requestAnimationFrame(function step(t){
+        if(!t0)t0=t;var k=Math.min(1,(t-t0)/1100),e=1-Math.pow(1-k,3);
+        el.textContent=Math.round(to*e)+sfx;
+        if(k<1)requestAnimationFrame(step);
+      });
+    });
+  }
+  var revs=[].slice.call(root.querySelectorAll('.rev'));
+  /* stagger within a section, not down the whole page */
+  revs.forEach(function(el){
+    var sibs=[].filter.call(el.parentNode.children,function(c){return c.classList.contains('rev')});
+    el.style.transitionDelay=(Math.min(sibs.indexOf(el),3)*.07)+'s';
+  });
+  function reveal(){
+    for(var n=revs.length-1;n>=0;n--){
+      var el=revs[n];
+      if(el.getBoundingClientRect().top > innerHeight*0.88) continue;
+      el.classList.add('in');revs.splice(n,1);
+      if(el.id==='ip-results')countUp();
+      if(el.id==='ip-stacks')[].forEach.call(el.children,function(st,k){setTimeout(function(){st.classList.add('go')},k*140)});
+    }
+  }
+
+  tick();
+
+  /* ---- hero race ---- */
+  function run(){
+    [['ip-t-new',900,'cubic-bezier(.16,.8,.24,1)',0.06,0],
+     ['ip-t-old',4200,'linear',1,700]].forEach(function(c){
+      var tr=document.getElementById(c[0]),bar=tr.querySelector('i'),dot=tr.querySelector('b');
+      bar.style.transition='none';dot.style.transition='none';
+      bar.style.width='0';dot.style.opacity='0';dot.style.left='0';
+      void bar.offsetWidth;
+      var d=reduce?1:c[1];
+      setTimeout(function(){
+        bar.style.transition='width '+d+'ms '+c[2];
+        dot.style.transition='opacity 200ms linear '+d+'ms, left '+d+'ms '+c[2];
+        bar.style.width=(c[3]*100)+'%';dot.style.left=(c[3]*100)+'%';dot.style.opacity='1';
+      },reduce?0:c[4]);
+    });
+  }
+  run();
+  document.getElementById('ip-replay').addEventListener('click',run);
+
+  /* ---- DSO explorer ---- */
+  var chips=root.querySelectorAll('#ip-dso .chip'),
+      dbar=document.getElementById('ip-dso-bar'),dnum=document.getElementById('ip-dso-num'),
+      dlab=document.getElementById('ip-dso-lab'),dnote=document.getElementById('ip-dso-note');
+  [].forEach.call(chips,function(c){
+    c.addEventListener('click',function(){
+      [].forEach.call(chips,function(x){x.setAttribute('aria-pressed','false')});
+      c.setAttribute('aria-pressed','true');
+      var v=parseFloat(c.dataset.v);
+      dbar.style.width=Math.min(100,v/220*100)+'%';
+      dnum.textContent=(v>=200?'200+':v);
+      dlab.textContent=c.dataset.l;dnote.textContent=c.dataset.n;
+    });
+  });
+
+  /* ---- comparison switch ---- */
+  var tabs=[document.getElementById('ip-tab-old'),document.getElementById('ip-tab-new')],
+      rows=document.getElementById('ip-rows');
+  function side(k){
+    tabs.forEach(function(t,j){t.setAttribute('aria-selected',j===k?'true':'false')});
+    rows.classList.add('fade');
+    setTimeout(function(){
+      rows.classList.toggle('new',k===1);
+      [].forEach.call(rows.querySelectorAll('dd'),function(dd){dd.textContent=k===1?dd.dataset.new:dd.dataset.old});
+      rows.classList.remove('fade');
+    },reduce?0:180);
+  }
+  tabs.forEach(function(t,j){
+    t.addEventListener('click',function(){side(j)});
+    t.addEventListener('keydown',function(e){
+      var k=e.key==='ArrowRight'||e.key==='End'?1:(e.key==='ArrowLeft'||e.key==='Home'?0:-1);
+      if(k<0)return;e.preventDefault();side(k);tabs[k].focus();
+    });
+  });
+
+  /* ---- stepper ---- */
+  var STEPS=[
+    ['Connect','One API call sits between your invoicing screen and the provider. If you already maintain an ERP integration, the invoice data is usually flowing through it and can be reused rather than rebuilt.'],
+    ['Onboard and score','Suppliers onboard inside your product, in the flow they already know. The provider scores each buyer independently and sets a credit limit against it, so eligibility is known before anyone asks for money.'],
+    ['Verify','A KYB check with a video liveness step confirms the account holder is who they claim to be. A confirmation code from the buyer closes the other hole: it stops a supplier inventing an invoice against a real hospital.'],
+    ['Get paid now','The supplier presses one button on an issued invoice. Funds land the same day, up to 100% of value. Nothing about their invoicing process changes, and nothing about the buyer&rsquo;s changes either.'],
+    ['Repayment','The buyer pays on the original due date, to the provider. Collections, disputes and any chasing sit with the provider, working through you rather than around you.']
+  ];
+  var sbtns=root.querySelectorAll('#ip-steps .step'),sbody=document.getElementById('ip-step-body');
+  function pick(i){
+    [].forEach.call(sbtns,function(b,j){b.setAttribute('aria-selected',j===i?'true':'false')});
+    sbody.classList.add('fade');
+    setTimeout(function(){
+      sbody.innerHTML='<h3>'+STEPS[i][0]+'</h3><p>'+STEPS[i][1]+'</p>';
+      sbody.classList.remove('fade');
+    },reduce?0:160);
+  }
+  [].forEach.call(sbtns,function(b,i){
+    b.addEventListener('click',function(){pick(i)});
+    b.addEventListener('keydown',function(e){
+      var n=e.key==='ArrowRight'?i+1:(e.key==='ArrowLeft'?i-1:-1);
+      if(n<0||n>=sbtns.length)return;e.preventDefault();pick(n);sbtns[n].focus();
+    });
+  });
+
+  /* ---- TOC scrollspy ---- */
+  var links=[].slice.call(root.querySelectorAll('#ip-toc a')),
+      secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))});
+  function spy(){
+    var best=0;
+    secs.forEach(function(s,j){if(s&&s.getBoundingClientRect().top<innerHeight*0.35)best=j});
+    links.forEach(function(a,j){
+      if(j!==best){a.removeAttribute('aria-current');return;}
+      if(a.getAttribute('aria-current')!=='true'&&a.parentNode.parentNode.scrollWidth>a.parentNode.parentNode.clientWidth){
+        a.parentNode.parentNode.scrollTo({left:a.offsetLeft-24,behavior:reduce?'auto':'smooth'});
+      }
+      a.setAttribute('aria-current','true');
+    });
+  }
+  addEventListener('scroll',spy,{passive:true});spy();
+})();
+</script>
+</div>

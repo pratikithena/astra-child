@@ -1,0 +1,24 @@
+/* iCRM platform page — paste into Appearance > Customize > Additional CSS.
+   Everything here is an override of the inline CSS in the page's Elementor HTML
+   widget, so !important is required (that <style> sits in <body>, later in source
+   order than Additional CSS). */
+
+/* THE fix. A popup/consent plugin leaves `overflow: auto` inline on <body>, which
+   turns body into a scroll container and silently kills every position:sticky on
+   the page — the pill rail, the stacking flow cards, the modules pin. Skipped
+   while a Popup Maker overlay is open so its own scroll lock still works. */
+body:not([class*="pum-open"]) { overflow: visible !important; }
+
+/* Pin the pills under the real header instead of a hardcoded 90px.
+   --header-h is published on <html> by wp-header-shortcode.php and tracks the
+   header as it shrinks 116px -> 100px on scroll. */
+#flow .stax-rail  { top: calc(var(--header-h, 100px) + 10px) !important; }
+#flow .stax-panel { top: calc(var(--header-h, 100px) + 92px) !important; }
+@media (max-width: 1100px) {
+  #flow .stax-rail { top: calc(var(--header-h, 100px) + 8px) !important; }
+}
+#modules .mtrack-pin { padding-block: calc(var(--header-h, 100px) + 14px) 22px !important; }
+
+/* Default text colour when nothing else assigns one. */
+section#main-section                    { --text: #000000 !important; }
+section#main-section[data-theme="dark"] { --text: #FFFFFF !important; }

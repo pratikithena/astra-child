@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "industrial-defense-landing",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8933"],
+      "port": 8933
+    },
+    {
+      "name": "icrm-hub",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8934"],
+      "port": 8934
+    }
+  ]
+}

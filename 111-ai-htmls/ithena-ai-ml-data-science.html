@@ -1,0 +1,764 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;600;700&display=swap');
+section#main-section,section#main-section *:not(svg):not(svg *){all:revert}
+section#main-section,section#main-section *,section#main-section *::before,section#main-section *::after{box-sizing:border-box!important;margin:0!important;padding:0!important}
+section#main-section{--blue:#0083C8!important;--blue-d:#006AA3!important;--blue-l:#3FA9E0!important;--acc:#BFE5F8!important;--acc-t:#006AA3!important;--navy:#0A192D!important;--ink:#0A192D!important;--body:#46586A!important;--muted:#5B6B7A!important;--sa:#FFFFFF!important;--sb:#F2F8FD!important;--card:#FFFFFF!important;--glass:rgba(255,255,255,.72)!important;--line:rgba(10,25,45,.10)!important;--hair:rgba(10,25,45,.16)!important;--deep:linear-gradient(155deg,#0B2038 0%,#0A192D 52%,#0C2542 100%)!important;--plate:#FFFFFF!important;--plate-line:rgba(10,25,45,.1)!important;--sh:0 18px 44px -24px rgba(0,45,80,.34)!important;--sh-lg:0 44px 90px -34px rgba(0,45,80,.46)!important;--ez:cubic-bezier(.22,.61,.36,1)!important;--font-head:"Noto Sans",sans-serif!important;--font-body:"Inter",sans-serif!important;--fs-xs:12px!important;--fs-sm:13px!important;--fs-md:14px!important;--fs-base:15px!important;--fs-body:16px!important;--fs-lg:17px!important;--fs-xl:19px!important;--fs-lead:clamp(16px,1.6vw,19px)!important;--fs-h3:clamp(17px,1.9vw,21px)!important;--fs-h2s:clamp(21px,2.4vw,27px)!important;--fs-h2:clamp(27px,3.6vw,44px)!important;--fs-h1:clamp(32px,5vw,50px)!important;--wrap:1240px!important;--hdr:96px!important;display:block!important;position:relative!important;font-family:var(--font-body)!important;font-size:var(--fs-body)!important;line-height:normal!important;font-weight:400!important;color:var(--body)!important;background:var(--sa)!important;-webkit-font-smoothing:antialiased!important;overflow-x:clip!important;transition:background-color .3s ease,color .3s ease!important}
+section#main-section[data-theme="dark"]{--acc-t:#3FA9E0!important;--ink:#F2F3F5!important;--body:rgba(228,230,235,.8)!important;--muted:#9A9FA8!important;--sa:#0A0A0B!important;--sb:#111113!important;--card:#17181B!important;--glass:rgba(255,255,255,.045)!important;--line:rgba(255,255,255,.09)!important;--hair:rgba(255,255,255,.16)!important;--deep:linear-gradient(155deg,#16171A 0%,#0C0C0E 52%,#050506 100%)!important;--plate:#F4F9FD!important;--plate-line:rgba(255,255,255,.2)!important;--sh:0 18px 44px -24px rgba(0,0,0,.62)!important;--sh-lg:0 44px 90px -34px rgba(0,0,0,.72)!important;color-scheme:dark!important}
+section#main-section ul,section#main-section ol{list-style:none!important}
+section#main-section button{font:inherit!important;color:inherit!important;background:none!important;border:0!important;cursor:pointer!important}
+section#main-section img,section#main-section svg{display:block!important;max-width:100%!important}
+section#main-section a{color:var(--blue)!important;text-decoration:none!important}
+section#main-section h1,section#main-section h2,section#main-section h3,section#main-section h4{font-family:var(--font-head)!important;color:var(--ink)!important;line-height:1.25!important;font-weight:700!important;letter-spacing:-.02em!important}
+section#main-section :focus-visible{outline:2px solid var(--blue)!important;outline-offset:3px!important;border-radius:8px!important}
+section#main-section .wrap{max-width:var(--wrap)!important;margin:0 auto!important;padding:0 clamp(20px,4vw,44px)!important}
+section#main-section .aiml-sec{display:block!important;position:relative!important;padding:clamp(60px,7.5vw,116px) 0!important;scroll-margin-top:calc(var(--hdr) + 66px)!important;background:var(--sa)!important}
+section#main-section .aiml-sec.tint{background:var(--sb)!important}
+section#main-section .aiml-sec.deep{background:var(--deep)!important;--ink:#FFFFFF!important;--body:rgba(214,235,246,.8)!important;--muted:#90B0C5!important;--card:rgba(255,255,255,.05)!important;--glass:rgba(255,255,255,.06)!important;--line:rgba(255,255,255,.13)!important;--hair:rgba(255,255,255,.2)!important}
+section#main-section .kick{display:inline-flex!important;align-items:center!important;gap:11px!important;font:700 var(--fs-xs)/1.25 var(--font-body)!important;letter-spacing:.17em!important;text-transform:uppercase!important;color:var(--acc-t)!important;margin-bottom:18px!important}
+section#main-section .kick::before{content:""!important;width:28px!important;height:2px!important;border-radius:2px!important;background:linear-gradient(90deg,var(--blue),transparent)!important;flex:none!important}
+section#main-section .deep .kick,section#main-section .aiml-sec--hero .kick,section#main-section .aiml-sec--intro .kick{color:var(--blue-l)!important}
+section#main-section .deep .kick::before,section#main-section .aiml-sec--hero .kick::before,section#main-section .aiml-sec--intro .kick::before{background:linear-gradient(90deg,var(--blue-l),transparent)!important}
+section#main-section h2{font-size:var(--fs-h2)!important;line-height:1.25!important;margin-bottom:16px!important}
+section#main-section h3{font-size:var(--fs-xl)!important;line-height:1.25!important}
+section#main-section .lead{font-size:var(--fs-lead)!important;font-weight:300!important;line-height:normal!important;color:var(--body)!important;max-width:56ch!important}
+section#main-section p.body{margin-top:15px!important;max-width:66ch!important;color:var(--body)!important}
+section#main-section .btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;min-height:48px!important;padding:14px 28px!important;border-radius:10px!important;font-size:var(--fs-base)!important;font-weight:700!important;line-height:1!important;white-space:nowrap!important;transition:transform .22s var(--ez),background-color .22s var(--ez),border-color .22s var(--ez),box-shadow .22s var(--ez)!important}
+section#main-section .btn:hover{transform:translateY(-2px)!important}
+section#main-section .btn svg{width:17px!important;height:17px!important;flex:none!important}
+section#main-section .btn-p{background:linear-gradient(120deg,var(--blue),var(--blue-l))!important;color:#fff!important;box-shadow:0 14px 34px -16px rgba(0,131,200,.8)!important}
+section#main-section .btn-p:hover{box-shadow:0 20px 44px -16px rgba(0,131,200,.9)!important}
+section#main-section .btn-o{border:1px solid var(--hair)!important;color:var(--ink)!important}
+section#main-section .btn-o:hover{border-color:var(--blue)!important;color:var(--blue)!important}
+section#main-section .btns{display:flex!important;flex-wrap:wrap!important;gap:12px!important;margin-top:30px!important}
+section#main-section .aiml-sec--hero{padding:0!important;overflow:hidden!important;isolation:isolate!important;background:#06182A!important;--ink:#FFFFFF!important;--body:rgba(214,235,246,.82)!important}
+section#main-section .hero-bg{position:absolute!important;inset:0!important;z-index:0!important}
+section#main-section .hero-bg img{width:100%!important;height:100%!important;object-fit:cover!important}
+section#main-section .hero-in{position:relative!important;z-index:1!important;padding:clamp(78px,9vw,140px) 0 clamp(64px,7vw,110px)!important}
+section#main-section .h-title{font-size:var(--fs-h1)!important;line-height:1.25!important;letter-spacing:-.032em!important;color:#fff!important;max-width:15ch!important}
+section#main-section .aiml-sec h2 em{font-style:normal!important;color:var(--blue)!important}
+section#main-section .h-title em{font-style:normal!important;display:block!important;background:linear-gradient(100deg,#3FA9E0,#BFE5F8 62%,#FFFFFF)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+section#main-section .h-deck{font-size:var(--fs-lead)!important;font-weight:300!important;line-height:normal!important;color:rgba(214,235,246,.86)!important;max-width:46ch!important;margin-top:22px!important}
+section#main-section .h-tags{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:10px 24px!important;margin-top:28px!important}
+section#main-section .h-tags li{position:relative!important;font-size:var(--fs-md)!important;font-weight:500!important;color:#CFE6F5!important}
+section#main-section .h-tags li+li::before{content:""!important;position:absolute!important;left:-14px!important;top:50%!important;width:4px!important;height:4px!important;border-radius:50%!important;background:var(--blue-l)!important;transform:translateY(-50%)!important}
+section#main-section .subnav{position:sticky!important;top:var(--hdr)!important;z-index:30!important;background:var(--sa)!important;padding:14px 0!important}
+section#main-section .subnav-card{display:flex!important;align-items:center!important;gap:clamp(6px,1.6vw,20px)!important;border-bottom:1px solid var(--line)!important;overflow-x:auto!important;scrollbar-width:none!important}
+section#main-section .subnav-card::-webkit-scrollbar{display:none!important}
+section#main-section .subnav a{position:relative!important;display:inline-flex!important;align-items:center!important;min-height:48px!important;padding:0 6px!important;white-space:nowrap!important;font-size:var(--fs-md)!important;font-weight:600!important;color:var(--muted)!important;transition:color .22s var(--ez)!important}
+section#main-section .subnav a::after{content:""!important;position:absolute!important;left:0!important;right:0!important;bottom:-1px!important;height:2px!important;background:linear-gradient(90deg,var(--blue),var(--blue-l))!important;transform:scaleX(0)!important;transform-origin:left!important;transition:transform .32s var(--ez)!important}
+section#main-section .subnav a:hover{color:var(--ink)!important}
+section#main-section .subnav a:hover::after{transform:scaleX(.42)!important}
+section#main-section .subnav a[aria-current="true"]{color:var(--acc-t)!important}
+section#main-section .subnav a[aria-current="true"]::after{transform:scaleX(1)!important}
+section#main-section .split{display:grid!important;grid-template-columns:minmax(0,330px) minmax(0,1fr)!important;gap:clamp(28px,4.6vw,72px)!important;align-items:start!important}
+section#main-section .two{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:clamp(30px,4.6vw,72px)!important;align-items:center!important}
+section#main-section .aiml-sec--intro{overflow:hidden!important;isolation:isolate!important;background:#06182A!important;--ink:#FFFFFF!important;--body:rgba(214,235,246,.86)!important;--muted:#90B0C5!important}
+section#main-section .intro-bg{position:absolute!important;inset:0!important;z-index:-2!important}
+section#main-section .intro-bg img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:70% 50%!important}
+section#main-section .intro-copy{max-width:min(660px,62%)!important}
+section#main-section .aiml-sec--intro a{color:var(--blue-l)!important}
+section#main-section .railtext{position:relative!important;padding-left:26px!important}
+section#main-section .railtext::before{content:""!important;position:absolute!important;left:0!important;top:6px!important;bottom:6px!important;width:3px!important;border-radius:3px!important;background:linear-gradient(180deg,var(--blue),rgba(0,131,200,0))!important}
+section#main-section .stages{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:clamp(16px,2.4vw,30px)!important;margin-top:clamp(30px,4vw,52px)!important;position:relative!important}
+section#main-section .stages::before{content:""!important;position:absolute!important;left:12%!important;right:12%!important;top:38px!important;height:2px!important;background:repeating-linear-gradient(90deg,rgba(63,169,224,.5) 0 8px,transparent 8px 17px)!important;transform:scaleX(0);transform-origin:left!important}
+section#main-section .stages.in::before{animation:aiml-line 1.15s var(--ez) .08s forwards!important}
+section#main-section .stage{position:relative!important;display:grid!important;justify-items:center!important;text-align:center!important;gap:16px!important}
+section#main-section .stages .stage{opacity:0;transform:translateY(18px)}
+section#main-section .stages.in .stage{animation:aiml-node .6s var(--ez) forwards,aiml-focus 6.9s var(--ez) .8s infinite!important}
+section#main-section .stages.in .stage:nth-child(2){animation-delay:.22s,3.1s!important}
+section#main-section .stages.in .stage:nth-child(3){animation-delay:.44s,5.4s!important}
+section#main-section .stages.in .stage b::after{content:""!important;position:absolute!important;inset:0!important;border-radius:50%!important;box-shadow:0 0 0 2px var(--blue-l),0 0 30px rgba(63,169,224,.4)!important;opacity:0;animation:aiml-ring 6.9s var(--ez) .8s infinite!important}
+section#main-section .stages.in .stage:nth-child(2) b::after{animation-delay:3.1s!important}
+section#main-section .stages.in .stage:nth-child(3) b::after{animation-delay:5.4s!important}
+@keyframes aiml-line{to{transform:scaleX(1)}}
+@keyframes aiml-node{to{opacity:1;transform:none}}
+@keyframes aiml-focus{0%,26%{opacity:1;transform:translateY(-6px)}38%,94%{opacity:.4;transform:none}100%{opacity:1;transform:translateY(-6px)}}
+@keyframes aiml-ring{0%{opacity:0;transform:scale(.86)}10%,24%{opacity:1;transform:scale(1)}38%,100%{opacity:0;transform:scale(1.14)}}
+section#main-section .stage b{position:relative!important;width:76px!important;height:76px!important;border-radius:50%!important;display:grid!important;place-items:center!important;background:var(--glass)!important;border:1px solid var(--hair)!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important;box-shadow:0 0 0 8px rgba(0,131,200,.08)!important;color:var(--blue-l)!important;transition:transform .3s var(--ez),box-shadow .3s var(--ez)!important}
+section#main-section .stage:hover b{transform:translateY(-5px)!important;box-shadow:0 0 0 12px rgba(0,131,200,.13)!important}
+section#main-section .stage b svg{width:30px!important;height:30px!important}
+section#main-section .stage h3{font-size:var(--fs-lg)!important}
+section#main-section .stage p{font-size:var(--fs-sm)!important;color:var(--muted)!important;max-width:24ch!important}
+section#main-section .tabs{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:clamp(22px,3vw,40px)!important;margin-top:clamp(26px,3.4vw,44px)!important}
+section#main-section .tablist{position:relative!important;display:flex!important;border-bottom:1px solid var(--line)!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;scrollbar-width:none!important}
+section#main-section .tablist::-webkit-scrollbar{display:none!important}
+section#main-section .tab{flex:1 1 0!important;min-width:200px!important;scroll-snap-align:start!important;display:flex!important;align-items:center!important;gap:12px!important;min-height:56px!important;padding:14px 16px 16px!important;margin-bottom:-1px!important;text-align:left!important;font-size:var(--fs-base)!important;font-weight:600!important;color:var(--body)!important;background:none!important;border-bottom:2px solid transparent!important;transition:border-color .25s var(--ez),color .25s var(--ez)!important}
+section#main-section .tab:hover{color:var(--ink)!important;border-bottom-color:var(--hair)!important}
+section#main-section .tab[aria-selected="true"]{border-bottom-color:var(--blue)!important;color:var(--ink)!important;font-weight:700!important}
+section#main-section .tab i{width:38px!important;height:38px!important;flex:none!important;border-radius:12px!important;display:grid!important;place-items:center!important;background:rgba(0,131,200,.1)!important;color:var(--blue)!important;transition:background-color .25s var(--ez),color .25s var(--ez)!important}
+section#main-section .tab i svg{width:19px!important;height:19px!important}
+section#main-section .tab[aria-selected="true"] i{background:linear-gradient(120deg,var(--blue),var(--blue-l))!important;color:#fff!important}
+section#main-section .panel{position:relative!important;isolation:isolate!important;overflow:hidden!important;padding:clamp(20px,2.4vw,30px) clamp(18px,2.4vw,32px)!important;border-radius:20px!important;min-height:350px!important}
+section#main-section .panel::after{content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;background:var(--pbg) center right/cover no-repeat!important;-webkit-mask-image:linear-gradient(90deg,transparent 50%,#000 88%)!important;pointer-events:none!important}
+section#main-section .panel[hidden]{display:none!important}
+section#main-section .panel h3{font-size:var(--fs-h2s)!important;margin-bottom:14px!important}
+section#main-section .panel p{color:var(--body)!important;max-width:56ch!important}
+section#main-section .panel .num{position:absolute!important;top:clamp(20px,2.6vw,30px)!important;right:clamp(22px,2.8vw,34px)!important;font-family:var(--font-head)!important;font-weight:700!important;font-size:var(--fs-h1)!important;line-height:1!important;color:#FFFFFF!important;opacity:.5!important;text-shadow:0 2px 16px rgba(4,16,28,.6)!important;pointer-events:none!important}
+/* approach: zig-zag timeline - odd steps above the line, even below; .on = popped (JS cycles it) */
+section#main-section .roles{--rg:96px;position:relative!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;grid-template-rows:1fr 1fr!important;column-gap:clamp(20px,2.6vw,38px)!important;row-gap:var(--rg)!important;margin-top:clamp(44px,5vw,64px)!important}
+section#main-section .roles::before{content:""!important;position:absolute!important;left:0!important;right:0!important;top:calc(50% - 1px)!important;height:2px!important;background:linear-gradient(90deg,var(--blue),var(--hair) 90%)!important}
+section#main-section .role{position:relative!important;isolation:isolate!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:10px!important;min-width:0!important;grid-row:1!important;align-self:end!important}
+section#main-section .role:nth-child(even){grid-row:2!important;align-self:start!important}
+section#main-section .role:nth-child(1){grid-column:1!important}
+section#main-section .role:nth-child(2){grid-column:2!important}
+section#main-section .role:nth-child(3){grid-column:3!important}
+section#main-section .role:nth-child(4){grid-column:4!important}
+section#main-section .role:nth-child(5){grid-column:5!important}
+section#main-section .role>*{transition:transform .35s var(--ez)!important}
+section#main-section .role.on>*{transform:translateY(-6px)!important}
+section#main-section .role:nth-child(even).on>*{transform:translateY(6px)!important}
+section#main-section .role::before{content:""!important;position:absolute!important;inset:-20px -16px!important;z-index:-1!important;border-radius:16px!important;border-bottom:2px solid var(--blue)!important;background:var(--card)!important;box-shadow:var(--sh-lg)!important;opacity:0!important;transform:scale(.94)!important;transition:opacity .3s var(--ez),transform .35s var(--ez)!important;pointer-events:none!important}
+section#main-section .role:nth-child(even)::before{border-bottom:0!important;border-top:2px solid var(--blue)!important}
+section#main-section .role.on::before{opacity:1!important;transform:none!important}
+/* stem + dot joining each step to the line */
+section#main-section .role::after{content:""!important;position:absolute!important;left:18px!important;top:100%!important;width:14px!important;height:calc(var(--rg)/2 + 7px)!important;background:linear-gradient(var(--hair),var(--hair)) 50% 0/2px calc(100% - 14px) no-repeat,radial-gradient(circle,var(--blue) 0 4px,rgba(0,131,200,.3) 4.5px 7px,transparent 7.5px) 50% 100%/14px 14px no-repeat!important;transition:background-size .3s var(--ez)!important}
+section#main-section .role:nth-child(even)::after{top:auto!important;bottom:100%!important;background-position:50% 100%,50% 0!important}
+section#main-section .role.on::after{background-image:linear-gradient(var(--blue),var(--blue)),radial-gradient(circle,var(--blue) 0 5px,rgba(0,131,200,.35) 5.5px 7px,transparent 7.5px)!important}
+section#main-section .rnum{font:700 clamp(38px,4.4vw,50px)/1 var(--font-head)!important;letter-spacing:-.05em!important;background:linear-gradient(130deg,var(--blue),var(--blue-l))!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+section#main-section .role h3{font-size:var(--fs-lg)!important}
+section#main-section .role p{font-size:var(--fs-md)!important;color:var(--muted)!important;line-height:normal!important}
+section#main-section .st-bar{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:16px!important;margin-top:clamp(20px,2.6vw,32px)!important}
+section#main-section .st-dots{display:flex!important;align-items:center!important;gap:4px!important}
+section#main-section .st-dot{width:34px!important;height:44px!important;display:grid!important;place-items:center!important}
+section#main-section .st-dot::before{content:""!important;width:24px!important;height:4px!important;border-radius:2px!important;background:var(--hair)!important;transition:background-color .25s var(--ez)!important}
+section#main-section .st-dot[aria-current="true"]::before{background:var(--blue)!important}
+section#main-section .st-btn{width:44px!important;height:44px!important;flex:none!important;border:1px solid var(--hair)!important;border-radius:12px!important;display:grid!important;place-items:center!important;color:var(--ink)!important;transition:border-color .22s var(--ez),color .22s var(--ez),background-color .22s var(--ez)!important}
+section#main-section .st-btn:hover:not(:disabled){border-color:var(--blue)!important;color:var(--blue)!important}
+section#main-section .st-btn:disabled{opacity:.35!important;cursor:not-allowed!important}
+section#main-section .st-btn svg{width:18px!important;height:18px!important}
+section#main-section .st-prev svg{transform:scaleX(-1)!important}
+section#main-section .stories{--sgap:clamp(16px,2vw,26px)!important;display:grid!important;grid-auto-flow:column!important;grid-auto-columns:calc((100% - var(--sgap))/2)!important;gap:var(--sgap)!important;margin-top:clamp(16px,2vw,22px)!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;padding-bottom:6px!important;scrollbar-width:none!important}
+section#main-section .stories::-webkit-scrollbar{display:none!important}
+section#main-section .story{position:relative!important;scroll-snap-align:start!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;min-height:clamp(380px,42vw,460px)!important;padding:clamp(22px,2.6vw,32px)!important;border-radius:clamp(20px,2.6vw,30px)!important;overflow:hidden!important;isolation:isolate!important;border:1px solid var(--line)!important;box-shadow:var(--sh)!important;transition:transform .3s var(--ez),box-shadow .3s var(--ez)!important}
+section#main-section .story:hover{transform:translateY(-8px)!important;box-shadow:var(--sh-lg)!important}
+section#main-section .story img{position:absolute!important;inset:0!important;z-index:-2!important;width:100%!important;height:100%!important;object-fit:cover!important;transition:transform .5s var(--ez)!important}
+section#main-section .story:hover img{transform:scale(1.05)!important}
+section#main-section .story::after{content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;background:linear-gradient(180deg,rgba(4,16,28,.28) 0%,rgba(4,16,28,.78) 52%,rgba(4,16,28,.94) 100%)!important}
+section#main-section .story h3{font-size:var(--fs-h3)!important;color:#fff!important;margin-bottom:12px!important}
+section#main-section .story p{font-size:var(--fs-sm)!important;line-height:normal!important;color:rgba(226,240,249,.84)!important}
+section#main-section .story .tagn{align-self:flex-start!important;margin-bottom:auto!important;padding:7px 14px!important;border-radius:10px!important;border:1px solid rgba(255,255,255,.22)!important;background:rgba(255,255,255,.1)!important;-webkit-backdrop-filter:blur(8px)!important;backdrop-filter:blur(8px)!important;font:700 var(--fs-xs)/1.25 var(--font-body)!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:#DCEDF8!important}
+section#main-section .marquee{margin-top:clamp(26px,3.4vw,42px)!important;overflow:hidden!important;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)!important;mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)!important}
+section#main-section .marquee ul{display:flex!important;align-items:stretch!important;gap:clamp(14px,1.8vw,26px)!important;width:max-content!important;padding:4px 0!important;animation:aiml-slide 34s linear infinite!important}
+section#main-section .marquee:hover ul{animation-play-state:paused!important}
+section#main-section .marquee li{display:grid!important;place-items:center!important;min-width:150px!important;padding:0 clamp(8px,1.4vw,18px)!important;transition:opacity .25s var(--ez)!important}
+section#main-section .marquee img{height:auto!important;max-height:42px!important;width:auto!important;object-fit:contain!important;opacity:.78!important;transition:opacity .25s var(--ez)!important}
+section#main-section .marquee img:hover{opacity:1!important}
+section#main-section[data-theme="dark"] .marquee img{opacity:.85!important}
+section#main-section[data-theme="dark"] .marquee img[src*="Rectangle-799"]{filter:brightness(0) invert(1)!important}
+section#main-section[data-theme="dark"] .marquee img:hover{opacity:1!important}
+/* ---- dark theme: black + graphite, technical grid textures ---- */
+section#main-section[data-theme="dark"] .aiml-sec--hero,section#main-section[data-theme="dark"] .aiml-sec--intro{background:#07080A!important;--body:rgba(228,230,235,.84)!important;--muted:#9A9FA8!important}
+section#main-section[data-theme="dark"] .aiml-sec.deep{--body:rgba(228,230,235,.8)!important;--muted:#9A9FA8!important;--card:rgba(255,255,255,.035)!important;--line:rgba(255,255,255,.1)!important;background:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px) 0 0/56px 56px,linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px) 0 0/56px 56px,radial-gradient(55% 70% at 100% 0%,rgba(0,131,200,.11),transparent 70%),var(--deep)!important}
+section#main-section[data-theme="dark"] .aiml-sec.tint{background:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.3px) 0 0/22px 22px,linear-gradient(180deg,#111113,#0C0C0E)!important}
+section#main-section[data-theme="dark"] .aiml-sec{box-shadow:inset 0 1px 0 rgba(255,255,255,.06)!important}
+section#main-section[data-theme="dark"] .story::after{background:linear-gradient(180deg,rgba(6,6,8,.3) 0%,rgba(6,6,8,.8) 52%,rgba(6,6,8,.95) 100%)!important}
+section#main-section[data-theme="dark"] .h-deck{color:rgba(228,230,235,.86)!important}
+section#main-section[data-theme="dark"] .h-tags li{color:#D4D7DD!important}
+@keyframes aiml-slide{to{transform:translateX(-50%)}}
+/* ---- light theme: intro / method / stories / partners drop their dark plates ----
+   sections alternate tint → white → tint … so no two neighbours share a surface */
+section#main-section[data-theme="light"] .aiml-sec--intro,section#main-section[data-theme="light"] .aiml-sec.deep{--ink:inherit!important;--body:inherit!important;--muted:inherit!important;--card:inherit!important;--glass:inherit!important;--line:inherit!important;--hair:inherit!important}
+section#main-section[data-theme="light"] .aiml-sec--intro,section#main-section[data-theme="light"] .aiml-sec--stories{background:var(--sb)!important}
+section#main-section[data-theme="light"] .aiml-sec--modeling{background:radial-gradient(60% 90% at 100% 0%,rgba(0,131,200,.08),transparent 70%),var(--sa)!important}
+section#main-section[data-theme="light"] .aiml-sec--partners{background:var(--sa)!important}
+section#main-section[data-theme="light"] .deep .kick,section#main-section[data-theme="light"] .aiml-sec--intro .kick{color:var(--acc-t)!important}
+section#main-section[data-theme="light"] .deep .kick::before,section#main-section[data-theme="light"] .aiml-sec--intro .kick::before{background:linear-gradient(90deg,var(--blue),transparent)!important}
+section#main-section[data-theme="light"] .aiml-sec--intro a{color:var(--blue-d)!important}
+/* same photo as dark, washed with the light surface - solid behind the copy, thinner toward the right */
+section#main-section[data-theme="light"] .intro-bg::after{content:""!important;position:absolute!important;inset:0!important;background:linear-gradient(90deg,rgba(242,248,253,.97) 0%,rgba(242,248,253,.92) 48%,rgba(242,248,253,.7) 100%)!important}
+section#main-section[data-theme="light"] .stage{padding:30px 24px 28px!important;background:none!important}
+section#main-section[data-theme="light"] .stages::before{top:68px!important}
+section#main-section[data-theme="light"] .stage b{background:var(--blue)!important;border-color:transparent!important;color:#FFFFFF!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:0 0 0 8px rgba(0,131,200,.1)!important}
+section#main-section[data-theme="light"] .stage:hover b{box-shadow:0 0 0 12px rgba(0,131,200,.14)!important}
+section#main-section[data-theme="light"] .story{justify-content:flex-start!important;min-height:0!important;padding:0!important;background:var(--card)!important;border-radius:20px!important}
+section#main-section[data-theme="light"] .story::after{display:none!important}
+section#main-section[data-theme="light"] .story img{position:relative!important;inset:auto!important;z-index:auto!important;flex:none!important;height:clamp(190px,19vw,230px)!important}
+section#main-section[data-theme="light"] .story:hover img{transform:none!important}
+section#main-section[data-theme="light"] .story .tagn{position:absolute!important;top:18px!important;left:18px!important;margin:0!important;background:#FFFFFF!important;border-color:transparent!important;color:var(--blue-d)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+section#main-section[data-theme="light"] .story h3{color:var(--ink)!important;margin:22px 24px 10px!important}
+section#main-section[data-theme="light"] .story p{color:var(--body)!important;margin:0 24px 26px!important}
+section#main-section[data-theme="light"] .marquee li{min-width:176px!important;height:84px!important;padding:0 24px!important;background:none!important}
+/* python + keras PNGs have light wordmarks drawn for dark grounds - darken just those two */
+section#main-section[data-theme="light"] .marquee img[src*="Rectangle-795"]{filter:invert(1) hue-rotate(180deg)!important}
+section#main-section[data-theme="light"] .marquee img[src*="Group-260"]{filter:brightness(.5)!important}
+section#main-section[data-theme="light"] .stages.in .stage{animation-name:aiml-node,aiml-lift!important}
+@keyframes aiml-lift{0%,26%{transform:translateY(-6px)}38%,94%{transform:none}100%{transform:translateY(-6px)}}
+/* ---- animations shared with ithena-big-data-analytics.html ---- */
+/* key-feature icons: no filled disc - a hairline orbit with a travelling light arc, soft halo and a floating glyph */
+section#main-section .kf .badge{position:relative!important;width:56px!important;height:56px!important;background:radial-gradient(circle,rgba(63,169,224,.16),transparent 70%)!important;color:var(--acc-t)!important}
+section#main-section .kf .badge::before,section#main-section .kf .badge::after{content:""!important;position:absolute!important;inset:0!important;border-radius:50%!important;pointer-events:none!important}
+section#main-section .kf .badge::after{border:1px solid var(--line)!important}
+section#main-section .kf .badge::before{background:conic-gradient(from 0deg,transparent 0 45%,rgba(0,131,200,.35) 70%,var(--blue-l) 94%,transparent 95%)!important;-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px))!important;mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px))!important;filter:drop-shadow(0 0 4px rgba(63,169,224,.8))!important;animation:bda-orbit 3.6s linear infinite!important}
+section#main-section .kf .badge svg{width:24px!important;height:24px!important;filter:drop-shadow(0 0 8px rgba(63,169,224,.45))!important;animation:bda-float 3.6s ease-in-out infinite!important}
+section#main-section .kf li:nth-child(2) .badge::before,section#main-section .kf li:nth-child(2) .badge svg{animation-delay:-.9s!important}
+section#main-section .kf li:nth-child(3) .badge::before,section#main-section .kf li:nth-child(3) .badge svg{animation-delay:-1.8s!important}
+section#main-section .kf li:nth-child(4) .badge::before,section#main-section .kf li:nth-child(4) .badge svg{animation-delay:-2.7s!important}
+section#main-section .kf li:hover .badge::before{animation-duration:1.2s!important}
+@keyframes bda-orbit{to{transform:rotate(360deg)}}
+@keyframes bda-float{0%,100%{transform:translateY(1.5px)}50%{transform:translateY(-2.5px)}}
+/* offerings: panel copy slides in whenever a panel is shown (display:none -> block restarts the animation) */
+section#main-section .panel:not([hidden])>h3,section#main-section .panel:not([hidden])>p,section#main-section .panel:not([hidden]) .ticks li{animation:bda-in .7s var(--ez) both!important}
+section#main-section .panel:not([hidden])>h3{animation-delay:.05s!important}
+section#main-section .panel:not([hidden])>p{animation-delay:.16s!important}
+section#main-section .panel:not([hidden])>p+p{animation-delay:.26s!important}
+section#main-section .panel:not([hidden]) .ticks li:nth-child(1){animation-delay:.34s!important}
+section#main-section .panel:not([hidden]) .ticks li:nth-child(2){animation-delay:.42s!important}
+section#main-section .panel:not([hidden]) .ticks li:nth-child(3){animation-delay:.5s!important}
+section#main-section .panel:not([hidden]) .ticks li:nth-child(4){animation-delay:.58s!important}
+section#main-section .panel:not([hidden]) .ticks li:nth-child(5){animation-delay:.66s!important}
+section#main-section .panel:not([hidden]) .ticks li:nth-child(6){animation-delay:.74s!important}
+section#main-section .panel:not([hidden])::after{animation:bda-bg 1s var(--ez) both!important}
+@keyframes bda-in{from{opacity:0;transform:translateX(-36px)}to{opacity:1;transform:none}}
+@keyframes bda-bg{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:none}}
+/* active tab + active subnav link: 1.3x and in focus, the rest recede (transform only - no layout shift) */
+section#main-section .tab-in{display:flex!important;align-items:center!important;gap:12px!important;min-width:0!important;max-width:calc(100% / 1.3)!important;transform-origin:0 50%!important;transition:transform .4s var(--ez),opacity .3s var(--ez)!important}
+section#main-section .tab[aria-selected="false"] .tab-in{opacity:.55!important}
+section#main-section .tab:hover .tab-in,section#main-section .tab:focus-visible .tab-in{opacity:1!important}
+section#main-section .tab[aria-selected="true"] .tab-in{transform:scale(1.3)!important}
+section#main-section .subnav a{transition:color .22s var(--ez),transform .35s var(--ez),opacity .3s var(--ez)!important}
+section#main-section .subnav a:not([aria-current="true"]){opacity:.6!important}
+section#main-section .subnav a:hover,section#main-section .subnav a:focus-visible{opacity:1!important}
+section#main-section .subnav a[aria-current="true"]{transform:scale(1.3)!important;transform-origin:50% 60%!important}
+section#main-section .subnav a:first-child[aria-current="true"]{transform-origin:0 60%!important}
+
+/* modeling stages: same orbit icon as the big-data key features (replaces glass disc / solid light disc) */
+section#main-section .stage b,section#main-section[data-theme="light"] .stage b{background:radial-gradient(circle,rgba(63,169,224,.16),transparent 70%)!important;border:1px solid var(--line)!important;color:var(--acc-t)!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+section#main-section .stage b::before{content:""!important;position:absolute!important;inset:-1px!important;border-radius:50%!important;pointer-events:none!important;background:conic-gradient(from 0deg,transparent 0 45%,rgba(0,131,200,.35) 70%,var(--blue-l) 94%,transparent 95%)!important;-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px))!important;mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px))!important;filter:drop-shadow(0 0 4px rgba(63,169,224,.8))!important;animation:bda-orbit 3.6s linear infinite!important}
+section#main-section .stage b svg{filter:drop-shadow(0 0 8px rgba(63,169,224,.45))!important;animation:bda-float 3.6s ease-in-out infinite!important}
+section#main-section .stage:nth-child(2) b::before,section#main-section .stage:nth-child(2) b svg{animation-delay:-1.2s!important}
+section#main-section .stage:nth-child(3) b::before,section#main-section .stage:nth-child(3) b svg{animation-delay:-2.4s!important}
+/* modeling stages: JS lights one stage every 2s (like the big-data platform cards) - replaces the CSS focus loop */
+section#main-section .stages.in .stage,section#main-section[data-theme="light"] .stages.in .stage{animation:aiml-node .6s var(--ez) forwards!important}
+section#main-section .stages.in .stage:nth-child(2){animation-delay:.22s!important}
+section#main-section .stages.in .stage:nth-child(3){animation-delay:.44s!important}
+section#main-section .stages.in .stage b::after{animation:none!important;opacity:0!important}
+section#main-section .stage{transition:transform .55s var(--ez),box-shadow .55s var(--ez),background-color .55s var(--ez),opacity .4s var(--ez)!important}
+section#main-section .stages.in.live .stage:not(.on){opacity:.55!important}
+section#main-section .stages.in .stage.on{z-index:3!important;opacity:1!important;transform:scale(1.3)!important;border-radius:6px!important;background:var(--sb)!important;box-shadow:0 0 0 18px var(--sb),0 30px 70px rgba(0,0,0,.4)!important}
+section#main-section[data-theme="light"] .stages.in .stage.on{background:var(--sa)!important;box-shadow:0 0 0 18px var(--sa),0 30px 70px rgba(0,45,80,.18)!important}
+section#main-section .stages.in .stage.on b::before{animation-duration:1.2s!important}
+section#main-section .stage:nth-child(1){transform-origin:0 0!important}
+section#main-section .stage:nth-child(2){transform-origin:50% 0!important}
+section#main-section .stage:nth-child(3){transform-origin:100% 0!important}
+/* connector fills up to the active stage (JS sets --p) */
+section#main-section .stages::after{content:""!important;position:absolute!important;left:12%!important;top:38px!important;height:2px!important;width:var(--p,0%)!important;background:linear-gradient(90deg,var(--blue),var(--blue-l))!important;box-shadow:0 0 12px rgba(63,169,224,.7)!important;transition:width .6s var(--ez)!important;pointer-events:none!important}
+section#main-section[data-theme="light"] .stages::after{top:68px!important}
+@media (max-width:860px){
+section#main-section .stages::after{display:none!important}
+section#main-section .stages.in .stage.on{transform:scale(1.04)!important}
+section#main-section .stage:nth-child(n){transform-origin:50% 50%!important}
+}
+section#main-section .rev{opacity:0!important;transform:translateY(18px)!important;transition:opacity .62s var(--ez),transform .62s var(--ez)!important}
+section#main-section .rev.in{opacity:1!important;transform:none!important}
+@media (max-width:1040px){
+section#main-section .split{grid-template-columns:1fr!important}
+section#main-section .roles{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:none!important;row-gap:44px!important;padding-left:40px!important}
+section#main-section .roles::before{left:6px!important;right:auto!important;top:0!important;bottom:0!important;width:2px!important;height:auto!important;background:linear-gradient(180deg,var(--blue),var(--hair) 90%)!important}
+section#main-section .role,section#main-section .role:nth-child(n){grid-row:auto!important;grid-column:auto!important;align-self:auto!important}
+section#main-section .role::after,section#main-section .role:nth-child(n)::after{left:-40px!important;top:14px!important;bottom:auto!important;height:14px!important;background-size:0 0,14px 14px!important;background-position:0 0,50% 50%!important}
+section#main-section .role:nth-child(n)::before{border:0!important;border-left:2px solid var(--blue)!important}
+section#main-section .role:nth-child(n).on>*{transform:translateX(6px)!important}
+section#main-section .intro-copy{max-width:none!important}
+section#main-section[data-theme="light"] .intro-bg::after{background:rgba(242,248,253,.92)!important}
+}
+@media (max-width:860px){
+section#main-section .two{grid-template-columns:1fr!important}
+section#main-section .fig-first{order:-1!important}
+section#main-section .stories{grid-auto-columns:100%!important}
+section#main-section .stages{grid-template-columns:1fr!important}
+section#main-section .stages::before{display:none!important}
+section#main-section .panel::after{display:none!important}
+section#main-section .panel .num{color:var(--blue)!important;opacity:.12!important;text-shadow:none!important}
+section#main-section .panel p{max-width:62ch!important}
+}
+@media (max-width:560px){
+section#main-section .btn{width:100%!important}
+section#main-section .h-title{max-width:none!important}
+}
+@media (prefers-reduced-motion:reduce){
+section#main-section *,section#main-section *::before,section#main-section *::after{transition-duration:.001ms!important;animation:none!important}
+section#main-section .rev{opacity:1!important;transform:none!important}
+section#main-section .stages .stage{opacity:1!important;transform:none!important}
+}
+/* ---- subnav: identical on all three pages - sticky horizontal bar, active link 1.3x, others recede; extra gap so the active link clears its neighbours ---- */
+section#main-section .subnav-card{gap:clamp(18px,3vw,44px)!important}
+/* ---- pop states (platform cards, approach steps, method stages, key features): no card surface - only the content enlarges ---- */
+section#main-section{--z:1.3}
+section#main-section .pop-body{transition:transform .5s var(--ez)!important}
+section#main-section .card.on,section#main-section .card.on:nth-child(n),section#main-section .kf li.on,section#main-section .kf li.on:nth-child(n),section#main-section .stages.in .stage.on,section#main-section[data-theme="light"] .stages.in .stage.on,section#main-section[data-theme="light"] .card.on,section#main-section[data-theme="light"] .kf li.on{transform:none!important;background:none!important;box-shadow:none!important;border-radius:0!important}
+/* at rest the text is 1/z wide, so at z it fills its column instead of spilling onto neighbours */
+section#main-section .card .pop-body{display:flex!important;flex-direction:column!important;gap:12px!important;max-width:calc(100% / var(--z))!important;transform-origin:0 0!important}
+section#main-section .card.on .pop-body{transform:scale(var(--z))!important}
+section#main-section .kf h3{max-width:calc((100% - 70px) / var(--z))!important;transform-origin:0 50%!important;transition:transform .5s var(--ez)!important}
+section#main-section .kf li.on h3{transform:scale(var(--z))!important}
+section#main-section .role::before,section#main-section .role.on::before,section#main-section .role:nth-child(n).on::before{display:none!important}
+section#main-section .role .pop-body{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:10px!important;max-width:calc(100% / var(--z))!important;transform-origin:0 100%!important}
+section#main-section .role:nth-child(even) .pop-body{transform-origin:0 0!important}
+section#main-section .role.on .pop-body{transform:translateY(-6px) scale(var(--z))!important}
+section#main-section .role:nth-child(even).on .pop-body{transform:translateY(6px) scale(var(--z))!important}
+/* method: icon + text enlarge around the icon centre; connector is per-gap segments that stop short of the icons */
+section#main-section .stages::before,section#main-section .stages::after{display:none!important}
+section#main-section .stage .pop-body{display:grid!important;justify-items:center!important;gap:16px!important;transform-origin:50% 38px!important}
+section#main-section .stages.in .stage.on .pop-body{transform:scale(var(--z))!important}
+section#main-section .stage:not(:last-child)::after{content:""!important;position:absolute!important;top:calc(var(--st,0px) + 37px)!important;left:calc(50% + 62px)!important;width:calc(100% + clamp(16px,2.4vw,30px) - 124px)!important;height:2px!important;border-radius:2px!important;background:repeating-linear-gradient(90deg,rgba(63,169,224,.5) 0 8px,transparent 8px 17px)!important;transition:box-shadow .5s var(--ez)!important;pointer-events:none!important}
+section#main-section .stage.past::after{background:linear-gradient(90deg,var(--blue),var(--blue-l))!important;box-shadow:0 0 12px rgba(63,169,224,.7)!important}
+section#main-section[data-theme="light"] .stage{--st:30px}
+@media (max-width:1040px){
+section#main-section{--z:1.12}
+section#main-section .role .pop-body,section#main-section .role:nth-child(even) .pop-body{transform-origin:0 0!important}
+section#main-section .role:nth-child(n).on .pop-body{transform:translateX(6px) scale(var(--z))!important}
+}
+@media (max-width:860px){section#main-section .stage::after{display:none!important}}
+</style>
+
+<section id="main-section" class="aiml-page" data-theme="dark">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": "https://ithena.ai/ai-ml-data-science/#service",
+        "name": "AI/ML and Data Science Services",
+        "serviceType": "Artificial Intelligence and Machine Learning consulting",
+        "description": "ITHENA delivers AI, ML, and data science solutions that help enterprises analyze data, build predictive models, and make smarter decisions.",
+        "url": "https://ithena.ai/ai-ml-data-science/",
+        "provider": { "@type": "Organization", "name": "ITHENA", "url": "https://ithena.ai/" },
+        "areaServed": "Global",
+        "audience": { "@type": "BusinessAudience", "audienceType": "Manufacturing, supply chain, e-commerce and industrial enterprises" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "AI/ML offerings",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sales & Promotion Analytics", "description": "Customer analytics that drives revenue by upselling, cross-selling, building on customer loyalty, and using targeted promotions and advertising tools like basket analysis." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Operations Analytics", "description": "AI/ML-based frameworks that uplift operational functions including supply chain management, demand forecasting, inventory optimization, and logistics and transportation." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Manufacturing Analytics", "description": "Production planning and predictive maintenance, optimum product quality, and easier management of production and workforce." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Service Analytics", "description": "Customer service excellence in the back office and on the field, improving satisfaction while reducing operations and warranty costs." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digitization", "description": "Machine Learning capability providing NLP, chatbots for customer assistance, image to text recognition, and machine vision for visual analytics." } }
+          ]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ithena.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://ithena.ai/services/" },
+          { "@type": "ListItem", "position": 3, "name": "AI/ML | Data Science" }
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "name": "AI/ML success stories",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Experience personalized smart chat bot for customer engagement" },
+          { "@type": "ListItem", "position": 2, "name": "Implemented automated social listing and ticketing for automobile industry" },
+          { "@type": "ListItem", "position": 3, "name": "Simplify Manufacturing process with ITHENA's AI / ML-enabled forecasting" },
+          { "@type": "ListItem", "position": 4, "name": "Water quality prediction using machine learning techniques" },
+          { "@type": "ListItem", "position": 5, "name": "Inventory replenishment for an e-commerce company" }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+    <defs>
+      <g id="a-layers"><path d="M12 3l9 4.6-9 4.6-9-4.6z"/><path d="M3 12.2l9 4.6 9-4.6M3 16.6l9 4.6 9-4.6"/></g>
+      <g id="a-check"><circle cx="12" cy="12" r="9"/><path d="M8 12.2l2.8 2.8L16 9.8"/></g>
+      <g id="a-eye"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3.2"/></g>
+      <g id="a-cart"><path d="M3 4h2.2l2.4 11h10L20 7H6.2"/><circle cx="9.5" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></g>
+      <g id="a-cog"><circle cx="12" cy="12" r="3.4"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M18.8 5.2l-2.1 2.1M7.3 16.7l-2.1 2.1"/></g>
+      <g id="a-factory"><path d="M3 20V10l5 3.5V10l5 3.5V10l5 3.5V20z"/><path d="M3 20h18"/></g>
+      <g id="a-headset"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><path d="M4 13h2.5a1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM20 13h-2.5a1 1 0 0 0-1 1v3.5a1 1 0 0 0 1 1H19a1 1 0 0 0 1-1z"/></g>
+      <g id="a-chat"><path d="M20 15.5A2.5 2.5 0 0 1 17.5 18H9l-4 3v-3H6.5A2.5 2.5 0 0 1 4 15.5v-8A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5z"/><path d="M8.5 9.5h7M8.5 13h4.5"/></g>
+      <g id="a-arrow"><path d="M4.5 12h14.2M12.8 6l6 6-6 6"/></g>
+    </defs>
+  </svg>
+
+  <article>
+
+  <header class="aiml-sec aiml-sec--hero">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="https://dev-website.ithena.app/wp-content/uploads/al_opt_content/IMAGE/dev-website.ithena.app/wp-content/uploads/2024/02/ai-ml-1.jpg.bv.webp" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+    </div>
+    <div class="wrap hero-in">
+      <div>
+        <p class="kick">Data Management</p>
+        <h1 class="h-title">AI/ML <em>Data Science</em></h1>
+        <p class="h-deck">Driving innovation with ITHENA&rsquo;s AI/ML services - converging disparate sources of data into one unified interface, so companies look forward instead of deciding in the rearview mirror.</p>
+        <ul class="h-tags">
+          <li>Predictive models</li>
+          <li>NLP &amp; chatbots</li>
+          <li>Machine vision</li>
+          <li>Demand forecasting</li>
+          <li>Persona-based analytics</li>
+        </ul>
+        <div class="btns">
+          <!-- <a class="btn btn-p" href="https://ithena.ai/contact-us/">Schedule a Call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#a-arrow"/></svg></a> -->
+          <a class="btn btn-o" href="#aiml-offerings" style="border-color:rgba(255,255,255,.28)!important;color:#fff!important">Explore offerings</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" id="aiml-nav" aria-label="On this page">
+    <div class="wrap">
+      <div class="subnav-card">
+        <a href="#aiml-intro">Overview</a>
+        <a href="#aiml-modeling">Modeling Approach</a>
+        <a href="#aiml-offerings">Offerings</a>
+        <a href="#aiml-approach">Approach</a>
+        <a href="#aiml-stories">Success Stories</a>
+        <a href="#aiml-partners">Partnerships</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="aiml-sec aiml-sec--intro" id="aiml-intro">
+    <div class="intro-bg" aria-hidden="true">
+      <img src="https://ithena.ai/wp-content/uploads/2023/06/intro-2.webp" alt="" width="1200" height="900" loading="lazy" decoding="async">
+    </div>
+    <div class="wrap">
+      <div class="rev intro-copy">
+        <p class="kick">Artificial Intelligence &amp; Machine Learning</p>
+        <h2>ITHENA&rsquo;s AI and ML capabilities have helped solve <em>real-world problems</em></h2>
+        <div class="railtext">
+          <p class="lead">Converging the disparate sources of Data to bring a unified interface &ndash; to help make companies forward-looking rather than making decisions in the rearview mirror &ndash; is what our AI teams deliver.</p>
+          <p class="body">With the help of our <a href="https://www.ithena.ai/our-platform/">persona-based platform</a> we help convert the organizational culture of our customers across sales, marketing, operations, supply chain management, engineering, manufacturing, and customer service from reactive to prepared and proactive.</p>
+          <p class="body">Build next-gen AI / ML solutions with ITHENA to embrace the real potential of digital transformation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aiml-sec aiml-sec--modeling deep" id="aiml-modeling">
+    <div class="wrap">
+      <div class="rev">
+        <p class="kick">Method</p>
+        <h2>Machine Learning <em>Modeling Approach</em></h2>
+        <p class="lead">Three connected stages take raw, scattered enterprise data through to a validated model your teams can act on.</p>
+      </div>
+      <div class="stages rev">
+        <div class="stage"><div class="pop-body">
+          <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#a-layers"/></svg></b>
+          <h3>Engineer &amp; Aggregate</h3>
+          <p>Disparate sources converged into one usable set.</p></div>
+        </div>
+        <div class="stage"><div class="pop-body">
+          <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#a-check"/></svg></b>
+          <h3>Analyze &amp; Validate</h3>
+          <p>Patterns and correlations tested against the business question.</p></div>
+        </div>
+        <div class="stage"><div class="pop-body">
+          <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#a-eye"/></svg></b>
+          <h3>Visualize &amp; Integrate</h3>
+          <p>Results surfaced where the decision actually gets made.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aiml-sec aiml-sec--offerings tint" id="aiml-offerings">
+    <div class="wrap">
+      <div class="rev">
+        <p class="kick">Offerings</p>
+        <h2>AI/ML is fast becoming a cornerstone for <em>future readiness</em></h2>
+        <p class="lead">As the world is moving beyond automation towards &ldquo;autonomous&rdquo;, AI/ML is fast becoming a cornerstone for the future readiness of organizations. Get to know more about our AI/ML offerings.</p>
+      </div>
+      <div class="tabs rev">
+        <div class="tablist" role="tablist" aria-label="AI/ML offerings" id="aimlTabs">
+          <button class="tab" type="button" role="tab" id="t-sales" aria-controls="p-sales" aria-selected="true"><span class="tab-in"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#a-cart"/></svg></i>Sales &amp; Promotion Analytics</span></button>
+          <button class="tab" type="button" role="tab" id="t-ops" aria-controls="p-ops" aria-selected="false" tabindex="-1"><span class="tab-in"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#a-cog"/></svg></i>Operations Analytics</span></button>
+          <button class="tab" type="button" role="tab" id="t-mfg" aria-controls="p-mfg" aria-selected="false" tabindex="-1"><span class="tab-in"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#a-factory"/></svg></i>Manufacturing Analytics</span></button>
+          <button class="tab" type="button" role="tab" id="t-svc" aria-controls="p-svc" aria-selected="false" tabindex="-1"><span class="tab-in"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#a-headset"/></svg></i>Service Analytics</span></button>
+          <button class="tab" type="button" role="tab" id="t-dig" aria-controls="p-dig" aria-selected="false" tabindex="-1"><span class="tab-in"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#a-chat"/></svg></i>Digitization</span></button>
+        </div>
+        <div class="panels">
+          <div class="panel" role="tabpanel" id="p-sales" style="--pbg:url(https://ithena.ai/wp-content/uploads/2023/07/Group-451.webp)" aria-labelledby="t-sales" tabindex="0">
+            <span class="num" aria-hidden="true">01</span>
+            <h3>Sales &amp; Promotion Analytics</h3>
+            <p>ITHENA&rsquo;s sales analytics solution includes customer analytics which focuses on and drives revenues by upselling, cross-selling, building on customer loyalty, and using targeted promotions and advertising tools like basket analysis.</p>
+          </div>
+          <div class="panel" role="tabpanel" id="p-ops" style="--pbg:url(https://ithena.ai/wp-content/uploads/2023/07/Group-455.webp)" aria-labelledby="t-ops" tabindex="0" hidden>
+            <span class="num" aria-hidden="true">02</span>
+            <h3>Operations Analytics</h3>
+            <p>The AI/ML-based frameworks built by ITHENA will uplift your operational functions including your supply chain management, and will also help you with demand forecasting, inventory optimization, and logistics &amp; transportation.</p>
+          </div>
+          <div class="panel" role="tabpanel" id="p-mfg" style="--pbg:url(https://ithena.ai/wp-content/uploads/2023/07/Group-454.webp)" aria-labelledby="t-mfg" tabindex="0" hidden>
+            <span class="num" aria-hidden="true">03</span>
+            <h3>Manufacturing Analytics</h3>
+            <p>With ITHENA&rsquo;s experience in manufacturing, you will have an advantage in planning your production and carrying out predictive maintenance. Our solutions will help set up the optimum quality for your products and manage production and workforce with ease.</p>
+          </div>
+          <div class="panel" role="tabpanel" id="p-svc" style="--pbg:url(https://ithena.ai/wp-content/uploads/2023/07/Group-453.webp)" aria-labelledby="t-svc" tabindex="0" hidden>
+            <span class="num" aria-hidden="true">04</span>
+            <h3>Service Analytics</h3>
+            <p>Our purpose is to drive customer service excellence as part of the back office as well as on the field. By utilizing service analytics, customers have improved satisfaction and you benefit from reduced operations and warranty costs.</p>
+          </div>
+          <div class="panel" role="tabpanel" id="p-dig" style="--pbg:url(https://ithena.ai/wp-content/uploads/2023/07/Group-452.webp)" aria-labelledby="t-dig" tabindex="0" hidden>
+            <span class="num" aria-hidden="true">05</span>
+            <h3>Digitization</h3>
+            <p>ITHENA&rsquo;s Machine Learning (ML) capability provides features like NLP, chatbots to answer a human request in customer assistance scenarios, image to text recognition, and machine vision for visual analytics.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aiml-sec aiml-sec--approach" id="aiml-approach">
+    <div class="wrap">
+      <div class="rev">
+        <p class="kick">Approach</p>
+        <h2>A holistic approach for shaping and implementing our <em>AI / ML services</em></h2>
+        <p class="lead">Five stages, from the first look at your data through to support once the model is running against live data sets.</p>
+      </div>
+      <div class="roles rev">
+        <article class="role"><div class="pop-body">
+          <span class="rnum" aria-hidden="true">01</span>
+          <h3>Analysis</h3>
+          <p>Analyzing and understanding data &amp; business requirements</p>
+        </div></article>
+        <article class="role"><div class="pop-body">
+          <span class="rnum" aria-hidden="true">02</span>
+          <h3>Investigate</h3>
+          <p>Data sourcing &amp; processing these data to find patterns and correlations</p>
+        </div></article>
+        <article class="role"><div class="pop-body">
+          <span class="rnum" aria-hidden="true">03</span>
+          <h3>Model Development</h3>
+          <p>Modelling, Ingestion &amp; Quick POC with Quality Control</p>
+        </div></article>
+        <article class="role"><div class="pop-body">
+          <span class="rnum" aria-hidden="true">04</span>
+          <h3>Model Deployment</h3>
+          <p>AI/ML model deployment followed by testing</p>
+        </div></article>
+        <article class="role"><div class="pop-body">
+          <span class="rnum" aria-hidden="true">05</span>
+          <h3>Roll Out</h3>
+          <p>Integrating the model &amp; providing support services to make sure it works on various data sets</p>
+        </div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="aiml-sec aiml-sec--stories deep" id="aiml-stories">
+    <div class="wrap">
+      <div class="rev">
+        <p class="kick">Success Stories</p>
+        <h2>Where our AI / ML services have helped clients <em>deliver value</em></h2>
+        <p class="lead">Selected success stories where our AI / ML Service have helped our clients deliver value.</p>
+      </div>
+      <div class="st-bar rev">
+        <div class="st-dots" id="aimlDots">
+          <button class="st-dot" type="button" aria-current="true" aria-label="Go to slide group 1"></button>
+          <button class="st-dot" type="button" aria-label="Go to slide group 2"></button>
+          <button class="st-dot" type="button" aria-label="Go to slide group 3"></button>
+        </div>
+        <button class="st-btn st-prev" type="button" id="aimlPrev" aria-label="Previous stories" aria-controls="aimlStories" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a-arrow"/></svg></button>
+        <button class="st-btn st-next" type="button" id="aimlNext" aria-label="Next stories" aria-controls="aimlStories"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a-arrow"/></svg></button>
+      </div>
+      <div class="stories rev" id="aimlStories" tabindex="0" role="group" aria-label="Success stories">
+        <article class="story">
+          <img src="https://ithena.ai/wp-content/uploads/2023/06/1-3.jpg" alt="Smart chatbot supporting customers on a retail floor" width="1200" height="800" loading="lazy" decoding="async">
+          <span class="tagn">E-commerce</span>
+          <h3>Experience personalized smart chat bot for customer engagement</h3>
+          <p>For an e-commerce company, we integrated a smart chatbot on the retail floor to drive customer engagement and service for the company. Leveraging the power of artificial intelligence and natural language processing, the chatbot served as a versatile and proactive assistant, adept at handling customers&rsquo; inquiries, showcasing products, and engaging with the right individuals based on thorough profile analysis.</p>
+        </article>
+        <article class="story">
+          <img src="https://ithena.ai/wp-content/uploads/2023/03/k.jpg" alt="Automated social listening and ticketing for an automobile manufacturer" width="1200" height="800" loading="lazy" decoding="async">
+          <span class="tagn">Automotive</span>
+          <h3>Implemented automated social listing and ticketing for automobile industry</h3>
+          <p>For an auto manufacturing company, we leveraged Natural Language Processing which led to a significant enhancement in customer service, ultimately resulting in increased customer satisfaction and streamlined communication processes. By leveraging NLP technology, the auto manufacturing company can now identify and understand customers more effectively.</p>
+        </article>
+        <article class="story">
+          <img src="https://ithena.ai/wp-content/uploads/2023/03/b.jpg" alt="AI-enabled demand forecasting for an FMCG manufacturer" width="1200" height="800" loading="lazy" decoding="async">
+          <span class="tagn">FMCG</span>
+          <h3>Simplify Manufacturing process with ITHENA&rsquo;s AI / ML-enabled forecasting</h3>
+          <p>For an FMCG company, we automated demand forecast for goods &amp; services for each geographic area and optimized power &amp; raw materials for maximum productivity. The implementation of supply chain and logistics optimization using supervised learning was also carried out. The holistic integration of automation and optimization technologies has transformed the FMCG company&rsquo;s operations, enhancing its competitiveness, productivity, and sustainability.</p>
+        </article>
+        <article class="story">
+          <img src="https://ithena.ai/wp-content/uploads/2023/06/4.jpg" alt="Water quality prediction at a mineral water bottling plant" width="1200" height="800" loading="lazy" decoding="async">
+          <span class="tagn">Utilities</span>
+          <h3>Water quality prediction using machine learning techniques</h3>
+          <p>To evaluate the quality of water for a mineral water bottling plant we used Machine Learning techniques like clustering and factor analysis. The combination of clustering and factor analysis enabled the bottling plant to gain a comprehensive understanding of water quality across various dimensions. Furthermore, the application of Unsupervised Learning techniques ensured that the evaluation process is adaptable and data-driven.</p>
+        </article>
+        <article class="story">
+          <img src="https://ithena.ai/wp-content/uploads/2026/03/16944-lastslider-slide5.jpg" alt="Inventory replenishment and demand forecasting for an e-commerce company" width="1200" height="800" loading="lazy" decoding="async">
+          <span class="tagn">Supply chain</span>
+          <h3>Inventory replenishment for an e-commerce company</h3>
+          <p>By leveraging reinforcement learning in an e-commerce company&rsquo;s demand forecasting and inventory management process, we provided accurate demand forecasting, optimize supplier lead times, maintain safety stock levels, and prevent stock-outs, thereby ensuring a seamless and satisfying shopping experience for its customers.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="aiml-sec aiml-sec--partners tint" id="aiml-partners">
+    <div class="wrap">
+      <div class="rev">
+        <p class="kick">Partnerships</p>
+        <h2>A <em>robust ecosystem</em> of ISVs behind our solutions and services</h2>
+        <p class="lead">We have a robust ecosystem of ISVs to support our solutions and services.</p>
+      </div>
+      <div class="marquee rev" aria-label="Partner technologies">
+        <ul>
+          <li><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-799.png" alt="ITHENA partner technology" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-798.png" alt="ITHENA partner technology" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-796.png" alt="ITHENA partner technology" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-795.png" alt="ITHENA partner technology" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li><img src="https://ithena.ai/wp-content/uploads/2023/06/Group-260.png" alt="ITHENA partner technology" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-799.png" alt="" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-798.png" alt="" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-796.png" alt="" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-795.png" alt="" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="https://ithena.ai/wp-content/uploads/2023/06/Group-260.png" alt="" width="150" height="46" loading="lazy" decoding="async"></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  </article>
+
+</section>
+
+<script>
+  (function(){
+    "use strict";
+    var root=document.querySelector('section.aiml-page');
+    if(!root||root.dataset.bound) return;
+    root.dataset.bound='1';
+
+    var themeToggle=document.getElementById('themeToggle');
+    var stored=null; try{ stored=localStorage.getItem('fbb-theme'); }catch(e){}
+    setTheme(stored||'dark');
+
+    function setTheme(mode){
+      root.setAttribute('data-theme',mode);
+      if(themeToggle) themeToggle.setAttribute('aria-pressed',mode==='dark'?'true':'false');
+      try{ localStorage.setItem('fbb-theme',mode); }catch(e){}
+    }
+    if(themeToggle){
+      themeToggle.addEventListener('click',function(){
+        setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
+      });
+    }
+
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 3s autoplay; pauses while pointer or keyboard focus is inside box, off for reduced motion
+    function autoplay(box,step,ms){
+      if(reduce||!box) return;
+      var t, run=function(){ clearInterval(t); t=setInterval(step,ms||3000); }, stop=function(){ clearInterval(t); };
+      box.addEventListener('mouseenter',stop); box.addEventListener('mouseleave',run);
+      box.addEventListener('focusin',stop); box.addEventListener('focusout',run);
+      run();
+    }
+
+    var tabs=[].slice.call(root.querySelectorAll('#aimlTabs .tab'));
+    function select(i,focus){
+      if(i<0) i=tabs.length-1;
+      if(i>=tabs.length) i=0;
+      tabs.forEach(function(t,j){
+        var on=j===i, p=document.getElementById(t.getAttribute('aria-controls'));
+        t.setAttribute('aria-selected',on?'true':'false');
+        if(on) t.removeAttribute('tabindex'); else t.setAttribute('tabindex','-1');
+        if(p) p.hidden=!on;
+      });
+      var list=tabs[i].parentNode;
+      if(list.scrollWidth>list.clientWidth) list.scrollTo({left:tabs[i].offsetLeft-(list.clientWidth-tabs[i].offsetWidth)/2,behavior:reduce?'auto':'smooth'});
+      if(focus) tabs[i].focus();
+    }
+    tabs.forEach(function(t,i){
+      t.addEventListener('click',function(){ select(i,false); });
+      t.addEventListener('keydown',function(e){
+        var k=e.key;
+        if(k==='ArrowRight'||k==='ArrowDown') select(i+1,true);
+        else if(k==='ArrowLeft'||k==='ArrowUp') select(i-1,true);
+        else if(k==='Home') select(0,true);
+        else if(k==='End') select(tabs.length-1,true);
+        else return;
+        e.preventDefault();
+      });
+    });
+    if(tabs.length) autoplay(root.querySelector('.tabs'),function(){
+      select(tabs.findIndex(function(t){ return t.getAttribute('aria-selected')==='true'; })+1,false);
+    });
+
+
+    // modeling: one stage lights up every 2s, connector fills to it (same rhythm as big-data platform cards)
+    var stageBox=root.querySelector('.stages'), stages=[].slice.call(root.querySelectorAll('.stages .stage')), sn=0;
+    function glow(i){
+      sn=i%stages.length;
+      stages.forEach(function(s,j){ s.classList.toggle('on',j===sn); s.classList.toggle('past',j<sn); });
+    }
+    stages.forEach(function(s,i){ s.addEventListener('mouseenter',function(){ glow(i); }); });
+    if(stages.length&&!reduce){ stageBox.classList.add('live'); glow(0); autoplay(stageBox,function(){ glow(sn+1); },2000); }
+
+    var roles=[].slice.call(root.querySelectorAll('.roles .role')), ri=0;
+    function pop(i){ ri=i%roles.length; roles.forEach(function(r,j){ r.classList.toggle('on',j===ri); }); }
+    roles.forEach(function(r,i){ r.addEventListener('mouseenter',function(){ pop(i); }); });
+    if(roles.length){
+      if(!reduce) pop(0);
+      autoplay(root.querySelector('.roles'),function(){ pop(ri+1); });
+    }
+
+    var rail=root.querySelector('#aimlStories'),
+        sPrev=root.querySelector('#aimlPrev'),
+        sNext=root.querySelector('#aimlNext'),
+        sDots=[].slice.call(root.querySelectorAll('#aimlDots .st-dot'));
+    if(rail&&sPrev&&sNext){
+      var lastPage=-1;
+      var maxPage=function(){ return Math.max(0,Math.round((rail.scrollWidth-rail.clientWidth)/rail.clientWidth)); };
+      var curPage=function(){ return rail.clientWidth?Math.round(rail.scrollLeft/rail.clientWidth):0; };
+      var go=function(p){ rail.scrollTo({left:p*rail.clientWidth,behavior:reduce?'auto':'smooth'}); };
+      var sync=function(){
+        var p=curPage(), m=maxPage();
+        if(p===lastPage) return;
+        lastPage=p;
+        sPrev.disabled=p<=0;
+        sNext.disabled=p>=m;
+        sDots.forEach(function(d,i){
+          d.hidden=i>m;
+          if(i===p) d.setAttribute('aria-current','true'); else d.removeAttribute('aria-current');
+        });
+      };
+      sPrev.addEventListener('click',function(){ go(curPage()-1); });
+      sNext.addEventListener('click',function(){ go(curPage()+1); });
+      sDots.forEach(function(d,i){ d.addEventListener('click',function(){ go(i); }); });
+      rail.addEventListener('scroll',function(){ sync(); },{passive:true});
+      addEventListener('resize',function(){ lastPage=-1; sync(); });
+      sync();
+      autoplay(rail.parentNode,function(){ go(curPage()>=maxPage()?0:curPage()+1); });
+    }
+
+    var revs=[].slice.call(root.querySelectorAll('.rev'));
+    revs.forEach(function(el){
+      var sibs=[].filter.call(el.parentNode.children,function(c){return c.classList.contains('rev')});
+      el.style.transitionDelay=(Math.min(sibs.indexOf(el),4)*0.07)+'s';
+    });
+
+    var links=[].slice.call(root.querySelectorAll('#aiml-nav a')),
+        secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))}),
+        bar=links.length?links[0].parentNode:null;
+
+    function onScroll(){
+      var best=0;
+      secs.forEach(function(s,j){ if(s&&s.getBoundingClientRect().top<innerHeight*0.4) best=j; });
+      links.forEach(function(a,j){
+        if(j!==best){ a.removeAttribute('aria-current'); return; }
+        if(a.getAttribute('aria-current')!=='true'&&bar&&bar.scrollWidth>bar.clientWidth){
+          bar.scrollTo({left:a.offsetLeft-20,behavior:reduce?'auto':'smooth'});
+        }
+        a.setAttribute('aria-current','true');
+      });
+      for(var n=revs.length-1;n>=0;n--){
+        if(revs[n].getBoundingClientRect().top>innerHeight*0.9) continue;
+        revs[n].classList.add('in'); revs.splice(n,1);
+      }
+    }
+    addEventListener('scroll',onScroll,{passive:true});
+    addEventListener('resize',onScroll);
+    onScroll();
+  })();
+
+</script>

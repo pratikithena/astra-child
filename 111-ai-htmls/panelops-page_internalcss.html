@@ -679,170 +679,171 @@
 </main>
 
 <script>
-(function(){
-  "use strict";
-  var root = document.querySelector('main.panelops');
-  if (!root) return;
+  (function(){
+    "use strict";
+    var root = document.querySelector('main.panelops');
+    if (!root) return;
 
-  /* Full-bleed uses calc(50% - 50vw), but 50vw includes the scrollbar, which
-     would push the block ~8px wide and add a horizontal scrollbar. Measure the
-     scrollbar once and feed it back so the bleed is exact. */
-  var setBleed = function(){
-    var sb = window.innerWidth - document.documentElement.clientWidth;
-    root.style.setProperty('--sb', (sb > 0 ? sb : 0) + 'px');
-  };
-  setBleed();
-  window.addEventListener('resize', setBleed, { passive: true });
-
-  /* ---------- THEME ---------- */
-  var toggle = root.querySelector('#poThemeToggle');
-  var stored = null;
-  try { stored = localStorage.getItem('panelops-theme'); } catch (e) {}
-
-  var setTheme = function(mode){
-    root.setAttribute('data-theme', mode);
-    if (toggle){
-      var dark = mode === 'dark';
-      toggle.setAttribute('aria-checked', String(dark));
-      toggle.setAttribute('aria-label', dark
-        ? 'Dark theme. Activate to switch to light theme.'
-        : 'Light theme. Activate to switch to dark theme.');
-    }
-    try { localStorage.setItem('panelops-theme', mode); } catch (e) {}
-  };
-  setTheme(stored === 'light' ? 'light' : 'dark');
-
-  if (toggle){
-    toggle.addEventListener('click', function(){
-      setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-    });
-  }
-
-  /* ---------- HERO 3D TILT/DRAG ---------- */
-  var stage = root.querySelector('.po-schematic-stage');
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (stage && !reduceMotion && window.PointerEvent){
-    var maxHoverTilt = 18;
-    var maxDragTilt = 50;
-    var hoverCapable = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    var dragging = false;
-    var lastX = 0, lastY = 0, rotX = 0, rotY = 0;
-
-    var applyTransform = function(rx, ry){
-      stage.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+    /* Full-bleed uses calc(50% - 50vw), but 50vw includes the scrollbar, which
+      would push the block ~8px wide and add a horizontal scrollbar. Measure the
+      scrollbar once and feed it back so the bleed is exact. */
+    var setBleed = function(){
+      var sb = window.innerWidth - document.documentElement.clientWidth;
+      root.style.setProperty('--sb', (sb > 0 ? sb : 0) + 'px');
     };
+    setBleed();
+    window.addEventListener('resize', setBleed, { passive: true });
 
-    if (hoverCapable){
-      stage.addEventListener('pointermove', function(e){
-        if (dragging || e.pointerType !== 'mouse') return;
-        var rect = stage.getBoundingClientRect();
-        var px = (e.clientX - rect.left) / rect.width - 0.5;
-        var py = (e.clientY - rect.top) / rect.height - 0.5;
-        applyTransform((-py * maxHoverTilt).toFixed(2), (px * maxHoverTilt).toFixed(2));
-      });
-      stage.addEventListener('pointerleave', function(){
-        if (dragging) return;
-        applyTransform(0, 0);
-      });
-    }
+    /* ---------- THEME ---------- */
+    var toggle = root.querySelector('#poThemeToggle');
+    var stored = null;
+    try { stored = localStorage.getItem('panelops-theme'); } catch (e) {}
 
-    stage.addEventListener('pointerdown', function(e){
-      dragging = true;
-      rotX = 0; rotY = 0;
-      stage.classList.add('po-dragging');
-      try { stage.setPointerCapture(e.pointerId); } catch (err){}
-      lastX = e.clientX; lastY = e.clientY;
-    });
-    stage.addEventListener('pointermove', function(e){
-      if (!dragging) return;
-      var dx = e.clientX - lastX;
-      var dy = e.clientY - lastY;
-      rotY = Math.max(-maxDragTilt, Math.min(maxDragTilt, rotY + dx * 0.4));
-      rotX = Math.max(-maxDragTilt, Math.min(maxDragTilt, rotX - dy * 0.4));
-      applyTransform(rotX.toFixed(2), rotY.toFixed(2));
-      lastX = e.clientX; lastY = e.clientY;
-    });
-    var endDrag = function(e){
-      if (!dragging) return;
-      dragging = false;
-      stage.classList.remove('po-dragging');
-      try { stage.releasePointerCapture(e.pointerId); } catch (err){}
-      if (!hoverCapable){ applyTransform(0, 0); }
-    };
-    stage.addEventListener('pointerup', endDrag);
-    stage.addEventListener('pointercancel', endDrag);
-  }
-})();
-
-/* ---------- schedule demo modal ---------- */
-(function () {
-  var modal = document.getElementById('poDemoModal');
-  var slot  = document.getElementById('poDemoFormSlot');
-  if (!modal || !slot) return;
-
-  var lastFocus = null, scrollY = 0, moved = false;
-
-  /* Pull the Elementor/Formidable-rendered form into the modal container.
-     Nothing is recreated - the live DOM node is relocated, so Formidable's
-     own scripts, nonces and AJAX handlers keep working. */
-  function adoptForm() {
-    if (moved) return;
-    var src = document.querySelector('#panelops-demo-form, .panelops-demo-form');
-    if (!src) {
-      var forms = document.querySelectorAll('.elementor-widget-shortcode');
-      for (var i = 0; i < forms.length; i++) {
-        if (forms[i].querySelector('.frm_forms, form')) { src = forms[i]; break; }
+    var setTheme = function(mode){
+      root.setAttribute('data-theme', mode);
+      if (toggle){
+        var dark = mode === 'dark';
+        toggle.setAttribute('aria-checked', String(dark));
+        toggle.setAttribute('aria-label', dark
+          ? 'Dark theme. Activate to switch to light theme.'
+          : 'Light theme. Activate to switch to dark theme.');
       }
+      try { localStorage.setItem('panelops-theme', mode); } catch (e) {}
+    };
+    setTheme(stored === 'light' ? 'light' : 'dark');
+
+    if (toggle){
+      toggle.addEventListener('click', function(){
+        setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
     }
-    if (!src) src = document.querySelector('.frm_forms');
-    if (!src || slot.contains(src)) return;
-    slot.appendChild(src);
-    src.style.display = 'block';
-    moved = true;
-  }
 
-  function open(e) {
-    if (e) e.preventDefault();
-    adoptForm();
-    lastFocus = document.activeElement;
-    scrollY = window.pageYOffset || document.documentElement.scrollTop;
-    modal.hidden = false;
-    void modal.offsetWidth;
-    modal.classList.add('po-modal--open');
-    document.body.style.overflow = 'hidden';
-    var focusable = modal.querySelector('input, select, textarea, button');
-    if (focusable) setTimeout(function () { focusable.focus({ preventScroll: true }); }, 60);
-  }
+    /* ---------- HERO 3D TILT/DRAG ---------- */
+    var stage = root.querySelector('.po-schematic-stage');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (stage && !reduceMotion && window.PointerEvent){
+      var maxHoverTilt = 18;
+      var maxDragTilt = 50;
+      var hoverCapable = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      var dragging = false;
+      var lastX = 0, lastY = 0, rotX = 0, rotY = 0;
 
-  function close() {
-    if (!modal.classList.contains('po-modal--open')) return;
-    modal.classList.remove('po-modal--open');
-    document.body.style.overflow = '';
-    window.scrollTo(0, scrollY);
-    setTimeout(function () { modal.hidden = true; }, 320);
-    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
-  }
+      var applyTransform = function(rx, ry){
+        stage.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+      };
 
-  document.addEventListener('click', function (e) {
-    var trigger = e.target.closest ? e.target.closest('[data-po-demo]') : null;
-    if (trigger) { open(e); return; }
-    var closer = e.target.closest ? e.target.closest('[data-po-demo-close]') : null;
-    if (closer && modal.contains(closer)) { e.preventDefault(); close(); }
-  });
+      if (hoverCapable){
+        stage.addEventListener('pointermove', function(e){
+          if (dragging || e.pointerType !== 'mouse') return;
+          var rect = stage.getBoundingClientRect();
+          var px = (e.clientX - rect.left) / rect.width - 0.5;
+          var py = (e.clientY - rect.top) / rect.height - 0.5;
+          applyTransform((-py * maxHoverTilt).toFixed(2), (px * maxHoverTilt).toFixed(2));
+        });
+        stage.addEventListener('pointerleave', function(){
+          if (dragging) return;
+          applyTransform(0, 0);
+        });
+      }
 
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' || e.key === 'Esc') close();
-    if (e.key !== 'Tab' || !modal.classList.contains('po-modal--open')) return;
-    var items = modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-    items = Array.prototype.filter.call(items, function (el) { return el.offsetParent !== null && !el.disabled; });
-    if (!items.length) return;
-    var first = items[0], last = items[items.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  });
+      stage.addEventListener('pointerdown', function(e){
+        dragging = true;
+        rotX = 0; rotY = 0;
+        stage.classList.add('po-dragging');
+        try { stage.setPointerCapture(e.pointerId); } catch (err){}
+        lastX = e.clientX; lastY = e.clientY;
+      });
+      stage.addEventListener('pointermove', function(e){
+        if (!dragging) return;
+        var dx = e.clientX - lastX;
+        var dy = e.clientY - lastY;
+        rotY = Math.max(-maxDragTilt, Math.min(maxDragTilt, rotY + dx * 0.4));
+        rotX = Math.max(-maxDragTilt, Math.min(maxDragTilt, rotX - dy * 0.4));
+        applyTransform(rotX.toFixed(2), rotY.toFixed(2));
+        lastX = e.clientX; lastY = e.clientY;
+      });
+      var endDrag = function(e){
+        if (!dragging) return;
+        dragging = false;
+        stage.classList.remove('po-dragging');
+        try { stage.releasePointerCapture(e.pointerId); } catch (err){}
+        if (!hoverCapable){ applyTransform(0, 0); }
+      };
+      stage.addEventListener('pointerup', endDrag);
+      stage.addEventListener('pointercancel', endDrag);
+    }
+  })();
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', adoptForm);
-  else adoptForm();
-  window.addEventListener('load', adoptForm);
-})();
+  /* ---------- schedule demo modal ---------- */
+  (function () {
+    var modal = document.getElementById('poDemoModal');
+    var slot  = document.getElementById('poDemoFormSlot');
+    if (!modal || !slot) return;
+
+    var lastFocus = null, scrollY = 0, moved = false;
+
+    /* Pull the Elementor/Formidable-rendered form into the modal container.
+      Nothing is recreated - the live DOM node is relocated, so Formidable's
+      own scripts, nonces and AJAX handlers keep working. */
+    function adoptForm() {
+      if (moved) return;
+      var src = document.querySelector('#panelops-demo-form, .panelops-demo-form');
+      if (!src) {
+        var forms = document.querySelectorAll('.elementor-widget-shortcode');
+        for (var i = 0; i < forms.length; i++) {
+          if (forms[i].querySelector('.frm_forms, form')) { src = forms[i]; break; }
+        }
+      }
+      if (!src) src = document.querySelector('.frm_forms');
+      if (!src || slot.contains(src)) return;
+      slot.appendChild(src);
+      src.style.display = 'block';
+      moved = true;
+    }
+
+    function open(e) {
+      if (e) e.preventDefault();
+      adoptForm();
+      lastFocus = document.activeElement;
+      scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      modal.hidden = false;
+      void modal.offsetWidth;
+      modal.classList.add('po-modal--open');
+      document.body.style.overflow = 'hidden';
+      var focusable = modal.querySelector('input, select, textarea, button');
+      if (focusable) setTimeout(function () { focusable.focus({ preventScroll: true }); }, 60);
+    }
+
+    function close() {
+      if (!modal.classList.contains('po-modal--open')) return;
+      modal.classList.remove('po-modal--open');
+      document.body.style.overflow = '';
+      window.scrollTo(0, scrollY);
+      setTimeout(function () { modal.hidden = true; }, 320);
+      if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+    }
+
+    document.addEventListener('click', function (e) {
+      var trigger = e.target.closest ? e.target.closest('[data-po-demo]') : null;
+      if (trigger) { open(e); return; }
+      var closer = e.target.closest ? e.target.closest('[data-po-demo-close]') : null;
+      if (closer && modal.contains(closer)) { e.preventDefault(); close(); }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' || e.key === 'Esc') close();
+      if (e.key !== 'Tab' || !modal.classList.contains('po-modal--open')) return;
+      var items = modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      items = Array.prototype.filter.call(items, function (el) { return el.offsetParent !== null && !el.disabled; });
+      if (!items.length) return;
+      var first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', adoptForm);
+    else adoptForm();
+    window.addEventListener('load', adoptForm);
+  })();
+
 </script>

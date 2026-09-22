@@ -1,0 +1,78 @@
+NAVIGATION
+│
+├── Solutions
+│   ├── OEM | Distributors
+│   │   ├── Front Office Ops
+│   │   │   ├── iCRM
+│   │   │   ├── iCPQ
+│   │   │   └── iERP
+│   │   └── After Market Services
+│   │       ├── Performance Monitoring
+│   │       ├── Service Portal
+│   │       └── B2B eCommerce
+│   │
+│   ├── Manufacturer
+│   │   ├── Planning
+│   │   │   └── iPLAN
+│   │   ├── Production
+│   │   │   ├── iGEMBA
+│   │   │   ├── Performance Monitoring
+│   │   │   └── MES
+│   │   ├── Quality
+│   │   │   └── MES
+│   │   └── Maintenance
+│   │       ├── CMMS
+│   │       └── iSEM
+│   │
+│   └── Enterprise
+│       ├── Supply Chain
+│       │   ├── iTMS
+│       │   └── iPLAN
+│       ├── Data Analytics
+│       │   ├── Aether
+│       │   ├── Analytics
+│       │   └── iHub
+│       └── Apps
+│           ├── iSIP
+│           └── CRM
+│
+├── Services
+│   ├── Advisory Consulting
+│   │   └── AI Strategy
+│   ├── Data Management
+│   │   ├── Big Data & Analytics
+│   │   └── AI/ML | Data Science
+│   ├── Cloud Modernization
+│   │   ├── Cloud Adoption
+│   │   └── Process Integration
+│   ├── Business Transformation
+│   │   ├── Systems of Engagement
+│   │   └── Customer Experience
+│   └── Manufacturing Integration
+│       ├── Manufacturing Execution
+│       └── Industrial IoT
+│
+├── Industries
+│   ├── OEM
+│   │   ├── Packaging
+│   │   ├── Food & Beverage | Bakery
+│   │   ├── Compressed Air
+│   │   └── Custom Tool Builder
+│   ├── Manufacturing
+│   │   ├── Industrial
+│   │   ├── Discrete | Automotive
+│   │   ├── Pharmaceutical
+│   │   └── Energy & Utility
+│   └── Strategic Industries
+│       ├── Retail | CPG
+│       ├── FinTech
+│       └── Government
+│
+├── Case Studies
+│
+└── Company
+    ├── Who We Are
+    ├── Blogs
+    ├── Announcements
+    ├── Partnerships
+    └── Careers

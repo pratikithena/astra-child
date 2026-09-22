@@ -1,0 +1,423 @@
+{
+  "menu": [
+    {
+      "title": "Solutions",
+      "type": "mega-menu",
+      "url": "https://dev-website.ithena.app#solutions",
+      "children": [
+        {
+          "title": "OEM | Distributors",
+          "subtitle": "Production | After Market",
+          "type": "column",
+          "children": [
+            {
+              "title": "Front Office Ops",
+              "type": "group",
+              "children": [
+                {
+                  "title": "iCRM",
+                  "subtitle": "Customer relationship management for distributors and OEMs.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                },
+                {
+                  "title": "iCPQ",
+                  "subtitle": "Configure, price, and quote workflows.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                },
+                {
+                  "title": "iERP",
+                  "subtitle": "ERP integrations and operational workflows.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                }
+              ]
+            },
+            {
+              "title": "After Market Services",
+              "type": "group",
+              "children": [
+                {
+                  "title": "Performance Monitoring",
+                  "subtitle": "Real-time connectivity into asset performance with proactive alerts and alarms.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                },
+                {
+                  "title": "Service Portal",
+                  "subtitle": "Support your service operations with real-time visibility and workflows.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                },
+                {
+                  "title": "B2B eCommerce",
+                  "subtitle": "Commerce experience for parts, services, and customer self-service.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app/b2b-ecommerce-solution/"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Manufacturer",
+          "subtitle": "Plan → Produce → Improve",
+          "type": "column",
+          "children": [
+            {
+              "title": "Planning",
+              "type": "group",
+              "children": [
+                {
+                  "title": "iPLAN",
+                  "subtitle": "Planning workflows and decision support to improve throughput.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                }
+              ]
+            },
+            {
+              "title": "Production",
+              "type": "group",
+              "children": [
+                {
+                  "title": "iGEMBA",
+                  "subtitle": "Digitize Gemba walks to maximize shop floor productivity and resolve issues fast.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app/digital-shopfloor-igemba/"
+                },
+                {
+                  "title": "Performance Monitoring",
+                  "subtitle": "Real-time performance visibility with alerts and alarms.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                },
+                {
+                  "title": "MES",
+                  "subtitle": "Smarter shop-floor view: standardize, measure, improve quality and scale operations.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                }
+              ]
+            },
+            {
+              "title": "Quality",
+              "type": "group",
+              "children": [
+                {
+                  "title": "QMS",
+                  "subtitle": "Quality management workflows to prevent defects and improve compliance.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                }
+              ]
+            },
+            {
+              "title": "Maintenance",
+              "type": "group",
+              "children": [
+                {
+                  "title": "CMMS",
+                  "subtitle": "Single view of critical KPIs with standardized checklists to resolve issues faster.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                },
+                {
+                  "title": "iSEM",
+                  "subtitle": "Service + equipment management workflows and integrations.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Enterprise",
+          "subtitle": "Analytics | CX | SCM",
+          "type": "column",
+          "children": [
+            {
+              "title": "Supply Chain",
+              "type": "group",
+              "children": [
+                {
+                  "title": "iTMS",
+                  "subtitle": "Transportation management and logistics workflows.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                },
+                {
+                  "title": "iPLAN",
+                  "subtitle": "Planning workflows and decision support.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                }
+              ]
+            },
+            {
+              "title": "Data Analytics",
+              "type": "group",
+              "children": [
+                {
+                  "title": "Aether",
+                  "subtitle": "Practical AI.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app/aether-ai-platform/"
+                },
+                {
+                  "title": "Analytics",
+                  "subtitle": "Enterprise data analytics.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                },
+                {
+                  "title": "iHub",
+                  "subtitle": "Enterprise data hub and insights.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                }
+              ]
+            },
+            {
+              "title": "Apps",
+              "type": "group",
+              "children": [
+                {
+                  "title": "iSIP",
+                  "subtitle": "Integrated service experience platform.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                },
+                {
+                  "title": "CRM",
+                  "subtitle": "Customer relationship management.",
+                  "type": "item",
+                  "url": "https://dev-website.ithena.app#"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "title": "Services",
+      "type": "mega-menu",
+      "url": "https://dev-website.ithena.app#process",
+      "children": [
+        {
+          "title": "Advisory Consulting",
+          "subtitle": "Strategy & AI roadmaps",
+          "type": "column",
+          "children": [
+            {
+              "title": "AI Strategy",
+              "type": "item",
+              "url": "https://dev-website.ithena.apphttps://dev-website.ithena.app/ai-assessment/"
+            }
+          ]
+        },
+        {
+          "title": "Data Management",
+          "subtitle": "Analytics & intelligence",
+          "type": "column",
+          "children": [
+            {
+              "title": "Big Data & Analytics",
+              "type": "item",
+              "url": "https://dev-website.ithena.apphttps://dev-website.ithena.app/big-data-analytics/"
+            },
+            {
+              "title": "AI/ML | Data Science",
+              "type": "item",
+              "url": "https://dev-website.ithena.apphttps://dev-website.ithena.app/ai-ml-data-science/"
+            }
+          ]
+        },
+        {
+          "title": "Cloud Modernization",
+          "subtitle": "Migration & integration",
+          "type": "column",
+          "children": [
+            {
+              "title": "Cloud Adoption",
+              "type": "item",
+              "url": "https://dev-website.ithena.apphttps://dev-website.ithena.app/cloud-adoption/"
+            },
+            {
+              "title": "Process Integration",
+              "type": "item",
+              "url": "https://dev-website.ithena.apphttps://dev-website.ithena.app/process-integration/"
+            }
+          ]
+        },
+        {
+          "title": "Business Transformation",
+          "subtitle": "CX & digital journeys",
+          "type": "column",
+          "children": [
+            {
+              "title": "Systems of Engagement",
+              "type": "item",
+              "url": "https://dev-website.ithena.apphttps://dev-website.ithena.app/systems-of-engagement-erp/"
+            },
+            {
+              "title": "Customer Experience",
+              "type": "item",
+              "url": "https://dev-website.ithena.apphttps://dev-website.ithena.app/customer-experience/"
+            }
+          ]
+        },
+        {
+          "title": "Manufacturing Integration",
+          "subtitle": "MES & IoT connectivity",
+          "type": "column",
+          "children": [
+            {
+              "title": "Manufacturing Execution",
+              "type": "item",
+              "url": "https://dev-website.ithena.apphttps://dev-website.ithena.app/manufacturing-execution-mes/"
+            },
+            {
+              "title": "Industrial IoT",
+              "type": "item",
+              "url": "https://dev-website.ithena.apphttps://dev-website.ithena.app/industrial-iot/"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "title": "Industries",
+      "type": "mega-menu",
+      "url": "https://dev-website.ithena.app#industries",
+      "children": [
+        {
+          "title": "OEM",
+          "subtitle": "Equipment & machine builders",
+          "type": "column",
+          "children": [
+            {
+              "title": "Packaging",
+              "type": "item",
+              "url": "https://dev-website.ithena.app/industries/packaging/"
+            },
+            {
+              "title": "Food & Beverage | Bakery",
+              "type": "item",
+              "url": "https://dev-website.ithena.app/industries/food-beverage/"
+            },
+            {
+              "title": "Compressed Air",
+              "type": "item",
+              "url": "https://dev-website.ithena.app/industries/compressed-air/"
+            },
+            {
+              "title": "Custom Tool Builder",
+              "type": "item",
+              "url": "https://dev-website.ithena.app/industries/custom-tool-builder/"
+            }
+          ]
+        },
+        {
+          "title": "Manufacturing",
+          "subtitle": "Plants & production operations",
+          "type": "column",
+          "children": [
+            {
+              "title": "Industrial",
+              "type": "item",
+              "url": "https://dev-website.ithena.app/industries/industrial/"
+            },
+            {
+              "title": "Discrete | Automotive",
+              "type": "item",
+              "url": "https://dev-website.ithena.app/industries/discrete-automotive/"
+            },
+            {
+              "title": "Pharmaceutical",
+              "type": "item",
+              "url": "https://dev-website.ithena.app/industries/pharma/"
+            },
+            {
+              "title": "Energy & Utility",
+              "type": "item",
+              "url": "https://dev-website.ithena.app/industries/energy-utility/"
+            }
+          ]
+        },
+        {
+          "title": "Strategic Industries",
+          "subtitle": "Commerce | Finance | Public",
+          "type": "column",
+          "children": [
+            {
+              "title": "Retail | CPG",
+              "type": "item",
+              "url": "https://dev-website.ithena.app/industries/retail-cpg/"
+            },
+            {
+              "title": "FinTech",
+              "type": "item",
+              "url": "https://dev-website.ithena.app/industries/fintech/"
+            },
+            {
+              "title": "Government",
+              "type": "item",
+              "url": "https://dev-website.ithena.app/industries/government/"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "title": "Case Studies",
+      "type": "link",
+      "url": "https://dev-website.ithena.app/case-studies/",
+      "children": []
+    },
+
+    {
+      "title": "Company",
+      "type": "mega-menu",
+      "url": "https://dev-website.ithena.app#company",
+      "children": [
+        {
+          "title": "Who We Are",
+          "description": "Our mission, values, and the team building ITHENA.",
+          "type": "item",
+          "url": "https://dev-website.ithena.apphttps://dev-website.ithena.app/ithena-homepage-test/#"
+        },
+        {
+          "title": "Blogs",
+          "description": "Insights on industrial AI and digital transformation.",
+          "type": "item",
+          "url": "https://dev-website.ithena.apphttps://dev-website.ithena.app/ithena-homepage-test/#"
+        },
+        {
+          "title": "Announcements",
+          "description": "Product launches, releases, and company news.",
+          "type": "item",
+          "url": "https://dev-website.ithena.apphttps://dev-website.ithena.app/ithena-homepage-test/#"
+        },
+        {
+          "title": "Partnerships",
+          "description": "Our technology and channel partner ecosystem.",
+          "type": "item",
+          "url": "https://dev-website.ithena.apphttps://dev-website.ithena.app/ithena-homepage-test/#"
+        },
+        {
+          "title": "Careers",
+          "description": "Open roles and life at ITHENA.",
+          "type": "item",
+          "url": "https://dev-website.ithena.apphttps://dev-website.ithena.app/ithena-homepage-test/#"
+        }
+      ]
+    }
+  ]
+}

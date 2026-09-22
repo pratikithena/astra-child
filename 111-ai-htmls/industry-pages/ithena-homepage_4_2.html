@@ -1,11 +1,10 @@
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 /*
  * Scoped + hardened for Elementor HTML widget.
  * Requires widget markup wrapped in: <section id="main-section"> ... </section>
  * All selectors scoped under #main-section (ID specificity beats Elementor global CSS).
  * Every declaration carries !important (except inside @keyframes, browsers ignore !important there).
- * html{scroll-behavior} left global/unscoped - cannot be scoped to a widget, low collision risk.
+ * html{scroll-behavior} left global/unscoped — cannot be scoped to a widget, low collision risk.
  */
 #main-section { color-scheme: light !important; }
 #main-section[data-theme="dark"] { color-scheme: dark !important; }
@@ -13,16 +12,16 @@
 /* -- light (default) -- */
 #main-section, #main-section * { box-sizing: border-box !important; margin: 0 !important; padding: 0 !important; }
 html { scroll-behavior: smooth !important; }
-#main-section { background: #FFFFFF !important; color: #000000 !important; font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; line-height: 1.6 !important; overflow-x: hidden !important; -webkit-font-smoothing: antialiased !important; }
+#main-section { background: #FFFFFF !important; color: #000000 !important; font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; line-height: 1.6 !important; overflow-x: hidden !important; -webkit-font-smoothing: antialiased !important; }
 #main-section img { max-width: 100% !important; display: block !important; }
 #main-section a { color: inherit !important; text-decoration: none !important; }
-#main-section button { font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; cursor: pointer !important; }
+#main-section button { font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; cursor: pointer !important; }
 #main-section ul { list-style: none !important; }
 #main-section .wrap { max-width: 1280px !important; margin: 0 auto !important; padding: 15px 20px !important; }
 #main-section .noise { position: fixed !important; inset: 0 !important; z-index: -1 !important; opacity: .02 !important; pointer-events: none !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") !important; }
-#main-section h1, #main-section h2, #main-section h3, #main-section h4 { font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-weight: 700 !important; letter-spacing: -0.01em !important; line-height: 1.18 !important; }
+#main-section h1, #main-section h2, #main-section h3, #main-section h4 { font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-weight: 700 !important; letter-spacing: -0.01em !important; line-height: 1.18 !important; }
 #main-section h1 { font-weight: 700 !important; }
-#main-section .eyebrow { font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-weight: 700 !important; font-size: 12px !important; letter-spacing: 0.14em !important; text-transform: uppercase !important; color: #0083C8 !important; display: flex !important; align-items: center !important; gap: 10px !important; margin-bottom: 16px !important; }
+#main-section .eyebrow { font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-weight: 700 !important; font-size: 12px !important; letter-spacing: 0.14em !important; text-transform: uppercase !important; color: #0083C8 !important; display: flex !important; align-items: center !important; gap: 10px !important; margin-bottom: 16px !important; }
 #main-section .eyebrow::before { content: "" !important; width: 22px !important; height: 2px !important; background: #0083C8 !important; border-radius: 2px !important; }
 #main-section section.custom-sec { padding: 5vh 0 !important; }
 #main-section .section-head { max-width: 800px !important; margin-bottom: 56px !important; }
@@ -32,7 +31,7 @@ html { scroll-behavior: smooth !important; }
 #main-section .bg-white { background: #FFFFFF !important; }
 #main-section .bg-black { background: #FFFFFF !important; }
 #main-section .bg-soft { background: linear-gradient(180deg, #FFFFFF 0%, #D7ECF6 14%, #D7ECF6 86%, #FFFFFF 100%) !important; }
-#main-section .btn { display: inline-flex !important; align-items: center !important; gap: 9px !important; font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-weight: 600 !important; font-size: 16px !important; padding: 14px 26px !important; border-radius: 100px !important; border: 1px solid transparent !important; transition: all .35s cubic-bezier(.16, .8, .24, 1) !important; white-space: nowrap !important; }
+#main-section .btn { display: inline-flex !important; align-items: center !important; gap: 9px !important; font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-weight: 600 !important; font-size: 16px !important; padding: 14px 26px !important; border-radius: 100px !important; border: 1px solid transparent !important; transition: all .35s cubic-bezier(.16, .8, .24, 1) !important; white-space: nowrap !important; }
 #main-section .btn-primary, #main-section .btn-white { box-shadow: 0 10px 24px rgba(0,131,200,.3) !important; }
 #main-section .btn-primary { background: #0083C8 !important; color: #fff !important; }
 #main-section .btn-white { background: linear-gradient(100deg, #ceeeff, #ffffff) !important; color: #0083c8 !important; }
@@ -46,27 +45,25 @@ html { scroll-behavior: smooth !important; }
 #main-section .hero { padding: 150px 0 100px !important; position: relative !important; overflow: hidden !important; isolation: isolate !important; background: #050A11 !important; }
 #main-section .hero-bg-video { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; z-index: 0 !important; overflow: hidden !important; }
 #main-section .hero-bg-video video { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
-#main-section .hero-bg-video::after { content: "" !important; position: absolute !important; inset: 0 !important; background: rgba(5,10,17,0.7) !important; z-index: 1 !important; }
-/* the hero settles into the next section on its own colour - no grey midpoint */
-#main-section .hero::after { content: '' !important; position: absolute !important; left: 0 !important; right: 0 !important; bottom: 0 !important; height: 170px !important; background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.42) 58%, rgba(255,255,255,.88) 84%, #FFFFFF 100%) !important; z-index: 1 !important; pointer-events: none !important; }
+#main-section .hero-bg-video::after { content: "" !important; position: absolute !important; inset: 0 !important; background: #00334eab !important; z-index: 1 !important; }
+#main-section .hero::after { content: '' !important; position: absolute !important; left: 0 !important; right: 0 !important; bottom: 0 !important; height: 260px !important; background: linear-gradient(180deg, #00000000 0%, #ADADAD8C 50%, #FFFFFF 96%) !important; z-index: 1 !important; pointer-events: none !important; }
 #main-section .hero-grid { position: relative !important; z-index: 2 !important; display: grid !important; grid-template-columns: 1.05fr 0.95fr !important; gap: 56px !important; align-items: center !important; }
 #main-section .hero h1 { font-size: 48px !important; margin-bottom: 22px !important; color: #fff !important; }
 #main-section .hero p.lead { font-size: 16px !important; color: #FFFFFFD9 !important; max-width: 520px !important; margin-bottom: 34px !important; }
 #main-section .hero-ctas { display: flex !important; flex-wrap: wrap !important; gap: 14px !important; margin-bottom: 30px !important; }
-#main-section .impact-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 0 !important; }
-#main-section .ind-card, #main-section .sol-card, #main-section .tm-card, #main-section .zz-card, #main-section .zz-illustration { border: 1px solid #0A192D1A !important; border-bottom: 3px solid #0083C8 !important; }
-#main-section .impact-card { padding: 0 clamp(16px, 2vw, 30px) !important; background: none !important; transition: .35s cubic-bezier(.16, .8, .24, 1) !important; }
-/* the four results read as one row of figures, split by a rule rather than boxed */
-#main-section .impact-card + .impact-card { border-left: 1px solid #0A192D1A !important; }
-#main-section .impact-visual { height: 120px !important; position: relative !important; overflow: hidden !important; border-radius: 12px !important; }
+#main-section .impact-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 20px !important; }
+#main-section .impact-card, #main-section .ind-card, #main-section .sol-card, #main-section .tm-card, #main-section .why-card, #main-section .zz-card, #main-section .zz-illustration { border: 1px solid #0A192D1A !important; border-bottom: 3px solid #0083C8 !important; }
+#main-section .impact-card { padding: 0 !important; border-radius: 16px !important; background: #fff !important; overflow: hidden !important; transition: .35s cubic-bezier(.16, .8, .24, 1) !important; }
+#main-section .impact-card:hover { transform: translateY(-6px) !important; border-color: #0083C859 !important; box-shadow: 0 20px 40px -20px #0083C866 !important; }
+#main-section .impact-visual { height: 120px !important; position: relative !important; overflow: hidden !important; }
 #main-section .impact-visual::before { content: "" !important; position: absolute !important; inset: 0 !important; background-image: radial-gradient(#FFFFFF2E 1px, transparent 1px) !important; background-size: 16px 16px !important; }
 #main-section .impact-visual.v1 { background: linear-gradient(135deg, #000000, #113A63 60%, #0083C8) !important; }
 #main-section .impact-visual.v2 { background: linear-gradient(135deg, #4A3B10, #8A6D1E 55%, #F5A623) !important; }
 #main-section .impact-visual.v3 { background: linear-gradient(135deg, #000000, #0B4A78 55%, #0083C8) !important; }
 #main-section .impact-visual.v4 { background: linear-gradient(135deg, #000000, #1C2C42 60%, #3ED598) !important; }
-#main-section .impact-body { padding: 0 0 26px !important; text-align: center !important; }
+#main-section .impact-body { padding: 0 24px 26px !important; text-align: center !important; }
 #main-section .impact-card .ic { width: 52px !important; height: 52px !important; border-radius: 50% !important; background: #fff !important; box-shadow: 0 10px 22px -8px #0A192D4C !important; color: #0083C8 !important; display: flex !important; align-items: center !important; justify-content: center !important; margin: -26px auto 18px !important; position: relative !important; z-index: 2 !important; }
-#main-section .impact-card .num { font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-size: 32px !important; font-weight: 700 !important; color: #0083C8 !important; margin-bottom: 6px !important; }
+#main-section .impact-card .num { font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-size: 32px !important; font-weight: 700 !important; color: #0083C8 !important; margin-bottom: 6px !important; }
 #main-section .impact-card .num span { color: #0083C8 !important; }
 #main-section .impact-card h4 { font-size: 14px !important; font-weight: 700 !important; color: #000000 !important; margin-bottom: 8px !important; text-align: center !important; }
 #main-section .impact-card h4::after { content: "" !important; display: block !important; width: 26px !important; height: 2px !important; background: #0083C8 !important; margin: 8px auto 0 !important; }
@@ -89,29 +86,19 @@ html { scroll-behavior: smooth !important; }
 #main-section .sol-body ul { display: flex !important; flex-direction: column !important; gap: 6px !important; margin: 4px 0 8px !important; }
 #main-section .sol-body li { font-size: 14px !important; color: #333333 !important; display: flex !important; gap: 8px !important; align-items: flex-start !important; }
 #main-section .sol-body li::before { content: "✓" !important; color: #3ED598 !important; font-weight: 700 !important; flex-shrink: 0 !important; }
-#main-section .ind-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 20px !important; }
+#main-section .ind-grid, #main-section .why-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 20px !important; }
 #main-section .ind-card { border-radius: 16px !important; padding: 26px 22px !important; background: #fff !important; transition: .35s cubic-bezier(.16, .8, .24, 1) !important; position: relative !important; }
-#main-section .ind-card:hover, #main-section .tm-card:hover { border-color: #0083C866 !important; box-shadow: 0 24px 50px -22px #0083C8 !important; }
+#main-section .ind-card:hover, #main-section .why-card:hover, #main-section .tm-card:hover { border-color: #0083C866 !important; box-shadow: 0 24px 50px -22px #0083C8 !important; }
 #main-section .ind-card .ic { width: 48px !important; height: 48px !important; border-radius: 13px !important; background: linear-gradient(135deg, #0083C84C, #00588A26) !important; color: #0083C8 !important; display: flex !important; align-items: center !important; justify-content: center !important; font-size: 22px !important; margin-bottom: 18px !important; }
 #main-section .ind-card h4 { font-size: 18px !important; margin-bottom: 8px !important; color: #000000 !important; }
 #main-section .ind-card p { font-size: 14px !important; color: #333333 !important; margin-bottom: 14px !important; }
-#main-section .ind-card .stat { font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-size: 12px !important; font-weight: 700 !important; color: #0083C8 !important; margin-bottom: 14px !important; }
-/* Why ITHENA reads as one comb: six hexagons linked by a single blue line,
-   each cell carrying its own photograph. No card, no frame. */
-#main-section .why-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 46px 34px !important; }
-#main-section .why-card { position: relative !important; display: flex !important; flex-direction: column !important; align-items: center !important; text-align: center !important; padding: 0 !important; background: none !important; border: 0 !important; border-radius: 0 !important; }
-#main-section .why-card:not(:nth-child(3n+1))::before { content: "" !important; position: absolute !important; top: 76px !important; left: calc(-50% - 34px) !important; right: 50% !important; height: 2px !important; background: #0083C83D !important; z-index: 0 !important; }
-#main-section .why-hex { position: relative !important; z-index: 1 !important; width: 134px !important; height: 152px !important; flex: none !important; background: #0A192D !important; overflow: hidden !important; -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%) !important; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%) !important; transition: transform .45s cubic-bezier(.16, .8, .24, 1) !important; }
-#main-section .why-hex img { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; opacity: .42 !important; transition: opacity .45s, transform .7s cubic-bezier(.16, .8, .24, 1) !important; }
-#main-section .why-hex::after { content: "" !important; position: absolute !important; inset: 0 !important; background: linear-gradient(180deg, rgba(10,25,45,.25), rgba(10,25,45,.55)) !important; }
-#main-section .why-card .ic { position: absolute !important; inset: 0 !important; z-index: 1 !important; width: auto !important; height: auto !important; margin: 0 !important; border-radius: 0 !important; background: none !important; color: #ffffff !important; display: flex !important; align-items: center !important; justify-content: center !important; }
-#main-section .why-card .ic svg { width: 30px !important; height: 30px !important; stroke-width: 1.5 !important; filter: drop-shadow(0 2px 6px rgba(0,0,0,.45)) !important; }
-#main-section .why-card:not(.in) .why-hex { transform: scale(.9) !important; }
-#main-section .why-card:hover .why-hex { transform: translateY(-6px) rotate(-3deg) !important; }
-#main-section .why-card:hover .why-hex img { opacity: .82 !important; transform: scale(1.08) !important; }
-#main-section .why-card h4 { font-size: 18px !important; margin: 20px 0 8px !important; color: #000000 !important; }
+#main-section .ind-card .stat { font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-size: 12px !important; font-weight: 700 !important; color: #0083C8 !important; margin-bottom: 14px !important; }
+#main-section .why-card { padding: 0 !important; border-radius: 16px !important; border: 1px solid #0A192D1A !important; border-bottom: 3px solid #0083C8 !important; background: #fff !important; overflow: hidden !important; display: flex !important; align-items: stretch !important; transition: .3s !important; }
+#main-section .why-card-text { flex: 1 1 56% !important; min-width: 0 !important; padding: 24px 18px 14px 24px !important; display: flex !important; flex-direction: column !important; }
+#main-section .why-card .ic { width: 42px !important; height: 42px !important; border-radius: 11px !important; background: #0083C81F !important; display: flex !important; align-items: center !important; justify-content: center !important; font-size: 20px !important; margin-bottom: 16px !important; }
+#main-section .why-card h4 { font-size: 18px !important; margin-bottom: 8px !important; color: #000000 !important; }
 #main-section .why-card p, #main-section .zz-card p { font-size: 14px !important; color: #333333 !important; line-height: 1.5 !important; }
-#main-section .why-card p { max-width: 34ch !important; }
+#main-section .why-card-visual { flex: 0 0 40% !important; position: relative !important; min-height: 150px !important; overflow: hidden !important; }
 #main-section .zigzag { position: relative !important; display: flex !important; flex-direction: column !important; overflow-x: hidden !important; }
 #main-section .zigzag::before { content: "" !important; position: absolute !important; left: 50% !important; top: 6px !important; bottom: 6px !important; width: 2px !important; transform: translateX(-50%) !important; background: linear-gradient(180deg, #c00000, #0083C8, #c00000) !important; opacity: .35 !important; }
 #main-section .zz-item { position: relative !important; display: grid !important; grid-template-columns: 1fr 64px 1fr !important; align-items: center !important; gap: 0 32px !important; padding: 26px 0 !important; }
@@ -122,39 +109,28 @@ html { scroll-behavior: smooth !important; }
 #main-section .zz-item.reveal-left .zz-card, #main-section .zz-item.reveal-left .zz-illustration { transform: translateX(min(-45vw, -420px)) !important; }
 #main-section .zz-item.reveal-right .zz-card, #main-section .zz-item.reveal-right .zz-illustration { transform: translateX(min(45vw, 420px)) !important; }
 #main-section .zz-item.in .zz-card, #main-section .zz-item.in .zz-illustration, #main-section .line-anim.in .eyebrow, #main-section .line-anim.in h2 { opacity: 1 !important; transform: translateX(0) !important; }
-#main-section .zz-num { position: relative !important; width: 52px !important; height: 52px !important; border-radius: 50% !important; background: #E4EAF1 !important; border: 2px solid #c00000 !important; display: flex !important; align-items: center !important; justify-content: center !important; font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-weight: 700 !important; font-size: 18px !important; color: #000000 !important; z-index: 2 !important; justify-self: center !important; box-shadow: 0 0 0 6px #D7ECF6 !important; }
+#main-section .zz-num { position: relative !important; width: 52px !important; height: 52px !important; border-radius: 50% !important; background: #E4EAF1 !important; border: 2px solid #c00000 !important; display: flex !important; align-items: center !important; justify-content: center !important; font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-weight: 700 !important; font-size: 18px !important; color: #000000 !important; z-index: 2 !important; justify-self: center !important; box-shadow: 0 0 0 6px #D7ECF6 !important; }
 #main-section .zz-item .zz-side-l { grid-column: 1 !important; display: flex !important; align-items: center !important; justify-content: flex-end !important; gap: 18px !important; }
 #main-section .zz-item .zz-side-r { grid-column: 3 !important; display: flex !important; align-items: center !important; justify-content: flex-start !important; gap: 18px !important; }
-#main-section .counter-band { padding: 10px 0 20px !important; display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 20px !important; text-align: center !important; }
-#main-section .counter-band .cnum { font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-size: clamp(38px, 4.4vw, 56px) !important; font-weight: 700 !important; line-height: 1.05 !important; color: #0083C8 !important; margin-bottom: 8px !important; }
-#main-section .counter-band .clabel { font-size: 13px !important; color: #333333 !important; font-weight: 600 !important; }
+#main-section .counter-band { border-radius: 24px !important; border: 1px solid #0A192D1A !important; background: #0083c8 !important; padding: 25px 40px 30px 40px !important; display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 20px !important; text-align: center !important; }
+#main-section .counter-band .cnum { font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-size: 32px !important; font-weight: 700 !important; color: #fff !important; margin-bottom: 6px !important; }
+#main-section .counter-band .clabel { font-size: 12px !important; color: #fff !important; font-weight: 600 !important; }
 #main-section .tm-card { border-radius: 16px !important; padding: 26px !important; background: #fff !important; }
 #main-section .tm-stars { color: #FFC24B !important; font-size: 14px !important; margin-bottom: 14px !important; letter-spacing: 2px !important; }
 #main-section .tm-card p { font-size: 14px !important; color: #333333 !important; margin-bottom: 20px !important; font-style: italic !important; }
 #main-section .tm-person { display: flex !important; align-items: center !important; gap: 12px !important; }
 #main-section .tm-person strong { display: block !important; font-size: 14px !important; color: #000000 !important; }
 #main-section .tm-person span { font-size: 12px !important; color: #333333 !important; }
-#main-section .trusted-label { font-size: 14px !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: .08em !important; color: #333333 !important; text-align: center !important; margin-bottom: 30px !important; }
+#main-section .trusted-label { font-size: 14px !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: .08em !important; color: #000000 !important; text-align: center !important; margin-bottom: 30px !important; }
 #main-section .trusted-marquee { overflow: hidden !important; position: relative !important; width: 100% !important; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent) !important; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent) !important; }
 #main-section .trusted-track { display: flex !important; width: max-content !important; animation: trusted-scroll 34s linear infinite !important; }
 #main-section .trusted-marquee:hover .trusted-track { animation-play-state: paused !important; }
-#main-section .trusted-img { width: auto !important; height: 100px !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: 0 30px !important; font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-weight: 700 !important; font-size: 26px !important; color: #0083C8 !important; white-space: nowrap !important; transition: opacity .3s, color .3s !important; }
+#main-section .trusted-img { width: auto !important; height: 100px !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: 0 30px !important; font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-weight: 700 !important; font-size: 26px !important; color: #0083C8 !important; white-space: nowrap !important; transition: opacity .3s, color .3s !important; }
 #main-section .line-anim.in p { opacity: 1 !important; }
-/* closing CTA: edge to edge, what to bring on the navy half, the floor it came from on the other */
-#main-section .cta-band { background: #0A192D !important; overflow: hidden !important; }
-#main-section .cta-in { display: grid !important; grid-template-columns: 1fr 1fr !important; align-items: stretch !important; }
-#main-section .cta-copy { max-width: 640px !important; margin-left: auto !important; padding: clamp(48px, 6vw, 88px) clamp(24px, 3vw, 56px) clamp(48px, 6vw, 88px) 20px !important; }
-#main-section .cta-copy h2 { font-size: 32px !important; line-height: 1.18 !important; color: #ffffff !important; margin-bottom: 16px !important; }
-#main-section .cta-copy h2 em { font-style: normal !important; color: #0083C8 !important; }
-#main-section .cta-copy > p { color: rgba(255,255,255,.72) !important; font-size: 16px !important; max-width: 52ch !important; }
-#main-section .cta-list { list-style: none !important; margin: 26px 0 0 !important; padding: 0 !important; display: grid !important; gap: 11px !important; }
-#main-section .cta-list li { display: flex !important; gap: 11px !important; align-items: flex-start !important; font-size: 15px !important; color: rgba(215,236,246,.9) !important; }
-#main-section .cta-list svg { width: 16px !important; height: 16px !important; color: #0083C8 !important; flex: none !important; margin-top: 3px !important; }
-#main-section .cta-row { display: flex !important; gap: 12px !important; flex-wrap: wrap !important; margin-top: 30px !important; }
-#main-section .btn-line { background: transparent !important; color: #ffffff !important; border-color: rgba(255,255,255,.28) !important; }
-#main-section .btn-line:hover { background: rgba(255,255,255,.12) !important; border-color: rgba(255,255,255,.5) !important; }
-#main-section .cta-med { position: relative !important; overflow: hidden !important; background: #123049 !important; }
-#main-section .cta-med video { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
+#main-section .cta-banner { border-radius: 28px !important; padding: 45px 50px !important; text-align: center !important; position: relative !important; overflow: hidden !important; border: 1px solid #0083C84C !important; background: #0083C8 !important; }
+#main-section .cta-banner h2 { font-size: 32px !important; margin-bottom: 16px !important; color: #fff !important; }
+#main-section .cta-banner p { color: #fff !important; max-width: 520px !important; margin: 0 auto 34px !important; font-size: 16px !important; }
+#main-section .cta-row { display: flex !important; justify-content: center !important; gap: 14px !important; flex-wrap: wrap !important; }
 #main-section .reveal { opacity: 0 !important; transform: translateY(28px) !important; transition: opacity .8s cubic-bezier(.16, .8, .24, 1), transform .8s cubic-bezier(.16, .8, .24, 1) !important; }
 #main-section .reveal.in { opacity: 1 !important; transform: translateY(0) !important; }
 #main-section .sol-card.reveal { transform: translateY(-36px) !important; }
@@ -170,8 +146,8 @@ html { scroll-behavior: smooth !important; }
 #main-section :is(.sol-card, .ind-card, .why-card):nth-child(6) { transition-delay: .35s !important; }
 #main-section :is(.ind-card):nth-child(7) { transition-delay: .42s !important; }
 #main-section :is(.ind-card):nth-child(8) { transition-delay: .49s !important; }
-#main-section .impact-card .ic, #main-section .ind-card .ic { transition: transform .4s cubic-bezier(.16, .8, .24, 1), background .3s, color .3s !important; }
-#main-section .impact-card:hover .ic { transform: scale(1.12) rotate(-6deg) !important; background: #0083C8 !important; color: #ffffff !important; }
+#main-section .impact-card .ic, #main-section .ind-card .ic, #main-section .why-card .ic { transition: transform .4s cubic-bezier(.16, .8, .24, 1), background .3s, color .3s !important; }
+#main-section .impact-card:hover .ic, #main-section .why-card:hover .ic { transform: scale(1.12) rotate(-6deg) !important; background: #0083C8 !important; color: #ffffff !important; }
 #main-section .ind-card:hover .ic { transform: scale(1.12) rotate(6deg) !important; }
 #main-section .impact-card:hover .num { transform: scale(1.05) !important; }
 #main-section .btn-primary { position: relative !important; overflow: hidden !important; }
@@ -189,7 +165,7 @@ html { scroll-behavior: smooth !important; }
   50% { opacity: .55; transform: scaleX(1.3); }
 }
 
-#main-section .demo-overlay { position: fixed !important; inset: 0 !important; z-index: 2147483647 !important; display: flex !important; align-items: center !important; justify-content: center !important; background: #0A192D8C !important; -webkit-backdrop-filter: blur(6px) !important; backdrop-filter: blur(6px) !important; opacity: 0 !important; visibility: hidden !important; transition: opacity .3s cubic-bezier(.16, .8, .24, 1), visibility .3s !important; }
+#main-section .demo-overlay { position: fixed !important; inset: 0 !important; z-index: 400 !important; display: flex !important; align-items: center !important; justify-content: center !important; background: #0A192D8C !important; -webkit-backdrop-filter: blur(6px) !important; backdrop-filter: blur(6px) !important; opacity: 0 !important; visibility: hidden !important; transition: opacity .3s cubic-bezier(.16, .8, .24, 1), visibility .3s !important; }
 #main-section .demo-overlay.open { opacity: 1 !important; visibility: visible !important; }
 #main-section .demo-modal { position: relative !important; width: 100% !important; max-width: 520px !important; background: #fff !important; border-radius: 20px !important; padding: 36px 32px 32px !important; box-shadow: 0 40px 80px -20px #0A192D73 !important; transform: translateY(18px) scale(.97) !important; opacity: 0 !important; transition: transform .35s cubic-bezier(.16, .8, .24, 1), opacity .35s cubic-bezier(.16, .8, .24, 1) !important; }
 #main-section .demo-overlay.open .demo-modal { transform: translateY(0) scale(1) !important; opacity: 1 !important; }
@@ -197,12 +173,12 @@ html { scroll-behavior: smooth !important; }
 #main-section .demo-modal-close:hover { background: #0A192D14 !important; color: #000000 !important; }
 #main-section .demo-modal-head { margin-bottom: 22px !important; padding-right: 30px !important; }
 #main-section .demo-modal-head .eyebrow { margin-bottom: 10px !important; }
-#main-section .demo-modal-head h3 { font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-weight: 700 !important; font-size: 22px !important; color: #000000 !important; margin-bottom: 8px !important; letter-spacing: -0.02em !important; }
+#main-section .demo-modal-head h3 { font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-weight: 700 !important; font-size: 22px !important; color: #000000 !important; margin-bottom: 8px !important; letter-spacing: -0.02em !important; }
 #main-section .demo-modal-head p { font-size: 14px !important; color: #333333 !important; line-height: 1.5 !important; }
 #main-section .demo-form { display: flex !important; flex-direction: column !important; gap: 14px !important; }
 #main-section .demo-form-row { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 14px !important; }
 #main-section .demo-form label { display: flex !important; flex-direction: column !important; gap: 6px !important; font-size: 12px !important; font-weight: 700 !important; color: #333333 !important; }
-#main-section .demo-form input, #main-section .demo-form textarea { font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-size: 14px !important; font-weight: 400 !important; color: #000000 !important; padding: 11px 13px !important; border-radius: 10px !important; border: 1px solid #0A192D24 !important; background: #0A192D05 !important; transition: border-color .2s, background .2s !important; }
+#main-section .demo-form input, #main-section .demo-form textarea { font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-size: 14px !important; font-weight: 400 !important; color: #000000 !important; padding: 11px 13px !important; border-radius: 10px !important; border: 1px solid #0A192D24 !important; background: #0A192D05 !important; transition: border-color .2s, background .2s !important; }
 #main-section .demo-form input::placeholder, #main-section .demo-form textarea::placeholder { color: #A7B4C4 !important; font-weight: 400 !important; }
 #main-section .demo-form input:focus, #main-section .demo-form textarea:focus { outline: none !important; border-color: #0083C8 !important; background: #fff !important; }
 #main-section .demo-form textarea { resize: vertical !important; min-height: 78px !important; }
@@ -216,75 +192,70 @@ html { scroll-behavior: smooth !important; }
 #main-section .demo-success p { font-size: 14px !important; color: #333333 !important; line-height: 1.5 !important; }
 #main-section[data-theme="dark"]::before { background: radial-gradient(1100px 620px at 82% -10%, #0083C838, transparent 60%), radial-gradient(900px 500px at -10% 20%, #0083C81A, transparent 55%), linear-gradient(180deg, #123049 0%, #0D1B2E 40%, #123049 100%) !important; }
 #main-section[data-theme="dark"] .noise { opacity: .035 !important; }
+#main-section[data-theme="dark"] .cta-banner { background: #0083C8 !important; border-color: #0083C84C !important; }
 #main-section[data-theme="dark"]::selection { background: #0083C859 !important; }
 #main-section[data-theme="dark"] { background: #123049 !important; color: #FFFFFF !important; }
 #main-section[data-theme="dark"] .bg-white { background: #123049 !important; }
 #main-section[data-theme="dark"] .bg-black { background: #123049 !important; }
 #main-section[data-theme="dark"] .bg-soft { background: linear-gradient(180deg, #123049 0%, #0D1B2E 14%, #0D1B2E 86%, #123049 100%) !important; }
-#main-section[data-theme="dark"] .hero::after { background: linear-gradient(180deg, rgba(18,48,73,0) 0%, rgba(18,48,73,.42) 58%, rgba(18,48,73,.88) 84%, #123049 100%) !important; }
+#main-section[data-theme="dark"] .hero::after { background: linear-gradient(180deg, #00000000 0%, #0000008C 50%, #123049 96%) !important; }
 #main-section[data-theme="dark"] .section-head h2, #main-section[data-theme="dark"] .sol-body h3, #main-section[data-theme="dark"] .why-card h4, #main-section[data-theme="dark"] .zz-card h4 { color: #FFFFFF !important; }
-#main-section[data-theme="dark"] .section-head p { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .section-head p { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .btn-ghost { border-color: #FFFFFF24 !important; }
 #main-section[data-theme="dark"] .btn-ghost:hover { background: #FFFFFF1F !important; border-color: #FFFFFF47 !important; }
-#main-section[data-theme="dark"] .ind-card, #main-section[data-theme="dark"] .sol-card, #main-section[data-theme="dark"] .tm-card, #main-section[data-theme="dark"] .zz-card { background: #123049 !important; border-color: #0083c8 !important; }
-#main-section[data-theme="dark"] .impact-card .ic, #main-section[data-theme="dark"] .zz-card .ic, #main-section[data-theme="dark"] .ind-card .ic { background: #ffffff !important; color: #0083C8 !important; }
+#main-section[data-theme="dark"] .impact-card, #main-section[data-theme="dark"] .ind-card, #main-section[data-theme="dark"] .sol-card, #main-section[data-theme="dark"] .tm-card, #main-section[data-theme="dark"] .why-card, #main-section[data-theme="dark"] .zz-card { background: #123049 !important; border-color: #0083c8 !important; }
+#main-section[data-theme="dark"] .impact-card .ic, #main-section[data-theme="dark"] .why-card .ic, #main-section[data-theme="dark"] .zz-card .ic, #main-section[data-theme="dark"] .ind-card .ic { background: #ffffff !important; color: #0083C8 !important; }
 #main-section[data-theme="dark"] .ind-card h4 { color: #FFFFFF !important; }
 #main-section[data-theme="dark"] .sol-card h4, #main-section[data-theme="dark"] .zz-card h4, #main-section[data-theme="dark"] .impact-card h4 { color: #ffffff !important; }
-#main-section[data-theme="dark"] .impact-card:hover .ic { transform: scale(1.12) rotate(-6deg) !important; background: #0083c8 !important; color: #ffffff !important; }
-#main-section[data-theme="dark"] .impact-card p { color: rgba(215,236,246,.8) !important; }
-#main-section[data-theme="dark"] .impact-card + .impact-card { border-left-color: rgba(215,236,246,.16) !important; }
-#main-section[data-theme="dark"] .counter-band .clabel { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .impact-card:hover .ic, #main-section[data-theme="dark"] .why-card:hover .ic { transform: scale(1.12) rotate(-6deg) !important; background: #0083c8 !important; color: #ffffff !important; }
+#main-section[data-theme="dark"] .impact-card p { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .sol-icon-badge { background: #fff !important; }
-#main-section[data-theme="dark"] .sol-body p { color: rgba(215,236,246,.8) !important; }
-#main-section[data-theme="dark"] .sol-body li { color: rgba(215,236,246,.8) !important; }
-#main-section[data-theme="dark"] .ind-card p { color: rgba(215,236,246,.8) !important; }
-#main-section[data-theme="dark"] .why-card p, #main-section[data-theme="dark"] .zz-card p { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .sol-body p { color: #d7ecf6cc !important; }
+#main-section[data-theme="dark"] .sol-body li { color: #d7ecf6cc !important; }
+#main-section[data-theme="dark"] .ind-card p { color: #d7ecf6cc !important; }
+#main-section[data-theme="dark"] .why-card p, #main-section[data-theme="dark"] .zz-card p { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .zz-card { box-shadow: 0 18px 40px -24px #00000080 !important; }
 #main-section[data-theme="dark"] .zz-illustration { box-shadow: 0 16px 30px -18px #0000008C !important; }
 #main-section[data-theme="dark"] .zz-num { background: #0F2036 !important; color: #FFFFFF !important; box-shadow: 0 0 0 6px #123049 !important; }
-#main-section[data-theme="dark"] .tm-card p { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .tm-card p { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .tm-person strong { color: #FFFFFF !important; }
-#main-section[data-theme="dark"] .tm-person span { color: rgba(215,236,246,.8) !important; }
-#main-section[data-theme="dark"] .trusted-label { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .tm-person span { color: #d7ecf6cc !important; }
+#main-section[data-theme="dark"] .trusted-label { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .demo-modal { background: #123049 !important; box-shadow: 0 40px 80px -20px #000000A6 !important; }
 #main-section[data-theme="dark"] .demo-modal-head h3 { color: #FFFFFF !important; }
-#main-section[data-theme="dark"] .demo-modal-head p { color: rgba(215,236,246,.8) !important; }
-#main-section[data-theme="dark"] .demo-form label { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .demo-modal-head p { color: #d7ecf6cc !important; }
+#main-section[data-theme="dark"] .demo-form label { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .demo-form input, #main-section[data-theme="dark"] .demo-form textarea { color: #FFFFFF !important; background: #FFFFFF0A !important; border-color: #FFFFFF1A !important; }
-#main-section[data-theme="dark"] .demo-form input::placeholder, #main-section[data-theme="dark"] .demo-form textarea::placeholder { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .demo-form input::placeholder, #main-section[data-theme="dark"] .demo-form textarea::placeholder { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .demo-form input:focus, #main-section[data-theme="dark"] .demo-form textarea:focus { background: #0D1B2E !important; border-color: #0083C8 !important; }
-#main-section[data-theme="dark"] .demo-form-note { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .demo-form-note { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .demo-form-note a { color: #4DB4EA !important; }
-#main-section[data-theme="dark"] .demo-modal-close { background: #FFFFFF0A !important; border-color: #FFFFFF14 !important; color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .demo-modal-close { background: #FFFFFF0A !important; border-color: #FFFFFF14 !important; color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .demo-modal-close:hover { background: #FFFFFF14 !important; color: #FFFFFF !important; }
-#main-section[data-theme="dark"] .demo-modal-close { background: #FFFFFF0F !important; border-color: #FFFFFF24 !important; color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .demo-modal-close { background: #FFFFFF0F !important; border-color: #FFFFFF24 !important; color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .demo-modal-close:hover { background: #FFFFFF1F !important; color: #FFFFFF !important; }
 #main-section[data-theme="dark"] .demo-modal-head h3 { color: #FFFFFF !important; }
-#main-section[data-theme="dark"] .demo-modal-head p { color: rgba(215,236,246,.8) !important; }
-#main-section[data-theme="dark"] .demo-form label { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .demo-modal-head p { color: #d7ecf6cc !important; }
+#main-section[data-theme="dark"] .demo-form label { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .demo-form input, #main-section[data-theme="dark"] .demo-form textarea { color: #FFFFFF !important; border-color: #FFFFFF29 !important; background: #FFFFFF0A !important; }
-#main-section[data-theme="dark"] .demo-form input::placeholder, #main-section[data-theme="dark"] .demo-form textarea::placeholder { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .demo-form input::placeholder, #main-section[data-theme="dark"] .demo-form textarea::placeholder { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .demo-form input:focus, #main-section[data-theme="dark"] .demo-form textarea:focus { background: #123049 !important; }
-#main-section[data-theme="dark"] .demo-form-note { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .demo-form-note { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .demo-success h4 { color: #FFFFFF !important; }
-#main-section[data-theme="dark"] .demo-success p { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .demo-success p { color: #d7ecf6cc !important; }
 @media (max-width:980px) {
   #main-section .hero { padding: 120px 0 60px !important; }
-  #main-section .hero::after { height: 110px !important; }
+  #main-section .hero::after { height: 140px !important; }
   #main-section .hero-grid { grid-template-columns: 1fr !important; }
   #main-section .impact-grid { grid-template-columns: repeat(2, 1fr) !important; }
-  #main-section .impact-card:nth-child(2n+1) { border-left: 0 !important; }
-  #main-section .impact-card:nth-child(n+3) { border-top: 1px solid #0A192D1A !important; padding-top: 30px !important; margin-top: 30px !important; }
   #main-section .sol-grid, #main-section .ind-grid, #main-section .tm-grid { grid-template-columns: 1fr 1fr !important; }
 }
 @media (max-width:900px) {
   #main-section section { padding: 64px 0 !important; }
   #main-section .why-grid { grid-template-columns: 1fr 1fr !important; }
-  #main-section .why-card::before { display: none !important; }
+  #main-section .why-card-visual { min-height: 120px !important; }
   #main-section .counter-band { grid-template-columns: repeat(2, 1fr) !important; }
-  #main-section .cta-in { grid-template-columns: 1fr !important; }
-  #main-section .cta-copy { max-width: 1280px !important; margin: 0 auto !important; padding: 56px 20px !important; }
-  #main-section .cta-med { min-height: 290px !important; }
+  #main-section .cta-banner { padding: 50px 30px !important; border-radius: 20px !important; }
 }
 @media (max-width:760px) {
   #main-section .zigzag::before { left: 24px !important; }
@@ -302,12 +273,9 @@ html { scroll-behavior: smooth !important; }
 }
 @media (max-width:560px) {
   #main-section .impact-grid, #main-section .ind-grid, #main-section .why-grid, #main-section .counter-band { grid-template-columns: 1fr !important; }
-  #main-section .impact-card { padding: 0 !important; }
-  #main-section .impact-card + .impact-card { border-left: 0 !important; border-top: 1px solid #0A192D1A !important; padding-top: 28px !important; margin-top: 28px !important; }
-  #main-section .impact-card:nth-child(n+3) { margin-top: 28px !important; padding-top: 28px !important; }
   #main-section section { padding: 48px 0 !important; }
-  #main-section .cta-med { display: none !important; }
-  #main-section .counter-band { padding: 10px 0 20px !important; }
+  #main-section .cta-banner { padding: 36px 20px !important; border-radius: 16px !important; }
+  #main-section .counter-band { padding: 36px 24px !important; }
   #main-section .hero-ctas { flex-direction: column !important; align-items: flex-start !important; }
   #main-section .hero p.lead { font-size: 16px !important; }
 }
@@ -334,7 +302,7 @@ html { scroll-behavior: smooth !important; }
 #main-section .foot-toggle svg { display: none !important; }
 #main-section .foot-submenu { display: flex !important; flex-direction: column !important; margin: 15px 0 0 !important; }
 #main-section .foot-parent { margin-bottom: 10px !important; }
-#main-section .foot-parent-toggle { display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 8px !important; width: 100% !important; background: none !important; border: none !important; padding: 4px 0 !important; font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-size: 14px !important; font-weight: 500 !important; color: #333333 !important; cursor: pointer !important; text-align: left !important; transition: color .2s !important; margin-bottom: 4px !important; }
+#main-section .foot-parent-toggle { display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 8px !important; width: 100% !important; background: none !important; border: none !important; padding: 4px 0 !important; font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important; font-size: 14px !important; font-weight: 500 !important; color: #333333 !important; cursor: pointer !important; text-align: left !important; transition: color .2s !important; margin-bottom: 4px !important; }
 #main-section .foot-parent-toggle:hover { color: #0083C8 !important; }
 #main-section .foot-parent-toggle .fp-chev { flex-shrink: 0 !important; color: #333333 !important; transition: transform .3s cubic-bezier(.16,.8,.24,1) !important; }
 #main-section .foot-parent.open .foot-parent-toggle { color: #0083C8 !important; }
@@ -343,24 +311,24 @@ html { scroll-behavior: smooth !important; }
 #main-section .foot-parent.open .foot-children { display: flex !important; }
 #main-section .foot-children a { font-size: 12px !important; font-weight: 400 !important; color: #333333 !important; margin-bottom: 8px !important; }
 #main-section .foot-children a:hover { color: #0083C8 !important; }
-#main-section[data-theme="dark"] .foot-parent-toggle { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .foot-parent-toggle { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .foot-parent-toggle:hover { color: #4DB4EA !important; }
 #main-section[data-theme="dark"] .foot-parent.open .foot-parent-toggle { color: #4DB4EA !important; }
 #main-section[data-theme="dark"] .foot-parent.open .foot-parent-toggle .fp-chev { color: #4DB4EA !important; }
-#main-section[data-theme="dark"] .foot-parent-toggle .fp-chev { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .foot-parent-toggle .fp-chev { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .foot-children { border-left-color: #FFFFFF14 !important; }
-#main-section[data-theme="dark"] .foot-children a { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .foot-children a { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .foot-children a:hover { color: #4DB4EA !important; }
-#main-section[data-theme="dark"] .foot-brand p { color: rgba(215,236,246,.8) !important; }
-#main-section[data-theme="dark"] .icon-btn { background: #FFFFFF0F !important; border-color: #FFFFFF1F !important; color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .foot-brand p { color: #d7ecf6cc !important; }
+#main-section[data-theme="dark"] .icon-btn { background: #FFFFFF0F !important; border-color: #FFFFFF1F !important; color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .icon-btn:hover { color: #FFFFFF !important; border-color: #FFFFFF47 !important; }
-#main-section[data-theme="dark"] .foot-col a { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .foot-col a { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .foot-col a:hover { color: #FFFFFF !important; }
-#main-section[data-theme="dark"] .foot-bottom { border-top-color: #FFFFFF1A !important; color: rgba(215,236,246,.8) !important; }
-#main-section[data-theme="dark"] .foot-toggle svg { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .foot-bottom { border-top-color: #FFFFFF1A !important; color: #d7ecf6cc !important; }
+#main-section[data-theme="dark"] .foot-toggle svg { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .foot-toggle { border-bottom-color: #FFFFFF0F !important; }
-#main-section[data-theme="dark"] .foot-submenu h6 { color: rgba(215,236,246,.8) !important; }
-#main-section[data-theme="dark"] .foot-submenu a { color: rgba(215,236,246,.8) !important; }
+#main-section[data-theme="dark"] .foot-submenu h6 { color: #d7ecf6cc !important; }
+#main-section[data-theme="dark"] .foot-submenu a { color: #d7ecf6cc !important; }
 #main-section[data-theme="dark"] .foot-submenu a:hover { color: #FFFFFF !important; }
 @media (max-width:1200px) {
   #main-section .foot-top { grid-template-columns: repeat(3, 1fr) !important; }
@@ -380,22 +348,6 @@ html { scroll-behavior: smooth !important; }
   #main-section .foot-col:last-child { border-bottom: none !important; margin-bottom: 0 !important; padding-bottom: 0 !important; }
   #main-section[data-theme="dark"] .foot-col { border-bottom-color: #FFFFFF1A !important; }
 }
-
-/* ── Two families only ────────────────────────────────────────────────
-   Noto Sans: headings, sub-headings and display numerals.
-   Inter: body text, UI and form fields (inherited from #main-section).
-   Icon fonts (Font Awesome, eicons, elementskit) are deliberately left
-   alone - they are glyph fonts, not typefaces. */
-#main-section h1, #main-section h2, #main-section h3, #main-section h4, #main-section h5, #main-section h6,
-#main-section .eyebrow, #main-section .impact-card .num, #main-section .ind-card .stat,
-#main-section .zz-num, #main-section .counter-band .cnum, #main-section .demo-modal-head h3
-{ font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif !important; }
-/* page-local: the shared header component sets Manrope on its mega-menu group
-   headings and the chat widget sets Poppins. Both render on this page, so they
-   are pulled into the two-family system here. The permanent fix for the header
-   is one line in wp-header-shortcode.php. */
-.mega-sol-group > summary { font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif !important; }
-#chatBubbleRoot .greeting-message__content { font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif !important; }
 </style>
 
 <section id="main-section" class="custom-landing-page ithena-homepage" role="main-section" data-theme="" data-page="ithena-homepage">
@@ -436,9 +388,9 @@ html { scroll-behavior: smooth !important; }
             <div>
                 <div class="eyebrow">AI-Driven Digital Transformation</div>
                 <h1>Transform Manufacturing with <span class="grad-text">AI-Powered</span> Digital Solutions</h1>
-                <p class="lead">One platform. Every layer of the enterprise. ITHENA helps manufacturers and enterprises bring AI, industrial ERP, IoT, Cloud and analytics together - so plants run leaner, decisions happen faster, and nothing gets stuck between systems.</p>
+                <p class="lead">One platform. Every layer of the enterprise. ITHENA helps manufacturers and enterprises bring AI, industrial ERP, IoT, Cloud and analytics together — so plants run leaner, decisions happen faster, and nothing gets stuck between systems.</p>
                 <div class="hero-ctas">
-                    <a href="#contact" class="btn btn-primary js-demo-trigger">Discover What&rsquo;s Possible</a>
+                    <a href="#contact" class="btn btn-primary js-demo-trigger">Schedule a Demo</a>
                     <a href="#solutions" class="btn btn-ghost">Explore Solutions</a>
                 </div>
             </div>
@@ -455,7 +407,7 @@ html { scroll-behavior: smooth !important; }
                     <img class="trusted-img" src="https://dev-website.ithena.app/wp-content/uploads/2026/08/AWS-logo.png" alt="AWS Logo"  loading="lazy">
                     <img class="trusted-img" src="https://dev-website.ithena.app/wp-content/uploads/2026/08/Incorta-logo.png" alt="Incorta Logo"  loading="lazy">
                     <img class="trusted-img" src="https://dev-website.ithena.app/wp-content/uploads/2026/08/Infor-logo.png" alt="Infor Logo"  loading="lazy">
-                    <img class="trusted-img" src="https://dev-website.ithena.app/wp-content/uploads/2026/08/Microsoft-logo.png" alt="Microsoft Logo"  loading="lazy">
+                    <img class="trusted-img" src="https://dev-website.ithena.app/wp-content/uploads/2026/08/1000355399.png" alt="Microsoft Logo"  loading="lazy">
                     <img class="trusted-img" src="https://dev-website.ithena.app/wp-content/uploads/2026/08/Dassault-systemes-logo.png" alt="Dassault Systèmes Logo"  loading="lazy">
                     <img class="trusted-img" src="https://dev-website.ithena.app/wp-content/uploads/2026/08/PTC-logo.png" alt="PTC Logo"  loading="lazy">
                     <img class="trusted-img" src="https://dev-website.ithena.app/wp-content/uploads/2026/08/Oracle-logo.png" alt="Oracle Logo"  loading="lazy">
@@ -472,7 +424,7 @@ html { scroll-behavior: smooth !important; }
             <div class="section-head line-anim">
                 <div class="eyebrow">Industries We Serve</div>
                 <h2>Built for the sectors that run the world</h2>
-                <p>Deep expertise in manufacturing and the industries it touches - not one-size-fits-all software.</p>
+                <p>Deep expertise in manufacturing and the industries it touches — not one-size-fits-all software.</p>
             </div>
             <div class="ind-grid">
                 <a href="#" class="ind-card reveal">
@@ -509,7 +461,7 @@ html { scroll-behavior: smooth !important; }
             <div class="section-head reveal">
                 <div class="eyebrow">Solutions</div>
                 <h2>One platform, every layer of the enterprise</h2>
-                <p>From the plant floor to the boardroom - one connected system for your data, your people, and your machines.</p>
+                <p>From the plant floor to the boardroom — one connected system for your data, your people, and your machines.</p>
             </div>
             <div class="sol-grid">
                 
@@ -608,7 +560,7 @@ html { scroll-behavior: smooth !important; }
                     <div class="sol-body">
                         <div class="sol-icon-badge"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="10" rx="3"/><circle cx="9" cy="13" r="1.3"/><circle cx="15" cy="13" r="1.3"/><path d="M12 8V5M9 5h6M3 12h2M19 12h2"/></svg></div>
                         <h3>The Agentic OEM</h3>
-                        <p>AI that supports machine builders at every stage - from installation to end of life.</p>
+                        <p>AI that supports machine builders at every stage — from installation to end of life.</p>
                         <ul>
                             <li>Real-time context from across OEM ecosystem </li>
                             <li>First-Line Customer Support</li>
@@ -630,7 +582,7 @@ html { scroll-behavior: smooth !important; }
                     <div class="sol-body">
                         <div class="sol-icon-badge"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3a3 3 0 00-3 3c-1.1 0-2 .9-2 2s.9 2 2 2c-.6.5-1 1.2-1 2 0 1.1.9 2 2 2 0 1.7 1.3 3 3 3s3-1.3 3-3V6a3 3 0 00-3-3z"/><path d="M15 3a3 3 0 013 3c1.1 0 2 .9 2 2s-.9 2-2 2c.6.5 1 1.2 1 2 0 1.1-.9 2-2 2 0 1.7-1.3 3-3 3"/></svg></div>
                         <h3>Analytics AI Platform</h3>
-                        <p>Agentic AI that watches your operations, flags what matters, and takes action - with people still in control.</p>
+                        <p>Agentic AI that watches your operations, flags what matters, and takes action — with people still in control.</p>
                         <ul>
                             <li>Anomaly detection</li>
                             <li>Natural-language shift reports</li>
@@ -713,58 +665,70 @@ html { scroll-behavior: smooth !important; }
             <div class="section-head reveal">
                 <div class="eyebrow">Why ITHENA</div>
                 <h2>What makes ITHENA different</h2>
-                <p>We didn't bolt AI onto old software - we built ours around AI and the realities of manufacturing, from day one.</p>
+                <p>We didn't bolt AI onto old software — we built ours around AI and the realities of manufacturing, from day one.</p>
             </div>
             <div class="why-grid">
                 <div class="why-card reveal">
-                    <div class="why-hex">
-                        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/ai-first.webp" alt="AI-First Approach" loading="lazy">
+                    <div class="why-card-text">
                         <div class="ic">
                             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3a3 3 0 00-3 3c-1.1 0-2 .9-2 2s.9 2 2 2c-.6.5-1 1.2-1 2 0 1.1.9 2 2 2 0 1.7 1.3 3 3 3s3-1.3 3-3V6a3 3 0 00-3-3z"/><path d="M15 3a3 3 0 013 3c1.1 0 2 .9 2 2s-.9 2-2 2c.6.5 1 1.2 1 2 0 1.1-.9 2-2 2 0 1.7-1.3 3-3 3"/></svg>
                         </div>
+                        <h4>AI-First Approach</h4>
+                        <p>Every module is designed around agentic AI from day one, not bolted on afterward.</p>
                     </div>
-                    <h4>AI-First Approach</h4>
-                    <p>Every module is designed around agentic AI from day one, not bolted on afterward.</p>
+                    <div class="why-card-visual wv1">
+                        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/ai-first.webp" alt="AI-First Approach" loading="lazy">
+                    </div>
                 </div>
                 <div class="why-card reveal">
-                    <div class="why-hex">
-                        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/manufacturing-expertise.webp" alt="Manufacturing Expertise" loading="lazy">
+                    <div class="why-card-text">
                         <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M2 21v-1a6 6 0 016-6h2a6 6 0 016 6v1"/><circle cx="18" cy="8" r="2.2"/><path d="M15.5 21v-.8a4 4 0 013.2-3.9"/></svg></div>
+                        <h4>Manufacturing Expert</h4>
+                        <p>100+ specialists who've worked the shopfloor, not just the software stack.</p>
                     </div>
-                    <h4>Manufacturing Expert</h4>
-                    <p>100+ specialists who've worked the shopfloor, not just the software stack.</p>
+                    <div class="why-card-visual wv2">
+                        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/manufacturing-expertise.webp" alt="Manufacturing Expertise" loading="lazy">  
+                    </div>
                 </div>
                 <div class="why-card reveal">
-                    <div class="why-hex">
-                        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/entr-ready.webp" alt="Enterprise-Ready Architecture" loading="lazy">
+                    <div class="why-card-text">
                         <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+                        <h4>Enterprise Framework</h4>
+                        <p>Built to grow across every site, legacy system, and subsidiaries — without rip-and-replace.</p>
                     </div>
-                    <h4>Enterprise Framework</h4>
-                    <p>Built to grow across every site, legacy system, and subsidiaries - without rip-and-replace.</p>
+                    <div class="why-card-visual wv3">
+                        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/entr-ready.webp" alt="Enterprise-Ready Architecture" loading="lazy">    
+                    </div>
                 </div>
                 <div class="why-card reveal">
-                    <div class="why-hex">
-                        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/security-design.webp" alt="Security by Design" loading="lazy">
+                    <div class="why-card-text">
                         <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div>
+                        <h4>Security by Design</h4>
+                        <p>SOC 2-aligned controls, encrypted by default, with granular role-based access.</p>
                     </div>
-                    <h4>Security by Design</h4>
-                    <p>SOC 2-aligned controls, encrypted by default, with granular role-based access.</p>
+                    <div class="why-card-visual wv4">
+                        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/security-design.webp" alt="Security by Design" loading="lazy">    
+                    </div>
                 </div>
                 <div class="why-card reveal">
-                    <div class="why-hex">
-                        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/rapid.webp" alt="Security by Design" loading="lazy">
+                    <div class="why-card-text">
                         <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L4 14h6l-1 7 9-11h-6z"/></svg></div>
+                        <h4>Rapid Deployment</h4>
+                        <p>Ready-made building blocks get you live in half the usual time.</p>
                     </div>
-                    <h4>Rapid Deployment</h4>
-                    <p>Ready-made building blocks get you live in half the usual time.</p>
+                    <div class="why-card-visual wv5">
+                        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/rapid.webp" alt="Security by Design" loading="lazy">    
+                    </div>
                 </div>
                 <div class="why-card reveal">
-                    <div class="why-hex">
-                        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/global-support.webp" alt="Global Support" loading="lazy">
+                    <div class="why-card-text">
                         <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></div>
+                        <h4>Global Support</h4>
+                        <p>Round-the-clock support, in every time zone, from a team dedicated to your success.</p>
                     </div>
-                    <h4>Global Support</h4>
-                    <p>Round-the-clock support, in every time zone, from a team dedicated to your success.</p>
+                    <div class="why-card-visual wv6">
+                        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/global-support.webp" alt="Global Support" loading="lazy">    
+                    </div>
                 </div>
             </div>
         </div>
@@ -776,7 +740,7 @@ html { scroll-behavior: smooth !important; }
             <div class="section-head reveal">
                 <div class="eyebrow">Implementation</div>
                 <h2>How a transformation with ITHENA works</h2>
-                <p>A proven six-step process, led by people who've done this before - not a generic project template.</p>
+                <p>A proven six-step process, led by people who've done this before — not a generic project template.</p>
             </div>
             <div class="zigzag">
                 <div class="zz-item zz-odd reveal-left">
@@ -865,7 +829,6 @@ html { scroll-behavior: smooth !important; }
             <div class="section-head center reveal">
                 <div class="eyebrow">By the Numbers</div>
                 <h2>A track record built plant by plant</h2>
-                <p>Six years of deployments across manufacturing, aviation and distribution - counted the way our customers count them.</p>
             </div>
             <div class="counter-band reveal">
                 <div>
@@ -894,7 +857,6 @@ html { scroll-behavior: smooth !important; }
             <div class="section-head reveal">
                 <div class="eyebrow">Testimonials</div>
                 <h2>What operations leaders say</h2>
-                <p>The people who run the lines, the service desks and the plants, on what changed after go-live.</p>
             </div>
             <div class="tm-grid">
                 <div class="tm-card reveal">
@@ -929,26 +891,14 @@ html { scroll-behavior: smooth !important; }
     </section>
 
     <!-- ===================== CTA BANNER ===================== -->
-    <section id="contact" class="cta-band">
-        <div class="cta-in">
-            <div class="cta-copy reveal">
-                <div class="eyebrow">Get started</div>
-                <h2>Bring one plant and the numbers your team argues about. <em>We will show you what the data already says.</em></h2>
-                <p>A working session with an ITHENA specialist. Connect one system read-only, or hand us last month&rsquo;s exports, and see where the hours and the cost actually go.</p>
-                <ul class="cta-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>One ERP, MES or shopfloor system, read-only</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Or last month&rsquo;s exports, if a connection takes time</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>The three numbers your team cannot agree on</li>
-                </ul>
+    <section id="contact" class="bg-white custom-sec">
+        <div class="wrap">
+            <div class="cta-banner reveal">
+                <h2>Ready to transform your enterprise?</h2>
+                <p>Talk to an ITHENA specialist about your plants, your systems, and where AI can move the needle fastest.</p>
                 <div class="cta-row">
-                    <a href="#" class="btn btn-white js-demo-trigger">Discover What&rsquo;s Possible</a>
-                    <a href="mailto:sales@ithena.ai" class="btn btn-line">Talk to the team</a>
+                    <a href="#" class="btn btn-white js-demo-trigger">Schedule a Demo</a>
                 </div>
-            </div>
-            <div class="cta-med" aria-hidden="true">
-                <video autoplay muted loop playsinline preload="metadata" tabindex="-1">
-                    <source src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ecommerce-hero-parts-video.mp4" type="video/mp4">
-                </video>
             </div>
         </div>
     </section>
@@ -1161,7 +1111,7 @@ html { scroll-behavior: smooth !important; }
                 <div class="demo-success-icon">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
                 </div>
-                <h4>Thanks - request received!</h4>
+                <h4>Thanks — request received!</h4>
                 <p>An ITHENA specialist will reach out within 1 business day to schedule your demo.</p>
             </div>
         </div>

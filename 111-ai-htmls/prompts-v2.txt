@@ -1,0 +1,175 @@
+redesign "https://dev-website.ithena.app/blogs-v2/" - make sure it
+is AEO, GEO, SEO optimised. Page design structure should be visually apealling with new UI
+elements, no block design, animations to blocks or sections used, HD images and
+interactive elemennts.
+
+
+modify "/ithena-blogs-v2.html"
+div "wrap" should vertically center in the hero section
+remove capsule design of "hero-jump" anchors, redesign them in a new age, sleek and minimal design
+"ithCount" should be in the same line as h2 title, distinct them with "|" for Understanding
+change "lead-fig" aspect ratio - 20:12
+
+
+modify "/ithena-blogs-v3.html"
+add video as bg to hero section. Place "Latest blog" exactly above all articles section.
+Remove block design from "cat-grid", design them in - minimal, sleek, visually appealing abd attactive.
+
+Place "Latest blog" after "cat-grid" section. Remove "hero-frame". Add on hover popout effect on article cards. 
+Redesign "cta" block - make it full width, remove "cta-list", retext content WRT to blog content.
+
+
+modify "ithena-blog-aether-tew-july-2026.html"
+Remove share option. Divide in 2 grids - 3 questions each grid
+Rearrange " problem" - Place img/grpahic div at LHS
+
+modify "ithena-singleblog-v2.html"
+Add distinctive banner img/video to "In the press" section
+Redesign "eyebrow" as "eyebrow" of ithena-blog-aether-tew-july-2026.html
+Add "toc" section after hero as same as "toc" of "ithena-blog-aether-tew-july-2026.html"
+Remove "flow" from "Beyond analytics" section. Modify "Capabilities" section - keep icon and h3 title in the same line.
+Redesign "Where it lands" section - "inds" at RHS - in 4x4 grid. Remove rounded corners of "wide-fig" add depth shadow to it.
+
+modify "ithena-blogslisting-v3.html"
+Increase the ht of hero - min 650px for desktop and adjust values of the same on mobile devices.
+Apply plain color overlay than using before / after
+Align "search bar" in the horizontal center 
+add sample (not functional) pagination for display before "The ITHENA blog" section in the center.
+
+
+
+
+Place "hsearch", right after "cats" section - make sure it will suit both themes - darker and lighter.
+Modify Latest blog "rv" as eyebrow. Redesign "Get started" - Divide section in 2 grids, LHS - text content and CTA, RHS - video as bg, make sure it will occupy whole RHS grid.
+
+
+modify "ithena-singleblog-v2.html"
+Add distinctive banner bg img "In the press" section. Adjust margins and paddings, remove extra ones.
+Remove casule effect of "inds" - incread icon size and design it in sleek and attactive way.
+Change and use 2 font families only, Noto and Inter, replace and remove all other font families from the CSS and featureing.
+Noto will be used for headings, sub heading and Inter for body text. 
+Ensure that the font sizes are consistent with the design system, with the largest font size being 50px and the smallest being 12px. 
+Adjust font weights accordingly, with the largest weight being 700 and the smallest being 300.
+
+
+modify - "ithena-blogslisting-v2.html", "ithena-blogslisting-v3.html", "ithena-singleblog-v2.html", "ithena-singleblog-v3.html"
+Do not use body, remove and replace body tag with <section> tag in css + js. 
+Optimise css in "one css rule per line" way.
+Remove all unused css and js from the provided html and make sure it is optimized for production - remove html, css or js comments.
+Add common + unique class to each section + make sure theme switch works as it is working in "industry-pages/food-beverage-bakery-oem.html"
+Remove all unused css and js from the provided html and make sure it is optimized for production - remove html, css or js comments.
+Study the following logic and implement same in the page. Make sure change css and css classes as per light and dark theme + make sure css will be at highest priority and it must override elementor css if any.
+<section id="main-section" class="fbb-landing" data-theme="dark"> </section> 
+<script>
+    (function () {
+
+        "use strict";
+        /* ---------- THEME ---------- */
+        var root = document.querySelector('section.fbb-landing');
+        var themeToggle = document.getElementById('themeToggle');
+
+        var stored = localStorage.getItem('fbb-theme');
+        var initial = stored || 'dark';
+        setTheme(initial);
+
+        function setTheme(mode){
+        root.setAttribute('data-theme', mode);
+        if (themeToggle) themeToggle.setAttribute('aria-pressed', mode === 'dark' ? 'true' : 'false');
+        localStorage.setItem('fbb-theme', mode);
+        }
+
+        if (themeToggle) {
+        themeToggle.addEventListener('click', function(){
+            var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            setTheme(next);
+        });
+        }
+
+    });
+</script>
+
+
+Create and design new landing page for single blog. Refer "single-blog-page.png for Design and layout.
+For data and content use - "/ithena-singleblog-v2.html". Keep it classy, minimal and visually attractive.
+
+
+Modify "ithena-blogslisting-v3.html" 
+Align Search bar in the center.  In dark theme - keep article cards in lighter mode. Add sample pagination.
+Add popout effect to article cards on hover.
+
+Recreate "https://ithena.ai/ai-ml-data-science/" - in the better way.
+Keep the content + text data + media as it is. 
+Redesign it will new age UI elements, Sleek designs + no block elements + no vanila designs.
+Design should be visually appealing, SEO + AEO optimised + responsive on all devices.
+
+Modify "hero" - remove capsule design of "h-tags". use "https://dev-website.ithena.app/wp-content/uploads/al_opt_content/IMAGE/dev-website.ithena.app/wp-content/uploads/2024/02/ai-ml-1.jpg.bv.webp" as hero banner
+Modify "Artificial Intelligence & Machine Learning" - Use rhs img as bg img to section
+Modify "Offerings" - "panel" remove block bg 
+Modify "Approach" - Redesign this as "Who it is for" section from "aether-landing.html"
+Modify "Success Stories" - 2 slides each view - slide working
+Remove - block bg from "marquee" li
+
+Redesign "pill" as eyebrow. Remove block design from "subnav-card", remove bg from "li", active anchor will have bottom brand border in sleek and classy way.
+Add progressive animations to "Method" section nodes. Remove capsule bg from button of "Offerings" section, active button will have left border and bg color 
+Remove white bg from "Approach" - "rph" div and center align the cards. remove "Next step".
+
+Modify "Artificial Intelligence & Machine Learning" section -  in light theme, use the same img as of dark them just add lighter overlay so that it will not look odd to lighter theme
+
+Animate node of "Method" section. Shift focus from one to another starting from "Engineer & Aggregate".
+Remove block design from cards of "Approach" section. Give them minimal and sleek design look. Make stage number - hero element.
+
+Redesign "ithena-ai-ml-data-science.html" in the light mode especially sections - "Method", "Success Stories", "Artificial Intelligence & Machine Learning", "Partnerships".
+Once done check with both themes and cross verify all text colors and bg colors
+
+Modify Section "Offerings"- Redeisgn "tablist" as horizontal than vertical and active tab will have bottom border, change active tab every 3 sec 
+Panel will cover full width of below container. 
+Modify "Approach" - connect 5 stages in zig zag patten horizontally with connection line as step 1,3,5 will be above of line and step 2 , 4 will be below of it. Animated each step evry 3 sec with popout effect.
+Modify "Success Stories" - Allow slide to autoplay evry 3 sec.
+
+
+
+Recreate "https://dev-website.ithena.app/process-integration/" - in the better way.
+Follow design, layout and sections rules as "ithena-big-data-analytics.html"
+use text and data content from - "https://dev-website.ithena.app/process-integration/"
+Make sure to retain design, font and color schemes used in "ithena-big-data-analytics.html"
+Make it work in responsive throughout screens - desktops, laptops, tablets + mobiles
+
+
+Remove "AI Experiences" section. Modify "ITHENA’s ONE Data Platform" - Remove block design from "cards" card from both themes, add LHS border to distinct cards, hightlight "cnum" in the better way.
+Remove "flow" li capsule design - give it sleek , classy, new age design.
+
+Modify - "ithena-big-data-analytics.html"
+section "Big Data & Analytics" - remove traditional design of "badge", give them classy + sleek and new UI element approch design + animate them to give lively feel.
+Section "ITHENA’s ONE Data Platform" - animate "flow" li and "cards" li together, on every 2 sec - popout card - enlarge it to 1.5x at same time show flow li changing its li as per the number.
+Section "Offerings" - Add visible Move in animation to panel text.
+
+Modify - ithena-ai-ml-data-science.html, ithena-cloud-adoption.html
+Add all animation appiled in "ithena-big-data-analytics.html" to this pages.
+Make sure to relate section and there design.
+
+Modify - ithena-ai-ml-data-science.html, 4ithena-big-data-analytics.html, ithena-cloud-adoption.html, ithena-process-integration.html
+section "ITHENA’s ONE Data Platform", "Approach" - Remove bg card effect - enlager the text only 
+Section "Method" - redesign as line should connect the card but must not overlap them, Remove bg card effect - enlager the text + icon
+Section "subnav" - make it uniform in all with uniform animation details
+
+modify - "case-study-template.html" - Redesign "hero-chips" as "h-tags" of "ithena-big-data-analytics.html"
+Rewrite "case-study-template.html" as WP template page, all elements will be added from ACF fields - like eyebrow, titles, subtitles, section elements.
+There is no ACF repeater
+
+
+ACF fields should be available for all posts which of post type - case-study-test.
+As well as check - "https://dev-website.ithena.app/case-study-temp-v2/" this link, its template is - "https://dev-website.ithena.app/wp-content/themes/astra-child/template-parts/case-study-v2.php"
+If find issues fix them in the template.
+
+
+Template "case-study-v2.php" - there is gap remains at the top of webpage - modify the code in such way it should not happen and there will not be blank space.
+
+on click of "Download case study" CTA - trigger modal popup which will serve "[formidable id=98]" form and its funcionalities 
+on click of "Talk to an expert" CTA - trigger modal popup which will serve "[formidable id=100]" form and its funcionalities 
+Make sure popup is properly displayed on all resolutions - desktop + laptops + tablets and mobiles
+
+
+reorder - "In their words" after "About the client", add CTA popups of "Talk to an expert" to "Book a walkthrough" & "Book a service-desk review". 
+Remove their older linking feature and fields if any assigned. Add bottom padding to main section.
+
+

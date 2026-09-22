@@ -1,0 +1,1495 @@
+﻿<!-- Theme init -->
+<script>
+(function () {
+    try {
+        var saved = localStorage.getItem('ithena-theme');
+        var isDark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (isDark) document.documentElement.classList.add('dark');
+    } catch (e) {}
+})();
+</script>
+
+<style>
+/*
+* HEADER STYLES - scoped under .ithena-header for Elementor compatibility.
+* html.dark selectors kept as-is since they target the html element.
+*/
+
+html { color-scheme: light;}
+html.dark { color-scheme: dark;}
+
+/* ======================================================================
+HEADER
+====================================================================== */
+
+/* -- light (default) -- */
+.ithena-header .nav-link { display: inline-flex; align-items: center; transition: .3s cubic-bezier(.16, .8, .24, 1);}
+.ithena-header .nav-link svg { transition: transform .3s cubic-bezier(.16, .8, .24, 1);}
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 20px 0; transition: padding .4s cubic-bezier(.16, .8, .24, 1), background .4s cubic-bezier(.16, .8, .24, 1), box-shadow .4s cubic-bezier(.16, .8, .24, 1), border-color .4s cubic-bezier(.16, .8, .24, 1); background: transparent; border-bottom: 1px solid transparent;}
+header.scrolled { padding: 12px 0; background: #F6F8FA; box-shadow: 0 12px 30px -18px #14284629; border-bottom: 1px solid #0A192D1A;}
+header:not(.scrolled) .logo, header:not(.scrolled) .nav-link, header:not(.scrolled) .nav-item.open .nav-link svg { color: #fff;}
+header:not(.scrolled) .nav-link { color: #FFFFFFE0; transition: color .25s, background .25s;}
+header:not(.scrolled) .icon-btn, header:not(.scrolled) .mobile-toggle { background: #FFFFFF1A; border-color: #FFFFFF4C; color: #fff;}
+header:not(.scrolled) .mobile-toggle span { background: #fff;}
+header:not(.scrolled) .nav-link:hover, header:not(.scrolled) .nav-item.open .nav-link { color: #fff; background: #FFFFFF24;}
+.ithena-header .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px;}
+.ithena-header .nav-menu { display: flex; align-items: center; gap: 6px;}
+.ithena-header .nav-item { position: relative;}
+.ithena-header .nav-link { display: flex; align-items: center; gap: 5px; padding: 10px 15px; border-radius: 10px; font-size: 14px; font-weight: 600; color: #4A5A6E; transition: .25s;}
+.ithena-header .nav-link:hover, .ithena-header .nav-item.open .nav-link { color: #000000; background: #0A192D0F;}
+.ithena-header .nav-link svg { width: 12px; height: 12px; transition: transform .3s;}
+.ithena-header .nav-item.open .nav-link svg { transform: rotate(180deg);}
+.ithena-header .nav-actions { display: flex; align-items: center; gap: 14px;}
+.ithena-header .icon-btn { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: #0A192D0D; border: 1px solid #0A192D1A; color: #4A5A6E;}
+.ithena-header .icon-btn:hover { color: #000000; border-color: #0A192D33;}
+.ithena-header .to-top { position: fixed; bottom: 28px; right: 28px; z-index: 9999; width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #0083C8; border: none; color: #fff; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .3s cubic-bezier(.16,.8,.24,1), transform .3s cubic-bezier(.16,.8,.24,1), visibility .3s, background .2s; box-shadow: 0 6px 20px -4px #0082C880;}
+.ithena-header .to-top.visible { opacity: 1; visibility: visible; transform: translateY(0);}
+.ithena-header .to-top:hover { background: #0067A0; color: #fff; box-shadow: 0 10px 24px -6px #0082C899; transform: translateY(-2px);}
+html.dark .to-top { background: #0083C8; border: none; color: #fff;}
+html.dark .to-top:hover { background: #0067A0; color: #fff;}
+@media (max-width:560px) { .ithena-header .to-top { bottom: 16px; right: 16px;}}
+.ithena-header .mega { position: fixed; top: 94px; left: 50%; width: min(calc(100vw - 40px), 1220px); background: #F6F8FAE0; -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); border: 1px solid #0A192D14; border-radius: 22px; box-shadow: 0 30px 60px -20px #14284638, 0 14px 28px -14px #14284624, inset 0 1px 0 #FFFFFFB2; opacity: 0; visibility: hidden; pointer-events: none; overflow: hidden; transform: translateX(-50%) translateY(-8px); transition: opacity .28s cubic-bezier(.16, .8, .24, 1), transform .28s cubic-bezier(.16, .8, .24, 1), visibility .28s; z-index: 150;}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .ithena-header .mega { background: #F6F8FAFA;}}
+.ithena-header .mega::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #0083C8, #4FE0D0, #0083C8, transparent); opacity: .7;}
+.ithena-header .nav-item.open .mega { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0);}
+.ithena-header .mega-wide { padding: 0;}
+.ithena-header .mega-inner { padding: 30px 34px 34px;}
+.ithena-header .mega-sol-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;}
+.ithena-header .mega-sol-col { padding: 15px 30px; border-right: 1px solid #0A192D1A;}
+.ithena-header .mega-sol-col:first-child { padding-left: 0;}
+.ithena-header .mega-sol-col:last-child { padding-right: 0; border-right: none;}
+.ithena-header .mega-sol-col-head { display: flex; align-items: center; gap: 12px; min-height: 56px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 2px solid #0083C8;}
+.ithena-header .mega-sol-col-icon { width: 40px; height: 40px; border-radius: 11px; flex-shrink: 0; background: linear-gradient(135deg, #0083C8, #4FE0D0); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 18px -8px #0082C88C;}
+.ithena-header .mega-sol-col-head h4 { font-size: 16px; color: #000000; margin-bottom: 2px; white-space: nowrap;}
+.ithena-header .mega-sol-col-head .mega-sol-col-sub { display: block; font-size: 12px; font-weight: 600; color: #76889C; white-space: nowrap;}
+.ithena-header .mega-sol-group { border-bottom: 1px solid #0A192D14;}
+.ithena-header .mega-sol-group:last-child { border-bottom: none;}
+.ithena-header .mega-sol-group summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 2px; font-family: "Manrope", sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: #4A5A6E; transition: color .2s;}
+.ithena-header .mega-sol-group summary::-webkit-details-marker { display: none;}
+.ithena-header .mega-sol-group summary::marker { content: "";}
+.ithena-header .mega-sol-group summary:hover { color: #0083C8;}
+.ithena-header .mega-sol-group summary .chev { flex-shrink: 0; color: #76889C; transition: transform .25s cubic-bezier(.16, .8, .24, 1);}
+.ithena-header .mega-sol-group[open] summary { color: #0083C8;}
+.ithena-header .mega-sol-group[open] summary .chev { transform: rotate(180deg); color: #0083C8;}
+.ithena-header .mega-sol-group-items { padding: 2px 2px 14px; display: flex; flex-direction: column; gap: 8px; overflow: hidden;}
+.ithena-header .mega-sol-group-items.is-animating,
+.ithena-header .mega-ind-refs.is-animating { transition: height .3s cubic-bezier(.16, .8, .24, 1), opacity .3s cubic-bezier(.16, .8, .24, 1);}
+@media (prefers-reduced-motion: reduce) {
+    .ithena-header .mega-sol-group-items.is-animating,
+    .ithena-header .mega-ind-refs.is-animating { transition: none;}
+}
+.ithena-header .mega-sol-item { display: flex; align-items: flex-start; gap: 10px; padding: 7px 8px; border-radius: 8px; transition: background .2s;}
+.ithena-header .mega-sol-item:hover { background: #0A192D0D;}
+.ithena-header .mega-sol-item-icon { width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: transform .25s cubic-bezier(.16, .8, .24, 1);}
+.ithena-header .mega-sol-item:hover .mega-sol-item-icon { transform: scale(1.1) rotate(-5deg);}
+.ithena-header .mega-sol-item-icon.c1,
+.ithena-header .mega-sol-item-icon.c2,
+.ithena-header .mega-sol-item-icon.c3,
+.ithena-header .mega-sol-item-icon.c4,
+.ithena-header .mega-sol-item-icon.c5,
+.ithena-header .mega-sol-item-icon.c6 { background: #0082C826; color: #0083C8;}
+.ithena-header .mega-sol-item-text { min-width: 0;}
+.ithena-header .mega-sol-item .mega-sol-item-name { display: block; font-size: 14px; font-weight: 400; color: #000000; margin-bottom: 2px; white-space: nowrap; transition: color .2s;}
+.ithena-header .mega-sol-item:hover .mega-sol-item-name { color: #0083C8;}
+.ithena-header .mega-sol-item .mega-sol-item-sub { display: block; font-size: 12px; color: #76889C; line-height: 1.4;}
+.ithena-header .mega-sol-more-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 10px 16px; border-radius: 100px; color: #0083C8; font-family: "Manrope", sans-serif; font-size: 14px; font-weight: 700; transition: background .25s, color .25s, transform .2s;}
+.ithena-header .mega-sol-more-link:hover { background: #0083C8; color: #fff; transform: translateX(2px);}
+.ithena-header .mega-sol-more-link svg { transition: transform .25s cubic-bezier(.16, .8, .24, 1); flex-shrink: 0;}
+.ithena-header .mega-sol-more-link:hover svg { transform: translateX(3px);}
+.ithena-header .mega-feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px 40px; padding-bottom: 22px; margin-bottom: 20px; border-bottom: 1px solid #0A192D1A;}
+.ithena-header .mega-feat { display: flex; gap: 13px; align-items: flex-start; opacity: 0; transform: translateY(10px); transition: opacity .4s cubic-bezier(.16, .8, .24, 1), transform .4s cubic-bezier(.16, .8, .24, 1);}
+.ithena-header .nav-item.open .mega-feat { opacity: 1; transform: translateY(0);}
+.ithena-header .mega-feat-grid .mega-feat:nth-child(1) { transition-delay: .06s;}
+.ithena-header .mega-feat-grid .mega-feat:nth-child(2) { transition-delay: .11s;}
+.ithena-header .mega-feat-grid .mega-feat:nth-child(3) { transition-delay: .16s;}
+.ithena-header .mega-feat-grid .mega-feat:nth-child(4) { transition-delay: .21s;}
+.ithena-header .mega-feat-grid .mega-feat:nth-child(5) { transition-delay: .26s;}
+.ithena-header .mega-feat-grid .mega-feat:nth-child(6) { transition-delay: .31s;}
+.ithena-header .mega-feat-grid .mega-feat:nth-child(7) { transition-delay: .36s;}
+.ithena-header .mega-feat-grid .mega-feat:nth-child(8) { transition-delay: .41s;}
+.ithena-header .mega-feat-grid .mega-feat:nth-child(9) { transition-delay: .46s;}
+.ithena-header .mega-feat-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; transition: transform .3s cubic-bezier(.16, .8, .24, 1);}
+.ithena-header .mega-feat:hover .mega-feat-icon { transform: scale(1.1) rotate(-5deg);}
+.ithena-header .mega-feat-icon.c1,
+.ithena-header .mega-feat-icon.c2,
+.ithena-header .mega-feat-icon.c3,
+.ithena-header .mega-feat-icon.c4,
+.ithena-header .mega-feat-icon.c5,
+.ithena-header .mega-feat-icon.c6 { background: #0082C826; color: #0083C8;}
+.ithena-header .mega-feat-body h4 { font-size: 14px; color: #000000; margin-bottom: 4px; white-space: nowrap; font-weight: 500;}
+.ithena-header .mega-feat-body p { font-size: 12px; color: #76889C; line-height: 1.5; margin-bottom: 7px;}
+.ithena-header .mega-feat-explore { font-size: 12px; font-weight: 700; color: #0083C8; display: inline-flex; align-items: center; gap: 5px;}
+.ithena-header .mega-feat-explore svg { transition: transform .25s cubic-bezier(.16, .8, .24, 1);}
+.ithena-header .mega-feat:hover .mega-feat-explore svg { transform: translateX(3px);}
+.ithena-header .mega-ind-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 40px;}
+.ithena-header .mega-ind-col { padding: 0;}
+.ithena-header .mega-ind-col-head { display: flex; align-items: center; gap: 11px; min-height: 46px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 2px solid #0083C8;}
+.ithena-header .mega-ind-col-icon { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; background: linear-gradient(135deg, #0083C8, #4FE0D0); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 16px -8px #0082C88C;}
+.ithena-header .mega-ind-col-head h4 { font-size: 14px; color: #000000; white-space: nowrap;}
+.ithena-header .mega-ind-link, .ithena-header .mega-ind-group summary { display: flex; align-items: center; gap: 10px; list-style: none; cursor: pointer; padding: 9px 4px; border-radius: 8px; font-size: 14px; font-weight: 600; color: #000000; transition: background .2s, color .2s;}
+.ithena-header .mega-ind-link:hover, .ithena-header .mega-ind-group summary:hover { background: #0A192D0D; color: #0083C8;}
+.ithena-header .mega-ind-group summary::-webkit-details-marker { display: none;}
+.ithena-header .mega-ind-group summary::marker { content: "";}
+.ithena-header .mega-ind-item-icon { width: 26px; height: 26px; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;}
+.ithena-header .mega-ind-item-icon.c1,
+.ithena-header .mega-ind-item-icon.c2,
+.ithena-header .mega-ind-item-icon.c3,
+.ithena-header .mega-ind-item-icon.c4,
+.ithena-header .mega-ind-item-icon.c5,
+.ithena-header .mega-ind-item-icon.c6 { background: #0082C826; color: #0083C8;}
+.ithena-header .mega-ind-item-name { flex: 1; min-width: 0; white-space: nowrap;}
+.ithena-header .mega-ind-group summary .chev { flex-shrink: 0; color: #76889C; transition: transform .25s cubic-bezier(.16, .8, .24, 1);}
+.ithena-header .mega-ind-group[open] summary .chev { transform: rotate(180deg); color: #0083C8;}
+.ithena-header .mega-ind-refs { display: block; flex-wrap: wrap; gap: 6px; padding: 4px 4px 12px 40px; overflow: hidden;}
+.ithena-header .mega-ind-ref { display: flex; padding: 4px 10px; border: 1px solid #0A192D14; font-size: 12px;}
+.ithena-header .mega-feat-grid.no-border { border-bottom: none; margin-bottom: 0; padding-bottom: 0;}
+.ithena-header .mobile-toggle { display: none; width: 40px; height: 40px; border-radius: 10px; background: #0A192D0F; border: 1px solid #0A192D1A; flex-direction: column; align-items: center; justify-content: center; gap: 4px;}
+.ithena-header .mobile-toggle span { display: block; width: 18px; height: 2px; background: #000000; border-radius: 2px; transition: background .2s;}
+.ithena-header .theme-toggle svg { transition: opacity .2s, transform .3s cubic-bezier(.16, .8, .24, 1);}
+.ithena-header .mobile-panel { position: fixed; inset: 0 0 0 auto; width: min(360px, 86vw); top: 0; height: 110vh; background: #E4EAF1; transform: translateX(100%); transition: transform .4s cubic-bezier(.16, .8, .24, 1); z-index: 300; padding: 26px; overflow-y: auto; border-left: 1px solid #0A192D1A;}
+.ithena-header .mobile-panel.open { transform: translateX(0);}
+.ithena-header .mobile-panel .m-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;}
+.ithena-header .mobile-panel a { display: block; padding: 14px 4px; font-size: 16px; font-weight: 600; color: #000000; border-bottom: 1px solid #0A192D1A;}
+.ithena-header .mobile-panel .btn { width: 100%; justify-content: center; margin-top: 22px;}
+.ithena-header .mobile-panel .m-item { border-bottom: 1px solid #0A192D1A;}
+.ithena-header .mobile-panel .m-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: none; border: none; padding: 14px 4px; font-family: inherit; font-size: 16px; font-weight: 600; color: #000000; cursor: pointer; text-align: left;}
+.ithena-header .mobile-panel .m-toggle svg { flex-shrink: 0; color: #76889C; transition: transform .3s cubic-bezier(.16, .8, .24, 1);}
+.ithena-header .mobile-panel .m-item.open > .m-toggle svg { transform: rotate(180deg); color: #0083C8;}
+.ithena-header .mobile-panel .m-submenu { max-height: 0; overflow: hidden; transition: max-height .4s cubic-bezier(.16, .8, .24, 1);}
+.ithena-header .mobile-panel .m-item.open > .m-submenu { max-height: 900px; padding-bottom: 8px;}
+.ithena-header .mobile-panel .m-sub-label { display: block; padding: 12px 4px 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: #76889C;}
+.ithena-header .mobile-panel .m-sub-link { display: flex; align-items: center; gap: 10px; padding: 11px 4px 11px 6px; font-size: 14px; font-weight: 500; color: #4A5A6E; border-bottom: 1px solid #0A192D1A;}
+.ithena-header .mobile-panel .m-sub-link:last-child { border-bottom: none;}
+.ithena-header .mobile-panel .m-sub-link .ic { width: 22px; height: 22px; border-radius: 6px; background: #0082C826; color: #0083C8; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px;}
+.ithena-header .mobile-panel .m-sub-link:hover { color: #0083C8;}
+.ithena-header .mobile-panel .m-item-nested { border-bottom: none; padding-left: 4px; border-left: 2px solid #0A192D1A;}
+.ithena-header .mobile-panel .m-item-nested .m-toggle-sub { padding: 12px 4px; font-size: 14px;}
+.ithena-header .mobile-panel .m-toggle-sub > span:first-child { display: flex; flex-direction: column; gap: 2px;}
+.ithena-header .mobile-panel .m-toggle-tag { font-size: 12px; font-weight: 500; text-transform: none; letter-spacing: 0; color: #76889C;}
+.ithena-header .mobile-panel .m-item-nested .m-submenu { padding-left: 10px;}
+.ithena-header #m-solutions .m-sub-link { align-items: flex-start;}
+.ithena-header .mobile-panel .m-sub-text { display: flex; flex-direction: column; gap: 2px;}
+.ithena-header .mobile-panel .m-sub-text small { font-size: 12px; font-weight: 400; color: #76889C; line-height: 1.4;}
+.ithena-header .mobile-panel .m-sub-more { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 4px 4px; padding: 11px 14px; border-radius: 100px; background: #0082C81A; color: #0083C8; font-size: 14px; font-weight: 700; border-bottom: none;}
+.ithena-header .mobile-panel .m-sub-more:hover { background: #0083C8; color: #fff;}
+.ithena-header .scrim { position: fixed; inset: 0; background: #00000080; z-index: 250; opacity: 0; visibility: hidden; transition: .3s;}
+.ithena-header .scrim.open { opacity: 1; visibility: visible;}
+
+/* -- dark theme overrides -- */
+.ithena-header .mega-sol-row2 { margin-top: 18px; padding-top: 18px; border-top: 1px solid #0A192D1A;}
+html.dark .mega { background: #08101CE0; border-color: #FFFFFF1A; box-shadow: 0 30px 60px -20px #00000099, 0 14px 28px -14px #00000066, inset 0 1px 0 #FFFFFF14;}
+html.dark header.scrolled { background: #050A11; box-shadow: 0 12px 30px -18px #00000080; border-bottom-color: #FFFFFF14;}
+html.dark .nav-link { color: #ffffff;}
+html.dark .nav-link:hover, html.dark .nav-item.open .nav-link { color: #F4F8FB; background: #FFFFFF14;}
+html.dark .icon-btn { background: #FFFFFF0F; border-color: #FFFFFF1F; color: #8FA0B5;}
+html.dark .icon-btn:hover { color: #F4F8FB; border-color: #FFFFFF47;}
+html.dark .mobile-toggle { background: #FFFFFF14; border-color: #FFFFFF24;}
+html.dark .mobile-toggle span { background: #F4F8FB;}
+html.dark .theme-toggle .ic-moon { display: inline-block !important;}
+html.dark .theme-toggle .ic-sun { display: none !important;}
+html.dark .mega-sol-col { border-right-color: #FFFFFF1A;}
+@media (max-width:1180px) { html.dark .mega-sol-col { border-bottom-color: #FFFFFF1A;}}
+html.dark .mega-sol-col-head h4 { color: #F4F8FB;}
+html.dark .mega-sol-col-head .mega-sol-col-sub { color: #b3b3b3;}
+html.dark .mega-sol-group { border-bottom-color: #FFFFFF14;}
+html.dark .mega-sol-group summary { color: #8FA0B5;}
+html.dark .mega-sol-group summary .chev { color: #b3b3b3;}
+html.dark .mega-sol-item:hover { background: #FFFFFF0F;}
+html.dark .mega-sol-item .mega-sol-item-name { color: #F4F8FB;}
+html.dark .mega-sol-item .mega-sol-item-sub { color: #b3b3b3;}
+html.dark .mega-feat-grid { border-bottom-color: #FFFFFF1A;}
+html.dark .mega-sol-row2 { border-top-color: #FFFFFF14;}
+html.dark .mega-feat-body h4 { color: #F4F8FB;}
+html.dark .mega-feat-body p { color: #b3b3b3;}
+html.dark :is(.mega-sol-item-icon, .mega-feat-icon, .mega-ind-item-icon):is(.c1, .c2, .c3, .c4, .c5, .c6) { background: #0083C833; color: #4FA9E0;}
+html.dark .mega-ind-col-head h4 { color: #F4F8FB;}
+html.dark .mega-ind-link, html.dark .mega-ind-group summary { color: #F4F8FB;}
+html.dark .mega-ind-group summary .chev { color: #b3b3b3;}
+html.dark .mega-ind-ref { color: #8FA0B5;}
+html.dark .mega-ind-link:hover, html.dark .mega-ind-group summary:hover { background: #FFFFFF0F;}
+html.dark .mobile-panel { background: #0F2036; border-left-color: #FFFFFF1A;}
+html.dark .mobile-panel a { color: #F4F8FB; border-bottom-color: #FFFFFF1A;}
+html.dark .mobile-panel .m-item { border-bottom-color: #FFFFFF1A;}
+html.dark .mobile-panel .m-toggle { color: #F4F8FB;}
+html.dark .mobile-panel .m-toggle svg { color: #8FA0B5;}
+html.dark .mobile-panel .m-sub-label { color: #b3b3b3;}
+html.dark .mobile-panel .m-sub-link { color: #8FA0B5; border-bottom-color: #FFFFFF14;}
+html.dark .mobile-panel .m-item-nested { border-left-color: #FFFFFF1F;}
+html.dark .mobile-panel .m-toggle-tag { color: #b3b3b3;}
+html.dark .mobile-panel .m-sub-text small { color: #b3b3b3;}
+
+/* -- media queries -- */
+@media (max-width:520px) { .ithena-header .demo-form-row { grid-template-columns: 1fr;} .ithena-header .demo-modal { padding: 30px 22px 26px;}}
+@media (max-width:1180px) { .ithena-header .mega-sol-cols { grid-template-columns: 1fr;} .ithena-header .mega-sol-col { padding: 18px 0; border-right: none; border-bottom: 1px solid #0A192D1A;} .ithena-header .mega-sol-col:first-child { padding-top: 0;} .ithena-header .mega-sol-col:last-child { padding-bottom: 0; border-bottom: none;} .ithena-header .mega-ind-cols { grid-template-columns: 1fr; max-height: 70vh; overflow-y: auto;} .ithena-header .mega-ind-col { padding: 16px 0; border-bottom: 1px solid #0A192D1A;} .ithena-header .mega-ind-col:first-child { padding-top: 0;} .ithena-header .mega-ind-col:last-child { padding-bottom: 0; border-bottom: none;}}
+@media (max-width:980px) { .ithena-header .mega, .ithena-header .nav-menu, .ithena-header .nav-actions .btn-ghost, .ithena-header .nav-actions .icon-btn:not(.theme-toggle), .ithena-header .nav-actions .btn-primary { display: none;} .ithena-header .mobile-toggle { display: flex;}}
+
+/* Noise overlay (body background helper for header) */
+.noise { position: fixed; inset: 0; z-index: -1; opacity: .02; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+html.dark .noise { opacity: .035;}
+
+/* Button styles needed for header */
+.btn { display: inline-flex; align-items: center; gap: 9px; font-family: "Manrope", sans-serif; font-weight: 700; font-size: 14px; padding: 14px 26px; border-radius: 100px; border: 1px solid transparent; transition: all .35s cubic-bezier(.16, .8, .24, 1); white-space: nowrap;}
+.btn-primary { box-shadow: 0 8px 24px -8px #0082C899; background: linear-gradient(100deg, #0083C8, #0067A0); color: #fff;}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 32px -8px #00A8E8B2;}
+.btn-primary { position: relative; overflow: hidden;}
+.btn-primary::after { content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%; background: linear-gradient(115deg, transparent, #FFFFFF59, transparent); transform: skewX(-20deg); transition: left .6s cubic-bezier(.16, .8, .24, 1);}
+.btn-primary:hover::after { left: 130%;}
+
+/* Wrap container */
+.wrap { max-width: 1280px; margin: 0 auto; padding: 15px 30px;}
+</style>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+
+<!-- Header HTML -->
+<div class="noise"></div>
+
+        <!-- ===================== HEADER ===================== -->
+        <header id="site-header">
+            <div class="wrap nav-inner">
+                <a class="logo" href="https://dev-website.ithena.app/">
+                <img fetchpriority="high" width="136" height="45" src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" 
+                    class="attachment-full size-full wp-image-71412" alt="" 
+                    srcset="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp 568w, https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new-300x99.webp 300w" sizes="(max-width: 568px) 100vw, 568px">								
+                </a>
+                <nav class="nav-menu" id="nav-menu">
+                    
+                    <div class="nav-item solutions-menu">
+                        <a class="nav-link" href="#solutions">
+                            Solutions 
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+
+                        <div class="mega mega-wide">
+                            <div class="mega-inner">
+                                <div class="mega-sol-cols">
+
+                                    <!-- ============ 1. OEM | Distributors ============ -->
+                                    <div class="mega-sol-col">
+                                        <div class="mega-sol-col-head">
+                                            <div class="mega-sol-col-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5L12 12l8-4.5M12 12v9"/></svg></div>
+                                            <div>
+                                                <h4>OEM | Distributors</h4>
+                                                <span class="mega-sol-col-sub">Production | After Market</span>
+                                            </div>
+                                        </div>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Front Office Ops
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a5 5 0 015-5h2a5 5 0 015 5v1"/><circle cx="17.5" cy="9.5" r="2.2"/><path d="M16 20v-.8a4 4 0 013-3.8"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iCRM</span>
+                                                        <span class="mega-sol-item-sub">Customer relationship management for distributors and OEMs.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><rect x="8" y="6" width="8" height="3" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 17h.01M12 17h.01M15.5 17h.01"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iCPQ</span>
+                                                        <span class="mega-sol-item-sub">Configure, price, and quote workflows.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="6" r="2.5"/><circle cx="7" cy="18" r="2.5"/><circle cx="17" cy="12" r="2.5"/><path d="M7 8.5v7M9.3 7.2l5.5 3.5M9.3 16.8l5.5-3.5"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iERP</span>
+                                                        <span class="mega-sol-item-sub">ERP integrations and operational workflows.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                After Market Services
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c4"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2.5-6 3 12 2.5-6h3"/><circle cx="20" cy="12" r="1.4"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">Performance Monitoring</span>
+                                                        <span class="mega-sol-item-sub">Real-time connectivity into asset performance with proactive alerts and alarms.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">Service Portal</span>
+                                                        <span class="mega-sol-item-sub">Support your service operations with real-time visibility and workflows.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="/b2b-ecommerce-solution/" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c6"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2 3h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L21 8H6"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">B2B eCommerce</span>
+                                                        <span class="mega-sol-item-sub">Commerce experience for parts, services, and customer self-service.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+                                    </div>
+
+                                    <!-- ============ 2. Manufacturer ============ -->
+                                    <div class="mega-sol-col">
+                                        <div class="mega-sol-col-head">
+                                            <div class="mega-sol-col-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V12l5 3v-3l5 3V9l5 3v9H3z"/><path d="M7 21v-3M12 21v-3"/><circle cx="18.5" cy="5.5" r="2.5"/><path d="M18.5 2v1M18.5 8v1M15 5.5h1M21 5.5h1M16.4 3.4l.7.7M19.9 6.9l.7.7M16.4 7.6l.7-.7M19.9 4.1l.7-.7"/></svg></div>
+                                            <div>
+                                                <h4>Manufacturer</h4>
+                                                <span class="mega-sol-col-sub">Plan &rarr; Produce &rarr; Improve</span>
+                                            </div>
+                                        </div>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Planning
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iPLAN</span>
+                                                        <span class="mega-sol-item-sub">Planning workflows and decision support to improve throughput.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Production
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="/digital-shopfloor-igemba/" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c6"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l6 4v-4l6 4V7l6 4v10H3z"/><path d="M7 21v-4M13 21v-4"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iGEMBA</span>
+                                                        <span class="mega-sol-item-sub">Digitize Gemba walks to maximize shop floor productivity and resolve issues fast.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">Performance Monitoring</span>
+                                                        <span class="mega-sol-item-sub">Real-time performance visibility with alerts and alarms.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">MES</span>
+                                                        <span class="mega-sol-item-sub">Smarter shop-floor view: standardize, measure, improve quality and scale operations.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Quality
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">QMS</span>
+                                                        <span class="mega-sol-item-sub">Quality management workflows to prevent defects and improve compliance.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Maintenance
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c4"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2z"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">CMMS</span>
+                                                        <span class="mega-sol-item-sub">Single view of critical KPIs with standardized checklists to resolve issues faster.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.5 5.5l2 2M16.5 16.5l2 2M18.5 5.5l-2 2M7.5 16.5l-2 2"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iSEM</span>
+                                                        <span class="mega-sol-item-sub">Service + equipment management workflows and integrations.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+                                    </div>
+
+                                    <!-- ============ 3. Enterprise ============ -->
+                                    <div class="mega-sol-col">
+                                        <div class="mega-sol-col-head">
+                                            <div class="mega-sol-col-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V5a1 1 0 011-1h6a1 1 0 011 1v16"/><path d="M13 21V10a1 1 0 011-1h4a1 1 0 011 1v11"/><path d="M8 7h1M11 7h1M8 10.5h1M11 10.5h1M8 14h1M11 14h1M8 17.5h1M11 17.5h1M16.5 12.5h1M16.5 16h1"/></svg></div>
+                                            <div>
+                                                <h4>Enterprise</h4>
+                                                <span class="mega-sol-col-sub">Analytics | CX | SCM</span>
+                                            </div>
+                                        </div>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Supply Chain
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c6"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="13" height="9" rx="1"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iTMS</span>
+                                                        <span class="mega-sol-item-sub">Transportation management and logistics workflows.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iPLAN</span>
+                                                        <span class="mega-sol-item-sub">Planning workflows and decision support.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Data Analytics
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="/aether-ai-platform/" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6L12 2z"/><path d="M19 15l.7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15z"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">Aether</span>
+                                                        <span class="mega-sol-item-sub">Practical AI.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">Analytics</span>
+                                                        <span class="mega-sol-item-sub">Enterprise data analytics.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c4"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 000 7M15.5 8.5a5 5 0 010 7M5.5 5.5a9 9 0 000 13M18.5 5.5a9 9 0 010 13"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iHub</span>
+                                                        <span class="mega-sol-item-sub">Enterprise data hub and insights.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+
+                                        <details class="mega-sol-group">
+                                            <summary>
+                                                Apps
+                                                <svg class="chev" width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                            </summary>
+                                            <div class="mega-sol-group-items">
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4V5z"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">iSIP</span>
+                                                        <span class="mega-sol-item-sub">Integrated service experience platform.</span>
+                                                    </span>
+                                                </a>
+                                                <a href="#" class="mega-sol-item">
+                                                    <span class="mega-sol-item-icon c6"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-4h4v4"/></svg></span>
+                                                    <span class="mega-sol-item-text">
+                                                        <span class="mega-sol-item-name">CRM</span>
+                                                        <span class="mega-sol-item-sub">Customer relationship management.</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </details>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="nav-item services-menu">
+                        <a class="nav-link" href="#process">
+                            Services 
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+
+                        <div class="mega mega-wide">
+                            <div class="mega-inner">
+                                <div class="mega-sol-cols">
+
+                                    <!-- ============ 1. Advisory Consulting ============ -->
+                                    <div class="mega-sol-col">
+                                        <div class="mega-sol-col-head">
+                                            <div class="mega-sol-col-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+                                            <div>
+                                                <h4>Advisory Consulting</h4>
+                                                <span class="mega-sol-col-sub">Strategy &amp; AI roadmaps</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mega-sol-group-items">
+                                            <a href="https://dev-website.ithena.app/ai-assessment/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">AI Strategy</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- ============ 2. Data Management ============ -->
+                                    <div class="mega-sol-col">
+                                        <div class="mega-sol-col-head">
+                                            <div class="mega-sol-col-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg></div>
+                                            <div>
+                                                <h4>Data Management</h4>
+                                                <span class="mega-sol-col-sub">Analytics &amp; intelligence</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mega-sol-group-items">
+                                            <a href="https://dev-website.ithena.app/big-data-analytics/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Big Data &amp; Analytics</span>
+                                                </span>
+                                            </a>
+                                            <a href="https://dev-website.ithena.app/ai-ml-data-science/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.5 5.5l2 2M16.5 16.5l2 2M18.5 5.5l-2 2M7.5 16.5l-2 2"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">AI/ML | Data Science</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- ============ 3. Cloud Modernization ============ -->
+                                    <div class="mega-sol-col">
+                                        <div class="mega-sol-col-head">
+                                            <div class="mega-sol-col-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg></div>
+                                            <div>
+                                                <h4>Cloud Modernization</h4>
+                                                <span class="mega-sol-col-sub">Migration &amp; integration</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mega-sol-group-items">
+                                            <a href="https://dev-website.ithena.app/cloud-adoption/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c4"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 000-8 5.5 5.5 0 00-10.6 1.6A3.5 3.5 0 007 18z"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Cloud Adoption</span>
+                                                </span>
+                                            </a>
+                                            <a href="https://dev-website.ithena.app/process-integration/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M11 6l1-1a3.5 3.5 0 015 5l-1 1M13 18l-1 1a3.5 3.5 0 01-5-5l1-1"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Process Integration</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- â”€â”€ Row 2 â”€â”€ -->
+                                <div class="mega-sol-cols" class="mega-sol-row2">
+
+                                    <!-- ============ 4. Business Transformation ============ -->
+                                    <div class="mega-sol-col">
+                                        <div class="mega-sol-col-head">
+                                            <div class="mega-sol-col-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg></div>
+                                            <div>
+                                                <h4>Business Transformation</h4>
+                                                <span class="mega-sol-col-sub">CX &amp; digital journeys</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mega-sol-group-items">
+                                            <a href="https://dev-website.ithena.app/systems-of-engagement-erp/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c6"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Systems of Engagement</span>
+                                                </span>
+                                            </a>
+                                            <a href="https://dev-website.ithena.app/customer-experience/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4V5z"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Customer Experience</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- ============ 5. Manufacturing Integration ============ -->
+                                    <div class="mega-sol-col">
+                                        <div class="mega-sol-col-head">
+                                            <div class="mega-sol-col-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l6 4v-4l6 4V7l6 4v10H3z"/><path d="M7 21v-4M13 21v-4"/></svg></div>
+                                            <div>
+                                                <h4>Manufacturing Integration</h4>
+                                                <span class="mega-sol-col-sub">MES &amp; IoT connectivity</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mega-sol-group-items">
+                                            <a href="https://dev-website.ithena.app/manufacturing-execution-mes/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l6 4v-4l6 4V7l6 4v10H3z"/><path d="M7 21v-4M13 21v-4"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Manufacturing Execution</span>
+                                                </span>
+                                            </a>
+                                            <a href="https://dev-website.ithena.app/industrial-iot/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 000 7M15.5 8.5a5 5 0 010 7M5.5 5.5a9 9 0 000 13M18.5 5.5a9 9 0 010 13"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Industrial IoT</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- ============ empty spacer col ============ -->
+                                    <div class="mega-sol-col" aria-hidden="true"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-item industries-menu">
+                        <a class="nav-link" href="#industries">
+                            Industries 
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+
+                        <div class="mega mega-wide">
+                            <div class="mega-inner">
+                                <div class="mega-sol-cols">
+
+                                    <!-- ============ 1. OEM ============ -->
+                                    <div class="mega-sol-col">
+                                        <div class="mega-sol-col-head">
+                                            <div class="mega-sol-col-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5L12 12l8-4.5M12 12v9"/></svg></div>
+                                            <div>
+                                                <h4>OEM</h4>
+                                                <span class="mega-sol-col-sub">Equipment &amp; machine builders</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mega-sol-group-items">
+                                            <a href="/industries/packaging/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Packaging</span>
+                                                </span>
+                                            </a>
+                                            <a href="/industries/food-beverage/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6v4l1.5 2v12a2 2 0 01-2 2h-5a2 2 0 01-2-2V8L9 6V2z"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Food & Beverage | Bakery</span>
+                                                </span>
+                                            </a>
+                                            <a href="/industries/compressed-air/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 12l4-3"/><path d="M12 7v1M12 17v1M7 12h1M16 12h1"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Compressed Air</span>
+                                                </span>
+                                            </a>
+                                            <a href="/industries/custom-tool-builder/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c4"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2z"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Custom Tool Builder</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- ============ 2. Manufacturing ============ -->
+                                    <div class="mega-sol-col">
+                                        <div class="mega-sol-col-head">
+                                            <div class="mega-sol-col-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V12l5 3v-3l5 3V9l5 3v9H3z"/><path d="M7 21v-3M12 21v-3"/><circle cx="18.5" cy="5.5" r="2.5"/><path d="M18.5 2v1M18.5 8v1M15 5.5h1M21 5.5h1M16.4 3.4l.7.7M19.9 6.9l.7.7M16.4 7.6l.7-.7M19.9 4.1l.7-.7"/></svg></div>
+                                            <div>
+                                                <h4>Manufacturing</h4>
+                                                <span class="mega-sol-col-sub">Plants &amp; production operations</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mega-sol-group-items">
+                                            <a href="/industries/industrial/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.5 5.5l2 2M16.5 16.5l2 2M18.5 5.5l-2 2M7.5 16.5l-2 2"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Industrial</span>
+                                                </span>
+                                            </a>
+                                            <a href="/industries/discrete-automotive/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c6"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-5a2 2 0 012-1h10a2 2 0 012 1l2 5"/><rect x="2" y="13" width="20" height="6" rx="2"/><circle cx="7" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Discrete | Automotive</span>
+                                                </span>
+                                            </a>
+                                            <a href="/industries/pharma/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="6" rx="3"/><path d="M12 9v6"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Pharmaceutical</span>
+                                                </span>
+                                            </a>
+                                            <a href="/industries/energy-utility/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L4 14h6l-1 7 9-11h-6z"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Energy & Utility</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- ============ 3. Strategic Industries ============ -->
+                                    <div class="mega-sol-col">
+                                        <div class="mega-sol-col-head">
+                                            <div class="mega-sol-col-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></div>
+                                            <div>
+                                                <h4>Strategic Industries</h4>
+                                                <span class="mega-sol-col-sub">Commerce | Finance | Public</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mega-sol-group-items">
+                                            <a href="/industries/retail-cpg/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12a2 2 0 01-2 2H9a2 2 0 01-2-2L6 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Retail | CPG</span>
+                                                </span>
+                                            </a>
+                                            <a href="/industries/fintech/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c4"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-6 9 6"/><path d="M5 10v9M9 10v9M15 10v9M19 10v9"/><path d="M3 19h18"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">FinTech</span>
+                                                </span>
+                                            </a>
+                                            <a href="/industries/government/" class="mega-sol-item">
+                                                <span class="mega-sol-item-icon c5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16L12 4z"/><path d="M5 10v9M9 10v9M15 10v9M19 10v9"/><path d="M3 19h18"/></svg></span>
+                                                <span class="mega-sol-item-text">
+                                                    <span class="mega-sol-item-name">Government</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a class="nav-link" href="/case-studies/">Case Studies</a>
+                    
+                    <div class="nav-item company-menu">
+                        <a class="nav-link" href="#company">
+                            Company 
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                        <div class="mega mega-wide">
+                            <div class="mega-inner">
+                                <div class="mega-feat-grid no-border">
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-4h4v4"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Who We Are</h4>
+                                            <p>Our mission, values, and the team building ITHENA.</p>
+                                            <a href="https://dev-website.ithena.app/ithena-homepage-test/#" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5M9 13h6M9 17h6M9 9h2"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Blogs</h4>
+                                            <p>Insights on industrial AI and digital transformation.</p>
+                                            <a href="https://dev-website.ithena.app/ithena-homepage-test/#" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 002 2h1l3 5V4l-3 5H5a2 2 0 00-2 2z"/><path d="M14 8a4 4 0 010 8M18 5a8 8 0 010 14"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Announcements</h4>
+                                            <p>Product launches, releases, and company news.</p>
+                                            <a href="https://dev-website.ithena.app/ithena-homepage-test/#" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Partnerships</h4>
+                                            <p>Our technology and channel partner ecosystem.</p>
+                                            <a href="https://dev-website.ithena.app/ithena-homepage-test/#" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mega-feat">
+                                        <div class="mega-feat-icon c5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="1.5"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M3 12h18"/></svg></div>
+                                        <div class="mega-feat-body">
+                                            <h4>Careers</h4>
+                                            <p>Open roles and life at ITHENA.</p>
+                                            <a href="https://dev-website.ithena.app/ithena-homepage-test/#" class="mega-feat-explore">
+                                                Explore 
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                                                    <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </nav>
+                <div class="nav-actions">
+                    <button class="icon-btn theme-toggle" id="theme-toggle" aria-label="Switch to dark theme">
+                        <svg class="ic-moon" width="17" height="17" viewBox="0 0 20 20" fill="none" style="display:none"><path d="M17 11.5A7.5 7.5 0 018.5 3 7.5 7.5 0 1017 11.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                        <svg class="ic-sun" width="17" height="17" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M10 1.5v2M10 16.5v2M18.5 10h-2M3.5 10h-2M15.8 4.2l-1.4 1.4M5.6 14.4l-1.4 1.4M15.8 15.8l-1.4-1.4M5.6 5.6L4.2 4.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    </button>
+                    <a href="/contact/" class="btn btn-primary">Contact Us</a>
+                    <button class="mobile-toggle" id="mobile-open" aria-label="Open menu"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </header>
+
+        <div class="scrim" id="scrim"></div>
+        
+        <div class="mobile-panel" id="mobile-panel">
+            <div class="m-top">
+                <a class="logo" href="https://dev-website.ithena.app/">
+                <img fetchpriority="high" width="136" height="45" src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" 
+                    class="attachment-full size-full wp-image-71412" alt="" 
+                    srcset="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp 568w, https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new-300x99.webp 300w" sizes="(max-width: 568px) 100vw, 568px">								
+                </a>
+                <button class="icon-btn" id="mobile-close" aria-label="Close menu">âœ•</button>
+            </div>
+            <div class="m-item">
+                <button class="m-toggle" data-target="m-solutions">
+                    Solutions 
+                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="m-submenu" id="m-solutions">
+
+                    <div class="m-item m-item-nested">
+                        <button class="m-toggle m-toggle-sub" data-target="m-sol-oem">
+                            <span>OEM | Distributors<span class="m-toggle-tag">Production | After Market</span></span>
+                            <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="m-submenu" id="m-sol-oem">
+
+                            <!-- Front Office Ops -->
+                            <div class="m-item m-item-nested">
+                                <button class="m-toggle m-toggle-sub" data-target="m-sol-oem-front">
+                                    <span>Front Office Ops</span>
+                                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                </button>
+                                <div class="m-submenu" id="m-sol-oem-front">
+                                    <a class="m-sub-link" href="#">
+                                        <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a5 5 0 015-5h2a5 5 0 015 5v1"/><circle cx="17.5" cy="9.5" r="2.2"/><path d="M16 20v-.8a4 4 0 013-3.8"/></svg></span>
+                                        <span class="m-sub-text"><strong>iCRM</strong><small>Customer relationship management for distributors and OEMs.</small></span>
+                                    </a>
+                                    <a class="m-sub-link" href="#">
+                                        <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><rect x="8" y="6" width="8" height="3" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 17h.01M12 17h.01M15.5 17h.01"/></svg></span>
+                                        <span class="m-sub-text"><strong>iCPQ</strong><small>Configure, price, and quote workflows.</small></span>
+                                    </a>
+                                    <a class="m-sub-link" href="#">
+                                        <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="6" r="2.5"/><circle cx="7" cy="18" r="2.5"/><circle cx="17" cy="12" r="2.5"/><path d="M7 8.5v7M9.3 7.2l5.5 3.5M9.3 16.8l5.5-3.5"/></svg></span>
+                                        <span class="m-sub-text"><strong>iERP</strong><small>ERP integrations and operational workflows.</small></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- After Market Services -->
+                            <div class="m-item m-item-nested">
+                                <button class="m-toggle m-toggle-sub" data-target="m-sol-oem-aftermarket">
+                                    <span>After Market Services</span>
+                                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                </button>
+                                <div class="m-submenu" id="m-sol-oem-aftermarket">
+                                    <a class="m-sub-link" href="#">
+                                        <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2.5-6 3 12 2.5-6h3"/><circle cx="20" cy="12" r="1.4"/></svg></span>
+                                        <span class="m-sub-text"><strong>Performance Monitoring</strong><small>Real-time connectivity into asset performance with proactive alerts and alarms.</small></span>
+                                    </a>
+                                    <a class="m-sub-link" href="#">
+                                        <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></span>
+                                        <span class="m-sub-text"><strong>Service Portal</strong><small>Support your service operations with real-time visibility and workflows.</small></span>
+                                    </a>
+                                    <a class="m-sub-link" href="/b2b-ecommerce-solution/">
+                                        <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2 3h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L21 8H6"/></svg></span>
+                                        <span class="m-sub-text"><strong>B2B eCommerce</strong><small>Commerce experience for parts, services, and customer self-service.</small></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="m-item m-item-nested">
+                        <button class="m-toggle m-toggle-sub" data-target="m-sol-mfg">
+                            <span>Manufacturer<span class="m-toggle-tag">Plan &rarr; Produce &rarr; Improve</span></span>
+                            <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="m-submenu" id="m-sol-mfg">
+
+                            <div class="m-item m-item-nested">
+                                <button class="m-toggle m-toggle-sub" data-target="m-sol-mfg-planning">
+                                    <span>Planning</span>
+                                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                                        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                                <div class="m-submenu" id="m-sol-mfg-planning">
+                                    <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span><span class="m-sub-text"><strong>iPLAN</strong><small>Planning workflows and decision support to improve throughput.</small></span></a>
+                                </div>
+                            </div>
+
+                            <div class="m-item m-item-nested">
+                                <button class="m-toggle m-toggle-sub" data-target="m-sol-mfg-production">
+                                    <span>Production</span>
+                                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                                        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                                <div class="m-submenu" id="m-sol-mfg-production">
+                                    <a class="m-sub-link" href="/digital-shopfloor-igemba/"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l6 4v-4l6 4V7l6 4v10H3z"/><path d="M7 21v-4M13 21v-4"/></svg></span><span class="m-sub-text"><strong>iGEMBA</strong><small>Digitize Gemba walks to maximize shop floor productivity and resolve issues fast.</small></span></a>
+                                    <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span><span class="m-sub-text"><strong>Performance Monitoring</strong><small>Real-time performance visibility with alerts and alarms.</small></span></a>
+                                    <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg></span><span class="m-sub-text"><strong>MES</strong><small>Smarter shop-floor view: standardize, measure, improve quality and scale operations.</small></span></a>
+                                </div>
+                            </div>
+
+                            <div class="m-item m-item-nested">
+                                <button class="m-toggle m-toggle-sub" data-target="m-sol-mfg-quality">
+                                    <span>Quality</span>
+                                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                                        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                                <div class="m-submenu" id="m-sol-mfg-quality">
+                                    <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="m-sub-text"><strong>QMS</strong><small>Quality management workflows to prevent defects and improve compliance.</small></span></a>
+                                </div>
+                            </div>
+
+                            <div class="m-item m-item-nested">
+                                <button class="m-toggle m-toggle-sub" data-target="m-sol-mfg-maintenance">
+                                    <span>Maintenance</span>
+                                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                                        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                                <div class="m-submenu" id="m-sol-mfg-maintenance">
+                                    <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2z"/></svg></span><span class="m-sub-text"><strong>CMMS</strong><small>Single view of critical KPIs with standardized checklists to resolve issues faster.</small></span></a>
+                                    <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.5 5.5l2 2M16.5 16.5l2 2M18.5 5.5l-2 2M7.5 16.5l-2 2"/></svg></span><span class="m-sub-text"><strong>iSEM</strong><small>Service + equipment management workflows and integrations.</small></span></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="m-item m-item-nested">
+                        <button class="m-toggle m-toggle-sub" data-target="m-sol-ent">
+                            <span>Enterprise<span class="m-toggle-tag">Analytics | CX | SCM</span></span>
+                            <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="m-submenu" id="m-sol-ent">
+
+                            <div class="m-item m-item-nested">
+                                <button class="m-toggle m-toggle-sub" data-target="m-sol-ent-supply">
+                                    <span>Supply Chain</span>
+                                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                                        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                                <div class="m-submenu" id="m-sol-ent-supply">
+                                    <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="13" height="9" rx="1"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg></span><span class="m-sub-text"><strong>iTMS</strong><small>Transportation management and logistics workflows.</small></span></a>
+                                    <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span><span class="m-sub-text"><strong>iPLAN</strong><small>Planning workflows and decision support.</small></span></a>
+                                </div>
+                            </div>
+
+                            <div class="m-item m-item-nested">
+                                <button class="m-toggle m-toggle-sub" data-target="m-sol-ent-data">
+                                    <span>Data Analytics</span>
+                                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                                        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                                <div class="m-submenu" id="m-sol-ent-data">
+                                    <a class="m-sub-link" href="/aether-ai-platform/"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6L12 2z"/><path d="M19 15l.7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15z"/></svg></span><span class="m-sub-text"><strong>Aether</strong><small>Practical AI.</small></span></a>
+                                    <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span><span class="m-sub-text"><strong>Analytics</strong><small>Enterprise data analytics.</small></span></a>
+                                    <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 000 7M15.5 8.5a5 5 0 010 7M5.5 5.5a9 9 0 000 13M18.5 5.5a9 9 0 010 13"/></svg></span><span class="m-sub-text"><strong>iHub</strong><small>Enterprise data hub and insights.</small></span></a>
+                                </div>
+                            </div>
+
+                            <div class="m-item m-item-nested">
+                                <button class="m-toggle m-toggle-sub" data-target="m-sol-ent-apps">
+                                    <span>Apps</span>
+                                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                                        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                                <div class="m-submenu" id="m-sol-ent-apps">
+                                    <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4V5z"/></svg></span><span class="m-sub-text"><strong>iSIP</strong><small>Integrated service experience platform.</small></span></a>
+                                    <a class="m-sub-link" href="#"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-4h4v4"/></svg></span><span class="m-sub-text"><strong>CRM</strong><small>Customer relationship management.</small></span></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="m-item">
+                <button class="m-toggle" data-target="m-services">
+                    Services 
+                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="m-submenu" id="m-services">
+
+                    <!-- Advisory Consulting -->
+                    <div class="m-item m-item-nested">
+                        <button class="m-toggle m-toggle-sub" data-target="m-svc-advisory">
+                            <span>Advisory Consulting<span class="m-toggle-tag">Strategy &amp; AI roadmaps</span></span>
+                            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </button>
+                        <div class="m-submenu" id="m-svc-advisory">
+                            <a class="m-sub-link" href="https://dev-website.ithena.app/ai-assessment/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span>
+                                <span class="m-sub-text"><strong>AI Strategy</strong></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Data Management -->
+                    <div class="m-item m-item-nested">
+                        <button class="m-toggle m-toggle-sub" data-target="m-svc-data">
+                            <span>Data Management<span class="m-toggle-tag">Analytics &amp; intelligence</span></span>
+                            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </button>
+                        <div class="m-submenu" id="m-svc-data">
+                            <a class="m-sub-link" href="https://dev-website.ithena.app/big-data-analytics/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span>
+                                <span class="m-sub-text"><strong>Big Data &amp; Analytics</strong></span>
+                            </a>
+                            <a class="m-sub-link" href="https://dev-website.ithena.app/ai-ml-data-science/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.5 5.5l2 2M16.5 16.5l2 2M18.5 5.5l-2 2M7.5 16.5l-2 2"/></svg></span>
+                                <span class="m-sub-text"><strong>AI/ML | Data Science</strong></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Cloud Modernization -->
+                    <div class="m-item m-item-nested">
+                        <button class="m-toggle m-toggle-sub" data-target="m-svc-cloud">
+                            <span>Cloud Modernization<span class="m-toggle-tag">Migration &amp; integration</span></span>
+                            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </button>
+                        <div class="m-submenu" id="m-svc-cloud">
+                            <a class="m-sub-link" href="https://dev-website.ithena.app/cloud-adoption/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 000-8 5.5 5.5 0 00-10.6 1.6A3.5 3.5 0 007 18z"/></svg></span>
+                                <span class="m-sub-text"><strong>Cloud Adoption</strong></span>
+                            </a>
+                            <a class="m-sub-link" href="https://dev-website.ithena.app/process-integration/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M11 6l1-1a3.5 3.5 0 015 5l-1 1M13 18l-1 1a3.5 3.5 0 01-5-5l1-1"/></svg></span>
+                                <span class="m-sub-text"><strong>Process Integration</strong></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Business Transformation -->
+                    <div class="m-item m-item-nested">
+                        <button class="m-toggle m-toggle-sub" data-target="m-svc-biz">
+                            <span>Business Transformation<span class="m-toggle-tag">CX &amp; digital journeys</span></span>
+                            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </button>
+                        <div class="m-submenu" id="m-svc-biz">
+                            <a class="m-sub-link" href="#process">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg></span>
+                                <span class="m-sub-text"><strong>Systems of Engagement</strong></span>
+                            </a>
+                            <a class="m-sub-link" href="#process">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4V5z"/></svg></span>
+                                <span class="m-sub-text"><strong>Customer Experience</strong></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Manufacturing Integration -->
+                    <div class="m-item m-item-nested">
+                        <button class="m-toggle m-toggle-sub" data-target="m-svc-mfg">
+                            <span>Manufacturing Integration<span class="m-toggle-tag">MES &amp; IoT connectivity</span></span>
+                            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </button>
+                        <div class="m-submenu" id="m-svc-mfg">
+                            <a class="m-sub-link" href="#process">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l6 4v-4l6 4V7l6 4v10H3z"/><path d="M7 21v-4M13 21v-4"/></svg></span>
+                                <span class="m-sub-text"><strong>Manufacturing Execution</strong></span>
+                            </a>
+                            <a class="m-sub-link" href="#process">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 000 7M15.5 8.5a5 5 0 010 7M5.5 5.5a9 9 0 000 13M18.5 5.5a9 9 0 010 13"/></svg></span>
+                                <span class="m-sub-text"><strong>Industrial IoT</strong></span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="m-item">
+                <button class="m-toggle" data-target="m-industries">
+                    Industries 
+                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="m-submenu" id="m-industries">
+
+                    <!-- OEM -->
+                    <div class="m-item m-item-nested">
+                        <button class="m-toggle m-toggle-sub" data-target="m-ind-oem">
+                            <span>OEM<span class="m-toggle-tag">Equipment &amp; machine builders</span></span>
+                            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </button>
+                        <div class="m-submenu" id="m-ind-oem">
+                            <a class="m-sub-link" href="/industries/packaging/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg></span>
+                                <span class="m-sub-text"><strong>Packaging</strong></span>
+                            </a>
+                            <a class="m-sub-link" href="/industries/food-beverage/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6v4l1.5 2v12a2 2 0 01-2 2h-5a2 2 0 01-2-2V8L9 6V2z"/></svg></span>
+                                <span class="m-sub-text"><strong>Food &amp; Beverage</strong></span>
+                            </a>
+                            <a class="m-sub-link" href="/industries/compressed-air/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 12l4-3"/><path d="M12 7v1M12 17v1M7 12h1M16 12h1"/></svg></span>
+                                <span class="m-sub-text"><strong>Compressed Air</strong></span>
+                            </a>
+                            <a class="m-sub-link" href="/industries/custom-tool-builder/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2z"/></svg></span>
+                                <span class="m-sub-text"><strong>Custom Tool Builder</strong></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Manufacturing -->
+                    <div class="m-item m-item-nested">
+                        <button class="m-toggle m-toggle-sub" data-target="m-ind-mfg">
+                            <span>Manufacturing<span class="m-toggle-tag">Plants &amp; production operations</span></span>
+                            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </button>
+                        <div class="m-submenu" id="m-ind-mfg">
+                            <a class="m-sub-link" href="/industries/industrial/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.5 5.5l2 2M16.5 16.5l2 2M18.5 5.5l-2 2M7.5 16.5l-2 2"/></svg></span>
+                                <span class="m-sub-text"><strong>Industrial</strong></span>
+                            </a>
+                            <a class="m-sub-link" href="/industries/discrete-automotive/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-5a2 2 0 012-1h10a2 2 0 012 1l2 5"/><rect x="2" y="13" width="20" height="6" rx="2"/><circle cx="7" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg></span>
+                                <span class="m-sub-text"><strong>Discrete / Automotive</strong></span>
+                            </a>
+                            <a class="m-sub-link" href="/industries/pharma/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="6" rx="3"/><path d="M12 9v6"/></svg></span>
+                                <span class="m-sub-text"><strong>Pharma</strong></span>
+                            </a>
+                            <a class="m-sub-link" href="/industries/energy-utility/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L4 14h6l-1 7 9-11h-6z"/></svg></span>
+                                <span class="m-sub-text"><strong>Energy &amp; Utility</strong></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Strategic Industries -->
+                    <div class="m-item m-item-nested">
+                        <button class="m-toggle m-toggle-sub" data-target="m-ind-strategic">
+                            <span>Strategic Industries<span class="m-toggle-tag">Commerce | Finance | Public</span></span>
+                            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </button>
+                        <div class="m-submenu" id="m-ind-strategic">
+                            <a class="m-sub-link" href="/industries/retail-cpg/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12a2 2 0 01-2 2H9a2 2 0 01-2-2L6 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg></span>
+                                <span class="m-sub-text"><strong>Retail / CPG</strong></span>
+                            </a>
+                            <a class="m-sub-link" href="/industries/fintech/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-6 9 6"/><path d="M5 10v9M9 10v9M15 10v9M19 10v9"/><path d="M3 19h18"/></svg></span>
+                                <span class="m-sub-text"><strong>FinTech</strong></span>
+                            </a>
+                            <a class="m-sub-link" href="/industries/government/">
+                                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16L12 4z"/><path d="M5 10v9M9 10v9M15 10v9M19 10v9"/><path d="M3 19h18"/></svg></span>
+                                <span class="m-sub-text"><strong>Government</strong></span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <a href="#testimonials">Case Studies</a>
+            <div class="m-item">
+                <button class="m-toggle" data-target="m-company">
+                    Company 
+                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="m-submenu" id="m-company">
+                    <a class="m-sub-link" href="https://dev-website.ithena.app/ithena-homepage-test/#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-4h4v4"/></svg></span>Who We Are</a>
+                    <a class="m-sub-link" href="https://dev-website.ithena.app/ithena-homepage-test/#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5M9 13h6M9 17h6M9 9h2"/></svg></span>Blogs</a>
+                    <a class="m-sub-link" href="https://dev-website.ithena.app/ithena-homepage-test/#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 002 2h1l3 5V4l-3 5H5a2 2 0 00-2 2z"/><path d="M14 8a4 4 0 010 8M18 5a8 8 0 010 14"/></svg></span>Announcements</a>
+                    <a class="m-sub-link" href="https://dev-website.ithena.app/ithena-homepage-test/#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></span>Partnerships</a>
+                    <a class="m-sub-link" href="https://dev-website.ithena.app/ithena-homepage-test/#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="1.5"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M3 12h18"/></svg></span>Careers</a>
+                </div>
+            </div>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <button id="to-top" class="to-top" aria-label="Back to top" title="Back to top"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg></button>
+
+<!-- Header JS -->
+        <script>
+        (function () {
+
+            // header scroll state - only activates if #site-header is present;
+            // #top (body's hero section) is optional and only used to compute a nicer
+            // scroll threshold, falling back to a fixed value when absent.
+            const header = document.getElementById('site-header');
+            const heroEl = document.getElementById('top');
+            function syncHeaderHeight(){
+              if (!header) return;
+              document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+            }
+            function updateHeaderState(){
+              if (!header) return;
+              const threshold = heroEl ? heroEl.offsetHeight / 8 : 40;
+              header.classList.toggle('scrolled', window.scrollY > threshold);
+            }
+            window.addEventListener('scroll', () => {
+              updateHeaderState();
+              syncHeaderHeight();
+            }, {passive:true});
+            window.addEventListener('resize', () => { updateHeaderState(); syncHeaderHeight(); });
+            updateHeaderState();
+            syncHeaderHeight();
+
+            // mega menu open/close (desktop) - no-ops safely if no .nav-item elements exist
+            let megaCloseTimer = null;
+            document.querySelectorAll('.nav-item').forEach(item=>{
+              const mega = item.querySelector('.mega');
+              function openItem(){
+                clearTimeout(megaCloseTimer);
+                document.querySelectorAll('.nav-item.open').forEach(i=>{ if(i!==item) i.classList.remove('open'); });
+                syncHeaderHeight();
+                item.classList.add('open');
+              }
+              function scheduleClose(){
+                clearTimeout(megaCloseTimer);
+                megaCloseTimer = setTimeout(()=> item.classList.remove('open'), 260);
+              }
+              item.addEventListener('mouseenter', openItem);
+              item.addEventListener('mouseleave', scheduleClose);
+              if(mega){
+                mega.addEventListener('mouseenter', ()=> clearTimeout(megaCloseTimer));
+                mega.addEventListener('mouseleave', scheduleClose);
+              }
+            });
+
+            // light / dark theme toggle (light is default, saved to localStorage)
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                function setToggleLabel() {
+                    const isDark = document.documentElement.classList.contains('dark');
+                    themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+                }
+                setToggleLabel();
+                themeToggle.addEventListener('click', () => {
+                    const isDark = document.documentElement.classList.toggle('dark');
+                    try { localStorage.setItem('ithena-theme', isDark ? 'dark' : 'light'); } catch (e) {}
+                    setToggleLabel();
+                });
+            }
+
+            // mobile menu - each element is guarded independently so partial markup still works
+            const mobileOpen = document.getElementById('mobile-open');
+            const mobileClose = document.getElementById('mobile-close');
+            const mobilePanel = document.getElementById('mobile-panel');
+            const scrim = document.getElementById('scrim');
+            function openMobile(){ if (mobilePanel) mobilePanel.classList.add('open'); if (scrim) scrim.classList.add('open'); }
+            function closeMobile(){ if (mobilePanel) mobilePanel.classList.remove('open'); if (scrim) scrim.classList.remove('open'); }
+            if (mobileOpen) mobileOpen.addEventListener('click', openMobile);
+            if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+            if (scrim) scrim.addEventListener('click', closeMobile);
+            if (mobilePanel) {
+                mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMobile));
+                mobilePanel.querySelectorAll('.m-toggle').forEach(btn=>{
+                  btn.addEventListener('click', ()=>{
+                    const item = btn.closest('.m-item');
+                    const wasOpen = item.classList.contains('open');
+                    // Accordion: collapse sibling sections at this same level only, so opening
+                    // a nested submenu (e.g. OEM inside Solutions) never closes its parent section
+                    // or any other level's open state - each level accordions independently.
+                    const level = item.parentElement;
+                    level.querySelectorAll(':scope > .m-item.open').forEach(sibling=>{
+                      if (sibling !== item) sibling.classList.remove('open');
+                    });
+                    item.classList.toggle('open', !wasOpen);
+                  });
+                });
+            }
+
+            /* ---------------------------------------------------------------
+               Mega-menu accordion: only one details group open at a time
+               within a given menu panel, with a smooth height transition.
+               --------------------------------------------------------------- */
+            (function () {
+                const GROUP = '.mega-sol-group, .mega-ind-group';
+                const groups = document.querySelectorAll(GROUP);
+                if (!groups.length) return;
+
+                const reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+                const DURATION = 300; // keep in sync with the .is-animating transition
+
+                function panelBody(details) {
+                    return details.querySelector('.mega-sol-group-items, .mega-ind-refs');
+                }
+
+                function settle(body) {
+                    body.classList.remove('is-animating');
+                    body.style.height = '';
+                    body.style.opacity = '';
+                }
+
+                function expand(details) {
+                    const body = panelBody(details);
+                    details.open = true;
+                    if (!body || reduceMotion) return;
+                    clearTimeout(body._animTimer);
+                    const target = body.scrollHeight;
+                    body.classList.add('is-animating');
+                    body.style.height = '0px';
+                    body.style.opacity = '0';
+                    requestAnimationFrame(() => {
+                        body.style.height = target + 'px';
+                        body.style.opacity = '1';
+                    });
+                    // Timeout rather than transitionend: guaranteed to run even if the
+                    // transition is interrupted, so a panel can never get stuck mid-animation.
+                    body._animTimer = setTimeout(() => settle(body), DURATION + 40);
+                }
+
+                function collapse(details) {
+                    const body = panelBody(details);
+                    if (!body || reduceMotion) { details.open = false; return; }
+                    clearTimeout(body._animTimer);
+                    const start = body.scrollHeight;
+                    body.classList.add('is-animating');
+                    body.style.height = start + 'px';
+                    body.style.opacity = '1';
+                    requestAnimationFrame(() => {
+                        body.style.height = '0px';
+                        body.style.opacity = '0';
+                    });
+                    body._animTimer = setTimeout(() => {
+                        settle(body);
+                        details.open = false;
+                    }, DURATION + 40);
+                }
+
+                groups.forEach(details => {
+                    const summary = details.querySelector('summary');
+                    if (!summary) return;
+                    summary.addEventListener('click', (e) => {
+                        // Take over from the browser's instant open/close so we can animate.
+                        e.preventDefault();
+                        const isOpen = details.open;
+
+                        // Close sibling groups inside the same mega panel (accordion).
+                        const scope = details.closest('.mega') || document;
+                        scope.querySelectorAll(GROUP).forEach(other => {
+                            if (other !== details && other.open) collapse(other);
+                        });
+
+                        if (isOpen) collapse(details); else expand(details);
+                    });
+                });
+
+                // When a mega panel closes, reset its groups so it reopens in a clean state.
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.addEventListener('mouseleave', () => {
+                        setTimeout(() => {
+                            if (item.classList.contains('open')) return;
+                            item.querySelectorAll(GROUP).forEach(d => {
+                                const body = panelBody(d);
+                                if (body) {
+                                    body.classList.remove('is-animating');
+                                    body.style.height = '';
+                                    body.style.opacity = '';
+                                }
+                                d.open = false;
+                            });
+                        }, 400);
+                    });
+                });
+            })();
+        })();
+
+
+        // back-to-top
+        (function(){
+            var btn = document.getElementById('to-top');
+            if (!btn) return;
+            function sync(){ btn.classList.toggle('visible', window.scrollY > 40); }
+            window.addEventListener('scroll', sync, {passive:true});
+            btn.addEventListener('click', function(){
+                window.scrollTo({top:0, behavior:'smooth'});
+            });
+            sync();
+        })();
+

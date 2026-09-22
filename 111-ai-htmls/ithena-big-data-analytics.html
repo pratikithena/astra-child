@@ -1,0 +1,845 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;600;700&display=swap');
+section#main-section,section#main-section *:not(svg):not(svg *){all:revert}
+section#main-section,section#main-section *,section#main-section *::before,section#main-section *::after{box-sizing:border-box!important;margin:0!important;padding:0!important}
+section#main-section{--blue:#0083C8!important;--blue-d:#006AA3!important;--blue-l:#3FA9E0!important;--acc:#BFE5F8!important;--acc-t:#006AA3!important;--navy:#0A192D!important;--ink:#0A192D!important;--body:#46586A!important;--muted:#5B6B7A!important;--sa:#FFFFFF!important;--sb:#F2F8FD!important;--card:#FFFFFF!important;--glass:rgba(255,255,255,.72)!important;--line:rgba(10,25,45,.10)!important;--hair:rgba(10,25,45,.16)!important;--deep:linear-gradient(155deg,#0B2038 0%,#0A192D 52%,#0C2542 100%)!important;--plate:#FFFFFF!important;--plate-line:rgba(10,25,45,.1)!important;--sh:0 18px 44px -24px rgba(0,45,80,.34)!important;--sh-lg:0 44px 90px -34px rgba(0,45,80,.46)!important;--ez:cubic-bezier(.22,.61,.36,1)!important;--font-head:"Noto Sans",sans-serif!important;--font-body:"Inter",sans-serif!important;--fs-xs:12px!important;--fs-sm:13px!important;--fs-md:14px!important;--fs-base:15px!important;--fs-body:16px!important;--fs-lg:17px!important;--fs-xl:19px!important;--fs-lead:clamp(16px,1.6vw,19px)!important;--fs-h3:clamp(17px,1.9vw,21px)!important;--fs-h2s:clamp(21px,2.4vw,27px)!important;--fs-h2:clamp(27px,3.6vw,44px)!important;--fs-h1:clamp(32px,5vw,50px)!important;--wrap:1240px!important;--hdr:96px!important;display:block!important;position:relative!important;font-family:var(--font-body)!important;font-size:var(--fs-body)!important;line-height:normal!important;font-weight:400!important;color:var(--body)!important;background:var(--sa)!important;-webkit-font-smoothing:antialiased!important;overflow-x:clip!important;transition:background-color .3s ease,color .3s ease!important}
+section#main-section[data-theme="dark"]{--acc-t:#3FA9E0!important;--ink:#F2F3F5!important;--body:rgba(228,230,235,.8)!important;--muted:#9A9FA8!important;--sa:#0A0A0B!important;--sb:#111113!important;--card:#17181B!important;--glass:rgba(255,255,255,.045)!important;--line:rgba(255,255,255,.09)!important;--hair:rgba(255,255,255,.16)!important;--deep:linear-gradient(155deg,#16171A 0%,#0C0C0E 52%,#050506 100%)!important;--plate:#F4F9FD!important;--plate-line:rgba(255,255,255,.2)!important;--sh:0 18px 44px -24px rgba(0,0,0,.62)!important;--sh-lg:0 44px 90px -34px rgba(0,0,0,.72)!important;color-scheme:dark!important}
+section#main-section ul,section#main-section ol{list-style:none!important}
+section#main-section button{font:inherit!important;color:inherit!important;background:none!important;border:0!important;cursor:pointer!important}
+section#main-section img,section#main-section svg{display:block!important;max-width:100%!important}
+section#main-section a{color:var(--blue)!important;text-decoration:none!important}
+section#main-section h1,section#main-section h2,section#main-section h3,section#main-section h4{font-family:var(--font-head)!important;color:var(--ink)!important;line-height:1.25!important;font-weight:700!important;letter-spacing:-.02em!important}
+section#main-section :focus-visible{outline:2px solid var(--blue)!important;outline-offset:3px!important;border-radius:8px!important}
+section#main-section .wrap{max-width:var(--wrap)!important;margin:0 auto!important;padding:0 clamp(20px,4vw,44px)!important}
+section#main-section .aiml-sec{display:block!important;position:relative!important;padding:clamp(60px,7.5vw,116px) 0!important;scroll-margin-top:calc(var(--hdr) + 66px)!important;background:var(--sa)!important}
+section#main-section .aiml-sec.tint{background:var(--sb)!important}
+section#main-section .aiml-sec.deep{background:var(--deep)!important;--ink:#FFFFFF!important;--body:rgba(214,235,246,.8)!important;--muted:#90B0C5!important;--card:rgba(255,255,255,.05)!important;--glass:rgba(255,255,255,.06)!important;--line:rgba(255,255,255,.13)!important;--hair:rgba(255,255,255,.2)!important}
+section#main-section .kick{display:inline-flex!important;align-items:center!important;gap:11px!important;font:700 var(--fs-xs)/1.25 var(--font-body)!important;letter-spacing:.17em!important;text-transform:uppercase!important;color:var(--acc-t)!important;margin-bottom:18px!important}
+section#main-section .kick::before{content:""!important;width:28px!important;height:2px!important;border-radius:2px!important;background:linear-gradient(90deg,var(--blue),transparent)!important;flex:none!important}
+section#main-section .deep .kick,section#main-section .aiml-sec--hero .kick,section#main-section .aiml-sec--intro .kick{color:var(--blue-l)!important}
+section#main-section .deep .kick::before,section#main-section .aiml-sec--hero .kick::before,section#main-section .aiml-sec--intro .kick::before{background:linear-gradient(90deg,var(--blue-l),transparent)!important}
+section#main-section h2{font-size:var(--fs-h2)!important;line-height:1.25!important;margin-bottom:16px!important}
+section#main-section h3{font-size:var(--fs-xl)!important;line-height:1.25!important}
+section#main-section .lead{font-size:var(--fs-lead)!important;font-weight:300!important;line-height:normal!important;color:var(--body)!important;max-width:56ch!important}
+section#main-section p.body{margin-top:15px!important;max-width:66ch!important;color:var(--body)!important}
+section#main-section .btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;min-height:48px!important;padding:14px 28px!important;border-radius:10px!important;font-size:var(--fs-base)!important;font-weight:700!important;line-height:1!important;white-space:nowrap!important;transition:transform .22s var(--ez),background-color .22s var(--ez),border-color .22s var(--ez),box-shadow .22s var(--ez)!important}
+section#main-section .btn:hover{transform:translateY(-2px)!important}
+section#main-section .btn svg{width:17px!important;height:17px!important;flex:none!important}
+section#main-section .btn-p{background:linear-gradient(120deg,var(--blue),var(--blue-l))!important;color:#fff!important;box-shadow:0 14px 34px -16px rgba(0,131,200,.8)!important}
+section#main-section .btn-p:hover{box-shadow:0 20px 44px -16px rgba(0,131,200,.9)!important}
+section#main-section .btn-o{border:1px solid var(--hair)!important;color:var(--ink)!important}
+section#main-section .btn-o:hover{border-color:var(--blue)!important;color:var(--blue)!important}
+section#main-section .btns{display:flex!important;flex-wrap:wrap!important;gap:12px!important;margin-top:30px!important}
+section#main-section .aiml-sec--hero{padding:0!important;overflow:hidden!important;isolation:isolate!important;background:#06182A!important;--ink:#FFFFFF!important;--body:rgba(214,235,246,.82)!important}
+section#main-section .hero-bg{position:absolute!important;inset:0!important;z-index:0!important}
+section#main-section .hero-bg img{width:100%!important;height:100%!important;object-fit:cover!important}
+section#main-section .hero-in{position:relative!important;z-index:1!important;padding:clamp(78px,9vw,140px) 0 clamp(64px,7vw,110px)!important}
+section#main-section .h-title{font-size:var(--fs-h1)!important;line-height:1.25!important;letter-spacing:-.032em!important;color:#fff!important;max-width:15ch!important}
+section#main-section .aiml-sec h2 em{font-style:normal!important;color:var(--blue)!important}
+section#main-section .h-title em{font-style:normal!important;display:block!important;background:linear-gradient(100deg,#3FA9E0,#BFE5F8 62%,#FFFFFF)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+section#main-section .h-deck{font-size:var(--fs-lead)!important;font-weight:300!important;line-height:normal!important;color:rgba(214,235,246,.86)!important;max-width:46ch!important;margin-top:22px!important}
+section#main-section .h-tags{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:10px 24px!important;margin-top:28px!important}
+section#main-section .h-tags li{position:relative!important;font-size:var(--fs-md)!important;font-weight:500!important;color:#CFE6F5!important}
+section#main-section .h-tags li+li::before{content:""!important;position:absolute!important;left:-14px!important;top:50%!important;width:4px!important;height:4px!important;border-radius:50%!important;background:var(--blue-l)!important;transform:translateY(-50%)!important}
+section#main-section .subnav{position:sticky!important;top:var(--hdr)!important;z-index:30!important;background:var(--sa)!important;padding:14px 0!important}
+section#main-section .subnav-card{display:flex!important;align-items:center!important;gap:clamp(6px,1.6vw,20px)!important;border-bottom:1px solid var(--line)!important;overflow-x:auto!important;scrollbar-width:none!important}
+section#main-section .subnav-card::-webkit-scrollbar{display:none!important}
+section#main-section .subnav a{position:relative!important;display:inline-flex!important;align-items:center!important;min-height:48px!important;padding:0 6px!important;white-space:nowrap!important;font-size:var(--fs-md)!important;font-weight:600!important;color:var(--muted)!important;transition:color .22s var(--ez)!important}
+section#main-section .subnav a::after{content:""!important;position:absolute!important;left:0!important;right:0!important;bottom:-1px!important;height:2px!important;background:linear-gradient(90deg,var(--blue),var(--blue-l))!important;transform:scaleX(0)!important;transform-origin:left!important;transition:transform .32s var(--ez)!important}
+section#main-section .subnav a:hover{color:var(--ink)!important}
+section#main-section .subnav a:hover::after{transform:scaleX(.42)!important}
+section#main-section .subnav a[aria-current="true"]{color:var(--acc-t)!important}
+section#main-section .subnav a[aria-current="true"]::after{transform:scaleX(1)!important}
+section#main-section .split{display:grid!important;grid-template-columns:minmax(0,330px) minmax(0,1fr)!important;gap:clamp(28px,4.6vw,72px)!important;align-items:start!important}
+section#main-section .two{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:clamp(30px,4.6vw,72px)!important;align-items:center!important}
+section#main-section .aiml-sec--intro{overflow:hidden!important;isolation:isolate!important;background:#06182A!important;--ink:#FFFFFF!important;--body:rgba(214,235,246,.86)!important;--muted:#90B0C5!important}
+section#main-section .intro-bg{position:absolute!important;inset:0!important;z-index:-2!important}
+section#main-section .intro-bg img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:70% 50%!important}
+section#main-section .intro-copy{max-width:min(660px,62%)!important}
+section#main-section .aiml-sec--intro a{color:var(--blue-l)!important}
+section#main-section .railtext{position:relative!important;padding-left:26px!important}
+section#main-section .railtext::before{content:""!important;position:absolute!important;left:0!important;top:6px!important;bottom:6px!important;width:3px!important;border-radius:3px!important;background:linear-gradient(180deg,var(--blue),rgba(0,131,200,0))!important}
+section#main-section .stages{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:clamp(16px,2.4vw,30px)!important;margin-top:clamp(30px,4vw,52px)!important;position:relative!important}
+section#main-section .stages::before{content:""!important;position:absolute!important;left:12%!important;right:12%!important;top:38px!important;height:2px!important;background:repeating-linear-gradient(90deg,rgba(63,169,224,.5) 0 8px,transparent 8px 17px)!important;transform:scaleX(0);transform-origin:left!important}
+section#main-section .stages.in::before{animation:aiml-line 1.15s var(--ez) .08s forwards!important}
+section#main-section .stage{position:relative!important;display:grid!important;justify-items:center!important;text-align:center!important;gap:16px!important}
+section#main-section .stages .stage{opacity:0;transform:translateY(18px)}
+section#main-section .stages.in .stage{animation:aiml-node .6s var(--ez) forwards,aiml-focus 6.9s var(--ez) .8s infinite!important}
+section#main-section .stages.in .stage:nth-child(2){animation-delay:.22s,3.1s!important}
+section#main-section .stages.in .stage:nth-child(3){animation-delay:.44s,5.4s!important}
+section#main-section .stages.in .stage b::after{content:""!important;position:absolute!important;inset:0!important;border-radius:50%!important;box-shadow:0 0 0 2px var(--blue-l),0 0 30px rgba(63,169,224,.4)!important;opacity:0;animation:aiml-ring 6.9s var(--ez) .8s infinite!important}
+section#main-section .stages.in .stage:nth-child(2) b::after{animation-delay:3.1s!important}
+section#main-section .stages.in .stage:nth-child(3) b::after{animation-delay:5.4s!important}
+@keyframes aiml-line{to{transform:scaleX(1)}}
+@keyframes aiml-node{to{opacity:1;transform:none}}
+@keyframes aiml-focus{0%,26%{opacity:1;transform:translateY(-6px)}38%,94%{opacity:.4;transform:none}100%{opacity:1;transform:translateY(-6px)}}
+@keyframes aiml-ring{0%{opacity:0;transform:scale(.86)}10%,24%{opacity:1;transform:scale(1)}38%,100%{opacity:0;transform:scale(1.14)}}
+section#main-section .stage b{position:relative!important;width:76px!important;height:76px!important;border-radius:50%!important;display:grid!important;place-items:center!important;background:var(--glass)!important;border:1px solid var(--hair)!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important;box-shadow:0 0 0 8px rgba(0,131,200,.08)!important;color:var(--blue-l)!important;transition:transform .3s var(--ez),box-shadow .3s var(--ez)!important}
+section#main-section .stage:hover b{transform:translateY(-5px)!important;box-shadow:0 0 0 12px rgba(0,131,200,.13)!important}
+section#main-section .stage b svg{width:30px!important;height:30px!important}
+section#main-section .stage h3{font-size:var(--fs-lg)!important}
+section#main-section .stage p{font-size:var(--fs-sm)!important;color:var(--muted)!important;max-width:24ch!important}
+section#main-section .tabs{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:clamp(22px,3vw,40px)!important;margin-top:clamp(26px,3.4vw,44px)!important}
+section#main-section .tablist{position:relative!important;display:flex!important;border-bottom:1px solid var(--line)!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;scrollbar-width:none!important}
+section#main-section .tablist::-webkit-scrollbar{display:none!important}
+section#main-section .tab{flex:1 1 0!important;min-width:200px!important;scroll-snap-align:start!important;display:flex!important;align-items:center!important;gap:12px!important;min-height:56px!important;padding:14px 16px 16px!important;margin-bottom:-1px!important;text-align:left!important;font-size:var(--fs-base)!important;font-weight:600!important;color:var(--body)!important;background:none!important;border-bottom:2px solid transparent!important;transition:border-color .25s var(--ez),color .25s var(--ez)!important}
+section#main-section .tab:hover{color:var(--ink)!important;border-bottom-color:var(--hair)!important}
+section#main-section .tab[aria-selected="true"]{border-bottom-color:var(--blue)!important;color:var(--ink)!important;font-weight:700!important}
+section#main-section .tab i{width:38px!important;height:38px!important;flex:none!important;border-radius:12px!important;display:grid!important;place-items:center!important;background:rgba(0,131,200,.1)!important;color:var(--blue)!important;transition:background-color .25s var(--ez),color .25s var(--ez)!important}
+section#main-section .tab i svg{width:19px!important;height:19px!important}
+/* active tab + active subnav link: 1.3x and in focus, the rest recede (transform only - no layout shift) */
+section#main-section .tab-in{display:flex!important;align-items:center!important;gap:12px!important;min-width:0!important;max-width:calc(100% / 1.3)!important;transform-origin:0 50%!important;transition:transform .4s var(--ez),opacity .3s var(--ez)!important}
+section#main-section .tab[aria-selected="false"] .tab-in{opacity:.55!important}
+section#main-section .tab:hover .tab-in,section#main-section .tab:focus-visible .tab-in{opacity:1!important}
+section#main-section .tab[aria-selected="true"] .tab-in{transform:scale(1.3)!important}
+section#main-section .subnav a{transition:color .22s var(--ez),transform .35s var(--ez),opacity .3s var(--ez)!important}
+section#main-section .subnav a:not([aria-current="true"]){opacity:.6!important}
+section#main-section .subnav a:hover,section#main-section .subnav a:focus-visible{opacity:1!important}
+section#main-section .subnav a[aria-current="true"]{transform:scale(1.3)!important;transform-origin:50% 60%!important}
+section#main-section .subnav a:first-child[aria-current="true"]{transform-origin:0 60%!important}
+section#main-section .tab[aria-selected="true"] i{background:linear-gradient(120deg,var(--blue),var(--blue-l))!important;color:#fff!important}
+section#main-section .panel{position:relative!important;isolation:isolate!important;overflow:hidden!important;padding:clamp(20px,2.4vw,30px) clamp(18px,2.4vw,32px)!important;border-radius:20px!important;min-height:350px!important}
+section#main-section .panel::after{content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;background:var(--pbg) center right/cover no-repeat!important;-webkit-mask-image:linear-gradient(90deg,transparent 50%,#000 88%)!important;pointer-events:none!important}
+section#main-section .panel[hidden]{display:none!important}
+section#main-section .panel h3{font-size:var(--fs-h2s)!important;margin-bottom:14px!important}
+section#main-section .panel p{color:var(--body)!important;max-width:56ch!important}
+section#main-section .panel .num{position:absolute!important;top:clamp(20px,2.6vw,30px)!important;right:clamp(22px,2.8vw,34px)!important;font-family:var(--font-head)!important;font-weight:700!important;font-size:var(--fs-h1)!important;line-height:1!important;color:#FFFFFF!important;opacity:.5!important;text-shadow:0 2px 16px rgba(4,16,28,.6)!important;pointer-events:none!important}
+/* approach: zig-zag timeline - odd steps above the line, even below; .on = popped (JS cycles it) */
+section#main-section .roles{--rg:96px;position:relative!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;grid-template-rows:1fr 1fr!important;column-gap:clamp(20px,2.6vw,38px)!important;row-gap:var(--rg)!important;margin-top:clamp(44px,5vw,64px)!important}
+section#main-section .roles::before{content:""!important;position:absolute!important;left:0!important;right:0!important;top:calc(50% - 1px)!important;height:2px!important;background:linear-gradient(90deg,var(--blue),var(--hair) 90%)!important}
+section#main-section .role{position:relative!important;isolation:isolate!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:10px!important;min-width:0!important;grid-row:1!important;align-self:end!important}
+section#main-section .role:nth-child(even){grid-row:2!important;align-self:start!important}
+section#main-section .role:nth-child(1){grid-column:1!important}
+section#main-section .role:nth-child(2){grid-column:2!important}
+section#main-section .role:nth-child(3){grid-column:3!important}
+section#main-section .role:nth-child(4){grid-column:4!important}
+section#main-section .role:nth-child(5){grid-column:5!important}
+section#main-section .role>*{transition:transform .35s var(--ez)!important}
+section#main-section .role.on>*{transform:translateY(-6px)!important}
+section#main-section .role:nth-child(even).on>*{transform:translateY(6px)!important}
+section#main-section .role::before{content:""!important;position:absolute!important;inset:-20px -16px!important;z-index:-1!important;border-radius:16px!important;border-bottom:2px solid var(--blue)!important;background:var(--card)!important;box-shadow:var(--sh-lg)!important;opacity:0!important;transform:scale(.94)!important;transition:opacity .3s var(--ez),transform .35s var(--ez)!important;pointer-events:none!important}
+section#main-section .role:nth-child(even)::before{border-bottom:0!important;border-top:2px solid var(--blue)!important}
+section#main-section .role.on::before{opacity:1!important;transform:none!important}
+/* stem + dot joining each step to the line */
+section#main-section .role::after{content:""!important;position:absolute!important;left:18px!important;top:100%!important;width:14px!important;height:calc(var(--rg)/2 + 7px)!important;background:linear-gradient(var(--hair),var(--hair)) 50% 0/2px calc(100% - 14px) no-repeat,radial-gradient(circle,var(--blue) 0 4px,rgba(0,131,200,.3) 4.5px 7px,transparent 7.5px) 50% 100%/14px 14px no-repeat!important;transition:background-size .3s var(--ez)!important}
+section#main-section .role:nth-child(even)::after{top:auto!important;bottom:100%!important;background-position:50% 100%,50% 0!important}
+section#main-section .role.on::after{background-image:linear-gradient(var(--blue),var(--blue)),radial-gradient(circle,var(--blue) 0 5px,rgba(0,131,200,.35) 5.5px 7px,transparent 7.5px)!important}
+section#main-section .rnum{font:700 clamp(38px,4.4vw,50px)/1 var(--font-head)!important;letter-spacing:-.05em!important;background:linear-gradient(130deg,var(--blue),var(--blue-l))!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+section#main-section .role h3{font-size:var(--fs-lg)!important}
+section#main-section .role p{font-size:var(--fs-md)!important;color:var(--muted)!important;line-height:normal!important}
+section#main-section .st-bar{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:16px!important;margin-top:clamp(20px,2.6vw,32px)!important}
+section#main-section .st-dots{display:flex!important;align-items:center!important;gap:4px!important}
+section#main-section .st-dot{width:34px!important;height:44px!important;display:grid!important;place-items:center!important}
+section#main-section .st-dot::before{content:""!important;width:24px!important;height:4px!important;border-radius:2px!important;background:var(--hair)!important;transition:background-color .25s var(--ez)!important}
+section#main-section .st-dot[aria-current="true"]::before{background:var(--blue)!important}
+section#main-section .st-btn{width:44px!important;height:44px!important;flex:none!important;border:1px solid var(--hair)!important;border-radius:12px!important;display:grid!important;place-items:center!important;color:var(--ink)!important;transition:border-color .22s var(--ez),color .22s var(--ez),background-color .22s var(--ez)!important}
+section#main-section .st-btn:hover:not(:disabled){border-color:var(--blue)!important;color:var(--blue)!important}
+section#main-section .st-btn:disabled{opacity:.35!important;cursor:not-allowed!important}
+section#main-section .st-btn svg{width:18px!important;height:18px!important}
+section#main-section .st-prev svg{transform:scaleX(-1)!important}
+section#main-section .stories{--sgap:clamp(16px,2vw,26px)!important;display:grid!important;grid-auto-flow:column!important;grid-auto-columns:calc((100% - var(--sgap))/2)!important;gap:var(--sgap)!important;margin-top:clamp(16px,2vw,22px)!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;padding-bottom:6px!important;scrollbar-width:none!important}
+section#main-section .stories::-webkit-scrollbar{display:none!important}
+section#main-section .story{position:relative!important;scroll-snap-align:start!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;min-height:clamp(380px,42vw,460px)!important;padding:clamp(22px,2.6vw,32px)!important;border-radius:clamp(20px,2.6vw,30px)!important;overflow:hidden!important;isolation:isolate!important;border:1px solid var(--line)!important;box-shadow:var(--sh)!important;transition:transform .3s var(--ez),box-shadow .3s var(--ez)!important}
+section#main-section .story:hover{transform:translateY(-8px)!important;box-shadow:var(--sh-lg)!important}
+section#main-section .story img{position:absolute!important;inset:0!important;z-index:-2!important;width:100%!important;height:100%!important;object-fit:cover!important;transition:transform .5s var(--ez)!important}
+section#main-section .story:hover img{transform:scale(1.05)!important}
+section#main-section .story::after{content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;background:linear-gradient(180deg,rgba(4,16,28,.28) 0%,rgba(4,16,28,.78) 52%,rgba(4,16,28,.94) 100%)!important}
+section#main-section .story h3{font-size:var(--fs-h3)!important;color:#fff!important;margin-bottom:12px!important}
+section#main-section .story p{font-size:var(--fs-sm)!important;line-height:normal!important;color:rgba(226,240,249,.84)!important}
+section#main-section .story .tagn{align-self:flex-start!important;margin-bottom:auto!important;padding:7px 14px!important;border-radius:10px!important;border:1px solid rgba(255,255,255,.22)!important;background:rgba(255,255,255,.1)!important;-webkit-backdrop-filter:blur(8px)!important;backdrop-filter:blur(8px)!important;font:700 var(--fs-xs)/1.25 var(--font-body)!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:#DCEDF8!important}
+section#main-section .marquee{margin-top:clamp(26px,3.4vw,42px)!important;overflow:hidden!important;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)!important;mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)!important}
+section#main-section .marquee ul{display:flex!important;align-items:stretch!important;gap:clamp(14px,1.8vw,26px)!important;width:max-content!important;padding:4px 0!important;animation:aiml-slide 34s linear infinite!important}
+section#main-section .marquee:hover ul{animation-play-state:paused!important}
+section#main-section .marquee li{display:grid!important;place-items:center!important;min-width:150px!important;padding:0 clamp(8px,1.4vw,18px)!important;transition:opacity .25s var(--ez)!important}
+section#main-section .marquee img{height:auto!important;max-height:42px!important;width:auto!important;object-fit:contain!important;opacity:.78!important;transition:opacity .25s var(--ez)!important}
+section#main-section .marquee img:hover{opacity:1!important}
+section#main-section[data-theme="dark"] .marquee img{opacity:.85!important}
+section#main-section[data-theme="dark"] .marquee img[src*="Rectangle-822"]{filter:brightness(0) invert(1)!important}
+section#main-section[data-theme="dark"] .marquee img:hover{opacity:1!important}
+/* ---- dark theme: black + graphite, technical grid textures ---- */
+section#main-section[data-theme="dark"] .aiml-sec--hero,section#main-section[data-theme="dark"] .aiml-sec--intro{background:#07080A!important;--body:rgba(228,230,235,.84)!important;--muted:#9A9FA8!important}
+section#main-section[data-theme="dark"] .aiml-sec.deep{--body:rgba(228,230,235,.8)!important;--muted:#9A9FA8!important;--card:rgba(255,255,255,.035)!important;--line:rgba(255,255,255,.1)!important;background:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px) 0 0/56px 56px,linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px) 0 0/56px 56px,radial-gradient(55% 70% at 100% 0%,rgba(0,131,200,.11),transparent 70%),var(--deep)!important}
+section#main-section[data-theme="dark"] .aiml-sec.tint{background:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.3px) 0 0/22px 22px,linear-gradient(180deg,#111113,#0C0C0E)!important}
+section#main-section[data-theme="dark"] .aiml-sec{box-shadow:inset 0 1px 0 rgba(255,255,255,.06)!important}
+section#main-section[data-theme="dark"] .story::after{background:linear-gradient(180deg,rgba(6,6,8,.3) 0%,rgba(6,6,8,.8) 52%,rgba(6,6,8,.95) 100%)!important}
+section#main-section[data-theme="dark"] .h-deck{color:rgba(228,230,235,.86)!important}
+section#main-section[data-theme="dark"] .h-tags li{color:#D4D7DD!important}
+@keyframes aiml-slide{to{transform:translateX(-50%)}}
+/* ---- light theme: intro / method / stories / partners drop their dark plates ----
+   sections alternate tint → white → tint … so no two neighbours share a surface */
+section#main-section[data-theme="light"] .aiml-sec--intro,section#main-section[data-theme="light"] .aiml-sec.deep{--ink:inherit!important;--body:inherit!important;--muted:inherit!important;--card:inherit!important;--glass:inherit!important;--line:inherit!important;--hair:inherit!important}
+section#main-section[data-theme="light"] .aiml-sec--intro,section#main-section[data-theme="light"] .aiml-sec--stories{background:var(--sb)!important}
+section#main-section[data-theme="light"] .aiml-sec--modeling{background:radial-gradient(60% 90% at 100% 0%,rgba(0,131,200,.08),transparent 70%),var(--sa)!important}
+section#main-section[data-theme="light"] .aiml-sec--partners{background:var(--sa)!important}
+section#main-section[data-theme="light"] .deep .kick,section#main-section[data-theme="light"] .aiml-sec--intro .kick{color:var(--acc-t)!important}
+section#main-section[data-theme="light"] .deep .kick::before,section#main-section[data-theme="light"] .aiml-sec--intro .kick::before{background:linear-gradient(90deg,var(--blue),transparent)!important}
+section#main-section[data-theme="light"] .aiml-sec--intro a{color:var(--blue-d)!important}
+/* same photo as dark, washed with the light surface - solid behind the copy, thinner toward the right */
+section#main-section[data-theme="light"] .intro-bg::after{content:""!important;position:absolute!important;inset:0!important;background:linear-gradient(90deg,rgba(242,248,253,.97) 0%,rgba(242,248,253,.92) 48%,rgba(242,248,253,.7) 100%)!important}
+section#main-section[data-theme="light"] .stage{padding:30px 24px 28px!important;background:none!important}
+section#main-section[data-theme="light"] .stages::before{top:68px!important}
+section#main-section[data-theme="light"] .stage b{background:var(--blue)!important;border-color:transparent!important;color:#FFFFFF!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:0 0 0 8px rgba(0,131,200,.1)!important}
+section#main-section[data-theme="light"] .stage:hover b{box-shadow:0 0 0 12px rgba(0,131,200,.14)!important}
+section#main-section[data-theme="light"] .story{justify-content:flex-start!important;min-height:0!important;padding:0!important;background:var(--card)!important;border-radius:20px!important}
+section#main-section[data-theme="light"] .story::after{display:none!important}
+section#main-section[data-theme="light"] .story img{position:relative!important;inset:auto!important;z-index:auto!important;flex:none!important;height:clamp(190px,19vw,230px)!important}
+section#main-section[data-theme="light"] .story:hover img{transform:none!important}
+section#main-section[data-theme="light"] .story .tagn{position:absolute!important;top:18px!important;left:18px!important;margin:0!important;background:#FFFFFF!important;border-color:transparent!important;color:var(--blue-d)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+section#main-section[data-theme="light"] .story h3{color:var(--ink)!important;margin:22px 24px 10px!important}
+section#main-section[data-theme="light"] .story p{color:var(--body)!important;margin:0 24px 26px!important}
+section#main-section[data-theme="light"] .marquee li{min-width:176px!important;height:84px!important;padding:0 24px!important;background:none!important}
+/* aws + microsoft PNGs have light wordmarks drawn for dark grounds - darken just those two */
+section#main-section[data-theme="light"] .marquee img[src*="Rectangle-817"]{filter:invert(1) hue-rotate(180deg)!important}
+section#main-section[data-theme="light"] .marquee img[src*="Group-267"]{filter:brightness(.5)!important}
+section#main-section[data-theme="light"] .stages.in .stage{animation-name:aiml-node,aiml-lift!important}
+@keyframes aiml-lift{0%,26%{transform:translateY(-6px)}38%,94%{transform:none}100%{transform:translateY(-6px)}}
+/* ---- big data & analytics additions (everything above is shared with ithena-ai-ml-data-science.html) ---- */
+section#main-section .hero-in{padding-left:clamp(20px,4vw,44px)!important;padding-right:clamp(20px,4vw,44px)!important}
+section#main-section .badge{width:48px!important;height:48px!important;flex:none!important;border-radius:50%!important;display:grid!important;place-items:center!important;background:var(--blue)!important;color:#FFFFFF!important}
+section#main-section .badge svg{width:22px!important;height:22px!important}
+section#main-section .fig{display:grid!important;place-items:center!important}
+section#main-section .fig img{width:min(100%,440px)!important;height:auto!important;filter:drop-shadow(0 30px 40px rgba(0,45,80,.28))!important}
+section#main-section .kf-t{font:700 var(--fs-xs)/1.25 var(--font-body)!important;letter-spacing:.17em!important;text-transform:uppercase!important;color:var(--muted)!important;margin-top:clamp(44px,5.6vw,72px)!important}
+section#main-section .kf{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;margin-top:18px!important;border-top:1px solid var(--line)!important}
+section#main-section .kf li{display:flex!important;align-items:center!important;gap:14px!important;padding:26px clamp(12px,1.8vw,24px) 0!important}
+section#main-section .kf li:first-child{padding-left:0!important}
+section#main-section .kf li+li{border-left:1px solid var(--line)!important}
+section#main-section .kf h3{font-size:var(--fs-lg)!important;line-height:1.25!important}
+/* platform framework: open columns split by a left rule; blue segment on the rule grows on hover */
+section#main-section .cards{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:clamp(36px,4.4vw,56px) clamp(24px,3vw,40px)!important;margin-top:clamp(40px,5vw,64px)!important;counter-reset:none!important}
+section#main-section .card{position:relative!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:12px!important;padding:2px 0 4px 26px!important;border-left:1px solid var(--hair)!important}
+section#main-section .card::before{content:""!important;position:absolute!important;left:-1px!important;top:0!important;width:2px!important;height:48px!important;background:linear-gradient(180deg,var(--blue-l),var(--blue))!important;transition:height .45s var(--ez)!important}
+section#main-section .card:hover::before{height:100%!important}
+section#main-section .card .badge{margin-bottom:6px!important;transition:transform .35s var(--ez)!important}
+section#main-section .card:hover .badge{transform:translateY(-3px)!important}
+section#main-section .card h3{font-size:var(--fs-xl)!important}
+section#main-section .card p{font-size:var(--fs-md)!important;line-height:normal!important;color:var(--muted)!important}
+/* cnum: oversized numeral fading from brand blue - decorative (aria-hidden), brightens on hover */
+section#main-section .card .cnum{position:absolute!important;top:-6px!important;right:0!important;font:800 clamp(40px,4.2vw,56px)/1 var(--font-head)!important;letter-spacing:-.04em!important;background:linear-gradient(180deg,var(--blue-l) 0%,rgba(0,131,200,.08) 92%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important;opacity:.7!important;transition:opacity .35s var(--ez),transform .35s var(--ez)!important;pointer-events:none!important}
+section#main-section .card:hover .cnum{opacity:1!important;transform:translateY(-4px)!important}
+/* flow: numbered stations on one hairline track with a travelling light */
+section#main-section .flow{position:relative!important;display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;max-width:860px!important;margin-top:32px!important;counter-reset:fl!important}
+section#main-section .flow::before{content:""!important;position:absolute!important;left:0!important;right:0!important;top:3px!important;height:1px!important;background:linear-gradient(90deg,transparent,var(--blue-l),transparent) -20% 0/140px 100% no-repeat,linear-gradient(90deg,var(--blue),var(--hair) 85%,transparent)!important;animation:bda-sweep 5s linear infinite!important}
+section#main-section .flow li{position:relative!important;counter-increment:fl!important;padding:22px 12px 0 0!important;font:600 var(--fs-sm)/1.25 var(--font-body)!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:var(--ink)!important}
+section#main-section .flow li::before{content:counter(fl,decimal-leading-zero)!important;display:block!important;margin-bottom:6px!important;font:500 11px/1 var(--font-body)!important;letter-spacing:.12em!important;color:var(--muted)!important}
+section#main-section .flow li::after{content:""!important;position:absolute!important;left:0!important;top:0!important;width:7px!important;height:7px!important;border-radius:50%!important;background:var(--blue-l)!important;box-shadow:0 0 0 4px rgba(0,131,200,.16),0 0 14px rgba(63,169,224,.7)!important}
+@keyframes bda-sweep{from{background-position:-20% 0,0 0}to{background-position:120% 0,0 0}}
+/* key-feature icons: no filled disc - a hairline orbit with a travelling light arc, soft halo and a floating glyph */
+section#main-section .kf .badge{position:relative!important;width:56px!important;height:56px!important;background:radial-gradient(circle,rgba(63,169,224,.16),transparent 70%)!important;color:var(--acc-t)!important}
+section#main-section .kf .badge::before,section#main-section .kf .badge::after{content:""!important;position:absolute!important;inset:0!important;border-radius:50%!important;pointer-events:none!important}
+section#main-section .kf .badge::after{border:1px solid var(--line)!important}
+section#main-section .kf .badge::before{background:conic-gradient(from 0deg,transparent 0 45%,rgba(0,131,200,.35) 70%,var(--blue-l) 94%,transparent 95%)!important;-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px))!important;mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px))!important;filter:drop-shadow(0 0 4px rgba(63,169,224,.8))!important;animation:bda-orbit 3.6s linear infinite!important}
+section#main-section .kf .badge svg{width:24px!important;height:24px!important;filter:drop-shadow(0 0 8px rgba(63,169,224,.45))!important;animation:bda-float 3.6s ease-in-out infinite!important}
+section#main-section .kf li:nth-child(2) .badge::before,section#main-section .kf li:nth-child(2) .badge svg{animation-delay:-.9s!important}
+section#main-section .kf li:nth-child(3) .badge::before,section#main-section .kf li:nth-child(3) .badge svg{animation-delay:-1.8s!important}
+section#main-section .kf li:nth-child(4) .badge::before,section#main-section .kf li:nth-child(4) .badge svg{animation-delay:-2.7s!important}
+section#main-section .kf li:hover .badge::before{animation-duration:1.2s!important}
+@keyframes bda-orbit{to{transform:rotate(360deg)}}
+@keyframes bda-float{0%,100%{transform:translateY(1.5px)}50%{transform:translateY(-2.5px)}}
+/* platform: card n + flow layer n light up together (JS toggles .on every 2s) */
+section#main-section .card{transition:transform .55s var(--ez),box-shadow .55s var(--ez),background-color .55s var(--ez)!important}
+section#main-section .card.on{z-index:3!important;transform:scale(1.3)!important;border-radius:4px!important;background:var(--sb)!important;box-shadow:0 0 0 14px var(--sb),0 30px 70px rgba(0,0,0,.4)!important}
+section#main-section .card.on::before{height:100%!important}
+section#main-section .card.on .cnum{opacity:1!important}
+/* grow away from the grid edges so the 1.5x card stays inside the section */
+section#main-section .card:nth-child(3n+1){transform-origin:0 0!important}
+section#main-section .card:nth-child(3n+2){transform-origin:50% 0!important}
+section#main-section .card:nth-child(3n){transform-origin:100% 0!important}
+section#main-section .card:nth-child(4){transform-origin:0 100%!important}
+section#main-section .card:nth-child(5){transform-origin:50% 100%!important}
+section#main-section .card:nth-child(6){transform-origin:100% 100%!important}
+section#main-section[data-theme="light"] .card.on{background:var(--sa)!important;box-shadow:0 0 0 14px var(--sa),0 30px 70px rgba(0,45,80,.18)!important}
+section#main-section .flow li{transition:color .4s var(--ez),opacity .4s var(--ez)!important}
+section#main-section .flow li::after{transition:transform .4s var(--ez),box-shadow .4s var(--ez)!important}
+section#main-section .flow.live li:not(.on){opacity:.45!important}
+section#main-section .flow li.on{color:var(--acc-t)!important}
+section#main-section .flow li.on::before{color:var(--acc-t)!important}
+section#main-section .flow li.on::after{transform:scale(1.7)!important;box-shadow:0 0 0 5px rgba(0,131,200,.2),0 0 20px rgba(63,169,224,.95)!important}
+/* offerings: panel copy slides in whenever a panel is shown (display:none -> block restarts the animation) */
+section#main-section .panel:not([hidden])>h3,section#main-section .panel:not([hidden])>p,section#main-section .panel:not([hidden]) .ticks li{animation:bda-in .7s var(--ez) both!important}
+section#main-section .panel:not([hidden])>h3{animation-delay:.05s!important}
+section#main-section .panel:not([hidden])>p{animation-delay:.16s!important}
+section#main-section .panel:not([hidden])>p+p{animation-delay:.26s!important}
+section#main-section .panel:not([hidden]) .ticks li:nth-child(1){animation-delay:.34s!important}
+section#main-section .panel:not([hidden]) .ticks li:nth-child(2){animation-delay:.42s!important}
+section#main-section .panel:not([hidden]) .ticks li:nth-child(3){animation-delay:.5s!important}
+section#main-section .panel:not([hidden]) .ticks li:nth-child(4){animation-delay:.58s!important}
+section#main-section .panel:not([hidden]) .ticks li:nth-child(5){animation-delay:.66s!important}
+section#main-section .panel:not([hidden]) .ticks li:nth-child(6){animation-delay:.74s!important}
+section#main-section .panel:not([hidden])::after{animation:bda-bg 1s var(--ez) both!important}
+@keyframes bda-in{from{opacity:0;transform:translateX(-36px)}to{opacity:1;transform:none}}
+@keyframes bda-bg{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:none}}
+section#main-section .ticks{display:grid!important;gap:10px!important;margin-top:18px!important;max-width:min(100%,560px)!important}
+section#main-section .ticks li{position:relative!important;padding-left:32px!important;font-size:var(--fs-base)!important;line-height:normal!important;color:var(--ink)!important}
+section#main-section .ticks li::before{content:""!important;position:absolute!important;left:0!important;top:1px!important;width:20px!important;height:20px!important;border-radius:50%!important;background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat!important}
+section#main-section .panel p+p{margin-top:12px!important}
+/* story photos have a black fade baked into their left side - frame the subject instead */
+section#main-section .story img{object-position:78% 50%!important}
+/* 6 steps: 7-col grid, each step spans 2 so the zig-zag stays evenly offset */
+section#main-section .roles{grid-template-columns:repeat(7,minmax(0,1fr))!important}
+section#main-section .role:nth-child(1){grid-column:1/span 2!important}
+section#main-section .role:nth-child(2){grid-column:2/span 2!important}
+section#main-section .role:nth-child(3){grid-column:3/span 2!important}
+section#main-section .role:nth-child(4){grid-column:4/span 2!important}
+section#main-section .role:nth-child(5){grid-column:5/span 2!important}
+section#main-section .role:nth-child(6){grid-column:6/span 2!important}
+/* light: keep tint/white alternation (intro white → platform tint → offerings white → approach tint → stories white → partners tint) */
+section#main-section[data-theme="light"] #bda-platform,section#main-section[data-theme="light"] #aiml-approach,section#main-section[data-theme="light"] #aiml-partners{background:var(--sb)!important}
+section#main-section[data-theme="light"] #aiml-offerings,section#main-section[data-theme="light"] #aiml-stories{background:var(--sa)!important}
+@media (max-width:1040px){
+section#main-section .kf{grid-template-columns:repeat(2,minmax(0,1fr))!important;border-top:0!important;gap:0 24px!important}
+section#main-section .kf li,section#main-section .kf li:first-child{padding:20px 0!important;border-left:0!important;border-top:1px solid var(--line)!important}
+section#main-section .cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+/* ponytail: 1.5x only fits the 3-col desktop grid; narrower grids get a gentle lift so the card never leaves the viewport */
+section#main-section .card.on{transform:scale(1.04)!important}
+section#main-section .card:nth-child(n){transform-origin:50% 50%!important}
+}
+@media (max-width:640px){
+section#main-section .kf,section#main-section .cards{grid-template-columns:minmax(0,1fr)!important}
+section#main-section .flow{grid-template-columns:repeat(3,minmax(0,1fr))!important;row-gap:22px!important}
+section#main-section .flow::before{display:none!important}
+section#main-section .flow li{border-top:1px solid var(--hair)!important}
+section#main-section .flow li::after{top:-4px!important}
+}
+section#main-section .rev{opacity:0!important;transform:translateY(18px)!important;transition:opacity .62s var(--ez),transform .62s var(--ez)!important}
+section#main-section .rev.in{opacity:1!important;transform:none!important}
+@media (max-width:1040px){
+section#main-section .split{grid-template-columns:1fr!important}
+section#main-section .roles{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:none!important;row-gap:44px!important;padding-left:40px!important}
+section#main-section .roles::before{left:6px!important;right:auto!important;top:0!important;bottom:0!important;width:2px!important;height:auto!important;background:linear-gradient(180deg,var(--blue),var(--hair) 90%)!important}
+section#main-section .role,section#main-section .role:nth-child(n){grid-row:auto!important;grid-column:auto!important;align-self:auto!important}
+section#main-section .role::after,section#main-section .role:nth-child(n)::after{left:-40px!important;top:14px!important;bottom:auto!important;height:14px!important;background-size:0 0,14px 14px!important;background-position:0 0,50% 50%!important}
+section#main-section .role:nth-child(n)::before{border:0!important;border-left:2px solid var(--blue)!important}
+section#main-section .role:nth-child(n).on>*{transform:translateX(6px)!important}
+section#main-section .intro-copy{max-width:none!important}
+section#main-section[data-theme="light"] .intro-bg::after{background:rgba(242,248,253,.92)!important}
+}
+@media (max-width:860px){
+section#main-section .two{grid-template-columns:1fr!important}
+section#main-section .fig-first{order:-1!important}
+section#main-section .stories{grid-auto-columns:100%!important}
+section#main-section .stages{grid-template-columns:1fr!important}
+section#main-section .stages::before{display:none!important}
+section#main-section .panel::after{display:none!important}
+section#main-section .panel .num{color:var(--blue)!important;opacity:.12!important;text-shadow:none!important}
+section#main-section .panel p{max-width:62ch!important}
+}
+@media (max-width:560px){
+section#main-section .btn{width:100%!important}
+section#main-section .h-title{max-width:none!important}
+}
+@media (prefers-reduced-motion:reduce){
+section#main-section *,section#main-section *::before,section#main-section *::after{transition-duration:.001ms!important;animation:none!important}
+section#main-section .rev{opacity:1!important;transform:none!important}
+section#main-section .stages .stage{opacity:1!important;transform:none!important}
+}
+/* ---- subnav: identical on all three pages - sticky horizontal bar, active link 1.3x, others recede; extra gap so the active link clears its neighbours ---- */
+section#main-section .subnav-card{gap:clamp(18px,3vw,44px)!important}
+/* key features: JS lights one feature every 2s - title enlarges (pop rules below), others recede, orbit speeds up */
+section#main-section .kf li{position:relative!important;transition:opacity .4s var(--ez)!important}
+section#main-section .kf.live li:not(.on){opacity:.55!important}
+section#main-section .kf li.on .badge::before{animation-duration:1.2s!important}
+/* ---- pop states (platform cards, approach steps, method stages, key features): no card surface - only the content enlarges ---- */
+section#main-section{--z:1.3}
+section#main-section .pop-body{transition:transform .5s var(--ez)!important}
+section#main-section .card.on,section#main-section .card.on:nth-child(n),section#main-section .kf li.on,section#main-section .kf li.on:nth-child(n),section#main-section .stages.in .stage.on,section#main-section[data-theme="light"] .stages.in .stage.on,section#main-section[data-theme="light"] .card.on,section#main-section[data-theme="light"] .kf li.on{transform:none!important;background:none!important;box-shadow:none!important;border-radius:0!important}
+/* at rest the text is 1/z wide, so at z it fills its column instead of spilling onto neighbours */
+section#main-section .card .pop-body{display:flex!important;flex-direction:column!important;gap:12px!important;max-width:calc(100% / var(--z))!important;transform-origin:0 0!important}
+section#main-section .card.on .pop-body{transform:scale(var(--z))!important}
+section#main-section .kf h3{max-width:calc((100% - 70px) / var(--z))!important;transform-origin:0 50%!important;transition:transform .5s var(--ez)!important}
+section#main-section .kf li.on h3{transform:scale(var(--z))!important}
+section#main-section .role::before,section#main-section .role.on::before,section#main-section .role:nth-child(n).on::before{display:none!important}
+section#main-section .role .pop-body{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:10px!important;max-width:calc(100% / var(--z))!important;transform-origin:0 100%!important}
+section#main-section .role:nth-child(even) .pop-body{transform-origin:0 0!important}
+section#main-section .role.on .pop-body{transform:translateY(-6px) scale(var(--z))!important}
+section#main-section .role:nth-child(even).on .pop-body{transform:translateY(6px) scale(var(--z))!important}
+/* method: icon + text enlarge around the icon centre; connector is per-gap segments that stop short of the icons */
+section#main-section .stages::before,section#main-section .stages::after{display:none!important}
+section#main-section .stage .pop-body{display:grid!important;justify-items:center!important;gap:16px!important;transform-origin:50% 38px!important}
+section#main-section .stages.in .stage.on .pop-body{transform:scale(var(--z))!important}
+section#main-section .stage:not(:last-child)::after{content:""!important;position:absolute!important;top:calc(var(--st,0px) + 37px)!important;left:calc(50% + 62px)!important;width:calc(100% + clamp(16px,2.4vw,30px) - 124px)!important;height:2px!important;border-radius:2px!important;background:repeating-linear-gradient(90deg,rgba(63,169,224,.5) 0 8px,transparent 8px 17px)!important;transition:box-shadow .5s var(--ez)!important;pointer-events:none!important}
+section#main-section .stage.past::after{background:linear-gradient(90deg,var(--blue),var(--blue-l))!important;box-shadow:0 0 12px rgba(63,169,224,.7)!important}
+section#main-section[data-theme="light"] .stage{--st:30px}
+@media (max-width:1040px){
+section#main-section{--z:1.12}
+section#main-section .role .pop-body,section#main-section .role:nth-child(even) .pop-body{transform-origin:0 0!important}
+section#main-section .role:nth-child(n).on .pop-body{transform:translateX(6px) scale(var(--z))!important}
+}
+@media (max-width:860px){section#main-section .stage::after{display:none!important}}
+</style>
+
+<section id="main-section" class="aiml-page" data-theme="dark">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": "https://ithena.ai/big-data-analytics/#service",
+        "name": "Big Data & Analytics Services",
+        "serviceType": "Big data, business intelligence and analytics consulting",
+        "description": "ITHENA's ONE Data Platform and Big Data & Analytics services help organizations harness their data to identify new opportunities, run more efficient operations and delight customers.",
+        "url": "https://ithena.ai/big-data-analytics/",
+        "provider": { "@type": "Organization", "name": "ITHENA", "url": "https://ithena.ai/" },
+        "areaServed": "Global",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Big Data & Analytics offerings",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Advisory & Consultancy Services", "description": "Data-driven business models, digital strategy and transformation roadmaps." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Management", "description": "Policies and procedures that put the organization in control of its business data regardless of where it resides." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Enterprise BI", "description": "Enterprise-wide business intelligence platforms that increase productivity and efficiency." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Visualization", "description": "Visual representation that distills large datasets into an easy understanding of complex relationships." } }
+          ]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ithena.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://ithena.ai/services/" },
+          { "@type": "ListItem", "position": 3, "name": "Big Data & Analytics" }
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "name": "Big Data & Analytics success stories",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Improved employee safety with COVID-19 risk analytics for a medical caregiving organization" },
+          { "@type": "ListItem", "position": 2, "name": "Fleet optimization with analytics for a US based fleet service provider" },
+          { "@type": "ListItem", "position": 3, "name": "Data & analytics platform for an FMCG e-commerce company" },
+          { "@type": "ListItem", "position": 4, "name": "Reduced machine downtime with advanced analytics for a manufacturing company" },
+          { "@type": "ListItem", "position": 5, "name": "Data, BI strategy, and implementation for a business conglomerate" }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+    <defs>
+      <g id="a-layers"><path d="M12 3l9 4.6-9 4.6-9-4.6z"/><path d="M3 12.2l9 4.6 9-4.6M3 16.6l9 4.6 9-4.6"/></g>
+      <g id="a-plug"><path d="M9 3v5M15 3v5"/><path d="M6 8h12v3a6 6 0 0 1-12 0z"/><path d="M12 17v4"/></g>
+      <g id="a-ingest"><path d="M12 3v11M7.5 9.5L12 14l4.5-4.5"/><path d="M4 15v3a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-3"/></g>
+      <g id="a-net"><circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M11 7l-5 9M13 7l5 9M7.2 18h9.6"/></g>
+      <g id="a-chart"><path d="M4 4v16h16"/><path d="M8 15l4-5 3 3 5-6"/></g>
+      <g id="a-spark"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></g>
+      <g id="a-bolt"><path d="M13 2L4.5 13.5H12L11 22l8.5-11.5H12z"/></g>
+      <g id="a-user"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></g>
+      <g id="a-shield"><path d="M12 3l8 3v6c0 4.6-3.4 8.3-8 9-4.6-.7-8-4.4-8-9V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></g>
+      <g id="a-compass"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></g>
+      <g id="a-db"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/></g>
+      <g id="a-bars"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16V9"/></g>
+      <g id="a-pie"><path d="M12 3a9 9 0 1 0 9 9h-9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/></g>
+      <g id="a-arrow"><path d="M4.5 12h14.2M12.8 6l6 6-6 6"/></g>
+    </defs>
+  </svg>
+
+  <article>
+
+  <header class="aiml-sec aiml-sec--hero">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="https://ithena.ai/wp-content/uploads/2024/02/big-data.jpg" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+    </div>
+    <div class="wrap hero-in">
+      <div>
+        <p class="kick">Data Management</p>
+        <h1 class="h-title">Big Data <em>&amp; Analytics</em></h1>
+        <p class="h-deck">Harness the power of ITHENA&rsquo;s ONE Data Platform to drive business outcomes &ndash; from ingestion and modeling through to KPIs, analytics and workflows.</p>
+        <ul class="h-tags">
+          <li>ONE Data Platform</li>
+          <li>Data management</li>
+          <li>Enterprise BI</li>
+          <li>Data visualization</li>
+          <li>Advisory</li>
+        </ul>
+        <div class="btns">
+          <a class="btn btn-o" href="#aiml-offerings" style="border-color:rgba(255,255,255,.28)!important;color:#fff!important">Explore offerings</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" id="aiml-nav" aria-label="On this page">
+    <div class="wrap">
+      <div class="subnav-card">
+        <a href="#bda-intro">Overview</a>
+        <a href="#bda-platform">Platform</a>
+        <a href="#aiml-offerings">Offerings</a>
+        <a href="#aiml-approach">Approach</a>
+        <a href="#aiml-stories">Success Stories</a>
+        <a href="#aiml-partners">Partnerships</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="aiml-sec" id="bda-intro">
+    <div class="wrap">
+      <div class="two">
+        <div class="rev">
+          <p class="kick">Big Data &amp; Analytics</p>
+          <h2>Harness your data to identify <em>new opportunities</em></h2>
+          <div class="railtext">
+            <p class="lead">ITHENA&rsquo;s Big data &amp; analytics capabilities assist organizations in harnessing their data and using it to identify new opportunities.</p>
+            <p class="body">That, in turn, leads to intelligent business moves, more efficient operations, much higher profits, and delighted customers.</p>
+          </div>
+        </div>
+        <div class="fig rev">
+          <img src="https://ithena.ai/wp-content/uploads/2023/06/big-data-1.png" alt="Data blocks assembling into a single unified data cube" width="500" height="308" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <p class="kf-t rev">Key features of the integrated ONE Data Platform</p>
+      <ul class="kf rev">
+        <li><span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a-bolt"/></svg></span><h3>Massive data ingestion at incredible speeds</h3></li>
+        <li><span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a-net"/></svg></span><h3>Complex modeling &amp; multi-source integration</h3></li>
+        <li><span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a-user"/></svg></span><h3>Best in class end user self service</h3></li>
+        <li><span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a-shield"/></svg></span><h3>Enhanced data security and audit</h3></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="aiml-sec deep" id="bda-platform">
+    <div class="wrap">
+      <div class="rev">
+        <p class="kick">ITHENA&rsquo;s ONE Data Platform</p>
+        <h2>ONE Data Platform <em>Framework</em></h2>
+        <p class="lead">One platform that carries your data from the source connection all the way to insight in front of end users.</p>
+        <ol class="flow" aria-label="Platform layers">
+          <li>Ingestion</li><li>Modeling</li><li>Semantic layer</li><li>KPIs</li><li>Analytics</li><li>Workflows</li>
+        </ol>
+      </div>
+      <ol class="cards rev">
+        <li class="card"><span class="cnum" aria-hidden="true">01</span><span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a-plug"/></svg></span><div class="pop-body"><h3>Data Source Connectivity</h3><p>Provides a single interface for managing and configuring your data sources, while separating credential management from data usage.</p></div></li>
+        <li class="card"><span class="cnum" aria-hidden="true">02</span><span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a-ingest"/></svg></span><div class="pop-body"><h3>Data Ingestion</h3><p>Access to several sources of data for ingestion, live stream, integrate to be available for organization, access, and analysis. Single UI to connect, ingest and act.</p></div></li>
+        <li class="card"><span class="cnum" aria-hidden="true">03</span><span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a-layers"/></svg></span><div class="pop-body"><h3>Data Enrichment</h3><p>Builds a data lake that consists of metadata, upsert capabilities, and multiple versions of reading consistency.</p></div></li>
+        <li class="card"><span class="cnum" aria-hidden="true">04</span><span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a-net"/></svg></span><div class="pop-body"><h3>Semantic Layer</h3><p>Framework for discovering, analyzing, and accessing complex data that reduces complexity while making it easier for end-users to discover, learn, explore, access, and analyze data.</p></div></li>
+        <li class="card"><span class="cnum" aria-hidden="true">05</span><span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a-chart"/></svg></span><div class="pop-body"><h3>End User Visualization</h3><p>Consistently visualizing the data by displaying insights on the status of metrics and key performance indicators (KPIs) for an enterprise.</p></div></li>
+        <li class="card"><span class="cnum" aria-hidden="true">06</span><span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a-spark"/></svg></span><div class="pop-body"><h3>Realize True Artificial Intelligence</h3><p>Machine learning algorithms aren&rsquo;t enough in the hands of data science teams alone &ndash; they are best at providing outcomes in an easy and demonstrable fashion to end users.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="aiml-sec" id="aiml-offerings">
+    <div class="wrap">
+      <div class="rev">
+        <p class="kick">Offerings</p>
+        <h2>The transformational power of <em>data-embedded intelligence</em></h2>
+        <p class="lead">In today&rsquo;s data-centered world, it&rsquo;s easier to acquire vast amounts of data than it is to manage, organize and extract valuable insights from it. Connect with us to discuss how you can best use the transformational power of data-embedded intelligence.</p>
+      </div>
+      <div class="tabs rev">
+        <div class="tablist" role="tablist" aria-label="Big Data &amp; Analytics offerings" id="aimlTabs">
+          <button class="tab" type="button" role="tab" id="t-adv" aria-controls="p-adv" aria-selected="true"><span class="tab-in"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#a-compass"/></svg></i>Advisory &amp; Consultancy</span></button>
+          <button class="tab" type="button" role="tab" id="t-dm" aria-controls="p-dm" aria-selected="false" tabindex="-1"><span class="tab-in"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#a-db"/></svg></i>Data Management</span></button>
+          <button class="tab" type="button" role="tab" id="t-bi" aria-controls="p-bi" aria-selected="false" tabindex="-1"><span class="tab-in"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#a-bars"/></svg></i>Enterprise BI</span></button>
+          <button class="tab" type="button" role="tab" id="t-dv" aria-controls="p-dv" aria-selected="false" tabindex="-1"><span class="tab-in"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#a-pie"/></svg></i>Data Visualization</span></button>
+        </div>
+        <div class="panels">
+          <div class="panel" role="tabpanel" id="p-adv" style="--pbg:url(https://ithena.ai/wp-content/uploads/2023/07/Group-442-1.webp)" aria-labelledby="t-adv" tabindex="0">
+            <span class="num" aria-hidden="true">01</span>
+            <h3>Advisory &amp; Consultancy Services</h3>
+            <p>ITHENA engages with leaders to define data-driven business models, digital strategy, and transformation roadmaps. Our team of seasoned consultants has been engaged with global organizations in:</p>
+            <ul class="ticks">
+              <li>ROI &amp; business case identification &amp; development</li>
+              <li>Design &amp; architecture of data strategy &amp; roadmap</li>
+              <li>Technology evaluation, prototyping &amp; benchmarking</li>
+              <li>Change management and training</li>
+            </ul>
+          </div>
+          <div class="panel" role="tabpanel" id="p-dm" style="--pbg:url(https://ithena.ai/wp-content/uploads/2023/07/Group-443.webp)" aria-labelledby="t-dm" tabindex="0" hidden>
+            <span class="num" aria-hidden="true">02</span>
+            <h3>Data Management</h3>
+            <p>ITHENA implements policies &amp; procedures that put the organization in control of their business data regardless of where it resides. Our offerings in this space cover:</p>
+            <ul class="ticks">
+              <li>Data engineering &amp; enterprise data integration</li>
+              <li>IT &amp; OT data integration</li>
+              <li>Master data management implementation</li>
+              <li>Setup of enterprise data stores, data warehouses, data lakes</li>
+              <li>Information architecture on cloud, hybrid, and on-premise</li>
+              <li>Migration and integration with big data platform</li>
+            </ul>
+          </div>
+          <div class="panel" role="tabpanel" id="p-bi" style="--pbg:url(https://ithena.ai/wp-content/uploads/2023/07/Group-444.webp)" aria-labelledby="t-bi" tabindex="0" hidden>
+            <span class="num" aria-hidden="true">03</span>
+            <h3>Enterprise BI</h3>
+            <p>ITHENA&rsquo;s Enterprise BI helps both small and large organizations increase productivity and efficiency. We help our customers set up an enterprise-wide business intelligence platform covering:</p>
+            <ul class="ticks">
+              <li>Reporting, dashboarding, workflows for business &amp; functions</li>
+              <li>Advanced analytics using machine learning, AI, and data science features</li>
+              <li>Self-service BI frameworks</li>
+              <li>Mobile business intelligence</li>
+              <li>Migration of BI platforms</li>
+            </ul>
+          </div>
+          <div class="panel" role="tabpanel" id="p-dv" style="--pbg:url(https://ithena.ai/wp-content/uploads/2023/07/Group-445.webp)" aria-labelledby="t-dv" tabindex="0" hidden>
+            <span class="num" aria-hidden="true">04</span>
+            <h3>Data Visualization</h3>
+            <p>ITHENA&rsquo;s DV helps communicate business insights from data through visual representation &ndash; distilling large datasets into visual graphics for an easy understanding of complex relationships within the data.</p>
+            <p>These analytics offerings focus on specific business areas and problems across sales, servicing, logistics, inventory, manufacturing, and quality:</p>
+            <ul class="ticks">
+              <li>Enterprise real-time IoT analytics</li>
+              <li>Social intelligence &amp; analytics</li>
+              <li>Real-time vehicle analytics platform</li>
+              <li>Departmental analytics</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aiml-sec tint" id="aiml-approach">
+    <div class="wrap">
+      <div class="rev">
+        <p class="kick">Approach</p>
+        <h2>A holistic approach for shaping and implementing <em>big data &amp; analytics</em> programs</h2>
+        <p class="lead">Six stages, from the first conversation about your needs through to instances running in production.</p>
+      </div>
+      <div class="roles rev">
+        <article class="role"><div class="pop-body"><span class="rnum" aria-hidden="true">01</span><h3>Ideate</h3><p>Interview, empathize &amp; ideate to clearly define needs</p></div></article>
+        <article class="role"><div class="pop-body"><span class="rnum" aria-hidden="true">02</span><h3>Understand</h3><p>Understand the business to achieve maximum impact</p></div></article>
+        <article class="role"><div class="pop-body"><span class="rnum" aria-hidden="true">03</span><h3>Acquire</h3><p>Data acquisition, modelling &amp; ingestion</p></div></article>
+        <article class="role"><div class="pop-body"><span class="rnum" aria-hidden="true">04</span><h3>Build Pipeline</h3><p>Create repeatable ETL based data pipelines</p></div></article>
+        <article class="role"><div class="pop-body"><span class="rnum" aria-hidden="true">05</span><h3>Data Modelling</h3><p>Model data as per business requirements for high impact</p></div></article>
+        <article class="role"><div class="pop-body"><span class="rnum" aria-hidden="true">06</span><h3>Deployment</h3><p>Deploy and stage instances into production</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="aiml-sec aiml-sec--stories deep" id="aiml-stories">
+    <div class="wrap">
+      <div class="rev">
+        <p class="kick">Success Stories</p>
+        <h2>Where Big Data &amp; Analytics helped clients <em>deliver value</em></h2>
+        <p class="lead">Selected success stories where our Big Data &amp; Analytics have helped our clients create and deliver value.</p>
+      </div>
+      <div class="st-bar rev">
+        <div class="st-dots" id="aimlDots">
+          <button class="st-dot" type="button" aria-current="true" aria-label="Go to slide group 1"></button>
+          <button class="st-dot" type="button" aria-label="Go to slide group 2"></button>
+          <button class="st-dot" type="button" aria-label="Go to slide group 3"></button>
+        </div>
+        <button class="st-btn st-prev" type="button" id="aimlPrev" aria-label="Previous stories" aria-controls="aimlStories" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a-arrow"/></svg></button>
+        <button class="st-btn st-next" type="button" id="aimlNext" aria-label="Next stories" aria-controls="aimlStories"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#a-arrow"/></svg></button>
+      </div>
+      <div class="stories rev" id="aimlStories" tabindex="0" role="group" aria-label="Success stories">
+        <article class="story">
+          <img src="https://ithena.ai/wp-content/uploads/2023/06/1-2.jpg" alt="Caregiver in protective gear handling a COVID-19 test" width="2116" height="1080" loading="lazy" decoding="async">
+          <span class="tagn">Healthcare</span>
+          <h3>Improved employee safety with COVID-19 risk analytics for a medical caregiving organization</h3>
+          <p>To keep employees safe during the pandemic, we integrated live thermographic video analytics and face recognition. The system enabled non-invasive, real-time health screening of employees entering the workplace &ndash; identifying potential COVID-19 cases and minimizing the risk of transmission.</p>
+        </article>
+        <article class="story">
+          <img src="https://ithena.ai/wp-content/uploads/2023/06/2-2.jpg" alt="Cargo ship at sea carrying loads tracked by fleet telematics" width="2116" height="1080" loading="lazy" decoding="async">
+          <span class="tagn">Fleet &amp; logistics</span>
+          <h3>Fleet optimization with analytics for a US based fleet service provider</h3>
+          <p>IoT analytics on telematics &amp; cargo load data helped in route optimization, improving unplanned downtime of trailers &amp; driver safety.</p>
+        </article>
+        <article class="story">
+          <img src="https://ithena.ai/wp-content/uploads/2023/06/3-1.jpg" alt="Customer paying online with a card for an FMCG e-commerce order" width="2116" height="1080" loading="lazy" decoding="async">
+          <span class="tagn">FMCG</span>
+          <h3>Data &amp; analytics platform for an FMCG e-commerce company</h3>
+          <p>ITHENA&rsquo;s persona-based platform transformed e-commerce transaction analysis through customer profiling, basket analysis, web analytics, and SEO/SCM integration &ndash; identifying distinct customer segments, each with unique behaviors, preferences, and purchasing patterns.</p>
+        </article>
+        <article class="story">
+          <img src="https://ithena.ai/wp-content/uploads/2023/06/4.jpg" alt="Industrial plant equipment monitored with advanced analytics" width="2116" height="1080" loading="lazy" decoding="async">
+          <span class="tagn">Manufacturing</span>
+          <h3>Reduced machine downtime with advanced analytics for a manufacturing company</h3>
+          <p>Advanced analytics on IoT-generated machine data &ndash; including performance metrics and potential failure indicators &ndash; enabled proactive issue identification and resolution, significantly reducing unplanned downtime and enhancing overall productivity.</p>
+        </article>
+        <article class="story">
+          <img src="https://ithena.ai/wp-content/uploads/2023/06/5.jpg" alt="Business team reviewing BI insights for a conglomerate" width="2116" height="1080" loading="lazy" decoding="async">
+          <span class="tagn">Conglomerate</span>
+          <h3>Data, BI strategy, and implementation for a business conglomerate</h3>
+          <p>A data-driven self-analytics system empowered the business team of a large conglomerate with valuable insights and strategic decision-making across customers, sales, inventories, and logistics.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="aiml-sec aiml-sec--partners tint" id="aiml-partners">
+    <div class="wrap">
+      <div class="rev">
+        <p class="kick">Partnerships</p>
+        <h2>A <em>robust ecosystem</em> of ISVs behind our solutions and services</h2>
+        <p class="lead">We have a robust ecosystem of ISVs to support our solutions and services.</p>
+      </div>
+      <div class="marquee rev" aria-label="Partner technologies">
+        <ul>
+          <li><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-821.png" alt="Oracle" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-820.png" alt="IBM" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-818.png" alt="Snowflake" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-817.png" alt="AWS" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li><img src="https://ithena.ai/wp-content/uploads/2023/06/Group-267.png" alt="Microsoft" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-816.png" alt="Sisense" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-823.png" alt="SAP" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-822.png" alt="Tableau" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-821.png" alt="" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-820.png" alt="" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-818.png" alt="" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-817.png" alt="" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="https://ithena.ai/wp-content/uploads/2023/06/Group-267.png" alt="" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-816.png" alt="" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-823.png" alt="" width="150" height="46" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="https://ithena.ai/wp-content/uploads/2023/06/Rectangle-822.png" alt="" width="150" height="46" loading="lazy" decoding="async"></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  </article>
+
+</section>
+
+<script>
+  (function(){
+    "use strict";
+    var root=document.querySelector('section.aiml-page');
+    if(!root||root.dataset.bound) return;
+    root.dataset.bound='1';
+
+    var themeToggle=document.getElementById('themeToggle');
+    var stored=null; try{ stored=localStorage.getItem('fbb-theme'); }catch(e){}
+    setTheme(stored||'dark');
+
+    function setTheme(mode){
+      root.setAttribute('data-theme',mode);
+      if(themeToggle) themeToggle.setAttribute('aria-pressed',mode==='dark'?'true':'false');
+      try{ localStorage.setItem('fbb-theme',mode); }catch(e){}
+    }
+    if(themeToggle){
+      themeToggle.addEventListener('click',function(){
+        setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
+      });
+    }
+
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // autoplay (default 3s); pauses while pointer or keyboard focus is inside box, off for reduced motion
+    function autoplay(box,step,ms){
+      if(reduce||!box) return;
+      var t, run=function(){ clearInterval(t); t=setInterval(step,ms||3000); }, stop=function(){ clearInterval(t); };
+      box.addEventListener('mouseenter',stop); box.addEventListener('mouseleave',run);
+      box.addEventListener('focusin',stop); box.addEventListener('focusout',run);
+      run();
+    }
+
+    var tabs=[].slice.call(root.querySelectorAll('#aimlTabs .tab'));
+    function select(i,focus){
+      if(i<0) i=tabs.length-1;
+      if(i>=tabs.length) i=0;
+      tabs.forEach(function(t,j){
+        var on=j===i, p=document.getElementById(t.getAttribute('aria-controls'));
+        t.setAttribute('aria-selected',on?'true':'false');
+        if(on) t.removeAttribute('tabindex'); else t.setAttribute('tabindex','-1');
+        if(p) p.hidden=!on;
+      });
+      var list=tabs[i].parentNode;
+      if(list.scrollWidth>list.clientWidth) list.scrollTo({left:tabs[i].offsetLeft-(list.clientWidth-tabs[i].offsetWidth)/2,behavior:reduce?'auto':'smooth'});
+      if(focus) tabs[i].focus();
+    }
+    tabs.forEach(function(t,i){
+      t.addEventListener('click',function(){ select(i,false); });
+      t.addEventListener('keydown',function(e){
+        var k=e.key;
+        if(k==='ArrowRight'||k==='ArrowDown') select(i+1,true);
+        else if(k==='ArrowLeft'||k==='ArrowUp') select(i-1,true);
+        else if(k==='Home') select(0,true);
+        else if(k==='End') select(tabs.length-1,true);
+        else return;
+        e.preventDefault();
+      });
+    });
+    if(tabs.length) autoplay(root.querySelector('.tabs'),function(){
+      select(tabs.findIndex(function(t){ return t.getAttribute('aria-selected')==='true'; })+1,false);
+    });
+
+    var roles=[].slice.call(root.querySelectorAll('.roles .role')), ri=0;
+    function pop(i){ ri=i%roles.length; roles.forEach(function(r,j){ r.classList.toggle('on',j===ri); }); }
+    roles.forEach(function(r,i){ r.addEventListener('mouseenter',function(){ pop(i); }); });
+    if(roles.length){
+      if(!reduce) pop(0);
+      autoplay(root.querySelector('.roles'),function(){ pop(ri+1); });
+    }
+
+    // key features: one feature lights up every 2s (same rhythm as the platform cards)
+    var kfBox=root.querySelector('.kf'), kfs=[].slice.call(root.querySelectorAll('.kf li')), kn=0;
+    function glowKf(i){ kn=i%kfs.length; kfs.forEach(function(k,j){ k.classList.toggle('on',j===kn); }); }
+    kfs.forEach(function(k,i){ k.addEventListener('mouseenter',function(){ glowKf(i); }); });
+    if(kfs.length&&!reduce){ kfBox.classList.add('live'); glowKf(0); autoplay(kfBox,function(){ glowKf(kn+1); },2000); }
+
+    // platform: card n and flow layer n light up together every 2s
+    var cards=[].slice.call(root.querySelectorAll('#bda-platform .card')),
+        layers=[].slice.call(root.querySelectorAll('#bda-platform .flow li')), ci=0;
+    function lift(i){
+      ci=i%cards.length;
+      cards.forEach(function(c,j){ c.classList.toggle('on',j===ci); });
+      layers.forEach(function(l,j){ l.classList.toggle('on',j===ci); });
+    }
+    cards.forEach(function(c,i){ c.addEventListener('mouseenter',function(){ lift(i); }); });
+    if(cards.length&&!reduce){
+      root.querySelector('#bda-platform .flow').classList.add('live');
+      lift(0);
+      autoplay(root.querySelector('#bda-platform .cards'),function(){ lift(ci+1); },2000);
+    }
+
+    var rail=root.querySelector('#aimlStories'),
+        sPrev=root.querySelector('#aimlPrev'),
+        sNext=root.querySelector('#aimlNext'),
+        sDots=[].slice.call(root.querySelectorAll('#aimlDots .st-dot'));
+    if(rail&&sPrev&&sNext){
+      var lastPage=-1;
+      var maxPage=function(){ return Math.max(0,Math.round((rail.scrollWidth-rail.clientWidth)/rail.clientWidth)); };
+      var curPage=function(){ return rail.clientWidth?Math.round(rail.scrollLeft/rail.clientWidth):0; };
+      var go=function(p){ rail.scrollTo({left:p*rail.clientWidth,behavior:reduce?'auto':'smooth'}); };
+      var sync=function(){
+        var p=curPage(), m=maxPage();
+        if(p===lastPage) return;
+        lastPage=p;
+        sPrev.disabled=p<=0;
+        sNext.disabled=p>=m;
+        sDots.forEach(function(d,i){
+          d.hidden=i>m;
+          if(i===p) d.setAttribute('aria-current','true'); else d.removeAttribute('aria-current');
+        });
+      };
+      sPrev.addEventListener('click',function(){ go(curPage()-1); });
+      sNext.addEventListener('click',function(){ go(curPage()+1); });
+      sDots.forEach(function(d,i){ d.addEventListener('click',function(){ go(i); }); });
+      rail.addEventListener('scroll',function(){ sync(); },{passive:true});
+      addEventListener('resize',function(){ lastPage=-1; sync(); });
+      sync();
+      autoplay(rail.parentNode,function(){ go(curPage()>=maxPage()?0:curPage()+1); });
+    }
+
+    var revs=[].slice.call(root.querySelectorAll('.rev'));
+    revs.forEach(function(el){
+      var sibs=[].filter.call(el.parentNode.children,function(c){return c.classList.contains('rev')});
+      el.style.transitionDelay=(Math.min(sibs.indexOf(el),4)*0.07)+'s';
+    });
+
+    var links=[].slice.call(root.querySelectorAll('#aiml-nav a')),
+        secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))}),
+        bar=links.length?links[0].parentNode:null;
+
+    function onScroll(){
+      var best=0;
+      secs.forEach(function(s,j){ if(s&&s.getBoundingClientRect().top<innerHeight*0.4) best=j; });
+      links.forEach(function(a,j){
+        if(j!==best){ a.removeAttribute('aria-current'); return; }
+        if(a.getAttribute('aria-current')!=='true'&&bar&&bar.scrollWidth>bar.clientWidth){
+          bar.scrollTo({left:a.offsetLeft-20,behavior:reduce?'auto':'smooth'});
+        }
+        a.setAttribute('aria-current','true');
+      });
+      for(var n=revs.length-1;n>=0;n--){
+        if(revs[n].getBoundingClientRect().top>innerHeight*0.9) continue;
+        revs[n].classList.add('in'); revs.splice(n,1);
+      }
+    }
+    addEventListener('scroll',onScroll,{passive:true});
+    addEventListener('resize',onScroll);
+    onScroll();
+  })();
+
+</script>

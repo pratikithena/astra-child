@@ -1,0 +1,439 @@
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ============ ITHENA Aether - "Talk to Your Data" landing ============
+   Built from aether-landing.png to ITHENA-Brand-Guidelines.md.
+   Scoped to #aether-tyd so it survives Astra/Elementor.
+   Type scale is locked to 48/32/24/18/16/14/12px - add nothing else. */
+#aether-tyd{
+  --blue:#0083C8; --red:#C00000; --live:#1EA672; --white:#FFFFFF;
+  --srf-a:#FFFFFF; --srf-b:#D7ECF6; --h:#000000; --body:#333333; --muted:#666666;
+  --card:#FFFFFF; --line:rgba(0,0,0,.10); --tint:rgba(0,131,200,.08); --glow:rgba(0,131,200,.14);
+  --sh-card:0 18px 40px rgba(0,0,0,.10); --sh-float:0 12px 28px rgba(0,0,0,.16);
+  --ff:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-family:var(--ff)!important; font-size:16px!important; font-weight:500; line-height:1.6!important;
+  color:var(--body)!important; background:var(--srf-a)!important; margin:0!important; overflow-x:clip;
+  -webkit-font-smoothing:antialiased; position:relative;
+}
+#aether-tyd[data-theme="dark"]{
+  --srf-a:#123049; --srf-b:#0D1B2E; --h:#FFFFFF; --body:rgba(215,236,246,.8); --muted:#8FAFC4;
+  --card:#0F2740; --line:rgba(255,255,255,.12); --tint:rgba(0,131,200,.16); --glow:rgba(0,131,200,.32);
+  --sh-card:0 18px 40px rgba(0,0,0,.45); --sh-float:0 12px 28px rgba(0,0,0,.50);
+}
+#aether-tyd *,#aether-tyd *::before,#aether-tyd *::after{box-sizing:border-box}
+#aether-tyd h1,#aether-tyd h2,#aether-tyd h3,#aether-tyd h4,#aether-tyd p,#aether-tyd ul{margin:0;padding:0;font-family:var(--ff)}
+#aether-tyd ul{list-style:none}
+#aether-tyd h1,#aether-tyd h2,#aether-tyd h3,#aether-tyd h4{color:var(--h);line-height:1.2}
+#aether-tyd h1{font-size:48px;font-weight:800}
+#aether-tyd h2{font-size:32px;font-weight:800}
+#aether-tyd h3{font-size:24px;font-weight:700}
+#aether-tyd h4{font-size:18px;font-weight:700}
+#aether-tyd p{font-size:16px;font-weight:500;line-height:1.6;color:var(--body)}
+#aether-tyd .micro{font-size:14px;line-height:1.5;color:var(--muted)}
+#aether-tyd a{color:var(--blue);text-decoration:none}
+#aether-tyd :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+#aether-tyd svg.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* layout + soft section blend (no hard seams) */
+#aether-tyd .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,3.2vw,40px)}
+#aether-tyd section{padding:clamp(40px,7vw,96px) 0;position:relative}
+#aether-tyd .s-a{background:linear-gradient(var(--srf-b),var(--srf-a) 140px)}
+#aether-tyd .s-b{background:linear-gradient(var(--srf-a),var(--srf-b) 140px)}
+#aether-tyd .center{text-align:center}
+#aether-tyd .head{max-width:720px;margin:0 auto 48px}
+#aether-tyd .head p{margin-top:16px}
+
+/* eyebrow */
+#aether-tyd .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
+#aether-tyd .eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:999px}
+
+/* buttons */
+#aether-tyd .btns{display:flex;flex-wrap:wrap;gap:16px}
+#aether-tyd .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 28px;border-radius:999px;border:0;font:700 16px/1.2 var(--ff);color:var(--white)!important;cursor:pointer;transition:transform .2s ease}
+#aether-tyd .btn:hover{transform:translateY(-2px)}
+#aether-tyd .btn svg.i{width:18px;height:18px}
+#aether-tyd .btn-p{background:var(--blue)}
+#aether-tyd .btn-s{background:var(--red)}
+#aether-tyd .link{display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:700}
+#aether-tyd .link svg.i{width:18px;height:18px;transition:transform .2s ease}
+#aether-tyd .link:hover svg.i{transform:translateX(3px)}
+
+/* icon badge - solid blue, white icon, always */
+#aether-tyd .badge{width:48px;height:48px;border-radius:50%;background:var(--blue);color:var(--white);display:grid;place-items:center;flex:none}
+
+/* ---------- hero ---------- */
+#aether-tyd .hero{padding-top:clamp(96px,10vw,128px);background:var(--srf-a);overflow:hidden}
+#aether-tyd .hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 70% at 78% 40%,var(--glow),transparent 70%),radial-gradient(40% 50% at 10% 90%,var(--tint),transparent 70%)}
+#aether-tyd .hero-grid{position:relative;display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
+#aether-tyd .hero h1 span{color:var(--blue);display:block}
+#aether-tyd .hero-copy>p{margin:24px 0 32px;max-width:520px}
+#aether-tyd .ticks{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:24px}
+#aether-tyd .ticks li{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
+#aether-tyd .ticks svg.i{width:18px;height:18px;color:var(--blue)}
+
+/* product mock (hero visual) */
+#aether-tyd .visual{position:relative;padding:40px 0}
+#aether-tyd .mock{background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:var(--sh-card);display:grid;grid-template-columns:132px 1fr;overflow:hidden;font-size:12px;line-height:1.4;color:var(--muted)}
+#aether-tyd .mock-side{padding:16px 12px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+#aether-tyd .mock-logo{font-size:14px;font-weight:800;color:var(--h);margin:0 0 12px 8px}
+#aether-tyd .mock-side span{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:999px}
+#aether-tyd .mock-side span.on{background:var(--blue);color:var(--white)}
+#aether-tyd .mock-side svg.i{width:14px;height:14px}
+#aether-tyd .mock-main{padding:16px;display:grid;gap:12px}
+#aether-tyd .mock-top{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:start}
+#aether-tyd .mock-title{font-size:14px;font-weight:700;color:var(--h)}
+#aether-tyd .tile{background:var(--tint);border-radius:12px;padding:10px 12px}
+#aether-tyd .tile b{display:block;font-size:18px;font-weight:800;color:var(--h);line-height:1.2}
+#aether-tyd .tile em{font-style:normal;font-weight:700;color:var(--live)}
+#aether-tyd .ask{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:6px 6px 6px 14px}
+#aether-tyd .ask i{width:24px;height:24px;border-radius:50%;background:var(--blue);color:var(--white);display:grid;place-items:center}
+#aether-tyd .ask svg.i{width:14px;height:14px}
+#aether-tyd .charts{display:grid;grid-template-columns:1.2fr 1fr;gap:12px}
+#aether-tyd .charts .tile{background:transparent;border:1px solid var(--line)}
+#aether-tyd .charts .lbl{font-weight:700;color:var(--h);margin-bottom:8px}
+#aether-tyd .bars{height:88px;display:flex;align-items:flex-end;gap:8px;border-bottom:1px solid var(--line)}
+#aether-tyd .bars i{flex:1;background:var(--blue);border-radius:4px 4px 0 0;height:var(--v)}
+#aether-tyd .months{display:flex;justify-content:space-between;margin-top:4px}
+#aether-tyd .donut-row{display:flex;align-items:center;gap:12px}
+#aether-tyd .donut{width:72px;height:72px;flex:none;border-radius:50%;background:conic-gradient(var(--blue) 0 38%,rgba(0,131,200,.7) 0 62%,rgba(0,131,200,.45) 0 80%,rgba(0,131,200,.22) 0);-webkit-mask:radial-gradient(circle,transparent 45%,#000 46%);mask:radial-gradient(circle,transparent 45%,#000 46%)}
+#aether-tyd .legend li{display:flex;justify-content:space-between;gap:10px}
+
+/* floating status cards */
+#aether-tyd .float{position:absolute;display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:var(--sh-float);padding:10px 14px;font-size:14px;line-height:1.4;font-weight:700;color:var(--h);max-width:240px}
+#aether-tyd .float svg.i{width:18px;height:18px;color:var(--blue)}
+#aether-tyd .f1{top:0;left:-24px}
+#aether-tyd .f2{top:-8px;right:0}
+#aether-tyd .f3{bottom:8px;left:-32px}
+#aether-tyd .f4{bottom:0;right:-16px;flex-direction:column;align-items:flex-start;gap:0}
+#aether-tyd .f4 b{font-size:24px;font-weight:800;color:var(--blue);line-height:1.2}
+#aether-tyd .f4 .micro{font-weight:500}
+#aether-tyd .dot{width:8px;height:8px;border-radius:50%;background:var(--live);flex:none;animation:atd-pulse 1.8s ease-in-out infinite}
+@keyframes atd-pulse{50%{opacity:.35}}
+
+/* ---------- features ---------- */
+#aether-tyd .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+#aether-tyd .col{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:32px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;box-shadow:var(--sh-card)}
+#aether-tyd .col h4{margin-top:8px}
+#aether-tyd .col p{flex:1}
+
+/* ---------- split rows (connectors / security) ---------- */
+#aether-tyd .split{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+#aether-tyd .split p{margin:16px 0 24px}
+#aether-tyd .logos{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+#aether-tyd .logo{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 8px;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:12px;font-weight:700;line-height:1.3;color:var(--h);text-align:center}
+#aether-tyd .logo svg.i{color:var(--blue)}
+#aether-tyd .logo.more{background:var(--blue);border-color:var(--blue);color:var(--white);justify-content:center}
+#aether-tyd .logo.more b{font-size:18px;font-weight:800;line-height:1.2}
+#aether-tyd .secure{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+#aether-tyd .sec{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;font-size:14px;font-weight:700;line-height:1.4;color:var(--h);box-shadow:var(--sh-card)}
+
+/* ---------- how it works ---------- */
+#aether-tyd .how{display:grid;grid-template-columns:1.6fr 1fr;gap:48px;align-items:center}
+#aether-tyd .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:step}
+#aether-tyd .step{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;position:relative}
+#aether-tyd .step:not(:last-child)::after{content:"";position:absolute;top:24px;left:calc(50% + 36px);right:calc(-50% + 12px);height:2px;background:linear-gradient(90deg,var(--blue),transparent);opacity:.5}
+#aether-tyd .step h4::before{counter-increment:step;content:counter(step) ". "}
+#aether-tyd .prompts{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 20px;box-shadow:var(--sh-card)}
+#aether-tyd .prompts li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;font-size:14px;color:var(--h)}
+#aether-tyd .prompts li+li{border-top:1px solid var(--line)}
+#aether-tyd .prompts svg.i{width:18px;height:18px;color:var(--blue)}
+
+/* ---------- closing CTA ---------- */
+#aether-tyd .cta{overflow:hidden}
+#aether-tyd .cta::before{content:"";position:absolute;inset:auto -10% -60% -10%;height:120%;pointer-events:none;background:radial-gradient(50% 50% at 50% 100%,var(--glow),transparent 70%)}
+#aether-tyd .cta .wrap{position:relative}
+#aether-tyd .cta .micro{margin:16px 0 32px}
+#aether-tyd .cta .btns{justify-content:center}
+
+/* theme toggle */
+#aether-tyd .toggle{position:fixed;right:20px;bottom:20px;z-index:50;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--blue);box-shadow:var(--sh-float);display:grid;place-items:center;cursor:pointer}
+#aether-tyd .toggle svg.i{width:18px;height:18px}
+#aether-tyd .toggle .moon,#aether-tyd[data-theme="dark"] .toggle .sun{display:none}
+#aether-tyd[data-theme="dark"] .toggle .moon{display:block}
+
+/* scroll reveal */
+#aether-tyd.js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+#aether-tyd.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  #aether-tyd.js .rv{opacity:1;transform:none;transition:none}
+  #aether-tyd .dot{animation:none}
+  #aether-tyd .btn,#aether-tyd .link svg.i{transition:none}
+}
+
+/* responsive */
+@media (max-width:1100px){
+  #aether-tyd .logos{grid-template-columns:repeat(5,1fr)}
+  #aether-tyd .split,#aether-tyd .how{grid-template-columns:1fr;gap:40px}
+}
+@media (max-width:900px){
+  #aether-tyd .hero-grid{grid-template-columns:1fr}
+  #aether-tyd .cols{grid-template-columns:repeat(2,1fr)}
+  #aether-tyd .visual{padding:0;display:flex;flex-wrap:wrap;gap:12px}
+  #aether-tyd .mock{width:100%}
+  #aether-tyd .float{position:static;max-width:none}
+  #aether-tyd .f3{display:none}
+  #aether-tyd .secure,#aether-tyd .steps{grid-template-columns:repeat(2,1fr)}
+  #aether-tyd .step::after{display:none}
+}
+@media (max-width:600px){
+  #aether-tyd .cols,#aether-tyd .secure,#aether-tyd .steps{grid-template-columns:1fr}
+  #aether-tyd .logos{grid-template-columns:repeat(3,1fr)}
+  #aether-tyd .mock{grid-template-columns:1fr}
+  #aether-tyd .mock-side,#aether-tyd .mock-top .tile:last-child{display:none}
+  #aether-tyd .mock-top{grid-template-columns:1fr auto}
+  #aether-tyd .charts{grid-template-columns:1fr}
+  #aether-tyd .btn{width:100%}
+}
+</style>
+
+<div id="aether-tyd" data-theme="dark">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="atd-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="atd-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+    <symbol id="atd-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+    <symbol id="atd-chat" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H10l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M8 10.5h.01M12 10.5h.01M16 10.5h.01"/></symbol>
+    <symbol id="atd-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.1V16h5v-.1c0-.8.4-1.6 1.1-2.1A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="atd-bars" viewBox="0 0 24 24"><path d="M3 21h18M6 17v-5M11 17V8M16 17V4M21 17v-7"/></symbol>
+    <symbol id="atd-flow" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="15" y="15" width="6" height="6" rx="1.5"/><path d="M9 6h4a2 2 0 0 1 2 2v7M12 12l3 3 3-3"/></symbol>
+    <symbol id="atd-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+    <symbol id="atd-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+    <symbol id="atd-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4M12 15v2"/></symbol>
+    <symbol id="atd-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="atd-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="atd-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.4 8.3-8 9-4.6-.7-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></symbol>
+    <symbol id="atd-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.6M8.2 13.2l7.6 4.6"/></symbol>
+    <symbol id="atd-cloud" viewBox="0 0 24 24"><path d="M7 19h10a4 4 0 0 0 .7-7.9A6 6 0 0 0 6.2 10 4.5 4.5 0 0 0 7 19z"/></symbol>
+    <symbol id="atd-sheet" viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></symbol>
+    <symbol id="atd-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="atd-code" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol>
+    <symbol id="atd-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"/></symbol>
+    <symbol id="atd-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></symbol>
+    <symbol id="atd-sliders" viewBox="0 0 24 24"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
+    <symbol id="atd-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+    <symbol id="atd-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="atd-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></symbol>
+  </svg>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy rv">
+        <span class="eyebrow">Powered by Agentic AI</span>
+        <h1>Talk to <span>Your Data.</span></h1>
+        <p>Connect any data source. Ask questions in natural language. Get AI-powered insights, charts, and dashboards &mdash; grounded in your real data.</p>
+        <div class="btns">
+          <a class="btn btn-p" href="#aether-cta" data-aether-cta>Start Free Trial <svg class="i" aria-hidden="true"><use href="#atd-arrow"/></svg></a>
+          <a class="btn btn-s" href="#aether-how"><svg class="i" aria-hidden="true"><use href="#atd-play"/></svg> See It in Action</a>
+        </div>
+        <ul class="ticks">
+          <li><svg class="i" aria-hidden="true"><use href="#atd-check"/></svg>No credit card required</li>
+          <li><svg class="i" aria-hidden="true"><use href="#atd-check"/></svg>30-day free trial</li>
+          <li><svg class="i" aria-hidden="true"><use href="#atd-check"/></svg>Built for teams</li>
+        </ul>
+      </div>
+
+      <div class="visual rv" role="img" aria-label="Aether Analytics dashboard: a user asks for product analytics by region and Aether answers with a monthly growth bar chart, a revenue split by product category, and KPI tiles for 125.4K records and 94.2% data accuracy.">
+        <div class="float f1" aria-hidden="true"><svg class="i"><use href="#atd-chat"/></svg>Show me revenue by region for this quarter</div>
+        <div class="float f2" aria-hidden="true"><svg class="i"><use href="#atd-trend"/></svg>What are the top performing products?</div>
+        <div class="float f3" aria-hidden="true"><svg class="i"><use href="#atd-spark"/></svg>Any anomalies in production?</div>
+
+        <div class="mock" aria-hidden="true">
+          <div class="mock-side">
+            <div class="mock-logo">Aether</div>
+            <span class="on"><svg class="i"><use href="#atd-chat"/></svg>New Chat</span>
+            <span><svg class="i"><use href="#atd-eye"/></svg>Discover</span>
+            <span><svg class="i"><use href="#atd-db"/></svg>Data Sources</span>
+            <span><svg class="i"><use href="#atd-code"/></svg>Extensions</span>
+            <span><svg class="i"><use href="#atd-flow"/></svg>Agents</span>
+            <span><svg class="i"><use href="#atd-sliders"/></svg>Settings</span>
+          </div>
+          <div class="mock-main">
+            <div class="mock-top">
+              <div>
+                <div class="mock-title">Aether Analytics</div>
+                <div>Ask. Analyze. Act.</div>
+              </div>
+              <div class="tile">Total Records<b>125.4K</b><em>&uarr; 12%</em></div>
+              <div class="tile">Data Accuracy<b>94.2%</b><em>&uarr; 3%</em></div>
+            </div>
+            <div class="ask"><span>Show me product analytics for this quarter by region&hellip;</span><i><svg class="i"><use href="#atd-arrow"/></svg></i></div>
+            <div class="charts">
+              <div class="tile">
+                <div class="lbl">Product Growth Over Time</div>
+                <div class="bars"><i style="--v:35%"></i><i style="--v:52%"></i><i style="--v:60%"></i><i style="--v:72%"></i><i style="--v:84%"></i><i style="--v:96%"></i></div>
+                <div class="months"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span></div>
+              </div>
+              <div class="tile">
+                <div class="lbl">Revenue by Category</div>
+                <div class="donut-row">
+                  <div class="donut"></div>
+                  <ul class="legend"><li>SaaS<b>38%</b></li><li>Infra<b>24%</b></li><li>Services<b>18%</b></li><li>Other<b>20%</b></li></ul>
+                </div>
+              </div>
+            </div>
+            <div class="ask"><span>Ask a question about your data&hellip;</span><i><svg class="i"><use href="#atd-arrow"/></svg></i></div>
+          </div>
+        </div>
+
+        <div class="float f4" aria-hidden="true">
+          <span style="display:flex;align-items:center;gap:8px"><span class="dot"></span><b>+12%</b></span>
+          <span class="micro">Production increase</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURES ================= -->
+  <section class="s-b">
+    <div class="wrap">
+      <div class="head center rv">
+        <span class="eyebrow">Built for a smarter tomorrow</span>
+        <h2>AI-Powered Analytics That Understands Your Data</h2>
+        <p>More than dashboards. A conversational AI analyst that works with your data, finds insights, and helps you take action.</p>
+      </div>
+      <div class="cols">
+        <div class="col rv">
+          <span class="badge"><svg class="i" aria-hidden="true"><use href="#atd-chat"/></svg></span>
+          <h4>NLP-Driven Chat</h4>
+          <p>Natural-language questions translated into precise SQL with grounded explanations.</p>
+          <a class="link" href="#">Learn more <svg class="i" aria-hidden="true"><use href="#atd-arrow"/></svg></a>
+        </div>
+        <div class="col rv">
+          <span class="badge"><svg class="i" aria-hidden="true"><use href="#atd-bulb"/></svg></span>
+          <h4>Gen-AI Insights</h4>
+          <p>Proactive anomaly detection and pattern recognition across your data.</p>
+          <a class="link" href="#">Learn more <svg class="i" aria-hidden="true"><use href="#atd-arrow"/></svg></a>
+        </div>
+        <div class="col rv">
+          <span class="badge"><svg class="i" aria-hidden="true"><use href="#atd-bars"/></svg></span>
+          <h4>Real-Time Visualization</h4>
+          <p>Automated charts and persistent dashboards.</p>
+          <a class="link" href="#">Learn more <svg class="i" aria-hidden="true"><use href="#atd-arrow"/></svg></a>
+        </div>
+        <div class="col rv">
+          <span class="badge"><svg class="i" aria-hidden="true"><use href="#atd-flow"/></svg></span>
+          <h4>Agentic Workflows</h4>
+          <p>Conversational intelligence that understands context and executes tasks.</p>
+          <a class="link" href="#">Learn more <svg class="i" aria-hidden="true"><use href="#atd-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONNECTORS ================= -->
+  <section class="s-a">
+    <div class="wrap split">
+      <div class="rv">
+        <span class="eyebrow">Connect to anything</span>
+        <h2>Works with Your Data</h2>
+        <p>Seamlessly connect to the tools and data sources you already use.</p>
+        <a class="link" href="#">View all connectors <svg class="i" aria-hidden="true"><use href="#atd-arrow"/></svg></a>
+      </div>
+      <ul class="logos rv" aria-label="Supported data sources">
+        <li class="logo"><svg class="i" aria-hidden="true"><use href="#atd-spark"/></svg>Snowflake</li>
+        <li class="logo"><svg class="i" aria-hidden="true"><use href="#atd-db"/></svg>PostgreSQL</li>
+        <li class="logo"><svg class="i" aria-hidden="true"><use href="#atd-layers"/></svg>SAP</li>
+        <li class="logo"><svg class="i" aria-hidden="true"><use href="#atd-layers"/></svg>Databricks</li>
+        <li class="logo"><svg class="i" aria-hidden="true"><use href="#atd-cloud"/></svg>AWS</li>
+        <li class="logo"><svg class="i" aria-hidden="true"><use href="#atd-search"/></svg>BigQuery</li>
+        <li class="logo"><svg class="i" aria-hidden="true"><use href="#atd-db"/></svg>SQL Server</li>
+        <li class="logo"><svg class="i" aria-hidden="true"><use href="#atd-cloud"/></svg>Salesforce</li>
+        <li class="logo"><svg class="i" aria-hidden="true"><use href="#atd-sheet"/></svg>Excel</li>
+        <li class="logo"><svg class="i" aria-hidden="true"><use href="#atd-folder"/></svg>Google Drive</li>
+        <li class="logo"><svg class="i" aria-hidden="true"><use href="#atd-folder"/></svg>SharePoint</li>
+        <li class="logo"><svg class="i" aria-hidden="true"><use href="#atd-db"/></svg>MySQL</li>
+        <li class="logo"><svg class="i" aria-hidden="true"><use href="#atd-code"/></svg>APIs</li>
+        <li class="logo more"><b>+100</b>Connectors</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= SECURITY ================= -->
+  <section class="s-b">
+    <div class="wrap split">
+      <div class="rv">
+        <span class="eyebrow">Enterprise ready</span>
+        <h2>Your Data Stays Yours</h2>
+        <p>Built with security, privacy, and governance at the core. Aether is designed for enterprise environments.</p>
+        <a class="link" href="#">Learn about our security <svg class="i" aria-hidden="true"><use href="#atd-arrow"/></svg></a>
+      </div>
+      <ul class="secure">
+        <li class="sec rv"><span class="badge"><svg class="i" aria-hidden="true"><use href="#atd-shield"/></svg></span>Multi-tenant isolation with row-level security</li>
+        <li class="sec rv"><span class="badge"><svg class="i" aria-hidden="true"><use href="#atd-lock"/></svg></span>AES-256 encryption in transit and at rest</li>
+        <li class="sec rv"><span class="badge"><svg class="i" aria-hidden="true"><use href="#atd-db"/></svg></span>Read-only database connections</li>
+        <li class="sec rv"><span class="badge"><svg class="i" aria-hidden="true"><use href="#atd-user"/></svg></span>SSO &amp; role-based access</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section class="s-a" id="aether-how">
+    <div class="wrap">
+      <div class="head center rv">
+        <span class="eyebrow">Turn questions into progress</span>
+        <h2>How It Works</h2>
+      </div>
+      <div class="how">
+        <ol class="steps" style="list-style:none;margin:0;padding:0">
+          <li class="step rv"><span class="badge"><svg class="i" aria-hidden="true"><use href="#atd-db"/></svg></span><h4>Connect</h4><p>Link your data sources in minutes.</p></li>
+          <li class="step rv"><span class="badge"><svg class="i" aria-hidden="true"><use href="#atd-chat"/></svg></span><h4>Ask</h4><p>Use natural language to ask anything.</p></li>
+          <li class="step rv"><span class="badge"><svg class="i" aria-hidden="true"><use href="#atd-bars"/></svg></span><h4>Visualize</h4><p>Get instant charts and insights.</p></li>
+          <li class="step rv"><span class="badge"><svg class="i" aria-hidden="true"><use href="#atd-share"/></svg></span><h4>Share</h4><p>Turn insights into action with your team.</p></li>
+        </ol>
+        <ul class="prompts rv" aria-label="Example questions">
+          <li>Show me last month&rsquo;s sales<svg class="i" aria-hidden="true"><use href="#atd-arrow"/></svg></li>
+          <li>Compare product line by region<svg class="i" aria-hidden="true"><use href="#atd-arrow"/></svg></li>
+          <li>What are the top customers?<svg class="i" aria-hidden="true"><use href="#atd-arrow"/></svg></li>
+          <li>Create a weekly report<svg class="i" aria-hidden="true"><use href="#atd-arrow"/></svg></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CLOSING CTA ================= -->
+  <section class="s-b cta center" id="aether-cta">
+    <div class="wrap rv">
+      <span class="eyebrow">Ready to talk to your data?</span>
+      <h2>Start Your Free Trial Today</h2>
+      <p class="micro">No credit card required &middot; 30-day free trial &middot; No SQL required</p>
+      <div class="btns">
+        <a class="btn btn-p" href="#" data-aether-cta>Get Started Free <svg class="i" aria-hidden="true"><use href="#atd-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <button class="toggle" type="button" aria-label="Toggle light and dark theme">
+    <svg class="i sun" aria-hidden="true"><use href="#atd-sun"/></svg>
+    <svg class="i moon" aria-hidden="true"><use href="#atd-moon"/></svg>
+  </button>
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById("aether-tyd"); if(!root) return;
+  root.classList.add("js");
+
+  // theme: remembered choice, else dark (matches the source design)
+  try{ var t=localStorage.getItem("ithena-theme"); if(t==="light"||t==="dark") root.setAttribute("data-theme",t); }catch(e){}
+  root.querySelector(".toggle").addEventListener("click",function(){
+    var t=root.getAttribute("data-theme")==="dark"?"light":"dark";
+    root.setAttribute("data-theme",t);
+    try{ localStorage.setItem("ithena-theme",t); }catch(e){}
+  });
+
+  // CTAs open the site-wide contact modal when the header plugin is present
+  root.querySelectorAll("[data-aether-cta]").forEach(function(a){
+    a.addEventListener("click",function(e){
+      if(window.ithenaContactModal){ e.preventDefault(); window.ithenaContactModal.open(); }
+    });
+  });
+
+  // scroll reveal
+  var els=root.querySelectorAll(".rv");
+  if(!("IntersectionObserver" in window)){ els.forEach(function(el){el.classList.add("in")}); return; }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+  },{rootMargin:"0px 0px -10% 0px"});
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>

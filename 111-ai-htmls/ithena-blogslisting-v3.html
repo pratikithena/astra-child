@@ -1,0 +1,485 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Noto+Sans:wght@400;700&display=swap');
+section#main-section,section#main-section *:not(svg):not(svg *){all:revert}
+section#main-section,section#main-section *,section#main-section *::before,section#main-section *::after{box-sizing:border-box!important;margin:0!important;padding:0!important}
+section#main-section{--blue:#0083C8!important;--blue-d:#006AA3!important;--blue-l:#4FB0E0!important;--acc:#BFE5F8!important;--red:#C00000!important;--sa:#FFFFFF!important;--tint:#E7F3FB!important;--head:#0A1B29!important;--body:#3A4A57!important;--muted:#657787!important;--line:rgba(10,27,41,.10)!important;--line-2:rgba(10,27,41,.18)!important;--plate:#E7F1F8!important;--card:0 20px 46px -22px rgba(0,50,85,.34)!important;--card-hi:0 30px 60px -24px rgba(0,60,100,.42)!important;--ez:cubic-bezier(.2,0,0,1)!important;--wrap:1200px!important;--pad:clamp(20px,4vw,44px)!important;--font-head:"Noto Sans",sans-serif!important;--font-body:"Inter",sans-serif!important;--fs-label:12px!important;--fs-small:14px!important;--fs-body:16.5px!important;--fs-lede:19px!important;--fs-h3:22px!important;--fs-h2:34px!important;--fs-display:clamp(36px,5.2vw,50px)!important;display:block!important;font-family:var(--font-body)!important;color:var(--body)!important;background:var(--sa)!important;font-size:var(--fs-body)!important;line-height:1.6!important;font-weight:400!important;-webkit-font-smoothing:antialiased!important;transition:background-color .3s ease,color .3s ease!important}
+section#main-section[data-theme="dark"]{--sa:#0C1D2C!important;--tint:#12293C!important;--head:#FFFFFF!important;--body:rgba(215,236,246,.82)!important;--muted:#8FAFC4!important;--line:rgba(215,236,246,.14)!important;--line-2:rgba(215,236,246,.26)!important;--plate:#0B2135!important;--card:0 20px 46px -22px rgba(0,0,0,.6)!important;--card-hi:0 30px 60px -24px rgba(0,0,0,.72)!important;color-scheme:dark!important}
+section#main-section *{font-family:inherit!important;font-style:normal!important}
+section#main-section ul{list-style:none!important}
+section#main-section a{color:inherit!important;text-decoration:none!important}
+section#main-section button{font:inherit!important;color:inherit!important;background:none!important;border:0!important;border-radius:0!important;padding:0!important;cursor:pointer!important}
+section#main-section input{font:inherit!important;color:inherit!important}
+section#main-section img,section#main-section svg{display:block!important;max-width:100%!important}
+section#main-section :focus-visible{outline:2px solid var(--blue)!important;outline-offset:3px!important;border-radius:8px!important}
+section#main-section .ithv3-sprite{position:absolute!important;width:0!important;height:0!important}
+section#main-section .wrap{max-width:var(--wrap)!important;margin:0 auto!important;padding-left:var(--pad)!important;padding-right:var(--pad)!important}
+section#main-section h1,section#main-section h2,section#main-section h3,section#main-section h4{font-family:var(--font-head)!important}
+section#main-section h1{font-size:var(--fs-display)!important;font-weight:700!important;line-height:1.05!important;color:var(--head)!important;letter-spacing:-.025em!important}
+section#main-section h2{font-size:clamp(26px,3.2vw,var(--fs-h2))!important;font-weight:700!important;line-height:1.15!important;color:var(--head)!important;letter-spacing:-.015em!important}
+section#main-section h3{font-size:var(--fs-h3)!important;font-weight:700!important;line-height:1.25!important;color:var(--head)!important;letter-spacing:-.01em!important}
+section#main-section h4{font-size:var(--fs-lede)!important;font-weight:700!important;line-height:1.3!important;color:var(--head)!important}
+section#main-section .lede{font-size:var(--fs-lede)!important;line-height:1.6!important;max-width:52ch!important;color:var(--body)!important;font-weight:300!important}
+section#main-section .eyebrow{display:inline-flex!important;align-items:center!important;gap:10px!important;font-size:var(--fs-label)!important;font-weight:700!important;text-transform:uppercase!important;letter-spacing:.16em!important;color:var(--blue)!important}
+section#main-section .eyebrow::before{content:""!important;width:22px!important;height:2px!important;background:var(--blue)!important;border-radius:2px!important}
+section#main-section .btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;border-radius:999px!important;padding:14px 26px!important;font-size:var(--fs-body)!important;font-weight:700!important;line-height:1!important;white-space:nowrap!important;transition:background-color .2s,border-color .2s,transform .2s!important}
+section#main-section .btn:hover{transform:translateY(-2px)!important;text-decoration:none!important}
+section#main-section .btn-primary,section#main-section .btn-p{background:var(--blue)!important;color:#fff!important}
+section#main-section .btn-primary:hover,section#main-section .btn-p:hover{background:var(--blue-d)!important}
+section#main-section .btn-g{background:transparent!important;border:1px solid rgba(255,255,255,.28)!important;color:#fff!important}
+section#main-section .btn-g:hover{border-color:var(--acc)!important}
+section#main-section .readlink{display:inline-flex!important;align-items:center!important;gap:8px!important;font-weight:700!important;color:var(--blue)!important;font-size:var(--fs-small)!important}
+section#main-section .readlink svg{width:17px!important;height:17px!important;transition:transform .3s var(--ez)!important}
+section#main-section .ithv3-sec{display:block!important;position:relative!important}
+section#main-section .ithv3-sec--hero{position:relative!important;overflow:hidden!important;isolation:isolate!important;background:#061A2A!important;padding:clamp(64px,7vw,116px) 0 clamp(56px,6vw,92px)!important;min-height:80vh!important}
+section#main-section .hero-bg{position:absolute!important;inset:0!important;z-index:-2!important}
+section#main-section .hero-bg video{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+section#main-section .hero-bg::after{content:""!important;position:absolute!important;inset:0!important;background:linear-gradient(100deg,rgba(6,26,42,.95) 0%,rgba(6,26,42,.86) 44%,rgba(6,26,42,.55) 100%)!important}
+section#main-section .hero-in{position:relative!important;max-width:680px!important;top:15vh!important}
+section#main-section .ithv3-sec--hero .eyebrow{color:var(--blue-l)!important}
+section#main-section .ithv3-sec--hero .eyebrow::before{background:var(--blue-l)!important}
+section#main-section .ithv3-sec--hero h1{margin:18px 0 18px!important;max-width:25ch!important;color:#fff!important}
+section#main-section .ithv3-sec--hero h1 .b{color:var(--blue-l)!important;display:block!important}
+section#main-section .ithv3-sec--hero .lede{margin-bottom:clamp(24px,3vw,34px)!important;color:rgba(235,245,251,.86)!important}
+section#main-section .hsearch{display:flex!important;align-items:center!important;gap:8px!important;background:var(--sa)!important;border:1px solid var(--line-2)!important;border-radius:999px!important;padding:7px 7px 7px 20px!important;max-width:520px!important;margin:0 auto!important;box-shadow:0 10px 30px -18px rgba(0,50,85,.4)!important}
+section#main-section .hsearch svg{width:19px!important;height:19px!important;color:var(--muted)!important;flex:none!important}
+section#main-section .hsearch input{flex:1!important;border:0!important;background:none!important;outline:none!important;min-width:0!important;color:var(--head)!important;font-weight:500!important}
+section#main-section .hsearch input::placeholder{color:var(--muted)!important}
+section#main-section .hsearch .btn{padding:12px 24px!important;font-size:var(--fs-small)!important}
+section#main-section .hsearch:focus-within{border-color:var(--blue)!important}
+section#main-section .ithv3-sec--cats{padding:clamp(30px,4vw,50px) 0 clamp(4px,1.5vw,12px)!important}
+section#main-section .cat-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:clamp(6px,1.2vw,18px)!important}
+section#main-section .cat{display:flex!important;align-items:center!important;gap:13px!important;text-align:left!important;position:relative!important;padding:14px 16px 17px!important;border-radius:12px!important}
+section#main-section .cat::after{content:""!important;position:absolute!important;left:16px!important;right:16px!important;bottom:0!important;height:2px!important;border-radius:2px!important;background:var(--blue)!important;transform:scaleX(0)!important;transform-origin:left!important;transition:transform .3s var(--ez)!important}
+section#main-section .cat:hover::after{transform:scaleX(.45)!important}
+section#main-section .cat[aria-pressed="true"]::after{transform:scaleX(1)!important}
+section#main-section .cat .ico{width:44px!important;height:44px!important;flex:none!important;border-radius:12px!important;display:grid!important;place-items:center!important;color:var(--blue)!important;background:var(--tint)!important;transition:background-color .25s var(--ez),color .25s var(--ez)!important}
+section#main-section .cat .ico svg{width:23px!important;height:23px!important}
+section#main-section .cat .txt{display:flex!important;flex-direction:column!important;gap:3px!important;min-width:0!important}
+section#main-section .cat .name{font-family:var(--font-head)!important;font-weight:700!important;font-size:15.5px!important;color:var(--head)!important;line-height:1.15!important}
+section#main-section .cat .n{font-size:var(--fs-label)!important;font-weight:700!important;letter-spacing:.06em!important;text-transform:uppercase!important;color:var(--muted)!important}
+section#main-section .cat:hover .ico,section#main-section .cat[aria-pressed="true"] .ico{background:var(--blue)!important;color:#fff!important}
+section#main-section .cat[aria-pressed="true"] .name{color:var(--blue)!important}
+section#main-section .ithv3-sec--search{padding:clamp(6px,1.4vw,16px) 0 0!important}
+section#main-section .ithv3-sec--index{padding:clamp(36px,5vw,64px) 0 clamp(56px,7vw,96px)!important;scroll-margin-top:20px!important}
+section#main-section .index-head{display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:space-between!important;gap:12px 24px!important;margin-bottom:clamp(22px,3vw,34px)!important}
+section#main-section .results{font-size:var(--fs-small)!important;color:var(--muted)!important}
+section#main-section .results b{color:var(--head)!important;font-weight:700!important}
+section#main-section .clearbtn{font-size:var(--fs-small)!important;font-weight:700!important;color:var(--red)!important;margin-left:14px!important}
+section#main-section .clearbtn[hidden]{display:none!important}
+section#main-section .grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:clamp(20px,2.4vw,32px)!important}
+section#main-section .card{position:relative!important;z-index:1!important;display:flex!important;flex-direction:column!important;background:var(--sa)!important;border:1px solid var(--line)!important;border-radius:18px!important;overflow:hidden!important;box-shadow:var(--card)!important}
+section#main-section .card[hidden]{display:none!important}
+section#main-section[data-theme="dark"] .card{--sa:#FFFFFF!important;--head:#0A1B29!important;--body:#3A4A57!important;--muted:#657787!important;--line:rgba(10,27,41,.10)!important;--line-2:rgba(10,27,41,.18)!important;--plate:#E7F1F8!important}
+section#main-section .card-media{display:block!important;aspect-ratio:16/10!important;overflow:hidden!important;background:var(--plate)!important;position:relative!important;z-index:2!important}
+section#main-section .card-media img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+section#main-section .card-body{display:flex!important;flex-direction:column!important;flex:1!important;padding:20px 22px 22px!important}
+section#main-section .card-meta{display:flex!important;align-items:center!important;flex-wrap:wrap!important;gap:10px!important;font-size:var(--fs-label)!important;font-weight:700!important;letter-spacing:.06em!important;text-transform:uppercase!important;color:var(--muted)!important}
+section#main-section .card-meta .cat-tag{color:var(--blue)!important}
+section#main-section .card-meta .date{display:inline-flex!important;align-items:center!important;gap:6px!important;color:var(--muted)!important;letter-spacing:.02em!important}
+section#main-section .card-meta .date svg{width:14px!important;height:14px!important}
+section#main-section .card-meta .sep{width:1px!important;height:12px!important;background:var(--line-2)!important}
+section#main-section .card h3{margin-top:12px!important}
+section#main-section .card-dek{margin-top:10px!important;font-size:var(--fs-small)!important;color:var(--body)!important;line-height:1.55!important;display:-webkit-box!important;-webkit-line-clamp:2!important;-webkit-box-orient:vertical!important;overflow:hidden!important}
+section#main-section .card-foot{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;margin-top:auto!important;padding-top:18px!important}
+section#main-section .card-foot .tag{font-size:var(--fs-label)!important;font-weight:700!important;color:var(--muted)!important}
+section#main-section .card-foot .readlink{position:relative!important;z-index:2!important}
+section#main-section .card-title{background-image:linear-gradient(var(--blue),var(--blue))!important;background-size:0% 2px!important;background-position:0 100%!important;background-repeat:no-repeat!important;transition:background-size .3s var(--ez)!important}
+section#main-section .card-title::after{content:""!important;position:absolute!important;inset:0!important;z-index:1!important}
+section#main-section .empty{grid-column:1/-1!important;padding:48px 0!important;max-width:46ch!important}
+section#main-section .empty h4{margin-bottom:8px!important}
+section#main-section .empty[hidden]{display:none!important}
+section#main-section .empty-act{margin-top:16px!important}
+section#main-section .pager{display:flex!important;align-items:center!important;justify-content:center!important;flex-wrap:wrap!important;gap:8px!important;margin-top:clamp(32px,4vw,52px)!important}
+section#main-section .pager[hidden]{display:none!important}
+section#main-section .pg{min-width:44px!important;height:44px!important;padding:0 12px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border-radius:12px!important;border:1px solid var(--line-2)!important;background:var(--sa)!important;color:var(--body)!important;font-size:var(--fs-small)!important;font-weight:700!important;line-height:1!important}
+section#main-section .pg:hover:not(:disabled){border-color:var(--blue)!important;color:var(--blue)!important}
+section#main-section .pg[aria-current="page"]{background:var(--blue)!important;border-color:var(--blue)!important;color:#fff!important}
+section#main-section .pg:disabled{opacity:.4!important;cursor:not-allowed!important}
+section#main-section .pg svg{width:18px!important;height:18px!important}
+section#main-section .pg-prev svg{transform:scaleX(-1)!important}
+section#main-section .pg-gap{min-width:26px!important;text-align:center!important;color:var(--muted)!important;font-weight:700!important}
+section#main-section .ithv3-sec--cta{background:#0A192D!important;padding:0!important}
+section#main-section .cta-in{display:grid!important;grid-template-columns:1fr 1fr!important}
+section#main-section .cta-copy{max-width:calc(var(--wrap)/2)!important;margin-left:auto!important;padding:clamp(44px,4.8vw,72px) clamp(26px,3.4vw,60px) clamp(44px,4.8vw,72px) clamp(20px,3vw,40px)!important}
+section#main-section .ithv3-sec--cta .eyebrow{margin-bottom:12px!important;letter-spacing:.16em!important;text-transform:uppercase!important}
+section#main-section .ithv3-sec--cta .eyebrow::before{background:var(--blue)!important}
+section#main-section .ithv3-sec--cta h2{color:#fff!important;margin-bottom:12px!important}
+section#main-section .ithv3-sec--cta .lede{color:rgba(255,255,255,.72)!important;margin-bottom:0!important;max-width:52ch!important}
+section#main-section .btns{display:flex!important;flex-wrap:wrap!important;gap:12px!important;margin-top:30px!important}
+section#main-section .cta-med{position:relative!important;overflow:hidden!important;background:#0D1B2E!important}
+section#main-section .cta-med video{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;filter:brightness(.42) saturate(.88)!important}
+@media (max-width:980px){
+section#main-section .cta-in{grid-template-columns:1fr!important}
+section#main-section .cta-copy{max-width:var(--wrap)!important;margin:0 auto!important;padding:clamp(40px,4.4vw,64px) clamp(20px,3vw,40px)!important}
+section#main-section .cta-med{min-height:290px!important}
+}
+@media (max-width:700px){
+section#main-section .cta-med{display:none!important}
+}
+@media (max-width:900px){
+section#main-section .cat-grid{grid-template-columns:repeat(2,1fr)!important}
+section#main-section .grid{grid-template-columns:repeat(2,1fr)!important}
+}
+@media (max-width:640px){
+section#main-section .cat-grid{grid-template-columns:1fr!important}
+section#main-section .grid{grid-template-columns:1fr!important}
+section#main-section .hero-in{top:0!important}
+}
+@media not (prefers-reduced-motion:reduce){
+section#main-section .card,section#main-section .cat,section#main-section .card-media img,section#main-section .btn,section#main-section .pg{transition:transform .3s var(--ez),box-shadow .3s var(--ez),background-color .2s var(--ez),border-color .2s var(--ez),color .2s var(--ez)!important}
+section#main-section .btn:hover{transform:translateY(-2px)!important}
+section#main-section .card:hover,section#main-section .card:focus-within{box-shadow:var(--card-hi)!important;border-color:var(--blue)!important;z-index:3!important}
+section#main-section .card:hover .card-media img,section#main-section .card:focus-within .card-media img{transform:scale(1.06)!important}
+section#main-section .card:hover .card-title,section#main-section .card:focus-within .card-title{background-size:100% 2px!important}
+section#main-section .card:hover .readlink svg,section#main-section .card:focus-within .readlink svg{transform:translateX(4px)!important}
+section#main-section .ld{opacity:0;transform:translateY(14px);animation:ith3-ld .6s var(--ez) forwards!important}
+section#main-section .ld2{animation-delay:.08s!important}
+section#main-section .ld3{animation-delay:.16s!important}
+@keyframes ith3-ld{to{opacity:1;transform:none}}
+section#main-section .rv{opacity:0!important;transform:translateY(20px)!important;transition:opacity .6s var(--ez),transform .6s var(--ez)!important}
+section#main-section .rv.in{opacity:1!important;transform:none!important}
+section#main-section .cat-grid .rv,section#main-section .grid .rv{transition-delay:calc(var(--i,0) * 55ms)!important}
+section#main-section .grid.swap .card{opacity:.25!important;transition:opacity .18s var(--ez)!important}
+section#main-section .card:hover,section#main-section .card:focus-within{transform:translateY(-12px) scale(1.04)!important}
+section#main-section .cat:hover{transform:translateY(-2px)!important}
+}
+</style>
+
+<section id="main-section" class="ithv3-listing" data-theme="dark">
+
+  <svg class="ithv3-sprite" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <g id="v3-aether"><path d="M2 12h3.4l2.6-7.4L11.6 19l2.8-9.2L16.6 14H22"/></g>
+      <g id="v3-arrow"><path d="M4.5 12h14.2M12.8 6l6 6-6 6"/></g>
+      <g id="v3-search"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></g>
+      <g id="v3-cal"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></g>
+      <g id="v3-factory"><path d="M3 21V10l6 4V10l6 4V6l6 4v11z"/><path d="M3 21h18"/></g>
+      <g id="v3-erp"><path d="M4 7l8-4 8 4-8 4z"/><path d="M4 12l8 4 8-4M4 17l8 4 8-4"/></g>
+      <g id="v3-plane"><path d="M10.2 2.5c.5-.5 1.3-.5 1.6.2l2.4 6 5.4 1.9c.8.3.9 1.4.1 1.8L14 15l-1 6-2-1-.5-4-3.5 1.5-1 2-1.4-.6.7-3.2-2.4-2.1 1.3-.9 3 .7z"/></g>
+    </defs>
+  </svg>
+
+  <section class="ithv3-sec ithv3-sec--hero">
+    <div class="hero-bg" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" tabindex="-1">
+        <source src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ecommerce-hero-parts-video.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="wrap">
+      <div class="hero-in">
+        <div class="hero-txt">
+          <p class="eyebrow ld">ITHENA &middot; Blog</p>
+          <h1 class="ld ld2"><span class="b">Field notes</span>from the connected factory</h1>
+          <p class="lede ld ld3">What agentic AI, automation and service look like once they reach the plant floor - written by the people building ITHENA&rsquo;s platforms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ithv3-sec ithv3-sec--cats">
+    <div class="wrap">
+      <div class="cat-grid" role="group" aria-label="Browse articles by topic">
+        <button class="cat rv" style="--i:0" type="button" data-filter="technology" data-value="Artificial intelligence" aria-pressed="false">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#v3-aether"/></svg></span>
+          <span class="txt"><span class="name">AI &amp; Analytics</span><span class="n">5 articles</span></span>
+        </button>
+        <button class="cat rv" style="--i:1" type="button" data-filter="industry" data-value="Manufacturing" aria-pressed="false">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#v3-factory"/></svg></span>
+          <span class="txt"><span class="name">Manufacturing</span><span class="n">1 article</span></span>
+        </button>
+        <button class="cat rv" style="--i:2" type="button" data-filter="technology" data-value="ERP" aria-pressed="false">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#v3-erp"/></svg></span>
+          <span class="txt"><span class="name">ERP &amp; Operations</span><span class="n">1 article</span></span>
+        </button>
+        <button class="cat rv" style="--i:3" type="button" data-filter="technology" data-value="Aviation" aria-pressed="false">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#v3-plane"/></svg></span>
+          <span class="txt"><span class="name">Aviation MRO</span><span class="n">1 article</span></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="ithv3-sec ithv3-sec--search">
+    <div class="wrap">
+      <form class="hsearch rv" role="search" onsubmit="return false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#v3-search"/></svg>
+        <input type="search" id="v3Search" placeholder="Search articles by title or topic" aria-label="Search articles by title or topic" autocomplete="off">
+        <button class="btn btn-primary" type="button" id="v3SearchBtn">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="ithv3-sec ithv3-sec--index" id="v3-index">
+    <div class="wrap">
+      <div class="index-head">
+        <p class="eyebrow rv">Latest blog</p>
+        <p class="results rv" role="status" aria-live="polite"><b id="v3Count">7</b> <span id="v3CountWord">articles</span><button class="clearbtn" type="button" id="v3Clear" hidden>Clear filter</button></p>
+      </div>
+
+      <div class="grid" id="v3Grid">
+
+        <article class="card rv" style="--i:0" data-technology="Artificial intelligence|AI/ML" data-industry="Artificial Intelligence" data-search="ithena aether featured tew july 2026 enterprise ai beyond analytics aether ai">
+          <a class="card-media" href="https://ithena.ai/blog-post/ithenas-aether-featured-in-tews-july-2026-edition-advancing-enterprise-ai-beyond-analytics/" tabindex="-1" aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/ent-wrld-aether-blog-thumb.webp" alt="ITHENA Aether feature in The Enterprise World July 2026" width="637" height="385" loading="lazy" decoding="async"></a>
+          <div class="card-body">
+            <div class="card-meta"><span class="cat-tag">Aether AI</span><span class="sep"></span><span class="date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#v3-cal"/></svg><time datetime="2026-08-07">07 Aug 2026</time></span></div>
+            <h3><a class="card-title" href="https://ithena.ai/blog-post/ithenas-aether-featured-in-tews-july-2026-edition-advancing-enterprise-ai-beyond-analytics/">ITHENA&rsquo;s Aether Featured in TEW&rsquo;s July 2026 Edition: Advancing Enterprise AI Beyond Analytics</a></h3>
+            <p class="card-dek">Aether returns to The Enterprise World with a look at how agentic AI carries enterprises past reporting into decisions and action.</p>
+            <div class="card-foot"><span class="tag">Enterprise AI</span><a class="readlink" href="https://ithena.ai/blog-post/ithenas-aether-featured-in-tews-july-2026-edition-advancing-enterprise-ai-beyond-analytics/">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#v3-arrow"/></svg></a></div>
+          </div>
+        </article>
+
+        <article class="card rv" style="--i:1" data-technology="Artificial intelligence|AI/ML" data-industry="Artificial Intelligence" data-search="ithena aether featured enterprise world june 2026 magazine aether ai">
+          <a class="card-media" href="https://ithena.ai/blog-post/ithenas-aether-featured-in-the-enterprise-worlds-june-2026-magazine/" tabindex="-1" aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/06/enterprise-world-thumbnail.png" alt="ITHENA Aether feature in The Enterprise World June 2026 magazine" width="637" height="385" loading="lazy" decoding="async"></a>
+          <div class="card-body">
+            <div class="card-meta"><span class="cat-tag">Aether AI</span><span class="sep"></span><span class="date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#v3-cal"/></svg><time datetime="2026-07-03">03 Jul 2026</time></span></div>
+            <h3><a class="card-title" href="https://ithena.ai/blog-post/ithenas-aether-featured-in-the-enterprise-worlds-june-2026-magazine/">ITHENA&rsquo;s Aether Featured in The Enterprise World&rsquo;s June 2026 Magazine</a></h3>
+            <p class="card-dek">The June issue introduces Aether, ITHENA&rsquo;s next-generation Agentic AI-powered advanced analytics platform, to an enterprise readership.</p>
+            <div class="card-foot"><span class="tag">Enterprise AI</span><a class="readlink" href="https://ithena.ai/blog-post/ithenas-aether-featured-in-the-enterprise-worlds-june-2026-magazine/">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#v3-arrow"/></svg></a></div>
+          </div>
+        </article>
+
+        <article class="card rv" style="--i:2" data-technology="" data-industry="Artificial Intelligence|Manufacturing" data-search="imex factory problem was never the data manufacturing kpis dashboards">
+          <a class="card-media" href="https://ithena.ai/blog-post/imex-the-factory-problem-was-never-the-data/" tabindex="-1" aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/05/iMEX_Blog_thumbnail.png" alt="iMEX persona-based manufacturing analytics dashboards" width="637" height="385" loading="lazy" decoding="async"></a>
+          <div class="card-body">
+            <div class="card-meta"><span class="cat-tag">iMEX</span><span class="sep"></span><span class="date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#v3-cal"/></svg><time datetime="2026-05-21">21 May 2026</time></span></div>
+            <h3><a class="card-title" href="https://ithena.ai/blog-post/imex-the-factory-problem-was-never-the-data/">iMEX: The Factory Problem Was Never the Data</a></h3>
+            <p class="card-dek">iMEX turns plant data into persona-based dashboards aligned to manufacturing KPIs, taking teams from overview to root cause without delay.</p>
+            <div class="card-foot"><span class="tag">Manufacturing</span><a class="readlink" href="https://ithena.ai/blog-post/imex-the-factory-problem-was-never-the-data/">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#v3-arrow"/></svg></a></div>
+          </div>
+        </article>
+
+        <article class="card rv" style="--i:3" data-technology="Artificial intelligence|ERP" data-industry="" data-search="panelops replacing erp friction purpose-built manufacturing workflows oem panel builders">
+          <a class="card-media" href="https://ithena.ai/blog-post/panelops-purpose-built-manufacturing-workflows/" tabindex="-1" aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/06/PanelOPS_Blog_thumbnail.png" alt="PanelOps industrial ERP built for OEMs and panel builders" width="637" height="385" loading="lazy" decoding="async"></a>
+          <div class="card-body">
+            <div class="card-meta"><span class="cat-tag">PanelOps</span><span class="sep"></span><span class="date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#v3-cal"/></svg><time datetime="2026-05-21">21 May 2026</time></span></div>
+            <h3><a class="card-title" href="https://ithena.ai/blog-post/panelops-purpose-built-manufacturing-workflows/">PanelOps: Replacing ERP Friction with Purpose-Built Manufacturing Workflows</a></h3>
+            <p class="card-dek">An industrial ERP for OEMs, system integrators and panel builders, designed around the workflows generic platforms consistently get wrong.</p>
+            <div class="card-foot"><span class="tag">ERP</span><a class="readlink" href="https://ithena.ai/blog-post/panelops-purpose-built-manufacturing-workflows/">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#v3-arrow"/></svg></a></div>
+          </div>
+        </article>
+
+        <article class="card rv" style="--i:4" data-technology="Artificial intelligence" data-industry="" data-search="from reactive support to agentic service future of oem operations service desk">
+          <a class="card-media" href="https://ithena.ai/blog-post/agentic-service-the-future-of-oem-operations/" tabindex="-1" aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/05/Reactive_Support_Blog_thumbnail.png" alt="Agentic AI service desk for OEM operations" width="637" height="385" loading="lazy" decoding="async"></a>
+          <div class="card-body">
+            <div class="card-meta"><span class="cat-tag">Agentic OEM</span><span class="sep"></span><span class="date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#v3-cal"/></svg><time datetime="2026-05-21">21 May 2026</time></span></div>
+            <h3><a class="card-title" href="https://ithena.ai/blog-post/agentic-service-the-future-of-oem-operations/">From Reactive Support to Agentic Service: The Future of OEM Operations</a></h3>
+            <p class="card-dek">Agentic OEM, an AI-powered service desk platform, rebuilds OEM support architecture from the ground up.</p>
+            <div class="card-foot"><span class="tag">Service</span><a class="readlink" href="https://ithena.ai/blog-post/agentic-service-the-future-of-oem-operations/">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#v3-arrow"/></svg></a></div>
+          </div>
+        </article>
+
+        <article class="card rv" style="--i:5" data-technology="Artificial intelligence|Aviation" data-industry="" data-search="ithena ai mro connecting operations that keep aircraft flying aviation maintenance airworthiness">
+          <a class="card-media" href="https://ithena.ai/blog-post/ithenas-ai-mro/" tabindex="-1" aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/05/iMRO_Blog_thumbnail.png" alt="AI-driven aviation MRO operations by ITHENA" width="637" height="385" loading="lazy" decoding="async"></a>
+          <div class="card-body">
+            <div class="card-meta"><span class="cat-tag">AI MRO</span><span class="sep"></span><span class="date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#v3-cal"/></svg><time datetime="2026-05-21">21 May 2026</time></span></div>
+            <h3><a class="card-title" href="https://ithena.ai/blog-post/ithenas-ai-mro/">ITHENA&rsquo;s AI MRO: Connecting the Operations That Keep Aircraft Flying</a></h3>
+            <p class="card-dek">iMRO puts planning, airworthiness, materials and line maintenance on one record, built on a single structural principle.</p>
+            <div class="card-foot"><span class="tag">Aviation</span><a class="readlink" href="https://ithena.ai/blog-post/ithenas-ai-mro/">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#v3-arrow"/></svg></a></div>
+          </div>
+        </article>
+
+        <article class="card rv" style="--i:6" data-technology="AI/ML" data-industry="" data-search="talking to your data how aether turns enterprise chaos into clarity conversational analytics">
+          <a class="card-media" href="https://ithena.ai/blog-post/talking-to-your-data-aether/" tabindex="-1" aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/05/Aether-Blog.png" alt="Aether conversational analytics turning enterprise data into clarity" width="637" height="385" loading="lazy" decoding="async"></a>
+          <div class="card-body">
+            <div class="card-meta"><span class="cat-tag">Aether AI</span><span class="sep"></span><span class="date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#v3-cal"/></svg><time datetime="2026-05-19">19 May 2026</time></span></div>
+            <h3><a class="card-title" href="https://ithena.ai/blog-post/talking-to-your-data-aether/">Talking to Your Data: How Aether Turns Enterprise Chaos into Clarity</a></h3>
+            <p class="card-dek">Enterprises are not short on data - dashboards, reports and real-time feeds run around the clock. Aether turns that noise into answers.</p>
+            <div class="card-foot"><span class="tag">AI/ML</span><a class="readlink" href="https://ithena.ai/blog-post/talking-to-your-data-aether/">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#v3-arrow"/></svg></a></div>
+          </div>
+        </article>
+
+        <div class="empty" id="v3Empty" hidden>
+          <h4>No articles match that yet</h4>
+          <p>Try a different topic or search term, or show all seven articles.</p>
+          <p class="empty-act"><button class="btn btn-primary" type="button" data-clear>Show all articles</button></p>
+        </div>
+
+      </div>
+
+      <nav class="pager rv" id="v3Pager" aria-label="Blog pages">
+        <button class="pg pg-prev" type="button" disabled aria-label="Previous page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#v3-arrow"/></svg></button>
+        <button class="pg" type="button" aria-current="page">1</button>
+        <button class="pg" type="button">2</button>
+        <button class="pg" type="button">3</button>
+        <span class="pg-gap" aria-hidden="true">&hellip;</span>
+        <button class="pg" type="button">8</button>
+        <button class="pg pg-next" type="button" aria-label="Next page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#v3-arrow"/></svg></button>
+      </nav>
+    </div>
+  </section>
+
+  <section class="ithv3-sec ithv3-sec--cta">
+    <div class="cta-in">
+      <div class="cta-copy">
+        <div class="rv">
+          <div class="eyebrow">Get started</div>
+          <h2>Bring one system. Ask the questions. Get answers and take action in the same session.</h2>
+          <p class="lede">A working session on your own data rather than a slide deck. Pick the questions that currently take a day to answer, and we will put Aether&rsquo;s answers next to what the report said.</p>
+        </div>
+        <div class="btns rv">
+          <a class="btn btn-p" href="https://dev-website.ithena.app/ithenas-aether/">See Aether in Action</a>
+          <a class="btn btn-g" href="https://theenterpriseworld.com/" target="_blank" rel="noopener">Read the July edition</a>
+        </div>
+      </div>
+      <div class="cta-med" aria-hidden="true">
+        <video src="https://dev-website.ithena.app/wp-content/uploads/2026/09/aether-hero.mp4" autoplay muted loop playsinline preload="none" disablepictureinpicture tabindex="-1"></video>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ithena.ai/"},
+          {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://dev-website.ithena.app/blogv3/"}
+        ]
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://dev-website.ithena.app/blogv3/#blog",
+        "url": "https://dev-website.ithena.app/blogv3/",
+        "name": "ITHENA Blog",
+        "headline": "Field notes from the connected factory",
+        "description": "What agentic AI, automation and service look like once they reach the plant floor, written by the people building ITHENA's platforms: Aether, iMEX, PanelOps, Agentic OEM and AI MRO.",
+        "inLanguage": "en",
+        "publisher": {"@type": "Organization", "name": "ITHENA", "url": "https://ithena.ai/"}
+      },
+      {
+        "@type": "ItemList",
+        "name": "ITHENA blog posts",
+        "itemListOrder": "https://schema.org/ItemListOrderDescending",
+        "numberOfItems": 7,
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "item": {"@type": "BlogPosting", "headline": "ITHENA's Aether Featured in TEW's July 2026 Edition: Advancing Enterprise AI Beyond Analytics", "url": "https://ithena.ai/blog-post/ithenas-aether-featured-in-tews-july-2026-edition-advancing-enterprise-ai-beyond-analytics/", "datePublished": "2026-08-07", "image": "https://dev-website.ithena.app/wp-content/uploads/2026/07/ent-wrld-aether-blog-thumb.webp", "keywords": "Artificial intelligence, AI/ML, Aether", "publisher": {"@type": "Organization", "name": "ITHENA", "url": "https://ithena.ai/"}}},
+          {"@type": "ListItem", "position": 2, "item": {"@type": "BlogPosting", "headline": "ITHENA's Aether Featured in The Enterprise World's June 2026 Magazine", "url": "https://ithena.ai/blog-post/ithenas-aether-featured-in-the-enterprise-worlds-june-2026-magazine/", "datePublished": "2026-07-03", "image": "https://dev-website.ithena.app/wp-content/uploads/2026/06/enterprise-world-thumbnail.png", "keywords": "Artificial intelligence, AI/ML, Aether", "publisher": {"@type": "Organization", "name": "ITHENA", "url": "https://ithena.ai/"}}},
+          {"@type": "ListItem", "position": 3, "item": {"@type": "BlogPosting", "headline": "iMEX: The Factory Problem Was Never the Data", "url": "https://ithena.ai/blog-post/imex-the-factory-problem-was-never-the-data/", "datePublished": "2026-05-21", "image": "https://dev-website.ithena.app/wp-content/uploads/2026/05/iMEX_Blog_thumbnail.png", "keywords": "Manufacturing, Artificial intelligence, iMEX", "publisher": {"@type": "Organization", "name": "ITHENA", "url": "https://ithena.ai/"}}},
+          {"@type": "ListItem", "position": 4, "item": {"@type": "BlogPosting", "headline": "PanelOps: Replacing ERP Friction with Purpose-Built Manufacturing Workflows", "url": "https://ithena.ai/blog-post/panelops-purpose-built-manufacturing-workflows/", "datePublished": "2026-05-21", "image": "https://dev-website.ithena.app/wp-content/uploads/2026/06/PanelOPS_Blog_thumbnail.png", "keywords": "ERP, Artificial intelligence, PanelOps", "publisher": {"@type": "Organization", "name": "ITHENA", "url": "https://ithena.ai/"}}},
+          {"@type": "ListItem", "position": 5, "item": {"@type": "BlogPosting", "headline": "From Reactive Support to Agentic Service: The Future of OEM Operations", "url": "https://ithena.ai/blog-post/agentic-service-the-future-of-oem-operations/", "datePublished": "2026-05-21", "image": "https://dev-website.ithena.app/wp-content/uploads/2026/05/Reactive_Support_Blog_thumbnail.png", "keywords": "Artificial intelligence, Agentic OEM, Service", "publisher": {"@type": "Organization", "name": "ITHENA", "url": "https://ithena.ai/"}}},
+          {"@type": "ListItem", "position": 6, "item": {"@type": "BlogPosting", "headline": "ITHENA's AI MRO: Connecting the Operations That Keep Aircraft Flying", "url": "https://ithena.ai/blog-post/ithenas-ai-mro/", "datePublished": "2026-05-21", "image": "https://dev-website.ithena.app/wp-content/uploads/2026/05/iMRO_Blog_thumbnail.png", "keywords": "Aviation, Artificial intelligence, AI MRO", "publisher": {"@type": "Organization", "name": "ITHENA", "url": "https://ithena.ai/"}}},
+          {"@type": "ListItem", "position": 7, "item": {"@type": "BlogPosting", "headline": "Talking to Your Data: How Aether Turns Enterprise Chaos into Clarity", "url": "https://ithena.ai/blog-post/talking-to-your-data-aether/", "datePublished": "2026-05-19", "image": "https://dev-website.ithena.app/wp-content/uploads/2026/05/Aether-Blog.png", "keywords": "AI/ML, Aether", "publisher": {"@type": "Organization", "name": "ITHENA", "url": "https://ithena.ai/"}}}
+        ]
+      }
+    ]
+  }
+  </script>
+
+</section>
+
+<script>
+(function(){
+  "use strict";
+  var root=document.querySelector('section.ithv3-listing');
+  if(!root||root.hasAttribute("data-ith-ready")) return;
+  root.setAttribute("data-ith-ready","");
+
+  var themeToggle=document.getElementById('themeToggle');
+  var stored=null; try{ stored=localStorage.getItem('fbb-theme'); }catch(e){}
+  setTheme(stored||'dark');
+
+  function setTheme(mode){
+    root.setAttribute('data-theme',mode);
+    if(themeToggle) themeToggle.setAttribute('aria-pressed',mode==='dark'?'true':'false');
+    try{ localStorage.setItem('fbb-theme',mode); }catch(e){}
+  }
+  if(themeToggle){
+    themeToggle.addEventListener('click',function(){
+      setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
+    });
+  }
+
+  var $=function(s,c){return Array.prototype.slice.call((c||root).querySelectorAll(s));};
+  var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduced){ $("video").forEach(function(v){ try{ v.pause(); v.removeAttribute("autoplay"); }catch(e){} }); }
+
+  var targets=$(".rv");
+  function reveal(el){ el.classList.add("in"); }
+  if(!("IntersectionObserver" in window)||reduced){
+    targets.forEach(reveal);
+  }else{
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ reveal(e.target); io.unobserve(e.target); } });
+    },{rootMargin:"0px 0px -12% 0px",threshold:.12});
+    targets.forEach(function(el){io.observe(el);});
+    var sweep=function(){
+      var pending=false;
+      targets.forEach(function(el){
+        if(el.classList.contains("in")) return;
+        if(el.getBoundingClientRect().top < window.innerHeight){ reveal(el); io.unobserve(el); }
+        else pending=true;
+      });
+      if(!pending) window.removeEventListener("scroll",sweep);
+    };
+    window.addEventListener("scroll",sweep,{passive:true});
+  }
+
+  var cards=$(".card"), cats=$(".cat");
+  var clearBtn=root.querySelector("#v3Clear");
+  var empty=root.querySelector("#v3Empty");
+  var gridBox=root.querySelector("#v3Grid");
+  var cEl=root.querySelector("#v3Count");
+  var countWord=root.querySelector("#v3CountWord");
+  var searchEl=root.querySelector("#v3Search");
+  var pager=root.querySelector("#v3Pager");
+  var active=null;
+  var term="";
+
+  function matches(card){
+    if(active){
+      var v=card.getAttribute("data-"+active.key)||"";
+      if(v.split("|").indexOf(active.value)<0) return false;
+    }
+    if(term && (card.getAttribute("data-search")||"").indexOf(term)<0) return false;
+    return true;
+  }
+  function apply(){
+    var shown=0,i=0;
+    cards.forEach(function(card){
+      var ok=matches(card);
+      card.hidden=!ok;
+      if(ok){ card.style.setProperty("--i",i++); shown++; }
+    });
+    cats.forEach(function(c){
+      c.setAttribute("aria-pressed",
+        String(!!active && c.dataset.filter===active.key && c.dataset.value===active.value));
+    });
+    cEl.textContent=shown;
+    if(countWord) countWord.textContent = shown===1 ? "article" : "articles";
+    empty.hidden=shown>0;
+    if(pager) pager.hidden=!shown;
+    clearBtn.hidden=!(active||term);
+    if(!reduced){
+      gridBox.classList.add("swap");
+      setTimeout(function(){gridBox.classList.remove("swap");},180);
+    }
+  }
+  cats.forEach(function(c){
+    c.addEventListener("click",function(){
+      var same=active && active.key===c.dataset.filter && active.value===c.dataset.value;
+      active = same ? null : {key:c.dataset.filter,value:c.dataset.value};
+      apply();
+      if(active){
+        var idx=document.getElementById("v3-index");
+        if(idx) idx.scrollIntoView({behavior:reduced?"auto":"smooth",block:"start"});
+      }
+    });
+  });
+  if(searchEl){
+    searchEl.addEventListener("input",function(){ term=searchEl.value.trim().toLowerCase(); apply(); });
+  }
+  var searchBtn=root.querySelector("#v3SearchBtn");
+  if(searchBtn){
+    searchBtn.addEventListener("click",function(){
+      term=searchEl?searchEl.value.trim().toLowerCase():""; apply();
+      var idx=document.getElementById("v3-index");
+      if(idx) idx.scrollIntoView({behavior:reduced?"auto":"smooth",block:"start"});
+    });
+  }
+  function clearAll(){ active=null; term=""; if(searchEl) searchEl.value=""; apply(); }
+  $("[data-clear]").concat([clearBtn]).forEach(function(b){ b.addEventListener("click",clearAll); });
+
+})();
+</script>

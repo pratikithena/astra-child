@@ -1,0 +1,2147 @@
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* ================= ITHENA Aether - product page =================
+    Built to ithena-product-page-blueprint.md §3 tokens.
+    Scoped to #main-section.aether so it survives Astra/Elementor.
+    ================================================================ */
+  /* accent run - one brand ramp, applied with .ac1-.ac5 (see below). Light
+       runs blue to navy, dark runs the same ramp back up into the tints, so
+       every step carries 13px text on --srf either way. Brand red is not in
+       the run: it is --bad, and only marks something that is wrong. */
+  /* drawn-interface sub-palette (blueprint §3.3) */
+  /* elevation - always blue-tinted (blueprint §3.5) */
+  #main-section.aether{--srf:#FAFAFA; --srf2:#FFFFFF; --card:#FFFFFF;--ink:#1F2023; --ink2:rgba(0,0,0,.70); --ink3:rgba(0,0,0,.50);--blue:#0083C8; --blue-d:#006AA3; --blue-w:#EDF7FC;--line:#EAEAEA; --navy:#0D1B2E; --navy-2:#152C46; --navy-acc:#BFE5F8;--ok:#0083C8; --warn:#152C46; --bad:#C00000;--c1:#0083C8; --c2:#006AA3; --c3:#00527E; --c4:#152C46; --c5:#0D1B2E; --ac:var(--c1);--mk:#FFFFFF; --mk-2:#FBFCFD; --art:#F6F9FB; --mk-line:#E4EAF0; --mk-line2:#EEF2F6;--mk-sel:#EDF7FC; --mk-selb:#CFE7F5; --mk-mut:#8494A2; --mk-ink:#1F2023;--sh-feat:0 40px 24px -32px rgba(0,60,100,.22);--sh-pair:0 -6px 20px -16px rgba(6,42,68,.10);--sh-shell:0 30px 70px -40px rgba(0,40,70,.35);--sh-screen:0 26px 54px -30px rgba(0,40,70,.55);--sh-chat:0 12px 30px -22px rgba(0,40,70,.60);--sh-micro:0 1px 2px rgba(13,27,46,.06);--sh-pill:0 8px 22px -12px rgba(0,40,70,.35);--wrap:min(1344px,86.7vw);--pad:clamp(48px,5.6vw,84px);--ff:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;--ez:cubic-bezier(.2,0,0,1);font-family:var(--ff)!important; background:var(--srf)!important; color:var(--ink)!important;font-size:16px!important; line-height:1.6!important; margin:0!important; display:block!important;-webkit-font-smoothing:antialiased; overflow-x:clip;}
+  #main-section.aether[data-theme="dark"]{--srf:#0D1B2E; --srf2:#122C44; --card:#122C44;--ink:#FFFFFF; --ink2:rgba(215,236,246,.82); --ink3:#8FAFC4;--blue:#39A8DE; --blue-d:#0083C8; --blue-w:rgba(0,131,200,.16);--ok:#39A8DE; --warn:#8FAFC4; --bad:#FF6B6B;--c1:#39A8DE; --c2:#6FC6EE; --c3:#9AD4F2; --c4:#BFE5F8; --c5:#EAF6FD;--line:rgba(255,255,255,.13); --navy:#081524; --navy-2:#102338;--mk:#0E2438; --mk-2:#122C44; --art:#0E2438; --mk-line:rgba(255,255,255,.13); --mk-line2:rgba(255,255,255,.07);--mk-sel:rgba(0,131,200,.18); --mk-selb:rgba(57,168,222,.42); --mk-mut:#8FAFC4; --mk-ink:#FFFFFF;--sh-feat:0 40px 24px -32px rgba(0,0,0,.6);--sh-shell:0 30px 70px -40px rgba(0,0,0,.8);--sh-screen:0 26px 54px -30px rgba(0,0,0,.85);--sh-chat:0 12px 30px -22px rgba(0,0,0,.8);--sh-pill:0 8px 22px -12px rgba(0,0,0,.6);}
+  #main-section.aether.theming, #main-section.aether.theming *{transition:background-color .35s var(--ez),color .35s var(--ez),border-color .35s var(--ez)!important;}
+  #main-section.aether *,#main-section.aether *::before,#main-section.aether *::after{box-sizing:border-box}
+  #main-section.aether h1,#main-section.aether h2,#main-section.aether h3,#main-section.aether h4,#main-section.aether p,#main-section.aether ul,#main-section.aether ol,#main-section.aether figure{margin:0!important;padding:0!important}
+  #main-section.aether ul,#main-section.aether ol{list-style:none!important}
+  #main-section.aether li{margin:0!important;list-style:none!important}
+  #main-section.aether a{color:inherit!important;text-decoration:none!important}
+  #main-section.aether img,#main-section.aether svg{max-width:100%;display:block}
+  #main-section.aether button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+  #main-section.aether :focus-visible{outline:2px solid var(--blue)!important;outline-offset:3px!important;border-radius:4px}
+  #main-section.aether ::selection{background:rgba(0,131,200,.22)}
+
+  /* ---------- in-page nav ---------- */
+  #main-section.aether section[id]{scroll-margin-top:78px}
+  #main-section.aether .subnav{position:sticky;top:0;z-index:30;background:rgba(250,250,250,.90);border-bottom:1px solid var(--line);-webkit-backdrop-filter:saturate(1.6) blur(12px);backdrop-filter:saturate(1.6) blur(12px)}
+  #main-section.aether[data-theme="dark"] .subnav{background:rgba(13,27,46,.90)}
+  #main-section.aether .subnav-in{display:flex;align-items:center;gap:18px;padding:10px 0}
+  #main-section.aether .sn-name{flex:none;font-size:14px;font-weight:800;letter-spacing:-.01em;color:var(--ink)}
+  #main-section.aether .sn-links{flex:1;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+  #main-section.aether .sn-links::-webkit-scrollbar{display:none}
+  #main-section.aether .sn-links a{display:block;white-space:nowrap;font-size:13.5px;font-weight:600;color:var(--ink2)!important;padding:7px 13px;border-radius:100px;transition:background-color .2s var(--ez),color .2s var(--ez)}
+  #main-section.aether .sn-links a:hover{background:rgba(0,0,0,.05);color:var(--ink)!important}
+  #main-section.aether[data-theme="dark"] .sn-links a:hover{background:rgba(255,255,255,.09)}
+  #main-section.aether .sn-links a[aria-current="true"]{background:var(--blue-w);color:var(--blue-d)!important}
+  #main-section.aether[data-theme="dark"] .sn-links a[aria-current="true"]{color:#9AD4F2!important}
+  #main-section.aether .sn-cta{flex:none;height:38px;padding:0 16px;font-size:13px}
+
+  /* ---------- band + header contract ---------- */
+  #main-section.aether .band{width:100%;padding:var(--pad) 0;background:var(--srf)}
+  #main-section.aether .band.alt{background:var(--srf2)}
+  #main-section.aether .wrap{width:var(--wrap);margin:0 auto}
+  #main-section.aether .shead{max-width:880px}
+  #main-section.aether .shead.mid{margin-left:auto;margin-right:auto;text-align:center}
+  #main-section.aether .eyb{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--blue)}
+  #main-section.aether .eyb::before{content:"";width:22px;height:2px;border-radius:2px;background:currentColor;flex:none}
+  #main-section.aether .shead.mid .eyb{justify-content:center}
+  #main-section.aether .shead h2{font-size:44px;line-height:1.12;font-weight:800;letter-spacing:-.025em;color:var(--ink);margin-top:13px!important}
+  #main-section.aether .lede{font-size:17px;line-height:1.6;color:var(--ink2);margin-top:16px!important}
+  #main-section.aether .shead.mid .lede{margin-left:auto;margin-right:auto;text-align:center}
+  #main-section.aether .grid{margin-top:clamp(34px,3vw,48px)}
+
+  /* ---------- buttons, chips, links ---------- */
+  #main-section.aether .btn{display:inline-flex;align-items:center;gap:9px;height:46px;padding:0 18px 0 22px;border-radius:100px;font-size:14px;font-weight:600;letter-spacing:.005em;transition:background-color .2s var(--ez),border-color .2s var(--ez),transform .2s var(--ez)}
+  #main-section.aether .btn.pri{background:var(--blue);color:#fff!important}
+  #main-section.aether .btn.pri:hover{background:var(--blue-d)}
+  #main-section.aether .btn.sec{background:rgba(0,0,0,.07);color:var(--ink)!important}
+  #main-section.aether[data-theme="dark"] .btn.sec{background:rgba(255,255,255,.10)}
+  #main-section.aether .btn.sec:hover{background:rgba(0,0,0,.12)}
+  #main-section.aether[data-theme="dark"] .btn.sec:hover{background:rgba(255,255,255,.16)}
+  #main-section.aether .btn.gho{background:var(--card);border:1px solid var(--line);color:var(--ink)!important}
+  #main-section.aether .btn.gho:hover{border-color:var(--blue)}
+  #main-section.aether .btn svg{width:15px;height:15px;flex:none}
+  #main-section.aether .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  #main-section.aether .chip{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;font-size:22px;font-weight:600;color:var(--ac)}
+  #main-section.aether .chips{display:flex;flex-wrap:wrap;gap:8px}
+  #main-section.aether .ilink{display:inline-flex;align-items:center;gap:6px;color:var(--blue)!important;font-size:12.5px;font-weight:700;padding-top:16px}
+  #main-section.aether .ilink svg{width:12px;height:12px;transition:transform .2s var(--ez)}
+  #main-section.aether .ilink:hover svg{transform:translateX(3px)}
+
+  /* ---------- provenance line: the page's repeating device ---------- */
+  #main-section.aether .prov{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--mk-mut);border-top:1px solid var(--mk-line2);padding-top:9px;margin-top:12px;line-height:1.45}
+  #main-section.aether .prov b{color:var(--mk-ink);font-weight:600}
+  #main-section.aether .prov .dot{width:5px;height:5px;border-radius:50%;background:var(--ok);flex:none}
+
+  /* ---------- reveal ---------- */
+  @media not (prefers-reduced-motion:reduce){
+    #main-section.aether .rv{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ez),transform .6s var(--ez)}
+    #main-section.aether .rv.in{opacity:1;transform:none}
+    #main-section.aether .stg>*{opacity:0;transform:translateY(16px);transition:opacity .55s var(--ez),transform .55s var(--ez)}
+    #main-section.aether .stg.in>*{opacity:1;transform:none}
+    #main-section.aether .stg.in>*:nth-child(2){transition-delay:.07s}
+    #main-section.aether .stg.in>*:nth-child(3){transition-delay:.14s}
+    #main-section.aether .stg.in>*:nth-child(4){transition-delay:.21s}
+    #main-section.aether .stg.in>*:nth-child(5){transition-delay:.28s}
+  }
+
+  /* ================= B0 - HERO ================= */
+  #main-section.aether .hero{padding-top:clamp(72px,8vw,118px);padding-bottom:clamp(44px,5vw,76px)}
+  #main-section.aether .hero-in{display:grid;grid-template-columns:1.04fr 1fr;gap:49px;align-items:center}
+  #main-section.aether .hero h1{font-size:54px;line-height:1.08;font-weight:800;letter-spacing:-.028em;color:var(--ink);margin-top:14px!important;max-width:14ch}
+  #main-section.aether .hero h1 em,#main-section.aether .shead h2 em{font-style:normal;color:var(--blue)}
+  #main-section.aether .hero .lede{font-size:17px;margin-top:18px!important;max-width:52ch}
+  #main-section.aether .hero .lede b{font-weight:700;color:var(--ink)}
+  #main-section.aether .hero .sub{font-size:15.5px;color:var(--ink3);margin-top:12px!important;max-width:52ch}
+  #main-section.aether .hero .chips{margin-top:26px;gap:22px}
+  /* the five verbs are a sequence, not five buttons: no fill, no border - just
+     the hue and the page's own dot marker (same device as .prov and .frow li) */
+  #main-section.aether .hero .chip{background:none;border:0;border-radius:0;padding:0;font-size:14.5px;gap:8px}
+  #main-section.aether .hero .chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ac);flex:none}
+
+  /* ---- hero backdrop: the footage itself, darkened ----
+     No wash over the clip any more - it is dimmed at the source, and the hero
+     copy is light in both themes so the same treatment reads either way. The
+     one gradient left is the bottom fade into B1; without it the video ends on
+     a hard line. --scrim must stay equal to the band background.
+     JS attaches the source (see #aeHeroVid); below 900px the navy stands in. */
+  #main-section.aether .hero{position:relative}
+  #main-section.aether .hero-in{position:relative;z-index:1}
+  #main-section.aether .hero-bg{--scrim:250,250,250;position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:var(--navy)}
+  #main-section.aether[data-theme="dark"] .hero-bg{--scrim:13,27,46}
+  #main-section.aether .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.40) saturate(.88)}
+  #main-section.aether[data-theme="dark"] .hero-vid{filter:brightness(.30) saturate(.80)}
+  /* the copy is on footage, not on the page: light in both themes, and the five
+     accent chips borrow the dark ramp so the steps survive the dark ground */
+  #main-section.aether .hero-copy{--c1:#39A8DE;--c2:#6FC6EE;--c3:#9AD4F2;--c4:#BFE5F8;--c5:#EAF6FD}
+  #main-section.aether .hero .eyb{color:var(--navy-acc)}
+  #main-section.aether .hero h1,#main-section.aether .hero .lede b{color:#fff}
+  #main-section.aether .hero h1 em{color:var(--navy-acc)}
+  #main-section.aether .hero .lede{color:rgba(255,255,255,.86)}
+  #main-section.aether .hero .sub{color:rgba(255,255,255,.66)}
+  #main-section.aether .hero .btn.sec,#main-section.aether[data-theme="dark"] .hero .btn.sec{background:rgba(255,255,255,.15);color:#fff!important}
+  #main-section.aether .hero .btn.sec:hover,#main-section.aether[data-theme="dark"] .hero .btn.sec:hover{background:rgba(255,255,255,.25)}
+
+  /* ---- the rig: one console, at the three sizes it gets read on ----
+     The frames share the page's hardware recipe; the screens are assembled from
+     the parts the consoles section already uses (.win-bar .cbar .kpi .panel
+     .cols .prov .dev), so this is not a second dashboard implementation. Type
+     keeps its size and the smaller screens crop, the way real ones do. */
+  #main-section.aether .rig{position:relative;width:100%;max-width:620px;margin-left:auto;padding:clamp(20px,2.8vw,34px) 0 clamp(122px,17vw,190px)}
+  #main-section.aether .frame{background:linear-gradient(155deg,#46586B,#0D1927 42%,#31414F);box-shadow:var(--sh-shell),inset 0 0 0 1px rgba(255,255,255,.16)}
+  #main-section.aether .mon{position:relative;z-index:1;border-radius:16px;padding:10px}
+  #main-section.aether .mon::before{content:"";position:absolute;left:50%;bottom:-19px;transform:translateX(-50%);width:84px;height:20px;background:linear-gradient(180deg,#2F3F4E,#1B2A38)}
+  #main-section.aether .mon::after{content:"";position:absolute;left:50%;bottom:-25px;transform:translateX(-50%);width:184px;height:7px;border-radius:100px;background:linear-gradient(180deg,#3B4C5C,#22323F)}
+  /* the second desktop, at rig scale: same monitor recipe as .mon, smaller */
+  #main-section.aether .mon2{position:absolute;left:-60px;bottom:14px;z-index:2;width:52%;border-radius:12px;padding:8px}
+  #main-section.aether .mon2::before{content:"";position:absolute;left:50%;bottom:-15px;transform:translateX(-50%);width:54px;height:16px;background:linear-gradient(180deg,#2F3F4E,#1B2A38)}
+  #main-section.aether .mon2::after{content:"";position:absolute;left:50%;bottom:-20px;transform:translateX(-50%);width:124px;height:6px;border-radius:100px;background:linear-gradient(180deg,#3B4C5C,#22323F)}
+  /* both screens grow to their content - the ask with its SQL on one, the
+     console it produced on the other - instead of cropping the provenance off */
+  #main-section.aether .mon-sc,#main-section.aether .mon2-sc{background:var(--mk);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+  #main-section.aether .mon-sc{border-radius:9px}
+  #main-section.aether .mon-sc .src-bar{padding:8px 12px}
+  #main-section.aether .mon-sc .chat-body{padding:14px}
+  #main-section.aether .mon-sc .msg{grid-template-columns:58px 1fr;gap:10px}
+  #main-section.aether .mon-sc .msg+.msg{margin-top:12px}
+  #main-section.aether .mon-sc .msg .say{font-size:13px}
+  #main-section.aether .sql{margin-top:12px;padding:10px 12px;border-radius:8px;background:var(--mk-2);border:1px solid var(--mk-line2);font-family:var(--mono);font-size:11px;line-height:1.55;color:var(--mk-mut);white-space:pre-wrap;overflow-x:auto}
+  #main-section.aether .sql b{color:var(--blue);font-weight:700}
+  #main-section.aether .mds{padding:12px;flex:1;overflow:hidden}
+  #main-section.aether .mds .kpis{gap:8px}
+  #main-section.aether .mds .kpi{padding:10px 11px}
+  #main-section.aether .mds .kpi .v{font-size:18px}
+  #main-section.aether .mds .panel{margin-top:10px;padding:11px}
+  #main-section.aether .mds .cols{height:92px;gap:9px}
+  #main-section.aether .mon2 .cbar{padding:9px 11px}
+  #main-section.aether .mon2 .mds{padding:10px}
+  #main-section.aether .mon2 .kpi{padding:7px 8px}
+  #main-section.aether .mon2 .kpi .v{font-size:15px}
+  #main-section.aether .mon2 .kpi .l,#main-section.aether .mon2 .kpi .d{font-size:9px}
+  #main-section.aether .mon2 .panel .ph h4{font-size:10px}
+  #main-section.aether .mon2 .panel .ph span{font-size:9px}
+  /* the handset, at rig scale - same device as B8, its own type ladder */
+  #main-section.aether .hand{position:absolute;right:-8%;bottom:0;z-index:3;width:19%;min-width:94px;max-width:116px}
+  #main-section.aether .hand .dev{width:100%;padding:4px;border-radius:19px}
+  #main-section.aether .hand .dev-sc{border-radius:15px;aspect-ratio:9/17.4}
+  #main-section.aether .hand .dev-isle{top:5px;width:32px;height:9px}
+  #main-section.aether .hand .dev-bar{padding:6px 8px 3px;font-size:6px}
+  #main-section.aether .hand .dev-bar svg{width:24px;height:6px}
+  #main-section.aether .hand .ph-top{padding:3px 8px 6px}
+  #main-section.aether .hand .ph-top .t{font-size:5px;letter-spacing:.05em}
+  #main-section.aether .hand .ph-top h4{font-size:8px;margin-top:2px!important}
+  #main-section.aether .hand .ph-list{padding:6px}
+  #main-section.aether .hand .ph-row{border-radius:7px;padding:5px 6px}
+  #main-section.aether .hand .ph-row+.ph-row{margin-top:4px}
+  #main-section.aether .hand .ph-row .id{font-size:5px}
+  #main-section.aether .hand .ph-row .tt{font-size:7px;margin-top:2px!important}
+  #main-section.aether .hand .ph-row .mm{font-size:5px;margin-top:1px!important}
+  #main-section.aether .hand .pill{font-size:5px;padding:0 4px}
+  #main-section.aether .hand .dev-home{width:40px;height:2px;margin-bottom:5px}
+
+  #main-section.aether .src-bar{display:flex;align-items:center;gap:9px;padding:11px 14px;border-bottom:1px solid var(--mk-line2);background:var(--mk-2);flex-wrap:wrap}
+  #main-section.aether .src-bar .dot{width:6px;height:6px;border-radius:50%;background:var(--ok)}
+  #main-section.aether .src-bar .lbl{font-size:11.5px;font-weight:700;color:var(--mk-ink)}
+  #main-section.aether .src-bar .src{font-size:11px;font-family:var(--mono);color:var(--mk-mut);background:var(--mk);border:1px solid var(--mk-line2);border-radius:5px;padding:2px 7px}
+  #main-section.aether .who{font-size:10.5px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--mk-mut);padding-top:3px}
+  #main-section.aether .hbars{display:grid;gap:9px}
+  #main-section.aether .hbar{display:grid;grid-template-columns:96px 1fr 52px;gap:10px;align-items:center}
+  #main-section.aether .hbar .n{font-size:11.5px;color:var(--mk-mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #main-section.aether .hbar .t{height:10px;border-radius:100px;background:var(--mk-line2);overflow:hidden}
+  #main-section.aether .hbar .t i{display:block;height:100%;border-radius:100px;background:var(--blue);width:var(--w);transition:width .9s var(--ez)}
+  #main-section.aether .hbar .v{font-size:12px;font-weight:700;color:var(--mk-ink);text-align:right;font-variant-numeric:tabular-nums}
+  #main-section.aether .hbar.top .t i{background:linear-gradient(90deg,var(--blue-d),var(--blue))}
+  #main-section.aether .out-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:11px}
+  #main-section.aether .out-head .oh{font-size:13px;font-weight:700;color:var(--mk-ink)}
+  #main-section.aether .out-head span{font-size:11px;color:var(--mk-mut)}
+  #main-section.aether .out-head .oh span{font-size:inherit;color:inherit}
+  /* ================= B1 - PROOF STATS ================= */
+  #main-section.aether .stats{padding-top:clamp(44px,4.6vw,64px);padding-bottom:var(--pad)}
+  #main-section.aether .figs{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(20px,2.4vw,38px)}
+  #main-section.aether .fig{padding-top:19px;position:relative}
+  #main-section.aether .fig::before{content:"";position:absolute;top:0;left:0;width:32px;height:3px;border-radius:3px;background:var(--ac)}
+  #main-section.aether .fig .num{font-size:44px;font-weight:800;letter-spacing:-.03em;color:var(--ac);line-height:1.05;font-variant-numeric:tabular-nums}
+  #main-section.aether .fig .figcap{font-size:14px;color:var(--ink2);margin-top:8px!important;line-height:1.45}
+  #main-section.aether .figs-note{font-size:12.5px;color:var(--ink3);margin-top:14px!important}
+
+  /* ================= B2 - CONNECTORS ================= */
+  #main-section.aether .conn{padding:0;background:var(--srf2)}
+  #main-section.aether .conn-in{display:grid;grid-template-columns:360px 1fr;align-items:center;gap:36px;padding:30px 0;border-top:1px solid var(--line)}
+  #main-section.aether .conn-say{border:1px solid color-mix(in srgb,var(--c1) 18%,transparent);border-radius:22px;padding:18px 22px;background:color-mix(in srgb,var(--c1) 6%,var(--card))}
+  #main-section.aether .conn-say p{font-size:14.5px;line-height:1.5;font-weight:600;color:var(--ink);margin-top:10px!important}
+  #main-section.aether .mq{overflow:hidden}
+  #main-section.aether .mq-t{display:flex;gap:10px;width:max-content;animation:aemq 46s linear infinite}
+  #main-section.aether .mq:hover .mq-t{animation-play-state:paused}
+  @keyframes aemq{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){
+    #main-section.aether .mq-t{animation:none}
+    #main-section.aether .mq{overflow-x:auto}
+  }
+  #main-section.aether .mq .chip{white-space:nowrap;padding:10px 16px}
+  #main-section.aether .mq .chip svg{width:14px;height:14px;color:var(--blue);flex:none}
+
+  /* ================= B3 - CAPABILITIES ================= */
+  /* the three capabilities read as three open columns rather than three cards:
+     the hairline between them is the only separation, and the screen above each
+     one plays its own short scene once the row is read. The three screens share one
+     slot height, so the headings below them start on the same line. */
+  #main-section.aether .caps{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr;gap:0}
+  #main-section.aether .cap{background:none;border:0;border-radius:0;box-shadow:none;padding:0 clamp(20px,2.2vw,34px);display:grid;grid-template-rows:subgrid;grid-row:span 2}
+  #main-section.aether .cap:first-child{padding-left:0}
+  #main-section.aether .cap:last-child{padding-right:0}
+  #main-section.aether .cap+.cap{border-left:1px solid var(--line)}
+  #main-section.aether .cap-art{border:0;background:none;padding:0;position:relative;min-height:200px;display:flex;align-items:stretch}
+  #main-section.aether .cap-art>*{width:100%}
+  /* every capability is read on a desktop - same black frame as .mon, at cap scale */
+  #main-section.aether .capmon{position:relative;display:flex;border-radius:14px;padding:9px}
+  #main-section.aether .capmon .win{border-radius:7px;box-shadow:none}
+  /* desktop window chrome - shared by the three capability screens and the
+     agent transcript, so a screen reads as a screen wherever it appears. */
+  #main-section.aether .win{width:100%;background:var(--mk);border-radius:11px;overflow:hidden;box-shadow:var(--sh-screen);display:flex;flex-direction:column}
+  #main-section.aether .win-bar{flex:none;display:flex;align-items:center;gap:6px;padding:9px 12px;background:var(--mk-2);border-bottom:1px solid var(--mk-line2)}
+  #main-section.aether .win-bar i{width:8px;height:8px;border-radius:50%;background:var(--mk-mut);opacity:.32;flex:none}
+  #main-section.aether .win-bar i:first-of-type{background:var(--ac);opacity:.85}
+  /* the product mark, carried on every screen chrome the page draws */
+  #main-section.aether .mk-logo{width:16px;height:16px;flex:none;object-fit:contain;border-radius:3px}
+  #main-section.aether .cbar .mk-logo{width:15px;height:15px}
+  #main-section.aether .ph-top .mk-logo{width:12px;height:12px;border-radius:2px}
+  #main-section.aether .rig .mk-logo{width:11px;height:11px}
+  #main-section.aether .hand .mk-logo{width:7px;height:7px}
+  /* a line chart, at the sizes the drawn screens use it */
+  #main-section.aether .lchart{display:block;width:100%;height:auto;margin-top:2px;overflow:visible}
+  #main-section.aether .win-bar span{margin-left:5px;font-size:10.5px;font-family:var(--mono);color:var(--mk-mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #main-section.aether .cap-art .win-body{flex:1;padding:13px}
+  #main-section.aether .cap-body{padding:24px 0 0;display:flex;flex-direction:column}
+  #main-section.aether .cap-body h3{font-size:22px;font-weight:700;letter-spacing:-.015em;color:var(--ink);margin-top:8px!important}
+  #main-section.aether .cap-body p{font-size:15px;color:var(--ink2);margin-top:10px!important;line-height:1.55}
+  #main-section.aether .cap-body .chips{margin-top:auto;padding-top:18px}
+  #main-section.aether .cap-body .chip{font-size:12.5px;padding:6px 12px}
+  #main-section.aether .mq{position:relative}
+  #main-section.aether .mq::before,#main-section.aether .mq::after{content:"";position:absolute;top:0;bottom:0;width:64px;z-index:2;pointer-events:none}
+  #main-section.aether .mq::before{left:0;background:linear-gradient(90deg,var(--srf2),rgba(255,255,255,0))}
+  #main-section.aether .mq::after{right:0;background:linear-gradient(270deg,var(--srf2),rgba(255,255,255,0))}
+  #main-section.aether[data-theme="dark"] .mq::before{background:linear-gradient(90deg,var(--srf2),rgba(18,44,68,0))}
+  #main-section.aether[data-theme="dark"] .mq::after{background:linear-gradient(270deg,var(--srf2),rgba(18,44,68,0))}
+
+  /* ================= B4 - ROLES ================= */
+  #main-section.aether .roles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  #main-section.aether .role{display:flex;flex-direction:column;gap:13px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:0 24px 24px;overflow:hidden;transition:transform .3s var(--ez),border-color .3s var(--ez),box-shadow .3s var(--ez)}
+  #main-section.aether .role:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--ac) 40%,transparent);box-shadow:var(--sh-feat)}
+  #main-section.aether .rph{margin:0 -24px 3px;aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line);background:var(--srf)}
+  #main-section.aether .rph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ez)}
+  #main-section.aether .role:hover .rph img{transform:scale(1.04)}
+  #main-section.aether .rtop{display:flex;align-items:center;gap:12px}
+  #main-section.aether .role h3{font-size:19px;font-weight:700;color:var(--ink);letter-spacing:-.015em}
+  #main-section.aether .role em{display:block;font-style:normal;font-size:12.5px;color:var(--ink3);margin-top:2px}
+  #main-section.aether .role p{font-size:14.5px;color:var(--ink2);line-height:1.55;flex:1}
+  /* the icon tile, ringed in its own hue */
+  #main-section.aether .role .ic{width:44px;height:44px;border-radius:12px;background:color-mix(in srgb,var(--ac) 12%,transparent);box-shadow:0 0 0 1px color-mix(in srgb,var(--ac) 24%,transparent);display:grid;place-items:center;flex:none;position:relative}
+  #main-section.aether .role .ic svg{width:21px;height:21px;color:var(--ac)}
+  #main-section.aether .role .ic::after{content:"";position:absolute;inset:0;border-radius:12px;box-shadow:0 0 0 1px color-mix(in srgb,var(--ac) 45%,transparent);opacity:0}
+  @media not (prefers-reduced-motion:reduce){
+    #main-section.aether .role .ic::after{animation:aering 4.4s var(--ez) infinite}
+    #main-section.aether .role:nth-child(2) .ic::after{animation-delay:1.45s}
+    #main-section.aether .role:nth-child(3) .ic::after{animation-delay:2.9s}
+    @keyframes aering{0%{transform:scale(1);opacity:.85}72%,100%{transform:scale(1.3);opacity:0}}
+  }
+  /* the question they actually type, at the foot of the card */
+  #main-section.aether .rmsg{margin-top:auto;background:var(--srf);border-left:3px solid var(--ac);border-radius:14px;padding:12px 14px}
+  #main-section.aether .rmsg .from{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ink3)}
+  #main-section.aether .rmsg .from svg{width:13px;height:13px;color:var(--ac);flex:none}
+  #main-section.aether .role .q{font-size:13px;font-family:var(--mono);color:var(--ink);line-height:1.5;margin-top:5px!important}
+
+  /* ================= B10b - PARTNERS ================= */
+  /* a logo strip on the marquee the connectors band already uses */
+  #main-section.aether .partners{padding:clamp(30px,3vw,44px) 0;border-top:1px solid var(--line)}
+  #main-section.aether .strip-l{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;margin-bottom:18px}
+  #main-section.aether .strip-l b{font-size:14px;font-weight:700;color:var(--ink)}
+  #main-section.aether .strip-l span{font-size:12.5px;color:var(--ink3)}
+  #main-section.aether .logos{-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+  #main-section.aether .logos::before,#main-section.aether .logos::after{display:none}
+  #main-section.aether .logos .mq-t{gap:18px;align-items:center;animation-duration:58s}
+  #main-section.aether .logos .lg{flex:none;display:grid;place-items:center;width:168px;height:78px;padding:14px 20px;}
+  #main-section.aether .logos img{max-width:126px;max-height:46px;width:auto;height:auto;object-fit:contain}
+
+  /* ================= B5 - THE PROBLEM ================= */
+  /* the argument and its four parts on one side, the evidence drawn on the other */
+  #main-section.aether .chal{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(34px,4vw,64px);align-items:start}
+  #main-section.aether .lag{background:var(--card);border:1px solid color-mix(in srgb,var(--c1) 16%,transparent);border-radius:26px;padding:28px 30px;margin-top:clamp(34px,3vw,48px)}
+  #main-section.aether .lag-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+  #main-section.aether .lag-head h3{font-size:16px;font-weight:700;color:var(--ink)}
+  #main-section.aether .lag-head span{font-size:13px;color:var(--ink3)}
+  #main-section.aether .tl{position:relative;padding:0 0 4px}
+  #main-section.aether .tl-line{width:1px;background:var(--line);position:absolute;left:6px;top:8px;bottom:8px}
+  #main-section.aether .tl-days{display:grid;gap:17px;position:relative}
+  #main-section.aether .tl-d{position:relative;padding-left:27px}
+  #main-section.aether .tl-d .pt{position:absolute;top:3px;left:0;width:13px;height:13px;border-radius:50%;background:var(--srf2);border:2px solid var(--line)}
+  #main-section.aether .tl-d.on .pt{border-color:var(--blue);background:var(--blue)}
+  #main-section.aether .tl-d.miss .pt{border-color:var(--bad);background:var(--bad)}
+  /* the one day the number never arrived: the marker keeps asking to be looked at */
+  @media not (prefers-reduced-motion:reduce){
+    #main-section.aether .tl-d.miss .pt{animation:aemiss 2.6s var(--ez) infinite}
+    @keyframes aemiss{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--bad) 55%,transparent);opacity:1}55%{opacity:.5}100%{box-shadow:0 0 0 8px transparent;opacity:1}}
+  }
+  #main-section.aether .tl-d .day{display:block;font-size:12px;font-weight:700;color:var(--ink3);margin-bottom:3px!important}
+  #main-section.aether .tl-d .ev{font-size:13.5px;color:var(--ink2);line-height:1.45}
+  #main-section.aether .tl-d.miss .ev{color:var(--bad);font-weight:600}
+  #main-section.aether .lag-foot{margin-top:20px!important;font-size:14px;color:var(--ink2);border-top:1px solid var(--line);padding-top:16px!important}
+  #main-section.aether .lag-foot b{color:var(--ink);font-weight:700}
+  #main-section.aether .probs{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 26px;margin-top:clamp(30px,3vw,40px)}
+  #main-section.aether .prob{padding-left:17px;border-left:2px solid var(--ac)}
+  #main-section.aether .prob h3{font-size:17px;font-weight:700;letter-spacing:-.012em;color:var(--ink);line-height:1.35}
+  #main-section.aether .prob p{font-size:14px;color:var(--ink2);margin-top:9px!important;line-height:1.55}
+
+  /* ================= B6 - THE LOOP =================
+     Four ordered steps, so a rail through them carries the order - it is not
+     decoration. The step word is the element: display size, centred, one hue each. */
+  #main-section.aether .loop{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2.6vw,40px);margin-top:clamp(40px,3.6vw,58px)!important}
+  #main-section.aether .lp{display:flex;flex-direction:column;text-align:center}
+  /* the band pins while you scroll it; each step takes its colour in turn */
+  #main-section.aether .loopwrap{height:340vh}
+  #main-section.aether .loopstick{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(64px,8vh,104px) 0}
+  /* unlit is monochrome - colour is the signal that the step has landed */
+  #main-section.aether .loop .lp:not(.lit){--ac:var(--ink)}
+  #main-section.aether .lp .lb,#main-section.aether .lp .rail::after,#main-section.aether .lp .out{transition:color .45s var(--ez),background-color .45s var(--ez),box-shadow .45s var(--ez),border-color .45s var(--ez)}
+  #main-section.aether .lp .lb{display:block;font-size:clamp(30px,3.5vw,48px);line-height:1;font-weight:800;letter-spacing:-.035em;color:var(--ac)}
+  #main-section.aether .lp .rail{position:relative;display:block;height:2px;margin:22px 0 24px}
+  /* each step owns the segment behind it, so lighting step N draws N-1 into N */
+  #main-section.aether .lp .rail::before{content:"";position:absolute;top:0;height:2px;left:calc(-50% - 40px);right:50%;background:color-mix(in srgb,var(--ac) 55%,transparent);transform:scaleX(0);transform-origin:left center;transition:transform .55s var(--ez),background-color .45s var(--ez)}
+  #main-section.aether .lp.lit .rail::before{transform:scaleX(1)}
+  #main-section.aether .lp:first-child .rail::before{display:none}
+  #main-section.aether .lp .rail::after{content:"";position:absolute;top:50%;left:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--ac);box-shadow:0 0 0 6px color-mix(in srgb,var(--ac) 15%,transparent)}
+  /* the joining point blinks as the segment lands on it */
+  #main-section.aether .lp.lit .rail::after{animation:aejoin 1s var(--ez) .5s 2}
+  #main-section.aether .lp:first-child.lit .rail::after{animation-delay:0s}
+  @keyframes aejoin{0%,100%{box-shadow:0 0 0 6px color-mix(in srgb,var(--ac) 15%,transparent)}45%{box-shadow:0 0 0 15px color-mix(in srgb,var(--ac) 32%,transparent)}}
+  @media (prefers-reduced-motion:reduce){
+    #main-section.aether .loopwrap{height:auto}
+    #main-section.aether .loopstick{position:static;min-height:0;padding:0}
+    #main-section.aether .conswrap{height:auto}
+    #main-section.aether .consstick{position:static;min-height:0;padding:0}
+    #main-section.aether .lp .rail::before,#main-section.aether .lp.lit .rail::before{transform:none;transition:none}
+    #main-section.aether .lp.lit .rail::after{animation:none}
+  }
+  #main-section.aether .lp h3{font-size:18px;font-weight:700;color:var(--ink);line-height:1.3}
+  #main-section.aether .lp p{font-size:15px;color:var(--ink2);line-height:1.6;flex:1;max-width:34ch;margin:11px auto 0!important}
+  #main-section.aether .lp .out{flex:none;font-size:13.5px;line-height:1.5;margin:18px auto 0!important;padding-top:14px!important;border-top:1px solid color-mix(in srgb,var(--ac) 26%,transparent)}
+  #main-section.aether .lp .out b{color:var(--ac);font-weight:700}
+
+  /* ================= B7 - CONSOLES ================= */
+  /* the panel pins and the consoles step through one per screen of scroll -
+     same device as the loop band in B6 */
+  #main-section.aether .conswrap{height:220vh}
+  #main-section.aether .consstick{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;padding:clamp(20px,4vh,48px) 0}
+  /* a stock rail: the four consoles run down the left edge as vertical tabs and
+     the whole panel takes the selected console's hue, so switching consoles
+     reads as switching material rather than as switching a tab strip. */
+  #main-section.aether .shell{--ac:var(--c1);margin-top:clamp(34px,3vw,48px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,2.2vw,34px);align-items:stretch;border-radius:24px;padding:clamp(20px,2.4vw,38px);background:color-mix(in srgb,var(--ac) 14%,var(--srf2));transition:background-color .55s var(--ez)}
+  /* dark needs a heavier pour of the hue to read as a tint at all */
+  #main-section.aether[data-theme="dark"] .shell{background:color-mix(in srgb,var(--ac) 24%,var(--srf2))}
+  #main-section.aether .picks{display:flex;flex-direction:column;gap:6px;width:clamp(46px,3.4vw,56px);margin:0}
+  #main-section.aether .pick{flex:1;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;border:1.5px solid transparent;border-radius:100px;padding:20px 4px;font-size:13px;font-weight:600;color:var(--ink2);transition:color .25s var(--ez),border-color .25s var(--ez)}
+  #main-section.aether .pick:hover{color:var(--ink);border-color:color-mix(in srgb,var(--ink) 20%,transparent)}
+  #main-section.aether .pick[aria-selected="true"]{color:var(--ink);font-weight:700;border-color:currentColor}
+  #main-section.aether .shell-in{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(20px,2.8vw,44px);align-items:center}
+  #main-section.aether .blurb h3{font-size:clamp(25px,2.5vw,34px);line-height:1.14;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
+  #main-section.aether .blurb p{font-size:15.5px;line-height:1.6;color:var(--ink2);margin-top:14px!important;max-width:36ch}
+  #main-section.aether .blurb .src{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;color:var(--ink);margin-top:20px!important;padding-top:15px!important;border-top:1px solid color-mix(in srgb,var(--ac) 45%,transparent)}
+  #main-section.aether .blurb .src i{width:9px;height:9px;border-radius:50%;background:var(--ac);flex:none}
+  /* a monitor: same frame gradient and rim light as the handset and the agent
+     transcript, so every mockup on the page is the same hardware family */
+  #main-section.aether .bezel{position:relative;border:0;border-radius:18px;padding:clamp(10px,1.4vw,16px);margin-bottom:36px;background:linear-gradient(155deg,#46586B,#0D1927 42%,#31414F);box-shadow:var(--sh-shell),inset 0 0 0 1px rgba(255,255,255,.16)}
+  #main-section.aether .bezel::before{content:"";position:absolute;left:50%;bottom:-22px;transform:translateX(-50%);width:102px;height:23px;background:linear-gradient(180deg,#2F3F4E,#1B2A38)}
+  #main-section.aether .bezel::after{content:"";position:absolute;left:50%;bottom:-28px;transform:translateX(-50%);width:216px;height:8px;border-radius:100px;background:linear-gradient(180deg,#3B4C5C,#22323F)}
+  /* one screen, one size: the four consoles stack in a single grid cell, so
+     the glass is as tall as the tallest of them and stays that height while
+     you switch. Nothing scrolls inside it and nothing is cropped. */
+  #main-section.aether .cscreen{background:var(--mk);border:0;border-radius:11px;overflow:hidden;display:flex;flex-direction:column;min-height:380px;max-width:100%}
+  #main-section.aether .cscroll{overflow:hidden;flex:1;min-height:0;display:grid}
+  #main-section.aether .panes>*,#main-section.aether .blurbs>*{grid-area:1/1;min-width:0}
+  /* the inactive console keeps its space but leaves the accessibility tree */
+  #main-section.aether .pane,#main-section.aether .blurb{visibility:hidden;opacity:0;pointer-events:none}
+  #main-section.aether .pane.on,#main-section.aether .blurb.on{visibility:visible;opacity:1;pointer-events:auto}
+  #main-section.aether .blurbs{display:grid;align-items:center}
+  /* a cross-fade, not a slide: a transform on the stacked panes would push the
+     grid cell past the glass it sits in */
+  @media not (prefers-reduced-motion:reduce){
+    #main-section.aether .pane,#main-section.aether .blurb{transition:opacity .34s var(--ez)}
+  }
+  #main-section.aether .cbar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--mk-line2);background:var(--mk-2);flex-wrap:wrap}
+  #main-section.aether .cbar h3{font-size:13.5px;font-weight:700;color:var(--mk-ink)}
+  #main-section.aether .cbar .sp{flex:1}
+  #main-section.aether .cbar .tag{font-size:11px;font-weight:600;color:var(--mk-mut);border:1px solid var(--mk-line2);border-radius:100px;padding:3px 10px}
+  #main-section.aether .cbody{padding:18px;min-width:560px}
+  #main-section.aether .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  #main-section.aether .kpi{border:1px solid var(--mk-line2);border-radius:9px;padding:12px 13px;box-shadow:var(--sh-micro);background:var(--mk)}
+  #main-section.aether .kpi .v{font-size:22px;font-weight:800;color:var(--mk-ink);letter-spacing:-.02em;line-height:1.1;font-variant-numeric:tabular-nums}
+  #main-section.aether .kpi .l{font-size:11px;color:var(--mk-mut);margin-top:5px!important}
+  #main-section.aether .kpi .d{font-size:11px;font-weight:700;margin-top:6px!important}
+  #main-section.aether .kpi .d.up{color:var(--ok)}
+  #main-section.aether .kpi .d.dn{color:var(--bad)}
+  #main-section.aether .csplit{display:grid;grid-template-columns:1.35fr 1fr;gap:14px;margin-top:14px;align-items:start}
+  #main-section.aether .csplit.wr{grid-template-columns:1fr 1.3fr}
+  #main-section.aether .panel{border:1px solid var(--mk-line2);border-radius:9px;padding:14px;background:var(--mk)}
+  #main-section.aether .panel .ph{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:14px}
+  #main-section.aether .panel .ph h4{font-size:12px;font-weight:700;color:var(--mk-ink)}
+  #main-section.aether .panel .ph span{font-size:10.5px;color:var(--mk-mut)}
+  #main-section.aether .cols{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;align-items:end;height:132px}
+  #main-section.aether .col{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%}
+  #main-section.aether .col .stack{width:100%;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:2px}
+  #main-section.aether .col .b{width:100%;border-radius:0;background:var(--blue);flex:none}
+  #main-section.aether .col .stack>*:first-child{border-radius:4px 4px 0 0}
+  #main-section.aether .col .b.lo{background:var(--mk-selb)}
+  #main-section.aether .col .x{font-size:10px;color:var(--mk-mut)}
+  #main-section.aether .tbl{width:100%;border-collapse:collapse}
+  #main-section.aether .tbl th{font-size:10.5px;font-weight:700;color:var(--mk-mut);text-align:left;padding:0 10px 8px;border-bottom:1px solid var(--mk-line2);white-space:nowrap}
+  #main-section.aether .tbl td{font-size:12px;color:var(--mk-ink);padding:7px 10px;border-bottom:1px solid var(--mk-line2);white-space:nowrap}
+  #main-section.aether .tbl tr.sel td{background:var(--mk-sel)}
+  #main-section.aether .tbl tr.sel td:first-child{box-shadow:inset 2px 0 0 var(--blue)}
+  #main-section.aether .tbl td.num{text-align:right;font-variant-numeric:tabular-nums}
+  #main-section.aether .pill{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:600;border-radius:100px;padding:3px 9px;border:1px solid var(--mk-line2);color:var(--mk-mut)}
+  #main-section.aether .pill.ok{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 35%,transparent);background:color-mix(in srgb,var(--ok) 8%,transparent)}
+  #main-section.aether .pill.bad{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 34%,transparent);background:color-mix(in srgb,var(--bad) 8%,transparent)}
+  #main-section.aether .pill.warn{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 30%,transparent);background:color-mix(in srgb,var(--warn) 7%,transparent)}
+  #main-section.aether .alist{display:grid;gap:9px}
+  #main-section.aether .alert{border:1px solid var(--mk-line2);border-radius:8px;padding:10px 11px;box-shadow:var(--sh-micro);background:var(--mk)}
+  #main-section.aether .alert .t{font-size:12px;font-weight:600;color:var(--mk-ink);line-height:1.4}
+  #main-section.aether .alert .m{font-size:10.5px;color:var(--mk-mut);margin-top:5px!important}
+  #main-section.aether .spark{width:100%;height:44px;display:block}
+  #main-section.aether .safe{background:var(--navy);border-radius:18px;margin-top:22px;padding:30px clamp(20px,3vw,36px);display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+  #main-section.aether .safe .eyb{color:var(--navy-acc)}
+  #main-section.aether .safe h3{font-size:24px;font-weight:700;color:#fff;letter-spacing:-.02em;margin-top:10px!important}
+  #main-section.aether .safe ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 26px;margin-top:18px!important}
+  #main-section.aether .safe li{display:flex;gap:9px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.82);line-height:1.45}
+  #main-section.aether .safe li svg{width:16px;height:16px;color:var(--navy-acc);flex:none;margin-top:2px}
+  #main-section.aether .safe .btn.gho,#main-section.aether .cta .btn.gho{background:transparent;border-color:rgba(255,255,255,.28);color:#fff!important}
+  #main-section.aether .safe .btn.gho:hover,#main-section.aether .cta .btn.gho:hover{border-color:var(--navy-acc)}
+
+  /* ================= B8 - IN YOUR POCKET ================= */
+  /* one row: the brief on the left, the three features between, the approval
+     on the right - both devices read against the same copy */
+  #main-section.aether .appgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) minmax(0,1fr);gap:clamp(26px,2.6vw,48px);align-items:center;margin-top:clamp(34px,3vw,48px)}
+  #main-section.aether .dev .acts{margin:0 12px 12px;flex:none}
+  /* the handset: an actual device - frame, keys, status bar, home indicator.
+     Its screen keeps the product's own colour language (blue ask bar, status
+     hues on the rows); the page accents stop at the device edge. */
+  #main-section.aether .dev{position:relative;width:298px;max-width:100%;margin:0 auto;padding:11px;border-radius:46px;background:linear-gradient(155deg,#46586B,#0D1927 42%,#31414F);box-shadow:var(--sh-shell),inset 0 0 0 1px rgba(255,255,255,.16)}
+  #main-section.aether .dev-k{position:absolute;width:3px;border-radius:4px;background:linear-gradient(180deg,#5A6B7C,#243441)}
+  #main-section.aether .dev-k.a{left:-3px;top:92px;height:26px}
+  #main-section.aether .dev-k.b{left:-3px;top:130px;height:48px}
+  #main-section.aether .dev-k.c{right:-3px;top:146px;height:66px}
+  #main-section.aether .dev-sc{position:relative;display:flex;flex-direction:column;aspect-ratio:9/18.6;background:var(--mk);border-radius:36px;overflow:hidden}
+  #main-section.aether .dev-isle{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:76px;height:22px;border-radius:100px;background:#0B1420;z-index:3}
+  #main-section.aether .dev-bar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:12px 18px 8px;font-size:11.5px;font-weight:700;color:var(--mk-ink);font-variant-numeric:tabular-nums}
+  #main-section.aether .dev-bar svg{width:46px;height:11px;color:var(--mk-ink)}
+  #main-section.aether .dev-home{flex:none;width:106px;height:4px;border-radius:100px;background:var(--mk-mut);opacity:.45;margin:0 auto 9px}
+  #main-section.aether .ph-top{padding:8px 16px 12px;border-bottom:1px solid var(--mk-line2)}
+  #main-section.aether .ph-top .t{font-size:10px;color:var(--mk-mut);letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+  #main-section.aether .ph-top h4{font-size:15px;font-weight:700;color:var(--mk-ink);margin-top:6px!important}
+  #main-section.aether .ph-list{padding:12px;flex:1;align-content:start}
+  #main-section.aether .ph-row{border:0;border-radius:16px;padding:11px 13px;background:color-mix(in srgb,var(--mk-mut) 11%,transparent)}
+  #main-section.aether .ph-row+.ph-row{margin-top:8px}
+  #main-section.aether .ph-row.sel{background:color-mix(in srgb,var(--bad) 11%,transparent);box-shadow:inset 2.5px 0 0 var(--bad)}
+  #main-section.aether .ph-row .rh{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  #main-section.aether .ph-row .id{font-size:10.5px;font-family:var(--mono);color:var(--mk-mut)}
+  #main-section.aether .ph-row .tt{font-size:12.5px;font-weight:600;color:var(--mk-ink);margin-top:6px!important;line-height:1.4}
+  #main-section.aether .ph-row .mm{font-size:10.5px;color:var(--mk-mut);margin-top:5px!important}
+  #main-section.aether .ph-ask{flex:none;margin:0 12px 12px;border:0;border-radius:100px;padding:11px 15px;display:flex;align-items:center;gap:8px;background:color-mix(in srgb,var(--blue) 13%,transparent)}
+  #main-section.aether .ph-ask span{font-size:11.5px;color:var(--mk-mut)}
+  #main-section.aether .ph-ask svg{width:14px;height:14px;color:var(--blue);flex:none}
+  @media not (prefers-reduced-motion:reduce){
+    #main-section.aether .rv.in .ph-row{animation:aerow .5s var(--ez) both}
+    #main-section.aether .rv.in .ph-row:nth-child(2){animation-delay:.15s}
+    #main-section.aether .rv.in .ph-row:nth-child(3){animation-delay:.3s}
+    #main-section.aether .rv.in .ph-row.sel::after{animation:aesel 3.6s var(--ez) 1s infinite}
+    #main-section.aether .ph-top .t .live{animation:aelive 2.8s var(--ez) infinite}
+    #main-section.aether .ph-ask span::after{animation:aecaret 1.1s steps(1) infinite}
+    #main-section.aether .acts.press .act.go::after{animation:aeglow .9s var(--ez)}
+    #main-section.aether .okbar{animation:aerow .4s var(--ez) both}
+    @keyframes aerow{from{opacity:0;transform:translateY(11px)}to{opacity:1;transform:none}}
+    @keyframes aesel{0%,100%{transform:scale(.99);opacity:0}52%{transform:scale(1);opacity:1}}
+    @keyframes aelive{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 55%,transparent)}62%{box-shadow:0 0 0 6px transparent}}
+    @keyframes aecaret{0%,50%{opacity:1}51%,100%{opacity:0}}
+    @keyframes aeglow{0%{transform:scale(.96);opacity:.9}62%,100%{transform:scale(1.05);opacity:0}}
+  }
+  #main-section.aether .ph-top .t{display:flex;align-items:center;gap:6px}
+  #main-section.aether .ph-top .t .live{width:5px;height:5px;border-radius:50%;background:var(--ok);flex:none}
+  #main-section.aether .ph-ask span{position:relative;min-height:1.05em}
+  #main-section.aether .ph-ask.typing span{color:var(--mk-ink)}
+  #main-section.aether .ph-ask span::after{content:"";position:absolute;right:-4px;bottom:1px;width:1.5px;height:.92em;background:var(--blue)}
+  #main-section.aether .ph-row.sel,#main-section.aether .dev .act.go{position:relative}
+  #main-section.aether .dev .act{transition:transform .18s var(--ez),background-color .2s var(--ez),border-color .2s var(--ez)}
+  #main-section.aether .acts.press .act.go{transform:scale(.94)}
+  #main-section.aether .acts.press .act{opacity:.55}
+  #main-section.aether .okbar{display:flex;align-items:center;gap:8px;flex:none;margin:0 12px 12px;padding:11px 15px;border-radius:100px;font-size:11.5px;font-weight:600;line-height:1.35;color:var(--ok);background:color-mix(in srgb,var(--ok) 13%,transparent)}
+  #main-section.aether .okbar svg{width:14px;height:14px;flex:none;stroke:currentColor}
+  #main-section.aether .okbar[hidden],#main-section.aether .acts[hidden]{display:none}
+  #main-section.aether .ph-row.sel::after{content:"";position:absolute;inset:-3px;border-radius:19px;box-shadow:0 0 0 2px color-mix(in srgb,var(--bad) 24%,transparent);opacity:0;pointer-events:none}
+  #main-section.aether .dev .act.go::after{content:"";position:absolute;inset:0;border-radius:100px;box-shadow:0 0 0 5px color-mix(in srgb,var(--blue) 26%,transparent);opacity:0;pointer-events:none}
+  #main-section.aether .frows{display:grid;gap:26px}
+  #main-section.aether .frow{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+  #main-section.aether .frow .ic{width:44px;height:44px;border-radius:50%;background:var(--ac);display:grid;place-items:center}
+  #main-section.aether .frow .ic svg{width:21px;height:21px;color:#fff}
+  #main-section.aether[data-theme="dark"] .frow .ic svg,#main-section.aether[data-theme="dark"] .afeat .ic svg{color:var(--navy)}
+  #main-section.aether .frow h3{font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  #main-section.aether .frow ul{margin-top:10px!important;display:grid;gap:6px}
+  #main-section.aether .frow li{font-size:15px;color:var(--ink2);line-height:1.5;padding-left:16px!important;position:relative}
+  #main-section.aether .frow li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--ac)}
+
+  /* ================= B9 - AGENT LAYER ================= */
+  #main-section.aether .agent{display:grid;grid-template-columns:1.04fr 1fr;gap:49px;align-items:center;margin-top:clamp(34px,3vw,48px)}
+  /* the transcript sits in a real screen: bezel, chrome bar, then the app */
+  #main-section.aether .chat{padding:10px;border-radius:20px;border:0;background:linear-gradient(155deg,#46586B,#0D1927 42%,#31414F);box-shadow:var(--sh-shell),inset 0 0 0 1px rgba(255,255,255,.16)}
+  #main-section.aether .chat .win{border-radius:12px}
+  #main-section.aether .chat-body{padding:18px}
+  #main-section.aether .chat .hbars{margin-top:14px}
+  #main-section.aether .chat .out-head{margin-top:16px;margin-bottom:10px}
+  /* the watch re-reads on a loop: the dot pings, the bars slide, the numbers follow */
+  #main-section.aether .chat.beat .src-bar .dot{animation:aeping 1.3s var(--ez)}
+  @keyframes aeping{from{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 55%,transparent)}to{box-shadow:0 0 0 10px transparent}}
+  @media (prefers-reduced-motion:reduce){#main-section.aether .hbar .t i{transition:none}}
+  #main-section.aether .msg{display:grid;grid-template-columns:60px 1fr;gap:12px;align-items:start}
+  #main-section.aether .msg+.msg{margin-top:16px}
+  #main-section.aether .msg .who{padding-top:2px}
+  #main-section.aether .msg .say{font-size:14.5px;color:var(--mk-ink);line-height:1.55}
+  #main-section.aether .msg .say b{font-weight:700}
+  #main-section.aether .msg .say .hi{color:var(--blue);font-weight:700}
+  #main-section.aether .acts{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+  #main-section.aether .act{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;border-radius:100px;padding:8px 14px;border:1px solid var(--mk-line);color:var(--mk-ink);background:var(--mk);transition:border-color .2s var(--ez)}
+  #main-section.aether .act.go{background:var(--blue);border-color:var(--blue);color:#fff}
+  #main-section.aether .act svg{width:13px;height:13px}
+  #main-section.aether .act:hover{border-color:var(--blue)}
+  #main-section.aether .afeat{display:grid;gap:28px;align-content:center}
+  #main-section.aether .afeat h3{font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  #main-section.aether .afeat p{font-size:15px;color:var(--ink2);margin-top:8px!important;line-height:1.55}
+  #main-section.aether .afeat>div{display:grid;grid-template-columns:34px minmax(0,1fr);column-gap:13px;align-items:center}
+  #main-section.aether .afeat p{grid-column:2}
+  #main-section.aether .afeat .ic{width:34px;height:34px;border-radius:50%;background:var(--ac);display:grid;place-items:center}
+  #main-section.aether .afeat .ic svg{width:17px;height:17px;color:#fff}
+  /* the workspace plays one scene when the row is read: the question types itself,
+     then the answer builds a line at a time. the bubble keeps its box while hidden,
+     so the four points beside it never shift. */
+  @media not (prefers-reduced-motion:reduce){
+    #main-section.aether .chat.tw .say.q::after{content:"";display:inline-block;width:1.5px;height:.92em;margin-left:3px;vertical-align:-2px;background:var(--blue);animation:aecaret 1.1s steps(1) infinite}
+    #main-section.aether .chat.tw.done .say.q::after{display:none}
+    #main-section.aether .chat.tw .msg.ans{visibility:hidden}
+    #main-section.aether .chat.tw.done .msg.ans{visibility:visible}
+    #main-section.aether .chat.tw.done .msg.ans>.who,#main-section.aether .chat.tw.done .msg.ans>div>*{animation:aerow .5s var(--ez) both}
+    #main-section.aether .chat.tw.done .msg.ans>div>.say{animation-delay:.08s}
+    #main-section.aether .chat.tw.done .msg.ans>div>.out-head{animation-delay:.2s}
+    #main-section.aether .chat.tw.done .msg.ans>div>.hbars{animation-delay:.3s}
+    #main-section.aether .chat.tw.done .msg.ans>div>.acts{animation-delay:.4s}
+    #main-section.aether .chat.tw.done .msg.ans>div>.prov{animation-delay:.5s}
+    /* the four points read one at a time next to it, not as one block. slower and
+       wider apart than the page default - they are read, not glanced at. */
+    #main-section.aether .afeat.stg>*{transition-duration:.85s}
+    #main-section.aether .afeat.stg.in>*:nth-child(2){transition-delay:.26s}
+    #main-section.aether .afeat.stg.in>*:nth-child(3){transition-delay:.52s}
+    #main-section.aether .afeat.stg.in>*:nth-child(4){transition-delay:.78s}
+    /* the four problems and the three floor capabilities slide in from the side,
+       one at a time and slower than the page default - each is a claim to read. */
+    #main-section.aether .probs.stg>*,#main-section.aether .frows.stg>*{transform:translateX(-24px);transition-duration:.9s}
+    /* not redundant with .stg.in>* above: same specificity, and the line above this
+       one is later in source - drop this and the cards stay parked at -24px. */
+    #main-section.aether .probs.stg.in>*,#main-section.aether .frows.stg.in>*{transform:none}
+    #main-section.aether .probs.stg.in>*:nth-child(2),#main-section.aether .frows.stg.in>*:nth-child(2){transition-delay:.3s}
+    #main-section.aether .probs.stg.in>*:nth-child(3),#main-section.aether .frows.stg.in>*:nth-child(3){transition-delay:.6s}
+    #main-section.aether .probs.stg.in>*:nth-child(4){transition-delay:.9s}
+  }
+
+  /* ================= B10 - CASE STUDIES ================= */
+  #main-section.aether .cases{display:grid;grid-template-columns:repeat(2,1fr);margin-top:clamp(34px,3vw,48px)}
+  #main-section.aether .case{display:flex;flex-direction:column;align-items:center;text-align:center;padding:4px clamp(24px,3.6vw,58px)}
+  #main-section.aether .case+.case{border-left:1px solid var(--line)}
+  #main-section.aether .case .tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  #main-section.aether .case .tags span{font-size:11.5px;font-weight:600;color:var(--blue);border:1px solid color-mix(in srgb,var(--blue) 32%,transparent);background:color-mix(in srgb,var(--blue) 7%,transparent);border-radius:100px;padding:4px 11px}
+  #main-section.aether .case h3{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.015em;margin-top:18px!important;line-height:1.3;max-width:24ch}
+  #main-section.aether .case p{font-size:15px;color:var(--ink2);margin-top:12px!important;line-height:1.6;max-width:46ch}
+  #main-section.aether .case>p:first-of-type{flex:1}
+  /* the figure is what the column is for: brand blue under the brand rule */
+  #main-section.aether .case .fig-n{font-size:56px;font-weight:800;color:var(--blue);letter-spacing:-.03em;line-height:1.05;margin-top:30px!important;padding-top:24px!important;border-top:2px solid var(--blue)}
+  #main-section.aether .case .fig-c{font-size:13.5px;color:var(--ink3);margin-top:7px!important;max-width:30ch}
+
+  /* ================= B11 - FAQ ================= */
+  #main-section.aether .faqs{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(26px,3.4vw,52px);margin-top:clamp(34px,3vw,48px);align-items:start}
+  #main-section.aether .faq{margin:0}
+  #main-section.aether .faq details{border-bottom:1px solid var(--line)}
+  #main-section.aether .faq summary{list-style:none;cursor:pointer;padding:18px 2px;font-size:16px;font-weight:700;letter-spacing:-.01em;color:var(--ink);display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+  #main-section.aether .faq summary::-webkit-details-marker{display:none}
+  #main-section.aether .faq summary .pm{flex:none;width:18px;height:18px;position:relative;margin-top:4px}
+  #main-section.aether .faq summary .pm::before,#main-section.aether .faq summary .pm::after{content:"";position:absolute;background:var(--blue);border-radius:2px;transition:transform .25s var(--ez)}
+  #main-section.aether .faq summary .pm::before{left:0;right:0;top:8px;height:2px}
+  #main-section.aether .faq summary .pm::after{top:0;bottom:0;left:8px;width:2px}
+  #main-section.aether .faq details[open] summary .pm::after{transform:scaleY(0)}
+  #main-section.aether .faq details p{font-size:15px;color:var(--ink2);line-height:1.65;padding:0 44px 22px 2px!important}
+
+  /* ================= B12 - CLOSING CTA =================
+     The close runs edge to edge: what to bring on a navy half, the plant it came
+     from on the other. No wrap, so the two halves meet in the middle of the page. */
+  #main-section.aether .cta{padding:0;background:var(--navy)}
+  #main-section.aether .cta-in{display:grid;grid-template-columns:1fr 1fr}
+  #main-section.aether .cta-copy{max-width:calc(var(--wrap)/2);margin-left:auto;padding:clamp(56px,6.4vw,96px) clamp(26px,3.4vw,60px) clamp(56px,6.4vw,96px) 0}
+  #main-section.aether .cta .eyb{color:var(--navy-acc)}
+  #main-section.aether .cta .shead h2{color:#fff}
+  #main-section.aether .cta .shead h2 em{color:var(--navy-acc)}
+  #main-section.aether .cta .lede{color:rgba(255,255,255,.72)}
+  #main-section.aether .ex{margin-top:26px!important;display:grid;gap:11px}
+  #main-section.aether .ex li{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:rgba(215,236,246,.9)}
+  #main-section.aether .ex li svg{width:16px;height:16px;color:var(--navy-acc);flex:none;margin-top:3px}
+  #main-section.aether .cta-med{position:relative;overflow:hidden;background:var(--navy-2)}
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width:1560px){#main-section.aether .shell-in{grid-template-columns:minmax(0,1fr);gap:24px}}
+  @media (max-width:1180px){#main-section.aether .safe{grid-template-columns:1fr}#main-section.aether .appgrid{grid-template-columns:1fr;gap:44px}}
+  @media (max-width:1024px){
+    #main-section.aether{--wrap:min(1344px,92vw);--pad:clamp(44px,6vw,56px)}
+    #main-section.aether .hero h1{font-size:40px}
+    #main-section.aether .shead h2{font-size:34px}
+    #main-section.aether .hero-in,#main-section.aether .agent,#main-section.aether .chal{grid-template-columns:1fr;gap:44px}
+    #main-section.aether .cta-in{grid-template-columns:1fr}
+    #main-section.aether .cta-copy{max-width:var(--wrap);margin:0 auto;padding:64px 0}
+    #main-section.aether .cta-med{min-height:290px}
+    @media (max-width:899px){#main-section.aether .cta-med{display:none}}
+    #main-section.aether .roles,#main-section.aether .loop{grid-template-columns:repeat(2,1fr)}
+    #main-section.aether .caps{grid-template-columns:1fr;grid-template-rows:none}
+    #main-section.aether .cap{padding:0;display:flex;flex-direction:column;grid-row:auto}
+    #main-section.aether .cap+.cap{border-left:0;border-top:1px solid var(--line);margin-top:clamp(30px,4vw,44px);padding-top:clamp(30px,4vw,44px)}
+    #main-section.aether .cap-art{min-height:0;max-width:520px}
+    #main-section.aether .cap-body{padding-top:20px}
+    #main-section.aether .lp:nth-child(odd) .rail::before{display:none}
+    #main-section.aether .loopwrap{height:auto}
+    #main-section.aether .loopstick{position:static;min-height:0;padding:0}
+    #main-section.aether .conswrap{height:auto}
+    #main-section.aether .consstick{position:static;min-height:0;padding:0}
+    #main-section.aether .probs,#main-section.aether .cases,#main-section.aether .faqs{grid-template-columns:1fr}
+    #main-section.aether .case{padding:0}
+    #main-section.aether .case+.case{border-left:0;border-top:1px solid var(--line);margin-top:44px;padding-top:44px}
+    #main-section.aether .figs{grid-template-columns:repeat(3,1fr)}
+    #main-section.aether .conn-in{grid-template-columns:1fr;gap:20px}
+    #main-section.aether .csplit,#main-section.aether .csplit.wr{grid-template-columns:1fr}
+    #main-section.aether .cbody{min-width:0}
+    #main-section.aether .tbl th,#main-section.aether .tbl td{white-space:normal}
+    #main-section.aether .kpis{grid-template-columns:repeat(auto-fit,minmax(124px,1fr))}
+    #main-section.aether .cta{padding-top:72px}
+    #main-section.aether .rig{margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:end;gap:38px 16px;padding:0 0 12px}
+    #main-section.aether .mon{grid-column:1/-1;margin-bottom:28px}
+    #main-section.aether .mon2{position:relative;left:auto;bottom:auto;width:auto}
+    #main-section.aether .hand{position:relative;right:auto;bottom:auto;width:auto;justify-self:end}
+  }
+  @media (max-width:767px){
+    #main-section.aether{--wrap:min(1344px,90vw);--pad:40px}
+    #main-section.aether .hero h1{font-size:32px;max-width:none}
+    #main-section.aether .shead h2{font-size:27px}
+    #main-section.aether .roles,#main-section.aether .loop{grid-template-columns:1fr}
+    #main-section.aether .loop{gap:40px}
+    #main-section.aether .lp .rail{margin:16px 0 18px}
+    #main-section.aether .lp .rail::before{display:none}
+    #main-section.aether .shell{grid-template-columns:minmax(0,1fr);gap:16px;padding:18px;border-radius:18px}
+    #main-section.aether .picks{flex-direction:row;flex-wrap:wrap;width:auto;gap:8px}
+    #main-section.aether .pick{flex:none;writing-mode:horizontal-tb;transform:none;padding:9px 15px;border-color:var(--line)}
+    #main-section.aether .lp .lb{font-size:34px}
+    #main-section.aether .figs{grid-template-columns:repeat(2,1fr)}
+    #main-section.aether .logos .lg{width:132px;height:62px}
+    #main-section.aether .logos img{max-width:98px;max-height:36px}
+    #main-section.aether .fig .num{font-size:34px}
+      #main-section.aether .msg{grid-template-columns:1fr;gap:6px}
+    #main-section.aether .safe ul{grid-template-columns:1fr}
+    #main-section.aether .btn{width:100%;justify-content:center}
+    #main-section.aether .sn-name,#main-section.aether .sn-cta{display:none}
+    #main-section.aether .subnav-in{padding:6px 0}
+    #main-section.aether section[id]{scroll-margin-top:62px}
+    #main-section.aether .btns{gap:10px}
+    #main-section.aether .frow{grid-template-columns:1fr;gap:12px}
+    #main-section.aether .bezel{padding:8px}
+    #main-section.aether .cbody{padding:12px}
+    #main-section.aether .tbl{table-layout:fixed}
+    #main-section.aether .tbl th:last-child{width:34%}
+    #main-section.aether .tbl .pill{font-size:9.5px;padding:2px 7px}
+    #main-section.aether .tbl td{white-space:normal;padding:5px;font-size:10.5px}
+    #main-section.aether .tbl th{white-space:normal;padding:0 5px 6px;font-size:9.5px}
+    #main-section.aether .case .fig-n{font-size:42px}
+    /* the rig at phone width: the screens keep their shape, so the dashboard
+       inside them compacts rather than getting cropped in half */
+    #main-section.aether .rig .cbar{padding:7px 9px;gap:6px}
+    #main-section.aether .rig .cbar h3{font-size:11px}
+    #main-section.aether .rig .cbar .tag{display:none}
+    #main-section.aether .rig .win-bar{padding:6px 9px}
+    #main-section.aether .rig .win-bar span{font-size:8px}
+    #main-section.aether .mon-sc .chat-body{padding:9px}
+    #main-section.aether .mon-sc .msg .say{font-size:10.5px}
+    #main-section.aether .mon-sc .who{font-size:7px;letter-spacing:.06em}
+    #main-section.aether .mon-sc .src-bar{padding:5px 9px;gap:6px}
+    #main-section.aether .mon-sc .src-bar .lbl{font-size:8px}
+    #main-section.aether .mon-sc .src-bar .src{font-size:7px;padding:1px 5px}
+    #main-section.aether .sql{font-size:7.5px;padding:6px 8px;margin-top:8px;border-radius:5px}
+    #main-section.aether .mon-sc .prov{font-size:7.5px;padding-top:6px;margin-top:8px}
+    #main-section.aether .mds{padding:8px}
+    #main-section.aether .mds .kpis{gap:5px}
+    #main-section.aether .mds .kpi{padding:6px 7px;border-radius:6px}
+    #main-section.aether .mds .kpi .v{font-size:13px}
+    #main-section.aether .mds .kpi .l{font-size:8px;margin-top:2px!important}
+    #main-section.aether .mds .kpi .d{font-size:8px;margin-top:2px!important}
+    #main-section.aether .mds .panel{margin-top:7px;padding:8px;border-radius:6px}
+    #main-section.aether .mds .panel .ph{margin-bottom:7px}
+    #main-section.aether .mds .panel .ph h4{font-size:9px}
+    #main-section.aether .mds .panel .ph span,#main-section.aether .mds .prov{display:none}
+    #main-section.aether .mds .cols{height:30px;gap:5px}
+    #main-section.aether .mds .col .x{font-size:7px}
+    #main-section.aether .mon2 .kpi{padding:5px 6px}
+    #main-section.aether .mon2 .kpi .v{font-size:10px}
+    #main-section.aether .mon2 .kpi .l,#main-section.aether .mon2 .kpi .d{font-size:7px}
+  }
+  @media (max-width:480px){
+    #main-section.aether .figs{grid-template-columns:1fr}
+    #main-section.aether .faq summary{font-size:16px}
+  }
+
+  /* ================= CTA POPUP (ported from aether-landing.v1.html) =================
+     Deliberately NOT scoped to #main-section: the script moves this node to
+     <body> so a transformed Elementor ancestor cannot break position:fixed.
+     It therefore carries its own tokens and !important, the same way the rest
+     of this file defends itself against the parent theme.
+     ================================================================ */
+  .ae-schd{--sc-card:#FFFFFF;--sc-srf:#F4F7FA;--sc-ink:#1F2023;--sc-ink2:rgba(0,0,0,.70);--sc-line:#EAEAEA;--sc-blue:#0083C8;--sc-wash:#EDF7FC;--sc-ff:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--sc-ez:cubic-bezier(.2,0,0,1);position:fixed!important;inset:0!important;z-index:999999!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:20px!important;margin:0!important;background:rgba(13,27,46,.62)!important;-webkit-backdrop-filter:blur(6px)!important;backdrop-filter:blur(6px)!important;opacity:0!important;visibility:hidden!important;transition:opacity .25s var(--sc-ez),visibility .25s var(--sc-ez)!important;font-family:var(--sc-ff)!important;color:var(--sc-ink)!important;line-height:1.6!important}
+  .ae-schd[data-theme="dark"]{--sc-card:#122C44;--sc-srf:#0E2438;--sc-ink:#FFFFFF;--sc-ink2:rgba(215,236,246,.82);--sc-line:rgba(255,255,255,.13);--sc-blue:#39A8DE;--sc-wash:rgba(0,131,200,.16)}
+  .ae-schd[hidden]{display:flex!important}
+  .ae-schd.is-open{opacity:1!important;visibility:visible!important}
+  .ae-schd,.ae-schd *,.ae-schd *::before,.ae-schd *::after{box-sizing:border-box}
+  .ae-schd-panel{position:relative!important;width:100%!important;max-width:480px!important;max-height:88vh!important;overflow-y:auto!important;background:var(--sc-card)!important;color:var(--sc-ink)!important;border-radius:24px!important;border:1px solid var(--sc-line)!important;box-shadow:0 40px 90px -30px rgba(0,0,0,.6)!important;padding:clamp(24px,4vw,36px)!important;transform:translateY(18px) scale(.98)!important;transition:transform .28s var(--sc-ez)!important}
+  .ae-schd.is-open .ae-schd-panel{transform:none!important}
+  .ae-schd-close{position:absolute!important;top:14px!important;right:14px!important;width:34px!important;height:34px!important;padding:0!important;border-radius:50%!important;display:grid!important;place-items:center!important;background:var(--sc-srf)!important;border:1px solid var(--sc-line)!important;color:var(--sc-ink)!important;cursor:pointer!important;transition:background-color .2s var(--sc-ez),border-color .2s var(--sc-ez)!important}
+  .ae-schd-close:hover{background:var(--sc-wash)!important;border-color:var(--sc-blue)!important}
+  .ae-schd-close svg{width:15px!important;height:15px!important;display:block!important}
+  .ae-schd-head{padding-right:36px!important;margin-bottom:22px!important}
+  .ae-schd-head .eyb{display:flex!important;align-items:center!important;gap:9px!important;margin:0 0 10px!important;padding:0!important;font-size:12px!important;font-weight:700!important;letter-spacing:.17em!important;text-transform:uppercase!important;color:var(--sc-blue)!important}
+  .ae-schd-head .eyb::before{content:""!important;width:22px!important;height:2px!important;border-radius:2px!important;background:currentColor!important;flex:none!important}
+  .ae-schd-head h3{font-size:24px!important;font-weight:700!important;letter-spacing:-.02em!important;line-height:1.2!important;margin:0 0 8px!important;padding:0!important;color:var(--sc-ink)!important}
+  .ae-schd-head p{font-size:14px!important;line-height:1.6!important;color:var(--sc-ink2)!important;margin:0!important;padding:0!important}
+  .ae-schd-form{width:100%!important}
+  .ae-schd-form .frm_forms,.ae-schd-form .elementor-widget-shortcode{max-width:100%!important;margin:0!important}
+  .ae-schd-form input[type=text],.ae-schd-form input[type=email],.ae-schd-form input[type=tel],.ae-schd-form input[type=number],.ae-schd-form input[type=url],.ae-schd-form select,.ae-schd-form textarea{font-family:var(--sc-ff)!important;font-size:15px!important;padding:12px 15px!important;border-radius:100px!important;border:1px solid var(--sc-line)!important;background:var(--sc-srf)!important;color:var(--sc-ink)!important;width:100%!important}
+  .ae-schd-form textarea{border-radius:12px!important;resize:vertical!important}
+  .ae-schd-form label{font-size:13px!important;font-weight:600!important;color:var(--sc-ink2)!important}
+  .ae-schd-form .frm_submit button,.ae-schd-form button[type=submit],.ae-schd-form input[type=submit]{background:var(--sc-blue)!important;color:#fff!important;border:0!important;border-radius:100px!important;font-family:var(--sc-ff)!important;font-weight:700!important;font-size:15px!important;padding:14px 26px!important;cursor:pointer!important;width:auto!important}
+  .ae-schd-empty{font-size:14px!important;line-height:1.6!important;color:var(--sc-ink2)!important;margin:0!important;padding:0!important}
+  .ae-schd-empty a{color:var(--sc-blue)!important;font-weight:600!important;text-decoration:none!important}
+  .ae-schd :focus-visible{outline:2px solid var(--sc-blue)!important;outline-offset:3px!important;border-radius:4px}
+  @media (max-width:520px){.ae-schd{padding:12px!important}.ae-schd-panel{max-height:92vh!important}}
+  @media (prefers-reduced-motion:reduce){.ae-schd{transition:none!important}.ae-schd-panel{transform:none!important;transition:none!important}}
+</style>
+
+<section id="main-section" class="aether" data-theme="light">
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <g id="ae-arr" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></g>
+  <g id="ae-chk" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12.5 5 5L20 6.5"/></g>
+  <g id="ae-plug" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v5M15 3v5"/><path d="M6 8h12v3a6 6 0 0 1-6 6 6 6 0 0 1-6-6z"/><path d="M12 17v4"/></g>
+  <g id="ae-ask" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H7l-4 3v-6.5A8 8 0 0 1 11 4h2a8 8 0 0 1 8 8z"/><path d="M9.6 9.8a2.4 2.4 0 1 1 3.4 2.2v1.4"/><path d="M13 16.4h.01"/></g>
+  <g id="ae-eye" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></g>
+  <g id="ae-chart" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M8 20v-6M13 20V9M18 20v-9"/></g>
+  <g id="ae-bolt" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></g>
+  <g id="ae-shield" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 20 6v6c0 4.6-3.3 7.9-8 9.2-4.7-1.3-8-4.6-8-9.2V6z"/><path d="m9 12 2 2 4-4"/></g>
+  <g id="ae-bell" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 1 0-12 0c0 5-2 6.5-2 6.5h16S18 14 18 9z"/><path d="M10.5 19a2 2 0 0 0 3 0"/></g>
+  <g id="ae-clock" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.3l3.4 2"/></g>
+  <g id="ae-cog" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.6v2.6M12 18.8v2.6M21.4 12h-2.6M5.2 12H2.6M18.6 5.4l-1.8 1.8M7.2 16.8l-1.8 1.8M18.6 18.6l-1.8-1.8M7.2 7.2 5.4 5.4"/></g>
+  <g id="ae-user" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></g>
+  <g id="ae-trend" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5 9 10l4 4 8-8.5"/><path d="M15 5.5h6v6"/></g>
+  <g id="ae-factory" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V10l6 3.5V10l6 3.5V6l6 3.5V20z"/><path d="M3 20h18"/></g>
+  <g id="ae-doc" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h6"/></g>
+  <g id="ae-lock" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10" width="15" height="10.5" rx="2.5"/><path d="M8 10V7.5a4 4 0 0 1 8 0V10"/></g>
+  </defs></svg>
+
+  <!-- ============ B0 · HERO ============ -->
+  <section class="band hero" id="top">
+    <div class="hero-bg" aria-hidden="true">
+      <!-- Backdrop: Pexels 7989709, 960x540 H.264, 2.5 MB - not the 1080p original
+           (8.5 MB); it runs dimmed at hero size, so the extra pixels do not show.
+           ON WP: upload the file to the media library and swap in the absolute
+           /wp-content/uploads/ URL; relative paths resolve against the page URL. -->
+      <video id="aeHeroVid" class="hero-vid" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1">
+        <source data-src="https://dev-website.ithena.app/wp-content/uploads/2026/09/aether-hero.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="wrap hero-in">
+      <div class="hero-copy">
+        <span class="eyb rv">Talk to your data</span>
+        <h1 class="rv">Ask your data a question. <em>Read the SQL it ran.</em></h1>
+        <p class="lede rv">Ithena&rsquo;s Aether connects to the systems you already run, turns a plain-language question into a query, and hands back the chart, the tables it read and the SQL itself. <b>Nothing to take on trust.</b></p>
+        <div class="btns rv">
+          <a class="btn pri" href="#trial" data-schedule-demo>See Ithena&rsquo;s Aether in Action <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-arr"/></svg></a>
+          <a class="btn sec" href="#consoles">See the consoles</a>
+        </div>
+        <div class="chips rv" style="margin-top:26px">
+          <span class="chip ac1">Connect</span><span class="chip ac2">Ask</span><span class="chip ac3">Verify</span><span class="chip ac4">Act</span>
+        </div>
+      </div>
+
+      <!-- The ask on the big screen, the console it produced on the laptop, the
+           alert it raised on the phone. The screens are assembled from parts the
+           rest of the page already uses (.win-bar .src-bar .msg .prov .cbar
+           .kpi .panel .cols .dev), so nothing here is a second implementation. -->
+      <div class="rig rv">
+
+        <div class="mon frame">
+          <div class="mon-sc">
+            <div class="win-bar"><img class="mk-logo" src="https://aether.ithena.app/_next/image?url=%2Flogos%2Fithena-logo.png&amp;w=32&amp;q=75" alt="" width="16" height="16" loading="lazy" decoding="async"><i></i><i></i><i></i><span>Ithena&rsquo;s Aether workspace &middot; ask</span></div>
+            <div class="src-bar">
+              <i class="dot"></i><span class="lbl">Cali plant &middot; last 7 days</span>
+              <span class="src">works_orders</span><span class="src">machine_events</span>
+            </div>
+            <div class="chat-body">
+              <div class="msg">
+                <div class="who">You</div>
+                <p class="say">Which line lost us the most output this week, and why?</p>
+              </div>
+              <div class="msg">
+                <div class="who">Ithena&rsquo;s Aether</div>
+                <div>
+                  <p class="say">Line 3 at Cali, <span class="hi">1,340 units</span> behind plan - 61% of the whole shortfall. Scrap on it ran at <span class="hi">4.8%</span> against a 2.1% norm, starting the shift after die set <b>D-22</b> went in on 14 May.</p>
+                  <div class="sql">select line, sum(planned - produced) as gap
+from works_orders
+where plant = 'CALI' and shift_date >= current_date - 7
+group by line order by gap desc</div>
+                  <div class="prov"><i class="dot"></i><span>Read <b>works_orders</b>, <b>machine_events</b> &middot; 12,880 rows &middot; 1.4 s &middot; no rows written</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mon2 frame" aria-hidden="true">
+          <div class="mon2-sc">
+            <div class="cbar"><img class="mk-logo" src="https://aether.ithena.app/_next/image?url=%2Flogos%2Fithena-logo.png&amp;w=32&amp;q=75" alt="" width="16" height="16" loading="lazy" decoding="async"><h3>Line performance</h3><i class="sp"></i><span class="tag">Shift A</span></div>
+            <div class="mds">
+              <div class="kpis">
+                <div class="kpi"><div class="v">71.4%</div><p class="l">OEE, 7 days</p><p class="d dn">&minus;4.2 pts</p></div>
+                <div class="kpi"><div class="v">8,412</div><p class="l">Units</p><p class="d up">+2.1%</p></div>
+                <div class="kpi"><div class="v">4.8%</div><p class="l">Scrap, L3</p><p class="d dn">2.1% normal</p></div>
+              </div>
+              <div class="panel">
+                <div class="ph"><h4>OEE by shift</h4><span>last 14 &middot; plan 78%</span></div>
+                <svg class="lchart" viewBox="0 0 260 78" aria-hidden="true">
+                  <path d="M0 25h260" stroke="var(--mk-selb)" stroke-width="1" stroke-dasharray="4 5" fill="none"/>
+                  <path d="M0 20 20 23 40 19 60 25 80 26 100 23 120 29 140 32 160 38 180 42 200 47 220 51 240 53 260 56 260 78 0 78Z" fill="var(--blue)" opacity=".12"/>
+                  <polyline points="0,20 20,23 40,19 60,25 80,26 100,23 120,29 140,32 160,38 180,42 200,47 220,51 240,53 260,56" fill="none" stroke="var(--blue)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="120" cy="29" r="4" fill="var(--mk)" stroke="var(--blue)" stroke-width="2"/>
+                  <circle cx="260" cy="56" r="4" fill="var(--bad)"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hand" aria-hidden="true">
+          <div class="dev">
+            <div class="dev-sc">
+              <span class="dev-isle"></span>
+              <div class="dev-bar"><span>7:41</span>
+                <svg viewBox="0 0 46 11" fill="none">
+                  <rect x="0" y="6.5" width="2.6" height="4.5" rx="1" fill="currentColor"/>
+                  <rect x="4.4" y="4.5" width="2.6" height="6.5" rx="1" fill="currentColor"/>
+                  <rect x="8.8" y="2.4" width="2.6" height="8.6" rx="1" fill="currentColor"/>
+                  <rect x="13.2" y="0.4" width="2.6" height="10.6" rx="1" fill="currentColor" opacity=".35"/>
+                  <rect x="32" y="1.6" width="12" height="7.6" rx="2.3" stroke="currentColor" stroke-width="1"/>
+                  <rect x="33.2" y="2.8" width="8.2" height="5.2" rx="1.4" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="ph-top">
+                <span class="t"><img class="mk-logo" src="https://aether.ithena.app/_next/image?url=%2Flogos%2Fithena-logo.png&amp;w=32&amp;q=75" alt="" width="16" height="16" loading="lazy" decoding="async"><i class="live" aria-hidden="true"></i>Cali &middot; Shift A</span>
+                <h4>Line performance</h4>
+              </div>
+              <div class="ph-list">
+                <div class="ph-row"><div class="rh"><span class="id">OEE</span></div><p class="tt">71.4%</p><p class="mm">&minus;4.2 pts vs plan</p></div>
+                <div class="ph-row sel"><div class="rh"><span class="id">Scrap L3</span><span class="pill bad">4.8%</span></div><p class="tt">Above its 2.4% ceiling</p><p class="mm">Nine shifts running</p></div>
+                <div class="ph-row"><div class="rh"><span class="id">Units</span></div><p class="tt">8,412</p><p class="mm">+2.1% vs plan</p></div>
+              </div>
+              <span class="dev-home"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B1 · PROOF STATS ============ -->
+  <section class="band stats">
+    <div class="wrap">
+      <div class="figs stg">
+        <div class="fig ac1"><div class="num" data-count="100" data-suffix="%">100%</div><p class="figcap">Answers that ship with the query and the sources behind them</p></div>
+        <div class="fig ac2"><div class="num" data-count="0">0</div><p class="figcap">Rows copied out of your systems to make it work</p></div>
+        <div class="fig ac3"><div class="num" data-count="6" data-suffix=" s">6 s</div><p class="figcap">Median time from a typed question to an answered chart</p></div>
+        <div class="fig ac4"><div class="num" data-count="3.4" data-suffix="&times;">3.4&times;</div><p class="figcap">More questions asked per person by the second month</p></div>
+        <div class="fig ac5"><div class="num" data-count="11">11</div><p class="figcap">Systems a plant connects in a typical first week</p></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ============ B2 · CONNECTORS ============ -->
+  <section class="band conn">
+    <div class="wrap conn-in">
+      <div class="conn-say">
+        <span class="eyb">Reads in place</span>
+        <p>Ithena&rsquo;s Aether queries your systems where they already sit. Nothing is extracted, staged or duplicated to make an answer.</p>
+      </div>
+      <div class="mq" aria-label="Systems Ithena&rsquo;s Aether connects to">
+        <div class="mq-t" id="aeMq">
+          <span class="chip"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-plug"/></svg>PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQL Server</span><span class="chip">Oracle</span><span class="chip">Snowflake</span><span class="chip">Databricks</span><span class="chip">BigQuery</span><span class="chip">SAP</span><span class="chip">Salesforce</span><span class="chip">HubSpot</span><span class="chip">Zoho CRM</span><span class="chip">Excel</span><span class="chip">CSV</span><span class="chip">Google Sheets</span><span class="chip">Amazon S3</span><span class="chip">REST API</span><span class="chip">OPC UA</span><span class="chip">MQTT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ---- drawn card artwork (blueprint §7: if the subject is the product, draw it) ---- */
+    #main-section.aether .art-ask{display:flex;flex-direction:column;justify-content:center;gap:10px;height:100%}
+    #main-section.aether .art-ask .q{background:var(--mk);border:1px solid var(--mk-line);border-radius:100px;padding:9px 14px;font-size:11.5px;color:var(--mk-ink);font-weight:600;box-shadow:var(--sh-micro)}
+    #main-section.aether .art-ask .down{display:grid;place-items:center;color:var(--blue)}
+    #main-section.aether .art-ask .down svg{width:16px;height:16px;transform:rotate(90deg)}
+    #main-section.aether .art-ask .s{background:var(--mk);border:1px solid var(--mk-line);border-radius:8px;padding:10px 12px;font-family:var(--mono);font-size:10.5px;line-height:1.55;color:var(--mk-mut);box-shadow:var(--sh-micro);white-space:pre-wrap}
+    #main-section.aether .art-ask .s b{color:var(--blue);font-weight:700}
+    #main-section.aether .art-watch{display:flex;flex-direction:column;justify-content:space-between;height:100%}
+    #main-section.aether .art-watch .lb{font-size:10.5px;font-weight:700;color:var(--mk-mut);letter-spacing:.06em}
+    #main-section.aether .art-watch .flag{display:inline-flex;align-items:center;gap:6px;background:var(--mk);border:1px solid var(--mk-selb);border-radius:100px;padding:5px 11px;font-size:11px;font-weight:600;color:var(--mk-ink);box-shadow:var(--sh-micro);align-self:flex-start}
+    #main-section.aether .art-watch .flag i{width:6px;height:6px;border-radius:50%;background:var(--bad)}
+    #main-section.aether .art-act{display:flex;flex-direction:column;justify-content:center;gap:8px;height:100%}
+    #main-section.aether .art-act .r{display:flex;align-items:center;gap:9px;background:var(--mk);border:1px solid var(--mk-line);border-radius:8px;padding:9px 11px;font-size:11px;color:var(--mk-ink);box-shadow:var(--sh-micro)}
+    #main-section.aether .art-act .r span{flex:1;line-height:1.35}
+    /* the three screens play one short scene each, once the row is read: the question
+       types itself and the query lands under it, the reading traces itself with the dot
+       at the head of the line, the queue fills a row at a time. */
+    #main-section.aether .art-watch .dot{transform:translate(240px,18px)}
+    @media not (prefers-reduced-motion:reduce){
+      #main-section.aether .art-ask.tw .q::after{content:"";display:inline-block;width:1.5px;height:11px;margin-left:2px;vertical-align:-1px;background:var(--blue);animation:aecaret 1.1s steps(1) infinite}
+      #main-section.aether .art-ask.tw.done .q::after{display:none}
+      #main-section.aether .art-ask.tw .down,#main-section.aether .art-ask.tw .s{opacity:0;transform:translateY(9px)}
+      #main-section.aether .art-ask.tw.done .down,#main-section.aether .art-ask.tw.done .s{opacity:1;transform:none;transition:opacity .45s var(--ez),transform .45s var(--ez)}
+      #main-section.aether .art-ask.tw.done .s{transition-delay:.13s}
+      /* dot and line share one clock: both keyframe on fraction of path length, so the
+         dot sits on the head of the line the whole way. linear on purpose - it reads as
+         a plotter walking the time axis, not as an object being thrown. */
+      #main-section.aether .caps .art-watch .ln{stroke-dasharray:100;stroke-dashoffset:100}
+      #main-section.aether .caps .art-watch .dot,#main-section.aether .caps .art-watch .flag{opacity:0}
+      #main-section.aether .caps.in .art-watch .ln{animation:aetrace 2.6s linear .55s forwards}
+      #main-section.aether .caps.in .art-watch .dot{animation:aedot 2.6s linear .55s forwards}
+      #main-section.aether .caps.in .art-watch .flag{animation:aerow .5s var(--ez) 3.1s both}
+      #main-section.aether .caps.in .art-act .r{animation:aerow .5s var(--ez) both}
+      #main-section.aether .caps.in .art-act .r:nth-child(1){animation-delay:.6s}
+      #main-section.aether .caps.in .art-act .r:nth-child(2){animation-delay:.78s}
+      #main-section.aether .caps.in .art-act .r:nth-child(3){animation-delay:.96s}
+      @keyframes aetrace{to{stroke-dashoffset:0}}
+      @keyframes aedot{
+        0%{opacity:1;transform:translate(0,64px)}
+        9.5%{transform:translate(24px,60px)}
+        19.2%{transform:translate(48px,66px)}
+        29.1%{transform:translate(72px,58px)}
+        38.7%{transform:translate(96px,63px)}
+        48.1%{transform:translate(120px,61px)}
+        57.6%{transform:translate(144px,57px)}
+        67.1%{transform:translate(168px,60px)}
+        78.4%{transform:translate(192px,44px)}
+        90.1%{transform:translate(216px,26px)}
+        100%{opacity:1;transform:translate(240px,18px)}
+      }
+    }
+  </style>
+
+  <!-- ============ B3 · CAPABILITIES ============ -->
+  <section class="band alt">
+    <div class="wrap">
+      <div class="shead rv">
+        <span class="eyb">What Ithena&rsquo;s Aether does</span>
+        <h2>Three things, and it shows its working for all of them.</h2>
+        <p class="lede">Every answer, alert and action carries the query and the rows behind it, so the first question a reviewer asks is already answered on the screen.</p>
+      </div>
+      <div class="grid caps stg">
+
+        <article class="cap ac1">
+          <div class="cap-art">
+            <div class="capmon frame">
+            <div class="win">
+              <div class="win-bar"><img class="mk-logo" src="https://aether.ithena.app/_next/image?url=%2Flogos%2Fithena-logo.png&amp;w=32&amp;q=75" alt="" width="16" height="16" loading="lazy" decoding="async"><i></i><i></i><i></i><span>Query preview</span></div>
+              <div class="win-body">
+            <div class="art-ask">
+              <div class="q">Which accounts slipped past 60 days?</div>
+              <div class="down"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-arr"/></svg></div>
+              <div class="s"><b>SELECT</b> a.name, SUM(i.balance)
+  <b>FROM</b> invoices i
+  <b>JOIN</b> crm_accounts a <b>ON</b> a.id = i.account_id
+  <b>WHERE</b> i.days_open &gt; 60</div>
+            </div>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="cap-body">
+            <h3>Ask in plain language</h3>
+            <p>Type the question the way you would say it in a review meeting. Ithena&rsquo;s Aether picks the tables, writes the join, and shows you both before it runs anything.</p>
+            <div class="chips">
+              <span class="chip">Table selection</span><span class="chip">Join inference</span><span class="chip">Query preview</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="cap ac2">
+          <div class="cap-art">
+            <div class="capmon frame">
+            <div class="win">
+              <div class="win-bar"><img class="mk-logo" src="https://aether.ithena.app/_next/image?url=%2Flogos%2Fithena-logo.png&amp;w=32&amp;q=75" alt="" width="16" height="16" loading="lazy" decoding="async"><i></i><i></i><i></i><span>Margin watch &middot; every 15 min</span></div>
+              <div class="win-body">
+            <div class="art-watch">
+              <span class="lb">Scrap rate &middot; Cali Line 3</span>
+              <svg viewBox="0 0 240 90" preserveAspectRatio="none" style="width:100%;flex:1;min-height:56px;overflow:visible" aria-hidden="true">
+                <polyline points="0,72 240,70" fill="none" stroke="var(--mk-line)" stroke-width="1" stroke-dasharray="3 4"/>
+                <polyline class="ln" pathLength="100" points="0,64 24,60 48,66 72,58 96,63 120,61 144,57 168,60 192,44 216,26 240,18" fill="none" stroke="var(--blue)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle class="dot" cx="0" cy="0" r="5" fill="var(--mk)" stroke="var(--bad)" stroke-width="2.4"/>
+              </svg>
+              <span class="flag"><i></i>4.8% today, 2.1% normal</span>
+            </div>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="cap-body">
+            <h3>See what changed before you ask</h3>
+            <p>Ithena&rsquo;s Aether watches the figures you care about and says when one moves outside its own normal range - with the cause it found and the rows that prove it.</p>
+            <div class="chips">
+              <span class="chip">Anomaly watch</span><span class="chip">Root cause</span><span class="chip">Morning brief</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="cap ac3">
+          <div class="cap-art">
+            <div class="capmon frame">
+            <div class="win">
+              <div class="win-bar"><img class="mk-logo" src="https://aether.ithena.app/_next/image?url=%2Flogos%2Fithena-logo.png&amp;w=32&amp;q=75" alt="" width="16" height="16" loading="lazy" decoding="async"><i></i><i></i><i></i><span>Action queue</span></div>
+              <div class="win-body">
+            <div class="art-act">
+              <div class="r"><svg viewBox="0 0 24 24" style="width:14px;height:14px;color:var(--ok)" aria-hidden="true"><use href="#ae-chk"/></svg><span>Raised WO-4471 for Line 3 seal kit</span><span class="pill ok" style="flex:none">done</span></div>
+              <div class="r"><svg viewBox="0 0 24 24" style="width:14px;height:14px;color:var(--ok)" aria-hidden="true"><use href="#ae-chk"/></svg><span>Reordered 3 spares below cover</span><span class="pill ok" style="flex:none">done</span></div>
+              <div class="r"><svg viewBox="0 0 24 24" style="width:14px;height:14px;color:var(--warn)" aria-hidden="true"><use href="#ae-bell"/></svg><span>Hold shipment to KSBS</span><span class="pill warn" style="flex:none">approve</span></div>
+            </div>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="cap-body">
+            <h3>Turn the answer into an action</h3>
+            <p>Connect the systems that do the work - ERP, CRM, maintenance - and Ithena&rsquo;s Aether raises the work order or holds the shipment. Anything that changes a record waits for a person.</p>
+            <div class="chips">
+              <span class="chip">Approval gate</span><span class="chip">Work orders</span><span class="chip">Audit trail</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B4 · ROLES ============ -->
+  <section class="band" id="roles">
+    <div class="wrap">
+      <div class="shead rv">
+        <span class="eyb">Who it is for</span>
+        <h2>The same data, framed for the decision you are making.</h2>
+        <p class="lede">Ithena&rsquo;s Aether reads who is asking. A plant head and a finance controller put the same question to the same table and get answers pitched at what each one can change.</p>
+      </div>
+      <div class="grid roles stg">
+        <article class="role ac1">
+          <div class="rph"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ecommerce-role-maintenance.webp" alt="Maintenance technician in gloves reaching into an open machine beside its control panel" width="1400" height="875" loading="lazy" decoding="async"></div>
+          <div class="rtop">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-factory"/></svg></span>
+            <div><h3>Plant operations</h3><em>Opens it before the shift meeting</em></div>
+          </div>
+          <p>You open the brief before the shift meeting and see which lines lost time overnight, what stopped each one, and which spares are below cover.</p>
+          <div class="rmsg">
+            <div class="from"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-ask"/></svg>Asked in Ithena&rsquo;s Aether &middot; Tue 06:12</div>
+            <p class="q">&ldquo;Why did Line 3 stop twice last night?&rdquo;</p>
+          </div>
+        </article>
+        <article class="role ac2">
+          <div class="rph"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ecommerce-role-sales.webp" alt="Sales lead presenting a revenue chart on a meeting room screen to two colleagues at a laptop" width="1400" height="875" loading="lazy" decoding="async"></div>
+          <div class="rtop">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-trend"/></svg></span>
+            <div><h3>Commercial</h3><em>Reads it without booking the data team</em></div>
+          </div>
+          <p>You check which accounts have slipped, which quotes went quiet and where margin moved this month, without booking time with the data team.</p>
+          <div class="rmsg">
+            <div class="from"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-ask"/></svg>Asked in Ithena&rsquo;s Aether &middot; Mon 09:20</div>
+            <p class="q">&ldquo;Which accounts are past 60 days and over &#8377;5 lakh?&rdquo;</p>
+          </div>
+        </article>
+        <article class="role ac3">
+          <div class="rph"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ecommerce-role-service.webp" alt="Two colleagues at a monitor going through a set of figures together" width="1400" height="875" loading="lazy" decoding="async"></div>
+          <div class="rtop">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-doc"/></svg></span>
+            <div><h3>Finance</h3><em>Traces every figure back to its rows</em></div>
+          </div>
+          <p>You reconcile the month against the ledger and trace any figure back to the invoice rows it came from, with the working attached to the number.</p>
+          <div class="rmsg">
+            <div class="from"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-ask"/></svg>Asked in Ithena&rsquo;s Aether &middot; Month end, 17:40</div>
+            <p class="q">&ldquo;Fixed costs by month against budget, 2026.&rdquo;</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B5 · THE PROBLEM ============ -->
+  <section class="band alt" id="challenge">
+    <div class="wrap">
+      <div class="chal">
+      <div>
+      <div class="shead rv">
+        <span class="eyb">The challenge</span>
+        <h2>The answer arrives <em>after the decision.</em></h2>
+        <p class="lede">Most manufacturers do not have a data problem. They have a queue - every question worth asking has to be written down, prioritised, and turned into a report by the two people who can write SQL.</p>
+      </div>
+
+      <div class="probs stg">
+        <article class="prob ac5">
+          <h3>Every question needs a translator.</h3>
+          <p>Two people who can write SQL sit between forty people and the database. The queue, not the business, decides which questions get asked.</p>
+        </article>
+        <article class="prob ac4">
+          <h3>A dashboard is a frozen question.</h3>
+          <p>It answers what someone thought to ask last quarter. The moment a reader asks why the number moved, they are back in the queue.</p>
+        </article>
+        <article class="prob ac3">
+          <h3>The number moves and nobody looks.</h3>
+          <p>Scrap on Line 3 crept from 2.1% to 4.8% over six weeks. No alert fired, because no one had thought to write the query that would have caught it.</p>
+        </article>
+        <article class="prob ac2">
+          <h3>Knowing and doing sit in different tools.</h3>
+          <p>You learn the seal kit is failing on Tuesday and raise the work order on Friday, in another system, by hand, from a screenshot.</p>
+        </article>
+      </div>
+      </div>
+      <div class="lag rv">
+        <div class="lag-head">
+          <h3>One question, one week - a real request path</h3>
+          <span>Pilot site, packaging division, May 2026</span>
+        </div>
+        <div class="tl">
+          <div class="tl-line"></div>
+          <div class="tl-days">
+            <div class="tl-d on"><span class="day">Mon</span><i class="pt"></i><p class="ev">Plant head asks why margin fell on Line 3</p></div>
+            <div class="tl-d"><span class="day">Tue</span><i class="pt"></i><p class="ev">Request joins the BI backlog, 14th in line</p></div>
+            <div class="tl-d miss"><span class="day">Wed</span><i class="pt"></i><p class="ev">Decision taken without the number</p></div>
+            <div class="tl-d"><span class="day">Thu</span><i class="pt"></i><p class="ev">Analyst starts writing the query</p></div>
+            <div class="tl-d on"><span class="day">Fri</span><i class="pt"></i><p class="ev">Report lands. It is correct, and it is late</p></div>
+          </div>
+        </div>
+        <p class="lag-foot">Across four pilot sites the median question took <b>4.2 days</b> to answer. The median decision was taken at <b>1.6 days</b>. The report is not wrong; it is behind the plant.</p>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B6 · THE LOOP ============ -->
+  <section class="band" id="how">
+    <div class="wrap">
+      <div class="loopwrap">
+      <div class="loopstick">
+      <div class="shead rv">
+        <span class="eyb">Connect, ask, verify, act</span>
+        <h2>Four steps, and you are asking by lunchtime.</h2>
+        <p class="lede">There is no modelling project, no semantic layer to design and no training session. Point Ithena&rsquo;s Aether at a system, and the first useful question can be asked the same afternoon.</p>
+      </div>
+      <ol class="grid loop stg">
+        <li class="lp ac1">
+          <span class="lb">Connect</span>
+          <span class="rail" aria-hidden="true"></span>
+          <h3>Point it at a system</h3>
+          <p>Give Ithena&rsquo;s Aether a read-only connection or drop in a spreadsheet. It reads the schema and asks anything ambiguous.</p>
+          <p class="out"><b>You get:</b> a catalogue of what it can see, and nothing it cannot</p>
+        </li>
+        <li class="lp ac2">
+          <span class="lb">Ask</span>
+          <span class="rail" aria-hidden="true"></span>
+          <h3>Say it in your own words</h3>
+          <p>No syntax, no field picker. Ithena&rsquo;s Aether maps your words - line, shift, cover, ageing - onto the columns holding them.</p>
+          <p class="out"><b>You get:</b> the query it proposes, before it runs</p>
+        </li>
+        <li class="lp ac3">
+          <span class="lb">Verify</span>
+          <span class="rail" aria-hidden="true"></span>
+          <h3>Check the working</h3>
+          <p>Every answer carries the SQL, tables, row count and the dates. Disagree with a join and correct it in place.</p>
+          <p class="out"><b>You get:</b> a number you can defend in a review</p>
+        </li>
+        <li class="lp ac4">
+          <span class="lb">Act</span>
+          <span class="rail" aria-hidden="true"></span>
+          <h3>Pin it, watch it, or do it</h3>
+          <p>Pin the answer to a live dashboard, set it to alert you when it moves, or let Ithena&rsquo;s Aether raise the work order.</p>
+          <p class="out"><b>You get:</b> a standing answer instead of a one-off report</p>
+        </li>
+      </ol>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B7 · CONSOLES ============ -->
+  <section class="band alt" id="consoles">
+    <div class="wrap">
+      <div class="shead rv">
+        <span class="eyb">On the screen</span>
+        <h2>See How Ithena&rsquo;s Aether Turns Questions Into Answers.</h2>
+        <p class="lede">From a plain-language question to the chart, source tables, and SQL behind the result, every insight is backed by data you can inspect - not something you simply have to trust.</p>
+      </div>
+
+      <div class="conswrap">
+      <div class="consstick">
+      <div class="shell rv">
+        <div class="picks" role="tablist" aria-label="Ithena&rsquo;s Aether consoles">
+          <button class="pick" role="tab" id="tab-perf" aria-controls="p-perf" aria-selected="true" data-pane="perf" type="button">Line performance</button>
+          <button class="pick" role="tab" id="tab-anom" aria-controls="p-anom" aria-selected="false" data-pane="anom" type="button">Anomaly watch</button>
+          <button class="pick" role="tab" id="tab-age" aria-controls="p-age" aria-selected="false" data-pane="age" type="button">Ageing debtors</button>
+          <button class="pick" role="tab" id="tab-log" aria-controls="p-log" aria-selected="false" data-pane="log" type="button">Action log</button>
+        </div>
+
+        <div class="shell-in">
+        <div class="blurbs">
+          <div class="blurb on" data-pane="perf">
+            <h3>What the shift is actually doing</h3>
+            <p>The screen a plant head opens at six in the morning: output against plan, and the two things that need a decision before the shift meeting.</p>
+            <p class="src"><i aria-hidden="true"></i>Reads works_orders, machine_events</p>
+          </div>
+          <div class="blurb" data-pane="anom">
+            <h3>The number that left its range</h3>
+            <p>Ithena&rsquo;s Aether checks every fifteen minutes and only speaks when a figure breaks its own ceiling and stays there. Nothing to remember to open.</p>
+            <p class="src"><i aria-hidden="true"></i>Reads scrap_log, returns, machine_events</p>
+          </div>
+          <div class="blurb" data-pane="age">
+            <h3>A call list, not a receivables report</h3>
+            <p>The book sorted by exposure rather than by date, with the last contact against each account, so the morning&rsquo;s three calls pick themselves.</p>
+            <p class="src"><i aria-hidden="true"></i>Reads invoices, crm_accounts</p>
+          </div>
+          <div class="blurb" data-pane="log">
+            <h3>Everything it wrote back, and who agreed</h3>
+            <p>Each work order and reorder Ithena&rsquo;s Aether raised, the person who approved it and the question that prompted it. Held seven years, exportable.</p>
+            <p class="src"><i aria-hidden="true"></i>Writes aether_audit</p>
+          </div>
+        </div>
+
+        <div class="bezel">
+          <div class="cscreen">
+            <div class="win-bar"><img class="mk-logo" src="https://aether.ithena.app/_next/image?url=%2Flogos%2Fithena-logo.png&amp;w=32&amp;q=75" alt="" width="16" height="16" loading="lazy" decoding="async"><i></i><i></i><i></i><span>Ithena&rsquo;s Aether workspace &middot; consoles</span></div>
+            <div class="cscroll panes">
+
+              <div class="pane on" id="p-perf" role="tabpanel" aria-labelledby="tab-perf" data-pane="perf">
+                <div class="cbar"><img class="mk-logo" src="https://aether.ithena.app/_next/image?url=%2Flogos%2Fithena-logo.png&amp;w=32&amp;q=75" alt="" width="16" height="16" loading="lazy" decoding="async"><h3>Line performance</h3><span class="tag">Cali plant &middot; Shift A</span><i class="sp"></i><span class="tag">Updated 40 s ago</span></div>
+                <div class="cbody">
+                  <div class="kpis">
+                    <div class="kpi"><div class="v">71.4%</div><p class="l">OEE, rolling 7 days</p><p class="d dn">&minus;4.2 pts vs plan</p></div>
+                    <div class="kpi"><div class="v">8,412</div><p class="l">Units, shift to date</p><p class="d up">+2.1% vs plan</p></div>
+                    <div class="kpi"><div class="v">4.8%</div><p class="l">Scrap, Line 3</p><p class="d dn">2.1% is normal</p></div>
+                  </div>
+                  <div class="csplit wr">
+                    <div class="panel">
+                      <div class="ph"><h4>Output against plan, last six shifts</h4><span>units, thousands</span></div>
+                      <div class="cols">
+                        <div class="col"><div class="stack"><i class="b lo" style="height:9%"></i><i class="b" style="height:61%"></i></div><span class="x">A/12</span></div>
+                        <div class="col"><div class="stack"><i class="b lo" style="height:4%"></i><i class="b" style="height:66%"></i></div><span class="x">B/12</span></div>
+                        <div class="col"><div class="stack"><i class="b lo" style="height:22%"></i><i class="b" style="height:48%"></i></div><span class="x">A/13</span></div>
+                        <div class="col"><div class="stack"><i class="b" style="height:72%"></i></div><span class="x">B/13</span></div>
+                        <div class="col"><div class="stack"><i class="b lo" style="height:31%"></i><i class="b" style="height:39%"></i></div><span class="x">A/14</span></div>
+                        <div class="col"><div class="stack"><i class="b lo" style="height:6%"></i><i class="b" style="height:64%"></i></div><span class="x">B/14</span></div>
+                      </div>
+                      <div class="prov"><i class="dot"></i><span>Blue is produced, pale is the gap to plan. Read <b>works_orders</b> &middot; 6 shifts</span></div>
+                    </div>
+                    <div class="panel">
+                      <div class="ph"><h4>By line, current shift</h4><span>select a row to ask about it</span></div>
+                      <table class="tbl">
+                        <thead><tr><th>Line</th><th class="num">Units</th><th class="num">Stops</th><th class="num">Scrap</th><th>State</th></tr></thead>
+                        <tbody>
+                          <tr class="sel"><td>Cali L3</td><td class="num">1,940</td><td class="num">4</td><td class="num">4.8%</td><td><span class="pill bad">investigate</span></td></tr>
+                          <tr><td>Cali L1</td><td class="num">2,610</td><td class="num">1</td><td class="num">1.9%</td><td><span class="pill ok">on plan</span></td></tr>
+                          <tr><td>Sanand L4</td><td class="num">1,720</td><td class="num">1</td><td class="num">2.6%</td><td><span class="pill warn">watch</span></td></tr>
+                        </tbody>
+                      </table>
+                      <div class="prov"><i class="dot"></i><span>Read <b>machine_events</b>, <b>works_orders</b> &middot; 12,480 rows &middot; shift A</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pane" id="p-anom" role="tabpanel" aria-labelledby="tab-anom" data-pane="anom">
+                <div class="cbar"><img class="mk-logo" src="https://aether.ithena.app/_next/image?url=%2Flogos%2Fithena-logo.png&amp;w=32&amp;q=75" alt="" width="16" height="16" loading="lazy" decoding="async"><h3>Anomaly watch</h3><span class="tag">All plants</span><i class="sp"></i><span class="tag">Checked every 15 min</span></div>
+                <div class="cbody">
+                  <div class="csplit">
+                    <div class="panel">
+                      <div class="ph"><h4>Scrap rate, Cali Line 3</h4><span>daily, last 45 days</span></div>
+                      <svg viewBox="0 0 480 140" preserveAspectRatio="none" style="width:100%;height:150px" aria-hidden="true">
+                        <path d="M0 120h480" stroke="var(--mk-line2)" stroke-width="1"/>
+                        <path d="M0 62h480" stroke="var(--mk-line)" stroke-width="1" stroke-dasharray="4 5"/>
+                        <path d="M0 104 40 98 80 108 120 94 160 100 200 96 240 90 280 84 320 70 360 52 400 40 440 30 480 24" fill="none" stroke="var(--blue)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="320" cy="70" r="5" fill="var(--mk)" stroke="var(--bad)" stroke-width="2.4"/>
+                        <circle cx="480" cy="24" r="5" fill="var(--bad)"/>
+                      </svg>
+                      <div class="prov"><i class="dot"></i><span>Ceiling is the 90-day rolling mean plus 2&sigma;. Flagged when it held for <b>3 shifts</b></span></div>
+                    </div>
+                    <div class="panel">
+                      <div class="ph"><h4>What Ithena&rsquo;s Aether found this week</h4><span>2 open this week</span></div>
+                      <div class="alist">
+                        <div class="alert"><p class="t">Scrap on Line 3 broke its ceiling and stayed there</p><p class="m">4.8% against 2.4% &middot; traced to die set D-22 &middot; <span class="pill bad">open</span></p></div>
+                        <div class="alert"><p class="t">Returns from the north region are running 3.2&sigma; high</p><p class="m">18 in 9 days, 5 is normal &middot; <span class="pill bad">open</span></p></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pane" id="p-age" role="tabpanel" aria-labelledby="tab-age" data-pane="age">
+                <div class="cbar"><img class="mk-logo" src="https://aether.ithena.app/_next/image?url=%2Flogos%2Fithena-logo.png&amp;w=32&amp;q=75" alt="" width="16" height="16" loading="lazy" decoding="async"><h3>Ageing debtors</h3><span class="tag">Packaging division</span><i class="sp"></i><span class="tag">As at 31 May 2026</span></div>
+                <div class="cbody">
+                  <div class="kpis">
+                    <div class="kpi"><div class="v">&#8377;3.42 Cr</div><p class="l">Outstanding, all buckets</p><p class="d dn">+&#8377;41 L vs April</p></div>
+                    <div class="kpi"><div class="v">&#8377;96.4 L</div><p class="l">Past 60 days</p><p class="d dn">28% of the book</p></div>
+                    <div class="kpi"><div class="v">7</div><p class="l">Accounts past 90 days</p><p class="d up">&minus;2 vs April</p></div>
+                  </div>
+                  <div class="panel" style="margin-top:14px">
+                    <div class="ph"><h4>Past 60 days, over &#8377;5 lakh</h4><span>top three by exposure</span></div>
+                    <table class="tbl">
+                      <thead><tr><th>Account</th><th>Owner</th><th class="num">Balance</th><th class="num">Oldest</th><th>State</th></tr></thead>
+                      <tbody>
+                        <tr class="sel"><td>Kirloskar Packaging</td><td>R. Menon</td><td class="num">&#8377;24.8 L</td><td class="num">118 d</td><td><span class="pill bad">no contact 59 d</span></td></tr>
+                        <tr><td>Supreme Cartons</td><td>A. Fernandes</td><td class="num">&#8377;18.2 L</td><td class="num">94 d</td><td><span class="pill warn">promised 5 Jun</span></td></tr>
+                        <tr><td>Everest Labels</td><td>R. Menon</td><td class="num">&#8377;11.6 L</td><td class="num">76 d</td><td><span class="pill warn">part paid</span></td></tr>
+                      </tbody>
+                    </table>
+                    <div class="prov"><i class="dot"></i><span>Read <b>invoices</b>, <b>crm_accounts</b> &middot; 41,908 rows &middot; joined on account_id &middot; no rows written</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pane" id="p-log" role="tabpanel" aria-labelledby="tab-log" data-pane="log">
+                <div class="cbar"><img class="mk-logo" src="https://aether.ithena.app/_next/image?url=%2Flogos%2Fithena-logo.png&amp;w=32&amp;q=75" alt="" width="16" height="16" loading="lazy" decoding="async"><h3>Action log</h3><span class="tag">Every change, with its author</span><i class="sp"></i><span class="tag">Exportable</span></div>
+                <div class="cbody">
+                  <div class="panel">
+                    <div class="ph"><h4>Last seven days</h4><span>14 actions, 1 awaiting a person</span></div>
+                    <table class="tbl">
+                      <thead><tr><th>When</th><th>Action</th><th>System</th><th>Approved by</th><th>State</th></tr></thead>
+                      <tbody>
+                        <tr class="sel"><td>23 May 07:12</td><td>Raise WO-4471, seal kit change, Line 3</td><td>SAP PM</td><td>V. Kulkarni</td><td><span class="pill ok">done</span></td></tr>
+                        <tr><td>23 May 07:12</td><td>Reorder SK-0912 &times; 20</td><td>SAP MM</td><td>V. Kulkarni</td><td><span class="pill ok">done</span></td></tr>
+                        <tr><td>22 May 09:05</td><td>Hold shipment SO-8842 pending QC</td><td>SAP SD</td><td>-</td><td><span class="pill warn">awaiting approval</span></td></tr>
+                      </tbody>
+                    </table>
+                    <div class="prov"><i class="dot"></i><span>Written to <b>aether_audit</b> &middot; retained 7 years &middot; every row carries the query that prompted it</span></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <!-- <div class="safe">
+          <div>
+            <span class="eyb">Read-only by design</span>
+            <h3>It reads. It does not copy, move, or learn from your data.</h3>
+            <ul>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-lock"/></svg>Read-only connections, enforced at the credential</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-shield"/></svg>Row-level security follows the person asking</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-chk"/></svg>Your data is never used to train a model</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-doc"/></svg>Every query and action written to an audit trail</li>
+            </ul>
+          </div>
+          <a class="btn gho" href="#trial" data-schedule-demo>Open a workspace <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-arr"/></svg></a>
+        </div> -->
+
+      </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B8 · MOBILE ============ -->
+  <section class="band" id="floor">
+    <div class="wrap">
+      <div class="shead rv">
+        <span class="eyb">On the floor</span>
+        <h2>The brief is waiting before the shift meeting starts.</h2>
+        <p class="lede">Ithena&rsquo;s Aether does not need you at a desk. The same question, same audit trail, on your phone in pocket at 6 a.m.</p>
+      </div>
+      <div class="appgrid">
+        <div class="rv">
+          <div class="dev">
+            <span class="dev-k a" aria-hidden="true"></span><span class="dev-k b" aria-hidden="true"></span><span class="dev-k c" aria-hidden="true"></span>
+            <div class="dev-sc">
+              <span class="dev-isle" aria-hidden="true"></span>
+              <div class="dev-bar"><span>6:04</span>
+                <svg viewBox="0 0 46 11" fill="none" aria-hidden="true">
+                  <rect x="0" y="6.5" width="2.6" height="4.5" rx="1" fill="currentColor"/>
+                  <rect x="4.4" y="4.5" width="2.6" height="6.5" rx="1" fill="currentColor"/>
+                  <rect x="8.8" y="2.4" width="2.6" height="8.6" rx="1" fill="currentColor"/>
+                  <rect x="13.2" y="0.4" width="2.6" height="10.6" rx="1" fill="currentColor" opacity=".35"/>
+                  <path d="M20 4.1a6.4 6.4 0 0 1 7.6 0M21.6 6.5a3.9 3.9 0 0 1 4.4 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                  <circle cx="23.8" cy="9.2" r="1.1" fill="currentColor"/>
+                  <rect x="32" y="1.6" width="12" height="7.6" rx="2.3" stroke="currentColor" stroke-width="1"/>
+                  <rect x="33.2" y="2.8" width="8.2" height="5.2" rx="1.4" fill="currentColor"/>
+                  <path d="M45 4.4v2.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="ph-top">
+                <span class="t"><img class="mk-logo" src="https://aether.ithena.app/_next/image?url=%2Flogos%2Fithena-logo.png&amp;w=32&amp;q=75" alt="" width="16" height="16" loading="lazy" decoding="async"><i class="live" aria-hidden="true"></i>Cali &middot; Shift A</span>
+                <h4>Overnight brief</h4>
+              </div>
+              <div class="ph-list">
+                <div class="ph-row sel">
+                  <div class="rh"><span class="id">#4471</span><span class="pill bad">investigate</span></div>
+                  <p class="tt">Line 3 scrap held above ceiling for a ninth shift</p>
+                  <p class="mm">4.8% against 2.4% &middot; die set D-22</p>
+                </div>
+                <div class="ph-row">
+                  <div class="rh"><span class="id">#4468</span><span class="pill warn">reorder</span></div>
+                  <p class="tt">Seal kit SK-0912 below cover</p>
+                  <p class="mm">4 on hand &middot; 11 used last month</p>
+                </div>
+                <div class="ph-row">
+                  <div class="rh"><span class="id">#4465</span><span class="pill ok">cleared</span></div>
+                  <p class="tt">Line 1 back on plan after service</p>
+                  <p class="mm">Two shifts clear</p>
+                </div>
+              </div>
+              <div class="ph-ask" id="aeType">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-ask"/></svg>
+                <span>Ask about this shift&hellip;</span>
+              </div>
+              <span class="dev-home" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+        <div class="frows stg">
+          <div class="frow ac1">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-bell"/></svg></span>
+            <div>
+              <h3>Told, not left to look</h3>
+              <ul>
+                <li>Alerts fire on the figure, not on a schedule</li>
+                <li>Each one names the cause it found</li>
+                <li>Silenced per line, per shift, per person</li>
+              </ul>
+            </div>
+          </div>
+          <div class="frow ac2">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-ask"/></svg></span>
+            <div>
+              <h3>Ask a follow-up on the spot</h3>
+              <ul>
+                <li>Same engine, same audit trail as the desktop</li>
+                <li>Answers sized for a phone, working still attached</li>
+                <li>Voice input when your hands are busy</li>
+              </ul>
+            </div>
+          </div>
+          <div class="frow ac3">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-bolt"/></svg></span>
+            <div>
+              <h3>Approve the action from here</h3>
+              <ul>
+                <li>Raise the work order without opening the ERP</li>
+                <li>Approvals carry your name into the audit log</li>
+                <li>Works offline; queued actions send on reconnect</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="rv">
+          <div class="dev">
+            <span class="dev-k a" aria-hidden="true"></span><span class="dev-k b" aria-hidden="true"></span><span class="dev-k c" aria-hidden="true"></span>
+            <div class="dev-sc">
+              <span class="dev-isle" aria-hidden="true"></span>
+              <div class="dev-bar"><span>7:12</span>
+                <svg viewBox="0 0 46 11" fill="none" aria-hidden="true">
+                  <rect x="0" y="6.5" width="2.6" height="4.5" rx="1" fill="currentColor"/>
+                  <rect x="4.4" y="4.5" width="2.6" height="6.5" rx="1" fill="currentColor"/>
+                  <rect x="8.8" y="2.4" width="2.6" height="8.6" rx="1" fill="currentColor"/>
+                  <rect x="13.2" y="0.4" width="2.6" height="10.6" rx="1" fill="currentColor" opacity=".35"/>
+                  <path d="M20 4.1a6.4 6.4 0 0 1 7.6 0M21.6 6.5a3.9 3.9 0 0 1 4.4 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                  <circle cx="23.8" cy="9.2" r="1.1" fill="currentColor"/>
+                  <rect x="32" y="1.6" width="12" height="7.6" rx="2.3" stroke="currentColor" stroke-width="1"/>
+                  <rect x="33.2" y="2.8" width="8.2" height="5.2" rx="1.4" fill="currentColor"/>
+                  <path d="M45 4.4v2.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="ph-top">
+                <span class="t"><img class="mk-logo" src="https://aether.ithena.app/_next/image?url=%2Flogos%2Fithena-logo.png&amp;w=32&amp;q=75" alt="" width="16" height="16" loading="lazy" decoding="async"><i class="live" aria-hidden="true"></i>Waiting on you</span>
+                <h4>Approve this action</h4>
+              </div>
+              <div class="ph-list">
+                <div class="ph-row">
+                  <div class="rh"><span class="id">WO-4471</span><span class="pill warn">needs approval</span></div>
+                  <p class="tt">Raise a seal kit change on Cali Line 3</p>
+                  <p class="mm">SAP PM &middot; drafted by Ithena&rsquo;s Aether at 07:12</p>
+                </div>
+                <div class="ph-row">
+                  <div class="rh"><span class="id">Evidence</span></div>
+                  <p class="tt">Scrap held above its ceiling for nine shifts</p>
+                  <p class="mm">Traced to die set D-22 &middot; 2,117 rows read</p>
+                </div>
+                <div class="ph-row">
+                  <div class="rh"><span class="id">After</span></div>
+                  <p class="tt">Scrap should sit back under 2.4% within two shifts</p>
+                  <p class="mm">Ithena&rsquo;s Aether will tell you either way</p>
+                </div>
+              </div>
+              <div class="acts" id="aeAppr">
+                <span class="act go">Approve</span><span class="act">Not now</span>
+              </div>
+              <div class="okbar" id="aeApprOk" hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ae-chk"/></svg>Approved &middot; WO-4471 raised</div>
+              <span class="dev-home" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B9 · AGENT LAYER ============ -->
+  <section class="band alt">
+    <div class="wrap">
+      <div class="shead rv">
+        <span class="eyb">Between the questions</span>
+        <h2>It keeps working when nobody is asking.</h2>
+        <p class="lede">A query tool waits to be opened. Ithena&rsquo;s Aether holds the questions you have already asked, watches the figures behind them, and comes back when one of them moves.</p>
+      </div>
+      <div class="agent">
+        <div class="chat rv" id="aeWatch">
+          <div class="win">
+          <div class="win-bar"><img class="mk-logo" src="https://aether.ithena.app/_next/image?url=%2Flogos%2Fithena-logo.png&amp;w=32&amp;q=75" alt="" width="16" height="16" loading="lazy" decoding="async"><i></i><i></i><i></i><span>Ithena&rsquo;s Aether workspace</span></div>
+          <div class="src-bar">
+            <i class="dot"></i><span class="lbl">Margin watch &middot; packaging</span>
+            <span class="src">invoices</span><span class="src">qc_rejects</span><span class="src">machine_events</span>
+          </div>
+          <div class="chat-body">
+          <div class="msg">
+            <div class="who">You</div>
+            <p class="say q">Why did packaging margin drop last month?</p>
+          </div>
+          <div class="msg ans">
+            <div class="who">Ithena&rsquo;s Aether</div>
+            <div>
+              <p class="say">Margin fell <span class="hi">2.6 points to 14.1%</span>. Most of it - <span class="m1">1.9</span> points - is scrap on Cali Line 3, where the rate went from 2.1% to 4.8% after die set <b>D-22</b> went in on 14 May. The remaining <span class="m2">0.7</span> is board price on the 340 gsm grade.</p>
+              <div class="out-head"><p class="oh">Where the <span class="tot">2.6</span> points went</p><span>percentage points of margin</span></div>
+              <div class="hbars">
+                <div class="hbar top"><span class="n">Scrap, Line 3</span><span class="t"><i style="--w:73%"></i></span><span class="v">1.9</span></div>
+                <div class="hbar"><span class="n">Board price</span><span class="t"><i style="--w:27%"></i></span><span class="v">0.7</span></div>
+              </div>
+              <div class="acts">
+                <button class="act go" type="button">Raise a work order for D-22 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-arr"/></svg></button>
+                <button class="act" type="button">Send this to the plant heads</button>
+              </div>
+              <div class="prov"><i class="dot"></i><span>Read <b>machine_events</b>, <b>qc_rejects</b>, <b>invoices</b> &middot; <span class="rows">58,204</span> rows &middot; 1&ndash;31 May 2026 &middot; <span class="secs">2.1 s</span></span></div>
+            </div>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div class="afeat stg">
+          <div>
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-doc"/></svg></span>
+            <h3>It learns your words</h3>
+            <p>Cover, ageing, changeover, first pass yield. Define a term once and every answer after it uses your definition.</p>
+          </div>
+          <div>
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-ask"/></svg></span>
+            <h3>It holds the thread</h3>
+            <p>Ask &ldquo;and Coimbatore?&rdquo; and the rest of the question stays put - same period, same filters, same measure.</p>
+          </div>
+          <div>
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-eye"/></svg></span>
+            <h3>It watches while you do not</h3>
+            <p>Every fifteen minutes, against the figure&rsquo;s own range. It speaks when one breaks out and stays out, not on a schedule.</p>
+          </div>
+          <div>
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-bell"/></svg></span>
+            <h3>It tells the right person</h3>
+            <p>Send a watch to a line, a shift or one name. Silenced the same way, by whoever owns the number.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B10 · CASE STUDIES (the one dark band) ============ -->
+  <section class="band" id="results">
+    <div class="wrap">
+        <div class="shead rv mid">
+          <span class="eyb">Already running</span>
+          <h2>Two sites, six weeks apart.</h2>
+          <p class="lede">Both started with one connection and one question. Neither built a warehouse first.</p>
+        </div>
+        <div class="cases stg">
+          <article class="case">
+            <div class="tags"><span>Packaging</span><span>Three plants</span><span>SAP + MES</span></div>
+            <h3>The report queue emptied itself.</h3>
+            <p>A 900-person packaging group connected SAP, its MES and two shift spreadsheets in the first week. Shift leads now answer their own questions before the morning meeting, and the two-person BI team moved on to the pricing model they had been putting off for a year.</p>
+            <div class="fig-n" data-count="94" data-suffix="%">94%</div>
+            <p class="fig-c">Fewer ad-hoc report requests raised by month three</p>
+            <a class="ilink" href="#trial">Read the case study <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-arr"/></svg></a>
+          </article>
+          <article class="case">
+            <div class="tags"><span>Auto components</span><span>Finance</span><span>Tier one</span></div>
+            <h3>Month-end, with the working attached.</h3>
+            <p>A tier-one supplier moved ageing and cost-variance reporting into Ithena&rsquo;s Aether. Every figure in the board pack now links back to the invoice rows behind it, so the questions that used to arrive after the pack was circulated are answered inside it.</p>
+            <div class="fig-n" data-count="3" data-suffix=" days">3 days</div>
+            <p class="fig-c">Cut from the month-end close, month one</p>
+            <a class="ilink" href="#trial">Read the case study <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-arr"/></svg></a>
+          </article>
+        </div>
+    </div>
+  </section>
+
+  <!-- ============ B10b · PARTNERS ============ -->
+  <section class="band partners">
+    <div class="wrap">
+      <div class="strip-l rv"><b>Technology partners</b><span>Advisory consulting &middot; Data management &middot; Cloud modernisation &middot; Business transformation &middot; Manufacturing integration</span></div>
+      <div class="mq logos rv" aria-label="Technology partners">
+        <div class="mq-t">
+          <span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-aws.png" alt="AWS" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-microsoft.png" alt="Microsoft" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-google-cloud.png" alt="Google Cloud" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-oracle.png" alt="Oracle" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-ptc.png" alt="PTC" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-infor.png" alt="Infor" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-dassault.png" alt="Dassault Syst&egrave;mes" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-incorta.png" alt="Incorta" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-pozyx.png" alt="Pozyx" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-brightcove.png" alt="Brightcove" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-rockwell.png" alt="Rockwell Automation" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-aws.png" alt="AWS" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-microsoft.png" alt="Microsoft" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-google-cloud.png" alt="Google Cloud" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-oracle.png" alt="Oracle" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-ptc.png" alt="PTC" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-infor.png" alt="Infor" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-dassault.png" alt="Dassault Syst&egrave;mes" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-incorta.png" alt="Incorta" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-pozyx.png" alt="Pozyx" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-brightcove.png" alt="Brightcove" loading="lazy" decoding="async"></span><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-rockwell.png" alt="Rockwell Automation" loading="lazy" decoding="async"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B11 · FAQ ============ -->
+  <section class="band alt" id="faq">
+    <div class="wrap">
+      <div class="shead mid rv">
+        <span class="eyb">Before you ask</span>
+        <h2>The questions buyers actually put to us.</h2>
+        <p class="lede">Answered from what Ithena&rsquo;s Aether does today, not what is on the roadmap.</p>
+      </div>
+      <div class="faqs rv">
+        <div class="faqcol">
+          <div class="faq">
+        <details name="aefaq"><summary>Will Ithena&rsquo;s Aether work with the ERP we already run?<i class="pm"></i></summary>
+          <p>If it has a database or an API, yes. SAP, Oracle, Dynamics, Tally and the usual Indian mid-market systems are connected through read-only credentials. Where an ERP exposes only an API, Ithena&rsquo;s Aether queries the API and tells you which endpoints it used.</p></details>
+        <details name="aefaq"><summary>Do we have to move our data anywhere?<i class="pm"></i></summary>
+          <p>No. Ithena&rsquo;s Aether queries your systems in place. There is no warehouse to stand up, no nightly extract and no second copy of your data to secure or delete later. Only the query and its result travel.</p></details>
+        <details name="aefaq"><summary>What does it cost?<i class="pm"></i></summary>
+          <p>Per person, per month, with connectors included - not per query, so nobody is discouraged from asking. The thirty-day trial is the whole product, and pricing for your seat count comes back the same day you ask.</p></details>
+          </div>
+        </div>
+        <div class="faqcol">
+          <div class="faq">
+        <details name="aefaq"><summary>What stops it answering with a wrong number?<i class="pm"></i></summary>
+          <p>Nothing stops a wrong question, so Ithena&rsquo;s Aether shows its work instead: the SQL, the tables, the row count and the date range come back with every answer. If the join is wrong you can see it in one line and correct it. Ambiguous questions are asked back, not guessed at.</p></details>
+        <details name="aefaq"><summary>Can it write to our systems?<i class="pm"></i></summary>
+          <p>Only where you connect a write path deliberately, and only with an approver. Reads and writes use separate credentials. Every write is queued, shown to a named person, and recorded in the audit log with the question that produced it.</p></details>
+        <details name="aefaq"><summary>Is our data used to train your models?<i class="pm"></i></summary>
+          <p>No. Your rows, schemas and questions are not used for training, by us or by any model provider we route through. Contractually and technically, your tenant is isolated.</p></details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B12 · CLOSING CTA ============ -->
+  <section class="band cta" id="trial">
+    <div class="cta-in">
+      <div class="cta-copy">
+        <div class="shead rv">
+          <span class="eyb">Get started</span>
+          <h2>Bring one system and last week&rsquo;s questions. <em>You will have answers the same afternoon.</em></h2>
+          <p class="lede">Thirty days, no card. Connect one system or upload a month of data, then put the answers from Ithena&rsquo;s Aether next to what the report said.</p>
+        </div>
+        <ul class="ex rv">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-chk"/></svg>One ERP, MES or database connection, read-only</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-chk"/></svg>Or a month of exported data, if you would rather not connect yet</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-chk"/></svg>The five questions your team asked last week</li>
+        </ul>
+        <div class="btns rv">
+          <a class="btn pri" href="#trial" data-schedule-demo>See Ithena&rsquo;s Aether in Action <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ae-arr"/></svg></a>
+          <a class="btn gho" href="mailto:sales@ithena.ai">Talk to the team</a>
+        </div>
+      </div>
+      <div class="cta-med" aria-hidden="true">
+        <video class="hero-vid" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1">
+          <source data-src="https://dev-website.ithena.app/wp-content/uploads/2026/09/aether-hero.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA popup ============ -->
+  <div class="ae-schd" id="aeSchd" hidden>
+    <div class="ae-schd-panel" role="dialog" aria-modal="true" aria-labelledby="aeSchdTitle" tabindex="-1">
+      <button type="button" class="ae-schd-close" data-schedule-popup-close aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="ae-schd-head">
+        <p class="eyb">Get started</p>
+        <h3 id="aeSchdTitle">Start your free trial</h3>
+        <p>Tell us where your data lives and your workspace will be ready. Thirty days, no card.</p>
+      </div>
+      <div class="ae-schd-form" id="aeSchdForm">
+        <p class="ae-schd-empty">The form did not load. Email <a href="mailto:sales@ithena.ai">sales@ithena.ai</a> and we will set your trial up for you.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "ITHENA Aether",
+   "applicationCategory": "BusinessApplication",
+   "applicationSubCategory": "Conversational analytics",
+   "operatingSystem": "Web, iOS, Android",
+   "description": "Aether is conversational analytics for manufacturers. Ask a question in plain language and get the chart, the tables it read and the SQL it ran. It queries your ERP, MES, CRM and spreadsheets in place, read-only, with an audit trail on every answer and action.",
+   "featureList": [
+    "Plain-language questions answered as SQL",
+    "Query, tables, row count and date range shown with every answer",
+    "Anomaly watch with root cause",
+    "Approval-gated actions into ERP, CRM and maintenance systems",
+    "Read-only connections and row-level security"
+   ],
+   "provider": {
+    "@type": "Organization",
+    "name": "ITHENA",
+    "email": "sales@ithena.ai"
+   },
+   "offers": {
+    "@type": "Offer",
+    "category": "Subscription",
+    "priceCurrency": "INR",
+    "description": "Per person, per month, connectors included. Thirty-day free trial of the full product, no card required."
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Will Aether work with the ERP we already run?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "If it has a database or an API, yes. SAP, Oracle, Dynamics, Tally and the usual Indian mid-market systems are connected through read-only credentials. Where an ERP exposes only an API, Aether queries the API and tells you which endpoints it used."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do we have to move our data anywhere?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Aether queries your systems in place. There is no warehouse to stand up, no nightly extract and no second copy of your data to secure or delete later. Only the query and its result travel."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does it cost?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Per person, per month, with connectors included - not per query, so nobody is discouraged from asking. The thirty-day trial is the whole product, and pricing for your seat count comes back the same day you ask."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What stops it answering with a wrong number?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nothing stops a wrong question, so Aether shows its work instead: the SQL, the tables, the row count and the date range come back with every answer. If the join is wrong you can see it in one line and correct it. Ambiguous questions are asked back, not guessed at."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can it write to our systems?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Only where you connect a write path deliberately, and only with an approver. Reads and writes use separate credentials. Every write is queued, shown to a named person, and recorded in the audit log with the question that produced it."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is our data used to train your models?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Your rows, schemas and questions are not used for training, by us or by any model provider we route through. Contractually and technically, your tenant is isolated."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+
+<script>
+
+  (function(){
+    "use strict";
+    var root=document.getElementById("main-section");
+    if(!root||root.className.indexOf("aether")<0) return;
+    var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var $=function(s){return root.querySelector(s);};
+    var $$=function(s,c){return Array.prototype.slice.call((c||root).querySelectorAll(s));};
+
+    /* ---- theme: follow the site header if it is present, else remember our own ---- */
+    function currentTheme(){
+      if(document.documentElement.classList.contains("dark")) return "dark";
+      try{ var v=localStorage.getItem("ithena-theme"); if(v==="dark"||v==="light") return v; }catch(e){}
+      return "light";
+    }
+    root.setAttribute("data-theme",currentTheme());
+    new MutationObserver(function(){
+      var t=document.documentElement.classList.contains("dark")?"dark":"light";
+      if(root.getAttribute("data-theme")!==t){
+        if(!reduced){root.classList.add("theming");setTimeout(function(){root.classList.remove("theming");},420);}
+        root.setAttribute("data-theme",t);
+        var sp=document.getElementById("aeSchd"); if(sp) sp.setAttribute("data-theme",t);
+      }
+    }).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});
+
+    /* ---- reveal on scroll ---- */
+    var targets=$$(".rv,.stg");
+    if(!("IntersectionObserver" in window)||reduced){
+      targets.forEach(function(el){el.classList.add("in");});
+    }else{
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+      },{rootMargin:"0px 0px -12% 0px",threshold:.12});
+      targets.forEach(function(el){io.observe(el);});
+    }
+
+    /* ---- stat counters, once ---- */
+    function countUp(el){
+      var end=parseFloat(el.getAttribute("data-count")),suf=el.getAttribute("data-suffix")||"";
+      var dec=(String(end).split(".")[1]||"").length;
+      if(reduced||!end){el.innerHTML=(end||0).toFixed(dec)+suf;return;}
+      var t0=null,dur=900;
+      function frame(t){
+        if(!t0)t0=t;
+        var k=Math.min(1,(t-t0)/dur),v=end*(1-Math.pow(1-k,3));
+        el.innerHTML=v.toFixed(dec)+suf;
+        if(k<1)requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+    if("IntersectionObserver" in window) $$(".figs,.cases").forEach(function(blk){
+      var fo=new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ fo.disconnect(); $$(".num,.fig-n",e.target).forEach(countUp); } });
+      },{threshold:.25});
+      fo.observe(blk);
+    });
+
+    /* ---- in-page nav: mark the section you are reading ---- */
+    var snLinks=$$(".sn-links a");
+    if(snLinks.length&&"IntersectionObserver" in window){
+      var byId={},secs=[];
+      snLinks.forEach(function(a){
+        var sec=root.querySelector(a.getAttribute("href"));
+        if(sec){byId[sec.id]=a;secs.push(sec);}
+      });
+      var seen={};
+      var so=new IntersectionObserver(function(es){
+        es.forEach(function(e){seen[e.target.id]=e.isIntersecting;});
+        var cur=null;
+        secs.forEach(function(sec){if(seen[sec.id]&&!cur)cur=sec.id;});
+        snLinks.forEach(function(a){a.removeAttribute("aria-current");});
+        if(cur)byId[cur].setAttribute("aria-current","true");
+      },{rootMargin:"-80px 0px -55% 0px"});
+      secs.forEach(function(sec){so.observe(sec);});
+    }
+
+    /* ---- console tabs ---- */
+    var picks=$$(".pick"),lmq=window.matchMedia("(max-width:1024px)"),cw=$(".conswrap");
+    /* where in the pinned band the console at index i sits */
+    function conspos(i){return cw.getBoundingClientRect().top+window.scrollY+(cw.offsetHeight-window.innerHeight)*(i+.5)/picks.length;}
+    function show(name){
+      picks.forEach(function(b){ b.setAttribute("aria-selected", b.dataset.pane===name?"true":"false"); });
+      $$(".pane,.blurb").forEach(function(p){
+        p.classList.toggle("on",p.dataset.pane===name);
+      });
+    }
+    picks.forEach(function(b,i){
+      b.addEventListener("click",function(){show(b.dataset.pane);if(cw&&!lmq.matches&&!reduced)window.scrollTo({top:conspos(i)});});
+      b.addEventListener("keydown",function(e){
+        var d=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;
+        if(!d)return;
+        e.preventDefault();
+        var n=picks[(i+d+picks.length)%picks.length];
+        n.focus(); show(n.dataset.pane);
+      });
+    });
+
+    /* ---- consoles: pin the panel, one console per screen of scroll ---- */
+    if(cw&&picks.length&&!reduced){
+      var ctick=function(){
+        if(lmq.matches)return;
+        var cspan=cw.offsetHeight-window.innerHeight;
+        var ck=cspan>0?Math.min(1,Math.max(0,-cw.getBoundingClientRect().top/cspan)):0;
+        var ci=Math.min(picks.length-1,Math.floor(ck*picks.length));
+        if(picks[ci].getAttribute("aria-selected")!=="true")show(picks[ci].dataset.pane);
+      };
+      window.addEventListener("scroll",ctick,{passive:true});
+      window.addEventListener("resize",ctick);
+      ctick();
+    }
+
+    /* ---- the loop: pin the band and light one step per screen of scroll ---- */
+    var lw=$(".loopwrap"),lps=$$(".loop .lp");
+    if(lw&&lps.length){
+      var lightAll=function(){lps.forEach(function(p){p.classList.add("lit");});};
+      if(reduced){ lightAll(); }
+      else{
+        var ltick=function(){
+          if(lmq.matches){lightAll();return;}
+          var span=lw.offsetHeight-window.innerHeight;
+          var k=span>0?Math.min(1,Math.max(0,-lw.getBoundingClientRect().top/span)):0;
+          var lit=Math.min(lps.length,1+Math.floor(k*lps.length));
+          lps.forEach(function(p,i){p.classList.toggle("lit",i<lit);});
+        };
+        window.addEventListener("scroll",ltick,{passive:true});
+        window.addEventListener("resize",ltick);
+        ltick();
+      }
+    }
+
+    /* ---- hero backdrop: bytes only where they are worth it ---- */
+    var vids=$$(".hero-vid");
+    if(vids.length&&"IntersectionObserver" in window){
+      var cn=navigator.connection||{};
+      if(!reduced&&window.innerWidth>=900&&!cn.saveData&&!/2g/.test(cn.effectiveType||"")){
+        vids.forEach(function(hv){
+        hv.muted=true;
+        var vplay=function(){var r=hv.play();if(r&&r.catch)r.catch(function(){});};
+        new IntersectionObserver(function(es){
+          es.forEach(function(e){
+            if(e.isIntersecting){
+              if(!hv.dataset.on){
+                hv.dataset.on="1";
+                hv.querySelectorAll("source").forEach(function(sc){sc.src=sc.dataset.src;});
+                hv.load();
+              }
+              vplay();
+            }else if(hv.dataset.on){hv.pause();}
+          });
+        },{threshold:.01}).observe(hv);
+        document.addEventListener("visibilitychange",function(){
+          if(!hv.dataset.on)return;
+          if(document.hidden)hv.pause();else vplay();
+        });
+        });
+      }
+    }
+
+    /* ---- margin watch: it keeps reading, so the figures move on their own ---- */
+    var watch=$("#aeWatch");
+    if(watch&&!reduced&&"IntersectionObserver" in window){
+      var READS=[
+        {hi:"2.6 points to 14.1%",tot:"2.6",scrap:["73%","1.9"],board:["27%","0.7"],rows:"58,204",secs:"2.1 s"},
+        {hi:"2.9 points to 13.8%",tot:"2.9",scrap:["76%","2.2"],board:["24%","0.7"],rows:"59,010",secs:"1.9 s"}
+      ],ri=0,rt=0;
+      function paint(d){
+        var bars=watch.querySelectorAll(".hbar");
+        watch.querySelector(".hi").textContent=d.hi;
+        watch.querySelector(".tot").textContent=d.tot;
+        watch.querySelector(".m1").textContent=d.scrap[1];
+        watch.querySelector(".m2").textContent=d.board[1];
+        bars[0].querySelector("i").style.setProperty("--w",d.scrap[0]);
+        bars[0].querySelector(".v").textContent=d.scrap[1];
+        bars[1].querySelector("i").style.setProperty("--w",d.board[0]);
+        bars[1].querySelector(".v").textContent=d.board[1];
+        watch.querySelector(".rows").textContent=d.rows;
+        watch.querySelector(".secs").textContent=d.secs;
+        /* restart the ping without waiting for the animation to end */
+        watch.classList.remove("beat"); void watch.offsetWidth; watch.classList.add("beat");
+      }
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting){ if(!rt) rt=setInterval(function(){ ri=(ri+1)%READS.length; paint(READS[ri]); },4600); }
+          else if(rt){ clearInterval(rt); rt=0; }
+        });
+      },{threshold:.35}).observe(watch);
+    }
+
+    /* ---- the ask bar types itself: three questions, on a loop while in view ---- */
+    var tw=document.getElementById("aeType");
+    if(tw&&!reduced&&"IntersectionObserver" in window){
+      var tsp=tw.querySelector("span"),rest=tsp.textContent,
+          QS=["Why did Line 3 stop twice?","Scrap by shift, last 7 days","Which spares are below cover?"],
+          qi=0,ci=0,del=false,tt=0;
+      function tstep(){
+        var q=QS[qi],d;
+        ci+=del?-1:1;
+        tsp.textContent=q.slice(0,ci);
+        tw.classList.toggle("typing",ci>0);
+        if(!del&&ci>=q.length){del=true;d=1900;}
+        else if(del&&ci<=0){del=false;qi=(qi+1)%QS.length;d=420;}
+        else d=del?26:58;
+        tt=setTimeout(tstep,d);
+      }
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting){ if(!tt){ci=0;del=false;tstep();} }
+          else if(tt){clearTimeout(tt);tt=0;tsp.textContent=rest;tw.classList.remove("typing");}
+        });
+      },{threshold:.4}).observe(tw);
+    }
+
+    /* ---- the workspace: the question types itself, then the answer builds ---- */
+    var wq=$("#aeWatch");
+    if(wq&&!reduced&&"IntersectionObserver" in window){
+      var wel=wq.querySelector(".say.q"),wtx=wel.textContent,wn=0;
+      wq.classList.add("tw"); wel.textContent="";
+      function wstep(){
+        wel.textContent=wtx.slice(0,++wn);
+        if(wn>=wtx.length) wq.classList.add("done"); else setTimeout(wstep,38);
+      }
+      new IntersectionObserver(function(es,o){
+        es.forEach(function(e){ if(e.isIntersecting){ o.disconnect(); setTimeout(wstep,400); } });
+      },{rootMargin:"0px 0px -12% 0px",threshold:.12}).observe(wq);
+    }
+
+    /* ---- the first capability: the question types itself, then the query lands ---- */
+    var ask=$(".cap.ac1 .art-ask");
+    if(ask&&!reduced&&"IntersectionObserver" in window){
+      var qel=ask.querySelector(".q"),qtx=qel.textContent,qn=0;
+      ask.classList.add("tw"); qel.textContent="";
+      function qstep(){
+        qel.textContent=qtx.slice(0,++qn);
+        if(qn>=qtx.length) ask.classList.add("done"); else setTimeout(qstep,38);
+      }
+      new IntersectionObserver(function(es,o){
+        es.forEach(function(e){ if(e.isIntersecting){ o.disconnect(); setTimeout(qstep,450); } });
+      },{rootMargin:"0px 0px -12% 0px",threshold:.12}).observe(ask);
+    }
+
+    /* ---- the approval, played through: the press, then the state it leaves behind ---- */
+    var appr=document.getElementById("aeAppr"),apprOk=document.getElementById("aeApprOk");
+    if(appr&&apprOk&&!reduced&&"IntersectionObserver" in window){
+      var go=appr.querySelector(".act.go"),goTxt=go.textContent,
+          pill=appr.parentNode.querySelector(".ph-list .pill"),
+          pillTxt=pill?pill.textContent:"",pillCls=pill?pill.className:"",ats=[],aiv=0;
+      function areset(){
+        ats.forEach(clearTimeout); ats=[];
+        appr.classList.remove("press"); appr.hidden=false; apprOk.hidden=true;
+        go.textContent=goTxt;
+        if(pill){pill.className=pillCls;pill.textContent=pillTxt;}
+      }
+      function aplay(){
+        areset();
+        ats.push(setTimeout(function(){appr.classList.add("press");},700));
+        ats.push(setTimeout(function(){appr.classList.remove("press");go.textContent="Approving\u2026";},960));
+        ats.push(setTimeout(function(){
+          appr.hidden=true; apprOk.hidden=false;
+          if(pill){pill.className="pill ok";pill.textContent="approved";}
+        },1800));
+      }
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting){ if(!aiv){aplay();aiv=setInterval(aplay,7400);} }
+          else if(aiv){clearInterval(aiv);aiv=0;areset();}
+        });
+      },{threshold:.4}).observe(appr.parentNode);
+    }
+
+    /* ---- CTA popup: trigger + form adoption (ported from aether-landing.v1.html) ---- */
+    var pop=document.getElementById("aeSchd");
+    if(pop&&!window.aeSchdInit){
+      window.aeSchdInit=1;
+      /* out of #main-section so a transformed Elementor ancestor cannot break position:fixed */
+      document.body.appendChild(pop);
+      pop.setAttribute("data-theme",root.getAttribute("data-theme"));
+      var slot=document.getElementById("aeSchdForm"),moved=false,lastFocus=null;
+
+      function adopt(){
+        if(moved||!slot) return;
+        var src=document.querySelector("#schedule-demo-form, .schedule-demo-form");
+        if(!src){
+          var w=document.querySelectorAll(".elementor-widget-shortcode");
+          for(var i=0;i<w.length;i++){ if(w[i].querySelector(".frm_forms, form")){ src=w[i]; break; } }
+        }
+        if(!src) src=document.querySelector(".frm_forms");
+        if(!src||pop.contains(src)) return;
+        slot.innerHTML=""; slot.appendChild(src); src.style.display="block"; moved=true;
+      }
+      adopt();
+      window.addEventListener("load",adopt);
+
+      function onSchdKey(e){ if(e.key==="Escape") closePop(); }
+      function openPop(e){
+        if(e) e.preventDefault();
+        adopt();
+        lastFocus=document.activeElement;
+        pop.hidden=false;
+        document.body.style.overflow="hidden";
+        document.addEventListener("keydown",onSchdKey);
+        requestAnimationFrame(function(){
+          pop.classList.add("is-open");
+          requestAnimationFrame(function(){
+            var f=pop.querySelector(".ae-schd-form input:not([type=hidden]):not([type=submit]):not([type=button]):not([disabled]), .ae-schd-form textarea:not([disabled]), .ae-schd-form select:not([disabled])")||pop.querySelector("[data-schedule-popup-close]");
+            if(f) f.focus();
+          });
+        });
+      }
+      function closePop(){
+        pop.classList.remove("is-open");
+        document.body.style.overflow="";
+        document.removeEventListener("keydown",onSchdKey);
+        setTimeout(function(){pop.hidden=true;},250);
+        if(lastFocus&&lastFocus.focus) lastFocus.focus();
+      }
+      /* delegated: triggers Elementor renders later still work, and one listener covers open + close */
+      document.addEventListener("click",function(e){
+        var t=e.target.closest&&e.target.closest("[data-schedule-demo]");
+        if(t){ openPop(e); return; }
+        if(e.target===pop||(e.target.closest&&e.target.closest("[data-schedule-popup-close]"))) closePop();
+      });
+    }
+
+  })();
+
+
+</script>

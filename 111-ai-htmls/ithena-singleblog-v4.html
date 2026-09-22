@@ -1,0 +1,585 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@400;600;700;800&display=swap');
+section#main-section,section#main-section *:not(svg):not(svg *){all:revert}
+section#main-section,section#main-section *,section#main-section *::before,section#main-section *::after{box-sizing:border-box!important;margin:0!important;padding:0!important}
+section#main-section{--blue:#0083C8!important;--blue-d:#006AA3!important;--blue-l:#3FA9E0!important;--acc:#BFE5F8!important;--navy:#0A192D!important;--band-bg:linear-gradient(160deg,#0B2038 0%,#0A192D 55%,#0C2542 100%)!important;--sa:#FFFFFF!important;--sb:#EFF6FC!important;--card:#FFFFFF!important;--ink:#0A192D!important;--body:#4A5A6A!important;--muted:#6B7C8C!important;--line:rgba(10,25,45,.10)!important;--hair:rgba(10,25,45,.14)!important;--shadow:0 18px 44px -24px rgba(0,40,70,.34)!important;--shadow-lg:0 40px 80px -30px rgba(0,40,70,.45)!important;--ez:cubic-bezier(.22,.61,.36,1)!important;--font-head:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif!important;--font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif!important;--wrap:1240px!important;--hdr:96px!important;display:block!important;font-family:var(--font-body)!important;font-size:16px!important;line-height:1.62!important;font-weight:400!important;color:var(--body)!important;background:var(--sa)!important;-webkit-font-smoothing:antialiased!important;transition:background-color .3s ease,color .3s ease!important}
+section#main-section[data-theme="dark"]{--sa:#0C2136!important;--sb:#0E2740!important;--card:#123049!important;--band-bg:linear-gradient(160deg,#061727 0%,#04101C 55%,#071B2E 100%)!important;--ink:#EAF4FB!important;--body:rgba(215,236,246,.82)!important;--muted:#8FAFC4!important;--line:rgba(215,236,246,.13)!important;--hair:rgba(215,236,246,.18)!important;--shadow:0 18px 44px -24px rgba(0,0,0,.6)!important;--shadow-lg:0 40px 80px -30px rgba(0,0,0,.7)!important;color-scheme:dark!important}
+section#main-section ul,section#main-section ol{list-style:none!important}
+section#main-section button{font:inherit!important;color:inherit!important;background:none!important;border:0!important;cursor:pointer!important}
+section#main-section img,section#main-section svg{display:block!important;max-width:100%!important}
+section#main-section a{color:var(--blue)!important;text-decoration:none!important}
+section#main-section h1,section#main-section h2,section#main-section h3,section#main-section h4{font-family:var(--font-head)!important;color:var(--ink)!important;line-height:1.16!important;font-weight:700!important}
+section#main-section :focus-visible{outline:2px solid var(--blue)!important;outline-offset:3px!important;border-radius:6px!important}
+section#main-section .wrap{max-width:var(--wrap)!important;margin:0 auto!important;padding:0 clamp(20px,4vw,44px)!important}
+section#main-section .ithS-sec{display:block!important;position:relative!important;padding:clamp(56px,7vw,104px) 0!important;scroll-margin-top:calc(var(--hdr) + 62px)!important;background:var(--sa)!important}
+section#main-section .ithS-sec.tint{background:var(--sb)!important}
+section#main-section .ithS-sec.band{background:var(--band-bg)!important;--ink:#FFFFFF!important;--body:rgba(215,236,246,.80)!important;--muted:#8FAFC4!important;--card:rgba(255,255,255,.045)!important;--line:rgba(255,255,255,.13)!important;--hair:rgba(255,255,255,.18)!important}
+section#main-section .kick{display:inline-flex!important;align-items:center!important;gap:11px!important;font:700 12px/1 var(--font-body)!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--blue)!important;margin-bottom:18px!important}
+section#main-section .kick::before{content:""!important;width:26px!important;height:2px!important;border-radius:2px!important;background:var(--blue)!important;flex:none!important}
+section#main-section .band .kick,section#main-section .ithS-sec--hero .kick{color:var(--blue-l)!important}
+section#main-section .band .kick::before,section#main-section .ithS-sec--hero .kick::before{background:var(--blue-l)!important}
+section#main-section h2{font-size:clamp(27px,3.5vw,40px)!important;font-weight:700!important;line-height:1.14!important;letter-spacing:-.018em!important;margin-bottom:16px!important}
+section#main-section h3{font-size:19px!important;font-weight:700!important;line-height:1.3!important}
+section#main-section .lead{font-size:clamp(16px,1.6vw,18px)!important;font-weight:300!important;line-height:1.62!important;color:var(--body)!important;max-width:54ch!important}
+section#main-section p.body{margin-top:15px!important;max-width:64ch!important;color:var(--body)!important}
+section#main-section em{font-style:normal!important;color:var(--blue)!important}
+section#main-section .btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;padding:14px 28px!important;border-radius:999px!important;font-size:15px!important;font-weight:700!important;line-height:1!important;white-space:nowrap!important;transition:transform .2s var(--ez),background-color .2s var(--ez),border-color .2s var(--ez)!important}
+section#main-section .btn:hover{transform:translateY(-2px)!important}
+section#main-section .btn svg{width:17px!important;height:17px!important}
+section#main-section .btn-p{background:var(--blue)!important;color:#fff!important}
+section#main-section .btn-p:hover{background:var(--blue-d)!important}
+section#main-section .btn-g{border:1px solid rgba(255,255,255,.3)!important;color:#fff!important}
+section#main-section .btn-g:hover{border-color:var(--acc)!important;background:rgba(255,255,255,.07)!important}
+section#main-section .btns{display:flex!important;flex-wrap:wrap!important;gap:12px!important;margin-top:30px!important}
+section#main-section .ithS-sec--hero{background:var(--band-bg)!important;overflow:hidden!important;padding:clamp(64px,8vw,116px) 0 clamp(56px,7vw,96px)!important;--ink:#FFFFFF!important;--body:rgba(215,236,246,.80)!important}
+section#main-section .ithS-sec--hero::before{content:""!important;position:absolute!important;inset:0!important;pointer-events:none!important;background:radial-gradient(48% 62% at 78% 42%,rgba(0,131,200,.30),transparent 70%),radial-gradient(38% 50% at 8% 18%,rgba(63,169,224,.14),transparent 72%)!important}
+section#main-section .hero-in{position:relative!important;z-index:1!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,520px)!important;gap:clamp(32px,5vw,72px)!important;align-items:center!important}
+section#main-section .pill{display:inline-flex!important;align-items:center!important;padding:6px 16px!important;border-radius:999px!important;border:1px solid rgba(63,169,224,.4)!important;background:rgba(0,131,200,.16)!important;color:var(--acc)!important;font:700 11px/1 var(--font-body)!important;letter-spacing:.18em!important;text-transform:uppercase!important;margin-bottom:22px!important}
+section#main-section .h-title{font-size:clamp(32px,4.8vw,52px)!important;font-weight:700!important;line-height:1.08!important;letter-spacing:-.024em!important;color:#fff!important;max-width:16ch!important}
+section#main-section .h-deck{font-size:clamp(16px,1.7vw,18px)!important;font-weight:300!important;line-height:1.62!important;color:rgba(215,236,246,.82)!important;max-width:50ch!important;margin-top:20px!important}
+section#main-section .h-meta{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:10px 22px!important;margin-top:30px!important;font-size:14px!important;color:rgba(215,236,246,.72)!important}
+section#main-section .h-meta li{display:inline-flex!important;align-items:center!important;gap:9px!important}
+section#main-section .h-meta li+li{padding-left:22px!important;border-left:1px solid rgba(255,255,255,.16)!important}
+section#main-section .h-meta svg{width:16px!important;height:16px!important;color:var(--blue-l)!important;flex:none!important}
+section#main-section .h-meta strong{color:#fff!important;font-weight:700!important}
+section#main-section .orb{position:relative!important;width:100%!important;aspect-ratio:1/1!important;display:grid!important;place-items:center!important}
+section#main-section .orb-ring{position:absolute!important;inset:12%!important;border-radius:50%!important;border:1px solid rgba(63,169,224,.34)!important;box-shadow:0 0 70px rgba(0,131,200,.34),inset 0 0 70px rgba(0,131,200,.22)!important;background:radial-gradient(circle at 38% 32%,rgba(63,169,224,.26),rgba(6,26,42,.05) 62%)!important}
+section#main-section .orb-ring.r2{inset:19%!important;border-style:dashed!important;border-color:rgba(63,169,224,.22)!important;box-shadow:none!important;background:none!important;animation:ithS-spin 42s linear infinite!important}
+section#main-section .orb-core{position:relative!important;z-index:2!important;width:38%!important;aspect-ratio:1/1!important;border-radius:50%!important;display:grid!important;place-items:center!important;text-align:center!important;background:radial-gradient(circle at 42% 34%,#1B4E79,#0B2742 72%)!important;border:1px solid rgba(63,169,224,.5)!important;box-shadow:0 0 50px rgba(0,131,200,.45)!important;font-family:var(--font-head)!important;font-weight:700!important;font-size:clamp(15px,1.7vw,20px)!important;color:#fff!important;line-height:1.2!important}
+section#main-section .chip{position:absolute!important;z-index:3!important;display:flex!important;align-items:center!important;gap:9px!important;padding:9px 14px!important;border-radius:12px!important;background:rgba(10,32,54,.78)!important;border:1px solid rgba(63,169,224,.3)!important;-webkit-backdrop-filter:blur(7px)!important;backdrop-filter:blur(7px)!important;box-shadow:0 12px 28px -14px rgba(0,0,0,.7)!important;font-size:12.5px!important;font-weight:600!important;color:#EAF4FB!important;white-space:nowrap!important;animation:ithS-float 7s ease-in-out infinite!important}
+section#main-section .chip svg{width:16px!important;height:16px!important;color:var(--blue-l)!important;flex:none!important}
+section#main-section .chip.c1{top:9%!important;left:2%!important;animation-delay:0s!important}
+section#main-section .chip.c2{top:36%!important;left:-6%!important;animation-delay:1.1s!important}
+section#main-section .chip.c3{bottom:16%!important;left:4%!important;animation-delay:2.2s!important}
+section#main-section .chip.c4{top:22%!important;right:-4%!important;animation-delay:1.6s!important}
+section#main-section .chip.c5{bottom:12%!important;right:0%!important;animation-delay:.6s!important}
+@keyframes ithS-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes ithS-spin{to{transform:rotate(360deg)}}
+section#main-section .toc{position:sticky!important;top:var(--hdr)!important;z-index:20!important;background:var(--sa)!important;padding:16px 0!important}
+section#main-section .toc-card{background:var(--card)!important;border:1px solid var(--line)!important;border-radius:16px!important;box-shadow:var(--shadow)!important;overflow:hidden!important;padding:0 clamp(16px,2.4vw,28px)!important}
+section#main-section .prog{height:2px!important;background:var(--line)!important;margin:0 calc(-1 * clamp(16px,2.4vw,28px))!important}
+section#main-section .prog i{display:block!important;height:100%!important;width:0!important;background:linear-gradient(90deg,var(--blue),var(--acc))!important}
+section#main-section .toc ol{display:flex!important;gap:clamp(18px,2.6vw,38px)!important;overflow-x:auto!important;scrollbar-width:none!important}
+section#main-section .toc ol::-webkit-scrollbar{display:none!important}
+section#main-section .toc a{position:relative!important;display:block!important;white-space:nowrap!important;padding:16px 0!important;font-size:14px!important;font-weight:500!important;color:var(--muted)!important}
+section#main-section .toc a:hover{color:var(--ink)!important}
+section#main-section .toc a::after{content:""!important;position:absolute!important;left:50%!important;right:50%!important;bottom:0!important;height:2px!important;background:var(--blue)!important;transition:left .25s var(--ez),right .25s var(--ez)!important}
+section#main-section .toc a:hover::after,section#main-section .toc a[aria-current="true"]::after{left:0!important;right:0!important}
+section#main-section .toc a[aria-current="true"]{color:var(--blue)!important;font-weight:600!important}
+section#main-section .split{display:grid!important;grid-template-columns:minmax(0,340px) minmax(0,1fr)!important;gap:clamp(28px,4.5vw,72px)!important;align-items:start!important}
+section#main-section .two{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:clamp(30px,4.5vw,70px)!important;align-items:center!important}
+section#main-section .fig img{width:100%!important;height:auto!important;border-radius:16px!important;border:1px solid var(--line)!important;box-shadow:var(--shadow-lg)!important;background:var(--sb)!important}
+section#main-section .fig figcaption{margin-top:14px!important;font-size:13.5px!important;color:var(--muted)!important;max-width:56ch!important}
+section#main-section .fig-media{overflow:hidden!important;border-radius:16px!important;box-shadow:var(--shadow-lg)!important}
+section#main-section .fig-media img{width:100%!important;height:clamp(240px,30vw,400px)!important;object-fit:cover!important;border-radius:16px!important;border:0!important;box-shadow:none!important}
+section#main-section .ithS-sec--faq .wrap{grid-template-columns:minmax(0,270px) minmax(0,1fr) minmax(0,290px)!important;gap:clamp(24px,3vw,48px)!important}
+section#main-section .ithS-sec--faq .faq-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:clamp(14px,1.6vw,20px)!important}
+section#main-section .faq-aside{display:grid!important;gap:12px!important;align-content:start!important}
+section#main-section .msg{max-width:92%!important;padding:13px 16px!important;border-radius:16px!important;font-size:13.5px!important;line-height:1.55!important;box-shadow:var(--shadow)!important}
+section#main-section .msg.u{justify-self:end!important;background:var(--blue)!important;color:#fff!important;border-bottom-right-radius:5px!important}
+section#main-section .msg.a{justify-self:start!important;display:flex!important;gap:11px!important;align-items:flex-start!important;background:var(--card)!important;border:1px solid var(--line)!important;color:var(--ink)!important;border-bottom-left-radius:5px!important}
+section#main-section .msg .amark{width:26px!important;height:26px!important;flex:none!important;border-radius:8px!important;display:grid!important;place-items:center!important;background:rgba(0,131,200,.12)!important;color:var(--blue)!important;font-family:var(--font-head)!important;font-weight:800!important;font-size:14px!important;line-height:1!important}
+section#main-section .qa{padding:22px!important;border-radius:14px!important;background:var(--card)!important;border:1px solid var(--line)!important;box-shadow:var(--shadow)!important;transition:transform .25s var(--ez),box-shadow .25s var(--ez)!important}
+section#main-section .qa:hover{transform:translateY(-3px)!important;box-shadow:var(--shadow-lg)!important}
+section#main-section .qa-h{display:flex!important;align-items:flex-start!important;gap:11px!important;margin-bottom:9px!important}
+section#main-section .qa-h svg{width:20px!important;height:20px!important;color:var(--blue)!important;flex:none!important;margin-top:2px!important}
+section#main-section .qa h3{font-size:15.5px!important;font-weight:700!important;color:var(--ink)!important}
+section#main-section .qa p{font-size:14px!important;line-height:1.6!important;color:var(--muted)!important}
+section#main-section .tk-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:clamp(16px,2vw,24px)!important}
+section#main-section .tk{padding:26px 24px!important;border-radius:16px!important;background:var(--card)!important;border:1px solid var(--line)!important;transition:transform .25s var(--ez),border-color .25s var(--ez)!important}
+section#main-section .tk:hover{transform:translateY(-4px)!important;border-color:rgba(63,169,224,.45)!important}
+section#main-section .tk-ico{width:52px!important;height:52px!important;border-radius:50%!important;display:grid!important;place-items:center!important;border:1.5px solid rgba(63,169,224,.5)!important;background:rgba(0,131,200,.12)!important;margin-bottom:20px!important}
+section#main-section .tk-ico svg{width:24px!important;height:24px!important;color:var(--blue-l)!important}
+section#main-section .tk h3{margin-bottom:9px!important;color:var(--ink)!important}
+section#main-section .tk p{font-size:14px!important;line-height:1.6!important;color:var(--body)!important}
+section#main-section .caps{display:grid!important;grid-template-columns:1fr 1fr!important;gap:clamp(24px,3.2vw,46px)!important}
+section#main-section .cap{display:flex!important;gap:16px!important;align-items:flex-start!important}
+section#main-section .cap-ico{width:46px!important;height:46px!important;flex:none!important;border-radius:13px!important;display:grid!important;place-items:center!important;background:rgba(0,131,200,.10)!important;border:1px solid var(--line)!important;transition:background-color .25s var(--ez)!important}
+section#main-section .cap:hover .cap-ico{background:var(--blue)!important}
+section#main-section .cap:hover .cap-ico svg{color:#fff!important}
+section#main-section .cap-ico svg{width:22px!important;height:22px!important;color:var(--blue)!important;transition:color .25s var(--ez)!important}
+section#main-section .cap h3{font-size:16px!important;margin-bottom:6px!important;color:var(--ink)!important}
+section#main-section .cap p{font-size:14px!important;line-height:1.6!important;color:var(--muted)!important;max-width:42ch!important}
+section#main-section .checks{margin-top:26px!important;display:grid!important;gap:13px!important}
+section#main-section .checks li{display:flex!important;align-items:flex-start!important;gap:12px!important;font-size:15px!important;color:var(--body)!important}
+section#main-section .checks svg{width:21px!important;height:21px!important;color:var(--blue)!important;flex:none!important;margin-top:1px!important}
+section#main-section blockquote{margin-top:28px!important;padding-top:22px!important;border-top:3px solid var(--blue)!important;max-width:54ch!important}
+section#main-section blockquote p{font-family:var(--font-head)!important;font-size:clamp(18px,2.1vw,23px)!important;font-weight:700!important;line-height:1.36!important;color:var(--ink)!important}
+section#main-section blockquote cite{display:block!important;margin-top:13px!important;font-style:normal!important;font-size:13.5px!important;color:var(--muted)!important}
+section#main-section blockquote cite::before{content:"\2014\A0"!important}
+section#main-section .inds{display:flex!important;flex-wrap:wrap!important;gap:clamp(18px,3vw,40px)!important;justify-content:center!important}
+section#main-section .ind{display:grid!important;justify-items:center!important;gap:12px!important;text-align:center!important;font-size:13.5px!important;font-weight:600!important;color:var(--ink)!important}
+section#main-section .ind-ico{width:58px!important;height:58px!important;border-radius:50%!important;display:grid!important;place-items:center!important;border:1px solid rgba(63,169,224,.4)!important;background:rgba(0,131,200,.12)!important;transition:transform .25s var(--ez)!important}
+section#main-section .ind:hover .ind-ico{transform:translateY(-4px)!important}
+section#main-section .ind-ico svg{width:26px!important;height:26px!important;color:var(--blue-l)!important}
+section#main-section .ithS-sec--industries .wrap{display:grid!important;grid-template-columns:minmax(330px,1fr) auto minmax(0,300px)!important;gap:clamp(24px,2.8vw,44px)!important;align-items:center!important}
+section#main-section .nextcard{padding:28px!important;border-radius:18px!important;background:var(--card)!important;border:1px solid var(--line)!important;box-shadow:var(--shadow-lg)!important;display:flex!important;align-items:center!important;gap:16px!important;max-width:340px!important}
+section#main-section .nextcard .mark{width:52px!important;height:52px!important;flex:none!important;border-radius:14px!important;display:grid!important;place-items:center!important;background:var(--blue)!important;color:#fff!important;font-family:var(--font-head)!important;font-weight:800!important;font-size:24px!important}
+section#main-section .nextcard p{font-size:15px!important;font-weight:600!important;color:var(--ink)!important;line-height:1.4!important}
+section#main-section .ithS-sec--about .wrap{display:grid!important;grid-template-columns:minmax(0,230px) minmax(0,1fr) minmax(0,1fr) minmax(0,280px)!important;gap:clamp(20px,2.6vw,40px)!important;align-items:start!important}
+section#main-section .about{padding-top:20px!important;border-top:2px solid var(--blue)!important}
+section#main-section .about h3{font-size:17px!important;margin-bottom:10px!important}
+section#main-section .about p{font-size:14px!important;line-height:1.62!important;color:var(--muted)!important}
+section#main-section .about a{display:inline-flex!important;align-items:center!important;gap:7px!important;margin-top:13px!important;font-size:13.5px!important;font-weight:700!important;color:var(--blue)!important}
+section#main-section .about a svg{width:15px!important;height:15px!important}
+section#main-section .ithS-sec--cta{overflow:hidden!important}
+section#main-section .cta-in{display:grid!important;grid-template-columns:minmax(320px,1fr) auto minmax(0,220px)!important;gap:clamp(22px,2.4vw,36px)!important;align-items:center!important}
+section#main-section .cta-in .btns{margin-top:0!important}
+section#main-section .cta-med{position:relative!important;border-radius:18px!important;overflow:hidden!important;aspect-ratio:16/10!important;box-shadow:var(--shadow-lg)!important}
+section#main-section .cta-med video{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;filter:brightness(.5) saturate(.9)!important}
+section#main-section .rev{opacity:0!important;transform:translateY(18px)!important;transition:opacity .6s var(--ez),transform .6s var(--ez)!important}
+section#main-section .rev.in{opacity:1!important;transform:none!important}
+@media (max-width:1180px){
+section#main-section .ithS-sec--faq .wrap{grid-template-columns:minmax(0,260px) minmax(0,1fr)!important}
+section#main-section .faq-aside{grid-column:1/-1!important;max-width:560px!important}
+section#main-section .ithS-sec--about .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+section#main-section .ithS-sec--about .about-h{grid-column:1/-1!important}
+section#main-section .ithS-sec--about .fig-media{grid-column:1/-1!important;max-width:560px!important}
+}
+@media (max-width:1040px){
+section#main-section .hero-in{grid-template-columns:1fr!important}
+section#main-section .orb{max-width:420px!important;margin:0 auto!important}
+section#main-section .split{grid-template-columns:1fr!important}
+section#main-section .ithS-sec--faq .wrap{grid-template-columns:1fr!important}
+section#main-section .ithS-sec--industries .wrap{grid-template-columns:1fr!important}
+section#main-section .cta-in{grid-template-columns:1fr!important}
+section#main-section .cta-in .btns{margin-top:4px!important}
+}
+@media (max-width:860px){
+section#main-section .ithS-sec--about .wrap{grid-template-columns:1fr!important}
+section#main-section .two{grid-template-columns:1fr!important}
+section#main-section .ithS-sec--faq .faq-grid{grid-template-columns:1fr!important}
+section#main-section .tk-grid{grid-template-columns:1fr!important}
+section#main-section .caps{grid-template-columns:1fr!important}
+section#main-section .fig-order{order:-1!important}
+}
+@media (max-width:560px){
+section#main-section .btn{width:100%!important}
+section#main-section .h-meta li+li{padding-left:0!important;border-left:0!important}
+section#main-section .chip{font-size:11px!important;padding:7px 11px!important}
+section#main-section .inds{justify-content:flex-start!important}
+}
+@media (prefers-reduced-motion:reduce){
+section#main-section *,section#main-section *::before,section#main-section *::after{transition-duration:.001ms!important;animation:none!important}
+section#main-section .rev{opacity:1!important;transform:none!important}
+}
+</style>
+
+<section id="main-section" class="ithS-post" data-theme="dark">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Aether in The Enterprise World, July 2026",
+      "description": "A second consecutive feature, and a closer look at how Aether closes the distance between enterprise data, the decision it should inform, and the action that follows.",
+      "image": "https://dev-website.ithena.app/wp-content/uploads/2026/07/ent-wrld-aether-blog-bannerv2.webp",
+      "datePublished": "2026-07-01",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "articleSection": "In the press",
+      "keywords": "Aether, Agentic AI, enterprise analytics, decision intelligence, ITHENA, The Enterprise World",
+      "author": { "@type": "Organization", "name": "ITHENA", "url": "https://ithena.ai/" },
+      "publisher": { "@type": "Organization", "name": "ITHENA", "url": "https://ithena.ai/" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://dev-website.ithena.app/single-blog-page/" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://dev-website.ithena.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://dev-website.ithena.app/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Aether in The Enterprise World, July 2026" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is Aether?", "acceptedAnswer": { "@type": "Answer", "text": "Aether is ITHENA's Agentic AI-powered advanced analytics platform. It combines Enterprise AI, Generative AI, Agentic AI and Intelligent Automation in one platform, so teams can move from a question to a decision, and from a decision to an action, without crossing a tool boundary." } },
+        { "@type": "Question", "name": "How is Aether different from a traditional BI dashboard?", "acceptedAnswer": { "@type": "Answer", "text": "A traditional dashboard is built to describe what happened and stops there. Aether interprets the data, recommends what to do next, and can initiate the workflow, notification or operational action itself." } },
+        { "@type": "Question", "name": "Can you ask Aether questions in plain English?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Questions asked in natural language return instant, contextual answers drawn from enterprise data - no query language, no report request and no queue - and where the answer implies an action, Aether can trigger it." } },
+        { "@type": "Question", "name": "Which industries is Aether built for?", "acceptedAnswer": { "@type": "Answer", "text": "Aether is designed for data-intensive, time-sensitive operations, including manufacturing, supply chain, healthcare and finance." } },
+        { "@type": "Question", "name": "Where was Aether featured?", "acceptedAnswer": { "@type": "Answer", "text": "In The Enterprise World, July 2026 edition, under the title 'Talking to Your Data: How Aether Turns Enterprise Chaos into Clarity' - its second consecutive feature in the magazine." } },
+        { "@type": "Question", "name": "What does Agentic AI mean in Aether?", "acceptedAnswer": { "@type": "Answer", "text": "Agentic AI recommends and initiates business actions from AI-generated insight, rather than leaving the follow-through to someone's inbox." } }
+      ]
+    }
+  ]
+}
+</script>
+
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <g id="s-cal"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></g>
+    <g id="s-clock"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></g>
+    <g id="s-tag"><path d="M3 12.5V4.5A1.5 1.5 0 0 1 4.5 3h8L21 11.5 13.5 19z"/><circle cx="7.5" cy="7.5" r="1.3"/></g>
+    <g id="s-plus"><circle cx="12" cy="12" r="9"/><path d="M12 8.2v7.6M8.2 12h7.6"/></g>
+    <g id="s-check"><circle cx="12" cy="12" r="9"/><path d="M8 12.2l2.8 2.8L16 9.8"/></g>
+    <g id="s-star"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.7l5.8-.8z"/></g>
+    <g id="s-chart"><path d="M5 20V10M10 20V5M15 20v-7M20 20v-4"/><path d="M3.5 20h17"/></g>
+    <g id="s-shield"><path d="M12 3l7.5 3v6c0 4.6-3.2 7.9-7.5 9-4.3-1.1-7.5-4.4-7.5-9V6z"/><path d="M9.2 12.2l2 2 3.6-3.8"/></g>
+    <g id="s-spark"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.6"/></g>
+    <g id="s-chat"><path d="M20 15.5A2.5 2.5 0 0 1 17.5 18H9l-4 3v-3H6.5A2.5 2.5 0 0 1 4 15.5v-8A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5z"/><path d="M8.5 9.5h7M8.5 13h4.5"/></g>
+    <g id="s-trend"><path d="M3 16.5l4.5-5 3.2 3 4-5.5L21 6"/><path d="M16.5 6H21v4.5"/><path d="M3 21h18"/></g>
+    <g id="s-link"><path d="M10 13.5a4 4 0 0 0 5.7.4l2.6-2.6a4 4 0 0 0-5.7-5.7L11.4 7"/><path d="M14 10.5a4 4 0 0 0-5.7-.4l-2.6 2.6a4 4 0 0 0 5.7 5.7L12.6 17"/></g>
+    <g id="s-factory"><path d="M3 20V10l5 3.5V10l5 3.5V10l5 3.5V20z"/><path d="M3 20h18"/></g>
+    <g id="s-box"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></g>
+    <g id="s-pulse"><path d="M3 12h4l2 4 3-9 2.5 5H21"/></g>
+    <g id="s-bars"><path d="M4 20V9M9 20V5M14 20v-8M19 20v-5"/><path d="M3 20h18"/></g>
+    <g id="s-arrow"><path d="M4.5 12h14.2M12.8 6l6 6-6 6"/></g>
+    <g id="s-play"><path d="M7 4.5l12 7.5-12 7.5z"/></g>
+  </defs>
+</svg>
+
+<article>
+
+<header class="ithS-sec ithS-sec--hero">
+  <div class="wrap hero-in">
+    <div class="hero-txt">
+      <span class="pill">Blog</span>
+      <h1 class="h-title">Aether in The Enterprise World, July 2026</h1>
+      <p class="h-deck">A second consecutive feature, and a closer look at how Aether closes the distance between enterprise data, the decision it should inform, and the action that follows.</p>
+      <ul class="h-meta">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-cal"/></svg><time datetime="2026-07-01">July 2026</time></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-clock"/></svg>4 min read</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-tag"/></svg>Aether, Enterprise AI</li>
+      </ul>
+    </div>
+    <div class="orb" aria-hidden="true">
+      <span class="orb-ring"></span>
+      <span class="orb-ring r2"></span>
+      <span class="orb-core">Aether<br>AI</span>
+      <span class="chip c1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-spark"/></svg>Automation</span>
+      <span class="chip c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-chart"/></svg>Analytics</span>
+      <span class="chip c3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-trend"/></svg>Insights</span>
+      <span class="chip c4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-shield"/></svg>Governance</span>
+      <span class="chip c5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-chat"/></svg>Copilots</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" id="s-toc" aria-label="On this page">
+  <div class="wrap">
+    <div class="toc-card">
+    <div class="prog" aria-hidden="true"><i id="s-prog"></i></div>
+    <ol>
+      <li><a href="#s-faq">FAQ</a></li>
+      <li><a href="#s-takeaways">Key Takeaways</a></li>
+      <li><a href="#s-feature">The Feature</a></li>
+      <li><a href="#s-problem">The Problem</a></li>
+      <li><a href="#s-act">Built to Act</a></li>
+      <li><a href="#s-caps">Capabilities</a></li>
+      <li><a href="#s-industries">Industries</a></li>
+      <li><a href="#s-next">What Comes Next</a></li>
+      <li><a href="#s-about">About</a></li>
+    </ol>
+    </div>
+  </div>
+</nav>
+
+<section class="ithS-sec ithS-sec--faq tint" id="s-faq">
+  <div class="wrap split">
+    <div class="rev">
+      <p class="kick">01. FAQ</p>
+      <h2>Questions people ask about Aether</h2>
+      <p class="lead">Short answers to the questions that come up most often about the platform and the feature.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="qa rev">
+        <div class="qa-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-plus"/></svg><h3>What is Aether?</h3></div>
+        <p>Aether is ITHENA&rsquo;s Agentic AI-powered advanced analytics platform. It combines Enterprise AI, Generative AI, Agentic AI and Intelligent Automation in one platform, so teams can move from a question to a decision, and from a decision to an action, without crossing a tool boundary.</p>
+      </div>
+      <div class="qa rev">
+        <div class="qa-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-plus"/></svg><h3>How is Aether different from a traditional BI dashboard?</h3></div>
+        <p>A traditional dashboard is built to describe what happened and stops there. Aether interprets the data, recommends what to do next, and can initiate the workflow, notification or operational action itself.</p>
+      </div>
+      <div class="qa rev">
+        <div class="qa-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-plus"/></svg><h3>Can you ask Aether questions in plain English?</h3></div>
+        <p>Yes. Questions asked in natural language return instant, contextual answers drawn from enterprise data - no query language, no report request and no queue - and where the answer implies an action, Aether can trigger it.</p>
+      </div>
+      <div class="qa rev">
+        <div class="qa-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-plus"/></svg><h3>Which industries is Aether built for?</h3></div>
+        <p>Aether is designed for data-intensive, time-sensitive operations, including manufacturing, supply chain, healthcare and finance.</p>
+      </div>
+      <div class="qa rev">
+        <div class="qa-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-plus"/></svg><h3>Where was Aether featured?</h3></div>
+        <p>In The Enterprise World, July 2026 edition, under the title &ldquo;Talking to Your Data: How Aether Turns Enterprise Chaos into Clarity&rdquo; - its second consecutive feature in the magazine.</p>
+      </div>
+      <div class="qa rev">
+        <div class="qa-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-plus"/></svg><h3>What does &ldquo;Agentic AI&rdquo; mean in Aether?</h3></div>
+        <p>Agentic AI recommends and initiates business actions from AI-generated insight, rather than leaving the follow-through to someone&rsquo;s inbox.</p>
+      </div>
+    </div>
+    <div class="faq-aside rev" aria-hidden="true">
+      <p class="msg u">Which line lost the most output last week?</p>
+      <p class="msg a"><span class="amark">A</span><span>Line 3, down 9.4% on planned. The driver is changeover time on the second shift.</span></p>
+      <p class="msg u">What should we do about it?</p>
+      <p class="msg a"><span class="amark">A</span><span>Re-sequence the shift-two batches and notify planning. I can run both now.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="ithS-sec ithS-sec--takeaways band" id="s-takeaways">
+  <div class="wrap split">
+    <div class="rev">
+      <p class="kick">02. Key Takeaways</p>
+      <h2>Key Takeaways</h2>
+      <p class="lead">The short version, for readers and answer engines alike.</p>
+    </div>
+    <div class="tk-grid">
+      <div class="tk rev">
+        <span class="tk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#s-star"/></svg></span>
+        <h3>Unified AI Platform</h3>
+        <p>Aether unifies Enterprise, Generative and Agentic AI in one platform, so teams move from a question to a decision to an action without switching tools.</p>
+      </div>
+      <div class="tk rev">
+        <span class="tk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#s-chart"/></svg></span>
+        <h3>Beyond Dashboards</h3>
+        <p>Unlike a dashboard that only describes what happened, Aether recommends the next step and can execute it.</p>
+      </div>
+      <div class="tk rev">
+        <span class="tk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#s-shield"/></svg></span>
+        <h3>Proven &amp; Trusted</h3>
+        <p>Featured for a second consecutive time in The Enterprise World (July 2026), with the focus on closing the data-to-action gap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ithS-sec ithS-sec--feature" id="s-feature">
+  <div class="wrap two">
+    <figure class="fig rev">
+      <a href="https://ithena.ai/wp-content/uploads/2026/08/front.webp" target="_blank" rel="noopener">
+        <img src="https://ithena.ai/wp-content/uploads/2026/08/front.webp" alt="The July 2026 Enterprise World spread, headlined Talking to Your Data: How Aether Turns Enterprise Chaos into Clarity" loading="lazy" decoding="async" width="4800" height="3150">
+      </a>
+      <figcaption>The opening spread of the July 2026 feature. Opens full size in a new tab.</figcaption>
+    </figure>
+    <div class="rev">
+      <p class="kick">03. The Feature</p>
+      <h2>Aether returns to The Enterprise World</h2>
+      <p class="lead">ITHENA&rsquo;s Agentic AI-powered advanced analytics platform appears in the July 2026 edition, following its June appearance with a deeper look at the product itself.</p>
+      <p class="body">The June issue introduced Aether. July goes further, under the title <em>Talking to Your Data: How Aether Turns Enterprise Chaos into Clarity</em>, and takes up the question that decides whether an analytics investment pays back: not whether the data exists, but how quickly an organisation can move from that data to a decision, and from the decision to an action.</p>
+      <p class="body">The Enterprise World is a global business magazine covering the organisations, leaders and technologies shaping how businesses operate. The feature runs across a full spread in the July edition.</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-check"/></svg>Second consecutive appearance in the magazine</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-check"/></svg>A full spread in the July 2026 edition</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-check"/></svg>Focused on the data-to-action gap, not the tooling</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-check"/></svg>Written around how enterprises actually decide</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="ithS-sec ithS-sec--problem tint" id="s-problem">
+  <div class="wrap two">
+    <div class="rev">
+      <p class="kick">04. The Problem</p>
+      <h2>The data exists. The decision still waits.</h2>
+      <p class="lead">Enterprises are not short of dashboards, reports or real-time feeds. What is missing sits between the chart and the thing somebody does about it.</p>
+      <p class="body">Conventional analytics platforms deliver a view and stop there. Interpreting that view, deciding what it means for the shift, the plant or the quarter, and then initiating something - all of it stays manual, and all of it stays with whoever happens to be looking at the screen.</p>
+      <p class="body">That gap is where the July feature places the real cost of analytics. Every hour spent crossing it is an hour of operational efficiency, productivity and margin that the reporting layer has already been paid for and has not delivered.</p>
+      <p class="body">It is also a gap most tools have by design. A dashboard is built to describe. Nothing inside it is responsible for the next step.</p>
+    </div>
+    <figure class="fig fig-order rev">
+      <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/analysiss.webp" alt="A conventional analytics dashboard showing user totals, a revenue trend line and conversion figures" loading="lazy" decoding="async" width="1254" height="1254">
+      <figcaption>A conventional dashboard answers what happened. Reading it, deciding what it means and acting on it all remain someone&rsquo;s job.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="ithS-sec ithS-sec--act band" id="s-act">
+  <div class="wrap two">
+    <figure class="fig rev">
+      <img src="https://ithena.ai/wp-content/uploads/2026/08/aether-chatbot.webp" alt="Aether answering a plain-English question about plant effluent totals, with a suggested action and an Execute control" loading="lazy" decoding="async" width="824" height="852">
+      <figcaption>A question in plain English, a contextual answer, and a suggested action with one control to run it.</figcaption>
+    </figure>
+    <div class="rev">
+      <p class="kick">05. Built to Act</p>
+      <h2>Built to act, not only to explain</h2>
+      <p class="lead">Aether combines Enterprise AI, Generative AI, Agentic AI and Intelligent Automation in one platform, so the path from question to action does not cross a tool boundary.</p>
+      <p class="body">A user asks in natural language. The platform answers with context drawn from enterprise data rather than a static report, and where the answer implies something should happen, it can trigger the workflow, the notification or the operational action itself.</p>
+      <p class="body">That is the difference the July feature draws out. Traditional business intelligence describes what is happening. Aether is built to help an organisation determine what to do next, and then to do it.</p>
+      <blockquote>
+        <p>The companies pulling ahead are not the ones with the most data. They are the ones who move fastest from data to decision, and from decision to action.</p>
+        <cite>The Enterprise World, July 2026 edition</cite>
+      </blockquote>
+      <div class="btns">
+        <a class="btn btn-p" href="https://dev-website.ithena.app/ithenas-aether/">Explore Aether <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#s-arrow"/></svg></a>
+        <a class="btn btn-g" href="https://theenterpriseworld.com/" target="_blank" rel="noopener">Read the July edition</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ithS-sec ithS-sec--caps" id="s-caps">
+  <div class="wrap split">
+    <div class="rev">
+      <p class="kick">06. Capabilities</p>
+      <h2>What the feature highlights</h2>
+      <p class="lead">Four capabilities carry most of the platform&rsquo;s business value, and each one is aimed at a different part of the gap between data and action.</p>
+    </div>
+    <div class="caps">
+      <div class="cap rev">
+        <span class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-spark"/></svg></span>
+        <div><h3>Agentic AI Automation</h3><p>Recommends and initiates business actions from AI-generated insight, instead of leaving the follow-through to someone&rsquo;s inbox.</p></div>
+      </div>
+      <div class="cap rev">
+        <span class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-chat"/></svg></span>
+        <div><h3>Natural Language Analytics</h3><p>Questions asked in plain English return instant, contextual answers - no query language, no report request, no queue.</p></div>
+      </div>
+      <div class="cap rev">
+        <span class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-trend"/></svg></span>
+        <div><h3>Real-Time Decision Intelligence</h3><p>Surfaces trends, anomalies and opportunities as they emerge, at the point where acting on them still changes the outcome.</p></div>
+      </div>
+      <div class="cap rev">
+        <span class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-link"/></svg></span>
+        <div><h3>Enterprise-Ready Integration</h3><p>Connects to ERP systems, cloud platforms, IoT infrastructure and existing data sources, so deployment is a connection rather than a migration.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ithS-sec ithS-sec--industries band" id="s-industries">
+  <div class="wrap">
+    <div class="rev">
+      <p class="kick">07. Industries</p>
+      <h2>Built for data-intensive operations</h2>
+      <p class="lead">Aether is designed for organisations whose decisions are already data-heavy and time-sensitive, where a day&rsquo;s delay in reading the numbers is a day&rsquo;s delay in the result.</p>
+      <p class="body">Optimising production, improving supply chain visibility, supporting an executive decision that cannot wait for next month&rsquo;s pack - the mechanism is the same in each case. Enterprise data becomes actionable intelligence, and the decision moves closer to the moment the data arrived.</p>
+    </div>
+    <ul class="inds rev">
+      <li class="ind"><span class="ind-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#s-factory"/></svg></span>Manufacturing</li>
+      <li class="ind"><span class="ind-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#s-box"/></svg></span>Supply chain</li>
+      <li class="ind"><span class="ind-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#s-pulse"/></svg></span>Healthcare</li>
+      <li class="ind"><span class="ind-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#s-bars"/></svg></span>Finance</li>
+    </ul>
+    <figure class="fig-media rev">
+      <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/digital-shopfloor.webp" alt="A connected production line with robotic cells running under live monitoring" loading="lazy" decoding="async" width="1925" height="817">
+    </figure>
+  </div>
+</section>
+
+<section class="ithS-sec ithS-sec--next tint" id="s-next">
+  <div class="wrap two">
+    <div class="nextcard rev">
+      <span class="mark" aria-hidden="true">A</span>
+      <p>From insight to action &mdash; with Aether.</p>
+    </div>
+    <div class="rev">
+      <p class="kick">08. What Comes Next</p>
+      <h2>From reporting to intelligent execution</h2>
+      <p class="lead">The July feature restates the direction ITHENA is building towards: AI that does not stop at the insight.</p>
+      <p class="body">As enterprises adopt Agentic AI, the useful question stops being how much can be measured and becomes how much can be acted on without a person carrying the result from one system to the next. Aether is ITHENA&rsquo;s answer to that, and the platform continues to develop against it.</p>
+      <p class="body">ITHENA values its continued association with The Enterprise World, and remains focused on practical AI that accelerates digital transformation and produces measurable business outcomes rather than another layer of reporting.</p>
+      <div class="btns">
+        <a class="btn btn-p" href="https://dev-website.ithena.app/ithenas-aether/">See What&rsquo;s Next <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#s-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ithS-sec ithS-sec--about" id="s-about">
+  <div class="wrap">
+    <div class="about-h rev">
+      <p class="kick">09. About</p>
+      <h2>The publication and the company</h2>
+    </div>
+      <div class="about rev">
+        <h3>The Enterprise World</h3>
+        <p>A global business magazine covering the organisations, industry leaders and technologies shaping the future of business through leadership, strategy and digital transformation.</p>
+        <a href="https://theenterpriseworld.com/" target="_blank" rel="noopener">theenterpriseworld.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#s-arrow"/></svg></a>
+      </div>
+      <div class="about rev">
+        <h3>ITHENA</h3>
+        <p>A nimble technology company delivering persona-based AI solutions for manufacturing, life sciences, services and government organisations, combining AI, IoT, cloud and modern enterprise technologies to turn data into intelligent action.</p>
+        <a href="https://ithena.ai/" target="_blank" rel="noopener">ithena.ai <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#s-arrow"/></svg></a>
+      </div>
+      <figure class="fig-media rev">
+        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/ent-wrld-aether-blog-bannerv2.webp" alt="ITHENA Aether featured in The Enterprise World, July 2026" loading="lazy" decoding="async" width="1200" height="628">
+      </figure>
+  </div>
+</section>
+
+<section class="ithS-sec ithS-sec--cta band">
+  <div class="wrap cta-in">
+    <div class="rev">
+      <p class="kick">Bringing it together</p>
+      <h2>Bring one system and the questions your team keeps asking it</h2>
+      <p class="lead">A working session on your own data rather than a slide deck. Pick the questions that currently take a day to answer, and we will put Aether&rsquo;s answers next to what the report said.</p>
+    </div>
+    <div class="btns rev">
+      <a class="btn btn-p" href="https://dev-website.ithena.app/ithenas-aether/">See Aether in Action <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#s-arrow"/></svg></a>
+      <a class="btn btn-g" href="https://theenterpriseworld.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><use href="#s-play"/></svg> Read the July edition</a>
+    </div>
+    <div class="cta-med rev" aria-hidden="true">
+      <video src="https://dev-website.ithena.app/wp-content/uploads/2026/09/aether-hero.mp4" autoplay muted loop playsinline preload="none" disablepictureinpicture tabindex="-1"></video>
+    </div>
+  </div>
+</section>
+
+</article>
+
+</section>
+
+<script>
+(function(){
+  "use strict";
+  var root=document.querySelector('section.ithS-post');
+  if(!root||root.dataset.bound) return;
+  root.dataset.bound='1';
+
+  var themeToggle=document.getElementById('themeToggle');
+  var stored=null; try{ stored=localStorage.getItem('fbb-theme'); }catch(e){}
+  setTheme(stored||'dark');
+
+  function setTheme(mode){
+    root.setAttribute('data-theme',mode);
+    if(themeToggle) themeToggle.setAttribute('aria-pressed',mode==='dark'?'true':'false');
+    try{ localStorage.setItem('fbb-theme',mode); }catch(e){}
+  }
+  if(themeToggle){
+    themeToggle.addEventListener('click',function(){
+      setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
+    });
+  }
+
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var revs=[].slice.call(root.querySelectorAll('.rev'));
+  revs.forEach(function(el){
+    var sibs=[].filter.call(el.parentNode.children,function(c){return c.classList.contains('rev')});
+    el.style.transitionDelay=(Math.min(sibs.indexOf(el),4)*0.06)+'s';
+  });
+
+  var prog=document.getElementById('s-prog'),
+      links=[].slice.call(root.querySelectorAll('#s-toc a')),
+      secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))}),
+      bar=links.length?links[0].parentNode.parentNode:null;
+
+  function onScroll(){
+    var h=root.offsetHeight-innerHeight,
+        p=h>0?Math.min(1,Math.max(0,(pageYOffset-root.offsetTop)/h)):0;
+    if(prog) prog.style.width=(p*100)+'%';
+    var best=0;
+    secs.forEach(function(s,j){ if(s&&s.getBoundingClientRect().top<innerHeight*0.35) best=j; });
+    links.forEach(function(a,j){
+      if(j!==best){ a.removeAttribute('aria-current'); return; }
+      if(a.getAttribute('aria-current')!=='true'&&bar&&bar.scrollWidth>bar.clientWidth){
+        bar.scrollTo({left:a.offsetLeft-24,behavior:reduce?'auto':'smooth'});
+      }
+      a.setAttribute('aria-current','true');
+    });
+    for(var n=revs.length-1;n>=0;n--){
+      if(revs[n].getBoundingClientRect().top>innerHeight*0.9) continue;
+      revs[n].classList.add('in'); revs.splice(n,1);
+    }
+  }
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll);
+  onScroll();
+
+  if(reduce){
+    [].forEach.call(root.querySelectorAll('video'),function(v){ v.removeAttribute('autoplay'); try{ v.pause(); }catch(e){} });
+  }
+})();
+</script>

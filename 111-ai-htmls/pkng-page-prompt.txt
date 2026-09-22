@@ -1,0 +1,227 @@
+
+Design Build a Premium Packaging Industry Landing Page - HTML, CSS and JS
+
+Act as a senior UI/UX designer, web designer, frontend developer, B2B SaaS designer, and conversion-focused marketing expert.
+Use the UI UX Pro Max design approach to create a modern, premium, enterprise-level landing page for ITHENA – Packaging Industry Solutions.
+
+You will be provided with the content below. 
+Use the content as the primary source and create the page structure, visual hierarchy, UI components, interactions, and animations around it.
+The page should feel like a modern enterprise technology platform designed specifically for packaging machinery manufacturers.
+
+Use the ITHENA brand style with a professional technology-focused visual language. 
+Use #0083c8 as the primary technology color with subtle red/orange accents where appropriate.
+Avoid generic corporate designs, excessive gradients, excessive glassmorphism, neon AI styling, and unnecessary animations.- use these combinations, light theme bg colors - #FFFFFF, #D7ECF6 , dark theme bg color - #123049, #0D1B2E
+Use these combinations to divide the sections, light theme bg colors - #FFFFFF, #D7ECF6 , dark theme bg color - #123049, #0D1B2E
+Make sure section intersection should be smoothly blend and there should not be hard border.
+Use font size in px in even values.
+
+Hero Section
+Create a strong, premium hero section focused on packaging machinery manufacturers.
+Suggested headline:
+Turn Packaging Machinery Into Intelligent, Self-Servicing Assets
+Supporting content:
+Packaging machinery manufacturers face increasing pressure to reduce downtime, manage multi-SKU changeovers, and increase aftermarket revenue. ITHENA connects machine data, field operations, AI-powered spare parts commerce, and digital services to create intelligent and self-servicing packaging equipment.
+Add two CTAs:
+
+* Schedule a Packaging Solution Discovery Call
+* Watch Demo
+
+Create a strong visual on the right side showing a connected packaging machinery ecosystem.
+The visual can include:
+
+* Packaging machine
+* Machine data
+* AI
+* IIoT
+* Spare parts
+* Digital catalogue
+* Customer
+* Orders
+* Service
+
+Connect these elements visually using animated lines, data flows, or subtle motion.
+Section 1: Overview & Challenges
+Create a section explaining the key challenges faced by packaging machinery manufacturers.
+Use the following content:
+Packaging machinery manufacturers face intense pressure to reduce downtime, handle multi-SKU changeovers rapidly, and capture high-margin aftermarket revenue. Managing complex spare parts catalogues and offering proactive customer service manually creates fragmented customer experiences and lost revenue opportunities.
+ITHENA bridges the gap between field operations, machine data, and digital commerce to transform packaging equipment into intelligent, self-servicing assets.
+Present the challenges using modern cards or visual blocks.
+Include:
+
+* Unplanned Downtime
+* Complex Spare Parts
+* Multi-SKU Changeovers
+* Lost Aftermarket Revenue
+* Fragmented Customer Experience
+
+Then visually transition from traditional packaging equipment to intelligent, connected, self-servicing equipment.
+Section 2: Tangible Outcomes
+Create a visually strong statistics section using the following metrics.
+Up to 40%
+Increase in Aftermarket Revenue
+Streamlined B2B e-commerce and automated spare part identification drive repeat orders.
+50%
+Faster Order Processing
+Eliminate manual error-prone quote and part lookup workflows for distributors and end-customers.
+30%
+Reduction in Field Unplanned Downtime
+Telemetry-driven alerts allow predictive maintenance before packaging lines halt.
+Use large numbers, modern cards, subtle graphs, progress indicators, or animated counters.
+The section should communicate measurable business outcomes rather than simply displaying statistics.
+Section 3: Solution Focus
+Create a major solution section with two primary solution areas.
+AI-Powered Spare Parts Commerce — iSERV
+Use this content:
+Interactive visual cataloging, AI image-to-part recognition, and automated order routing for equipment assemblies.
+Show a visual workflow:
+Machine / Part Image → AI Recognition → Correct Part → Interactive Catalogue → Cart → Order → Automated Routing
+Highlight:
+
+* Faster part identification
+* Reduced ordering errors
+* Better customer experience
+* Faster repeat purchases
+* Increased aftermarket revenue
+
+Machine Telemetry & IIoT Analytics
+Use this content:
+Real-time throughput tracking, OEE monitoring, and wear-and-tear forecasting tailored to packaging equipment.
+Show a modern machine analytics interface with elements such as:
+
+* Throughput
+* OEE
+* Machine Health
+* Utilization
+* Alerts
+* Wear Prediction
+* Maintenance Status
+
+Visually connect the analytics interface back to the packaging machine.
+Intelligent Packaging Ecosystem
+Create a highly visual section showing how ITHENA connects the complete packaging lifecycle.
+Show the following flow:
+Machine
+↓
+Telemetry
+↓
+AI Insights
+↓
+Predictive Maintenance
+↓
+Spare Parts Identification
+↓
+Digital Commerce
+↓
+Order
+↓
+Service
+↓
+Customer
+Use animated connections or data-flow effects.
+The section should communicate that ITHENA connects the physical machine with digital commerce and service operations.
+Business Value
+Create a section explaining the overall business impact of the solution.
+Include:
+
+* Increase Aftermarket Revenue — Turn installed equipment into a continuous digital revenue channel.
+* Reduce Service Costs — Use machine intelligence and predictive insights to reduce reactive service requirements.
+* Improve Customer Experience — Make finding, identifying, ordering, and servicing parts easier.
+* Increase Machine Availability — Detect machine issues before they become production-stopping failures.
+* Create Connected Equipment — Connect machines, customers, service teams, parts, and data through one digital ecosystem.
+
+Use modern cards, icons, metrics, and supporting visuals.
+Video / CTA Section
+Create a premium video section.
+Use:
+Watch Demo Video
+Modernizing Packaging Machinery Aftermarket Commerce
+Create a large video container with a professional play button.
+Add subtle hover and interaction effects.
+Include the primary CTA:
+Schedule a Packaging Solution Discovery Call
+Final CTA
+End the page with a strong conversion-focused CTA.
+Headline:
+Ready to Turn Your Packaging Equipment Into an Intelligent Revenue Engine?
+Supporting text:
+Connect machine intelligence, aftermarket commerce, and proactive service with ITHENA.
+Buttons:
+
+* Schedule a Packaging Solution Discovery Call
+* Explore ITHENA Solutions
+
+Interactive UI
+Use meaningful interactive elements throughout the page.
+Include:
+
+* Scroll-triggered animations
+* Animated statistics
+* Interactive solution cards
+* Machine telemetry animations
+* Animated data connections
+* Hover effects
+* Product and spare-part visualization
+* Video interaction
+* Smooth CTA animations
+* Subtle text animations
+
+Keep animations professional and lightweight.
+Do not overuse animations.
+Support `prefers-reduced-motion`.
+Responsive Design
+The page must be fully responsive across:
+
+* Desktop
+* Tablet
+* Mobile
+
+Make sure:
+
+* Desktop sections use rich visual layouts.
+* Tablet layouts adapt naturally.
+* Mobile sections stack correctly.
+* Typography scales responsively.
+* Buttons remain touch-friendly.
+* Images and visualizations resize correctly.
+* There is no horizontal scrolling.
+* Complex diagrams are simplified appropriately on mobile.
+
+Accessibility
+Follow modern accessibility standards.
+Include:
+
+* Proper heading hierarchy
+* Good color contrast
+* Keyboard navigation
+* Visible focus states
+* Accessible buttons
+* Accessible video controls
+* Alt text for images
+* Semantic HTML
+* Reduced-motion support
+
+Use professional SVG icons instead of emojis.
+Technical Requirements
+Build the page using clean, modern frontend code.
+Use:
+
+* HTML
+* Tailwind CSS
+* JavaScript where required
+
+Keep the code lightweight and maintainable.
+Optimize:
+
+* Images
+* CSS
+* JavaScript
+* DOM structure
+* Animations
+* Loading performance
+
+Avoid unnecessary dependencies.
+Overall Objective
+The final page should clearly communicate:
+ITHENA connects packaging machinery, machine data, AI, aftermarket commerce, and service to create measurable business outcomes.
+The page should sell the business transformation and value, not simply present a list of software features.
+The final experience should feel like a premium enterprise technology platform specifically built for the packaging machinery industry.
