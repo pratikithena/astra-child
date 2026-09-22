@@ -30,24 +30,24 @@
             * literal computed values (light-theme default; html.dark rules use the
             * dark-theme values; .hero-scoped rules use its local light-on-dark override).
             */
-            html { color-scheme: light; scroll-behavior: smooth;}
-            html.dark { color-scheme: dark;}
+            html{color-scheme:light;scroll-behavior:smooth}
+            html.dark{color-scheme:dark}
 
             /* ======================================================================
             HEADER
             ====================================================================== */
 
             /* -- light (default) -- */
-            header { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 20px 0; transition: padding .4s cubic-bezier(.16, .8, .24, 1), background .4s cubic-bezier(.16, .8, .24, 1), box-shadow .4s cubic-bezier(.16, .8, .24, 1), border-color .4s cubic-bezier(.16, .8, .24, 1); background: transparent; border-bottom: 1px solid transparent;}
-            header.scrolled { padding: 12px 0; background: #F6F8FA; box-shadow: 0 12px 30px -18px #14284629; border-bottom: 1px solid #0A192D1A;}
-            header:not(.scrolled) .logo, header:not(.scrolled) .nav-link, header:not(.scrolled) .nav-item.open .nav-link svg { color: #fff;}
-            header:not(.scrolled) .nav-link { color: #FFFFFFE0; transition: color .25s, background .25s;}
-            header:not(.scrolled) .icon-btn, header:not(.scrolled) .mobile-toggle { background: #FFFFFF1A; border-color: #FFFFFF4C; color: #fff;}
-            header:not(.scrolled) .mobile-toggle span { background: #fff;}
-            header:not(.scrolled) .nav-link:hover, header:not(.scrolled) .nav-item.open .nav-link { color: #fff; background: #FFFFFF24;}
-            .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px;}
+            header{position:fixed;top:0;left:0;right:0;z-index:200;padding:20px 0;transition:padding .4s cubic-bezier(.16,.8,.24,1),background .4s cubic-bezier(.16,.8,.24,1),box-shadow .4s cubic-bezier(.16,.8,.24,1),border-color .4s cubic-bezier(.16,.8,.24,1);background:transparent;border-bottom:1px solid transparent}
+            header.scrolled{padding:12px 0;background:#F6F8FA;box-shadow:0 12px 30px -18px #14284629;border-bottom:1px solid #0A192D1A}
+            header:not(.scrolled) .logo,header:not(.scrolled) .nav-link,header:not(.scrolled) .nav-item.open .nav-link svg{color:#fff}
+            header:not(.scrolled) .nav-link{color:#FFFFFFE0;transition:color .25s,background .25s}
+            header:not(.scrolled) .icon-btn,header:not(.scrolled) .mobile-toggle{background:#FFFFFF1A;border-color:#FFFFFF4C;color:#fff}
+            header:not(.scrolled) .mobile-toggle span{background:#fff}
+            header:not(.scrolled) .nav-link:hover,header:not(.scrolled) .nav-item.open .nav-link{color:#fff;background:#FFFFFF24}
+            .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
             /* .logo { display: flex; align-items: center; gap: 10px; font-family: "Sora", sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -0.01em;} */
-            .nav-menu { display: flex; align-items: center; gap: 6px;}
+            .nav-menu{display:flex;align-items:center;gap:6px}
             .nav-item { position: relative;}
             .nav-link { display: flex; align-items: center; gap: 5px; padding: 10px 15px; border-radius: 10px; font-size: 14px; font-weight: 600; color: #4A5A6E; transition: .25s;}
             .nav-link:hover, .nav-item.open .nav-link { color: #0A1626; background: #0A192D0F;}
@@ -88,7 +88,7 @@
                these rules just supply the easing and keep content clipped mid-animation). */
             .mega-sol-group-items.is-animating { transition: height .3s cubic-bezier(.16, .8, .24, 1), opacity .3s cubic-bezier(.16, .8, .24, 1);}
             .mega-sol-item { display: flex; align-items: flex-start; gap: 10px; padding: 7px 8px; border-radius: 8px; transition: background .2s;}
-            .mega-sol-item:hover { background: #0A192D0D;}
+            .mega-sol-item:hover{background:#0A192D0D}
             .mega-sol-item-icon { width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: transform .25s cubic-bezier(.16, .8, .24, 1);}
             .mega-sol-item:hover .mega-sol-item-icon { transform: scale(1.1) rotate(-5deg);}
             .mega-sol-item-icon.c1,
@@ -96,7 +96,7 @@
             .mega-sol-item-icon.c3,
             .mega-sol-item-icon.c4,
             .mega-sol-item-icon.c5,
-            .mega-sol-item-icon.c6 { background: #0082C826; color: #0083C8;}
+            .mega-sol-item-icon.c6 { background:#0082C826;color:#0083C8}
             .mega-sol-item-text { min-width: 0;}
             .mega-sol-item .mega-sol-item-name { display: block; font-size: 14px; font-weight: 500; color: #0A1626; margin-bottom: 2px; white-space: nowrap; transition: color .2s;}
             .mega-sol-item:hover .mega-sol-item-name { color: #0083C8;}
@@ -120,7 +120,7 @@
             .mega-feat-grid .mega-feat:nth-child(8) { transition-delay: .41s;}
             .mega-feat-grid .mega-feat:nth-child(9) { transition-delay: .46s;}
             .mega-feat-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; transition: transform .3s cubic-bezier(.16, .8, .24, 1);}
-            .mega-feat:hover .mega-feat-icon { transform: scale(1.1) rotate(-5deg);}
+            .mega-feat:hover .mega-feat-icon{transform:scale(1.1)rotate(-5deg)}
             .mega-feat-icon.c1,
             .mega-feat-icon.c2,
             .mega-feat-icon.c3,
@@ -131,7 +131,7 @@
             .mega-feat-body p { font-size: 12px; color: #76889C; line-height: 1.5; margin-bottom: 7px;}
             .mega-feat-explore { font-size: 12px; font-weight: 700; color: #0083C8; display: inline-flex; align-items: center; gap: 5px;}
             .mega-feat-explore svg { transition: transform .25s cubic-bezier(.16, .8, .24, 1);}
-            .mega-feat:hover .mega-feat-explore svg { transform: translateX(3px);}
+            .mega-feat:hover .mega-feat-explore svg{transform:translateX(3px)}
 
             .mega-feat-grid.no-border { border-bottom: none; margin-bottom: 0; padding-bottom: 0;}
             .mobile-toggle { display: none; width: 40px; height: 40px; border-radius: 10px; background: #0A192D0F; border: 1px solid #0A192D1A; flex-direction: column; align-items: center; justify-content: center; gap: 4px;}
@@ -151,8 +151,8 @@
             .mobile-panel .m-sub-label { display: block; padding: 12px 4px 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: #76889C;}
             .mobile-panel .m-sub-link { display: flex; align-items: center; gap: 10px; padding: 11px 4px 11px 6px; font-size: 14px; font-weight: 500; color: #4A5A6E; border-bottom: 1px solid #0A192D1A;}
             .mobile-panel .m-sub-link:last-child { border-bottom: none;}
-            .mobile-panel .m-sub-link .ic { width: 22px; height: 22px; border-radius: 6px; background: #0082C826; color: #0083C8; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px;}
-            .mobile-panel .m-sub-link:hover { color: #0083C8;}
+            .mobile-panel .m-sub-link .ic{width:22px;height:22px;border-radius:6px;background:#0082C826;color:#0083C8;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px}
+            .mobile-panel .m-sub-link:hover{color:#0083C8}
             .mobile-panel .m-item-nested { border-bottom: none; padding-left: 4px; border-left: 2px solid #0A192D1A;}
             .mobile-panel .m-item-nested .m-toggle-sub { padding: 12px 4px; font-size: 14px;}
             .mobile-panel .m-toggle-sub > span:first-child { display: flex; flex-direction: column; gap: 2px;}
@@ -161,8 +161,8 @@
             #m-solutions .m-sub-link { align-items: flex-start;}
             .mobile-panel .m-sub-text { display: flex; flex-direction: column; gap: 2px;}
             .mobile-panel .m-sub-text small { font-size: 12px; font-weight: 400; color: #76889C; line-height: 1.4;}
-            .mobile-panel .m-sub-more { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 4px 4px; padding: 11px 14px; border-radius: 100px; background: #0082C81A; color: #0083C8; font-size: 14px; font-weight: 700; border-bottom: none;}
-            .mobile-panel .m-sub-more:hover { background: #0083C8; color: #fff;}
+            .mobile-panel .m-sub-more{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 4px 4px;padding:11px 14px;border-radius:100px;background:#0082C81A;color:#0083C8;font-size:14px;font-weight:700;border-bottom:none}
+            .mobile-panel .m-sub-more:hover{background:#0083C8;color:#fff}
             .scrim { position: fixed; inset: 0; background: #00000080; z-index: 250; opacity: 0; visibility: hidden; transition: .3s;}
             .scrim.open { opacity: 1; visibility: visible;}
 
