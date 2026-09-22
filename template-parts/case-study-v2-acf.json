@@ -1,0 +1,972 @@
+[
+  {
+    "key": "group_cs_v2",
+    "title": "Case Study v2",
+    "fields": [
+      {
+        "key": "field_cs_tab_hero",
+        "label": "Hero",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_cs_hero_eyebrow",
+        "label": "Eyebrow",
+        "name": "cs_hero_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "Case Study"
+      },
+      {
+        "key": "field_case_study_heading",
+        "label": "Title (H1)",
+        "name": "case_study_heading",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "Enabling 24/7 service coverage and faster resolution with Agentic AI agents",
+        "rows": 2,
+        "new_lines": "",
+        "instructions": ""
+      },
+      {
+        "key": "field_cs_hero_deck",
+        "label": "Subtitle",
+        "name": "cs_hero_deck",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "A leading heavy-duty forklift OEM moved first contact onto AI agents. Coverage went round the clock, urgent work was separated from routine at the door, and the simple calls stopped reaching technicians at all.",
+        "rows": 3,
+        "new_lines": ""
+      },
+      {
+        "key": "field_cs_hero_btn1_label",
+        "label": "Primary button (download icon) label",
+        "name": "cs_hero_btn1_label",
+        "type": "text",
+        "required": 0,
+        "default_value": "Download case study"
+      },
+      {
+        "key": "field_cs_hero_btn2_label",
+        "label": "Secondary button label",
+        "name": "cs_hero_btn2_label",
+        "type": "text",
+        "required": 0,
+        "default_value": "Talk to an expert"
+      },
+      {
+        "key": "field_cs_hero_btn2_url",
+        "label": "Secondary button URL",
+        "name": "cs_hero_btn2_url",
+        "type": "url",
+        "required": 0,
+        "default_value": "https://ithena.ai/contact-us/"
+      },
+      {
+        "key": "field_cs_hero_video",
+        "label": "Background video (mp4)",
+        "name": "cs_hero_video",
+        "type": "file",
+        "required": 0,
+        "return_format": "url",
+        "library": "all",
+        "mime_types": "mp4,webm"
+      },
+      {
+        "key": "field_heading_banner_image_",
+        "label": "Video poster image",
+        "name": "heading_banner_image_",
+        "type": "image",
+        "required": 0,
+        "return_format": "url",
+        "preview_size": "medium",
+        "library": "all",
+        "instructions": ""
+      },
+      {
+        "key": "field_cs_hero_credit",
+        "label": "Footage credit",
+        "name": "cs_hero_credit",
+        "type": "text",
+        "required": 0,
+        "default_value": "Warehouse & service footage · Pexels"
+      },
+      {
+        "key": "field_cs_tab_hero_facts",
+        "label": "Hero facts",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_cs_facts_caption",
+        "label": "Facts caption",
+        "name": "cs_facts_caption",
+        "type": "text",
+        "required": 0,
+        "default_value": "Engagement at a glance"
+      },
+      {
+        "key": "field_cs_fact_1_label",
+        "label": "Fact 1 label",
+        "name": "cs_fact_1_label",
+        "type": "text",
+        "required": 0,
+        "default_value": "Client"
+      },
+      {
+        "key": "field_cs_fact_1_text",
+        "label": "Fact 1 text",
+        "name": "cs_fact_1_text",
+        "type": "text",
+        "required": 0,
+        "default_value": "Heavy-duty forklift & material handling OEM."
+      },
+      {
+        "key": "field_cs_fact_2_label",
+        "label": "Fact 2 label",
+        "name": "cs_fact_2_label",
+        "type": "text",
+        "required": 0,
+        "default_value": "Footprint"
+      },
+      {
+        "key": "field_cs_fact_2_text",
+        "label": "Fact 2 text",
+        "name": "cs_fact_2_text",
+        "type": "text",
+        "required": 0,
+        "default_value": "Nationwide dealer & parts network."
+      },
+      {
+        "key": "field_cs_fact_3_label",
+        "label": "Fact 3 label",
+        "name": "cs_fact_3_label",
+        "type": "text",
+        "required": 0,
+        "default_value": "Solution"
+      },
+      {
+        "key": "field_cs_fact_3_text",
+        "label": "Fact 3 text",
+        "name": "cs_fact_3_text",
+        "type": "text",
+        "required": 0,
+        "default_value": "ITHENA Agentic OEM AI Agents."
+      },
+      {
+        "key": "field_cs_fact_4_label",
+        "label": "Fact 4 label",
+        "name": "cs_fact_4_label",
+        "type": "text",
+        "required": 0,
+        "default_value": "Coverage"
+      },
+      {
+        "key": "field_cs_fact_4_text",
+        "label": "Fact 4 text",
+        "name": "cs_fact_4_text",
+        "type": "text",
+        "required": 0,
+        "default_value": "24 / 7, including after hours."
+      },
+      {
+        "key": "field_cs_fact_5_label",
+        "label": "Fact 5 label",
+        "name": "cs_fact_5_label",
+        "type": "text",
+        "required": 0,
+        "default_value": "Parts catalogue"
+      },
+      {
+        "key": "field_cs_fact_5_text",
+        "label": "Fact 5 text",
+        "name": "cs_fact_5_text",
+        "type": "text",
+        "required": 0,
+        "default_value": "35,000 lines, checked live on the call."
+      },
+      {
+        "key": "field_cs_tab_side_rail",
+        "label": "Side rail",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_cs_rail_caption",
+        "label": "Rail caption",
+        "name": "cs_rail_caption",
+        "type": "text",
+        "required": 0,
+        "default_value": "On this page"
+      },
+      {
+        "key": "field_cs_rail_foot_text",
+        "label": "Rail footer text",
+        "name": "cs_rail_foot_text",
+        "type": "text",
+        "required": 0,
+        "default_value": "Running a similar service desk?"
+      },
+      {
+        "key": "field_cs_rail_foot_label",
+        "label": "Rail footer link label",
+        "name": "cs_rail_foot_label",
+        "type": "text",
+        "required": 0,
+        "default_value": "Book a walkthrough →",
+        "instructions": "Opens the Talk to an expert popup."
+      },
+      {
+        "key": "field_cs_tab_impact",
+        "label": "Impact",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_cs_impact_nav",
+        "label": "Rail label",
+        "name": "cs_impact_nav",
+        "type": "text",
+        "required": 0,
+        "default_value": "Impact"
+      },
+      {
+        "key": "field_cs_impact_eyebrow",
+        "label": "Eyebrow",
+        "name": "cs_impact_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "Opportunity for impact"
+      },
+      {
+        "key": "field_cs_impact_title",
+        "label": "Title",
+        "name": "cs_impact_title",
+        "type": "text",
+        "required": 0,
+        "default_value": "Three numbers the service desk moved."
+      },
+      {
+        "key": "field_cs_impact_lede",
+        "label": "Subtitle",
+        "name": "cs_impact_lede",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "Measured against the client's own pre-deployment baseline across the nationwide dealer and parts network.",
+        "rows": 2,
+        "new_lines": ""
+      },
+      {
+        "key": "field_impact_value_1",
+        "label": "Stat 1 number",
+        "name": "impact_value_1",
+        "type": "number",
+        "required": 0,
+        "default_value": 70,
+        "step": 1,
+        "instructions": ""
+      },
+      {
+        "key": "field_impact_symbol_1",
+        "label": "Stat 1 suffix",
+        "name": "impact_symbol_1",
+        "type": "text",
+        "required": 0,
+        "default_value": "%",
+        "instructions": ""
+      },
+      {
+        "key": "field_impact_text_1",
+        "label": "Stat 1 title",
+        "name": "impact_text_1",
+        "type": "text",
+        "required": 0,
+        "default_value": "Reduction in live call volume.",
+        "instructions": ""
+      },
+      {
+        "key": "field_cs_stat_1_text",
+        "label": "Stat 1 text",
+        "name": "cs_stat_1_text",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "Routine fault and parts questions closed by the agent, never entering the human queue.",
+        "rows": 2,
+        "new_lines": ""
+      },
+      {
+        "key": "field_impact_value_2",
+        "label": "Stat 2 number",
+        "name": "impact_value_2",
+        "type": "number",
+        "required": 0,
+        "default_value": 3,
+        "step": 1,
+        "instructions": ""
+      },
+      {
+        "key": "field_impact_symbol_2",
+        "label": "Stat 2 suffix",
+        "name": "impact_symbol_2",
+        "type": "text",
+        "required": 0,
+        "default_value": "×",
+        "instructions": ""
+      },
+      {
+        "key": "field_impact_text_2",
+        "label": "Stat 2 title",
+        "name": "impact_text_2",
+        "type": "text",
+        "required": 0,
+        "default_value": "Faster issue resolution.",
+        "instructions": ""
+      },
+      {
+        "key": "field_cs_stat_2_text",
+        "label": "Stat 2 text",
+        "name": "cs_stat_2_text",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "Guided diagnostics run at the moment of the call instead of waiting on technician availability.",
+        "rows": 2,
+        "new_lines": ""
+      },
+      {
+        "key": "field_impact_value_3",
+        "label": "Stat 3 number",
+        "name": "impact_value_3",
+        "type": "number",
+        "required": 0,
+        "default_value": 40,
+        "step": 1,
+        "instructions": ""
+      },
+      {
+        "key": "field_impact_symbol_3",
+        "label": "Stat 3 suffix",
+        "name": "impact_symbol_3",
+        "type": "text",
+        "required": 0,
+        "default_value": "%",
+        "instructions": ""
+      },
+      {
+        "key": "field_impact_text_3",
+        "label": "Stat 3 title",
+        "name": "impact_text_3",
+        "type": "text",
+        "required": 0,
+        "default_value": "Reduction in missed appointments.",
+        "instructions": ""
+      },
+      {
+        "key": "field_cs_stat_3_text",
+        "label": "Stat 3 text",
+        "name": "cs_stat_3_text",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "Visits booked against real technician availability, then confirmed automatically.",
+        "rows": 2,
+        "new_lines": ""
+      },
+      {
+        "key": "field_cs_tab_about_client",
+        "label": "About client",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_cs_client_nav",
+        "label": "Rail label",
+        "name": "cs_client_nav",
+        "type": "text",
+        "required": 0,
+        "default_value": "About the client"
+      },
+      {
+        "key": "field_cs_client_eyebrow",
+        "label": "Eyebrow",
+        "name": "cs_client_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "About the client"
+      },
+      {
+        "key": "field_cs_client_title",
+        "label": "Title",
+        "name": "cs_client_title",
+        "type": "text",
+        "required": 0,
+        "default_value": "A nationwide service network running out of hours in the day."
+      },
+      {
+        "key": "field_about_client",
+        "label": "Paragraphs (blank line between paragraphs)",
+        "name": "about_client",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "A global heavy-duty forklift and material handling equipment manufacturer, supporting a nationwide network of dealers, parts centers and factory-trained technicians.\n\nThe organization struggled to keep pace with call volume, after-hours requests and missed service appointments. Partnering with ITHENA, it put Agentic AI agents on first contact, sorting what arrives, working the fault through with the caller, closing the loop on bookings without a coordinator, and reaching out ahead of due service intervals and safety campaigns.\n\nWhat followed was a quicker turnaround, appointments that hold, and a desk that is never closed.",
+        "rows": 8,
+        "new_lines": "",
+        "instructions": ""
+      },
+      {
+        "key": "field_about_client_image_impact_value",
+        "label": "Image",
+        "name": "about_client_image_impact_value",
+        "type": "image",
+        "instructions": "",
+        "required": 0,
+        "return_format": "array",
+        "preview_size": "medium"
+      },
+      {
+        "key": "field_cs_tab_challenge",
+        "label": "Challenge",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_cs_challenge_nav",
+        "label": "Rail label",
+        "name": "cs_challenge_nav",
+        "type": "text",
+        "required": 0,
+        "default_value": "The challenge"
+      },
+      {
+        "key": "field_cs_challenge_eyebrow",
+        "label": "Eyebrow",
+        "name": "cs_challenge_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "Key challenges faced"
+      },
+      {
+        "key": "field_cs_challenge_title",
+        "label": "Title",
+        "name": "cs_challenge_title",
+        "type": "text",
+        "required": 0,
+        "default_value": "Gaps between a breakdown and an answer."
+      },
+      {
+        "key": "field_cs_challenge_lede",
+        "label": "Subtitle",
+        "name": "cs_challenge_lede",
+        "type": "textarea",
+        "instructions": "",
+        "required": 0,
+        "rows": 3
+      },
+      {
+        "key": "field_key_challenges",
+        "label": "Challenges (HTML list)",
+        "name": "key_challenges",
+        "type": "textarea",
+        "instructions": "One <ul> of <li> items. Numbering is added automatically.",
+        "required": 0,
+        "rows": 10
+      },
+      {
+        "key": "field_cs_tab_call_routing",
+        "label": "Call routing",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_cs_routing_enable",
+        "label": "Show this section",
+        "name": "cs_routing_enable",
+        "type": "true_false",
+        "instructions": "Off by default. Tick to show this section and its rail entry.",
+        "required": 0,
+        "default_value": 0,
+        "ui": 1
+      },
+      {
+        "key": "field_cs_routing_nav",
+        "label": "Rail label",
+        "name": "cs_routing_nav",
+        "type": "text",
+        "required": 0,
+        "default_value": "Call routing"
+      },
+      {
+        "key": "field_cs_routing_eyebrow",
+        "label": "Eyebrow",
+        "name": "cs_routing_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "How a call is handled"
+      },
+      {
+        "key": "field_cs_routing_title",
+        "label": "Title",
+        "name": "cs_routing_title",
+        "type": "text",
+        "required": 0,
+        "default_value": "Every call answered. Only the hard ones escalated."
+      },
+      {
+        "key": "field_cs_routing_lede",
+        "label": "Subtitle",
+        "name": "cs_routing_lede",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "The agent takes first contact on every inbound call, then routes on what it finds. Equipment history, fault codes, parts availability and warranty status are all read live during the conversation.",
+        "rows": 3,
+        "new_lines": ""
+      },
+      {
+        "key": "field_cs_routing_html",
+        "label": "Animated HTML",
+        "name": "cs_routing_html",
+        "type": "textarea",
+        "instructions": "Paste the animated block (HTML + inline CSS/JS). Rendered as-is.",
+        "required": 0,
+        "rows": 10
+      },
+      {
+        "key": "field_cs_tab_solution",
+        "label": "Solution",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_cs_solution_nav",
+        "label": "Rail label",
+        "name": "cs_solution_nav",
+        "type": "text",
+        "required": 0,
+        "default_value": "The solution"
+      },
+      {
+        "key": "field_cs_solution_eyebrow",
+        "label": "Eyebrow",
+        "name": "cs_solution_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "Our solution"
+      },
+      {
+        "key": "field_cs_solution_title",
+        "label": "Title",
+        "name": "cs_solution_title",
+        "type": "text",
+        "required": 0,
+        "default_value": "ITHENA's Agentic OEM AI Agents empowered the client with:"
+      },
+      {
+        "key": "field_solution_description",
+        "label": "Subtitle",
+        "name": "solution_description",
+        "type": "textarea",
+        "instructions": "",
+        "required": 0,
+        "rows": 3,
+        "new_lines": ""
+      },
+      {
+        "key": "field_solution_1_heading",
+        "label": "Capability 1 title",
+        "name": "solution_1_heading",
+        "type": "text",
+        "required": 0,
+        "default_value": "First-level call support.",
+        "instructions": ""
+      },
+      {
+        "key": "field_solution_1_description",
+        "label": "Capability 1 text",
+        "name": "solution_1_description",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "Every inbound call is met inside a ring or two, at any hour, so nothing is left sitting in a queue for the morning.",
+        "rows": 2,
+        "new_lines": "",
+        "instructions": ""
+      },
+      {
+        "key": "field_solution_2_heading",
+        "label": "Capability 2 title",
+        "name": "solution_2_heading",
+        "type": "text",
+        "required": 0,
+        "default_value": "Troubleshooting and diagnostics.",
+        "instructions": ""
+      },
+      {
+        "key": "field_solution_2_description",
+        "label": "Capability 2 text",
+        "name": "solution_2_description",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "The caller is walked through the checks one at a time, with the machine's own record open alongside; only genuine complexity travels further.",
+        "rows": 2,
+        "new_lines": "",
+        "instructions": ""
+      },
+      {
+        "key": "field_solution_3_heading",
+        "label": "Capability 3 title",
+        "name": "solution_3_heading",
+        "type": "text",
+        "required": 0,
+        "default_value": "Appointment scheduling and confirmations.",
+        "instructions": ""
+      },
+      {
+        "key": "field_solution_3_description",
+        "label": "Capability 3 text",
+        "name": "solution_3_description",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "Bookings are placed where the route already has room, and the confirmation that follows is generated rather than typed by a coordinator.",
+        "rows": 2,
+        "new_lines": "",
+        "instructions": ""
+      },
+      {
+        "key": "field_solution_4_heading",
+        "label": "Capability 4 title",
+        "name": "solution_4_heading",
+        "type": "text",
+        "required": 0,
+        "default_value": "Inventory and warranty lookups.",
+        "instructions": ""
+      },
+      {
+        "key": "field_solution_4_description",
+        "label": "Capability 4 text",
+        "name": "solution_4_description",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "Stock and cover are read straight out of the 35,000-line catalogue while the conversation is still open, in place of a manual search.",
+        "rows": 2,
+        "new_lines": "",
+        "instructions": ""
+      },
+      {
+        "key": "field_solution_5_heading",
+        "label": "Capability 5 title",
+        "name": "solution_5_heading",
+        "type": "text",
+        "required": 0,
+        "instructions": ""
+      },
+      {
+        "key": "field_solution_5_description",
+        "label": "Capability 5 text",
+        "name": "solution_5_description",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": "",
+        "instructions": ""
+      },
+      {
+        "key": "field_cs_tab_console",
+        "label": "Console",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_cs_console_enable",
+        "label": "Show this section",
+        "name": "cs_console_enable",
+        "type": "true_false",
+        "instructions": "Off by default. Tick to show this section and its rail entry.",
+        "required": 0,
+        "default_value": 0,
+        "ui": 1
+      },
+      {
+        "key": "field_cs_console_nav",
+        "label": "Rail label",
+        "name": "cs_console_nav",
+        "type": "text",
+        "required": 0,
+        "default_value": "Live console"
+      },
+      {
+        "key": "field_cs_console_eyebrow",
+        "label": "Eyebrow",
+        "name": "cs_console_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "Inside the console"
+      },
+      {
+        "key": "field_cs_console_title",
+        "label": "Title",
+        "name": "cs_console_title",
+        "type": "text",
+        "required": 0,
+        "default_value": "A night shift, as the coordinators now see it."
+      },
+      {
+        "key": "field_cs_console_lede",
+        "label": "Subtitle",
+        "name": "cs_console_lede",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "One screen carries the queue, the conversation in progress and the shape of the day's volume, so an overnight window is supervised rather than merely survived.",
+        "rows": 2,
+        "new_lines": ""
+      },
+      {
+        "key": "field_cs_console_html",
+        "label": "Animated HTML",
+        "name": "cs_console_html",
+        "type": "textarea",
+        "instructions": "Raw HTML / CSS / JS for the animated console. Printed as-is, not escaped.",
+        "required": 0,
+        "rows": 14,
+        "new_lines": ""
+      },
+      {
+        "key": "field_cs_tab_what_changed",
+        "label": "What changed",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_cs_shift_enable",
+        "label": "Show this section",
+        "name": "cs_shift_enable",
+        "type": "true_false",
+        "instructions": "Off by default. Tick to show this section and its rail entry.",
+        "required": 0,
+        "default_value": 0,
+        "ui": 1
+      },
+      {
+        "key": "field_cs_shift_nav",
+        "label": "Rail label",
+        "name": "cs_shift_nav",
+        "type": "text",
+        "required": 0,
+        "default_value": "What changed"
+      },
+      {
+        "key": "field_cs_shift_eyebrow",
+        "label": "Eyebrow",
+        "name": "cs_shift_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "What changed"
+      },
+      {
+        "key": "field_cs_shift_title",
+        "label": "Title",
+        "name": "cs_shift_title",
+        "type": "text",
+        "required": 0,
+        "default_value": "The same network, a different service desk."
+      },
+      {
+        "key": "field_cs_shift_lede",
+        "label": "Subtitle",
+        "name": "cs_shift_lede",
+        "type": "textarea",
+        "instructions": "",
+        "required": 0,
+        "rows": 3
+      },
+      {
+        "key": "field_cs_shift_html",
+        "label": "Animated HTML",
+        "name": "cs_shift_html",
+        "type": "textarea",
+        "instructions": "Paste the animated block (HTML + inline CSS/JS). Rendered as-is.",
+        "required": 0,
+        "rows": 10
+      },
+      {
+        "key": "field_cs_tab_testimonial",
+        "label": "Testimonial",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_cs_words_nav",
+        "label": "Rail label",
+        "name": "cs_words_nav",
+        "type": "text",
+        "required": 0,
+        "default_value": "In their words"
+      },
+      {
+        "key": "field_cs_words_eyebrow",
+        "label": "Eyebrow",
+        "name": "cs_words_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "In their words"
+      },
+      {
+        "key": "field_quote",
+        "label": "Quote",
+        "name": "quote",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "Our dealers and technicians can't be on the phone and on a forklift at the same time. The agents pick up every call, sort out what's urgent, and get the simple stuff handled before it ever reaches a person. That's given our team hours back every week and our customers an answer at two in the morning instead of a voicemail.",
+        "rows": 5,
+        "new_lines": "",
+        "instructions": ""
+      },
+      {
+        "key": "field_cs_tab_form_popups",
+        "label": "Form popups",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_case_study_pdf",
+        "label": "Case study PDF",
+        "name": "case_study_pdf",
+        "type": "url",
+        "required": 0,
+        "default_value": "https://ithena.ai/case-study/agentic-ai-oem-service-case-study/",
+        "instructions": "Used by the hero download button and the download popup."
+      },
+      {
+        "key": "field_cs_modal_download_title",
+        "label": "Download popup title (form 98)",
+        "name": "cs_modal_download_title",
+        "type": "text",
+        "required": 0,
+        "default_value": "Please fill in the details below:"
+      },
+      {
+        "key": "field_cs_modal_expert_title",
+        "label": "Talk to an expert popup title (form 100)",
+        "name": "cs_modal_expert_title",
+        "type": "text",
+        "required": 0,
+        "default_value": "Please fill in the details below:"
+      },
+      {
+        "key": "field_cs_tab_cta_banner",
+        "label": "CTA banner",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_cs_cta_title",
+        "label": "Title",
+        "name": "cs_cta_title",
+        "type": "text",
+        "required": 0,
+        "default_value": "Put agents on your service desk."
+      },
+      {
+        "key": "field_cs_cta_text",
+        "label": "Text",
+        "name": "cs_cta_text",
+        "type": "textarea",
+        "required": 0,
+        "default_value": "Tell us your call volume, your after-hours gap and the systems your technicians already work in, and we'll show you what the first 90 days look like.",
+        "rows": 3,
+        "new_lines": ""
+      },
+      {
+        "key": "field_cs_cta_btn1_label",
+        "label": "Primary button label",
+        "name": "cs_cta_btn1_label",
+        "type": "text",
+        "required": 0,
+        "default_value": "Book a service-desk review",
+        "instructions": "Opens the Talk to an expert popup."
+      },
+      {
+        "key": "field_cs_cta_btn2_label",
+        "label": "Secondary button label",
+        "name": "cs_cta_btn2_label",
+        "type": "text",
+        "required": 0,
+        "default_value": "Explore smart offerings"
+      },
+      {
+        "key": "field_cs_cta_btn2_url",
+        "label": "Secondary button URL",
+        "name": "cs_cta_btn2_url",
+        "type": "url",
+        "required": 0,
+        "default_value": "https://ithena.ai/case-studies/"
+      },
+      {
+        "key": "field_cs_cta_video",
+        "label": "Background video (mp4)",
+        "name": "cs_cta_video",
+        "type": "file",
+        "required": 0,
+        "return_format": "url",
+        "library": "all",
+        "mime_types": "mp4,webm"
+      },
+      {
+        "key": "field_cs_cta_poster",
+        "label": "Video poster image",
+        "name": "cs_cta_poster",
+        "type": "image",
+        "required": 0,
+        "return_format": "url",
+        "preview_size": "medium",
+        "library": "all"
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "case-study-test"
+        }
+      ],
+      [
+        {
+          "param": "page_template",
+          "operator": "==",
+          "value": "template-parts/case-study-v2.php"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": ""
+  }
+]

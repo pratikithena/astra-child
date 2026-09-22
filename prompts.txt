@@ -49,3 +49,114 @@ https://dev-website.ithena.app/
 - use these two colors for section #fff, #D7ECF6. paint sections bg one after another.
 - modify section "How a transformation with ITHENA works" - use zig-zag pattern to showcase features 
 - add slider to "our partners" sections, add logo to companies and add 4 more companies.
+
+
+modify the mobile menu for solutions
+- add dropdowns menus for OEM | Distributor, Manufacturer and Enterprise
+- there are submenus to submenus then add dropdowns for them too
+- do not open them on default, when user clicks they will drop
+
+You have provided with the text content for the web page and design layout reference.
+design the web page collabrating the text content and taking ref from the layout.
+Make sure to have switch between dark and light with proper color and text color changes.
+Use interactive UI elements + animation in text and blocks
+
+
+- remove Header, footer, "Get Started" section and extra spacing
+- place theme switch in the mid hero section on RHS corner.
+- add img space to sections - "Core Platform Pillars", "Success Stories", "The Bigger Picture", "Proven Impact"
+- use colors as primary - #0083c8, secondary - #c00000, #ffffff, #000000
+- hero section edits
+    - add following nodes to RHS infographic as same as other nodes of "iSERV · Operations Dashboard"
+    - "Real-time visibility", "Web + mobile", "Defined SLAs", "AR/VR support"
+- add marque effect to "value-strip"
+
+modify as following
+- section "Core Platform Pillars" align them in the center 
+- shift section "How It Works" after "Core Platform Pillars"
+- section "Proven Impact" - replace 3rd img block with text block like other 2 blocks.
+- section "Success Stories" - modify img to occupy whole top side, remove those padding.
+- section "The Bigger Picture" - remove "Ecosystem overview",
+    make blogs longer to occupy whole row, 2/3 will be text, 1/3 will be img
+
+- add section bg colors one by one - smooth blend them in light and in dark theme.
+
+- dont use darker bg in light them and viceversa.
+- keep same style for all 3 blocks of "The Bigger Picture" section
+- add uniform hover effect to all block with shadow and depth
+- add noticable slide in animations to blocks of sections
+    - section "Core Platform Pillars" blocks - slide down
+    - section "Proven Impact" blocks - slide right
+    - section "Success Stories" blocks - slide down and up
+    - section "The Bigger Picture" blocks - slide right and left
+
+
+- modify following animation effect with longer delay so that it will be visible
+    - section "Core Platform Pillars" blocks - slide down
+    - section "Proven Impact" blocks - slide right
+    - section "Success Stories" blocks - slide down and up
+    - section "The Bigger Picture" blocks - slide right and left
+- align hero-theme-toggle about 140px from the top.
+- on click request a demo - trigger popup + I am using elementor formidable form, so I will include shortcode to this.
+- and page html will be added in html widget, make sure code will support interactive widget and communicate between them
+- use these combinations, light theme bg colors - #FFFFFF, #D7ECF6 , dark theme bg color - #123049, #0D1B2E
+
+
+Mobile menu looks cleaner. 
+This needs to be replicated for web version. 
+This includes the same color of icons used on mobile menu.
+The web version had multiple colors which it throwing off the overall look.
+Update the container width as the reduced container size looks good, but it is causing all the submenu items, especially on the OEM side to become too long and spill over onto two or three lines.
+I would rather suggest to keep the container width from the start of logo to the end of the contact us button. 
+This ensures that each sub-menu item is in 1 line. 
+This applies to the parent heading as well. 
+Manufacturing and its subtext is in 3 lines, while others are 2 lines.
+
+Oem sub menu items must be updated to front office and back office (as per seen on demos.ithena.app) 
+screenshot provided for content only - do not take design reference
+Note the sub menu under oem must be of the same font, style as how we see under manufacturing, etc.
+from a usability perspective, if someone is expanding a different sub-menu item, the previous one should collapse. 
+Otherwise, its becoming a long scroll on the page
+
+This is the lastest code repo for panelops.
+Add "Cash- BOM - Shipment" below the CTA button row, for ref use provided img.
+Alongwith "explore the platform" lets have "explore services" CTA 
+and for schedule demo, have a small box kind of, maybe just beside the other two buttons.
+On schedule Demo, trigger popup which will show formidable form shortcode from shortcode widget of page.
+since this html will in html elementor widget.
+
+
+for light theme - bg color for .frm_forms[class*=frm_style_] .frm_fields_container will be #fff and these will follow in all resolutions
+make sure to have parent child hiereanchy to make it works for specific themes
+main.panelops[data-theme="light"]{--bg:#ffffff;--bg-alt:#f7f7f7;--surface:#f0f0f0;--text:#1a1a1a;--text-sub:#333333;--muted:#666666;--faint:#888888;--dim:#aaaaaa;--border:rgba(0,0,0,.08);--border-acc:rgba(188,26,0,.15);--primary:#bc1a00;--primary-lt:#e83e00;--primary-dk:#d92000;--accent:#0082c8;--accent-lt:#33a1e0;--primary-r:188;--primary-g:26;--primary-b:0;--accent-r:0;--accent-g:130;--accent-b:200;--grad-primary:linear-gradient(135deg,#bc1a00,#d92000);--grad-hero:linear-gradient(135deg,#bc1a00,#e83e00);--glow-primary:rgba(188,26,0,.25);--glow-soft:rgba(188,26,0,.08);--svg-hub-fill:#ffffff;--svg-node-fill:#ffffff;--svg-primary-stroke:#bc1a00;--svg-primary-text:#d92000;--svg-accent-stroke:#0082c8;--svg-accent-text:#006aa3;--svg-muted:#888888;--svg-dim:#bbbbbb;--card-hover-bg:rgba(188,26,0,.04);--card-accent-bg:rgba(0,130,200,.04);--icon-bg:rgba(188,26,0,.08);--icon-accent-bg:rgba(0,130,200,.08);--pill-bg:rgba(188,26,0,.07);--pill-border:rgba(188,26,0,.2);--pill-dot:#bc1a00;--pill-text:#d92000;--legacy-val:#bc1a00;--rec-badge-bg:linear-gradient(135deg,#bc1a00,#d92000);--win-border:rgba(188,26,0,.2);--win-bg:rgba(188,26,0,.04);--win-val:#d92000;--win-row-border:rgba(188,26,0,.1);--win-shadow:0 8px 40px rgba(188,26,0,.06);--cta-pill-bg:rgba(0,130,200,.07);--cta-pill-border:rgba(0,130,200,.18);--cta-pill-dot:#0082c8;--cta-pill-text:#006aa3;--watermark:rgba(188,26,0,.035);--toggle-bg:rgba(0,0,0,.06);--toggle-hover:rgba(0,0,0,.1);color-scheme:light!important}
+
+
+- Panel ops - theme switch check with all possible cases
+- Industry pages - at least 4-5 
+- Check on forms 
+- Home page changes - content, Menu and other things
+- Global change to form in theme switch
+
+
+
+Modify Service menu as follows
+Advisory Consulting
+└── AI Strategy
+
+Data Management
+├── Big Data & Analytics
+└── AI/ML | Data Science
+
+Cloud Modernization
+├── Cloud Adoption
+└── Process Integration
+
+Business Transformation
+├── Systems of Engagement
+└── Customer Experience
+
+Manufacturing Integration
+├── Manufacturing Execution
+└── Industrial IoT
+
+Keep design as same as industries.

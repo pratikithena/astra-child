@@ -494,14 +494,14 @@
                         <div class="mega-dropdown-content">
                             <div class="dropdown-grid">
                                 <div class="dropdown-column">
-                                    <div class="column-title">Buisness transformation</div>
+                                    <div class="column-title">Business transformation</div>
                                     <a href="#" class="dropdown-item" target="_blank">Interactive Dashboard</a>
                                     <a href="#" class="dropdown-item" target="_blank">API Integration</a>
                                 </div>
                                 <div class="dropdown-column">
                                     <div class="column-title">Manufacturing Integration</div>
                                     <a href="#" class="dropdown-item" target="_blank">Manufacturing Execution</a>
-                                    <a href="#" class="dropdown-item" target="_blank">Indutries IoT</a>
+                                    <a href="#" class="dropdown-item" target="_blank">Industries IoT</a>
                                 </div>
                                 <div class="dropdown-column">
                                     <div class="column-title">Data Management</div>
