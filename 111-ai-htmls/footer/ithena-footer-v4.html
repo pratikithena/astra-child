@@ -1,0 +1,239 @@
+<!-- ITHENA footer v4 (brand panel + headline + link grid, after criticalmanufacturing.com). Hierarchy from v3.
+     Paste as-is into an Elementor HTML widget (footer template 98) or echo from a shortcode.
+     Theme follows the ITH Header: section#imenu-root[data-theme], localStorage "fbb-theme", dark default.
+     The :has() selector keeps it in step with the header even before this footer's script runs (Airlift delays inline JS). -->
+
+<footer id="ithf4" class="ithf4" data-theme="dark">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@500;600;700;800&display=swap">
+
+  <style>
+  #ithf4{--bg:#0B0C0E;--panel:#111419;--ink:#F2F3F5;--ink2:rgba(228,230,235,.72);--mute:#8D939C;--line:rgba(255,255,255,.1);--chip:rgba(255,255,255,.06);--link:#3FA9E0;--blue:#0083C8;--ez:cubic-bezier(.16,1,.3,1);
+    background:var(--bg);color:var(--ink2);font:400 14px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  #ithf4[data-theme="light"],body:has(#imenu-root[data-theme="light"]) #ithf4{--bg:#F6F8FA;--panel:#EAF0F5;--ink:#0A192D;--ink2:#46586A;--mute:#6B7885;--line:#DCE3EA;--chip:#DFE7EE;--link:#006AA3}
+  #ithf4 *{box-sizing:border-box;margin:0;padding:0}
+  #ithf4 a{color:inherit;text-decoration:none;transition:color .2s}
+  #ithf4 a:focus-visible,#ithf4 summary:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:4px}
+  #ithf4 ul{list-style:none}
+
+  /* Split: brand panel bleeds to the left edge, content to the right edge */
+  #ithf4 .split{display:grid;grid-template-columns:minmax(24px,1fr) minmax(0,300px) minmax(0,980px) minmax(24px,1fr)}
+  #ithf4 .split::before{content:"";grid-column:1;grid-row:1;background:var(--panel)}
+  #ithf4 .split::after{content:"";grid-column:4;grid-row:1}
+
+  /* Brand panel */
+  #ithf4 .brand{grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:28px;padding:72px 48px 32px 0;background:var(--panel);box-shadow:-1px 0 0 var(--panel)}
+  #ithf4 .logo img{display:block;height:40px;width:auto}
+  #ithf4 .brand p{font-size:15px;line-height:1.65}
+  #ithf4 .soc{display:flex;gap:10px}
+  #ithf4 .soc a{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:var(--chip);color:var(--ink);transition:background .25s,color .25s}
+  #ithf4 .soc a:hover{background:var(--blue);color:#fff}
+  #ithf4 .soc svg{width:18px;height:18px;fill:currentColor}
+  #ithf4 .office b{display:block;margin-bottom:6px;font:700 11px/1.3 "Noto Sans",system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+  #ithf4 .office address{font-style:normal;line-height:1.6}
+  #ithf4 .office+.office{margin-top:-8px}
+  #ithf4 .copy{font-size:13px;line-height:1.8;color:var(--mute)}
+  #ithf4 .copy a{color:var(--ink2)}
+  #ithf4 .copy a:hover{color:var(--ink)}
+
+  /* Content */
+  #ithf4 .main{grid-column:3;grid-row:1;min-width:0;padding:32px 0 0 64px}
+  #ithf4 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:10px;background:var(--blue);color:#fff;font-weight:600;transition:background .25s}
+  #ithf4 .btn:hover{background:#006AA3}
+  #ithf4 .btn svg,#ithf4 .all svg{width:16px;height:16px;transition:transform .3s var(--ez)}
+  #ithf4 .btn:hover svg,#ithf4 .all:hover svg{transform:translateX(3px)}
+  #ithf4 .mail{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600}
+  #ithf4 .mail svg{width:18px;height:18px;fill:none;stroke:var(--link);stroke-width:1.7}
+  #ithf4 .mail:hover{color:var(--link)}
+
+  #ithf4 .reach{display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:-8px}
+  /* Sections: Solutions (3 audiences) full width, then Services / Industries / Company */
+  #ithf4 .sec{padding:40px 0;border-bottom:1px solid var(--line)}
+  #ithf4 .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+  #ithf4 .row>*+*{padding-left:32px;border-left:1px solid var(--line)}
+  #ithf4 .trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+  #ithf4 .trio>.sec{padding-bottom:72px;border-bottom:0}
+  #ithf4 .trio>.sec+.sec{padding-left:32px;border-left:1px solid var(--line)}
+  #ithf4 summary{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;list-style:none;cursor:default}
+  #ithf4 summary::-webkit-details-marker{display:none}
+  #ithf4 h3{display:flex;align-items:center;gap:10px;font:700 18px/1.2 "Noto Sans",system-ui,sans-serif;color:var(--ink)}
+  #ithf4 h3 svg{width:20px;height:20px;fill:none;stroke:var(--link);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  #ithf4 .sol summary .all{margin:0}
+  #ithf4 .chev{display:none;width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .3s var(--ez)}
+  /* Audience = parent of the eyebrow groups below it */
+  #ithf4 .aud>b{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding:9px 12px;border-radius:8px;background:var(--chip);font:700 14px/1.2 "Noto Sans",system-ui,sans-serif;color:var(--ink)}
+  #ithf4 .aud>b::before{content:"";flex:none;width:8px;height:8px;border-radius:2px;background:var(--blue)}
+  #ithf4 .grp+.grp{margin-top:22px}
+  /* Mid-level items use the service pages' .kick eyebrow */
+  #ithf4 .grp>span{display:flex;align-items:center;gap:10px;margin-bottom:8px;font:700 11px/1.3 Inter,system-ui,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:var(--link)}
+  #ithf4 .grp>span::before{content:"";flex:none;width:18px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--blue),transparent)}
+  #ithf4 .lk li+li{margin-top:2px}
+  #ithf4 .lk a{display:block;padding:5px 0;color:var(--ink2)}
+  #ithf4 .lk a:hover{color:var(--ink)}
+  #ithf4 .tag{display:inline-block;margin-left:5px;padding:2px 5px;border-radius:4px;background:var(--chip);color:var(--link);font:700 10px/1.3 Inter,system-ui,sans-serif;letter-spacing:.02em;vertical-align:1px;white-space:nowrap}
+  #ithf4 .all{display:inline-flex;align-items:center;gap:6px;margin-top:20px;font-weight:600;color:var(--link)}
+
+
+  @media (max-width:1080px){
+    #ithf4 .split{grid-template-columns:24px minmax(0,1fr) 24px}
+    #ithf4 .split::before,#ithf4 .split::after{display:none}
+    #ithf4 .brand{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:start;gap:24px 48px;padding:40px 24px 32px}
+    #ithf4 .brand>.lead{grid-row:1;grid-column:1}
+    #ithf4 .office+.office{margin-top:0}
+    #ithf4 .soc{grid-row:2;grid-column:1}
+    #ithf4 .reach{grid-row:3;grid-column:1;margin-top:0}
+    #ithf4 .copy{grid-row:4;grid-column:1/-1}
+    #ithf4 .row{gap:20px}
+    #ithf4 .row>*+*{padding-left:20px}
+    #ithf4 .main{grid-column:2;padding:24px 0 0}
+  }
+  @media (max-width:720px){
+    #ithf4 .split{grid-template-columns:16px minmax(0,1fr) 16px}
+    #ithf4 .brand{grid-template-columns:1fr;padding:40px 16px 28px}
+    #ithf4 .brand>*{grid-row:auto!important;grid-column:auto!important}
+    #ithf4 .main{padding-top:24px}
+        #ithf4 .row,#ithf4 .trio{grid-template-columns:1fr;gap:24px}
+    #ithf4 .trio{gap:0}
+    #ithf4 .row>*+*,#ithf4 .trio>.sec+.sec{padding-left:0;border-left:0}
+    #ithf4 .sec,#ithf4 .trio>.sec{padding:0;border-bottom:1px solid var(--line)}
+    #ithf4 .main{padding-bottom:40px}
+    #ithf4 .main nav{border-top:1px solid var(--line)}
+    #ithf4 summary{margin:0;padding:16px 0;cursor:pointer}
+    #ithf4 .sol summary .all{display:none}
+    #ithf4 .chev{display:block}
+    #ithf4 details[open] .chev{transform:rotate(180deg)}
+    #ithf4 details[open]>summary+*{padding-bottom:24px}
+  }
+  </style>
+
+  <div class="split">
+    <div class="brand">
+      <div class="lead">
+        <a class="logo" href="/"><img src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" width="136" height="45" alt="ITHENA home" loading="lazy" decoding="async"></a>
+        <p style="margin-top:20px">Practical AI and software for equipment builders, plants and enterprises.</p>
+      </div>
+      <div class="soc">
+        <a href="https://www.linkedin.com/company/ithenaus" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg></a>
+        <a href="https://www.youtube.com/@ithena1" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1z"/></svg></a>
+        <a href="https://www.facebook.com/people/ITHENA/100064033092851/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></svg></a>
+        <a href="https://x.com/ITHENA1" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.3l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></svg></a>
+      </div>
+      <div class="reach"><a class="mail" href="mailto:request@ithena.ai"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>request@ithena.ai</a><a class="btn" href="/contact-us/">Contact us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      <div class="office"><b>United States</b><address>4470 Cox Rd, #275<br>Glen Allen, VA 23060, USA</address></div>
+      <div class="office"><b>India</b><address>6th Floor, Amar Madhuban Tech Park<br>Pune, Maharashtra 411045</address></div>
+      <p class="copy">&copy; <span class="yr">2026</span> ITHENA. All rights reserved.<br><a href="/privacy-policy/">Privacy policy</a></p>
+    </div>
+
+    <div class="main">
+      <nav aria-label="Footer">
+        <details class="sec sol" open>
+          <summary><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 17l9 5 9-5"/></svg>Solutions</h3><a class="all" href="/our-platform/">Our platform <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="row">
+            <div class="aud"><b>OEM and Distributors</b>
+              <div class="grp"><span>Front office</span><ul class="lk">
+                <li><a href="/solutions/crm-cpq/">Customer and dealer CRM <span class="tag">iCRM</span></a></li>
+                <li><a href="/solutions/ierp-panelops-industrial-erp/">Distributor ERP <span class="tag">iERP</span></a></li></ul></div>
+              <div class="grp"><span>After-market services</span><ul class="lk">
+                <li><a href="/solutions/iserv-smart-service/">Equipment monitoring <span class="tag">iSERV</span></a></li>
+                <li><a href="/solutions/b2b-ecommerce-spare-parts/">Parts and service store <span class="tag">B2B</span></a></li></ul></div>
+            </div>
+            <div class="aud"><b>Manufacturers</b>
+              <div class="grp"><span>Planning and production</span><ul class="lk">
+                <li><a href="/solutions/iplan-production-planning/">Production planning <span class="tag">iPLAN</span></a></li>
+                <li><a href="/solutions/igemba-digital-gemba/">Digital Gemba walks <span class="tag">iGEMBA</span></a></li>
+                <li><a href="/solutions/imex-manufacturing-excellence/">Manufacturing excellence <span class="tag">iMEX</span></a></li>
+                <li><a href="/solutions/mes-manufacturing-execution/">Manufacturing execution <span class="tag">MES</span></a></li></ul></div>
+              <div class="grp"><span>Maintenance and quality</span><ul class="lk">
+                <li><a href="/solutions/cmms-maintenance-management/">Maintenance management <span class="tag">CMMS</span></a></li>
+                <li><a href="/solutions/qms-quality-management/">Quality management <span class="tag">QMS</span></a></li>
+                <li><a href="/solutions/isems-smart-energy-management/">Smart energy <span class="tag">iSEMS</span></a></li></ul></div>
+            </div>
+            <div class="aud"><b>Enterprise</b>
+              <div class="grp"><span>Data and AI</span><ul class="lk">
+                <li><a href="/solutions/aether-ai-platform/">Practical AI platform <span class="tag">Aether</span></a></li>
+                <li><a href="/solutions/plant-analytics/">Plant analytics</a></li>
+                <li><a href="/solutions/ihub-enterprise-data-hub/">Enterprise data hub <span class="tag">iHub</span></a></li></ul></div>
+              <div class="grp"><span>Enterprise apps</span><ul class="lk">
+                <li><a href="/solutions/isip-social-intelligence/">Social analytics <span class="tag">iSIP</span></a></li>
+                <li><a href="/solutions/itms-transportation-tracking/">Transportation <span class="tag">iTMS</span></a></li></ul></div>
+            </div>
+          </div>
+        </details>
+
+        <div class="trio">
+          <details class="sec" open>
+            <summary><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg>Services</h3><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div>
+              <div class="grp"><span>Data and AI</span><ul class="lk">
+                <li><a href="/ai-strategy/">AI strategy</a></li>
+                <li><a href="/big-data-analytics/">Big data and analytics</a></li>
+                <li><a href="/ai-ml-data-science/">AI / ML and data science</a></li></ul></div>
+              <div class="grp"><span>Transformation</span><ul class="lk">
+                <li><a href="/cloud-adoption/">Cloud adoption</a></li>
+                <li><a href="/process-integration/">Process integration</a></li>
+                <li><a href="/systems-of-engagement/">Systems of engagement</a></li>
+                <li><a href="/customer-experience/">Customer experience</a></li></ul></div>
+              <div class="grp"><span>Plant integration</span><ul class="lk">
+                <li><a href="/manufacturing-execution/">Manufacturing execution</a></li>
+                <li><a href="/industrial-iot/">Industrial IoT</a></li></ul></div>
+            </div>
+          </details>
+
+          <details class="sec" open>
+            <summary><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V10l5 3v-3l5 3v-3l5 3v7zM17 10V4h3v6M3 20h18"/></svg>Industries</h3><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div>
+              <div class="grp"><span>Equipment builders</span><ul class="lk">
+                <li><a href="/packaging/">Packaging machinery</a></li>
+                <li><a href="/food-beverage-bakery/">Food and beverage machines</a></li>
+                <li><a href="/compressed-air/">Compressed air</a></li>
+                <li><a href="/custom-tool-builders/">Custom tool builders</a></li></ul></div>
+              <div class="grp"><span>Plants</span><ul class="lk">
+                <li><a href="/industrial/">Industrial</a></li>
+                <li><a href="/discrete-automotive/">Discrete and automotive</a></li>
+                <li><a href="/pharmaceutical/">Pharmaceutical</a></li>
+                <li><a href="/energy-utilities/">Energy and utilities</a></li></ul></div>
+              <div class="grp"><span>Other sectors</span><ul class="lk">
+                <li><a href="/fintech-insurance/">FinTech and insurance</a></li>
+                <li><a href="/government/">Government</a></li>
+                <li><a href="/retail-cpg/">Retail and CPG</a></li></ul></div>
+            </div>
+          </details>
+
+          <details class="sec" open>
+            <summary><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5l8-2v18M12 21h8V9h-8M8 8h1M8 12h1M8 16h1M16 13h1M16 17h1"/></svg>Company</h3><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div>
+              <div class="grp"><span>About ITHENA</span><ul class="lk">
+                <li><a href="/company/about-us/#about">Who we are</a></li>
+                <li><a href="/company/partnerships/">Partnerships</a></li>
+                <li><a href="/company/careers/">Careers</a></li></ul></div>
+              <div class="grp"><span>News and insights</span><ul class="lk">
+                <li><a href="/case-studies/">Case study</a></li>
+                <li><a href="/blogs/">Blog</a></li>
+                <li><a href="/company/announcements/">Announcements</a></li></ul></div>
+            </div>
+          </details>
+        </div>
+      </nav>
+
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var f=document.getElementById('ithf4'); if(!f) return;
+      var hdr=document.getElementById('imenu-root');
+      function stored(){try{return localStorage.getItem('fbb-theme')}catch(e){}}
+      function sync(){var m=(hdr&&hdr.getAttribute('data-theme'))||stored()||'dark';f.setAttribute('data-theme',m==='light'?'light':'dark');}
+      sync(); if(hdr) new MutationObserver(sync).observe(hdr,{attributes:true,attributeFilter:['data-theme']});
+      f.querySelector('.yr').textContent=new Date().getFullYear();
+      // Sections are accordions on phones only; markup ships open so nothing hides if this script is delayed.
+      var mq=matchMedia('(max-width:720px)'), ds=f.querySelectorAll('details');
+      function fit(){ds.forEach(function(d){d.open=!mq.matches;});}
+      fit(); mq.addEventListener('change',fit);
+      f.querySelectorAll('summary').forEach(function(s){s.addEventListener('click',function(e){if(!mq.matches&&!e.target.closest('a'))e.preventDefault();});});
+    })();
+  </script>
+
+</footer>

@@ -1,0 +1,333 @@
+<!-- Digital Factory &middot; ThingWorx RTPPM &mdash; dashboard animation. Self-contained fragment: paste it whole into an
+     HTML block or the "Animated HTML" field. One section, no document wrapper tags, every rule scoped to
+     .ithdash. Follows the host theme: OS preference by default, overridden by html.dark or a
+     [data-theme="dark"|"light"] ancestor (the ITHENA header toggle sets both). -->
+<section class="ithdash ithdash--oee" aria-label="Real-time production performance monitoring dashboard">
+<style>
+.ithdash{
+  color-scheme:light dark;
+  /* each token: light fallback first, then the light-dark() pair for browsers that have it */
+  --bg:#FFFFFF;        --bg:light-dark(#FFFFFF,#0E1116);
+  --surface:#FFFFFF;   --surface:light-dark(#FFFFFF,#15191F);
+  --surface2:#FAFCFE;  --surface2:light-dark(#FAFCFE,#11161C);
+  --chrome:#F3F6FA;    --chrome:light-dark(#F3F6FA,#1B212A);
+  --dot:#D5DCE5;       --dot:light-dark(#D5DCE5,#39424D);
+  --tile:#F6F9FB;      --tile:light-dark(#F6F9FB,#1B2128);
+  --wash:#EAF5FB;      --wash:light-dark(#EAF5FB,#10293C);
+  --wash2:#D7ECF6;     --wash2:light-dark(#D7ECF6,#1B4460);
+  --line:#E6EAEE;      --line:light-dark(#E6EAEE,#28303A);
+  --ink:#1F2023;       --ink:light-dark(#1F2023,#F0F3F6);
+  --ink2:#4B5259;      --ink2:light-dark(#4B5259,#B4BEC8);
+  --ink3:#6E767E;      --ink3:light-dark(#6E767E,#8E99A4);
+  --sep:#B4BFCB;       --sep:light-dark(#B4BFCB,#4A545F);
+  --blue:#0083C8;      --blue:light-dark(#0083C8,#33A1E0);
+  --blue-deep:#006AA3; --blue-deep:light-dark(#006AA3,#8CCFF5);
+  --btn-ink:#FFFFFF;   --btn-ink:light-dark(#FFFFFF,#08131C);
+  --g-bg:#E7F5EE;      --g-bg:light-dark(#E7F5EE,#0E2A22);
+  --g-ink:#177A54;     --g-ink:light-dark(#177A54,#54D6A2);
+  --a-bg:#FEF4E5;      --a-bg:light-dark(#FEF4E5,#2E2413);
+  --a-ink:#8A5A08;     --a-ink:light-dark(#8A5A08,#F0B45C);
+  --green:#2ED47A;     --green:light-dark(#2ED47A,#35D98A);
+  --amber:#E08A1E;     --amber:light-dark(#E08A1E,#E8A33E);
+  --red-soft:#E25D5D;  --red-soft:light-dark(#E25D5D,#E8736F);
+  --red-ink:#B42318;   --red-ink:light-dark(#B42318,#FF9E99);
+  --sh1:rgba(10,25,45,.5);  --sh1:light-dark(rgba(10,25,45,.5),rgba(0,0,0,.75));
+  --sh2:rgba(10,25,45,.05); --sh2:light-dark(rgba(10,25,45,.05),rgba(0,0,0,.4));
+  --ease:cubic-bezier(.16,1,.3,1);
+  display:block;margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+/* host theme wins over the OS preference */
+.ithdash[data-theme="dark"],[data-theme="dark"] .ithdash,html.dark .ithdash{color-scheme:dark}
+.ithdash[data-theme="light"],[data-theme="light"] .ithdash{color-scheme:light}
+
+.ithdash *{box-sizing:border-box}
+.ithdash .ithd{max-width:932px;margin:0 auto;padding:22px 16px}
+.ithdash button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.ithdash :focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){.ithdash *{animation:none!important;transition:none!important}}
+
+/* ---- browser-framed app window ---- */
+.ithdash .ap{position:relative;width:100%;max-width:900px;margin:0 auto;background:var(--surface);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:11.5px;line-height:1.3;
+  color:var(--ink2);text-align:left;box-shadow:0 34px 60px -34px var(--sh1),0 2px 6px var(--sh2)}
+.ithdash .apbar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:var(--chrome);border-bottom:1px solid var(--line)}
+.ithdash .apbar>i{width:9px;height:9px;border-radius:50%;background:var(--dot)}
+.ithdash .apbar .url{flex:1;min-width:0;margin-left:8px;display:flex;align-items:center;gap:6px;background:var(--surface);
+  border:1px solid var(--line);border-radius:7px;padding:4px 10px;font-size:10.5px;color:var(--ink3);
+  white-space:nowrap;overflow:hidden}
+.ithdash .apbar .url .i{width:11px;height:11px;color:var(--g-ink);flex:none}
+.ithdash .apbar .url em{font-style:normal;color:var(--ink)}
+.ithdash .aphd{display:flex;align-items:center;gap:14px;padding:8px 14px;border-bottom:1px solid var(--line)}
+.ithdash .aphd .lg{display:flex;align-items:center;gap:7px;font-weight:800;color:var(--ink);font-size:12px;
+  white-space:nowrap;letter-spacing:-.01em}
+.ithdash .aphd .lg em{width:20px;height:20px;border-radius:6px;background:var(--blue);color:var(--btn-ink);display:grid;
+  place-items:center;font-style:normal;font-size:11px;font-weight:800}
+.ithdash .aphd .nv{display:flex;gap:11px;color:var(--ink3);font-weight:600;font-size:11px;white-space:nowrap}
+.ithdash .aphd .nv b{color:var(--blue-deep)}
+.ithdash .aphd .sr{margin-left:auto;display:grid;place-items:center;width:26px;height:26px;border:1px solid var(--line);
+  border-radius:7px;color:var(--ink3);flex:none}
+.ithdash .aphd .sr .i{width:13px;height:13px}
+.ithdash .aphd .ct{position:relative;color:var(--ink2);flex:none}
+.ithdash .aphd .ct .i{width:16px;height:16px}
+.ithdash .aphd .ct i{position:absolute;top:-6px;right:-7px;min-width:14px;height:14px;padding:0 3px;border-radius:999px;
+  background:var(--blue);color:var(--btn-ink);font-size:9px;font-weight:800;font-style:normal;display:grid;place-items:center}
+.ithdash .aphd .av{width:24px;height:24px;border-radius:50%;background:var(--wash);color:var(--blue-deep);
+  font-weight:800;font-size:10px;display:grid;place-items:center;flex:none}
+@media(max-width:560px){.ithdash .aphd .nv{display:none}}
+.ithdash .apbody{padding:14px}
+.ithdash .apbc{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink3);margin-bottom:10px;
+  white-space:nowrap;overflow:hidden}
+.ithdash .apbc b{font-weight:600;color:var(--ink2)}
+.ithdash .apbc em{font-style:normal;color:var(--sep)}
+
+/* ---- cards, chips, buttons ---- */
+.ithdash .apcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:0}
+.ithdash .apcard>.h{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);
+  font-weight:700;color:var(--ink);font-size:11.5px;white-space:nowrap;overflow:hidden}
+.ithdash .apcard>.h .i{width:14px;height:14px;color:var(--ink3);flex:none}
+.ithdash .apcard>.h .apc{margin-left:auto}
+.ithdash .apcard .bd{padding:11px 12px}
+.ithdash .ap2{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:12px;align-items:stretch;margin-bottom:12px}
+@media(max-width:760px){.ithdash .ap2{grid-template-columns:minmax(0,1fr)}}
+.ithdash .apc{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:999px;font-size:10px;
+  font-weight:700;white-space:nowrap;background:var(--tile);color:var(--ink2)}
+.ithdash .apc i{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
+.ithdash .apc.g{background:var(--g-bg);color:var(--g-ink)}
+.ithdash .apc.a{background:var(--a-bg);color:var(--a-ink)}
+.ithdash .apc.b{background:var(--wash);color:var(--blue-deep)}
+.ithdash .apb{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:6px 11px;border-radius:7px;
+  background:var(--blue);color:var(--btn-ink);font-weight:700;font-size:11px;white-space:nowrap;min-height:30px}
+.ithdash .apb.o{background:var(--surface);color:var(--blue-deep);border:1px solid var(--line)}
+.ithdash .apb .i{width:12px;height:12px}
+.ithdash .aplive{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink3);padding:7px 12px;
+  background:var(--surface2);border-top:1px solid var(--line);border-radius:0 0 10px 10px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.ithdash .aplive i{flex:none;width:6px;height:6px;border-radius:50%;background:var(--green);animation:ithBlink 1.6s ease-in-out infinite}
+@keyframes ithBlink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ---- persona strip + KPI tiles ---- */
+.ithdash .persona{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.ithdash .persona button{padding:4px 10px;border-radius:999px;border:1px solid var(--line);font-size:10.5px;
+  font-weight:700;color:var(--ink3);background:var(--surface);min-height:26px;transition:.2s var(--ease)}
+.ithdash .persona button[aria-pressed="true"]{border-color:var(--blue);background:var(--wash);color:var(--blue-deep)}
+.ithdash .pfk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}
+@media(max-width:560px){.ithdash .pfk{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ithdash .pfk div{background:var(--tile);border-radius:9px;padding:8px 10px;min-width:0}
+.ithdash .pfk b{display:block;font-size:15.5px;letter-spacing:-.02em;line-height:1.1;color:var(--ink);
+  font-variant-numeric:tabular-nums}
+.ithdash .pfk b em{font-style:normal;font-size:10px;color:var(--ink3);margin-left:2px;font-weight:600}
+.ithdash .pfk div>span{display:block;font-size:10px;color:var(--ink3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .pfk div.w b{color:var(--red-ink)}
+
+/* ---- shift OEE line chart ---- */
+.ithdash .trend svg{width:100%;height:auto;display:block;overflow:visible}
+.ithdash .trend .gl{stroke:var(--line);stroke-width:1}
+.ithdash .trend .tgt{stroke:var(--amber);stroke-width:1.4;stroke-dasharray:4 4}
+.ithdash .trend .ln{fill:none;stroke:var(--blue);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 1.5s var(--ease)}
+.ithdash.on .trend .ln{stroke-dashoffset:0}
+.ithdash .trend .pt{fill:var(--surface);stroke:var(--blue);stroke-width:2;opacity:0;transition:opacity .5s var(--ease) .9s}
+.ithdash.on .trend .pt{opacity:1}
+.ithdash .trend .pt.hi{stroke:var(--g-ink)}
+.ithdash .axis{display:flex;justify-content:space-between;font-size:9.5px;color:var(--ink3);margin-top:6px;letter-spacing:.04em}
+
+/* ---- OEE factor gauges ---- */
+.ithdash .gauges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;text-align:center}
+.ithdash .gauges>div{background:var(--tile);border-radius:9px;padding:9px 4px 8px}
+.ithdash .gauges svg{width:100%;max-width:74px;height:auto;display:block;margin:0 auto}
+.ithdash .gauges .trk{fill:none;stroke:var(--wash2);stroke-width:7;stroke-linecap:round}
+.ithdash .gauges .v{fill:none;stroke:var(--blue);stroke-width:7;stroke-linecap:round;
+  stroke-dasharray:78.54;stroke-dashoffset:78.54;transition:stroke-dashoffset 1.2s var(--ease) .2s}
+.ithdash.on .gauges .v{stroke-dashoffset:var(--off)}
+.ithdash .gauges b{display:block;font-size:13.5px;font-weight:800;color:var(--ink);margin-top:-8px;
+  font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.ithdash .gauges>div>span{display:block;font-size:9.5px;color:var(--ink3);margin-top:3px}
+
+/* ---- machine health pills ---- */
+.ithdash .health{display:grid;gap:8px;margin-top:10px}
+.ithdash .health>div{display:grid;grid-template-columns:70px minmax(0,1fr) 30px;align-items:center;gap:8px;font-size:11px;color:var(--ink2)}
+.ithdash .health>div>span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .health .pill{display:flex;gap:2px}
+.ithdash .health .pill i{flex:1;height:8px;border-radius:2px;background:var(--wash2);transform:scaleY(.55);
+  transition:transform .5s var(--ease),background .5s var(--ease)}
+.ithdash.on .health .pill i.f{transform:scaleY(1);background:var(--blue)}
+.ithdash.on .health .lo .pill i.f{background:var(--amber)}
+.ithdash .health b{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+.ithdash .health .lo b{color:var(--a-ink)}
+
+/* ---- stoppage feed ---- */
+.ithdash .feed{display:grid;gap:6px}
+.ithdash .feed>div{display:grid;grid-template-columns:44px minmax(0,1fr) 96px 46px;align-items:center;gap:8px;
+  padding:7px 9px;border-radius:9px;background:var(--tile);font-size:11px;color:var(--ink2);min-width:0}
+@media(max-width:620px){.ithdash .feed>div{grid-template-columns:44px minmax(0,1fr) 46px}
+  .ithdash .feed .mc{display:none}}
+.ithdash .feed em{font-style:normal;color:var(--ink3);font-variant-numeric:tabular-nums}
+.ithdash .feed>div>span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .feed .mc{font-size:10px;font-weight:700;color:var(--blue-deep);background:var(--wash);border-radius:999px;
+  padding:2px 7px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .feed b{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+.ithdash .feed .crit b{color:var(--red-ink)}
+.ithdash .pfact{display:flex;gap:8px;margin-top:10px}
+</style>
+<div class="ithd">
+  <div class="ap">
+    <div class="apbar"><i></i><i></i><i></i>
+      <span class="url">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        rtppm.ithena.app<em>/distillery/bottling/line-3</em>
+      </span>
+    </div>
+    <div class="aphd">
+      <span class="lg"><em>i</em>RTPPM</span>
+      <span class="nv"><span>Plants</span><b>Lines</b><span>Assets</span><span>Stoppages</span></span>
+      <span class="sr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg></span>
+      <span class="ct"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4l2-2z"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg><i>5</i></span>
+      <span class="av">DM</span>
+    </div>
+    <div class="apbody">
+      <div class="apbc"><b>Lines</b><em>/</em>Bottling<em>/</em><b>Line 3, shift 2</b></div>
+
+      <div class="persona" role="group" aria-label="Dashboard persona">
+        <button type="button" aria-pressed="false">Operator</button>
+        <button type="button" aria-pressed="false">Supervisor</button>
+        <button type="button" aria-pressed="true">Plant manager</button>
+        <button type="button" aria-pressed="false">Executive</button>
+      </div>
+
+      <div class="pfk">
+        <div><b><span data-count="82.4" data-dp="1">0</span><em>%</em></b><span>OEE, shift 2</span></div>
+        <div><b><span data-count="11400">0</span></b><span>Bottles per hour</span></div>
+        <div><b><span data-count="22">0</span><em>min</em></b><span>Changeover</span></div>
+        <div class="w"><b><span data-count="5">0</span></b><span>Stoppages</span></div>
+      </div>
+
+      <div class="ap2">
+        <div class="apcard">
+          <div class="h">
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l5-6 4 3 7-8"></path></svg>
+            OEE across the shift<span class="apc b"><i></i>Target 80%</span>
+          </div>
+          <div class="bd">
+            <div class="trend">
+              <svg viewBox="0 0 300 96" role="img" aria-label="Line 3 OEE by hour: starts at 68.2 percent, peaks at 84.9 and closes the shift at 82.4, above the 80 percent target for five of eight hours.">
+                <line class="gl" x1="0" y1="12" x2="300" y2="12"></line>
+                <line class="gl" x1="0" y1="84" x2="300" y2="84"></line>
+                <line class="tgt" x1="0" y1="36" x2="300" y2="36"></line>
+                <path class="ln" d="M0,64.3 L42.9,49.2 L85.7,38.2 L128.6,27.4 L171.4,33.1 L214.3,44.6 L257.1,24.2 L300,30.2"></path>
+                <circle class="pt hi" cx="257.1" cy="24.2" r="3.6"></circle>
+                <circle class="pt" cx="300" cy="30.2" r="4"></circle>
+              </svg>
+              <div class="axis"><span>06:00 &middot; 68.2%</span><span>Target 80%</span><span>14:00 &middot; 82.4%</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="apcard">
+          <div class="h">
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20a8 8 0 1 0-8-8"></path><path d="M12 12l4-3"></path></svg>
+            What OEE is made of
+          </div>
+          <div class="bd">
+            <div class="gauges">
+              <div>
+                <svg viewBox="0 0 60 34" aria-hidden="true"><path class="trk" d="M5,30 A25,25 0 0 1 55,30"></path><path class="v" style="--off:6.8" d="M5,30 A25,25 0 0 1 55,30"></path></svg>
+                <b><span data-count="91.3" data-dp="1">0</span></b><span>Availability</span>
+              </div>
+              <div>
+                <svg viewBox="0 0 60 34" aria-hidden="true"><path class="trk" d="M5,30 A25,25 0 0 1 55,30"></path><path class="v" style="--off:4.6" d="M5,30 A25,25 0 0 1 55,30"></path></svg>
+                <b><span data-count="94.1" data-dp="1">0</span></b><span>Performance</span>
+              </div>
+              <div>
+                <svg viewBox="0 0 60 34" aria-hidden="true"><path class="trk" d="M5,30 A25,25 0 0 1 55,30"></path><path class="v" style="--off:3.1" d="M5,30 A25,25 0 0 1 55,30"></path></svg>
+                <b><span data-count="96" data-dp="1">0</span></b><span>Quality</span>
+              </div>
+            </div>
+            <div class="health" role="group" aria-label="Machine health, line 3">
+              <div><span>Still 2</span><span class="pill" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span><b>96</b></div>
+              <div><span>Filler 3</span><span class="pill" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span><b>88</b></div>
+              <div class="lo"><span>Labeller</span><span class="pill" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span><b>74</b></div>
+              <div><span>Capper</span><span class="pill" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span><b>91</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="apcard">
+        <div class="h">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v4l3 2"></path></svg>
+          Stoppage feed<span class="apc a"><i></i>Labeller is the bottleneck</span>
+        </div>
+        <div class="bd">
+          <div class="feed">
+            <div class="crit"><em>13:42</em><span>Label web break, reel changed</span><span class="mc">Labeller</span><b>14m</b></div>
+            <div><em>12:55</em><span>Cap hopper starved</span><span class="mc">Capper</span><b>6m</b></div>
+            <div><em>11:20</em><span>Flavour changeover, CIP rinse</span><span class="mc">Filler 3</span><b>22m</b></div>
+            <div><em>09:37</em><span>Reject gate jam, 40 bottles diverted</span><span class="mc">Labeller</span><b>9m</b></div>
+            <div><em>07:12</em><span>Cold start warm-up to spec</span><span class="mc">Still 2</span><b>11m</b></div>
+          </div>
+          <div class="pfact">
+            <button type="button" class="apb"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7"></path></svg>Open bottleneck view</button>
+            <button type="button" class="apb o">Onboard a new line</button>
+          </div>
+        </div>
+        <div class="aplive"><i></i>Live from the line, 2 s poll &middot; new lines onboarded in two weeks &middot; <span data-clock>13:58:04</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var root = document.currentScript.closest(".ithdash");
+  if (!root) return;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function (s) { return root.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(root.querySelectorAll(s)); };
+  var comma = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); };
+
+  function count(el) {
+    var to = parseFloat(el.getAttribute("data-count")), dp = (el.getAttribute("data-dp") | 0);
+    if (reduce || !isFinite(to)) { el.textContent = comma(to.toFixed(dp)); return; }
+    var t0 = null, dur = 1200;
+    requestAnimationFrame(function step(now) {
+      if (t0 === null) t0 = now;
+      var p = Math.min(1, (now - t0) / dur);
+      el.textContent = comma((to * (1 - Math.pow(1 - p, 4))).toFixed(dp));
+      if (p < 1) requestAnimationFrame(step);
+    });
+  }
+
+  /* every timer below is opened on view and torn down off view or on a hidden tab */
+  function onView(start, stop) {
+    if (reduce || !("IntersectionObserver" in window)) { start(); return; }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.isIntersecting ? start() : stop(); });
+    }, { threshold: 0.2 }).observe(root);
+    document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); });
+  }
+
+  /* persona tabs only swap which figure the header calls out -- the data is one line, one shift */
+  var personas = $$(".persona button");
+  personas.forEach(function (b) {
+    b.addEventListener("click", function () {
+      personas.forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+    });
+  });
+
+  function pad(n) { return ("0" + n).slice(-2); }
+  var clock = null, secs = 13 * 3600 + 58 * 60 + 4;
+  function tick() {
+    secs = (secs + 2) % 86400;
+    $("[data-clock]").textContent = pad((secs / 3600) | 0) + ":" + pad(((secs / 60) | 0) % 60) + ":" + pad(secs % 60);
+  }
+
+  onView(function () {
+    if (clock) return;
+    root.classList.add("on");
+    $$("[data-count]").forEach(count);
+    clock = setInterval(tick, 2000);
+  }, function () { clearInterval(clock); clock = null; });
+})();
+</script>
+</section>

@@ -1,0 +1,313 @@
+<!-- iSERV B2B eCommerce &mdash; dashboard animation. Self-contained fragment: paste it whole into an
+     HTML block or the "Animated HTML" field. One section, no document wrapper tags, every rule scoped to
+     .ithdash. Follows the host theme: OS preference by default, overridden by html.dark or a
+     [data-theme="dark"|"light"] ancestor (the ITHENA header toggle sets both). -->
+<section class="ithdash ithdash--parts" aria-label="iSERV B2B eCommerce spare parts dashboard">
+<style>
+.ithdash{
+  color-scheme:light dark;
+  /* each token: light fallback first, then the light-dark() pair for browsers that have it */
+  --bg:#FFFFFF;        --bg:light-dark(#FFFFFF,#0E1116);
+  --surface:#FFFFFF;   --surface:light-dark(#FFFFFF,#15191F);
+  --surface2:#FAFCFE;  --surface2:light-dark(#FAFCFE,#11161C);
+  --chrome:#F3F6FA;    --chrome:light-dark(#F3F6FA,#1B212A);
+  --dot:#D5DCE5;       --dot:light-dark(#D5DCE5,#39424D);
+  --tile:#F6F9FB;      --tile:light-dark(#F6F9FB,#1B2128);
+  --wash:#EAF5FB;      --wash:light-dark(#EAF5FB,#10293C);
+  --wash2:#D7ECF6;     --wash2:light-dark(#D7ECF6,#1B4460);
+  --line:#E6EAEE;      --line:light-dark(#E6EAEE,#28303A);
+  --ink:#1F2023;       --ink:light-dark(#1F2023,#F0F3F6);
+  --ink2:#4B5259;      --ink2:light-dark(#4B5259,#B4BEC8);
+  --ink3:#6E767E;      --ink3:light-dark(#6E767E,#8E99A4);
+  --sep:#B4BFCB;       --sep:light-dark(#B4BFCB,#4A545F);
+  --blue:#0083C8;      --blue:light-dark(#0083C8,#33A1E0);
+  --blue-deep:#006AA3; --blue-deep:light-dark(#006AA3,#8CCFF5);
+  --blue-hi:#33A1E0;   --blue-hi:light-dark(#33A1E0,#5FB9EC);
+  --btn-ink:#FFFFFF;   --btn-ink:light-dark(#FFFFFF,#08131C);
+  --g-bg:#E7F5EE;      --g-bg:light-dark(#E7F5EE,#0E2A22);
+  --g-ink:#177A54;     --g-ink:light-dark(#177A54,#54D6A2);
+  --a-bg:#FEF4E5;      --a-bg:light-dark(#FEF4E5,#2E2413);
+  --a-ink:#8A5A08;     --a-ink:light-dark(#8A5A08,#F0B45C);
+  --green:#2ED47A;     --green:light-dark(#2ED47A,#35D98A);
+  --amber:#E08A1E;     --amber:light-dark(#E08A1E,#E8A33E);
+  --red-ink:#B42318;   --red-ink:light-dark(#B42318,#FF9E99);
+  --sh1:rgba(10,25,45,.5);  --sh1:light-dark(rgba(10,25,45,.5),rgba(0,0,0,.75));
+  --sh2:rgba(10,25,45,.05); --sh2:light-dark(rgba(10,25,45,.05),rgba(0,0,0,.4));
+  --ease:cubic-bezier(.16,1,.3,1);
+  display:block;margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+/* host theme wins over the OS preference */
+.ithdash[data-theme="dark"],[data-theme="dark"] .ithdash,html.dark .ithdash{color-scheme:dark}
+.ithdash[data-theme="light"],[data-theme="light"] .ithdash{color-scheme:light}
+
+.ithdash *{box-sizing:border-box}
+.ithdash .ithd{max-width:932px;margin:0 auto;padding:22px 16px}
+.ithdash button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.ithdash :focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){.ithdash *{animation:none!important;transition:none!important}}
+
+/* ---- browser-framed app window ---- */
+.ithdash .ap{position:relative;width:100%;max-width:900px;margin:0 auto;background:var(--surface);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:11.5px;line-height:1.3;
+  color:var(--ink2);text-align:left;box-shadow:0 34px 60px -34px var(--sh1),0 2px 6px var(--sh2)}
+.ithdash .apbar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:var(--chrome);border-bottom:1px solid var(--line)}
+.ithdash .apbar>i{width:9px;height:9px;border-radius:50%;background:var(--dot)}
+.ithdash .apbar .url{flex:1;min-width:0;margin-left:8px;display:flex;align-items:center;gap:6px;background:var(--surface);
+  border:1px solid var(--line);border-radius:7px;padding:4px 10px;font-size:10.5px;color:var(--ink3);
+  white-space:nowrap;overflow:hidden}
+.ithdash .apbar .url .i{width:11px;height:11px;color:var(--g-ink);flex:none}
+.ithdash .apbar .url em{font-style:normal;color:var(--ink)}
+.ithdash .aphd{display:flex;align-items:center;gap:14px;padding:8px 14px;border-bottom:1px solid var(--line)}
+.ithdash .aphd .lg{display:flex;align-items:center;gap:7px;font-weight:800;color:var(--ink);font-size:12px;
+  white-space:nowrap;letter-spacing:-.01em}
+.ithdash .aphd .lg em{width:20px;height:20px;border-radius:6px;background:var(--blue);color:var(--btn-ink);display:grid;
+  place-items:center;font-style:normal;font-size:11px;font-weight:800}
+.ithdash .aphd .nv{display:flex;gap:11px;color:var(--ink3);font-weight:600;font-size:11px;white-space:nowrap}
+.ithdash .aphd .nv b{color:var(--blue-deep)}
+.ithdash .aphd .sr{margin-left:auto;display:grid;place-items:center;width:26px;height:26px;border:1px solid var(--line);
+  border-radius:7px;color:var(--ink3);flex:none}
+.ithdash .aphd .sr .i{width:13px;height:13px}
+.ithdash .aphd .ct{position:relative;color:var(--ink2);flex:none}
+.ithdash .aphd .ct .i{width:16px;height:16px}
+.ithdash .aphd .ct i{position:absolute;top:-6px;right:-7px;min-width:14px;height:14px;padding:0 3px;border-radius:999px;
+  background:var(--blue);color:var(--btn-ink);font-size:9px;font-weight:800;font-style:normal;display:grid;place-items:center}
+.ithdash .aphd .av{width:24px;height:24px;border-radius:50%;background:var(--wash);color:var(--blue-deep);
+  font-weight:800;font-size:10px;display:grid;place-items:center;flex:none}
+@media(max-width:560px){.ithdash .aphd .nv{display:none}}
+.ithdash .apbody{padding:14px}
+.ithdash .apbc{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink3);margin-bottom:10px;
+  white-space:nowrap;overflow:hidden}
+.ithdash .apbc b{font-weight:600;color:var(--ink2)}
+.ithdash .apbc em{font-style:normal;color:var(--sep)}
+
+/* ---- cards, chips, buttons ---- */
+.ithdash .apcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:0}
+.ithdash .ap2{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:12px;align-items:start;margin-bottom:12px}
+@media(max-width:760px){.ithdash .ap2{grid-template-columns:minmax(0,1fr)}}
+.ithdash .apcard>.h{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);
+  font-weight:700;color:var(--ink);font-size:11.5px;white-space:nowrap;overflow:hidden}
+.ithdash .apcard>.h .i{width:14px;height:14px;color:var(--ink3);flex:none}
+.ithdash .apcard>.h .apc{margin-left:auto}
+.ithdash .apcard .bd{padding:11px 12px}
+.ithdash .apc{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:999px;font-size:10px;
+  font-weight:700;white-space:nowrap;background:var(--tile);color:var(--ink2)}
+.ithdash .apc i{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
+.ithdash .apc.g{background:var(--g-bg);color:var(--g-ink)}
+.ithdash .apc.a{background:var(--a-bg);color:var(--a-ink)}
+.ithdash .apc.b{background:var(--wash);color:var(--blue-deep)}
+.ithdash .apb{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:6px 11px;border-radius:7px;
+  background:var(--blue);color:var(--btn-ink);font-weight:700;font-size:11px;white-space:nowrap;min-height:30px}
+.ithdash .apb.o{background:var(--surface);color:var(--blue-deep);border:1px solid var(--line)}
+.ithdash .apb .i{width:12px;height:12px}
+.ithdash .aplive{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink3);padding:7px 12px;
+  background:var(--surface2);border-top:1px solid var(--line);border-radius:0 0 10px 10px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.ithdash .aplive i{flex:none;width:6px;height:6px;border-radius:50%;background:var(--green);animation:ithBlink 1.6s ease-in-out infinite}
+@keyframes ithBlink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ---- KPI tiles ---- */
+.ithdash .pfk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}
+@media(max-width:560px){.ithdash .pfk{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ithdash .pfk div{background:var(--tile);border-radius:9px;padding:8px 10px;min-width:0}
+.ithdash .pfk b{display:block;font-size:15.5px;letter-spacing:-.02em;line-height:1.1;color:var(--ink);
+  font-variant-numeric:tabular-nums}
+.ithdash .pfk b em{font-style:normal;font-size:10px;color:var(--ink3);margin-left:2px;font-weight:600}
+.ithdash .pfk div>span{display:block;font-size:10px;color:var(--ink3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .pfk div.ok b{color:var(--g-ink)}
+
+/* ---- exploded 3D part view ---- */
+.ithdash .part{background:var(--tile);border-radius:9px;padding:6px}
+.ithdash .part svg{width:100%;height:auto;display:block}
+.ithdash .part .lay{transition:transform .8s var(--ease);transition-delay:calc(var(--i) * 140ms)}
+.ithdash.on .part .lay{transform:translateY(var(--y))}
+.ithdash .part .top{fill:var(--wash2);stroke:var(--blue);stroke-width:1.2}
+.ithdash .part .rim{fill:var(--blue);opacity:.55}
+.ithdash .part .hole{fill:var(--surface);stroke:var(--blue-deep);stroke-width:.8}
+.ithdash .part .lead{stroke:var(--sep);stroke-width:.8;stroke-dasharray:2 2}
+.ithdash .spec{display:grid;gap:5px;margin-top:9px;font-size:11px}
+.ithdash .spec div{display:flex;justify-content:space-between;gap:8px;color:var(--ink3)}
+.ithdash .spec b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* ---- BOM tree ---- */
+.ithdash .bom{display:grid;gap:5px}
+.ithdash .bom>div{display:grid;grid-template-columns:minmax(0,1fr) 30px auto;align-items:center;gap:8px;
+  padding:7px 9px;border-radius:8px;background:var(--tile);font-size:11px;color:var(--ink2);min-width:0;
+  margin-left:calc(var(--d,0) * 16px)}
+.ithdash .bom .root{background:var(--wash);color:var(--blue-deep);font-weight:700}
+.ithdash .bom span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .bom em{font-style:normal;text-align:right;color:var(--ink3);font-variant-numeric:tabular-nums}
+.ithdash .pfact{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+
+/* ---- order funnel ---- */
+.ithdash .funnel{display:grid;gap:6px}
+.ithdash .funnel>div{display:grid;grid-template-columns:76px minmax(0,1fr) 40px;align-items:center;gap:8px;
+  font-size:11px;color:var(--ink2)}
+.ithdash .funnel>div>span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .funnel .fb{height:21px;border-radius:5px;background:var(--blue);margin:0 auto;width:0;
+  opacity:calc(1 - var(--i) * .12);transition:width .7s var(--ease);transition-delay:calc(var(--i) * 95ms)}
+.ithdash.on .funnel .fb{width:var(--w)}
+.ithdash .funnel b{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+.ithdash .track{display:grid;gap:6px;margin-top:11px}
+.ithdash .track>div{display:grid;grid-template-columns:82px minmax(0,1fr) auto;align-items:center;gap:8px;
+  padding:7px 9px;border-radius:9px;background:var(--tile);font-size:11px;color:var(--ink2);min-width:0}
+.ithdash .track strong{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.ithdash .track span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+</style>
+<div class="ithd">
+  <div class="ap">
+    <div class="apbar"><i></i><i></i><i></i>
+      <span class="url">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        parts.ithena.app<em>/machines/FL-2291/bom</em>
+      </span>
+    </div>
+    <div class="aphd">
+      <span class="lg"><em>i</em>iSERV Parts</span>
+      <span class="nv"><span>Machines</span><b>Parts</b><span>Orders</span><span>Wish lists</span></span>
+      <span class="sr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg></span>
+      <span class="ct"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M3 4h2l2.6 11h11L21 7H6"></path></svg><i>6</i></span>
+      <span class="av">SP</span>
+    </div>
+    <div class="apbody">
+      <div class="apbc"><b>Machines</b><em>/</em>Filler FL-2291<em>/</em><b>Bill of materials, rev 9</b></div>
+
+      <div class="pfk">
+        <div><b><span data-count="318">0</span></b><span>Orders today</span></div>
+        <div class="ok"><b><span data-count="94">0</span><em>%</em></b><span>Placed self-serve</span></div>
+        <div><b><span data-count="2.1" data-dp="1">0</span><em>h</em></b><span>Quote to order</span></div>
+        <div class="ok"><b><span data-count="0">0</span></b><span>Status calls needed</span></div>
+      </div>
+
+      <div class="ap2">
+        <div class="apcard">
+          <div class="h">
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"></path><path d="M4 7.5l8 4.5 8-4.5M12 12v9"></path></svg>
+            3D part view<span class="apc b"><i></i>Exploded</span>
+          </div>
+          <div class="bd">
+            <div class="part">
+              <svg viewBox="0 0 180 176" role="img" aria-label="Exploded three-dimensional view of filler head FL-2291: nozzle cover, impeller and housing.">
+                <line class="lead" x1="90" y1="26" x2="90" y2="140"></line>
+                <g class="lay" style="--y:-16px;--i:2">
+                  <path class="rim" d="M38,48 L38,56 A52,20 0 0 0 142,56 L142,48 Z"></path>
+                  <ellipse class="top" cx="90" cy="48" rx="52" ry="20"></ellipse>
+                  <ellipse class="hole" cx="66" cy="44" rx="5" ry="2.4"></ellipse>
+                  <ellipse class="hole" cx="114" cy="44" rx="5" ry="2.4"></ellipse>
+                  <ellipse class="hole" cx="90" cy="56" rx="5" ry="2.4"></ellipse>
+                </g>
+                <g class="lay" style="--y:0px;--i:1">
+                  <path class="rim" d="M50,84 L50,91 A40,15 0 0 0 130,91 L130,84 Z"></path>
+                  <ellipse class="top" cx="90" cy="84" rx="40" ry="15"></ellipse>
+                  <path class="hole" d="M90,74 L104,84 L90,94 L76,84 Z"></path>
+                </g>
+                <g class="lay" style="--y:16px;--i:0">
+                  <path class="rim" d="M32,118 L32,130 A58,22 0 0 0 148,130 L148,118 Z"></path>
+                  <ellipse class="top" cx="90" cy="118" rx="58" ry="22"></ellipse>
+                  <ellipse class="hole" cx="90" cy="118" rx="18" ry="7"></ellipse>
+                </g>
+              </svg>
+            </div>
+            <div class="spec">
+              <div><span>Serial</span><b>FL-2291</b></div>
+              <div><span>BOM revision</span><b>9</b></div>
+              <div><span>Parts in assembly</span><b>5</b></div>
+              <div><span>ERP</span><b>Epicor Kinetic</b></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="apcard">
+          <div class="h">
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h6M4 12h10M4 19h7"></path><path d="M16 5v14"></path></svg>
+            Bill of materials<span class="apc g"><i></i>Built automatically</span>
+          </div>
+          <div class="bd">
+            <div class="bom">
+              <div class="root"><span>FL-2291 &middot; Filler head assembly</span><em>1</em><span class="apc b"><i></i>rev 9</span></div>
+              <div style="--d:1"><span>1.1 Nozzle block, 316L</span><em>4</em><span class="apc g"><i></i>In stock</span></div>
+              <div style="--d:1"><span>1.2 Seal kit, FDA grade</span><em>1</em><span class="apc g"><i></i>In stock</span></div>
+              <div style="--d:1"><span>1.3 Servo drive, 400 W</span><em>1</em><span class="apc a"><i></i>2 wk lead</span></div>
+              <div style="--d:1"><span>1.4 Timing belt, 8M-720</span><em>2</em><span class="apc b"><i></i>On RSPL</span></div>
+              <div style="--d:1"><span>1.5 Level sensor, capacitive</span><em>2</em><span class="apc g"><i></i>In stock</span></div>
+            </div>
+            <div class="pfact">
+              <button type="button" class="apb"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M3 4h2l2.6 11h11L21 7H6"></path></svg>Add assembly to order</button>
+              <button type="button" class="apb o">Save to wish list</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="apcard">
+        <div class="h">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8z"></path></svg>
+          Order pipeline, this week<span class="apc g"><i></i>Status read live from Kinetic</span>
+        </div>
+        <div class="bd">
+          <div class="funnel" role="img" aria-label="Order pipeline this week: 412 quoted, 368 confirmed, 331 picked, 305 shipped, 288 delivered.">
+            <div><span>Quoted</span><span class="fb" style="--w:100%;--i:0"></span><b>412</b></div>
+            <div><span>Confirmed</span><span class="fb" style="--w:89%;--i:1"></span><b>368</b></div>
+            <div><span>Picked</span><span class="fb" style="--w:80%;--i:2"></span><b>331</b></div>
+            <div><span>Shipped</span><span class="fb" style="--w:74%;--i:3"></span><b>305</b></div>
+            <div><span>Delivered</span><span class="fb" style="--w:70%;--i:4"></span><b>288</b></div>
+          </div>
+          <div class="track">
+            <div><strong>SO-88412</strong><span>Nozzle block &times;4, Rotterdam plant</span><span class="apc g"><i></i>Delivered</span></div>
+            <div><strong>SO-88407</strong><span>Filler head assembly, rev 9</span><span class="apc b"><i></i>In transit, ETA Thu</span></div>
+            <div><strong>SO-88399</strong><span>RSPL top-up, 14 lines</span><span class="apc b"><i></i>Picking</span></div>
+            <div><strong>SO-88386</strong><span>Servo drive 400 W, back order</span><span class="apc a"><i></i>Confirmed, 2 wk</span></div>
+          </div>
+        </div>
+        <div class="aplive"><i></i>Order status read live from Epicor Kinetic, no phone call in the loop &middot; synced <span data-clock>09:41:07</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var root = document.currentScript.closest(".ithdash");
+  if (!root) return;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function (s) { return root.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(root.querySelectorAll(s)); };
+  var comma = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); };
+
+  function count(el) {
+    var to = parseFloat(el.getAttribute("data-count")), dp = (el.getAttribute("data-dp") | 0);
+    if (reduce || !isFinite(to)) { el.textContent = comma(to.toFixed(dp)); return; }
+    var t0 = null, dur = 1200;
+    requestAnimationFrame(function step(now) {
+      if (t0 === null) t0 = now;
+      var p = Math.min(1, (now - t0) / dur);
+      el.textContent = comma((to * (1 - Math.pow(1 - p, 4))).toFixed(dp));
+      if (p < 1) requestAnimationFrame(step);
+    });
+  }
+
+  /* every timer below is opened on view and torn down off view or on a hidden tab */
+  function onView(start, stop) {
+    if (reduce || !("IntersectionObserver" in window)) { start(); return; }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.isIntersecting ? start() : stop(); });
+    }, { threshold: 0.2 }).observe(root);
+    document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); });
+  }
+
+  function pad(n) { return ("0" + n).slice(-2); }
+  var clock = null, secs = 9 * 3600 + 41 * 60 + 7;
+  function tick() {
+    secs = (secs + 3) % 86400;
+    $("[data-clock]").textContent = pad((secs / 3600) | 0) + ":" + pad(((secs / 60) | 0) % 60) + ":" + pad(secs % 60);
+  }
+
+  onView(function () {
+    if (clock) return;
+    root.classList.add("on");
+    $$("[data-count]").forEach(count);
+    clock = setInterval(tick, 1700);
+  }, function () { clearInterval(clock); clock = null; });
+})();
+</script>
+</section>

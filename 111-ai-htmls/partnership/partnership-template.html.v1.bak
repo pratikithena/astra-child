@@ -1,0 +1,743 @@
+<!--
+  ITHENA partnership page template. Worked example: Microsoft.
+  Copy source: partnership/ms-partner.txt   Design system: ../case-study-template.html
+
+  TO REUSE FOR ANOTHER PARTNER, change only:
+    .lockup img        partner logo
+    hero h1 / .deck    headline + subheadline
+    .offer-card        the lead offer figure and proof points
+    .off cards         the offering list
+    #review            the featured offer and its checklist
+    #faq + JSON-LD     questions (keep the two in sync)
+    [formidable id=..] the two form IDs
+
+  UNRESOLVED, from the copy doc, before this goes live:
+   - Confirm current Microsoft partner designations + whether badges should be shown.
+   - Legal/licensing to approve the "up to 15%" claim and the disclaimer wording.
+   - Confirm the review is free with no obligation, and the 90-120 day recommended window.
+   - Name specific products (Dynamics 365, Azure OpenAI) if ITHENA sells them, for SEO.
+   - Add a customer quote or a licensing-savings example: this page has no proof block yet.
+   - Microsoft enquiry form needs 4 extra fields (products, seats, renewal date, billing
+     preference). Form 98 below is a placeholder until that is built.
+
+  SEO  Title: Microsoft Cloud, AI & Licensing Partner | ITHENA
+       Meta:  ITHENA is an authorized Microsoft reseller and Cloud & AI Solutions Partner.
+              Save up to 15% on your Microsoft subscriptions, and get ongoing security,
+              architecture and AI support.
+-->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;600;700&display=swap');
+section#main-section{--fh:"Noto Sans",sans-serif!important;--fb:"Inter",sans-serif!important;--fs-xs:12px!important;--fs-sm:13px!important;--fs-md:14px!important;--fs-base:15px!important;--fs-body:16px!important;--fs-lg:17px!important;--fs-h3:clamp(17px,1.9vw,21px)!important;--fs-h2s:clamp(21px,2.4vw,27px)!important;--fs-h2:clamp(27px,3.6vw,44px)!important;--fs-h1:clamp(32px,5vw,50px)!important;--bg:#FFFFFF!important;--bg-2:#F6FAFD!important;--soft-a:#FFFFFF!important;--soft-b:#D7ECF6!important;--card:#FFFFFF!important;--ink:#0A192D!important;--ink-2:#4A5A6E!important;--ink-3:#76889C!important;--line:rgba(10,25,45,.12)!important;--line-2:rgba(10,25,45,.22)!important;--brand:#0083C8!important;--brand-deep:#0067A0!important;--brand-ink:#0067A0!important;--brand-glow:#00A8E8!important;--teal:#4FE0D0!important;--red:#C00000!important;--chip:rgba(0,131,200,.09)!important;--shadow-card:0 1px 2px rgba(10,25,45,.05)!important;--ease:cubic-bezier(.16,.8,.24,1)!important;--sh-facts:rgba(10,25,45,.5)!important;--sh-facts-2:rgba(10,25,45,.06)!important;--cta-a:#04101F!important;--cta-b:#0A2C46!important;--cta-c:#083048!important;--cta-line:rgba(0,168,232,.35)!important;--scrim-1:rgba(4,16,31,.82)!important;--scrim-2:rgba(4,16,31,.56)!important;--scrim-3:rgba(4,16,31,.30)!important;color-scheme:light!important}
+section#main-section[data-theme="dark"]{--bg:#0A0A0B!important;--bg-2:#111113!important;--soft-a:#07080A!important;--soft-b:#111113!important;--card:#17181B!important;--ink:#F2F3F5!important;--ink-2:rgba(228,230,235,.8)!important;--ink-3:#9A9FA8!important;--line:rgba(255,255,255,.09)!important;--line-2:rgba(255,255,255,.16)!important;--brand-ink:#3FA9E0!important;--chip:rgba(0,131,200,.2)!important;--shadow-card:0 1px 2px rgba(0,0,0,.5)!important;--sh-facts:rgba(0,0,0,.75)!important;--sh-facts-2:rgba(0,0,0,.4)!important;--cta-a:#07080A!important;--cta-b:#16171A!important;--cta-c:#111113!important;--cta-line:rgba(255,255,255,.16)!important;--scrim-1:rgba(6,6,8,.84)!important;--scrim-2:rgba(6,6,8,.6)!important;--scrim-3:rgba(6,6,8,.34)!important;color-scheme:dark!important}
+section#main-section,section#main-section *,section#main-section *::before,section#main-section *::after{box-sizing:border-box!important}
+section#main-section li{margin:0!important}
+section#main-section .sec{scroll-margin-top:calc(var(--cs-hdr,0px) + 24px)!important}
+section#main-section{margin:0!important;background:var(--bg)!important;color:var(--ink-2)!important;font-family:var(--fb)!important;font-size:var(--fs-body)!important;line-height:1.68!important;-webkit-font-smoothing:antialiased!important;transition:background .35s var(--ease),color .35s var(--ease)!important}
+section#main-section ::selection{background:rgba(0,168,232,.35)!important}
+section#main-section h1,section#main-section h2,section#main-section h3,section#main-section h4{font-family:var(--fh)!important;font-weight:700!important;letter-spacing:-.02em!important;line-height:1.1!important;color:var(--ink)!important;margin:0!important;text-wrap:balance!important}
+section#main-section p,section#main-section li,section#main-section dt,section#main-section dd{line-height:inherit!important}
+section#main-section p{margin:0!important}
+section#main-section a{color:var(--brand-ink)!important;text-decoration:none!important}
+section#main-section img,section#main-section svg{max-width:100%!important}
+section#main-section :focus-visible{outline:2px solid var(--brand-glow)!important;outline-offset:3px!important;border-radius:6px!important}
+section#main-section .wrap{max-width:1240px!important;margin:0 auto!important;padding:0 28px!important}
+@media(max-width:640px){section#main-section .wrap{padding:0 18px!important}}
+section#main-section .eyebrow{font-family:var(--fh)!important;font-weight:700!important;font-size:var(--fs-sm)!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:var(--brand-ink)!important;display:inline-flex!important;align-items:center!important;gap:10px!important}
+section#main-section .eyebrow::before{content:""!important;width:22px!important;height:2px!important;border-radius:2px!important;flex:none!important;background:linear-gradient(90deg,var(--brand),var(--teal))!important;animation:eyebrowPulse 3.2s var(--ease) infinite!important}
+@keyframes eyebrowPulse{0%,100%{opacity:1;transform:scaleX(1)}50%{opacity:.55;transform:scaleX(1.3)}}
+section#main-section .btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;height:46px!important;padding:0 24px!important;border-radius:999px!important;border:1px solid transparent!important;font-family:var(--fb)!important;font-weight:700!important;font-size:var(--fs-md)!important;cursor:pointer!important;position:relative!important;overflow:hidden!important;transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s,border-color .3s,color .3s!important}
+section#main-section .btn-primary{background:linear-gradient(100deg,var(--brand),var(--brand-deep))!important;color:#fff!important}
+section#main-section .btn-primary::after{content:""!important;position:absolute!important;top:0!important;left:-60%!important;width:40%!important;height:100%!important;background:linear-gradient(115deg,transparent,rgba(255,255,255,.35),transparent)!important;transform:skewX(-20deg)!important;transition:left .6s var(--ease)!important}
+section#main-section .btn-primary:hover::after{left:130%!important}
+section#main-section .btn-primary:hover{transform:translateY(-2px)!important;box-shadow:0 14px 28px -12px rgba(0,131,200,.8)!important}
+section#main-section .btn-ghost{background:transparent!important;border-color:var(--line-2)!important;color:var(--ink)!important}
+section#main-section .btn-ghost:hover{border-color:var(--brand)!important;color:var(--brand-ink)!important;transform:translateY(-2px)!important}
+section#main-section .btn-wide{width:100%!important}
+section#main-section .btn svg{width:15px!important;height:15px!important;flex:none!important}
+
+/* ============================== hero ============================== */
+section#main-section .hero{position:relative!important;overflow:hidden!important;isolation:isolate!important;background:radial-gradient(1100px 620px at 82% -20%,rgba(0,131,200,.20),transparent 62%),radial-gradient(900px 520px at -12% 12%,rgba(79,224,208,.13),transparent 58%),linear-gradient(180deg,var(--soft-a),var(--soft-b) 62%,var(--bg))!important}
+section#main-section .hero > .wrap{position:relative!important;z-index:2!important}
+section#main-section .hero-in{padding-top:calc(var(--cs-hdr,0px) + 44px)!important;padding-bottom:52px!important;display:grid!important;grid-template-columns:minmax(0,1.3fr) minmax(300px,.9fr)!important;gap:56px!important;align-items:center!important}
+section#main-section .hero h1{font-size:var(--fs-h1)!important;margin:20px 0 0!important;letter-spacing:-.028em!important}
+section#main-section .hero .deck{margin-top:20px!important;max-width:58ch!important;font-size:var(--fs-lg)!important;color:var(--ink-2)!important}
+section#main-section .h-tags{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:10px 24px!important;margin:26px 0 0!important;padding:0!important;list-style:none!important}
+section#main-section .h-tags li{position:relative!important;font-family:var(--fb)!important;font-size:var(--fs-md)!important;font-weight:500!important;line-height:1.25!important;color:var(--ink-2)!important}
+section#main-section .h-tags li+li::before{content:""!important;position:absolute!important;left:-14px!important;top:50%!important;width:4px!important;height:4px!important;border-radius:50%!important;background:var(--brand-ink)!important;transform:translateY(-50%)!important}
+section#main-section .hero-actions{display:flex!important;flex-wrap:wrap!important;gap:12px!important;margin-top:30px!important}
+@media(max-width:960px){section#main-section .hero-in{grid-template-columns:minmax(0,1fr)!important;gap:36px!important;align-items:start!important;padding-top:calc(var(--cs-hdr,0px) + 28px)!important}}
+
+/* co-brand lockup: the one thing a partnership page must say first */
+section#main-section .lockup{display:inline-flex!important;align-items:center!important;gap:13px!important;padding:7px 17px 7px 17px!important;border:1px solid var(--line)!important;border-radius:999px!important;background:var(--card)!important;box-shadow:var(--shadow-card)!important}
+section#main-section .lockup .lk-us{font-family:var(--fh)!important;font-weight:700!important;font-size:var(--fs-sm)!important;letter-spacing:.17em!important;color:var(--ink)!important}
+section#main-section .lockup .lk-x{width:11px!important;height:11px!important;color:var(--ink-3)!important;flex:none!important}
+section#main-section .lockup img{height:19px!important;width:auto!important;display:block!important}
+section#main-section[data-theme="dark"] .lockup img{filter:brightness(0) invert(1)!important;opacity:.92!important}
+
+/* hero offer card: replaces the case study "engagement at a glance" panel */
+section#main-section .offer-float{perspective:1200px!important}
+section#main-section .offer-card{position:relative!important;border:1px solid var(--line)!important;border-radius:16px!important;background:var(--card)!important;overflow:hidden!important;box-shadow:0 30px 56px -34px var(--sh-facts),0 2px 8px var(--sh-facts-2)!important;transform-style:preserve-3d!important;will-change:transform!important;transition:transform .55s var(--ease),box-shadow .55s var(--ease)!important}
+section#main-section .offer-float:hover .offer-card{box-shadow:0 38px 66px -34px rgba(0,131,200,.55),0 2px 8px rgba(10,25,45,.08)!important}
+section#main-section .offer-card::after{content:""!important;position:absolute!important;left:0!important;right:0!important;bottom:0!important;height:3px!important;background:linear-gradient(90deg,var(--brand),var(--teal))!important;transform-origin:left!important;transition:transform .7s var(--ease) .3s!important}
+section#main-section[data-anim="on"] .offer-card:not(.in)::after{transform:scaleX(0)!important}
+section#main-section .offer-head{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding:12px 20px!important;border-bottom:1px solid var(--line)!important;background:var(--bg-2)!important}
+section#main-section .offer-cap{font-family:var(--fb)!important;font-weight:700!important;font-size:var(--fs-xs)!important;letter-spacing:.13em!important;text-transform:uppercase!important;color:var(--ink-3)!important}
+section#main-section .offer-rule{flex:none!important;width:34px!important;height:2px!important;border-radius:2px!important;background:linear-gradient(90deg,var(--brand),var(--teal))!important}
+section#main-section .offer-body{padding:24px 20px 20px!important}
+section#main-section .offer-fig{font-family:var(--fh)!important;font-weight:700!important;font-size:clamp(46px,6vw,66px)!important;line-height:.88!important;letter-spacing:-.05em!important;color:var(--ink)!important;display:flex!important;align-items:flex-start!important;gap:3px!important;font-variant-numeric:tabular-nums!important}
+section#main-section .offer-fig span{color:var(--brand-ink)!important;font-size:.42em!important;line-height:1.35!important}
+section#main-section .offer-lede{margin-top:12px!important;font-size:var(--fs-md)!important;color:var(--ink-3)!important;max-width:34ch!important}
+section#main-section .offer-list{list-style:none!important;margin:20px 0 0!important;padding:0!important;display:grid!important;gap:11px!important}
+section#main-section .offer-list li{display:grid!important;grid-template-columns:17px minmax(0,1fr)!important;gap:11px!important;align-items:start!important;font-size:var(--fs-md)!important;color:var(--ink-2)!important;line-height:1.5!important}
+section#main-section .offer-list svg{width:17px!important;height:17px!important;color:var(--brand)!important;margin-top:2px!important;flex:none!important}
+section#main-section .offer-foot{padding:13px 20px!important;border-top:1px solid var(--line)!important;background:var(--bg-2)!important;font-size:var(--fs-xs)!important;color:var(--ink-3)!important}
+
+/* ========================= trust strip ========================= */
+section#main-section .trust{border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important;background:var(--bg-2)!important}
+section#main-section .trust ul{display:flex!important;flex-wrap:wrap!important;justify-content:center!important;gap:13px 38px!important;list-style:none!important;margin:0!important;padding:17px 0!important}
+section#main-section .trust li{display:flex!important;align-items:center!important;gap:9px!important;font-size:var(--fs-md)!important;font-weight:600!important;color:var(--ink-2)!important}
+section#main-section .trust svg{width:15px!important;height:15px!important;color:var(--brand)!important;flex:none!important}
+
+/* ===================== shell + rail nav ===================== */
+section#main-section .shell{display:grid!important;grid-template-columns:210px minmax(0,1fr)!important;gap:64px!important;max-width:1240px!important;margin:0 auto!important;padding:0 28px!important;align-items:start!important}
+@media(max-width:1080px){section#main-section .shell{grid-template-columns:minmax(0,1fr)!important;gap:0!important;padding:0 28px!important}section#main-section .rail{display:none!important}}
+@media(max-width:640px){section#main-section .shell{padding:0 18px!important}}
+section#main-section .rail{position:sticky!important;top:calc(var(--cs-hdr,0px) + 24px)!important;padding:52px 0 40px!important}
+section#main-section .rail-cap{font-family:var(--fh)!important;font-weight:700!important;font-size:var(--fs-xs)!important;letter-spacing:.13em!important;text-transform:uppercase!important;color:var(--ink-3)!important;display:block!important;margin-bottom:14px!important}
+section#main-section .rail-track{position:relative!important}
+section#main-section .rail-track::before{content:""!important;position:absolute!important;left:0!important;top:6px!important;bottom:6px!important;width:1px!important;background:var(--line-2)!important}
+section#main-section .rail-thumb{position:absolute!important;left:-1px!important;width:3px!important;border-radius:2px!important;top:0!important;height:0!important;background:linear-gradient(180deg,var(--brand),var(--teal))!important;transition:transform .35s var(--ease),height .35s var(--ease)!important}
+section#main-section .rail ol{list-style:none!important;margin:0!important;padding:0!important}
+section#main-section .rail ol a{display:grid!important;grid-template-columns:24px 1fr!important;gap:6px!important;align-items:baseline!important;padding:8px 0 8px 15px!important;font-size:var(--fs-sm)!important;color:var(--ink-3)!important;line-height:1.4!important;font-family:var(--fb)!important;font-weight:600!important;transition:color .22s!important}
+section#main-section .rail ol a i{font-style:normal!important;font-size:var(--fs-xs)!important;color:var(--line-2)!important;letter-spacing:.04em!important}
+section#main-section .rail ol a:hover{color:var(--ink-2)!important}
+section#main-section .rail ol a.on{color:var(--ink)!important}
+section#main-section .rail ol a.on i{color:var(--brand)!important}
+section#main-section .rail-foot{margin-top:24px!important;padding-top:16px!important;border-top:1px solid var(--line)!important;font-size:var(--fs-sm)!important;color:var(--ink-3)!important}
+section#main-section .rail-foot a{font-weight:700!important;white-space:nowrap!important}
+section#main-section main{min-width:0!important;padding:52px 0 0!important}
+section#main-section .sec{padding:48px 0!important;border-top:1px solid var(--line)!important}
+section#main-section .sec:first-of-type{border-top:0!important;padding-top:6px!important}
+section#main-section .sec > .eyebrow{margin-bottom:14px!important}
+section#main-section .sec h2{font-size:var(--fs-h2)!important}
+section#main-section .sec .lede{margin-top:16px!important;max-width:68ch!important;font-size:var(--fs-body)!important}
+section#main-section .sec p+p{margin-top:14px!important}
+
+/* ================= about: three pillars ================= */
+section#main-section .pillars{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important;margin-top:30px!important}
+@media(max-width:820px){section#main-section .pillars{grid-template-columns:minmax(0,1fr)!important}}
+section#main-section .pillar{border:1px solid var(--line)!important;border-radius:14px!important;background:var(--card)!important;padding:22px 20px!important;transition:transform .35s var(--ease),border-color .3s,box-shadow .35s var(--ease)!important}
+section#main-section .pillar:hover{transform:translateY(-3px)!important;border-color:var(--line-2)!important;box-shadow:0 18px 34px -24px var(--sh-facts)!important}
+section#main-section .pillar i{font-style:normal!important;font-family:var(--fh)!important;font-weight:700!important;font-size:var(--fs-xs)!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:var(--brand-ink)!important}
+section#main-section .pillar h3{font-size:var(--fs-h3)!important;margin-top:9px!important}
+section#main-section .pillar p{margin-top:10px!important;font-size:var(--fs-md)!important;color:var(--ink-3)!important;line-height:1.65!important}
+
+/* ================= offerings grid ================= */
+section#main-section .off-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important;margin-top:30px!important}
+@media(max-width:1000px){section#main-section .off-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:680px){section#main-section .off-grid{grid-template-columns:minmax(0,1fr)!important}}
+section#main-section .off{position:relative!important;border:1px solid var(--line)!important;border-radius:14px!important;background:var(--card)!important;padding:24px 22px!important;overflow:hidden!important;transition:transform .35s var(--ease),border-color .3s,box-shadow .35s var(--ease)!important}
+section#main-section .off::before{content:""!important;position:absolute!important;left:0!important;top:0!important;bottom:0!important;width:2px!important;background:linear-gradient(180deg,var(--brand),var(--teal))!important;transform:scaleY(0)!important;transform-origin:top!important;transition:transform .45s var(--ease)!important}
+section#main-section .off:hover::before{transform:scaleY(1)!important}
+section#main-section .off:hover{transform:translateY(-3px)!important;border-color:var(--line-2)!important;box-shadow:0 20px 38px -26px var(--sh-facts)!important}
+section#main-section .off .oi{width:36px!important;height:36px!important;border-radius:11px!important;display:grid!important;place-items:center!important;background:var(--chip)!important;color:var(--brand-ink)!important;margin-bottom:15px!important}
+section#main-section .off .oi svg{width:19px!important;height:19px!important}
+section#main-section .off h3{font-size:var(--fs-h3)!important}
+section#main-section .off p{margin-top:10px!important;font-size:var(--fs-md)!important;color:var(--ink-3)!important;line-height:1.66!important}
+/* the lead offer is the reason the page exists, so it gets the width and the tint */
+section#main-section .off.lead{grid-column:span 2!important;background:linear-gradient(120deg,var(--chip),transparent 62%),var(--card)!important;border-color:var(--line-2)!important}
+section#main-section .off.lead::before{transform:scaleY(1)!important}
+section#main-section .off .tagx{display:inline-block!important;margin-top:14px!important;font-family:var(--fh)!important;font-weight:700!important;font-size:var(--fs-xs)!important;letter-spacing:.11em!important;text-transform:uppercase!important;color:var(--brand-ink)!important}
+@media(max-width:680px){section#main-section .off.lead{grid-column:span 1!important}}
+
+/* ================= featured offer: the review ================= */
+section#main-section .review{display:grid!important;grid-template-columns:minmax(0,1.22fr) minmax(280px,.78fr)!important;gap:38px!important;margin-top:30px!important;align-items:start!important}
+@media(max-width:900px){section#main-section .review{grid-template-columns:minmax(0,1fr)!important;gap:26px!important}}
+section#main-section .rv-list{list-style:none!important;margin:0!important;padding:0!important}
+section#main-section .rv-list li{display:grid!important;grid-template-columns:23px minmax(0,1fr)!important;gap:14px!important;align-items:start!important;padding:15px 0!important;border-bottom:1px solid var(--line)!important}
+section#main-section .rv-list li:last-child{border-bottom:0!important}
+section#main-section .rv-list .tick{width:23px!important;height:23px!important;border-radius:50%!important;background:var(--chip)!important;color:var(--brand-ink)!important;display:grid!important;place-items:center!important;margin-top:2px!important;transition:background .3s,color .3s!important}
+section#main-section .rv-list .tick svg{width:13px!important;height:13px!important}
+section#main-section .rv-list li:hover .tick{background:var(--brand)!important;color:#fff!important}
+section#main-section .rv-list b{display:block!important;font-family:var(--fh)!important;font-weight:700!important;font-size:var(--fs-base)!important;color:var(--ink)!important;letter-spacing:-.01em!important}
+section#main-section .rv-list span{display:block!important;margin-top:3px!important;font-size:var(--fs-md)!important;color:var(--ink-3)!important;line-height:1.6!important}
+section#main-section .rv-cta{position:sticky!important;top:calc(var(--cs-hdr,0px) + 96px)!important;border:1px solid var(--line-2)!important;border-radius:18px!important;background:var(--bg-2)!important;padding:26px 24px!important}
+@media(max-width:900px){section#main-section .rv-cta{position:static!important}}
+section#main-section .rv-cta h3{font-size:var(--fs-h3)!important}
+section#main-section .rv-cta p{margin-top:11px!important;font-size:var(--fs-md)!important;color:var(--ink-3)!important;line-height:1.65!important}
+section#main-section .rv-cta .btn{margin-top:20px!important}
+section#main-section .rv-note{margin-top:14px!important;font-size:var(--fs-xs)!important;color:var(--ink-3)!important;text-align:center!important}
+
+/* ================= why us: stats + service table ================= */
+section#main-section .stats{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;margin:30px 0 6px!important}
+section#main-section .stat{padding:4px 36px 2px!important;position:relative!important;min-width:0!important}
+section#main-section .stat:first-child{padding-left:0!important}
+section#main-section .stat:last-child{padding-right:0!important}
+section#main-section .stat+.stat::before{content:""!important;position:absolute!important;left:0!important;top:4px!important;bottom:12px!important;width:1px!important;background:var(--line)!important}
+@media(max-width:820px){section#main-section .stats{grid-template-columns:minmax(0,1fr)!important;margin-top:26px!important}section#main-section .stat{padding:24px 0 20px!important}section#main-section .stat:first-child{padding-top:4px!important}section#main-section .stat+.stat::before{left:0!important;right:0!important;top:0!important;bottom:auto!important;width:auto!important;height:1px!important}}
+section#main-section .stat .num{font-family:var(--fh)!important;font-weight:700!important;font-size:var(--fs-h1)!important;line-height:.95!important;letter-spacing:-.045em!important;color:var(--ink)!important;display:flex!important;align-items:flex-start!important;gap:2px!important;font-variant-numeric:tabular-nums!important;transition:color .4s var(--ease)!important}
+section#main-section .stat .num em{font-style:normal!important;font-variant-numeric:tabular-nums!important}
+section#main-section .stat .num span{color:var(--brand-ink)!important;font-size:.44em!important;line-height:1.4!important;font-weight:700!important;transition:transform .5s var(--ease),opacity .4s!important}
+section#main-section .stat.counting .num span{transform:translateY(5px) scale(.86)!important;opacity:.5!important}
+section#main-section .stat:hover .num{color:var(--brand-ink)!important}
+section#main-section .stat .rule{display:block!important;height:2px!important;width:100%!important;margin:18px 0 15px!important;border-radius:2px!important;background:linear-gradient(90deg,var(--brand),var(--teal))!important;transform-origin:left!important}
+section#main-section[data-anim="on"] .stat .rule{transform:scaleX(0)!important;transition:transform .95s var(--ease) .18s!important}
+section#main-section[data-anim="on"] .stat.in .rule{transform:scaleX(1)!important}
+section#main-section .stat h4{font-family:var(--fh)!important;font-size:var(--fs-xs)!important;font-weight:700!important;letter-spacing:.13em!important;text-transform:uppercase!important;color:var(--ink)!important}
+section#main-section .stat p{font-size:var(--fs-md)!important;color:var(--ink-3)!important;margin-top:11px!important;line-height:1.62!important;max-width:36ch!important}
+section#main-section[data-anim="on"] .stat{opacity:0!important;transform:translateY(14px)!important;transition:opacity .6s var(--ease),transform .6s var(--ease)!important}
+section#main-section[data-anim="on"] .stat.in{opacity:1!important;transform:none!important}
+section#main-section .why-h{font-family:var(--fh)!important;font-weight:700!important;font-size:var(--fs-h2s)!important;color:var(--ink)!important;margin-top:40px!important;letter-spacing:-.02em!important}
+section#main-section .why-h+p{margin-top:12px!important;max-width:70ch!important}
+section#main-section .svc{margin-top:22px!important;border:1px solid var(--line)!important;border-radius:14px!important;overflow:hidden!important}
+section#main-section .svc dl{margin:0!important}
+section#main-section .svc .srow{display:grid!important;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)!important;border-bottom:1px solid var(--line)!important;position:relative!important;transition:background .28s!important}
+section#main-section .svc .srow:last-child{border-bottom:0!important}
+section#main-section .svc .srow:hover{background:var(--bg-2)!important}
+section#main-section .svc dt,section#main-section .svc dd{margin:0!important;padding:14px 20px!important;font-size:var(--fs-md)!important}
+section#main-section .svc dt{font-family:var(--fh)!important;font-weight:700!important;color:var(--ink)!important;border-right:1px solid var(--line)!important;display:flex!important;align-items:center!important;gap:10px!important}
+section#main-section .svc dt svg{width:16px!important;height:16px!important;color:var(--brand-ink)!important;flex:none!important}
+section#main-section .svc dd{color:var(--ink-3)!important;display:flex!important;align-items:center!important}
+section#main-section .svc .shead dt,section#main-section .svc .shead dd{background:var(--bg-2)!important;font-family:var(--fb)!important;font-weight:700!important;font-size:var(--fs-xs)!important;letter-spacing:.12em!important;text-transform:uppercase!important;color:var(--ink-3)!important;padding-top:11px!important;padding-bottom:11px!important}
+@media(max-width:680px){section#main-section .svc .srow{grid-template-columns:minmax(0,1fr)!important}section#main-section .svc dt{border-right:0!important;padding-bottom:4px!important}section#main-section .svc dd{padding-top:0!important;padding-left:46px!important}section#main-section .svc .shead{display:none!important}}
+
+/* ================= how it works: 5 steps ================= */
+section#main-section .steps{list-style:none!important;margin:34px 0 6px!important;padding:0!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:0!important;counter-reset:st!important}
+section#main-section .step{position:relative!important;padding:0 20px 0 0!important}
+section#main-section .step:last-child{padding-right:0!important}
+section#main-section .step .sn{counter-increment:st!important;display:grid!important;place-items:center!important;width:34px!important;height:34px!important;border-radius:50%!important;border:1px solid var(--line-2)!important;background:var(--bg)!important;font-family:var(--fh)!important;font-weight:700!important;font-size:var(--fs-sm)!important;color:var(--ink-3)!important;position:relative!important;z-index:1!important;transition:border-color .3s,color .3s,background .3s!important}
+section#main-section .step .sn::before{content:counter(st,decimal-leading-zero)!important}
+section#main-section .step:hover .sn{border-color:var(--brand)!important;color:var(--brand-ink)!important;background:var(--chip)!important}
+section#main-section .step::after{content:""!important;position:absolute!important;left:34px!important;right:0!important;top:17px!important;height:1px!important;background:var(--line-2)!important}
+section#main-section .step:last-child::after{display:none!important}
+section#main-section .step b{display:block!important;margin-top:16px!important;font-family:var(--fh)!important;font-weight:700!important;font-size:var(--fs-base)!important;color:var(--ink)!important;letter-spacing:-.01em!important}
+section#main-section .step span{display:block!important;margin-top:7px!important;font-size:var(--fs-md)!important;color:var(--ink-3)!important;line-height:1.6!important;padding-right:6px!important}
+@media(max-width:900px){section#main-section .steps{grid-template-columns:minmax(0,1fr)!important}section#main-section .step{padding:0 0 22px 52px!important}section#main-section .step .sn{position:absolute!important;left:0!important;top:0!important}section#main-section .step::after{left:17px!important;right:auto!important;top:34px!important;bottom:6px!important;width:1px!important;height:auto!important}section#main-section .step b{margin-top:2px!important}section#main-section .step:last-child{padding-bottom:0!important}}
+section#main-section[data-anim="on"] .step{opacity:0!important;transform:translateY(12px)!important;transition:opacity .55s var(--ease),transform .55s var(--ease)!important}
+section#main-section[data-anim="on"] .steps.in .step{opacity:1!important;transform:none!important}
+section#main-section[data-anim="on"] .steps.in .step:nth-child(1){transition-delay:.06s!important}
+section#main-section[data-anim="on"] .steps.in .step:nth-child(2){transition-delay:.16s!important}
+section#main-section[data-anim="on"] .steps.in .step:nth-child(3){transition-delay:.26s!important}
+section#main-section[data-anim="on"] .steps.in .step:nth-child(4){transition-delay:.36s!important}
+section#main-section[data-anim="on"] .steps.in .step:nth-child(5){transition-delay:.46s!important}
+
+/* ================= FAQ: native <details> ================= */
+section#main-section .faq{margin-top:26px!important;border-top:1px solid var(--line)!important}
+section#main-section .faq details{border-bottom:1px solid var(--line)!important}
+section#main-section .faq summary{list-style:none!important;cursor:pointer!important;display:grid!important;grid-template-columns:minmax(0,1fr) 24px!important;gap:18px!important;align-items:center!important;padding:19px 0!important;font-family:var(--fh)!important;font-weight:700!important;font-size:var(--fs-lg)!important;line-height:1.35!important;color:var(--ink)!important;letter-spacing:-.01em!important;transition:color .25s!important}
+section#main-section .faq summary::-webkit-details-marker{display:none!important}
+section#main-section .faq summary::marker{content:""!important}
+section#main-section .faq summary:hover{color:var(--brand-ink)!important}
+section#main-section .faq .cr{width:24px!important;height:24px!important;border-radius:50%!important;border:1px solid var(--line-2)!important;display:grid!important;place-items:center!important;flex:none!important;color:var(--ink-3)!important;transition:transform .35s var(--ease),border-color .25s,color .25s!important}
+section#main-section .faq .cr svg{width:11px!important;height:11px!important}
+section#main-section .faq details[open] .cr{transform:rotate(135deg)!important;border-color:var(--brand)!important;color:var(--brand-ink)!important}
+section#main-section .faq .ans{padding:0 44px 22px 0!important;max-width:74ch!important;font-size:var(--fs-base)!important;color:var(--ink-2)!important;line-height:1.72!important}
+
+/* ================= closing CTA ================= */
+section#main-section .cta-banner{margin:64px auto 0!important;max-width:1184px!important;border-radius:28px!important;padding:64px 44px!important;text-align:center!important;position:relative!important;overflow:hidden!important;color:#fff!important;background:linear-gradient(120deg,var(--cta-a),var(--cta-b),var(--cta-a),var(--cta-c))!important;border:1px solid var(--cta-line)!important}
+section#main-section .cta-banner::after{content:""!important;position:absolute!important;inset:0!important;pointer-events:none!important;z-index:1!important;background:radial-gradient(600px 260px at 50% -25%,rgba(0,168,232,.30),transparent 70%),radial-gradient(115% 135% at 50% 50%,var(--scrim-1),var(--scrim-2) 55%,var(--scrim-3) 100%)!important}
+section#main-section .cta-banner h2{color:#fff!important;font-size:var(--fs-h2)!important;position:relative!important;z-index:2!important}
+section#main-section .cta-banner p{color:#D3E6F4!important;max-width:54ch!important;margin:16px auto 28px!important;position:relative!important;z-index:2!important}
+section#main-section .cta-actions{display:flex!important;gap:12px!important;justify-content:center!important;flex-wrap:wrap!important;position:relative!important;z-index:2!important}
+section#main-section .cta-banner .btn-ghost{border-color:rgba(255,255,255,.35)!important;color:#fff!important}
+section#main-section .cta-banner .btn-ghost:hover{border-color:#fff!important;color:#fff!important;background:rgba(255,255,255,.12)!important}
+section#main-section[data-anim="on"] .cta-banner h2,section#main-section[data-anim="on"] .cta-banner>p,section#main-section[data-anim="on"] .cta-actions{opacity:0!important;transform:translateY(18px)!important;transition:opacity .8s var(--ease),transform .8s var(--ease)!important}
+section#main-section[data-anim="on"] .cta-banner.in h2{opacity:1!important;transform:none!important}
+section#main-section[data-anim="on"] .cta-banner.in>p{opacity:1!important;transform:none!important;transition-delay:.13s!important}
+section#main-section[data-anim="on"] .cta-banner.in .cta-actions{opacity:1!important;transform:none!important;transition-delay:.26s!important}
+@media(max-width:640px){section#main-section .cta-banner{padding:40px 22px!important;border-radius:20px!important;margin-top:44px!important}}
+section#main-section .cta-pad{height:64px!important}
+
+/* ================= reveal + reduced motion ================= */
+section#main-section[data-anim="on"] .reveal{opacity:.25!important;transform:translateY(22px)!important;transition:opacity .7s var(--ease),transform .7s var(--ease)!important}
+section#main-section[data-anim="on"] .reveal.in{opacity:1!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){section#main-section,section#main-section *,section#main-section *::before,section#main-section *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}section#main-section .offer-card{transform:none!important}section#main-section[data-anim="on"] .reveal{opacity:1!important;transform:none!important}}
+
+/* ================= form modals ================= */
+section#main-section .cs-modal{width:min(560px,calc(100vw - 32px))!important;max-width:none!important;max-height:calc(100vh - 32px)!important;max-height:calc(100dvh - 32px)!important;margin:auto!important;padding:0!important;border:1px solid var(--line-2)!important;border-radius:18px!important;background:var(--card)!important;color:var(--ink)!important;box-shadow:0 30px 80px -20px rgba(0,0,0,.55)!important;overflow:hidden!important}
+section#main-section .cs-modal::backdrop{background:rgba(6,10,18,.64);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+section#main-section .cs-modal-in{position:relative!important;max-height:calc(100vh - 34px)!important;max-height:calc(100dvh - 34px)!important;overflow-y:auto!important;overscroll-behavior:contain!important;padding:30px 28px 26px!important}
+section#main-section .cs-modal-x{position:absolute!important;top:10px!important;right:10px!important;width:44px!important;height:44px!important;display:grid!important;place-items:center!important;padding:0!important;border:0!important;border-radius:50%!important;background:transparent!important;color:var(--ink-2)!important;cursor:pointer!important;transition:background .2s,color .2s!important}
+section#main-section .cs-modal-x:hover,section#main-section .cs-modal-x:focus-visible{background:var(--chip)!important;color:var(--ink)!important}
+section#main-section .cs-modal-x svg{width:20px!important;height:20px!important}
+section#main-section .cs-modal h2{font-family:var(--fh)!important;font-size:var(--fs-h3)!important;font-weight:700!important;line-height:1.25!important;letter-spacing:-.01em!important;margin:0 48px 20px 0!important;color:var(--ink)!important}
+section#main-section .cs-modal-form{font-family:var(--fb)!important;font-size:var(--fs-base)!important;color:var(--ink-2)!important}
+section#main-section .cs-modal-form .frm_forms,section#main-section .cs-modal-form form,section#main-section .cs-modal-form fieldset,section#main-section .cs-modal-form .frm_form_fields,section#main-section .cs-modal-form .frm_fields_container{max-width:100%!important;margin:0!important;background:transparent!important;background-image:none!important;box-shadow:none!important}
+section#main-section .cs-modal-form label,section#main-section .cs-modal-form .frm_primary_label,section#main-section .cs-modal-form .frm_description{color:var(--ink-2)!important}
+section#main-section .cs-modal-form input:not([type=submit]):not([type=checkbox]):not([type=radio]):not([type=hidden]),section#main-section .cs-modal-form select,section#main-section .cs-modal-form textarea{width:100%!important;max-width:100%!important;box-sizing:border-box!important}
+section#main-section .cs-modal-form input:not([type=submit]):not([type=checkbox]):not([type=radio]):not([type=hidden]):not([type=button]),section#main-section .cs-modal-form select,section#main-section .cs-modal-form textarea{background:var(--bg-2)!important;background-image:none!important;color:var(--ink)!important;border:1px solid var(--line-2)!important;border-radius:10px!important;box-shadow:none!important;font-family:var(--fb)!important;font-size:var(--fs-base)!important;transition:border-color .2s,box-shadow .2s,background-color .3s,color .3s!important}
+section#main-section .cs-modal-form input:not([type=submit]):not([type=checkbox]):not([type=radio]):not([type=hidden]):not([type=button]):focus,section#main-section .cs-modal-form select:focus,section#main-section .cs-modal-form textarea:focus{outline:none!important;border-color:var(--brand)!important;box-shadow:0 0 0 3px var(--chip)!important}
+section#main-section .cs-modal-form input::placeholder,section#main-section .cs-modal-form textarea::placeholder{color:var(--ink-3)!important;opacity:1!important}
+section#main-section .cs-modal-form input:-webkit-autofill,section#main-section .cs-modal-form textarea:-webkit-autofill,section#main-section .cs-modal-form select:-webkit-autofill{-webkit-text-fill-color:var(--ink)!important;box-shadow:0 0 0 1000px var(--bg-2) inset!important;caret-color:var(--ink)!important}
+section#main-section .cs-modal-form select option{background:var(--card)!important;color:var(--ink)!important}
+section#main-section .cs-modal-form input[type=checkbox],section#main-section .cs-modal-form input[type=radio]{accent-color:var(--brand)!important}
+section#main-section .cs-modal-form .frm_required{color:var(--red)!important}
+section#main-section .cs-modal-form .frm_error,section#main-section .cs-modal-form .frm_error_style{color:var(--red)!important;background:transparent!important;border-color:transparent!important}
+section#main-section .cs-modal-form .frm_blank_field input,section#main-section .cs-modal-form .frm_blank_field select,section#main-section .cs-modal-form .frm_blank_field textarea{border-color:var(--red)!important}
+section#main-section .cs-modal-form .frm_message{background:var(--chip)!important;color:var(--ink)!important;border:1px solid var(--line-2)!important;border-radius:10px!important;padding:14px 16px!important}
+section#main-section .cs-modal-form .frm_button_submit,section#main-section .cs-modal-form [type=submit]{background:var(--brand)!important;color:#fff!important;border:0!important;border-radius:10px!important;font-family:var(--fb)!important;font-weight:600!important;cursor:pointer!important;transition:background-color .2s,box-shadow .2s!important}
+section#main-section .cs-modal-form .frm_button_submit:hover,section#main-section .cs-modal-form [type=submit]:hover,section#main-section .cs-modal-form .frm_button_submit:focus-visible,section#main-section .cs-modal-form [type=submit]:focus-visible{background:var(--brand-deep)!important;box-shadow:0 0 0 3px var(--chip)!important}
+section#main-section[data-theme="dark"] .cs-modal-form .frm_error,section#main-section[data-theme="dark"] .cs-modal-form .frm_error_style,section#main-section[data-theme="dark"] .cs-modal-form .frm_required{color:#FF8A8A!important}
+section#main-section[data-theme="dark"] .cs-modal-form .frm_blank_field input,section#main-section[data-theme="dark"] .cs-modal-form .frm_blank_field select,section#main-section[data-theme="dark"] .cs-modal-form .frm_blank_field textarea{border-color:#FF8A8A!important}
+@media(max-width:640px){section#main-section .cs-modal{width:calc(100vw - 20px)!important;max-height:calc(100vh - 20px)!important;max-height:calc(100dvh - 20px)!important;border-radius:16px!important}section#main-section .cs-modal-in{max-height:calc(100vh - 22px)!important;max-height:calc(100dvh - 22px)!important;padding:24px 18px 20px!important}section#main-section .cs-modal h2{margin-bottom:16px!important}}
+</style>
+
+<section id="main-section" class="fbb-landing pt-page" data-theme="dark">
+
+<!-- ============================== HERO ============================== -->
+<section class="pt-sec pt-hero hero">
+  <div class="wrap hero-in">
+    <div>
+      <span class="lockup">
+        <span class="lk-us">ITHENA</span>
+        <svg class="lk-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-microsoft.png" alt="Microsoft" loading="lazy" width="120" height="19">
+      </span>
+      <h1>Same Microsoft. Smarter Spend. Real AI Results.</h1>
+      <p class="deck">As an authorized Microsoft reseller and Cloud &amp; AI Solutions Partner, ITHENA helps you save up to 15% on your existing Microsoft subscriptions. We also help you secure, optimize and get more out of every license.</p>
+      <ul class="h-tags">
+        <li>Authorized reseller</li>
+        <li>Cloud &amp; AI Solutions Partner</li>
+        <li>Licensing &amp; renewals</li>
+        <li>Security &amp; compliance</li>
+      </ul>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://ithena.ai/contact-us/" data-cs-modal="ptModalReview" aria-haspopup="dialog">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.4 8.4l3.4 3.4 7.8-8"/></svg>
+          Get Your Free Licensing Review
+        </a>
+        <a class="btn btn-ghost" href="https://ithena.ai/contact-us/" data-cs-modal="ptModalCall" aria-haspopup="dialog">Schedule a Call</a>
+      </div>
+    </div>
+
+    <div class="offer-float">
+      <div class="offer-card">
+        <div class="offer-head">
+          <span class="offer-cap">The partner offer</span>
+          <span class="offer-rule" aria-hidden="true"></span>
+        </div>
+        <div class="offer-body">
+          <p class="offer-fig">up to&nbsp;15<span>%</span></p>
+          <p class="offer-lede">off the Microsoft subscriptions you already run, bought through ITHENA.</p>
+          <ul class="offer-list">
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 10.4l4 4 9.2-9.2"/></svg><span>Same products, same users, same experience</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 10.4l4 4 9.2-9.2"/></svg><span>No disruption and no migration project</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 10.4l4 4 9.2-9.2"/></svg><span>Dedicated tenant support after the sale</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 10.4l4 4 9.2-9.2"/></svg><span>Quarterly architecture &amp; security reviews</span></li>
+          </ul>
+        </div>
+        <!-- disclaimer wording pending legal/licensing sign-off -->
+        <p class="offer-foot">Savings vary by product, seat count and agreement type.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== TRUST STRIP ========================== -->
+<div class="trust">
+  <div class="wrap">
+    <ul>
+      <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.6l6.4 2.6v4.6c0 3.6-2.6 6.4-6.4 7.6-3.8-1.2-6.4-4-6.4-7.6V5.2z"/></svg>Up to 15% savings</li>
+      <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h14M10 3v14"/></svg>No disruption to users</li>
+      <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="7" r="3.1"/><path d="M4 16.4c.6-2.7 3-4.2 6-4.2s5.4 1.5 6 4.2"/></svg>Dedicated tenant support</li>
+      <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6.9"/><path d="M10 5.9V10l2.7 1.7"/></svg>Quarterly security reviews</li>
+    </ul>
+  </div>
+</div>
+
+<div class="shell">
+  <aside class="rail" aria-label="On this page">
+    <span class="rail-cap">On this page</span>
+    <div class="rail-track">
+      <span class="rail-thumb" id="railThumb" aria-hidden="true"></span>
+      <ol id="rail">
+        <li><a href="#partnership"><i>01</i><span>The partnership</span></a></li>
+        <li><a href="#offerings"><i>02</i><span>What we offer</span></a></li>
+        <li><a href="#review"><i>03</i><span>Free licensing review</span></a></li>
+        <li><a href="#why"><i>04</i><span>Why ITHENA</span></a></li>
+        <li><a href="#how"><i>05</i><span>How it works</span></a></li>
+        <li><a href="#faq"><i>06</i><span>FAQ</span></a></li>
+      </ol>
+    </div>
+    <p class="rail-foot">Renewal coming up?<br><a href="https://ithena.ai/contact-us/">Request a review &rarr;</a></p>
+  </aside>
+
+  <main>
+    <!-- ==================== 01 THE PARTNERSHIP ==================== -->
+    <section class="pt-sec sec" id="partnership">
+      <span class="eyebrow">About the partnership</span>
+      <h2>Where Microsoft's platform meets ITHENA's expertise.</h2>
+      <p class="lede">Microsoft gives enterprises a powerful foundation for cloud, productivity, security and AI. ITHENA helps you turn that foundation into results.</p>
+      <p class="lede">Together, we help organizations connect data, processes and teams to drive revenue. That means intelligent CRM and ERP applications, secure cloud environments, modern productivity tools and AI-ready data platforms. Our joint approach supports your remote and hybrid workforce, streamlines operations and helps you build a resilient, purpose-driven organization.</p>
+      <div class="pillars">
+        <article class="pillar reveal">
+          <i>01 &middot; Commercial</i>
+          <h3>Licensing expertise</h3>
+          <p>So you pay the right price for the right products, on the right agreement, with renewals planned instead of inherited.</p>
+        </article>
+        <article class="pillar reveal">
+          <i>02 &middot; Technical</i>
+          <h3>Technical depth</h3>
+          <p>Across cloud migration, security, data and application development, delivered by engineers who have run these environments themselves.</p>
+        </article>
+        <article class="pillar reveal">
+          <i>03 &middot; Sector</i>
+          <h3>Industry context</h3>
+          <p>From years of digital delivery across manufacturing, life sciences, automotive, energy and utilities, government and media.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== 02 OFFERINGS ==================== -->
+    <section class="pt-sec sec" id="offerings">
+      <span class="eyebrow">Our Microsoft offerings</span>
+      <h2>Everything you need to get more from Microsoft.</h2>
+      <p class="lede">Licensing is the entry point. The rest of the relationship is what makes the licence worth more than it costs.</p>
+      <div class="off-grid">
+        <article class="off lead reveal">
+          <span class="oi"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.2h14v9.4H3zM3 8.8h14M6.4 12.2h3.2"/><path d="M6.4 6.2V4.4h7.2v1.8"/></svg></span>
+          <h3>Microsoft Licensing &amp; Renewals</h3>
+          <p>Buy your Microsoft subscriptions through ITHENA and save up to 15% on the exact same products. We handle purchasing, billing options and renewal planning so nothing lapses and nothing is overpaid.</p>
+          <span class="tagx">Lead offer</span>
+        </article>
+        <article class="off reveal">
+          <span class="oi"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.6 15.4a3.6 3.6 0 01-.4-7.2 4.6 4.6 0 018.9-1.3 3.4 3.4 0 01.6 6.7"/><path d="M10 9.4v6.4M7.8 12l2.2-2.6L12.2 12"/></svg></span>
+          <h3>Cloud Adoption &amp; Migration</h3>
+          <p>Our experts deliver smooth migrations and cloud-native applications in a trusted, secure environment. You can also reduce costs by using your existing eligible Windows licenses.</p>
+        </article>
+        <article class="off reveal">
+          <span class="oi"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.6l6.4 2.6v4.6c0 3.6-2.6 6.4-6.4 7.6-3.8-1.2-6.4-4-6.4-7.6V5.2z"/><path d="M7.4 10l1.9 1.9 3.4-3.6"/></svg></span>
+          <h3>Security &amp; Compliance</h3>
+          <p>Protect your network activity and your people with Microsoft Defender, Entra ID and Intune, backed by built-in compliance tools and guidance from our team.</p>
+        </article>
+        <article class="off reveal">
+          <span class="oi"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.8" y="4" width="14.4" height="9.4" rx="1.4"/><path d="M6.6 16.4h6.8M10 13.4v3"/></svg></span>
+          <h3>Modern Workplace &amp; Productivity</h3>
+          <p>Give hybrid and remote teams secure, cloud-based tools for voice, collaboration, security and analytics. Set up once and supported continuously.</p>
+        </article>
+        <article class="off reveal">
+          <span class="oi"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="2.2"/><circle cx="4.2" cy="5" r="1.8"/><circle cx="15.8" cy="5" r="1.8"/><circle cx="4.2" cy="15" r="1.8"/><circle cx="15.8" cy="15" r="1.8"/><path d="M5.6 6.2l2.8 2.4M14.4 6.2l-2.8 2.4M5.6 13.8l2.8-2.4M14.4 13.8l-2.8-2.4"/></svg></span>
+          <h3>Intelligent CRM &amp; ERP Applications</h3>
+          <p>Connect customer, financial and operational data in one place so teams work from the same information and revenue moves faster.</p>
+        </article>
+        <article class="off reveal">
+          <span class="oi"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 6.4L3.2 10 7 13.6M13 6.4L16.8 10 13 13.6M11.4 4.4l-2.8 11.2"/></svg></span>
+          <h3>DevOps &amp; Application Development</h3>
+          <p>Use Microsoft's DevOps tools to manage the full application lifecycle, so developers ship faster and the business sees value sooner.</p>
+        </article>
+        <article class="off reveal">
+          <span class="oi"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 2.6L4.4 11H9l-1 6.4L15.6 9H11z"/></svg></span>
+          <h3>Data &amp; AI Enablement</h3>
+          <p>Prepare your data and your people for AI. ITHENA pairs Microsoft's platform with our own AI capabilities and hands-on AI workshops to move you from experiments to practical use.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== 03 FEATURED OFFER ==================== -->
+    <section class="pt-sec sec" id="review">
+      <span class="eyebrow">Featured offer</span>
+      <h2>Find your hidden Microsoft savings, before your next renewal.</h2>
+      <p class="lede">We'll run a quick, painless review to uncover hidden savings and eligible promotions before your next renewal arrives. It's free, and it doesn't require any changes to your environment.</p>
+      <div class="review">
+        <ul class="rv-list reveal">
+          <li><span class="tick"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 10.4l4 4 9.2-9.2"/></svg></span><span><b>Your current products and seat counts</b><span>A clear picture of what you own and use today.</span></span></li>
+          <li><span class="tick"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 10.4l4 4 9.2-9.2"/></svg></span><span><b>Renewal and commitment dates</b><span>So you can evaluate options well ahead of time.</span></span></li>
+          <li><span class="tick"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 10.4l4 4 9.2-9.2"/></svg></span><span><b>Monthly vs. annual billing options</b><span>Choose the cash-flow model that works for you.</span></span></li>
+          <li><span class="tick"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 10.4l4 4 9.2-9.2"/></svg></span><span><b>Defender, Entra ID and Intune opportunities</b><span>Better security and better value from what you already license.</span></span></li>
+          <li><span class="tick"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 10.4l4 4 9.2-9.2"/></svg></span><span><b>A side-by-side comparison quote</b><span>See the difference through ITHENA in plain numbers.</span></span></li>
+          <li><span class="tick"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 10.4l4 4 9.2-9.2"/></svg></span><span><b>Recommended next steps</b><span>A practical action plan, not a sales pitch.</span></span></li>
+        </ul>
+        <aside class="rv-cta">
+          <h3>Request your free review</h3>
+          <!-- 90-120 day window still to be confirmed -->
+          <p>Best timed 90 to 120 days before your renewal date, though we can help at any point in the cycle. Approximate seat counts are enough to start.</p>
+          <a class="btn btn-primary btn-wide" href="https://ithena.ai/contact-us/" data-cs-modal="ptModalReview" aria-haspopup="dialog">Request Your Free Review</a>
+          <p class="rv-note">No cost. No obligation. No change to your environment.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ==================== 04 WHY ITHENA ==================== -->
+    <section class="pt-sec sec" id="why">
+      <span class="eyebrow">Why ITHENA + Microsoft</span>
+      <h2>Savings are just the start.</h2>
+      <p class="lede">Same products, same experience, lower cost. Your users, apps and daily operations don't skip a beat. Everything stays exactly how you like it &mdash; and then the partnership keeps working.</p>
+      <div class="stats">
+        <div class="stat reveal">
+          <div class="num"><em data-count="70">70</em><span>+</span></div>
+          <i class="rule" aria-hidden="true"></i>
+          <h4>Digital projects delivered</h4>
+          <p>Across manufacturing, life sciences, automotive, energy, government and media.</p>
+        </div>
+        <div class="stat reveal">
+          <div class="num"><em data-count="45">45</em><span>+</span></div>
+          <i class="rule" aria-hidden="true"></i>
+          <h4>Global customers</h4>
+          <p>Operations, manufacturing and service organizations we know how to work with.</p>
+        </div>
+        <div class="stat reveal">
+          <div class="num"><em data-count="200">200</em><span>+</span></div>
+          <i class="rule" aria-hidden="true"></i>
+          <h4>Engineers and consultants</h4>
+          <p>The bench behind every licence, migration, security review and AI workshop.</p>
+        </div>
+      </div>
+
+      <h3 class="why-h">Ongoing support, not just a transaction</h3>
+      <p>Many resellers disappear after the sale. Every ITHENA Microsoft customer gets the full support program, included.</p>
+      <div class="svc reveal">
+        <dl>
+          <div class="srow shead"><dt>Included service</dt><dd>What it means for you</dd></div>
+          <div class="srow"><dt><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16v-1.6a3 3 0 013-3h6a3 3 0 013 3V16"/><circle cx="10" cy="6.6" r="2.8"/></svg>Tenant Support Services</dt><dd>Expert help managing and troubleshooting your Microsoft environment.</dd></div>
+          <div class="srow"><dt><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.6l6.4 2.6v4.6c0 3.6-2.6 6.4-6.4 7.6-3.8-1.2-6.4-4-6.4-7.6V5.2z"/></svg>Quarterly Architecture &amp; Security Evaluations</dt><dd>Regular check-ups to keep your setup secure and well-designed.</dd></div>
+          <div class="srow"><dt><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 14.6V9.4M8.4 14.6V5.6M13.4 14.6v-3.4M3 17h14"/></svg>Bi-Annual Optimization Reviews</dt><dd>Make sure you're using, and paying for, only what you need.</dd></div>
+          <div class="srow"><dt><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.4" y="4.6" width="13.2" height="12" rx="1.6"/><path d="M3.4 8.2h13.2M7 2.8v3M13 2.8v3"/></svg>Renewal Assistance</dt><dd>No missed dates, no surprise price changes.</dd></div>
+          <div class="srow"><dt><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 2.6L4.4 11H9l-1 6.4L15.6 9H11z"/></svg>Dedicated AI Workshops</dt><dd>Hands-on sessions to help your teams put AI to work.</dd></div>
+        </dl>
+      </div>
+
+      <h3 class="why-h">Built for the AI era</h3>
+      <p>Beyond licensing, we help you use your Microsoft investment to power practical AI, from persona-based analytics to conversational assistants like AETHER, so your data drives decisions and action. Licensing, security, cloud, applications and AI sit in one relationship, with people who already know your environment.</p>
+    </section>
+
+    <!-- ==================== 05 HOW IT WORKS ==================== -->
+    <section class="pt-sec sec" id="how">
+      <span class="eyebrow">How it works</span>
+      <h2>Simple, fast, zero disruption.</h2>
+      <p class="lede">Five steps from first conversation to a subscription that costs less and is watched all year.</p>
+      <ol class="steps">
+        <li class="step"><span class="sn" aria-hidden="true"></span><b>Share your details</b><span>Your current Microsoft products, approximate seat counts and renewal dates.</span></li>
+        <li class="step"><span class="sn" aria-hidden="true"></span><b>We review</b><span>Our team looks for savings, eligible promotions and security or value opportunities.</span></li>
+        <li class="step"><span class="sn" aria-hidden="true"></span><b>Compare</b><span>Get a side-by-side quote through ITHENA, with no obligation.</span></li>
+        <li class="step"><span class="sn" aria-hidden="true"></span><b>Switch smoothly</b><span>If it makes sense, we move your subscriptions with no interruption to your users.</span></li>
+        <li class="step"><span class="sn" aria-hidden="true"></span><b>Stay supported</b><span>Regular reviews, tenant support and renewal assistance keep you optimized year-round.</span></li>
+      </ol>
+    </section>
+
+    <!-- ==================== 06 FAQ ==================== -->
+    <section class="pt-sec sec" id="faq">
+      <span class="eyebrow">Questions</span>
+      <h2>What people ask before they switch.</h2>
+      <div class="faq">
+        <details>
+          <summary>Will switching to ITHENA change how my team uses Microsoft?<span class="cr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></span></summary>
+          <p class="ans">No. You keep the same subscriptions, users and applications. What changes is who you buy from, and how much you pay.</p>
+        </details>
+        <details>
+          <summary>Where does the "up to 15%" savings come from?<span class="cr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></span></summary>
+          <!-- exact wording pending licensing team approval -->
+          <p class="ans">As an authorized Microsoft reseller, ITHENA can offer pricing on your existing subscriptions that's lower than buying direct. Actual savings depend on your products, seat counts and agreement type.</p>
+        </details>
+        <details>
+          <summary>Is the Licensing &amp; Renewal Review really free?<span class="cr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></span></summary>
+          <p class="ans">Yes. There's no cost and no obligation.</p>
+        </details>
+        <details>
+          <summary>When should I request a review?<span class="cr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></span></summary>
+          <p class="ans">Ideally 90 to 120 days before your renewal date, but we can help at any time.</p>
+        </details>
+        <details>
+          <summary>Can you help if we don't know exactly what we're using?<span class="cr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></span></summary>
+          <p class="ans">Yes. Approximate seat counts and products are enough to get started.</p>
+        </details>
+        <details>
+          <summary>Do you offer support after the sale?<span class="cr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></span></summary>
+          <p class="ans">Yes. Tenant support, quarterly architecture and security evaluations, bi-annual optimization reviews, renewal assistance and AI workshops are part of the partnership.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ========================== CLOSING CTA ========================== -->
+<section class="pt-sec pt-cta cta-banner">
+  <h2>Ready to see what you could save?</h2>
+  <p>Get a no-obligation licensing review and a side-by-side quote from ITHENA before your next renewal.</p>
+  <div class="cta-actions">
+    <a class="btn btn-primary" href="https://ithena.ai/contact-us/" data-cs-modal="ptModalReview" aria-haspopup="dialog">Get Your Free Review</a>
+    <a class="btn btn-ghost" href="https://ithena.ai/partnerships/">See all partnerships</a>
+  </div>
+</section>
+<div class="cta-pad"></div>
+
+<!-- Form 98 is the current Microsoft enquiry form. It still needs the four extra
+     fields (products in use, seat count, renewal date, billing preference). -->
+<dialog class="cs-modal" id="ptModalReview" aria-labelledby="ptModalReviewTitle">
+  <div class="cs-modal-in">
+    <button class="cs-modal-x" type="button" data-cs-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h2 id="ptModalReviewTitle">Request your free licensing review</h2>
+    <div class="cs-modal-form">[formidable id=98]</div>
+  </div>
+</dialog>
+<dialog class="cs-modal" id="ptModalCall" aria-labelledby="ptModalCallTitle">
+  <div class="cs-modal-in">
+    <button class="cs-modal-x" type="button" data-cs-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h2 id="ptModalCallTitle">Schedule a call</h2>
+    <div class="cs-modal-form">[formidable id=100]</div>
+  </div>
+</dialog>
+</section>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Will switching to ITHENA change how my team uses Microsoft?","acceptedAnswer":{"@type":"Answer","text":"No. You keep the same subscriptions, users and applications. What changes is who you buy from, and how much you pay."}},
+{"@type":"Question","name":"Where does the \"up to 15%\" savings come from?","acceptedAnswer":{"@type":"Answer","text":"As an authorized Microsoft reseller, ITHENA can offer pricing on your existing subscriptions that's lower than buying direct. Actual savings depend on your products, seat counts and agreement type."}},
+{"@type":"Question","name":"Is the Licensing & Renewal Review really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. There's no cost and no obligation."}},
+{"@type":"Question","name":"When should I request a review?","acceptedAnswer":{"@type":"Answer","text":"Ideally 90 to 120 days before your renewal date, but we can help at any time."}},
+{"@type":"Question","name":"Can you help if we don't know exactly what we're using?","acceptedAnswer":{"@type":"Answer","text":"Yes. Approximate seat counts and products are enough to get started."}},
+{"@type":"Question","name":"Do you offer support after the sale?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tenant support, quarterly architecture and security evaluations, bi-annual optimization reviews, renewal assistance and AI workshops are part of the partnership."}}]}
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var root = document.querySelector("section.pt-page");
+  if (!root) return;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var canAnimate = !reduce && "IntersectionObserver" in window;
+
+  if (window.ithenaTheme) {
+    window.ithenaTheme.sync();
+  } else {
+    var themeToggle = document.getElementById("themeToggle");
+    var stored = null; try { stored = localStorage.getItem("fbb-theme"); } catch (e) {}
+    var setTheme = function (mode) {
+      root.setAttribute("data-theme", mode);
+      if (themeToggle) themeToggle.setAttribute("aria-pressed", mode === "dark" ? "true" : "false");
+      try { localStorage.setItem("fbb-theme", mode); } catch (e) {}
+    };
+    setTheme(stored || "dark");
+    if (themeToggle) themeToggle.addEventListener("click", function () { setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark"); });
+  }
+
+  function css(el, k, v) { if (v === "") el.style.removeProperty(k); else el.style.setProperty(k, v, "important"); }
+
+  var hdr = document.getElementById("site-header") || document.querySelector("header");
+  function syncHdr() {
+    var h = 0;
+    if (hdr && /fixed|sticky/.test(getComputedStyle(hdr).position)) h = Math.max(0, Math.round(hdr.getBoundingClientRect().bottom - (root.getBoundingClientRect().top + window.pageYOffset)));
+    css(root, "--cs-hdr", h + "px");
+  }
+  syncHdr();
+  window.addEventListener("load", syncHdr);
+  window.addEventListener("resize", syncHdr);
+
+  var links = Array.prototype.slice.call(document.querySelectorAll("#rail a"));
+  var thumb = document.getElementById("railThumb");
+  var secs = links.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
+  function syncRail() {
+    var best = 0;
+    for (var i = 0; i < secs.length; i++) if (secs[i] && secs[i].getBoundingClientRect().top - 220 <= 0) best = i;
+    links.forEach(function (a, i) { a.classList.toggle("on", i === best); });
+    var link = links[best];
+    if (thumb && link) {
+      css(thumb, "height", link.offsetHeight + "px");
+      css(thumb, "transform", "translateY(" + link.offsetTop + "px)");
+    }
+  }
+  var ticking = false;
+  window.addEventListener("scroll", function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { syncRail(); ticking = false; });
+  }, { passive: true });
+  window.addEventListener("resize", syncRail);
+  syncRail();
+
+  if (canAnimate) {
+    root.setAttribute("data-anim", "on");
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("in");
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    root.querySelectorAll(".pillars, .off-grid, .stats").forEach(function (grid) {
+      Array.prototype.forEach.call(grid.children, function (el, i) { css(el, "transition-delay", i * 95 + "ms"); });
+    });
+    root.querySelectorAll(".reveal, .offer-card, .steps, .cta-banner").forEach(function (el) { io.observe(el); });
+  }
+
+  function runCounter(card) {
+    var el = card.querySelector("[data-count]");
+    if (!el) { card.classList.add("done"); return; }
+    var target = parseInt(el.getAttribute("data-count"), 10);
+    function finish() {
+      if (card.classList.contains("done")) return;
+      el.textContent = target;
+      card.classList.remove("counting");
+      card.classList.add("done");
+      document.removeEventListener("visibilitychange", onHide);
+    }
+    function onHide() { if (document.hidden) finish(); }
+    if (reduce || !isFinite(target)) { finish(); return; }
+    if (document.hidden) {
+      var onShow = function () {
+        if (document.hidden) return;
+        document.removeEventListener("visibilitychange", onShow);
+        runCounter(card);
+      };
+      document.addEventListener("visibilitychange", onShow);
+      return;
+    }
+    var start = null, dur = 1100;
+    card.classList.add("counting");
+    document.addEventListener("visibilitychange", onHide);
+    setTimeout(finish, dur + 220);
+    function step(now) {
+      if (card.classList.contains("done")) return;
+      if (start === null) start = now;
+      var p = Math.min(1, (now - start) / dur);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 4)));
+      if (p < 1) requestAnimationFrame(step); else finish();
+    }
+    requestAnimationFrame(step);
+  }
+  var cards = Array.prototype.slice.call(root.querySelectorAll(".stat"));
+  if (canAnimate) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        cio.unobserve(e.target);
+        runCounter(e.target);
+      });
+    }, { threshold: 0.5 });
+    cards.forEach(function (c) { cio.observe(c); });
+  } else {
+    cards.forEach(function (c) { c.classList.add("done"); });
+  }
+
+  var panel = root.querySelector(".offer-float .offer-card");
+  var heroEl = root.querySelector(".hero");
+  if (panel && heroEl && !reduce && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    var tilting = false;
+    heroEl.addEventListener("mousemove", function (ev) {
+      if (tilting) return;
+      tilting = true;
+      requestAnimationFrame(function () {
+        var b = heroEl.getBoundingClientRect();
+        var nx = Math.max(-1, Math.min(1, ((ev.clientX - b.left) / b.width - 0.5) * 2));
+        var ny = Math.max(-1, Math.min(1, ((ev.clientY - b.top) / b.height - 0.5) * 2));
+        css(panel, "transform", "rotateX(" + (-ny * 3).toFixed(2) + "deg) rotateY(" + (nx * 3).toFixed(2) + "deg)");
+        tilting = false;
+      });
+    });
+    heroEl.addEventListener("mouseleave", function () { css(panel, "transform", ""); });
+    document.addEventListener("visibilitychange", function () { if (document.hidden) css(panel, "transform", ""); });
+  }
+
+  root.querySelectorAll(".cs-modal").forEach(function (d) {
+    if (typeof d.showModal !== "function") return;
+    function open() { if (!d.open) { d.showModal(); document.documentElement.style.overflow = "hidden"; } }
+    d.addEventListener("close", function () { if (!root.querySelector(".cs-modal[open]")) document.documentElement.style.overflow = ""; });
+    d.addEventListener("click", function (e) { if (e.target === d) d.close(); });
+    var x = d.querySelector("[data-cs-close]");
+    if (x) x.addEventListener("click", function () { d.close(); });
+    root.querySelectorAll('[data-cs-modal="' + d.id + '"]').forEach(function (a) {
+      a.addEventListener("click", function (e) { e.preventDefault(); open(); });
+    });
+    if (d.querySelector(".frm_message, .frm_error_style, .frm_blank_field")) open();
+  });
+})();
+</script>

@@ -1,0 +1,121 @@
+#ithf4{--bg:#0B0C0E;--panel:#111419;--ink:#F2F3F5;--ink2:rgba(228,230,235,.72);--mute:#8D939C;--line:rgba(255,255,255,.1);--chip:rgba(255,255,255,.06);--link:#3FA9E0;--blue:#0083C8;--ith-gut:clamp(16px,4vw,64px);--ez:cubic-bezier(.16,1,.3,1);
+  background:var(--bg);color:var(--ink2);font:400 14px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+#ithf4[data-theme="light"],body:has(#imenu-root[data-theme="light"]) #ithf4{--bg:#FFFFFF;--panel:#EAF0F5;--ink:#0A192D;--ink2:#46586A;--mute:#6B7885;--line:#DCE3EA;--chip:#DFE7EE;--link:#006AA3}
+#ithf4 *{box-sizing:border-box;margin:0;padding:0}
+#ithf4 a{color:inherit;text-decoration:none;transition:color .2s}
+#ithf4 a:focus-visible,#ithf4 summary:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:4px}
+#ithf4 ul{list-style:none}
+
+/* Split: full width, edge gutter --ith-gut (same as the header); brand panel bleeds to the left edge */
+#ithf4 .split{display:grid;grid-template-columns:var(--ith-gut) minmax(0,300px) minmax(0,1fr) var(--ith-gut)}
+#ithf4 .split::before{content:"";grid-column:1;grid-row:1;background:var(--panel)}
+#ithf4 .split::after{content:"";grid-column:4;grid-row:1}
+
+/* Brand panel */
+#ithf4 .brand{grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:28px;padding:72px 48px 32px 0;background:var(--panel);box-shadow:-1px 0 0 var(--panel)}
+#ithf4 .logo img{display:block;height:40px;width:auto}
+#ithf4 .brand p{font-size:15px;line-height:1.65}
+#ithf4 .soc{display:flex;gap:10px}
+#ithf4 .soc a{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:var(--chip);color:var(--ink);transition:background .25s,color .25s}
+#ithf4 .soc a:hover{background:var(--blue);color:#fff}
+#ithf4 .soc svg{width:18px;height:18px;fill:currentColor}
+#ithf4 .office b{display:block;margin-bottom:6px;font:700 11px/1.3 "Noto Sans",system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#c00000}
+#ithf4 .office address{font-style:normal;line-height:1.6}
+#ithf4 .office+.office{margin-top:-8px}
+/* Red strip: privacy left, copyright right, edges on the gutter */
+#ithf4 .strip{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;padding:14px var(--ith-gut);background:#c00000;color:#fff;font-size:13px;line-height:1.5}
+#ithf4 .strip a{font-weight:600}
+#ithf4 .strip a:hover{text-decoration:underline}
+
+/* Content */
+#ithf4 .main{grid-column:3;grid-row:1;min-width:0;padding:32px 0 0 64px}
+#ithf4 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:10px;background:var(--blue);color:#fff;font-weight:600;transition:background .25s}
+#ithf4 .btn:hover{background:#006AA3}
+#ithf4 .btn svg,#ithf4 .all svg{width:16px;height:16px;transition:transform .3s var(--ez)}
+#ithf4 .btn:hover svg,#ithf4 .all:hover svg{transform:translateX(3px)}
+#ithf4 .mail{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600}
+#ithf4 .mail svg{width:18px;height:18px;fill:none;stroke:var(--link);stroke-width:1.7}
+#ithf4 .mail:hover{color:var(--link)}
+
+#ithf4 .reach{display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:-8px}
+/* Sections: Solutions (3 audiences) full width, then Services / Industries / Company */
+#ithf4 .sec{padding:40px 0;border-bottom:1px solid var(--line)}
+#ithf4 .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+#ithf4 .row>*+*{padding-left:32px;border-left:1px solid var(--line)}
+#ithf4 .trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+#ithf4 .trio>.sec{padding-bottom:72px;border-bottom:0}
+#ithf4 .trio>.sec+.sec{padding-left:32px;border-left:1px solid var(--line)}
+#ithf4 summary{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;list-style:none;cursor:default}
+#ithf4 summary::-webkit-details-marker{display:none}
+#ithf4 h3{display:flex;align-items:center;gap:10px;font:700 18px/1.2 "Noto Sans",system-ui,sans-serif;color:var(--ink)}
+#ithf4 h3 svg{width:20px;height:20px;fill:none;stroke:var(--link);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#ithf4 h3 img{width:20px;height:20px}
+#ithf4 .sol summary .all{margin:0 0 0 auto}
+#ithf4 .sol summary .all+.all{margin-left:20px}
+#ithf4 .chev{display:none;width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .3s var(--ez)}
+/* Audience = parent of the eyebrow groups below it */
+#ithf4 .aud>b{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding:9px 12px;border-radius:8px;background:var(--chip);font:700 14px/1.2 "Noto Sans",system-ui,sans-serif;color:var(--ink)}
+#ithf4 a.aud>b{margin:0;transition:background .2s,color .2s}
+#ithf4 a.aud>b svg{width:16px;height:16px;margin-left:auto;transition:translate .2s}
+#ithf4 a.aud:hover>b{background:var(--blue);color:#fff}
+#ithf4 a.aud:hover>b svg{translate:3px 0}
+#ithf4 a.aud:hover>b::before{background:#fff}
+#ithf4 .aud>b::before{content:"";flex:none;width:8px;height:8px;border-radius:2px;background:var(--blue)}
+#ithf4 .grp+.grp{margin-top:22px}
+/* Mid-level items use the service pages' .kick eyebrow */
+#ithf4 .grp>span{display:flex;align-items:center;gap:10px;margin-bottom:8px;font:700 11px/1.3 Inter,system-ui,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:var(--link)}
+#ithf4 .grp>span::before{content:"";flex:none;width:18px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--blue),transparent)}
+#ithf4 .lk li+li{margin-top:2px}
+#ithf4 .lk a{display:block;padding:5px 0;color:var(--ink2)}
+#ithf4 .lk a:hover{color:var(--ink)}
+#ithf4 .tag{display:inline-block;margin-left:5px;padding:2px 5px;border-radius:4px;background:var(--chip);color:var(--link);font:700 10px/1.3 Inter,system-ui,sans-serif;letter-spacing:.02em;vertical-align:1px;white-space:nowrap}
+#ithf4 .all{display:inline-flex;align-items:center;gap:6px;margin-top:20px;font-weight:600;color:var(--link)}
+
+@media (max-width:1080px){
+  #ithf4 .split{grid-template-columns:var(--ith-gut) minmax(0,1fr) var(--ith-gut)}
+  #ithf4 .split::before,#ithf4 .split::after{display:none}
+  #ithf4 .brand{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:start;gap:24px 48px;padding:40px var(--ith-gut) 32px}
+  #ithf4 .brand>.lead{grid-row:1;grid-column:1}
+  #ithf4 .office+.office{margin-top:0}
+  #ithf4 .soc{grid-row:2;grid-column:1}
+  #ithf4 .reach{grid-row:3;grid-column:1;margin-top:0}
+  #ithf4 .row{gap:20px}
+  #ithf4 .row>*+*{padding-left:20px}
+  #ithf4 .main{grid-column:2;padding:24px 0 0}
+}
+@media (max-width:720px){
+  #ithf4 .brand{grid-template-columns:1fr;padding:40px var(--ith-gut) 28px}
+  #ithf4 .brand>*{grid-row:auto!important;grid-column:auto!important}
+  #ithf4 .main{padding-top:24px}
+      #ithf4 .row,#ithf4 .trio{grid-template-columns:1fr;gap:24px}
+  #ithf4 .trio{gap:0}
+  #ithf4 .row>*+*,#ithf4 .trio>.sec+.sec{padding-left:0;border-left:0}
+  #ithf4 .sec,#ithf4 .trio>.sec{padding:0;border-bottom:1px solid var(--line)}
+  #ithf4 .main{padding-bottom:40px}
+  #ithf4 .main nav{border-top:1px solid var(--line)}
+  #ithf4 summary{margin:0;padding:16px 0;cursor:pointer}
+  #ithf4 .sol summary .all{display:none}
+  #ithf4 .chev{display:block}
+  #ithf4 details[open] .chev{transform:rotate(180deg)}
+  #ithf4 details[open]>summary+*{padding-bottom:24px}
+}
+
+
+/* small laptops: slimmer brand column so the menu columns get room */
+@media (min-width:1081px) and (max-width:1366px){
+  #ithf4 .split{grid-template-columns:var(--ith-gut) minmax(0,260px) minmax(0,1fr) var(--ith-gut)}
+  #ithf4 .brand{padding-right:32px}
+  #ithf4 .main{padding-left:40px}
+  #ithf4 .row,#ithf4 .trio{gap:24px}
+  #ithf4 .row>*+*,#ithf4 .trio>.sec+.sec{padding-left:24px}
+}
+/* tablet + phone: contact block first (logo, email, CTA, addresses, privacy), menu links below */
+@media (max-width:1080px){
+  #ithf4 .brand{grid-row:1}
+  #ithf4 .main{grid-row:2}
+  #ithf4 .brand>.lead>p,#ithf4 .soc{display:none}
+  #ithf4 .reach{grid-row:2}
+}
+/* Elementor footer template 75165 sets its column to 18% on tablet (768-1024px); the footer always needs the full row */
+.elementor-column:has(#ithf4){width:100%!important}
+.elementor-column:has(#ithf4)>.elementor-widget-wrap{margin:0!important;padding:0!important}

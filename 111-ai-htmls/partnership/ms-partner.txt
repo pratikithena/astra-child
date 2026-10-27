@@ -1,0 +1,130 @@
+ITHENA
+Microsoft Partnership Page: Updated Web Copy
+Page: ithena.ai/partner-microsoft/  |  Prepared for: Web Team  |  Owner: Marketing
+Notes for the web team: Existing content (CRM/ERP, DevOps, cloud migration, Windows licensing) has been retained and reorganized into clear sections, with the new licensing and renewal content as the lead offer. Items in red highlighted [brackets] need confirmation before publishing.
+
+SEO Metadata
+PAGE TITLE
+Microsoft Cloud, AI & Licensing Partner | ITHENA
+META DESCRIPTION
+ITHENA is an authorized Microsoft reseller and Cloud & AI Solutions Partner. Save up to 15% on your Microsoft subscriptions, and get ongoing security, architecture and AI support.
+1. Hero Section
+HEADLINE
+Same Microsoft. Smarter Spend. Real AI Results.
+SUBHEADLINE
+As an authorized Microsoft reseller and Cloud & AI Solutions Partner, ITHENA helps you save up to 15% on your existing Microsoft subscriptions. We also help you secure, optimize and get more out of every license.
+BUTTONS
+Primary CTA: Get Your Free Licensing Review
+Secondary CTA: Schedule a Call
+TRUST STRIP (OPTIONAL)
+Up to 15% savings  ·  No disruption to users  ·  Dedicated tenant support  ·  Quarterly security reviews
+2. About the Partnership
+Where Microsoft's Platform Meets ITHENA's Expertise
+Microsoft gives enterprises a powerful foundation for cloud, productivity, security and AI. ITHENA helps you turn that foundation into results.
+Together, we help organizations connect data, processes and teams to drive revenue. That means intelligent CRM and ERP applications, secure cloud environments, modern productivity tools and AI-ready data platforms. Our joint approach supports your remote and hybrid workforce, streamlines operations and helps you build a resilient, purpose-driven organization.
+As a Microsoft partner and an authorized reseller, we bring three things together:
+Licensing expertise to make sure you pay the right price for the right products
+Technical depth across cloud migration, security, data and application development
+Industry context from years of delivering digital projects across manufacturing, life sciences, automotive, energy and utilities, government and media
+3. Our Microsoft Offerings
+Everything You Need to Get More from Microsoft
+Offering
+Copy
+
+Microsoft Licensing & Renewals
+Buy your Microsoft subscriptions through ITHENA and save up to 15% on the exact same products. We handle purchasing, billing options and renewal planning so nothing lapses and nothing is overpaid.
+
+Cloud Adoption & Migration
+Our experts deliver smooth migrations and cloud-native applications in a trusted, secure environment. You can also reduce costs by using your existing eligible Windows licenses.
+
+Security & Compliance
+Protect your network activity and your people with Microsoft Defender, Entra ID and Intune, backed by built-in compliance tools and guidance from our team.
+
+Modern Workplace & Productivity
+Give hybrid and remote teams secure, cloud-based tools for voice, collaboration, security and analytics. Set up once and supported continuously.
+
+Intelligent CRM & ERP Applications
+Connect customer, financial and operational data in one place so teams work from the same information and revenue moves faster.
+
+DevOps & Application Development
+Use Microsoft's DevOps tools to manage the full application lifecycle, so developers ship faster and the business sees value sooner.
+
+Data & AI Enablement
+Prepare your data and your people for AI. ITHENA pairs Microsoft's platform with our own AI capabilities and hands-on AI workshops to move you from experiments to practical use.
+
+4. Featured Offer: Microsoft Licensing & Renewal Review
+Find Your Hidden Microsoft Savings, Before Your Next Renewal
+We'll run a quick, painless review to uncover hidden savings and eligible promotions before your next renewal arrives. It's free, and it doesn't require any changes to your environment.
+What the review covers
+Your current Microsoft products and approximate seat counts: a clear picture of what you own and use today
+Renewal and commitment dates: so you can evaluate options well ahead of time
+Monthly vs. annual billing options: choose the cash-flow model that works for you
+Defender, Entra ID and Intune opportunities: better security and better value from what you already license
+A side-by-side comparison quote through ITHENA: see the difference in plain numbers
+Recommended next steps: a practical action plan, not a sales pitch
+CTA: Request Your Free Review
+5. Why Choose ITHENA + Microsoft
+Savings Are Just the Start
+Save up to 15% on the same subscriptions
+Same products, same experience, lower cost. Your users, apps and daily operations don't skip a beat. Everything stays exactly how you like it.
+Ongoing support, not just a transaction
+Many resellers disappear after the sale. We stay involved with a full support program:
+Included Service
+What It Means for You
+
+Tenant Support Services
+Expert help managing and troubleshooting your Microsoft environment
+
+Quarterly Architecture & Security Evaluations
+Regular check-ups to keep your setup secure and well-designed
+
+Bi-Annual Optimization Reviews
+Make sure you're using, and paying for, only what you need
+
+Renewal Assistance
+No missed dates, no surprise price changes
+
+Dedicated AI Workshops
+Hands-on sessions to help your teams put AI to work
+
+Industry-aware expertise
+ITHENA has delivered 70+ digital projects for 45+ global customers, backed by 200+ engineers and consultants. We understand how operations, manufacturing and service organizations actually work.
+Built for the AI era
+Beyond licensing, we help you use your Microsoft investment to power practical AI, from persona-based analytics to conversational assistants like AETHER, so your data drives decisions and action.
+One partner, start to finish
+Licensing, security, cloud, applications and AI all in one relationship, with people who know your environment.
+6. How It Works
+Simple, Fast, Zero Disruption
+Share your details. Tell us your current Microsoft products, approximate seat counts and renewal dates.
+We review. Our team looks for savings, eligible promotions and security or value opportunities.
+Compare. Get a side-by-side quote through ITHENA, with no obligation.
+Switch smoothly. If it makes sense, we move your subscriptions with no interruption to your users.
+Stay supported. Regular reviews, tenant support and renewal assistance keep you optimized year-round.
+7. FAQ Section (SEO)
+Will switching to ITHENA change how my team uses Microsoft?
+No. You keep the same subscriptions, users and applications. What changes is who you buy from, and how much you pay.
+Where does the "up to 15%" savings come from?
+As an authorized Microsoft reseller, ITHENA can offer pricing on your existing subscriptions that's lower than buying direct. Actual savings depend on your products, seat counts and agreement type. [Confirm approved wording with the licensing team.]
+Is the Licensing & Renewal Review really free?
+Yes. There's no cost and no obligation. [Confirm.]
+When should I request a review?
+Ideally 90 to 120 days before your renewal date, but we can help at any time. [Confirm recommended window.]
+Can you help if we don't know exactly what we're using?
+Yes. Approximate seat counts and products are enough to get started.
+Do you offer support after the sale?
+Yes. Tenant support, quarterly architecture and security evaluations, bi-annual optimization reviews, renewal assistance and AI workshops are part of the partnership.
+8. Closing CTA Banner
+Ready to See What You Could Save?
+Get a no-obligation licensing review and a side-by-side quote from ITHENA before your next renewal.
+Button: Get Your Free Review
+9. Form Update Recommendation
+The current "Microsoft enquiry" form only collects Name, Email, Phone and Organization. To support the review, consider adding:
+Microsoft products currently in use (multi-select or text)
+Approximate number of users/seats
+Next renewal date
+Billing preference (monthly / annual / not sure)
+Items to Confirm Before Publishing
+Partner designations: The current page title says "Microsoft Cloud & AI Solutions Partner." Confirm the exact current designations and whether any Microsoft partner badges should be added.
+Savings claim: "Up to 15%" comes from the reference content. Legal or the licensing team should approve disclaimer wording (for example, "savings vary by product and agreement").
+Dynamics 365 and Azure OpenAI: Product references are kept generic. If ITHENA sells or implements specific products, name them for stronger SEO.
+Case study or testimonial: A short customer quote or licensing-savings example would strengthen this page.

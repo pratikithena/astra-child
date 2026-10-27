@@ -173,3 +173,546 @@ reorder - "In their words" after "About the client", add CTA popups of "Talk to 
 Remove their older linking feature and fields if any assigned. Add bottom padding to main section.
 
 
+Modify dark theme of case study as dark theme of "111-ai-htmls/ithena-big-data-analytics.html"
+Keep "call routing", "Console" & "What changed" section as by default "no" - users will add them as per the need
+In "call routing" and "What changed" - Remove all fields after Subtitle and add field as animated html, as it is there in "Console" field group, make sure keys are different for different field groups.
+Change font size of "quote" to 16px and adjust it on other devices.
+Map "key_challenges" key to "The challenge" field group rathar than having diff fields - collahge them in one html field.
+
+
+Remove "h-tags" from hero and "stats" from "About the client" section.
+
+
+when section class combo - "she-header-yes header" class - there should be no gap between header and strip  
+when section class combo - "she-header-yes she-header" class - header and strip must work as a collective header block
+this is for all resolutions
+
+https://dev-website.ithena.app/case-study/system-mapping-visualization-automotive-software/
+https://dev-website.ithena.app/case-study/iserv-b2b-ecommerce2-spare-parts-order-management/
+https://dev-website.ithena.app/case-study/iplan-planning-and-scheduling-predictive-maintenance/
+https://dev-website.ithena.app/case-study/digital-factory-performance-monitoring/
+https://dev-website.ithena.app/case-study/imex17-iserv27-digital-factory-performance-monitoring/
+https://dev-website.ithena.app/case-study/cms-modernization-wcag-aria/
+
+Consider this case study urls, they all have "Hero facts" section in the back end.
+Write down five facts WRT case study data. Make sure facts are relvent to case study.
+
+Rename "Call Routing" to "CS Solution animation", "Console" to "Dashboard Console"
+
+Section "What is inside" - should content 2 cards, they are mandate.
+Cards are - "Performance Management", "Service Ticketing", "Spare-parts E-commerce"
+Make sure card data will be all related to their respective industry + add animations of sections and dark theme changes too
+add hover effect to  "Compressed air industry challenges" cards
+
+section "Field support" - make grid title h3 two liners in
+all html in new-ver. Hero section "stagewrap" - make dashboard mockup little crowded and it should
+fill and look like real dash - make sure every page will have different mockup details WRT
+solution they belongs too. Section "Capabilities" - apply rounded edges to img in cap-med.remove
+capsule - redesign it in sleek - minimal and new age design.
+
+Section "Capabilities" - make sure img ht in cap-med should not cross section limits.
+Section "hero" - H1 title should be max 3 liners add live animation in "monitor", change value and graph evry sec in all mockups.
+
+Section "hero" - Redesign, Dashboard design mockups must be different for different solutions.
+Make sure graphs and values are interactive and changing every second to feel it lively.
+
+Map this video with pages given - ref from "packaging-landingv2.html"
+pharma-manufacturing-landing.html - https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-hero-montage-3.mp4
+automotive-discrete-manufacturing-landing.html - https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-robot-cell.mp4
+tool-die-landing.html - https://dev-website.ithena.app/wp-content/uploads/2026/09/ecommerce-hero-parts-video.mp4
+industrial-defense-landing.html - https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-assembly-line.mp4
+government-landing.html - https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-electronics-worker.mp4
+fintech-insurtech-landing.html - https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-oem-engineers.mp4
+retail-cpg-landing.html - https://dev-website.ithena.app/wp-content/uploads/2024/07/packaging-machinery.mp4
+energy-utility-landing.html - https://dev-website.ithena.app/wp-content/uploads/2026/09/energy-utilityy.mp4
+compressed-air-landing.html - https://dev-website.ithena.app/wp-content/uploads/2026/09/compressed-airr.mp4
+
+
+Add these to following files
+tool-die
+https://dev-website.ithena.app/wp-content/uploads/2026/09/tool-die-2.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/tool-die-3.webp
+
+compressed-air
+https://dev-website.ithena.app/wp-content/uploads/2026/09/compressed-air-1.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/compressed-air-2.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/compressed-air-3.webp
+
+tool-die
+https://dev-website.ithena.app/wp-content/uploads/2026/09/tool-die-2.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/tool-die-3.webp
+
+automotive-discrete-manufacturing-landing
+https://dev-website.ithena.app/wp-content/uploads/2026/09/discrete-auto-1.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/discrete-auto-2.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/discrete-auto-3.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/discrete-auto-4.webp
+
+energy-utility-landing
+https://dev-website.ithena.app/wp-content/uploads/2026/09/energy-utility-1.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/energy-utility-2.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/energy-utility-3.webp
+
+fintech-insurtech-landing
+https://dev-website.ithena.app/wp-content/uploads/2026/09/fintech-insurtech1.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/fintech-insurtech-2.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/fintech-insurtech-3.webp
+
+industrial-defense-landing
+https://dev-website.ithena.app/wp-content/uploads/2026/09/industry-1.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/industry-2.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/industry-3.webp
+
+pharma-manufacturing-landing
+https://dev-website.ithena.app/wp-content/uploads/2026/09/pharma-manufacturing-1.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/pharma-manufacturing-2.webp
+https://dev-website.ithena.app/wp-content/uploads/2026/09/pharma-manufacturing-3.webp
+
+retail-cpg-landing
+https://dev-website.ithena.app/wp-content/uploads/2026/09/retail-cpg-3.webp
+
+
+create html template for partnership page, refer content and layout details from - "partnership/ms.partner.txt". for design ref - "case-study-template". Make
+sure it is partnership page, change layouts or design details to make it bettter, keep it partner oriented
+
+
+Max 5 sections only. "h-tags" - make them one liner. Modify "Ready to see what you could save?" as "Get started" section from "/aether-landing.html".
+Use dark theme color combo and hero section design from  "/ithena-big-data-analytics.html"
+Redesign 1) "Our Microsoft offerings" as "ITHENA’s ONE Data Platform" from "/ithena-big-data-analytics.html"
+2) "How it works" as "Approach" from from "/ithena-big-data-analytics.html"
+Reduce FAQ to 4 questions. Add slow and visible Entry animations to all section, counter animation to numeric values.
+
+in hero section - use "https://dev-website.ithena.app/wp-content/uploads/2026/09/ms-banner.webp" as hero banner
+"lockup" redesign - remove capsule effect, design it in sleek and minimal style.
+"h-fig" - move to RHS side of banner, make "num" a highlight, keep "btns" below "h-tags".
+
+add "On this page" refer the same from case-study-template.html
+
+"section#main-section[data-theme="dark"] .shell .pt-sec.deep::before" this effect should be full-width
+Remove card bg in hover effect from "About the partnership", "Approach" and "Our Microsoft offerings" sections
+use "https://dev-website.ithena.app/wp-content/uploads/2026/09/ms-bottom-banner.webp" at bottom banner
+
+"offerings" section - card description max 5 lines to all, no anchors and links. Remove "Get your free review" CTA.
+Remove "Request your free review" and place last 3 cards of "Featured offer" in there 
+Retext "rail-foot" content as become a partner and attach formidable form 95 with popupmodal trigger on click.
+
+
+Align filter as LHS side bar, main category and list of tax terms in dropdown with check box, filter will work in combinations to in "OR" mode.
+change value of ".site-content .ast-container" to display block in !important.
+Review the code, check on all resolutions + fix if broken 
+
+Create blog page template, ref "case-study-v2.php" - keep theme + design + layout as same as it.
+Refer content from "https://dev-website.ithena.app/blog-post/ithenas-aether-featured-in-tew-july-2026-edition/"
+ACF Fields - blog_name, blog_heading, blog_sub_heading, blog_heading_banner_image, hightlight_quote_para, first_content_text_, blog_middle_img, second_content_text, bottom_banner_text, bottom_banner_cta_text, bottom_banner_cta_url.
+Map and use the same.
+
+
+Modify "blog-v2", "blog-v2-acf". Remove - capabilities, Industries, Industries section from html and json.
+Map `blog_name`, `blog_heading`, `blog_sub_heading`, `blog_heading_banner_image`, `hightlight_quote_para`, `first_content_text_`, `blog_middle_img`, `second_content_text`, `bottom_banner_text`, `bottom_banner_cta_text`, `bottom_banner_cta_url` - this keys to fields.
+Add extra fields if needed in design to show data - add default sample data if no data available.
+
+
+Modify - "homepagev2.html" -  section "Bring us one process" - keep thumbnail and not video play on the page, once click video will played in modal popup
+
+add unique classes to section and buttons as per their config
+section "Bring us one process" - replace "btn glass", on click navigate/scroll user to Our offerings, and rename the button
+replace cta video with "https://dev-website.ithena.app/wp-content/uploads/2026/10/ITHENA%20Company%20film%20-%20homepage%20%2830s%20loop%29.mp4"
+Section "Customers" - only these customers logos to be visible- BPA, Omori, Selee, SONOCO, remove other and add many more to consolidate
+
+
+modify - case study template - make sure customer filters are hidden by default + if url has #customers query string then show the filter
+https://dev-website.ithena.app/case-studies/
+
+
+Copy data from "https://dev-website.ithena.app/blogs/" and mapp them to "https://ithena.ai/ithena-blogs/"
+Replace the old data, make sure to retain data - keep them in sections, use media from https://ithena.ai/ 
+
+https://ithena.ai/blog-post/ithenas-aether-featured-in-tews-july-2026-edition-advancing-enterprise-ai-beyond-analytics/
+
+
+modify homepagev2
+Section "ITHENA in numbers" - make sure all description in li are 2 liner
+section "Our offerings" - ocard - subtitle must be 1 liner and description para must be 3 liner
+
+Change and use 2 font families only, Noto and Inter, replace and remove all other font families from the CSS and featureing.
+Noto will be used for headings, sub heading and Inter for body text. 
+Ensure that the font sizes are consistent with the design system, with the largest font size being 50px and the smallest being 12px. 
+Adjust font weights accordingly, with the largest weight being 700 and the smallest being 300.
+
+section "What we do" - make sure card titles are 2 liners and all cards will have 6 sub Industries listed 
+Change "Infor’s SyteLine" to "Pressrite"
+
+
+Add uniform counter effect to all counter/numeric values, use the same if already exists 
+Autoplay "Technology partners" strip as same as Customers strip
+
+Change video thumbnail - https://dev-website.ithena.app/wp-content/uploads/2026/10/videothumb-v2-scaled.webp, 
+Hide dassault partner and automate tech partner marquee
+section What we do - give brand color stroke gredient strip bg to counter values so that they will be visible and 
+remove capsule from "wt" and add brand strip bg in minimal, sleek design 
+
+
+
+Create landing page for "https://dev-website.ithena.app/ai-assessment/"
+Refer design + layout + theme from - https://ithena.ai/panelops-industrial-erp/
+Use content from "https://dev-website.ithena.app/ai-assessment/"
+Keep theme color intact as "ithena-ai-ml-data-science"
+Keep it optimised and well indented
+
+
+Change eyebrow style as in the - ithena-process-integration.html
+Add brand color to IMP words in all titles
+Apply visible Entry animatons to section and section elements on scroll 
+Add BG img to hero section and bottom CTA section, Apply rounded broders to all CTA buttons
+Apply Counter effect to counter/numeric values 
+Apply animation to section "Strategic intersection" icons 
+Redesign "Strategic framework" as "The challenge" of  https://ithena.ai/panelops-industrial-erp/
+Redesign "Consulting services" as "Integrated modules" of  https://ithena.ai/panelops-industrial-erp/ + add images to this from "https://dev-website.ithena.app/wp-admin/upload.php"
+Apply animation to graphs of "Maturity model" - make sure they will change now and then
+Animate section "Engagement model" - make sure stages will change and they will hightlight the importantance.
+
+
+Change images for "Strategic framework" - make sure images are relvent to content of the section's block
+Apply animation to section "Strategic intersection" icons  - rotate and shift blue dot every 2 sec - remove card bg and broders
+Bg to bottom CTA section - https://dev-website.ithena.app/wp-content/uploads/2026/06/aether-bottom-bgiv2.webp
+Replace imgs For
+AI strategy and roadmap - https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-factorygpt-night-shift.jpg
+Current tools assessment - https://dev-website.ithena.app/wp-content/uploads/2026/09/ecommerce-role-maintenance.webp
+Vendor and platform selection - https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-control-room-poster.jpg
+Technical debt assessment - https://dev-website.ithena.app/wp-content/uploads/2026/09/agentic-flow-pump.webp
+Gap analysis - https://dev-website.ithena.app/wp-content/uploads/2026/08/compressed-air.webp
+AI readiness assessment - https://dev-website.ithena.app/wp-content/uploads/2024/02/ai-ml-1.jpg
+Current tools assessment - https://dev-website.ithena.app/wp-content/uploads/2026/09/ecommerce-hero-parts-poster.jpg
+AI governance framework - https://dev-website.ithena.app/wp-content/uploads/2024/02/ai-ml.jpg
+Vendor and platform selection - https://dev-website.ithena.app/wp-content/uploads/2026/08/air-comp2.webp
+
+Redesign "Engagement model" as calender structure and show week details into it.
+Add responsive popup modal on CTA click, use from "[formidable id=44]"
+Make sure popupmodal is suitable for light and dark theme and should follow the same color combo.
+
+section "Consulting services" - Chnage this to slider - 3 card each view - remove the borders, add sleek, minimial divider in between cards 
+
+
+modify \solutions\ai-mex.html - redesign this in themes of ithena ref from - "services\ithena-big-data-analytics.html" . keep the content and data as it is, chnage colors, font family, styling, button style etc. REATIN THE CONTENT AS MUCH AS POSSIBLE.
+
+Remove back to top from to locations, remove capsule design from all places and apply sleek, minimal, new age design to them.
+Change hero structure into 2 grid and not top bottom, make sure graphics is well adjusted on all resolutions of screens
+Section "Get Started" will be full width
+
+modify \solutions\ai-mex.html
+section "Pillar Deep Dive" - will content "Real-Time Visibility", "AI-Powered Insights", "Quality Intelligence", "Connected Workforce" as internal section 
+section "Core Capabilities", "How It Works" - remove capsule design from cards and apply sleek, minimal, new age design to them.
+section "Connects to Your Entire Stack" - assign eyebrow + make sure design is connective stack.
+
+hightlight imp word in titles with brand color, remove theme switch, remove extra padding or margin, keep the design neet and clean, optimise the code
+
+
+modify homepagev2 + dev-homepage
+BPA (Blueprint Automation) - https://ithena.ai/case-study/iserv-b2b-ecommerce2-spare-parts-order-management/ 
+SELEE Corporation - https://ithena.ai/case-study/metal-filtration-technology-leader/
+Change phone number to = tel:+18043990051
+
+modify homepagev2 + dev-homepage
+in popupmodal from 
+.frm_forms[class*=frm_style_] input:not([type=checkbox],[type=radio],[type=submit],[type=hidden],[type=file]), .frm_forms[class*=frm_style_] select, .frm_forms[class*=frm_style_] textarea
+this should have white text color in light theme and vice versa in dark theme 
+
+ref - /services/ai-assessment-landing.html
+redesign "ithena-big-data-analytics.html" & "ithena-ai-ml-data-science.html"
+Follow section design + color combinations + theme details and elements designs
+
+modify - ithena-big-data-analytics.html
+change hero grpahic - design new sleek and modern design animated grpahic suitable for service domain
+section "ITHENA’s ONE Data Platform" - redesign it in the layer structure design sleek, minimal and modern
+section "Approach" - redesign it in the stages structure design sleek, minimal and modern
+
+modify - ithena-ai-ml-data-science.html
+section "Artificial intelligence & machine learning" - change the img used - it is not looking nice
+
+in  both pages
+section "Success stories" - will be slider - design sleek, minimal and modern
+section "Partnerships" - no bg to logos and automatic playing marquee with arrows
+
+ai-assessment-landing.html ,"ithena-big-data-analytics.html" & "ithena-ai-ml-data-science.html" from services folder to https://dev-website.ithena.app/
+list links once done - make sure to check them on all resolutions - if cracks anywhere then fix it
+
+
+Create dynamic menu wp php template which can be used as a shortcode - ref is "includes\wp-header-shortcode.php"
+Create ACF fields json for - "includes\wp-header-sample.html" - ref "blog-v2-acf.json" for structure
+All menu item will be fetched from ACF fields.
+Top menu - child menu and other menu will be editable via ACF, make sure use can add menu item as they are required using + button
+Fields for menu items are - title, subtitle, link, icon, parent
+Keep hierarchy as it is in "includes\wp-header-sample.html", assign Current values as default values - later user will change them.
+
+
+
+create revised version of "wp-header-shortcode.php" 
+get the style and structure ref of "wp-header-sample.html"
+keep dynamic menu as it - all menus will be fetched from WP menu with their metas
+we are changing style and structure + theme details of dark and light theme.
+
+
+in light theme - top menu text should be white and once it is sticky make it black
+on hover remove capsule effect - from child menu - apply minimal sleek modern edge design WRT to theme
+
+
+Ref - https://dev-website.ithena.app/big-aata-analytics-v2/
+Create html landing for this pages in services folder. 
+https://dev-website.ithena.app/cloud-adoption/
+https://dev-website.ithena.app/process-integration/
+https://dev-website.ithena.app/systems-of-engagement-erp/
+https://dev-website.ithena.app/customer-experience/
+https://dev-website.ithena.app/manufacturing-execution-mes/
+https://dev-website.ithena.app/industrial-iot/
+Use design + layout + color and font combinations from ref given. use data from given urls.
+Make sure, not to repeate section, design and add new section as per context and requirement.
+Use sleek minimal new age design principles aligned with ithena theme.
+Test all pages on desktop + laptop + tablet + mobile screens 
+
+Redesign all "Success stories" sections in autoplay sliders with arrows.
+Animate all possible elements in section where ever possible + make them live 
+Remove schedule call CTA from all pages, add partners marquee.
+Remove block design from all elemennts/section - Use sleek minimal new age design principles aligned with ithena theme.
+
+Redesign - hero section - apply images as background - overlaay will be little black than blue.
+
+
+change dark theme combinations to services\new-service\ithena-big-data-analytics.html
+
+
+ref - file:///D:/dev-ithena/astra-child/111-ai-htmls/industry-pages/new-ver/energy-utility-landing.html - get started section
+redesign "Keep exploring" section of all html in "D:\dev-ithena\astra-child\111-ai-htmls\services\new-service" 
+full width - 2 grods - lhs text content, rhs video - video thumb - https://dev-website.ithena.app/wp-content/uploads/2026/10/videothumb-v2-scaled.webp
+
+
+redesign "Hero" section of all html in "D:\dev-ithena\astra-child\111-ai-htmls\services\new-service" 
+Keep them plain as "https://dev-website.ithena.app/ai-strategy-v2/" - overlay grid texture
+Change animations to hero animation to "dashboard" animation - make sure it is relevent and impactful
+Adjust the height of "Keep exploring" - video thumbnail should be properly adjusted/.
+
+
+Rename all service pages - section "Partnerships" remove rounded border from arrow, just keep arrows and enlage them a bit on hover
+
+which are endiung with "-v2" to their normal slug.
+If there are previous existing pages of same slug - rename them to "-old" suffix 
+
+
+Rename all service pages: 
+section "Partnerships" remove rounded border from arrow, just keep arrows and enlage them a bit on hover
+section "Keep exploring" - add CTA, on click trigger form as same as "data-schedule-demo" from https://dev-website.ithena.app/industrial/, keep the from as and change text content as per services.
+use good quality of media images WRT service details, make sure they are related to services from the landing page, use images from "https://dev-website.ithena.app/wp-admin/upload.php"
+
+new-iserv.html - 
+Do not use body, remove and replace body tag with <section> tag in css + js. 
+Optimise css in "one css rule per line" way. Remove all unused css and js from the provided html and make sure it is optimized for production - remove html, css or js comments.
+Add common + unique class to each section + make sure theme switch works as it is working in "services\new-service\ithena-big-data-analytics.html"
+Remove all unused css and js from the provided html and make sure it is optimized for production - remove html, css or js comments.
+Change and use 2 font families only, Noto and Inter, replace and remove all other font families from the CSS and featureing.
+Noto will be used for headings, sub heading and Inter for body text. 
+Ensure that the font sizes are consistent with the design system, with the largest font size being 50px and the smallest being 12px. 
+Adjust font weights accordingly, with the largest weight being 700 and the smallest being 300.
+Study the following logic and implement same in the page. Make sure change css and css classes as per light and dark theme + make sure css will be at highest priority and it must override elementor css if any.
+<section id="main-section" class="fbb-landing" data-theme="dark"> </section> 
+<script>
+    (function () {
+
+        "use strict";
+        /* ---------- THEME ---------- */
+        var root = document.querySelector('section.fbb-landing');
+        var themeToggle = document.getElementById('themeToggle');
+
+        var stored = localStorage.getItem('fbb-theme');
+        var initial = stored || 'dark';
+        setTheme(initial);
+
+        function setTheme(mode){
+        root.setAttribute('data-theme', mode);
+        if (themeToggle) themeToggle.setAttribute('aria-pressed', mode === 'dark' ? 'true' : 'false');
+        localStorage.setItem('fbb-theme', mode);
+        }
+
+        if (themeToggle) {
+        themeToggle.addEventListener('click', function(){
+            var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            setTheme(next);
+        });
+        }
+
+    });
+</script>
+
+
+https://dev-website.ithena.app/ - Modify all service and industry - Bottom CTA - Make sure font size of title and sub title, font family, and ht of section will be uniform throughout
+
+
+ref - \solutionsCRM-CPQ-v7.html
+study the ref html, follow the changes of hero section, theme switch changes + mobile optimsation styles 
+implement all those in the following pages 
+
+Modify - hero section - overlay will be blackish with gradient in dark theme - white in light scheme 
+redesign section "Get started"
+LHS: there will be title, subtitle and CTA button below
+Rhs - video with play button, thumbnail as "https://dev-website.ithena.app/wp-content/uploads/2026/10/Ithena-Solutions.webp"
+make sure section height will be uniform in all pages where "Get started" exists
+play button will be placed at vertical center
+
+file:///C:/Users/pratikt_ithena/Downloads/iSERV-Smart-Service-v7.html
+follow this html, rectify theme changes, standardize section like hero and get started design 
+use respective video in bottom CTA and video thumbnail as "https://dev-website.ithena.app/wp-content/uploads/2026/10/Ithena-Solutions.webp"
+
+replace "v2" with "new" - assign those links in menu https://dev-website.ithena.app/wp-admin/nav-menus.php
+
+
+https://dev-website.ithena.app/company/
+Rework in light them as title text has not assigned with #000 color in light theme
+Make sure it is assign, it will not get override and behave inversely in dark theme.
+
+
+modify this css in all solutions pages
+@media (max-width: 760px) { #main-section.aether.v7 .hero7 { padding-top: 100px !important; padding-bottom: 30px;}}
+
+
+make this "https://dev-website.ithena.app/blog-post/erp-for-custom-manufacturing/" blog page editable through Gutenberg in WordPress instead of using ACF
+Currently, making any changes to the page structure, such as adding, removing, or temporarily hiding sections, is difficult via ACF.
+Having these sections managed through Gutenberg would give us more flexibility to make both temporary and permanent changes whenever needed, without having to rely on code changes for every update.
+Make sure to maintain CSS throughout - title, subtitle, text, img, ui-li will have uniform for all blocks.
+
+
+Convert all case study posts into Gutenberg block fields as same as you did for blocks
+ref - "https://dev-website.ithena.app/blog-post/ithenas-aether-featured-in-tew-july-2026-edition/"
+Make sure not to disturb any design or reduce any data for case study
+
+
+Web page - https://dev-website.ithena.app/ai-strategy/
+Service - AI strategy consulting | Category - Data and AI
+create and redeisgn this page as html file + keep design approch customer oriented funnel apprch, make sure all info should be conveyed to them in the proper way.
+Section + section elements should be new UI deign driven and there should be no garbage stuff
+avoid using block and square designs. 
+
+
+https://dev-website.ithena.app/ - all industry pages
+https://dev-website.ithena.app/discrete-automotive/'
+
+
+Case Study template: Light mode
+Hero section - light theme will have lighter overlay - plain less opase, make sure video will be visible
+Hero facts - make sure facts will change colors as per the theme switch
+
+
+Header Menu -
+Rework in light theme - main menu text is black which should be white in light theme
+Make sure it is assign, it will not get override and behave inversely in dark theme.
+
+file - file:///D:/dev-ithena/astra-child/111-ai-htmls/services/new-service/ithena-big-data-analytics-redesign.html
+ref - https://dev-website.ithena.app/ai-strategy-v2/
+section "How the platform works" - redesign as horizontal zigzag
+section "How we deliver" - redesign as progressive steps
+
+section "hero" - do not hero bg keep it dark, just change bg color of dashboard mockups in them
+make sure they will change color scheme as per the theme switch
+Change eyebrows design as in the ref link
+
+section "How the platform works" - Nodes - title will be 2 liner and subtitle will 4 liner, keep them complete and meaningful.
+section "Where AI is heading" - cards - title will be 2 liner and subtitle will 4 liner, keep them complete and meaningful.
+section "Success stories" - cards - title will be 2 liner and subtitle will 4 liner, keep them complete and meaningful.
+
+
+Web page - https://dev-website.ithena.app/ai-strategy/
+Service - AI strategy consulting | Category - Data and AI
+create and redeisgn this page as html file + keep design approch customer oriented funnel apprch, make sure all info should be conveyed to them in the proper way.
+Section + section elements should be new UI deign driven and there should be no garbage stuff
+avoid using block and square designs. 
+
+
+ref - https://www.sonoco.com/na
+web url - https://dev-website.ithena.app/
+menu - https://dev-website.ithena.app/wp-admin/nav-menus.php "new-ithena-menu"
+create sleek, new ui element driven footer for "https://dev-website.ithena.app/"
+Make sure it will have comfort design + maintained hierarchy and simple yet impactful design
+Take hierarchy details from "menu" and other details from footer of "web url"
+
+file:///D:/dev-ithena/astra-child/111-ai-htmls/footer/ithena-footer-v3.html - Add acronyms of pages to their menu title as like iSERV, iPLAN etc
+
+add dividers in between main menu items, highlight "OEM & Distributors", "Enterprise", "Manufacturers", as they should look as parent menu of their childern.
+remove redundant item and links, keep the first one only so that menu will be reduced and will look proper.
+
+
+data - file:///D:/dev-ithena/astra-child/111-ai-htmls/footer/ithena-footer-v3.html
+ref - https://www.criticalmanufacturing.com/
+create sleek, new ui element driven footer for "https://dev-website.ithena.app/"
+Make sure it will have comfort design + maintained hierarchy and simple yet impactful design
+Take hierarchy details from "data", keep ithena dark theme intact
+
+ref - file:///D:/dev-ithena/astra-child/111-ai-htmls/solutions/OEM-Distributors-Showcase.html#oed-products
+create product showcase landing page in solutions folder for "Manufacturer" which will showcase products under "Manufacturer" menu.
+Approch - sleek, new ui element, minimal + ai oriented. 
+sections could be - hero section (banner video + title + subtitle), collective capabilities, product showcase with categories, benefits,  FAQs, CTA
+
+file:///D:/dev-ithena/astra-child/111-ai-htmls/solutions/OEM-Distributors-Showcase.html#oed-products
+section "Product showcase" - add images to product cards, add subtitle to section title
+section "Benefits" - add subtitle to section title
+Section "FAQs" - keep single faq open at a time, one open all other should be closed.
+CTA "see platform" - on click, scroll up to "Product showcase" section
+
+file:///D:/dev-ithena/astra-child/111-ai-htmls/solutions/Manufacturers-Showcase.html
+file:///D:/dev-ithena/astra-child/111-ai-htmls/solutions/OEM-Distributors-Showcase.html
+file:///D:/dev-ithena/astra-child/111-ai-htmls/solutions/Enterprise-Showcase.html
+create version 2 of these pages - more integrated design, better approch, better presentation + avoid to use block and sqaure design
+
+file:///D:/dev-ithena/astra-child/111-ai-htmls/solutions/Manufacturers-Showcase.html
+create product showcase landing page in solutions folder for "Enterprise" which will showcase products under "Enterprise" menu.
+Approch - sleek, new ui element, minimal + ai oriented. 
+sections could be - hero section (banner video + title + subtitle), collective capabilities, product showcase with categories, benefits,  FAQs, CTA
+
+file:///D:/dev-ithena/astra-child/111-ai-htmls/solutions/OEM-Distributors-Showcase-v2.html
+file:///D:/dev-ithena/astra-child/111-ai-htmls/solutions/Manufacturers-Showcase-v2.html
+file:///D:/dev-ithena/astra-child/111-ai-htmls/solutions/Enterprise-Showcase-v2.html
+upload these pages on "https://dev-website.ithena.app/" as same as recent other pages.
+check them on responsive screen, fix if you found any error or misalignment.
+in the end - list links of those pages.
+
+
+create a new menu for footer menu links name it as "footer menu v2".
+Keep all menu links same as "new-ithena-menu" except solutions menu links
+remove all links under the solutions and add solutions showcase page links as following:
+https://dev-website.ithena.app/manufacturers-showcase-v2/, https://dev-website.ithena.app/oem-distributors-showcase-v2/, https://dev-website.ithena.app/enterprise-showcase-v2/
+
+Change footer plugin file and get menu details from "footer-menu-v2" 
+
+Hightlight united states, india and privacy policy in red color - #c00000
+
+write js for "https://dev-website.ithena.app/contact-us/"
+form 123 - hide "#field_others-req" by default. 
+if  "#field_area-of-intrest" selects as "Other -Tell us about your requirements." then display "#field_area-of-intrest".
+
+alter permalink pattern of pages under "Industries" menu
+pattern will be - 
+all pages under "Equipment builders" will have site_url + "/oem/"+"page-slug"
+all pages under "Plants" will have site_url + "/plants/"+"page-slug"
+all pages under "Other Sectors" will have site_url + "/others/"+"page-slug"
+once done - update menu links in header and footer menu 
+
+
+https://dev-website.ithena.app/ - adjust footer - change menu links grid color of light theme to white
+https://dev-website.ithena.app/ - adjust header - adjust the width of header in such way that logo on header will be in the same line as logo in the footer.
+https://dev-website.ithena.app/ - home page - CTA popupmodal - check the design and follow it from popupmodal used on "https://dev-website.ithena.app/solutions/crm-cpq/"
+
+https://dev-website.ithena.app/ - all solution pages - Technology partners - remove bg card effect from marquee cards, keep logo img + description text. Make sure it will be compatible for both themes.
+
+https://dev-website.ithena.app/ - adjust header and footer - adjust the width of both, make the occupy full width yet maintain proper margin and paddings from edges + check responsive menu also
+
+
+https://dev-website.ithena.app/company/partnerships/ - section Find a partner - change css: section#main-section .grid .card .lt img { max-height: 95%; }
+
+
+https://ithena.ai/rockwell-automation-partnership/, https://ithena.ai/ptc-partnership/, https://ithena.ai/partner-ignition/
+Study these partner pages,  create the same pages on "https://dev-website.ithena.app/" in the better way - idea is Gt block page with same design styles in the front end, so all pages will be using same template but their backend elements will be different  
+make sure backend will be Gutenberg and frontend will have similar element styles.
+use high quality images or icons + keep pages dual theme compatible
+
+do not add bg to media images, remove rounded block design, redesign it with sleek minimal card design to match other elements on other page. 
+Make Bottom CTA full width - LHS grid text content and RHS grid video, ref CTA bottom "https://dev-website.ithena.app/company/partnerships/"
+Section title - max 2 liners
+
+
+[ultra] https://dev-website.ithena.app/company/partnerships/ - section "Find a partner" - make gredient little darker. section "How we partner" - "fcol" div - remove rounded block design, redesign it with sleek minimal card design to match other elements on the page. section "Proud partner" - prods cards - gredient from LHS 

@@ -1,0 +1,1154 @@
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .hm{--bg:#FFFFFF;--bg2:#F6F9FB;--wash:#EDF7FC;--wash2:#CFE7F5;--ink:#1F2023;--ink2:#4B5259;--ink3:#6B7379;--line:#EAEAEA;
+  --blue:#0083C8;--blue-deep:#006AA3;--blue-hi:#39A8DE;--blue-soft:#7FC8F2;--red:#C00000;--ok:#0083C8;--amber:#D98523;
+  --navy:#0D1B2E;--navy2:#152C46;--navy3:#152C46;--r:12px;--r2:16px;--r3:22px;--maxw:1240px;--pad:clamp(20px,4vw,40px);--ease:cubic-bezier(.16,1,.3,1);
+  --ff-head:"Noto Sans",sans-serif;--ff-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-family:var(--ff-body);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;margin:0}
+  .hm *,.hm *::before,.hm *::after{box-sizing:border-box}
+  .hm .pg{overflow-x:clip}
+  .hm h1,.hm h2,.hm h3,.hm h4{margin:0;line-height:1.15;letter-spacing:-.02em;font-weight:700;text-wrap:balance}
+  .hm h1{font-size:clamp(32px,4.6vw,50px);line-height:1.06;text-wrap:pretty}
+  .hm h2{font-size:clamp(28px,3.2vw,40px)}
+  .hm h3{font-size:20px;font-weight:700;letter-spacing:-.01em}
+  .hm p{margin:0}
+  .hm a{color:inherit;text-decoration:none}
+  .hm ul{list-style:none;margin:0;padding:0}
+  .hm button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+  .hm img,.hm video{display:block;max-width:100%}
+  .hm .i{width:1em;height:1em;flex:none}
+  .hm .hl{color:var(--blue)}
+  .hm .frame{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  .hm .sec{padding:clamp(56px,7vw,104px) 0;position:relative}
+  .hm .sec.alt{background:var(--bg2)}F
+  .hm .kicker{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+  .hm .lede{font-size:18px;font-weight:300;color:var(--ink2);max-width:600px;text-wrap:pretty;margin-top:14px}
+  .hm .shead{max-width:760px;margin-bottom:clamp(28px,4vw,48px)}
+  .hm .shead.center{margin-left:auto;margin-right:auto;text-align:center}
+  .hm .shead.center .lede{margin-left:auto;margin-right:auto}
+  .hm .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-weight:600;font-size:16px;line-height:1;padding:15px 20px 15px 24px;transition:transform .18s,background .18s,box-shadow .18s;white-space:nowrap}
+  .hm .btn .arw{display:inline-flex;transition:transform .18s}.hm .btn:hover .arw{transform:translateX(3px)}
+  .hm .btn.primary{background:var(--blue);color:#fff;box-shadow:0 8px 24px -12px rgba(0,131,200,.7)}.hm .btn.primary:hover{background:var(--blue-deep)}
+  .hm .btn.ghost{background:rgba(0,0,0,.06);color:var(--ink)}.hm .btn.ghost:hover{background:rgba(0,0,0,.1)}
+  .hm .btn.glass{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(8px)}.hm .btn.glass:hover{background:rgba(255,255,255,.24)}
+  .hm .btn.sm{padding:10px 14px 10px 16px;font-size:14px}
+  .hm .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+  .hm .more{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--blue);font-size:14px}
+  .hm .more .i{transition:transform .18s}.hm .more:hover .i{transform:translateX(3px)}
+  /* reveal: duration and travel are vars */
+  .hm .rv{opacity:0;transform:translateY(var(--rvy,30px));
+  transition:opacity var(--rvt,1.1s) var(--ease),transform var(--rvt,1.1s) var(--ease);
+  transition-delay:var(--rvd,0s);will-change:opacity,transform}
+  .hm section.rv{--rvt:1.6s;--rvy:48px}
+  .hm .rv.in{will-change:auto}
+  .hm .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.hm .rv{opacity:1;transform:none;transition:none}}
+  /* headings + sub-headings: Noto Sans; everything else inherits Inter */
+  .hm :is(h1,h2,h3,h4,.kicker,.olay b.t,.ocard b.t,.faqi>summary,.st3 b,.out b,.rgrid b,.wcard .proof b,.wcard .wt){font-family:var(--ff-head)}
+  /* hero base */
+  .hm .hero{position:relative;background:var(--navy);color:#fff;overflow:hidden;min-height:min(88vh,820px);display:flex;align-items:center}
+  .hm .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;filter:saturate(.9)}
+  .hm .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,27,46,.96) 0%,rgba(13,27,46,.78) 45%,rgba(13,27,46,.35) 100%)}
+  .hm .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:140px;background:linear-gradient(180deg,transparent,var(--navy))}
+  .hm .hero .frame{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center;padding-top:72px;padding-bottom:96px;width:100%}
+  .hm .hero .kicker{color:var(--blue-soft);display:inline-flex;align-items:center;gap:11px}
+  .hm .hero .kicker i{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(0,131,200,.25);animation:hmpulse 1.8s infinite}
+  @keyframes hmpulse{0%,100%{box-shadow:0 0 0 3px rgba(0,131,200,.3)}50%{box-shadow:0 0 0 7px rgba(0,131,200,0)}}
+  .hm .hero h1{color:#fff;max-width:640px}
+  .hm .hero .lede{color:rgba(215,236,246,.86);font-size:18px;max-width:560px}
+  .hm .hero .ticks{display:flex;gap:18px;flex-wrap:wrap;margin-top:26px;font-size:14px;color:rgba(215,236,246,.8);font-weight:500}
+  .hm .hero .ticks li{display:flex;align-items:center;gap:7px}.hm .hero .ticks .i{color:var(--ok);width:15px;height:15px}
+  @keyframes hmin{to{opacity:1;transform:none}}
+  @keyframes hmbar{to{transform:none}}
+  @keyframes hmmarq{to{transform:translateX(-50%)}}
+  /* problem switch */
+  .hm .pswitch{display:inline-flex;background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:4px;margin-top:22px}
+  .hm .pswitch button{padding:9px 18px;border-radius:999px;font-weight:600;font-size:14px;color:var(--ink2);transition:.2s}
+  .hm .pswitch button.on{background:var(--ink);color:#fff}
+  .hm .pcopy .pt{margin-top:22px}
+  .hm .pcopy .pt p{display:none;color:var(--ink2);font-size:16px;text-wrap:pretty}.hm .pcopy .pt p.on{display:block;animation:hmfade .35s var(--ease)}
+  @keyframes hmfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .hm .pvis{border:1px solid var(--line);border-radius:var(--r3);background:#fff;padding:18px;box-shadow:0 30px 60px -40px rgba(10,25,45,.35)}
+  .hm .pvis svg{display:block;width:100%;height:auto}
+  .hm .pvis text{font-family:inherit;font-size:12px;font-weight:600;fill:var(--ink)}
+  .hm .pvis text.s{font-size:12px;fill:var(--ink3);font-weight:500}
+  .hm .pvis .ln{stroke:#C9D3DB;stroke-width:1.4;stroke-dasharray:4 4;fill:none}
+  .hm .pvis .flow{stroke:var(--blue);stroke-width:2;fill:none;stroke-dasharray:6 5;animation:hmdash 1.2s linear infinite}
+  @keyframes hmdash{to{stroke-dashoffset:-22}}
+  .hm .pvis .hub{fill:var(--blue)}
+  .hm .pvis .warn{fill:#FDE8E8;stroke:#E05252}
+  .hm .pvis .warn+text{fill:#B42318}
+  .hm .pvis .ok{fill:#E7F5EE;stroke:#1EA672}
+  .hm .pvis [data-p]{transition:opacity .35s var(--ease)}
+  .hm .pvis[data-mode="today"] [data-p="conn"]{opacity:0}
+  .hm .pvis[data-mode="conn"] [data-p="today"]{opacity:0}
+  /* tabs */
+  .hm .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:26px;border-bottom:1px solid var(--line);padding-bottom:0}
+  .hm .tab{display:inline-flex;align-items:center;gap:9px;padding:12px 16px 14px;font-weight:600;font-size:14px;color:var(--ink2);border-bottom:2px solid transparent;margin-bottom:-1px;transition:.18s}
+  .hm .tab .i{width:18px;height:18px;color:var(--ink3)}
+  .hm .tab:hover{color:var(--ink)}
+  .hm .tab[aria-selected="true"]{color:var(--blue-deep);border-color:var(--blue)}.hm .tab[aria-selected="true"] .i{color:var(--blue)}
+  .hm .pane{grid-area:1/1;opacity:0;visibility:hidden;pointer-events:none;align-self:start}
+  .hm .pane.on{opacity:1;visibility:visible;pointer-events:auto;animation:hmpop .3s var(--ease)}
+  @keyframes hmpop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+  /* Aether steps */
+  .hm .ae{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:center}
+  .hm .ae .steps{display:grid;gap:10px;margin-top:26px}
+  .hm .ae .step{display:flex;gap:14px;padding:16px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);transition:.25s;cursor:pointer}
+  .hm .ae .step .n{width:34px;height:34px;border-radius:10px;background:rgba(127,200,242,.14);color:var(--blue-soft);display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
+  .hm .ae .step b{display:block;font-size:16px}.hm .ae .step span{font-size:14px;color:rgba(215,236,246,.78)}
+  .hm .ae .step.on{background:rgba(0,131,200,.18);border-color:rgba(127,200,242,.5)}
+  .hm .ae .step.on .n{background:var(--blue);color:#fff}
+  .hm .aec{background:#fff;color:var(--ink);border-radius:var(--r2);overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
+  .hm .aec .body{padding:18px;display:grid;grid-template-columns:minmax(0,1fr);gap:12px;min-height:330px}
+  .hm .aec .msg{max-width:88%;min-width:0;padding:11px 14px;border-radius:14px;font-size:14px;line-height:1.5;opacity:0;transform:translateY(8px);transition:.4s var(--ease)}
+  .hm .aec .msg.sh{opacity:1;transform:none}
+  .hm .aec .msg.b{background:var(--bg2);border-bottom-left-radius:4px}
+  .hm .aec .msg.b b{display:block;margin-bottom:6px}
+  .hm .aec .done{display:flex;align-items:center;gap:8px;font-size:14px;color:#177A54;font-weight:600;background:#E7F5EE;padding:8px 12px;border-radius:10px;width:max-content;max-width:100%}
+  .hm .aec .typing{display:inline-flex;gap:4px;padding:10px 14px;background:var(--bg2);border-radius:14px;opacity:0;transition:.3s}
+  .hm .aec .typing.sh{opacity:1}
+  .hm .aec .typing i{width:6px;height:6px;border-radius:50%;background:var(--ink3);animation:hmtyp 1s infinite}.hm .aec .typing i:nth-child(2){animation-delay:.15s}.hm .aec .typing i:nth-child(3){animation-delay:.3s}
+  @keyframes hmtyp{0%,100%{opacity:.3}50%{opacity:1}}
+  /* outcome cards */
+  .hm .out{padding:26px 24px;border-radius:var(--r2);background:#fff;border:1px solid var(--line);position:relative;overflow:hidden;transition:.25s}
+  .hm .out:hover{transform:translateY(-3px);box-shadow:0 24px 48px -30px rgba(10,25,45,.35);border-color:var(--blue-soft)}
+  .hm .out::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--blue);transition:width .5s var(--ease)}
+  .hm .out:hover::before{width:100%}
+  .hm .out b{display:flex;align-items:flex-start;gap:.05em;font-size:clamp(32px,4.4vw,40px);font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--blue)}
+  .hm .out strong{display:block;margin-top:10px;font-size:16px}
+  .hm .out span{display:block;margin-top:6px;font-size:14px;color:var(--ink3)}
+  .hm .out .src{margin-top:14px;font-size:12px;color:var(--ink3);display:flex;gap:6px;align-items:center}
+  .hm .out .src .i{width:14px;height:14px;color:var(--blue)}
+  /* quotes */
+  .hm .quote{background:#fff;border:1px solid var(--line);border-radius:var(--r2);padding:26px 26px 22px;display:flex;flex-direction:column;gap:12px;transition:.25s}
+  .hm .quote:hover{box-shadow:0 24px 48px -30px rgba(10,25,45,.35);transform:translateY(-2px)}
+  .hm .quote .stars{color:#F5A623;font-size:14px;letter-spacing:2px}
+  .hm .quote blockquote{margin:0;font-size:16px;color:var(--ink2);line-height:1.6}
+  .hm .quote cite{font-style:normal;font-size:14px;color:var(--ink3)}.hm .quote cite b{color:var(--ink);display:block}
+  /* CTA base */
+  .hm .cta{--ok:var(--blue-hi);position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy) 0%,var(--navy3) 60%,#0B4F7A 100%);color:#fff}
+  .hm .cta::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 80% 20%,rgba(0,131,200,.35),transparent 60%)}
+  .hm .cta .frame{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:48px;align-items:center}
+  .hm .cta h2{color:#fff}
+  .hm .cta .lede{color:rgba(215,236,246,.85)}
+  .hm .cta .ex{margin-top:22px;display:grid;gap:8px}
+  .hm .cta .ex li{display:flex;gap:10px;align-items:center;font-size:16px;color:rgba(215,236,246,.9)}.hm .cta .ex .i{color:var(--ok);width:16px;height:16px}
+  .hm .form{background:#fff;color:var(--ink);border-radius:var(--r2);padding:26px;box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
+  .hm .form h3{font-size:20px}.hm .form p{font-size:14px;color:var(--ink3);margin-top:4px}
+  .hm .form .f{display:grid;gap:10px;margin-top:18px}
+  .hm .form input,.hm .form textarea,.hm .form select{width:100%;font:inherit;font-size:14px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+  .hm .form input:focus,.hm .form textarea:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
+  .hm .form .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .hm .form button{margin-top:4px;width:100%;justify-content:center}
+  .hm .form small{display:block;margin-top:10px;font-size:12px;color:var(--ink3);text-align:center}
+  @media (max-width:1100px){
+  .hm .hero .frame{grid-template-columns:1fr;padding-top:56px}
+  .hm .ae,.hm .cta .frame{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+  .hm .hero{min-height:0}
+  .hm h1{font-size:clamp(28px,8vw,40px)}
+  .hm .form .two{grid-template-columns:1fr}
+  .hm .tabs{overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.hm .tab{white-space:nowrap}
+  .hm .btn{width:100%;justify-content:center}
+  .hm .pswitch{width:100%}.hm .pswitch button{flex:1}
+  .hm .aec .msg{max-width:100%}
+  }
+  /* eyebrow: uppercase, tracked, led by a fading rule */
+  .hm .kicker{display:inline-flex;align-items:center;gap:11px;font-size:12px;font-weight:700;
+  line-height:1.25;letter-spacing:.17em;text-transform:uppercase;color:var(--blue);margin-bottom:18px}
+  .hm .kicker::before{content:"";flex:none;width:28px;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,currentColor,transparent)}
+  .hm .kicker i,.hm .hero .kicker i,.hm .ptag i{display:none}
+  .hm .shead.center{max-width:1040px}
+  .hm .shead.center .lede{max-width:860px}
+  .hm .corner,.hm .conn,.hm .wires{display:none!important}
+  .hm .strength::before{display:none}
+  /* restore colours the WP theme overrides on h1-h4, p */
+  .hm h1,.hm h2,.hm h3,.hm h4,.hm h5,.hm p,.hm li,.hm strong,.hm b,.hm em,.hm small,.hm dt,.hm dd{color:inherit}
+  .hm ul,.hm ol{margin:0;padding:0}
+  .hm .sec{position:relative}
+  .hm .cta .hl{color:var(--blue-soft)}
+  /* ===== hero ===== */
+  .hm{--maxw:1500px;--pad:clamp(20px,3vw,54px)}
+  .hm .hero .rv,.hm .scene{opacity:1;transform:none}
+  .hm .hero{min-height:min(92vh,880px);background:#0B1726}
+  .hm .hero video.bgv{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;filter:saturate(.8) contrast(1.05)}
+  /* navy wedge behind copy, montage on the right */
+  .hm .hero::before{background:linear-gradient(90deg,rgba(11,23,38,1) 0%,rgba(11,23,38,.97) 28%,rgba(11,23,38,.8) 50%,rgba(11,23,38,.45) 72%,rgba(11,23,38,.38) 100%),linear-gradient(180deg,rgba(11,23,38,.7),rgba(11,23,38,.12) 34%,rgba(11,23,38,.62) 100%)}
+  .hm .hero::after{display:block;height:120px;background:linear-gradient(180deg,transparent,#0B1726)}
+  .hm .hero .frame{grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);gap:clamp(28px,4vw,56px);padding-top:104px;padding-bottom:72px;align-items:center}
+  .hm .hero .frame>div:first-child{position:relative;z-index:2}
+  .hm .hero h1{font-size:clamp(32px,3.5vw,50px);max-width:none;line-height:1.1;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.5),0 1px 2px rgba(0,0,0,.35)}
+  .hm .hero .lede{max-width:54ch;font-size:18px;color:#EEF6FC;text-shadow:0 1px 12px rgba(0,0,0,.45)}
+  .hm .hero .kicker{text-shadow:0 1px 8px rgba(0,0,0,.4)}
+  .hm .hero .hl{color:#6CC8F7}
+  .hm .rot{display:inline-grid;vertical-align:top;text-align:left}
+  .hm .rot>span{grid-area:1/1;opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease);white-space:nowrap}
+  .hm .rot>span.on{opacity:1;transform:none}
+  .hm .hero .ticks{color:#E6F1F9;text-shadow:0 1px 10px rgba(0,0,0,.45)}
+  /* scene: signal > Aether > action cards */
+  .hm .scene{position:relative;height:560px;opacity:0;transform:translateY(20px);animation:hmin .9s var(--ease) .2s forwards}
+  .hm .ptag{position:absolute;left:0;top:6px;z-index:3;display:inline-flex;align-items:center;gap:8px;background:rgba(11,23,38,.62);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:7px 13px;font-size:12px;font-weight:600;max-width:46%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hm .ptag i{width:7px;height:7px;border-radius:50%;background:var(--ok);animation:hmpulse 1.9s infinite;flex:none}
+  .hm .ptag span{display:none}.hm .ptag span.on{display:inline}
+  /* floating cards */
+  .hm .fc{position:absolute;z-index:4;width:296px;background:#fff;color:var(--ink);border-radius:14px;box-shadow:0 30px 70px -30px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.06);padding:13px 15px 14px;font-size:12px}
+  .hm .fc.c1{right:0;top:0}.hm .fc.c2{left:0;top:200px;width:316px}.hm .fc.c3{right:0;bottom:0;width:320px}
+  .hm .fc>div{display:none}.hm .fc>div.on{display:block;animation:hmin .55s var(--ease) both}
+  .hm .fc .fh{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+  .hm .fc .fh .lg{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--blue);text-transform:uppercase}
+  .hm .fc .fh strong{font-size:14px;letter-spacing:-.01em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
+  .hm .fc .fh img{width:20px;height:20px}
+  .hm .st{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border-radius:999px;padding:3px 9px;white-space:nowrap}
+  .hm .st i{width:6px;height:6px;border-radius:50%;background:currentColor}
+  /* status colours: blue wash for ok/info, --red for warn/bad */
+  .hm .st.ok,.hm .st.info{background:var(--wash);color:var(--blue-deep)}
+  .hm .st.warn{background:color-mix(in srgb,var(--red) 7%,#fff);color:var(--red)}
+  .hm .fr{display:grid;gap:6px}
+  .hm .fr div{display:flex;align-items:center;gap:8px;font-size:12px}
+  .hm .fr div .i{width:14px;height:14px;color:var(--ink3);flex:none}
+  .hm .fr div b{margin-left:auto;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .hm .fr div b em{font-style:normal;font-weight:500;color:var(--ink3);font-size:12px;margin-left:3px}
+  .hm .fr div b.g{color:#177A54}.hm .fr div b.r{color:#B42318}.hm .fr div b.a{color:#8A5A08}
+  .hm .bar2{height:6px;border-radius:3px;background:var(--wash2);overflow:hidden;margin-top:8px}
+  .hm .bar2 i{display:block;height:100%;background:var(--blue);border-radius:3px;transform-origin:left;animation:hmbar 1s var(--ease) .3s both}
+  .hm .fc .ai p{margin:0;font-size:12px;line-height:1.5;color:var(--ink2);border-left:2px solid var(--blue);padding-left:10px}
+  .hm .fc .ai p b{color:var(--ink)}
+  .hm .fc .act{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+  .hm .fc .act span{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink2)}
+  .hm .fc .act span.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .hm .tl{display:grid;gap:5px}
+  .hm .tl div{display:flex;align-items:center;gap:9px;font-size:12px;background:#F6F9FB;border-radius:9px;padding:6px 10px}
+  .hm .tl div .i{width:14px;height:14px;color:var(--blue);flex:none}
+  .hm .tl div span{margin-left:auto;color:var(--blue-deep);font-weight:700;font-size:12px;white-space:nowrap}
+  .hm .tl div.wait span{color:var(--ink3)}
+  /* wires between the cards */
+  .hm .wires{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:visible}
+  .hm .wires path{fill:none;stroke:#5FC1F5;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .hm .wires path.dash{stroke-dasharray:5 6;opacity:.85}
+  .hm .wires circle{fill:#0B1726;stroke:#5FC1F5;stroke-width:1.6}
+  .hm .wires .dot{fill:#fff;stroke:none;filter:drop-shadow(0 0 6px #5FC1F5);opacity:0}
+  /* rail */
+  .hm .irail{margin-top:22px;display:flex;gap:6px;flex-wrap:wrap;max-width:none}
+  .hm .irail button{appearance:none;font:inherit;display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(11,23,38,.5);color:rgba(232,243,251,.9);font-size:12px;font-weight:600;cursor:pointer;position:relative;overflow:hidden;transition:.3s var(--ease)}
+  .hm .irail button .i{width:15px;height:15px;color:#5FC1F5}
+  .hm .irail button:hover{background:rgba(255,255,255,.1);color:#fff}
+  .hm .irail button.on{background:rgba(0,131,200,.28);border-color:rgba(127,200,242,.6);color:#fff}
+  .hm .irail button i.pg{position:absolute;left:0;bottom:0;height:2px;width:0;background:#5FC1F5}
+  .hm .irail button.on i.pg{animation:hmfill var(--dur,4.5s) linear forwards}
+  @keyframes hmfill{to{width:100%}}
+  /* ===== platform ===== */
+  .hm .about{background:#fff;padding:clamp(56px,7vw,96px) 0 clamp(36px,4vw,56px)}
+  .hm .about h2{font-size:clamp(28px,3.2vw,40px)}
+  .hm .about .lede{max-width:56ch}
+  /* three-layer stack with callouts */
+  .hm .pstack{display:grid;grid-template-columns:minmax(180px,230px) minmax(0,1fr) minmax(180px,230px);grid-template-areas:"c1 s c3" "c2 s c4";gap:18px clamp(16px,2.4vw,32px);align-items:center;margin-top:clamp(18px,2.2vw,30px)}
+  .hm .pscheme{grid-area:s;min-width:0}
+  .hm .pchip{border:1px solid var(--line);border-radius:14px;padding:15px 16px;background:#fff;transition:.28s var(--ease)}
+  .hm .pchip:hover{transform:translateY(-4px);border-color:var(--blue-soft);box-shadow:0 22px 40px -28px rgba(10,25,45,.4)}
+  .hm .pchip .i{width:22px;height:22px;color:var(--blue)}
+  .hm .pchip b{display:block;margin-top:9px;font-size:16px}
+  .hm .pchip span{display:block;font-size:12px;color:var(--ink2);margin-top:3px;line-height:1.5}
+  .hm .pchip.c1{grid-area:c1}.hm .pchip.c2{grid-area:c2}.hm .pchip.c3{grid-area:c3}.hm .pchip.c4{grid-area:c4}
+  .hm .scheme.iso3{max-width:800px}
+  .hm .scheme .g3f{stroke:var(--ink);stroke-width:1.2;stroke-linejoin:round}
+  .hm .scheme .g3sheen{opacity:.85;pointer-events:none}
+  .hm .scheme .g3hi{fill:none;stroke:#fff;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round;opacity:.9}
+  .hm .scheme .g3shd{fill:var(--blue);opacity:.2}
+  @media (max-width:1100px){.hm .pstack{grid-template-columns:1fr 1fr;grid-template-areas:"s s" "c1 c3" "c2 c4"}}
+  @media (max-width:760px){.hm .pstack{grid-template-columns:1fr;grid-template-areas:"s" "c1" "c2" "c3" "c4";gap:10px}}
+  /* platform scheme: isometric SVG */
+  .hm .scheme{position:relative;width:100%;max-width:720px;margin:0 auto}
+  .hm .scheme svg{display:block;width:100%;height:auto;overflow:visible}
+  .hm .scheme .ic{fill:#fff;stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+  .hm .scheme .f3{fill:var(--blue);stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round}
+  .hm .scheme .fw{fill:var(--wash);stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round}
+  .hm .scheme .ln{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .hm .scheme .th{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-linecap:round}
+  .hm .scheme .dsh{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-dasharray:5 5;animation:hmdashm 1.4s linear infinite}
+  @keyframes hmdashm{to{stroke-dashoffset:-10}}
+  .hm .scheme .pk{fill:var(--navy);stroke:#fff;stroke-width:1}
+  .hm .scheme .dot{fill:var(--blue)}
+  .hm .scheme .lb{font-size:12px;letter-spacing:.14em;text-transform:uppercase;fill:var(--ink)}
+  .hm .scheme .cap{font-size:12px;letter-spacing:.02em;fill:var(--ink2)}
+  .hm .scheme .sub{font-size:12px;letter-spacing:.16em;fill:var(--blue)}
+  /* isometric faces */
+  .hm .scheme .ft{fill:#fff;stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+  .hm .scheme .fl{fill:#F1F4F7;stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+  .hm .scheme .fr{fill:#E2E7EC;stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+  .hm .scheme .bl{fill:var(--blue);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+  .hm .scheme .bd{fill:var(--blue-deep);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+  .hm .scheme .gd{fill:#D0D9E2}
+  .hm .scheme .pulse{fill:none;stroke:var(--blue);stroke-width:1.2}
+  .hm .scheme .bn{font-size:12px;font-weight:700;letter-spacing:.04em;fill:var(--ink)}
+  .hm .scheme .act{font-family:var(--ff-head);font-size:14px;font-weight:700;letter-spacing:-.01em;fill:var(--ink)}
+  .hm .scheme.iso{max-width:800px}
+  .hm .offer .ogrid{perspective:1400px}
+  .hm .ocard.jtilt{transition:box-shadow .3s var(--ease),border-color .3s var(--ease);will-change:transform}
+  /* section heads: shared title/body hierarchy */
+  .hm .cust{padding:clamp(46px,5vw,70px) 0 clamp(30px,3.2vw,44px);border-bottom:1px solid var(--line);background:#fff}
+  .hm .cust .shead{margin-bottom:clamp(22px,2.6vw,34px)}
+  .hm .lslide{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .hm .lslide ul{list-style:none;margin:0;padding:8px 0;display:flex;align-items:center;--gap:72px;gap:var(--gap);width:max-content;animation:hmloop 52s linear infinite}
+  .hm .lslide:hover ul{animation-play-state:paused}
+  /* marquee: two identical copies; wrap = one copy + half a gap */
+  @keyframes hmloop{to{transform:translateX(calc(-50% - var(--gap)/2))}}
+  .hm .lslide li{flex:none;display:flex;align-items:center}
+  /* customer logos: full colour */
+  .hm .lslide img{height:56px;width:auto;max-width:180px;object-fit:contain;display:block;opacity:1;transition:opacity .3s var(--ease),transform .3s var(--ease),filter .3s var(--ease)}
+  .hm .lslide img:hover{transform:translateY(-3px) scale(1.045);filter:drop-shadow(0 12px 18px rgba(10,25,45,.22))}
+  @media (prefers-reduced-motion:reduce){.hm .lslide ul{animation:none}.hm .lslide{overflow-x:auto}}
+  /* numbers band; counts via data-count */
+  .hm .strength{position:relative;overflow:hidden}
+  .hm .strength .shead{margin-bottom:clamp(28px,3vw,40px)}
+  .hm .orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(70px);opacity:.75;z-index:0}
+  .hm .orb.o1{width:560px;height:560px;background:radial-gradient(circle,rgba(0,131,200,.38),rgba(0,131,200,0) 68%)}
+  .hm .orb.o2{width:520px;height:520px;background:radial-gradient(circle,rgba(15,163,177,.32),rgba(15,163,177,0) 68%)}
+  .hm .strength .orb.o1{left:4%;top:-60px;opacity:.9}
+  .hm .strength .orb.o2{right:4%;bottom:-140px;opacity:.9}
+  .hm .stats3{position:relative;max-width:1120px;margin:0 auto}
+  .hm .sgl{position:relative;list-style:none;margin:0;padding:clamp(30px,3.2vw,44px) clamp(14px,2vw,28px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:rgba(255,255,255,.64);backdrop-filter:blur(18px) saturate(1.25);-webkit-backdrop-filter:blur(18px) saturate(1.25);border:1px solid rgba(255,255,255,.9);border-radius:22px;box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 0 0 1px rgba(10,25,45,.06),0 36px 64px -44px rgba(10,25,45,.4)}
+  .hm .st3{position:relative;text-align:center;padding:8px clamp(12px,1.6vw,24px);display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0}
+  .hm .st3+.st3::before{content:"";position:absolute;left:0;top:12%;height:76%;width:1px;background:linear-gradient(180deg,transparent,rgba(10,25,45,.16),transparent)}
+  .hm .st3 b{font-size:clamp(40px,4.6vw,50px);font-weight:700;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink);display:inline-flex;align-items:flex-start}
+  .hm .st3 b em{font-style:normal;color:var(--blue);font-size:.52em;margin-top:.1em;margin-left:2px;letter-spacing:0}
+  .hm .st3 .lb{font-size:16px;font-weight:700;line-height:1.3;color:var(--ink);margin-top:8px}
+  /* descriptions: exactly 2 lines */
+  .hm .st3 .sm{font-size:14px;line-height:1.5;color:var(--ink3);max-width:32ch;text-wrap:balance;min-height:3em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+  /* partners: same marquee as customers */
+  .hm .pband2 .ptrack-wrap{margin-top:36px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .hm .ptrack{--gap:18px;display:flex;gap:var(--gap);width:max-content;padding:4px 0 14px;margin:0;list-style:none;animation:hmloop 58s linear infinite}
+  .hm .ptrack:hover{animation-play-state:paused}
+  .hm .pcd{position:relative;flex:0 0 clamp(220px,22vw,260px);min-height:172px;background:#fff;border-radius:var(--r2);padding:22px 20px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:14px;transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s var(--ease)}
+  .hm .pcd:hover{transform:translateY(-4px);box-shadow:0 24px 46px -30px rgba(10,25,45,.4)}
+  /* whole card is the link (stretched empty anchor) */
+  .hm .pcd-link{position:absolute;inset:0;border-radius:inherit;z-index:1}
+  .hm .pcd-link:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+  .hm .pcd-logo{height:40px;display:flex;align-items:center;justify-content:center}
+  .hm .pcd-logo img{max-height:100%;max-width:150px;object-fit:contain}
+  .hm .pcd-desc{margin:0;font-size:14px;line-height:1.5;color:var(--ink3);text-align:center}
+  @media (prefers-reduced-motion:reduce){.hm .ptrack{animation:none}.hm .pband2 .ptrack-wrap{overflow-x:auto}}
+  @media (max-width:640px){.hm .ptrack{animation-duration:40s}.hm .pcd{flex-basis:clamp(210px,62vw,250px)}}
+  /* ===== who we serve ===== */
+  .hm .serve .cards{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:64px}
+  .hm .conn{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:0}
+  .hm .conn path{fill:none;stroke:var(--blue);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:5 6}
+  .hm .conn .m{stroke:#fff;stroke-width:4;stroke-dasharray:none}
+  .hm .conn circle{fill:#fff;stroke:var(--blue);stroke-width:1.6}
+  .hm .conn circle.hb{fill:var(--blue)}
+  .hm .wcard{position:relative;z-index:1;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--r3);overflow:hidden;text-decoration:none;color:inherit;padding:0;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+  .hm .wcard:hover{transform:translateY(-6px);border-color:var(--blue-soft);box-shadow:0 34px 60px -36px rgba(10,25,45,.4)}
+  /* media edge to edge (theme pads bare <a>) */
+  .hm .wcard .med{position:relative;height:clamp(250px,18vw,320px);margin:-1px -1px 0;background:var(--navy);overflow:hidden}
+  .hm .wcard .med img,.hm .wcard .med video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s var(--ease)}
+  .hm .wcard .med video{z-index:1;opacity:0;transition:opacity .6s var(--ease),transform 1s var(--ease)}
+  .hm .wcard .med video.on{opacity:1}
+  .hm .wcard:hover .med img,.hm .wcard:hover .med video{transform:scale(1.04)}
+  .hm .wcard .med::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,27,46,.05),rgba(13,27,46,.7))}
+  .hm .wcard .wt{position:absolute;top:16px;left:0;z-index:2;font-size:12px;font-weight:700;letter-spacing:.12em;padding:6px 40px 6px 14px;border-left:3px solid var(--blue-hi);background:linear-gradient(90deg,rgba(0,106,163,.9),rgba(0,131,200,.5) 60%,rgba(0,131,200,0));color:#fff}
+  .hm .wcard .proof{position:absolute;left:0;right:0;bottom:0;z-index:2;color:#fff;display:flex;gap:12px;align-items:center;padding:14px 16px;background:linear-gradient(90deg,rgba(0,106,163,.92),rgba(0,131,200,.6) 55%,rgba(0,131,200,.08));border-top:1px solid;border-image:linear-gradient(90deg,var(--blue-hi),rgba(127,200,242,.5) 60%,transparent) 1}
+  .hm .wcard .proof b{display:inline-flex;align-items:flex-start;gap:.05em;font-size:32px;font-weight:700;letter-spacing:-.04em;line-height:1}
+  .hm .wcard .proof span{font-size:12px;color:#fff;max-width:200px;line-height:1.3}
+  .hm .wcard .wb{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+  /* titles: always two lines so cards align */
+  .hm .wcard h3{font-size:24px;line-height:1.2;letter-spacing:-.015em;min-height:2.4em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+  .hm .wcard .sub{margin-top:8px;font-size:14px;color:var(--ink2);line-height:1.5}
+  .hm .wcard .lab{margin-top:16px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+  .hm .wcard .chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 10px;margin-top:10px}
+  .hm .wcard .chips span{display:grid;grid-template-columns:22px minmax(0,1fr);align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--ink);line-height:1.3}
+  .hm .wcard .chips span .i{width:22px;height:22px;padding:4px;box-sizing:border-box;border-radius:8px;background:var(--wash);border:1px solid var(--wash2);color:var(--blue-deep)}
+  /* one chip column where two would be too narrow */
+  @media (max-width:1300px) and (min-width:1101px){.hm .wcard .chips{grid-template-columns:1fr}}
+  .hm .wcard ul{margin-top:8px;display:grid;gap:7px}
+  .hm .wcard li{display:flex;gap:9px;align-items:flex-start;font-size:14px;font-weight:600;color:var(--ink)}
+  .hm .wcard li .i{color:var(--ok);width:16px;height:16px;margin-top:2px;flex:none}
+  .hm .wcard li span{color:var(--ink3);font-weight:400}
+  .hm .wcard .more{margin-top:auto;padding-top:18px}
+  /* cards share one subgrid so rows align */
+  @supports (grid-template-rows:subgrid){
+  .hm .wcard{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:subgrid;grid-row:span 7}
+  .hm .wcard .wb{display:contents}
+  .hm .wcard .wb>*{padding-left:22px;padding-right:22px}
+  .hm .wcard .wk{padding-top:22px}
+  .hm .wcard .sub{min-height:3em}
+  .hm .wcard .more{padding-bottom:24px}
+  }
+  .hm .corner{position:absolute;width:7px;height:7px;border-radius:50%;background:#fff;border:1.6px solid var(--blue);z-index:3}
+  .hm .corner.tl{left:-4px;top:-4px}.hm .corner.tr{right:-4px;top:-4px}.hm .corner.bl{left:-4px;bottom:-4px}.hm .corner.br{right:-4px;bottom:-4px}
+  /* ===== offerings ===== */
+  .hm .offer .ogrid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:46px}
+  /* AI layer band above the four pillars */
+  .hm .olay{position:relative;display:grid;grid-template-columns:48px minmax(0,1fr) minmax(0,.86fr);column-gap:26px;row-gap:14px;align-items:start;margin-top:64px;background:#fff;border:1px solid var(--line);border-radius:var(--r2);padding:24px 26px 22px;text-decoration:none;color:inherit;overflow:hidden;transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
+  .hm .olay::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+  .hm .olay:hover{border-color:var(--blue-soft);box-shadow:0 28px 52px -32px rgba(10,25,45,.42)}
+  .hm .olay:hover::after{transform:scaleX(1)}
+  .hm .olay .bd{grid-column:1;grid-row:1;width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center}
+  .hm .olay .bd .i{width:22px;height:22px}
+  .hm .olay .ot{grid-column:2;grid-row:1;min-width:0}
+  .hm .olay .lk{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+  .hm .olay b.t{display:block;margin-top:6px;font-size:20px;letter-spacing:-.01em}
+  .hm .olay em{font-style:normal;display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-top:4px}
+  .hm .olay p{margin:11px 0 0;font-size:14px;color:var(--ink2);line-height:1.55;max-width:62ch}
+  .hm .olay ul{grid-column:3;grid-row:1/span 2;align-self:center;display:grid;gap:10px;padding-left:26px;border-left:1px solid var(--line)}
+  .hm .olay li{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:var(--ink)}
+  .hm .olay li .i{width:15px;height:15px;color:var(--blue);margin-top:3px;flex:none}
+  .hm .olay .go{grid-column:2;grid-row:2;align-self:end;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--blue)}
+  .hm .olay .go .i{width:15px;height:15px;transition:transform .3s var(--ease)}
+  .hm .olay:hover .go .i{transform:translateX(4px)}
+  .hm .ocard{position:relative;z-index:1;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--r2);padding:24px 24px 22px;text-decoration:none;color:inherit;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+  .hm .ocard::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+  /* narrow 4-col range: a little more text width so the line limits hold */
+  @media (max-width:1240px) and (min-width:1101px){.hm .ocard{padding-left:18px;padding-right:18px}.hm .ocard em{letter-spacing:.04em}}
+  .hm .ocard:hover{transform:translateY(-5px);border-color:var(--blue-soft);box-shadow:0 28px 52px -32px rgba(10,25,45,.42)}
+  .hm .ocard:hover::after{transform:scaleX(1)}
+  .hm .ocard .bd{width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center}
+  .hm .ocard .bd .i{width:22px;height:22px}
+  .hm .ocard b.t{display:block;margin-top:16px;font-size:18px;letter-spacing:-.01em}
+  /* subtitle: 1 line */
+  .hm .ocard em{font-style:normal;display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* description: exactly 3 lines */
+  .hm .ocard p{margin:11px 0 0;font-size:14px;color:var(--ink2);line-height:1.55;min-height:4.65em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+  .hm .ocard ul{margin-top:14px;display:grid;gap:6px;padding-top:14px;border-top:1px solid var(--line)}
+  .hm .ocard li{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:var(--ink)}
+  .hm .ocard li .i{width:15px;height:15px;color:var(--blue);margin-top:3px;flex:none}
+  .hm .ocard .go{margin-top:auto;padding-top:16px;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--blue)}
+  .hm .ocard .go .i{width:15px;height:15px;transition:transform .3s var(--ease)}
+  .hm .ocard:hover .go .i{transform:translateX(4px)}
+  /* three quote cards + results band */
+  .hm .say .sgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px;align-items:stretch}
+  /* card hover matches .ocard */
+  .hm .rq{position:relative;display:flex;flex-direction:column;gap:14px;background:#fff;border:1px solid var(--line);border-radius:var(--r2);padding:26px 26px 24px;overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+  .hm .rq::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--blue);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+  .hm .rq::before{content:"\201C";position:absolute;right:20px;top:2px;font-family:var(--ff-head);font-size:50px;line-height:1;font-weight:700;color:var(--wash);pointer-events:none}
+  .hm .rq:hover{transform:translateY(-5px);border-color:var(--blue-soft);box-shadow:0 28px 52px -32px rgba(10,25,45,.42)}
+  .hm .rq:hover::after{transform:scaleX(1)}
+  .hm .rq>*{position:relative}
+  .hm .rq .who{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+  .hm .rq .who .i{width:16px;height:16px}
+  .hm .rq .co{display:flex;flex-wrap:wrap;gap:6px}
+  .hm .rq .co span{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--wash);color:var(--blue-deep)}
+  .hm .rq .co span+span{background:var(--bg2);color:var(--ink2);border:1px solid var(--line)}
+  .hm .rq .stars{color:#F5A623;font-size:14px;letter-spacing:2px}
+  .hm .rq blockquote{margin:0;font-size:16px;color:var(--ink2);line-height:1.62;text-wrap:pretty;flex:1}
+  .hm .rq cite{font-style:normal;font-size:14px;color:var(--ink3);padding-top:14px;border-top:1px solid var(--line)}
+  .hm .rq cite b{display:block;color:var(--ink)}
+  .hm .rq .more{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--blue);text-decoration:none}
+  .hm .rq .more .i{width:15px;height:15px;transition:transform .3s var(--ease)}
+  .hm .rq .more:hover .i{transform:translateX(4px)}
+  /* results ledger: 3x2 grid, bar fills on reveal */
+  .hm .rled{margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:var(--r2);overflow:hidden;box-shadow:0 30px 50px -40px rgba(13,27,46,.5)}
+  .hm .rled .rlh{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 24px;border-bottom:1px solid var(--line);background:var(--bg2);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+  .hm .rled .rlh span+span{color:var(--ink3);white-space:nowrap}
+  .hm .rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hm .rgrid a{position:relative;display:flex;flex-direction:column;gap:9px;padding:22px 24px 24px;
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-decoration:none;color:inherit;min-width:0;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease)}
+  .hm .rgrid a::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--blue);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+  .hm .rgrid a:nth-child(3n){border-right:0}
+  .hm .rgrid a:nth-child(n+4){border-bottom:0}
+  .hm .rgrid a:hover{z-index:2;transform:translateY(-5px);background:#fff;
+  box-shadow:0 28px 52px -32px rgba(10,25,45,.42)}
+  .hm .rgrid a:hover::after{transform:scaleX(1)}
+  .hm .rgrid .ix{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+  .hm .rgrid .ix em{font-style:normal;color:var(--blue-deep);background:var(--wash);border:1px solid var(--wash2);padding:3px 9px;border-radius:999px;letter-spacing:.06em;white-space:nowrap}
+  /* units sit on the baseline */
+  .hm .rgrid b{display:inline-flex;align-items:flex-start;gap:.05em;font-size:clamp(32px,4.4vw,40px);
+  font-weight:700;letter-spacing:-.045em;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums;
+  margin-top:4px}
+  .hm .out b sup,.hm .wcard .proof b sup,.hm .rgrid b sup{position:static;top:auto;vertical-align:baseline;
+  font-size:.42em;line-height:1;font-weight:700;letter-spacing:-.01em;margin:0;transform:translateY(.12em)}
+  .hm .rgrid b sup{color:var(--blue)}
+  .hm .rgrid strong{margin-top:6px;font-size:14px;line-height:1.3;color:var(--ink)}
+  .hm .rgrid .src{font-size:12px;color:var(--ink3);line-height:1.35}
+  .hm .say .sfoot{display:flex;justify-content:center;margin-top:30px}
+  /* ===== CTA ===== */
+  .hm .cta{background:var(--navy);padding:0}
+  .hm .cta::before{display:none}
+  .hm .cta .frame{max-width:none;padding:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;align-items:stretch}
+  .hm .cta .copy{padding:clamp(56px,7vw,104px) clamp(24px,5vw,72px) clamp(56px,7vw,104px) max(var(--pad),calc((100vw - var(--maxw))/2 + var(--pad)))}
+  .hm .cta .cmed{position:relative;min-height:520px;isolation:isolate;overflow:hidden}
+  .hm .cta .cthumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% center}
+  /* film: still + play button opens the modal */
+  .hm .cta .cplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;display:grid;
+  grid-auto-flow:row;justify-items:center;gap:12px;padding:0;border:0;background:none;color:#fff;cursor:pointer;
+  font:inherit;font-size:14px;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(4,10,18,.6)}
+  .hm .cta .cplay svg{width:26px;height:26px;margin-left:3px}
+  .hm .cta .cplay::before{content:"";grid-area:1/1;width:74px;height:74px;border-radius:50%;
+  background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.55);backdrop-filter:blur(6px);
+  transition:transform .24s var(--ease),background .24s,border-color .24s}
+  .hm .cta .cplay svg{grid-area:1/1;align-self:center;justify-self:center;position:relative}
+  .hm .cta .cplay span{grid-area:2/1}
+  .hm .cta .cplay:hover::before{transform:scale(1.08);background:var(--blue);border-color:var(--blue)}
+  .hm .cta .cplay:focus-visible{outline:none}
+  .hm .cta .cplay:focus-visible::before{outline:3px solid #fff;outline-offset:4px}
+  .hm .cta .cmed::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(13,27,46,.4) 30%,rgba(13,27,46,.28) 100%)}
+  /* ===== FAQ ===== */
+  .hm #faq,.hm #offer{scroll-margin-top:84px}
+  @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+  .hm .faqx{max-width:820px;margin:0 auto;border-top:1px solid var(--line)}
+  .hm .faqi{border-bottom:1px solid var(--line)}
+  .hm .faqi>summary{list-style:none;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;cursor:pointer;padding:21px 2px;font-size:18px;font-weight:700;line-height:1.4;letter-spacing:-.01em;color:var(--ink);transition:color .18s}
+  .hm .faqi>summary::-webkit-details-marker{display:none}
+  .hm .faqi>summary::marker{content:""}
+  .hm .faqi>summary:hover{color:var(--blue)}
+  .hm .faqi>summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
+  .hm .fqi{position:relative;flex:none;width:26px;height:26px;margin-top:1px;border-radius:50%;background:var(--wash);transition:background .2s}
+  .hm .fqi::before,.hm .fqi::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:2px;border-radius:2px;background:var(--blue);transform:translate(-50%,-50%);transition:transform .25s var(--ease),opacity .25s var(--ease),background .2s}
+  .hm .fqi::after{transform:translate(-50%,-50%) rotate(90deg)}
+  .hm .faqi[open] .fqi{background:var(--blue)}
+  .hm .faqi[open] .fqi::before,.hm .faqi[open] .fqi::after{background:#fff}
+  .hm .faqi[open] .fqi::after{transform:translate(-50%,-50%) rotate(0deg);opacity:0}
+  .hm .fqa{padding:0 46px 24px 2px;font-size:16px;line-height:1.68;color:var(--ink2)}
+  .hm .faqi[open] .fqa{animation:hmfq .28s var(--ease)}
+  @keyframes hmfq{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .hm .faqx{max-width:none;margin:0;border-top:0;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  .hm .faqcol{background:#fff;border-radius:12px;overflow:hidden}
+  .hm .faqcol .faqi:last-child{border-bottom:0}
+  .hm .faqi>summary{align-items:center;padding:20px 22px;font-size:16px;font-weight:500;letter-spacing:0}
+  .hm .faqi[open]>summary{color:var(--blue)}
+  .hm .fqi,.hm .faqi[open] .fqi{width:22px;height:22px;margin:0;border-radius:0;background:none}
+  .hm .fqi::after{display:none}
+  .hm .fqi::before,.hm .faqi[open] .fqi::before{width:9px;height:9px;border-radius:1px;background:none;border-right:2px solid var(--ink3);border-bottom:2px solid var(--ink3);transform:translate(-50%,-68%) rotate(45deg)}
+  .hm .faqi[open] .fqi::before{border-color:var(--blue);transform:translate(-50%,-30%) rotate(225deg)}
+  .hm .fqa{padding:0 52px 22px 22px}
+  @media (max-width:860px){.hm .faqx{grid-template-columns:1fr;gap:18px}}
+  /* ===== responsive ===== */
+  @media (max-width:1100px){
+  .hm .hero .frame{grid-template-columns:minmax(0,1fr);padding-top:96px}
+  .hm .hero .frame>div{min-width:0}.hm .irail{min-width:0;max-width:100%}
+  .hm .scene{max-width:720px;margin:0 auto}
+  .hm .sgl{grid-template-columns:1fr 1fr;row-gap:26px}
+  .hm .st3:nth-child(3)::before{display:none}
+  .hm .st3:nth-child(n+3){padding-top:26px}
+  .hm .st3:nth-child(n+3)::after{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(10,25,45,.16),transparent)}
+  .hm .serve .cards,.hm .offer .ogrid,.hm .say .sgrid{grid-template-columns:1fr 1fr}
+  .hm .wcard .med{height:260px}
+  .hm .conn{display:none}
+  .hm .cta .frame{grid-template-columns:1fr}
+  .hm .cta .cmed{min-height:0;aspect-ratio:16/10;padding:0}
+  .hm .cta .cthumb{opacity:.55}
+  }
+  @media (max-width:900px){
+  .hm .serve .cards,.hm .offer .ogrid,.hm .say .sgrid{grid-template-columns:1fr}
+  .hm .serve .cards{margin-top:40px}.hm .offer .ogrid{margin-top:16px}
+  .hm .olay{grid-template-columns:48px minmax(0,1fr);margin-top:40px}
+  .hm .olay ul{grid-column:1/span 2;grid-row:auto;padding:14px 0 0;border-left:0;border-top:1px solid var(--line)}
+  .hm .olay .go{grid-column:1/span 2;grid-row:auto}
+  }
+  @media (max-width:760px){
+  .hm .rot{display:inline}.hm .rot>span{display:none;white-space:normal;opacity:1;transform:none}.hm .rot>span.on{display:inline}
+  .hm .hero h1{font-size:32px}
+  .hm .scene{height:auto}
+  .hm .ptag{position:relative;top:auto;left:auto;max-width:100%}
+  .hm .fc,.hm .fc.c1,.hm .fc.c2,.hm .fc.c3{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:100%;margin-top:10px}
+  .hm .wires{display:none}
+  .hm .hero video.bgv{opacity:.55}
+  .hm .irail{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch}
+  .hm .irail button{white-space:nowrap;flex:none}
+  .hm .rgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hm .rgrid a{padding:18px 16px 20px}
+  .hm .rgrid a:nth-child(3n){border-right:1px solid var(--line)}
+  .hm .rgrid a:nth-child(2n){border-right:0}
+  .hm .rgrid a:nth-child(n+4){border-bottom:1px solid var(--line)}
+  .hm .rgrid a:nth-child(n+5){border-bottom:0}
+  .hm .rled .rlh{flex-direction:column;align-items:flex-start;gap:4px}
+  .hm .wcard .chips{grid-template-columns:1fr}
+  .hm .st3{padding:6px 8px}
+  .hm .st3 b{font-size:40px}
+  .hm .st3 .sm{font-size:12px}
+  .hm .sgl{padding:24px 10px;border-radius:18px}
+  .hm .wcard .med{height:220px}
+  .hm .lslide img{height:40px}.hm .lslide ul{--gap:40px}
+  /* phones: nothing may widen the page */
+  .hm{--maxw:100%;--pad:18px;width:100%;max-width:100vw;overflow-x:hidden}
+  .hm .pg,.hm .hero{width:100%;max-width:100vw;overflow-x:hidden}
+  .hm .hero{min-height:auto}
+  .hm .hero .frame{display:block;width:100%;max-width:100vw;padding:92px 18px 44px;overflow:hidden}
+  .hm .hero .frame>*{max-width:100%;min-width:0}
+  .hm .hero .frame>div:first-child{position:relative;z-index:5}
+  .hm .hero h1,.hm .hero .lede,.hm .hero .ticks,.hm .btnrow,.hm .irail{max-width:calc(100vw - 36px);overflow-wrap:anywhere}
+  .hm .hero .btnrow{display:grid;grid-template-columns:1fr;gap:10px}
+  .hm .hero .btn{width:100%;justify-content:center}
+  .hm .hero .ticks{display:grid;grid-template-columns:1fr;gap:10px}
+  .hm .scene{width:100%;max-width:100%;height:auto;margin:28px 0 0;overflow:hidden}
+  .hm .scene *{min-width:0}
+  .hm .fc,.hm .fc.c1,.hm .fc.c2,.hm .fc.c3{width:100%;max-width:100%;box-sizing:border-box}
+  .hm .fc .fr div{min-width:0}
+  .hm .fc .fh strong,.hm .fc .ai p,.hm .tl div b{overflow:hidden;text-overflow:ellipsis}
+  .hm .fr div b,.hm .tl div span{max-width:45%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .hm .faqi>summary{font-size:16px;gap:14px;padding:16px 18px}
+  .hm .fqa{padding:0 18px 18px;font-size:16px}
+  }
+  @media (prefers-reduced-motion:reduce){
+  .hm .faqi[open] .fqa{animation:none}
+  .hm .fqi::before,.hm .fqi::after{transition:none}
+  .hm .scheme .dsh{animation:none}.hm .scheme .pk{display:none}
+  }
+  /* Formidable form 44 (shortcode): light skin inside .hm .form */
+  .hm .form .frm_fields_container{margin-top:18px}
+  /* undo the house skin's dark card colours */
+  .with_frm_style .frm_form_fields>fieldset,.frm_forms[class*=frm_style_] .frm_fields_container{background:#fff!important}
+  .frm_forms[class*=frm_style_] input:not([type=checkbox],[type=radio],[type=submit],[type=hidden],[type=file]),.frm_forms[class*=frm_style_] select,.frm_forms[class*=frm_style_] textarea{background:#fff none!important;border:1px solid #c7c7c7!important}
+  /* field text follows the site theme: dark on white (light), white on graphite (dark) */
+  .frm_forms[class*=frm_style_] input:not([type=checkbox],[type=radio],[type=submit],[type=hidden],[type=file]),.frm_forms[class*=frm_style_] select,.frm_forms[class*=frm_style_] textarea{color:#1F2023!important}
+  :is(html.dark,[data-theme="dark"]) .frm_forms[class*=frm_style_] input:not([type=checkbox],[type=radio],[type=submit],[type=hidden],[type=file]),:is(html.dark,[data-theme="dark"]) .frm_forms[class*=frm_style_] select,:is(html.dark,[data-theme="dark"]) .frm_forms[class*=frm_style_] textarea{background:#17181B none!important;color:#FFFFFF!important;border-color:rgba(255,255,255,.16)!important}
+  :is(html.dark,[data-theme="dark"]) .frm_forms[class*=frm_style_] input:not([type=checkbox],[type=radio],[type=submit],[type=hidden],[type=file])::placeholder,:is(html.dark,[data-theme="dark"]) .frm_forms[class*=frm_style_] textarea::placeholder{color:rgba(255,255,255,.55)!important}
+  .hm .form .frm_forms .frm_submit button{display:inline-flex!important;align-items:center;justify-content:center;gap:9px;border-radius:999px!important}
+  .hm .form .frm_forms .frm_submit button::after{content:""!important;width:17px;height:17px;flex:none;background:currentColor;-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14M13 6l6 6-6 6'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14M13 6l6 6-6 6'/></svg>") center/contain no-repeat;transition:transform .18s}
+  .hm .form .frm_forms .frm_submit button:hover::after{transform:translateX(3px)}
+  .hm .form .frm_error_style,.hm .form .frm_message{text-align:left}
+  /* modal: native <dialog> */
+  .hm .dmodal{border:0;background:transparent;padding:clamp(12px,3vw,28px);overscroll-behavior:contain}
+  .hm .dmodal[open]{position:fixed;inset:0;margin:0;width:100%;max-width:100%;height:100%;max-height:100%;
+  display:grid;place-items:center;overflow:auto}
+  .hm .dmodal::backdrop{background:rgba(13,27,46,.58)}
+  .hm .dmodal .form{position:relative;width:min(520px,100%);
+  max-height:calc(100vh - 2*clamp(12px,3vw,28px));max-height:calc(100dvh - 2*clamp(12px,3vw,28px));
+  overflow-y:auto;overscroll-behavior:contain;
+  padding-bottom:max(26px,env(safe-area-inset-bottom));animation:dmIn .3s var(--ease)}
+  .hm .dmodal h3{padding-right:44px}
+  .hm .dmodal .dmx{position:absolute;top:8px;right:8px;width:44px;height:44px;display:grid;place-items:center;
+  padding:0;border:0;border-radius:50%;background:transparent;color:inherit;opacity:.55;cursor:pointer;
+  transition:opacity .18s,background .18s}
+  .hm .dmodal .dmx:hover{opacity:1;background:rgba(122,130,137,.14)}
+  .hm .dmodal .dmx:focus-visible{opacity:1;outline:2px solid var(--blue);outline-offset:2px}
+  .hm .dmodal .dmx svg{width:18px;height:18px}
+  @keyframes dmIn{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.hm .dmodal .form{animation:none}}
+  /* short viewports: card scrolls inside */
+  @media (max-height:560px){.hm .dmodal{padding:8px}.hm .dmodal .form{padding:20px}}
+  /* film modal: 16:9 stage */
+  .hm .fmodal .fwrap{position:relative;width:min(1040px,100%);aspect-ratio:16/9;max-height:calc(100dvh - 88px)}
+  .hm .fmodal .film{width:100%;height:100%;display:block;background:#000;border-radius:var(--r2);
+  box-shadow:0 40px 90px -30px rgba(4,10,18,.75)}
+  .hm .fmodal::backdrop{background:rgba(4,10,18,.86)}
+  .hm .fmodal .dmx{top:-46px;right:0;color:#fff;opacity:.85}
+  .hm .fmodal .dmx:hover{opacity:1;background:rgba(255,255,255,.18)}
+  @media (max-width:760px){
+  .hm .fmodal .fwrap{aspect-ratio:auto}
+  .hm .fmodal .film{aspect-ratio:16/9;height:auto}
+  .hm .fmodal .dmx{top:-44px}
+  }
+  /* modal stays light whatever the site theme */
+  .hm dialog.dmodal:not([open]){display:none!important}
+  .hm dialog.dmodal[open]{display:grid!important;place-items:center;position:fixed!important;inset:0!important;
+  margin:0!important;width:100%!important;max-width:100%!important;height:100%!important;max-height:100%!important;
+  background:transparent!important;border:0!important}
+  .hm dialog.dmodal:not(.fmodal){color-scheme:light!important;color:#1F2023!important}
+  .hm dialog.dmodal:not(.fmodal)::backdrop{background:rgba(13,27,46,.58)!important}
+  .hm dialog.dmodal[data-theme="light"]>.form{background:#fff!important;color:#1F2023!important;
+  border:0!important;border-radius:16px!important;box-shadow:0 44px 90px -34px rgba(0,45,80,.46)!important}
+  .hm dialog.dmodal[data-theme="light"]>.form>h3{color:#1F2023!important}
+  .hm dialog.dmodal[data-theme="light"]>.form>p,.hm dialog.dmodal[data-theme="light"]>.form>small{color:#7A8289!important}
+  /* phones: CTA columns minmax(0,1fr) */
+  @media (max-width:900px){
+  .hm .cta .frame{grid-template-columns:minmax(0,1fr)}
+  .hm .cta .copy,.hm .cta .cmed{min-width:0}
+  .hm .cta .copy .btnrow{max-width:100%}
+  .hm .cta .copy .btn{max-width:100%;overflow-wrap:anywhere;white-space:normal}
+  }
+</style>
+
+<div class="hm">
+
+  <main class="pg">
+
+    <section class="hero hm-sec-hero" id="top">
+      <video class="bgv" id="bgv" autoplay muted loop playsinline preload="auto" poster="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-hero-montage-poster.jpg" aria-hidden="true"><source src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-hero-montage.mp4" type="video/mp4"></video>
+      <div class="frame">
+        <div>
+          <p class="kicker rv"><i></i>Solution accelerators built with practical AI</p>
+          <h1 class="rv" style="--rvd:.05s">Practical AI, delivered for <span class="hl rot" id="rot"><span class="on">OEMs.</span><span class="">manufacturers.</span><span class="">enterprises.</span></span></h1>
+          <p class="lede rv" style="--rvd:.1s">We connect the systems you already run, ERP, CRM, plant and cloud, and put practical AI on top. First results in weeks.</p>
+          <div class="btnrow rv" style="--rvd:.15s"><a class="btn primary hm-btn-hero-demo" href="#contact" data-modal="#demoModal">Schedule a demo<span class=arw><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="btn glass hm-btn-hero-serve" href="#serve">See who we serve<span class=arw><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+          <ul class="ticks rv" style="--rvd:.2s"><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>Works with the systems you already run</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>First results in weeks</li></ul>
+          <div class="irail rv" style="--rvd:.25s" role="tablist" aria-label="Who we serve"><button type="button" role="tab" aria-selected="true" class="on hm-btn-hero-tab" data-i="0"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v10l-8 4-8-4V7zM4 7l8 4 8-4M12 11v10"/></svg>OEM<i class="pg"></i></button><button type="button" role="tab" aria-selected="false" class="hm-btn-hero-tab" data-i="1"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V10l5 3v-3l5 3v-3l5 3v7zM7 20v-3M12 20v-3M17 20v-3"/></svg>Manufacturing<i class="pg"></i></button><button type="button" role="tab" aria-selected="false" class="hm-btn-hero-tab" data-i="2"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>Enterprise<i class="pg"></i></button></div>
+        </div>
+        <div class="scene" id="scene">
+          <span class="ptag"><i></i><span class="on">Cartoner CX 240 · at a customer site</span><span class="">Line 3 · body assembly · shift B</span><span class="">Group view · 3 systems joined</span></span>
+          <svg class="wires" aria-hidden="true"></svg>
+          <div class="fc c1"><div class="on"><div class="fh"><span class="lg">iSERV</span><strong>Cartoner CX 240</strong><span class="st warn"><i></i>Drifting</span></div>
+                <div class="fr"><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15a8 8 0 0116 0"/><path d="M12 15l4-5"/><circle cx="12" cy="15" r="1.5"/></svg>Vibration RMS<b class="a" data-count="4.6">4.6<em>mm/s</em></b></div><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Runtime this month<b data-count="412">412<em>h</em></b></div><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2 20a7 7 0 0114 0M16 4a3.5 3.5 0 010 7M22 20a6 6 0 00-5-6"/></svg>Customer<b>Dairy plant, Ohio</b></div></div></div><div class=""><div class="fh"><span class="lg">Performance</span><strong>Line 3 · shift B</strong><span class="st ok"><i></i>Running</span></div>
+                <div class="fr"><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg>OEE<b class="g" data-count="84">84<em>%</em></b></div><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15a8 8 0 0116 0"/><path d="M12 15l4-5"/><circle cx="12" cy="15" r="1.5"/></svg>Cycle time<b class="a" data-count="61.2">61.2<em>s</em></b></div><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Downtime today<b data-count="14">14<em>min</em></b></div></div><div class="bar2"><i style="width:84%"></i></div></div><div class=""><div class="fh"><span class="lg">iHub</span><strong>One record per customer</strong><span class="st ok"><i></i>Live</span></div>
+                <div class="fr"><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Source systems joined<b data-count="3">3</b></div><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2 20a7 7 0 0114 0M16 4a3.5 3.5 0 010 7M22 20a6 6 0 00-5-6"/></svg>Customer records<b data-count="1.2">1.2<em>M</em></b></div><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Refreshed<b data-count="12">12<em>min ago</em></b></div></div></div></div>
+          <div class="fc c2"><div class="on"><div class="ai"><div class="fh"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-logo-aether-ion.png" alt=""><strong>Aether</strong><span class="st info"><i></i>Just now</span></div>
+                <p><b>Likely cause:</b> infeed belt tension, drifting since Tuesday. Spare matched from the machine's own bill of materials: belt kit BK 240, in stock.</p><div class="act"><span class="on">Raise ticket</span><span>Reserve spare</span></div></div></div><div class=""><div class="ai"><div class="fh"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-logo-aether-ion.png" alt=""><strong>Aether</strong><span class="st info"><i></i>Shift report</span></div>
+                <p><b>Cycle time is up 6 percent at station 12</b> since 14:10. Pattern matches fixture wear seen in March. Suggest a check at the next planned stop, not a line stop.</p><div class="act"><span class="on">Add to Gemba walk</span><span>Ask why</span></div></div></div><div class=""><div class="ai"><div class="fh"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-logo-aether-ion.png" alt=""><strong>Aether</strong><span class="st info"><i></i>This month</span></div>
+                <p><b>412 policy renewals are at risk this month.</b> The top reason in the data is claim wait time over 14 days, not price. A call list sorted by renewal date is ready for the retention team.</p><div class="act"><span class="on">Open call list</span><span>Explain</span></div></div></div></div>
+          <div class="fc c3"><div class="on"><div class="fh"><span class="lg">Smart Service</span><strong>Ticket 4471</strong><span class="st ok"><i></i>Routed</span></div>
+                <div class="tl"><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg><b>Drift flagged</b><span>08:42</span></div><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v10l-8 4-8-4V7zM4 7l8 4 8-4M12 11v10"/></svg><b>Belt kit reserved</b><span>08:44</span></div><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 6a4 4 0 105.3 5.3L9 21l-3-3 9.7-10.3A4 4 0 0014 6z"/></svg><b>Field technician booked</b><span>Tomorrow 09:00</span></div></div></div><div class=""><div class="fh"><span class="lg">Digital Shopfloor</span><strong>Gemba action 218</strong><span class="st ok"><i></i>Open</span></div>
+                <div class="tl"><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><b>Station 12 fixture check</b><span>Line lead</span></div><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>Due</b><span>Today 18:00</span></div><div class="wait"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><b>Close with photo and note</b><span>Pending</span></div></div></div><div class=""><div class="fh"><span class="lg">iSIP</span><strong>What customers say</strong><span class="st ok"><i></i>This week</span></div>
+                <div class="tl"><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><b>Mentions read</b><span data-count="3180">3,180</span></div><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg><b>Positive</b><span>71%</span></div><div><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg><b>Issues turned into tickets</b><span data-count="26">26</span></div></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cust rv hm-sec-customers" id="customers">
+      <div class="frame">
+        <div class="shead center rv"><p class="kicker">Customers</p><h2>Machine builders and manufacturers <span class="hl">already running ITHENA.</span></h2><p class=lede>Packaging, discrete, process, energy, life sciences and consumer goods, on the shop floor and in the aftermarket.</p></div>
+        <div class="lslide rv" aria-label="Customers"><ul><li><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-bpa.png" alt="Blueprint Automation" loading="lazy" height="42"></li><li><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-omori.png" alt="Omori" loading="lazy" height="42"></li><li><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-selee.png" alt="SELEE Corporation" loading="lazy" height="42"></li><li><img src="https://dev-website.ithena.app/wp-content/uploads/2024/07/Sonoco.svg.png" alt="Sonoco" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-bpa.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-omori.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-selee.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2024/07/Sonoco.svg.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-bpa.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-omori.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-selee.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2024/07/Sonoco.svg.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-bpa.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-omori.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-selee.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2024/07/Sonoco.svg.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-bpa.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-omori.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-selee.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2024/07/Sonoco.svg.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-bpa.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-omori.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-customers-selee.png" alt="" loading="lazy" height="42"></li><li aria-hidden="true"><img src="https://dev-website.ithena.app/wp-content/uploads/2024/07/Sonoco.svg.png" alt="" loading="lazy" height="42"></li></ul></div>
+      </div>
+    </section>
+
+    <section class="sec alt serve rv hm-sec-serve" id="serve">
+      <div class="frame">
+        <div class="shead center rv"><p class="kicker">What we do</p><h2>Solutions and services, <span class="hl">across industries.</span></h2><p class=lede>One platform, three ways to run it. Pick the card that runs like you.</p></div>
+        <div class="cards" id="servecards">
+          <svg class="conn" aria-hidden="true"></svg>
+          <a class="wcard rv" href="https://ithena.ai/oem-ai-agents/" id="serve-0" style="--rvd:0s">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="med"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-oem-build-poster.jpg" alt="" loading="lazy"><video muted loop playsinline preload="none" poster="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-oem-build-poster.jpg" data-src="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-oem-build.mp4" aria-hidden="true"></video><span class="wt">I BUILD EQUIPMENT</span><div class="proof"><b data-count="27">27<sup>%</sup></b><span>faster response to service calls, packaging OEM</span></div></div>
+      <div class="wb"><span class="wk"><span class="kicker" style="margin:0;display:inline-flex;align-items:center;gap:8px"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v10l-8 4-8-4V7zM4 7l8 4 8-4M12 11v10"/></svg>OEM and distributors</span></span><h3>Machine builders who sell and service equipment.</h3><p class="sub">Quote, build, ship and support every machine you have ever sold, with service and spares attached to the sale.</p>
+        <div class="lab">Sub industries</div><div class="chips"><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v10l-8 4-8-4V7zM4 7l8 4 8-4M12 11v10"/></svg><b>Packaging</b></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3h4v3l1.5 3v11a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V9L10 6z"/><path d="M8.5 13h7"/></svg><b>Food &amp; Bev</b></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h9a2.5 2.5 0 1 0-2.5-2.5M3 12h14a3 3 0 1 1-3 3M3 16h7a2 2 0 1 1-2 2"/></svg><b>Compressed air</b></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 6a4 4 0 105.3 5.3L9 21l-3-3 9.7-10.3A4 4 0 0014 6z"/></svg><b>Tool builders</b></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.5"/><circle cx="17" cy="17.5" r="1.5"/></svg><b>Material handling</b></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg><b>Industrial machinery</b></span></div>
+        <span class="more">See OEM solutions <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+          <a class="wcard rv" href="https://dev-website.ithena.app/manufacturing-excellence-imex/" id="serve-1" style="--rvd:0.08s">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="med"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-electronics-worker-poster.jpg" alt="" loading="lazy"><video muted loop playsinline preload="none" poster="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-electronics-worker-poster.jpg" data-src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-electronics-worker.mp4" aria-hidden="true"></video><span class="wt">I RUN A PLANT</span><div class="proof"><b data-count="40">40<sup>%</sup></b><span>boost in operational visibility, automation firm</span></div></div>
+      <div class="wb"><span class="wk"><span class="kicker" style="margin:0;display:inline-flex;align-items:center;gap:8px"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V10l5 3v-3l5 3v-3l5 3v7zM7 20v-3M12 20v-3M17 20v-3"/></svg>Manufacturers</span></span><h3>Plants and production lines, discrete or process.</h3><p class="sub">See every line, shift and machine as it runs, fix issues at the Gemba, and plan with numbers the floor recognises.</p>
+        <div class="lab">Sub industries</div><div class="chips"><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg><b>Discrete parts</b></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15l1.5-5h11L19 15M3 15h18v4H3zM7 19v1M17 19v1"/><circle cx="7.5" cy="15" r="1"/><circle cx="16.5" cy="15" r="1"/></svg><b>Automotive</b></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/></svg><b>Life sciences</b></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3h4v3l1.5 3v11a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V9L10 6z"/><path d="M8.5 13h7"/></svg><b>Food &amp; Bev</b></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg><b>Energy &amp; utilities</b></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c1 4 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3.5 2-4.5 0 2 1 3 2 3 0-3 .5-6 1-8.5z"/></svg><b>Metals &amp; kilns</b></span></div>
+        <span class="more">See Manufacturers solutions <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+          <a class="wcard rv" href="https://dev-website.ithena.app/ithenas-aether/" id="serve-2" style="--rvd:0.16s">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="med"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-warehouse-engineer-poster.jpg" alt="" loading="lazy"><video muted loop playsinline preload="none" poster="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-warehouse-engineer-poster.jpg" data-src="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-warehouse-engineer.mp4" aria-hidden="true"></video><span class="wt">I RUN AN ENTERPRISE</span><div class="proof"><b data-count="22">22<sup>%</sup></b><span>increase in production quality on Aether</span></div></div>
+      <div class="wb"><span class="wk"><span class="kicker" style="margin:0;display:inline-flex;align-items:center;gap:8px"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>Enterprise</span></span><h3>Banks, insurers, government and multi-site groups.</h3><p class="sub">Retire technical debt and get data analytics people trust: one copy of every record, plain answers for the people who ask, and the customer side in the same flow.</p>
+        <div class="lab">Sub industries</div><div class="chips"><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-5 9 5M5 10v7M9 10v7M15 10v7M19 10v7M3 20h18"/></svg><b>BFSI</b></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2 12h11l2-8H7"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg><b>Retail CPG</b></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5H3zM5 8v9M9.5 8v9M14.5 8v9M19 8v9M3 17h18v3H3z"/></svg><b>Government</b></span><span><svg class="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><b>Media</b></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><b>Healthcare</b></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.5"/><circle cx="17" cy="17.5" r="1.5"/></svg><b>Logistics</b></span></div>
+        <span class="more">See Enterprise solutions <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about rv hm-sec-platform" id="platform">
+      <div class="frame">
+        <div class="shead center rv"><p class="kicker">How we do it</p><h2>Human intelligence <span class="hl">meets artificial intelligence.</span></h2><p class=lede>Our platform connects the systems you already run through one data layer and one AI layer, and gives every persona the next thing to do.</p></div>
+        <div class="pstack rv">
+          <div class="pchip c1"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4a3 3 0 00-3 3v1a3 3 0 00-2 3 3 3 0 002 3v1a3 3 0 003 3h1V4zM15 4a3 3 0 013 3v1a3 3 0 012 3 3 3 0 01-2 3v1a3 3 0 01-3 3h-1V4z"/></svg><b>Practical AI</b><span>Outcomes ready to use in the flow of work</span></div>
+          <div class="pchip c2"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 01-12 0zM12 17v4"/></svg><b>No rip and replace</b><span>Your ERP, CRM, plant and cloud stay as they are</span></div>
+          <div class="pscheme"><div class="scheme iso3" id="pfscheme"><svg class="sch iso iso3" viewBox="0 0 850 772" role="img" aria-label="Three layers: the systems you already run at the bottom, the Aether AI layer in the middle, and the experience layer on top where each person gets the next thing to do"><defs><linearGradient id="i3top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".97"/><stop offset=".55" stop-color="#F2F7FC" stop-opacity=".8"/><stop offset="1" stop-color="#DDEBF7" stop-opacity=".92"/></linearGradient><linearGradient id="i3sheen" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".8"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><linearGradient id="i3l" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3AA3E6"/><stop offset="1" stop-color="#0A66AA"/></linearGradient><linearGradient id="i3r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0F7CC8"/><stop offset="1" stop-color="#07487A"/></linearGradient><filter id="i3soft" x="-20%" y="-30%" width="140%" height="160%"><feGaussianBlur stdDeviation="10"/></filter><filter id="i3ion" x="-50%" y="-80%" width="200%" height="260%"><feGaussianBlur stdDeviation="4"/></filter></defs><g class="lyr" data-lyr="0"><polygon class="g3shd" points="300.0,412.0 611.8,592.0 383.1,724.0 71.4,544.0" transform="translate(18 24)" filter="url(#i3soft)"/><polygon class="g3f" points="71.4,544.0 383.1,724.0 383.1,704.0 71.4,524.0" fill="url(#i3l)"/><polygon class="g3f" points="611.8,592.0 383.1,724.0 383.1,704.0 611.8,572.0" fill="url(#i3r)"/><polygon class="g3f" points="300.0,392.0 611.8,572.0 383.1,704.0 71.4,524.0" fill="url(#i3top)"/><polygon class="g3sheen" points="455.9,482.0 543.2,532.4 314.5,664.4 227.3,614.0" fill="url(#i3sheen)"/><path class="g3hi" d="M71.4,524.0 L300.0,392.0 L611.8,572.0"/><circle class="gd" cx="300.0" cy="432.0" r="1.1"/><circle class="gd" cx="265.4" cy="452.0" r="1.1"/><circle class="gd" cx="230.7" cy="472.0" r="1.1"/><circle class="gd" cx="196.1" cy="492.0" r="1.1"/><circle class="gd" cx="161.4" cy="512.0" r="1.1"/><circle class="gd" cx="126.8" cy="532.0" r="1.1"/><circle class="gd" cx="334.6" cy="452.0" r="1.1"/><circle class="gd" cx="300.0" cy="472.0" r="1.1"/><circle class="gd" cx="265.4" cy="492.0" r="1.1"/><circle class="gd" cx="230.7" cy="512.0" r="1.1"/><circle class="gd" cx="196.1" cy="532.0" r="1.1"/><circle class="gd" cx="161.4" cy="552.0" r="1.1"/><circle class="gd" cx="369.3" cy="472.0" r="1.1"/><circle class="gd" cx="334.6" cy="492.0" r="1.1"/><circle class="gd" cx="300.0" cy="512.0" r="1.1"/><circle class="gd" cx="265.4" cy="532.0" r="1.1"/><circle class="gd" cx="230.7" cy="552.0" r="1.1"/><circle class="gd" cx="196.1" cy="572.0" r="1.1"/><circle class="gd" cx="403.9" cy="492.0" r="1.1"/><circle class="gd" cx="369.3" cy="512.0" r="1.1"/><circle class="gd" cx="334.6" cy="532.0" r="1.1"/><circle class="gd" cx="300.0" cy="552.0" r="1.1"/><circle class="gd" cx="265.4" cy="572.0" r="1.1"/><circle class="gd" cx="230.7" cy="592.0" r="1.1"/><circle class="gd" cx="438.6" cy="512.0" r="1.1"/><circle class="gd" cx="403.9" cy="532.0" r="1.1"/><circle class="gd" cx="369.3" cy="552.0" r="1.1"/><circle class="gd" cx="334.6" cy="572.0" r="1.1"/><circle class="gd" cx="300.0" cy="592.0" r="1.1"/><circle class="gd" cx="265.4" cy="612.0" r="1.1"/><circle class="gd" cx="473.2" cy="532.0" r="1.1"/><circle class="gd" cx="438.6" cy="552.0" r="1.1"/><circle class="gd" cx="403.9" cy="572.0" r="1.1"/><circle class="gd" cx="369.3" cy="592.0" r="1.1"/><circle class="gd" cx="334.6" cy="612.0" r="1.1"/><circle class="gd" cx="300.0" cy="632.0" r="1.1"/><circle class="gd" cx="507.8" cy="552.0" r="1.1"/><circle class="gd" cx="473.2" cy="572.0" r="1.1"/><circle class="gd" cx="438.6" cy="592.0" r="1.1"/><circle class="gd" cx="403.9" cy="612.0" r="1.1"/><circle class="gd" cx="369.3" cy="632.0" r="1.1"/><circle class="gd" cx="334.6" cy="652.0" r="1.1"/><circle class="gd" cx="542.5" cy="572.0" r="1.1"/><circle class="gd" cx="507.8" cy="592.0" r="1.1"/><circle class="gd" cx="473.2" cy="612.0" r="1.1"/><circle class="gd" cx="438.6" cy="632.0" r="1.1"/><circle class="gd" cx="403.9" cy="652.0" r="1.1"/><circle class="gd" cx="369.3" cy="672.0" r="1.1"/><path class="ln" d="M122.5,539.5 L382.3,689.5"/><path class="ln" d="M126.8,537.0 L122.5,539.5"/><path class="ln" d="M204.7,582.0 L200.4,584.5"/><path class="ln" d="M301.7,633.0 L293.1,638.0"/><path class="ln" d="M445.5,636.0 L367.5,681.0"/><polygon class="fl" points="105.2,524.5 148.4,549.5 148.4,464.5 105.2,439.5"/><polygon class="fr" points="183.1,529.5 148.4,549.5 148.4,464.5 183.1,444.5"/><polygon class="ft" points="139.8,419.5 183.1,444.5 148.4,464.5 105.2,439.5"/><path class="th" d="M108.6,516.5 L145.0,537.5"/><circle class="dot" cx="155.4" cy="531.5" r="2"><animate attributeName="opacity" values="1;.15;1" dur="1.40s" repeatCount="indefinite"/></circle><path class="th" d="M108.6,505.5 L145.0,526.5"/><path class="th" d="M108.6,494.5 L145.0,515.5"/><circle class="dot" cx="155.4" cy="509.5" r="2"><animate attributeName="opacity" values="1;.15;1" dur="1.85s" repeatCount="indefinite"/></circle><path class="th" d="M108.6,483.5 L145.0,504.5"/><path class="th" d="M108.6,472.5 L145.0,493.5"/><circle class="dot" cx="155.4" cy="487.5" r="2"><animate attributeName="opacity" values="1;.15;1" dur="2.30s" repeatCount="indefinite"/></circle><path class="th" d="M108.6,461.5 L145.0,482.5"/><path class="th" d="M108.6,450.5 L145.0,471.5"/><circle class="dot" cx="155.4" cy="465.5" r="2"><animate attributeName="opacity" values="1;.15;1" dur="2.75s" repeatCount="indefinite"/></circle><polygon class="fl" points="165.8,559.5 243.7,604.5 243.7,562.5 165.8,517.5"/><polygon class="fr" points="291.3,577.0 243.7,604.5 243.7,562.5 291.3,535.0"/><polygon class="ft" points="213.4,490.0 291.3,535.0 243.7,562.5 165.8,517.5"/><path class="th" d="M169.2,539.5 L240.2,580.5"/><circle class="dot" cx="252.4" cy="587.5" r="2"><animate attributeName="opacity" values="1;.15;1" dur="1.40s" repeatCount="indefinite"/></circle><circle class="dot" cx="259.3" cy="583.5" r="2"><animate attributeName="opacity" values="1;.15;1" dur="1.85s" repeatCount="indefinite"/></circle><circle class="dot" cx="266.2" cy="579.5" r="2"><animate attributeName="opacity" values="1;.15;1" dur="2.30s" repeatCount="indefinite"/></circle><polygon class="fl" points="184.8,516.5 202.1,526.5 202.1,519.5 184.8,509.5"/><polygon class="fr" points="216.0,518.5 202.1,526.5 202.1,519.5 216.0,511.5"/><polygon class="fw" points="198.7,501.5 216.0,511.5 202.1,519.5 184.8,509.5"/><g><animateTransform attributeName="transform" type="translate" values="0 0;0 5;0 0" dur="2.4s" repeatCount="indefinite"/><polygon class="fl" points="210.8,527.5 238.5,543.5 238.5,521.5 210.8,505.5"/><polygon class="fr" points="264.5,528.5 238.5,543.5 238.5,521.5 264.5,506.5"/><polygon class="ft" points="236.8,490.5 264.5,506.5 238.5,521.5 210.8,505.5"/><path class="th" d="M257.6,528.5 L245.4,535.5"/></g><path class="ln" d="M237.6,532.0 L237.6,528.0"/><polygon class="fl" points="429.9,627.0 461.1,645.0 461.1,607.0 429.9,589.0"/><polygon class="fr" points="504.4,620.0 461.1,645.0 461.1,607.0 504.4,582.0"/><polygon class="ft" points="473.2,564.0 504.4,582.0 461.1,607.0 429.9,589.0"/><polygon class="fl" points="437.7,588.5 444.6,592.5 444.6,562.5 437.7,558.5"/><polygon class="fr" points="479.3,572.5 444.6,592.5 444.6,562.5 479.3,542.5"/><polygon class="ft" points="472.3,538.5 479.3,542.5 444.6,562.5 437.7,558.5"/><polygon class="fw" points="476.7,570.0 447.2,587.0 447.2,564.0 476.7,547.0"/><path class="th" d="M473.2,554.0 L454.1,565.0"/><path class="th" d="M473.2,560.0 L459.3,568.0"/><path class="th" d="M473.2,566.0 L452.4,578.0"/><circle class="dot" cx="449.8" cy="582.5" r="2"><animate attributeName="opacity" values="1;.15;1" dur="2.75s" repeatCount="indefinite"/></circle><polygon class="fl" points="282.7,622.0 321.6,644.5 321.6,574.5 282.7,552.0"/><polygon class="fr" points="352.0,627.0 321.6,644.5 321.6,574.5 352.0,557.0"/><polygon class="ft" points="313.0,534.5 352.0,557.0 321.6,574.5 282.7,552.0"/><polygon class="fl" points="287.0,618.5 317.3,636.0 317.3,578.0 287.0,560.5"/><circle class="dot" cx="290.5" cy="568.5" r="2"><animate attributeName="opacity" values="1;.15;1" dur="1.40s" repeatCount="indefinite"/></circle><circle class="dot" cx="290.5" cy="576.5" r="2"><animate attributeName="opacity" values="1;.15;1" dur="1.85s" repeatCount="indefinite"/></circle><circle class="dot" cx="290.5" cy="584.5" r="2"><animate attributeName="opacity" values="1;.15;1" dur="2.30s" repeatCount="indefinite"/></circle><path class="th" d="M300.9,602.5 L313.0,609.5"/><path class="th" d="M300.9,610.5 L309.5,615.5"/><polygon class="fw" points="347.6,579.5 337.2,585.5 337.2,567.5 347.6,561.5"/><circle class="dot" cx="382.3" cy="689.5" r="3.2" style="stroke:#fff;stroke-width:1.2"/><path class="th" d="M123.3,554.0 v22 h-8"/><text class="lb" x="111.3" y="580.0" text-anchor="end">ERP &#183; CRM</text><text class="cap" x="111.3" y="594.0" text-anchor="end">orders, assets</text><path class="th" d="M214.3,606.5 v22 h-8"/><text class="lb" x="202.3" y="632.5" text-anchor="end">PLC &#183; SCADA &#183; MES</text><text class="cap" x="202.3" y="646.5" text-anchor="end">plant floor, machines</text><path class="th" d="M482.7,620.5 l34,34 h16"/><text class="lb" x="538.7" y="660.5">SERVICE DESK &#183; PLM</text><text class="cap" x="538.7" y="674.5">service, engineering</text><path class="th" d="M615.8,572.0 H641.8"/><circle class="dot" cx="611.8" cy="572.0" r="3.2" style="stroke:#fff;stroke-width:1.2"/><text class="bn" x="649.8" y="564.0" style="fill:#7A8289">01</text><text class="lb" x="649.8" y="578.0">SYSTEMS YOU RUN</text><text class="cap" x="649.8" y="595.0">ERP, CRM, PLC, SCADA, MES,</text><text class="cap" x="649.8" y="609.0">service desk, PLM</text></g><g class="lnk" data-lnk="01"><path class="ln" d="M382.3,689.5 L382.3,519.5"/><rect class="pk" x="-3.5" y="-3.5" width="7" height="7" opacity="0"><set attributeName="opacity" to="1" begin="0.0s"/><animateMotion dur="3.0s" begin="0.0s" repeatCount="indefinite" path="M126.8,537.0 L122.5,539.5 L382.3,689.5 L382.3,519.5"/></rect><rect class="pk" x="-3.5" y="-3.5" width="7" height="7" opacity="0"><set attributeName="opacity" to="1" begin="0.7s"/><animateMotion dur="3.0s" begin="0.7s" repeatCount="indefinite" path="M204.7,582.0 L200.4,584.5 L382.3,689.5 L382.3,519.5"/></rect><rect class="pk" x="-3.5" y="-3.5" width="7" height="7" opacity="0"><set attributeName="opacity" to="1" begin="1.4s"/><animateMotion dur="3.0s" begin="1.4s" repeatCount="indefinite" path="M301.7,633.0 L293.1,638.0 L382.3,689.5 L382.3,519.5"/></rect><rect class="pk" x="-3.5" y="-3.5" width="7" height="7" opacity="0"><set attributeName="opacity" to="1" begin="2.1s"/><animateMotion dur="3.0s" begin="2.1s" repeatCount="indefinite" path="M445.5,636.0 L367.5,681.0 L382.3,689.5 L382.3,519.5"/></rect></g><g class="lyr" data-lyr="1"><polygon class="g3shd" points="300.0,222.0 611.8,402.0 383.1,534.0 71.4,354.0" transform="translate(18 24)" filter="url(#i3soft)"/><polygon class="g3f" points="71.4,354.0 383.1,534.0 383.1,514.0 71.4,334.0" fill="url(#i3l)"/><polygon class="g3f" points="611.8,402.0 383.1,534.0 383.1,514.0 611.8,382.0" fill="url(#i3r)"/><polygon class="g3f" points="300.0,202.0 611.8,382.0 383.1,514.0 71.4,334.0" fill="url(#i3top)"/><polygon class="g3sheen" points="455.9,292.0 543.2,342.4 314.5,474.4 227.3,424.0" fill="url(#i3sheen)"/><path class="g3hi" d="M71.4,334.0 L300.0,202.0 L611.8,382.0"/><circle class="gd" cx="300.0" cy="242.0" r="1.1"/><circle class="gd" cx="265.4" cy="262.0" r="1.1"/><circle class="gd" cx="230.7" cy="282.0" r="1.1"/><circle class="gd" cx="196.1" cy="302.0" r="1.1"/><circle class="gd" cx="161.4" cy="322.0" r="1.1"/><circle class="gd" cx="126.8" cy="342.0" r="1.1"/><circle class="gd" cx="334.6" cy="262.0" r="1.1"/><circle class="gd" cx="300.0" cy="282.0" r="1.1"/><circle class="gd" cx="265.4" cy="302.0" r="1.1"/><circle class="gd" cx="230.7" cy="322.0" r="1.1"/><circle class="gd" cx="196.1" cy="342.0" r="1.1"/><circle class="gd" cx="161.4" cy="362.0" r="1.1"/><circle class="gd" cx="369.3" cy="282.0" r="1.1"/><circle class="gd" cx="334.6" cy="302.0" r="1.1"/><circle class="gd" cx="300.0" cy="322.0" r="1.1"/><circle class="gd" cx="265.4" cy="342.0" r="1.1"/><circle class="gd" cx="230.7" cy="362.0" r="1.1"/><circle class="gd" cx="196.1" cy="382.0" r="1.1"/><circle class="gd" cx="403.9" cy="302.0" r="1.1"/><circle class="gd" cx="369.3" cy="322.0" r="1.1"/><circle class="gd" cx="334.6" cy="342.0" r="1.1"/><circle class="gd" cx="300.0" cy="362.0" r="1.1"/><circle class="gd" cx="265.4" cy="382.0" r="1.1"/><circle class="gd" cx="230.7" cy="402.0" r="1.1"/><circle class="gd" cx="438.6" cy="322.0" r="1.1"/><circle class="gd" cx="403.9" cy="342.0" r="1.1"/><circle class="gd" cx="369.3" cy="362.0" r="1.1"/><circle class="gd" cx="334.6" cy="382.0" r="1.1"/><circle class="gd" cx="300.0" cy="402.0" r="1.1"/><circle class="gd" cx="265.4" cy="422.0" r="1.1"/><circle class="gd" cx="473.2" cy="342.0" r="1.1"/><circle class="gd" cx="438.6" cy="362.0" r="1.1"/><circle class="gd" cx="403.9" cy="382.0" r="1.1"/><circle class="gd" cx="369.3" cy="402.0" r="1.1"/><circle class="gd" cx="334.6" cy="422.0" r="1.1"/><circle class="gd" cx="300.0" cy="442.0" r="1.1"/><circle class="gd" cx="507.8" cy="362.0" r="1.1"/><circle class="gd" cx="473.2" cy="382.0" r="1.1"/><circle class="gd" cx="438.6" cy="402.0" r="1.1"/><circle class="gd" cx="403.9" cy="422.0" r="1.1"/><circle class="gd" cx="369.3" cy="442.0" r="1.1"/><circle class="gd" cx="334.6" cy="462.0" r="1.1"/><circle class="gd" cx="542.5" cy="382.0" r="1.1"/><circle class="gd" cx="507.8" cy="402.0" r="1.1"/><circle class="gd" cx="473.2" cy="422.0" r="1.1"/><circle class="gd" cx="438.6" cy="442.0" r="1.1"/><circle class="gd" cx="403.9" cy="462.0" r="1.1"/><circle class="gd" cx="369.3" cy="482.0" r="1.1"/><circle class="dot" cx="382.3" cy="499.5" r="3.2" style="stroke:#fff;stroke-width:1.2"/><path class="ln" d="M382.3,499.5 L421.2,477.0 L278.4,394.5"/><rect class="pk" x="-3.5" y="-3.5" width="7" height="7" opacity="0"><set attributeName="opacity" to="1" begin="3.2s"/><animateMotion dur="1.6s" begin="3.2s" repeatCount="indefinite" path="M382.3,499.5 L421.2,477.0 L278.4,394.5"/></rect><ellipse cx="252.4" cy="379.5" rx="26" ry="11" fill="#0A3E6B" opacity=".22" filter="url(#i3ion)"/><ellipse class="pulse" cx="252.4" cy="379.5" rx="30" ry="17"><animate attributeName="rx" values="30;64" dur="2.6s" begin="0.0s" repeatCount="indefinite"/><animate attributeName="ry" values="17;37" dur="2.6s" begin="0.0s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;0" dur="2.6s" begin="0.0s" repeatCount="indefinite"/></ellipse><ellipse class="pulse" cx="252.4" cy="379.5" rx="30" ry="17"><animate attributeName="rx" values="30;64" dur="2.6s" begin="1.3s" repeatCount="indefinite"/><animate attributeName="ry" values="17;37" dur="2.6s" begin="1.3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;0" dur="2.6s" begin="1.3s" repeatCount="indefinite"/></ellipse><circle class="dot" cx="252.4" cy="379.5" r="3.2" style="stroke:#fff;stroke-width:1.2"/><path class="th" d="M252.4,379.5 v-14"/><g><animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur="3.2s" repeatCount="indefinite"/><image href="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-logo-aether-ion.png" x="216.4" y="295.5" width="72" height="72"/></g><text class="sub" x="204.4" y="335.5" text-anchor="end">AETHER AI</text><g transform="matrix(0.606 0.350 -0.606 0.350 356.3 384.5)"><image href="https://ithena.ai/wp-content/uploads/2025/09/Ithena-Logo.webp" x="0" y="0" width="176" height="36" preserveAspectRatio="xMidYMid meet"/></g><path class="th" d="M615.8,382.0 H641.8"/><circle class="dot" cx="611.8" cy="382.0" r="3.2" style="stroke:#fff;stroke-width:1.2"/><text class="bn" x="649.8" y="374.0" style="fill:#7A8289">02</text><text class="lb" x="649.8" y="388.0">AETHER AI LAYER</text><text class="cap" x="649.8" y="405.0">one data layer, one AI layer,</text><text class="cap" x="649.8" y="419.0">no rip and replace</text></g><g class="lnk" data-lnk="12"><path class="ln" d="M252.4,293.5 L252.4,209.5"/><rect class="pk" x="-3.5" y="-3.5" width="7" height="7" opacity="0"><set attributeName="opacity" to="1" begin="4.8s"/><animateMotion dur="1.4s" begin="4.8s" repeatCount="indefinite" path="M252.4,293.5 L252.4,209.5"/></rect></g><g class="lyr" data-lyr="2"><polygon class="g3shd" points="300.0,32.0 611.8,212.0 383.1,344.0 71.4,164.0" transform="translate(18 24)" filter="url(#i3soft)"/><polygon class="g3f" points="71.4,164.0 383.1,344.0 383.1,324.0 71.4,144.0" fill="url(#i3l)"/><polygon class="g3f" points="611.8,212.0 383.1,344.0 383.1,324.0 611.8,192.0" fill="url(#i3r)"/><polygon class="g3f" points="300.0,12.0 611.8,192.0 383.1,324.0 71.4,144.0" fill="url(#i3top)"/><polygon class="g3sheen" points="455.9,102.0 543.2,152.4 314.5,284.4 227.3,234.0" fill="url(#i3sheen)"/><path class="g3hi" d="M71.4,144.0 L300.0,12.0 L611.8,192.0"/><circle class="gd" cx="300.0" cy="52.0" r="1.1"/><circle class="gd" cx="265.4" cy="72.0" r="1.1"/><circle class="gd" cx="230.7" cy="92.0" r="1.1"/><circle class="gd" cx="196.1" cy="112.0" r="1.1"/><circle class="gd" cx="161.4" cy="132.0" r="1.1"/><circle class="gd" cx="126.8" cy="152.0" r="1.1"/><circle class="gd" cx="334.6" cy="72.0" r="1.1"/><circle class="gd" cx="300.0" cy="92.0" r="1.1"/><circle class="gd" cx="265.4" cy="112.0" r="1.1"/><circle class="gd" cx="230.7" cy="132.0" r="1.1"/><circle class="gd" cx="196.1" cy="152.0" r="1.1"/><circle class="gd" cx="161.4" cy="172.0" r="1.1"/><circle class="gd" cx="369.3" cy="92.0" r="1.1"/><circle class="gd" cx="334.6" cy="112.0" r="1.1"/><circle class="gd" cx="300.0" cy="132.0" r="1.1"/><circle class="gd" cx="265.4" cy="152.0" r="1.1"/><circle class="gd" cx="230.7" cy="172.0" r="1.1"/><circle class="gd" cx="196.1" cy="192.0" r="1.1"/><circle class="gd" cx="403.9" cy="112.0" r="1.1"/><circle class="gd" cx="369.3" cy="132.0" r="1.1"/><circle class="gd" cx="334.6" cy="152.0" r="1.1"/><circle class="gd" cx="300.0" cy="172.0" r="1.1"/><circle class="gd" cx="265.4" cy="192.0" r="1.1"/><circle class="gd" cx="230.7" cy="212.0" r="1.1"/><circle class="gd" cx="438.6" cy="132.0" r="1.1"/><circle class="gd" cx="403.9" cy="152.0" r="1.1"/><circle class="gd" cx="369.3" cy="172.0" r="1.1"/><circle class="gd" cx="334.6" cy="192.0" r="1.1"/><circle class="gd" cx="300.0" cy="212.0" r="1.1"/><circle class="gd" cx="265.4" cy="232.0" r="1.1"/><circle class="gd" cx="473.2" cy="152.0" r="1.1"/><circle class="gd" cx="438.6" cy="172.0" r="1.1"/><circle class="gd" cx="403.9" cy="192.0" r="1.1"/><circle class="gd" cx="369.3" cy="212.0" r="1.1"/><circle class="gd" cx="334.6" cy="232.0" r="1.1"/><circle class="gd" cx="300.0" cy="252.0" r="1.1"/><circle class="gd" cx="507.8" cy="172.0" r="1.1"/><circle class="gd" cx="473.2" cy="192.0" r="1.1"/><circle class="gd" cx="438.6" cy="212.0" r="1.1"/><circle class="gd" cx="403.9" cy="232.0" r="1.1"/><circle class="gd" cx="369.3" cy="252.0" r="1.1"/><circle class="gd" cx="334.6" cy="272.0" r="1.1"/><circle class="gd" cx="542.5" cy="192.0" r="1.1"/><circle class="gd" cx="507.8" cy="212.0" r="1.1"/><circle class="gd" cx="473.2" cy="232.0" r="1.1"/><circle class="gd" cx="438.6" cy="252.0" r="1.1"/><circle class="gd" cx="403.9" cy="272.0" r="1.1"/><circle class="gd" cx="369.3" cy="292.0" r="1.1"/><path class="dsh" d="M252.4,189.5 L157.1,134.5"/><rect class="pk" x="-3.5" y="-3.5" width="7" height="7" opacity="0"><set attributeName="opacity" to="1" begin="6.2s"/><animateMotion dur="2.0s" begin="6.2s" repeatCount="indefinite" path="M252.4,189.5 L157.1,134.5"/></rect><path class="dsh" d="M252.4,189.5 L377.9,117.0 L447.2,157.0"/><rect class="pk" x="-3.5" y="-3.5" width="7" height="7" opacity="0"><set attributeName="opacity" to="1" begin="6.7s"/><animateMotion dur="2.0s" begin="6.7s" repeatCount="indefinite" path="M252.4,189.5 L377.9,117.0 L447.2,157.0"/></rect><path class="dsh" d="M252.4,189.5 L213.4,212.0 L382.3,309.5"/><rect class="pk" x="-3.5" y="-3.5" width="7" height="7" opacity="0"><set attributeName="opacity" to="1" begin="7.2s"/><animateMotion dur="2.0s" begin="7.2s" repeatCount="indefinite" path="M252.4,189.5 L213.4,212.0 L382.3,309.5"/></rect><circle class="dot" cx="252.4" cy="189.5" r="3.2" style="stroke:#fff;stroke-width:1.2"/><circle class="dot" cx="157.1" cy="134.5" r="3.2" style="stroke:#fff;stroke-width:1.2"/><path class="th" d="M157.1,134.5 v-8"/><rect class="f3" x="69.1" y="57.5" width="190" height="76" rx="5"/><rect class="ic" x="62.1" y="50.5" width="190" height="76" rx="5"/><text class="sub" x="78.1" y="72.5">FRONT OFFICE</text><circle class="dot" cx="233.1" cy="68.5" r="8.5"/><path class="ln" d="M229.1,68.5 l2.8,2.8 l5.5,-5.8" style="stroke:#fff;stroke-width:1.8"/><text class="act" x="78.1" y="95.5">Quote 2291 ready</text><text class="cap" x="78.1" y="113.5">send to customer today</text><circle class="dot" cx="447.2" cy="157.0" r="3.2" style="stroke:#fff;stroke-width:1.2"/><path class="th" d="M447.2,157.0 v-8"/><rect class="f3" x="438.2" y="80.0" width="190" height="76" rx="5"/><rect class="ic" x="431.2" y="73.0" width="190" height="76" rx="5"/><text class="sub" x="447.2" y="95.0">PLANT</text><circle class="dot" cx="602.2" cy="91.0" r="8.5"/><path class="ln" d="M598.2,91.0 l2.8,2.8 l5.5,-5.8" style="stroke:#fff;stroke-width:1.8"/><text class="act" x="447.2" y="118.0">Station 12 fixture check</text><text class="cap" x="447.2" y="136.0">due 18:00, parts on hand</text><circle class="dot" cx="382.3" cy="309.5" r="3.2" style="stroke:#fff;stroke-width:1.2"/><path class="th" d="M382.3,309.5 v-8"/><rect class="f3" x="373.3" y="232.5" width="190" height="76" rx="5"/><rect class="ic" x="366.3" y="225.5" width="190" height="76" rx="5"/><text class="sub" x="382.3" y="247.5">SERVICE</text><circle class="dot" cx="537.3" cy="243.5" r="8.5"/><path class="ln" d="M533.3,243.5 l2.8,2.8 l5.5,-5.8" style="stroke:#fff;stroke-width:1.8"/><text class="act" x="382.3" y="270.5">Belt kit BK 240 reserved</text><text class="cap" x="382.3" y="288.5">ship for Tuesday visit</text><path class="th" d="M615.8,192.0 H641.8"/><circle class="dot" cx="611.8" cy="192.0" r="3.2" style="stroke:#fff;stroke-width:1.2"/><text class="bn" x="649.8" y="184.0" style="fill:#7A8289">03</text><text class="lb" x="649.8" y="198.0">EXPERIENCE LAYER</text><text class="cap" x="649.8" y="215.0">each person gets</text><text class="cap" x="649.8" y="229.0">the next thing to do</text></g></svg></div></div>
+          <div class="pchip c3"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2 20a7 7 0 0114 0M16 4a3.5 3.5 0 010 7M22 20a6 6 0 00-5-6"/></svg><b>Persona-centric outcomes</b><span>Every role gets its own next thing to do</span></div>
+          <div class="pchip c4"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg><b>Solution accelerators</b><span>Pre built accelerators, so results land in weeks</span></div>
+        </div>
+        <div class="btnrow rv" style="margin-top:30px;justify-content:center"><a class="btn ghost hm-btn-platform" href="https://dev-website.ithena.app/ithenas-aether/">See the platform<span class=arw><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+      </div>
+    </section>
+
+    <section class="sec alt strength rv hm-sec-numbers" id="strength">
+      <div class="orb o1"></div><div class="orb o2"></div>
+      <div class="frame">
+        <div class="shead center rv"><p class="kicker">ITHENA in numbers</p><h2>Practical AI, <span class="hl">proven at scale.</span></h2><p class=lede>The clients, projects, people and partners that stand behind every ITHENA deployment.</p></div>
+        <div class="stats3 rv"><ul class="sgl"><li class="st3"><b><span data-count="50">50</span><em>+</em></b><span class="lb">Enterprise clients</span><span class="sm">Packaging, process, discrete, energy and life sciences</span></li><li class="st3"><b><span data-count="70">70</span><em>+</em></b><span class="lb">Projects delivered</span><span class="sm">Data, AI, IoT, cloud and integration, live on the floor</span></li><li class="st3"><b><span data-count="100">100</span><em>+</em></b><span class="lb">Shop floor specialists</span><span class="sm">Engineers who know the floor and map your systems</span></li><li class="st3"><b><span data-count="11">11</span></b><span class="lb">Technology partners</span><span class="sm">AWS, Microsoft, Google Cloud, PTC and more</span></li></ul></div>
+      </div>
+    </section>
+
+    <section class="sec offer rv hm-sec-offerings" id="offer">
+      <div class="frame">
+        <div class="shead center rv"><p class="kicker">Our offerings</p><h2>Advisory, projects or managed services, <span class="hl">delivered as working systems.</span></h2><p class=lede>AI runs across everything we do. Under it sit four pillars. Start with the one you need.</p></div>
+        <a class="olay rv" href="https://dev-website.ithena.app/ithenas-aether/"><span class="bd"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4a3 3 0 00-3 3v1a3 3 0 00-2 3 3 3 0 002 3v1a3 3 0 003 3h1V4zM15 4a3 3 0 013 3v1a3 3 0 012 3 3 3 0 01-2 3v1a3 3 0 01-3 3h-1V4z"/></svg></span><div class="ot"><span class="lk">The layer on top</span><b class="t">Artificial Intelligence</b><em>Aether, FactoryGPT and OEM agents</em><p>Aether reads your ERP, CRM, PLCs and MES, learns what normal looks like on your plant, and explains what changed in plain language. It runs on top of all four pillars, on the data they already produce.</p></div><ul><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Anomaly detection with a severity and a risk window</span></li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Shift reports written for the role that asked</span></li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Agents that open the ticket and reserve the spare</span></li></ul><span class="go">Explore AI solutions<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <div class="ogrid" id="ogrid"><svg class="conn" aria-hidden="true"></svg><a class="ocard rv" style="--rvd:0.00s" href="https://ithena.ai/industrial-iot/"><span class="bd"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></span><b class="t">Industrial IoT</b><em>Connect your machines</em><p>PLCs, SCADA, sensors and devices on one connection, with live run state and energy.</p><ul><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Remote monitoring on lines and machines in the field</span></li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Predictive maintenance before the stop happens</span></li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Machine data joined to ERP, MES and CRM</span></li></ul><span class="go">Explore industrial IoT<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="ocard rv" style="--rvd:0.05s" href="https://ithena.ai/big-data-analytics/"><span class="bd"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><b class="t">Data Management</b><em>Analytics &amp; data science</em><p>One trusted copy of every record, live dashboards and forecasts from your history.</p><ul><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Enterprise data hub (iHub)</span></li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Manufacturing analytics</span></li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>AI, machine learning and data science</span></li></ul><span class="go">Explore data management<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="ocard rv" style="--rvd:0.10s" href="https://ithena.ai/cloud-adoption/"><span class="bd"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .5-8A6 6 0 0 0 6 11a3.5 3.5 0 0 0 1 7z"/></svg></span><b class="t">Cloud Modernization</b><em>Move without a rebuild</em><p>Migrate what should move, integrate what stays, and put your ERP to work everywhere.</p><ul><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Cloud adoption on AWS, Azure and Google Cloud</span></li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Process integration: ERP, MES and CRM in one flow</span></li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Systems of engagement on top of your ERP</span></li></ul><span class="go">Explore cloud modernization<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="ocard rv" style="--rvd:0.15s" href="https://ithena.ai/process-integration/"><span class="bd"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></span><b class="t">Business Transformation</b><em>A roadmap tied to results</em><p>We map your systems on site, fix the process that hurts most first, then scale it.</p><ul><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>AI strategy and roadmap</span></li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Discover, deploy, scale with pre built accelerators</span></li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><span>Customer journeys that end in a repeat order</span></li></ul><span class="go">Explore transformation<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+      </div>
+    </section>
+
+    <section class="sec alt say rv hm-sec-stories" id="stories">
+      <div class="frame">
+        <div class="shead center rv"><p class="kicker">What customers say</p><h2>In their words, <span class="hl">one for each kind of company.</span></h2><p class=lede>Quotes and numbers reported by the customers themselves, measured on their own operational KPIs.</p></div>
+        <div class="sgrid">
+          <div class="rq rv" style="--rvd:0s"><span class="who"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v10l-8 4-8-4V7zM4 7l8 4 8-4M12 11v10"/></svg>OEM and distributors</span><div class="co"><span>BPA (Blueprint Automation)</span></div><span class="stars">★★★★★</span><blockquote>"The 360 degree equipment view, combined with 3D spare parts visualization and BOM integration, has streamlined the ordering process, making it simple and highly efficient. Seamless ERP integration with real time insights has optimized our spare parts delivery processes, minimizing downtime and improving efficiency for our customers."</blockquote><cite><b>Vice President, Service and Aftermarket, Americas</b>BPA (Blueprint Automation)</cite><a class="more" href="https://ithena.ai/case-study/metal-filtration-technology-leader/">See case studies<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="rq rv" style="--rvd:0.08s"><span class="who"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V10l5 3v-3l5 3v-3l5 3v7zM7 20v-3M12 20v-3M17 20v-3"/></svg>Manufacturers</span><div class="co"><span>SELEE Corporation</span></div><span class="stars">★★★★★</span><blockquote>"Consistency across our legacy and next generation kiln assets was essential to scaling efficiently. ITHENA delivered exactly that. Their expertise helped us seamlessly unify our SCADA experience within Ignition, transforming a patchwork of old and new systems into a single, intuitive interface."</blockquote><cite><b>Automation Controls Systems Specialist</b>SELEE Corporation</cite><a class="more" href="https://ithena.ai/case-study/iserv-b2b-ecommerce2-spare-parts-order-management/">See case studies<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="rq rv" style="--rvd:0.16s"><span class="who"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>Cloud</span><div class="co"><span>Presrite Corp</span></div><span class="stars">★★★★★</span><blockquote>"A leader in the metal forging industry, pioneering the transition of traditional metal-forming methods into advanced, high-tech solutions. Facing challenges in managing multisite inventory, production planning, vendor coordination, and reliance on manual and spreadsheet-driven processes, ITHENA, in collaboration with Infor, implemented and optimized Infor SyteLine and Factory Track."</blockquote><cite><b>Vice President</b> Operations</cite><a class="more" href="https://ithena.ai/case-study/metal-forging-leader/">See case studies<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+        <div class="rled rv" style="--rvd:.1s">
+          <div class="rlh"><span>Results reported by customers on their own KPIs</span><span>06 results &#183; 03 products</span></div>
+          <div class="rgrid">
+            <a href="https://ithena.ai/smart-service-iserv/"><span class="ix">01<em>Smart Service</em></span><b data-count="27">27<sup>%</sup></b><strong>Faster response to service calls</strong><span class="src">Packaging OEM</span></a>
+            <a href="https://ithena.ai/smart-service-iserv/"><span class="ix">02<em>Smart Service</em></span><b data-count="38">38<sup>%</sup></b><strong>Higher customer satisfaction</strong><span class="src">Sampling and analysis OEM</span></a>
+            <a href="https://ithena.ai/case-study/panelops-for-a-leading-industrial-automation-firm/"><span class="ix">03<em>PanelOps</em></span><b data-count="40">40<sup>%</sup></b><strong>Boost in operational visibility</strong><span class="src">Industrial automation firm</span></a>
+            <a href="https://ithena.ai/case-study/panelops-for-a-leading-industrial-automation-firm/"><span class="ix">04<em>PanelOps</em></span><b data-count="30">30<sup>%</sup></b><strong>Faster BOM and parts management</strong><span class="src">Same deployment, one year on</span></a>
+            <a href="https://ithena.ai/aether-ai-platform/"><span class="ix">05<em>Aether</em></span><b data-count="22">22<sup>%</sup></b><strong>Increase in production quality</strong><span class="src">Discrete manufacturer</span></a>
+            <a href="https://ithena.ai/aether-ai-platform/"><span class="ix">06<em>Aether</em></span><b data-count="15">15<sup>%</sup></b><strong>Rise in productivity</strong><span class="src">Process industry</span></a>
+          </div>
+        </div>
+        <div class="sfoot rv"><a class="btn ghost hm-btn-stories-cases" href="https://ithena.ai/case-studies/">Other case studies<span class=arw><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+      </div>
+    </section>
+
+    <section class="sec faqs rv hm-sec-faq" id="faq">
+      <div class="frame">
+        <div class="shead center rv"><p class="kicker">Questions</p><h2>The things people ask us <span class="hl">before the first call.</span></h2><p class=lede>Answered from what the platform does today, not from a roadmap.</p></div>
+        <div class="faqx rv">
+          <div class="faqcol"><details class="faqi"><summary><span>What does ITHENA actually do?</span><i class="fqi" aria-hidden="true"></i></summary><div class="fqa">ITHENA is an industrial software and AI company. We connect the ERP, CRM, PLCs, MES and service desk you already run into one data layer, put practical AI on top of it, and hand each person the next thing to do through apps built for their role. Quotes, production, service and spares end up in one flow instead of six systems that never talk to each other.</div></details><details class="faqi"><summary><span>Do we have to replace the systems we already run?</span><i class="fqi" aria-hidden="true"></i></summary><div class="fqa">No. There is no rip and replace. ITHENA sits on top of what you own, with connectors for ERP, CRM, PLC, SCADA and MES out of the box, and it runs alongside Rockwell, PTC, Infor, Oracle and Microsoft. We map your real systems on site before we propose anything.</div></details><details class="faqi"><summary><span>Where do we start?</span><i class="fqi" aria-hidden="true"></i></summary><div class="fqa">With whichever of the three describes you. If you build equipment, we start on the front office and the aftermarket, one record per machine. If you run a plant, we start on the Gemba, the line and the energy bill. If you run the business across sites, we start on the data hub, analytics and the customer side. The starting point changes. The platform underneath does not.</div></details><details class="faqi"><summary><span>Which industries do you work in?</span><i class="fqi" aria-hidden="true"></i></summary><div class="fqa">Machine builders and distributors in packaging machinery, food and beverage equipment, compressed air, material handling and custom tool building. Plants in industrial and discrete manufacturing, automotive, life sciences, food and beverage, metals and energy and utilities. And enterprises in banking, financial services and insurance, retail and consumer goods, government and media.</div></details><details class="faqi"><summary><span>What is Aether?</span><i class="fqi" aria-hidden="true"></i></summary><div class="fqa">Aether is the AI platform inside ITHENA, not a chatbot bolted on. It reads what your ERP, CRM, PLCs and MES already produce, learns what normal looks like on your plant, flags a drift with a severity and a risk window, explains what changed in plain language, and can raise the ticket, reserve the spare and open the work order itself. Every recommendation carries its evidence and its confidence, so your engineers can challenge it.</div></details></div><div class="faqcol"><details class="faqi"><summary><span>Which products do you make?</span><i class="fqi" aria-hidden="true"></i></summary><div class="fqa">Smart Service (iSERV), PanelOps industrial ERP, Digital Shopfloor (iGEMBA), Manufacturing Excellence (iMEX), Energy Management (iSEMS), B2B eCommerce, AI MRO and The Agentic OEM, plus iCRM, iCPQ, iHub and iSIP. They share the same data layer, the same AI layer and the same connectors, so you can start with the one you need and add the next without a second integration project.</div></details><details class="faqi"><summary><span>How long before we see something working?</span><i class="fqi" aria-hidden="true"></i></summary><div class="fqa">Weeks, not years. Pre built accelerators and pre built connectors carry the discovery, deployment and scale steps, so the first results land in weeks rather than at the end of a multi year programme.</div></details><details class="faqi"><summary><span>Do you only sell software?</span><i class="fqi" aria-hidden="true"></i></summary><div class="fqa">No. ITHENA also runs the work around it: advisory and AI strategy, big data and analytics, AI, machine learning and data science, cloud adoption and process integration, systems of engagement and customer experience, plant integration, manufacturing execution and industrial IoT. The people doing it have run production lines, service desks and ERP go lives.</div></details><details class="faqi"><summary><span>What results have customers reported?</span><i class="fqi" aria-hidden="true"></i></summary><div class="fqa">The numbers our customers reported on their own operational KPIs: 27 percent faster response to service calls at a packaging OEM on Smart Service, 40 percent boost in operational visibility and 30 percent faster BOM and parts management at an industrial automation firm on PanelOps, 22 percent increase in production quality at a discrete manufacturer on Aether, 38 percent higher customer satisfaction at a sampling and analysis OEM on iSERV, and a 15 percent rise in productivity in the process industry on Aether.</div></details><details class="faqi"><summary><span>What happens in the 30 minute walkthrough?</span><i class="fqi" aria-hidden="true"></i></summary><div class="fqa">No slide deck. You bring the process that hurts most, a quote that takes too long, a line you cannot see, or a fault that takes three visits, and an ITHENA specialist walks it through the platform on your own data. A specialist reaches out within one business day.</div></details></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- FAQ schema (JSON-LD) for search results -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does ITHENA actually do?", "acceptedAnswer": {"@type": "Answer", "text": "ITHENA is an industrial software and AI company. We connect the ERP, CRM, PLCs, MES and service desk you already run into one data layer, put practical AI on top of it, and hand each person the next thing to do through apps built for their role. Quotes, production, service and spares end up in one flow instead of six systems that never talk to each other."}}, {"@type": "Question", "name": "Do we have to replace the systems we already run?", "acceptedAnswer": {"@type": "Answer", "text": "No. There is no rip and replace. ITHENA sits on top of what you own, with connectors for ERP, CRM, PLC, SCADA and MES out of the box, and it runs alongside Rockwell, PTC, Infor, Oracle and Microsoft. We map your real systems on site before we propose anything."}}, {"@type": "Question", "name": "Where do we start?", "acceptedAnswer": {"@type": "Answer", "text": "With whichever of the three describes you. If you build equipment, we start on the front office and the aftermarket, one record per machine. If you run a plant, we start on the Gemba, the line and the energy bill. If you run the business across sites, we start on the data hub, analytics and the customer side. The starting point changes. The platform underneath does not."}}, {"@type": "Question", "name": "Which industries do you work in?", "acceptedAnswer": {"@type": "Answer", "text": "Machine builders and distributors in packaging machinery, food and beverage equipment, compressed air, material handling and custom tool building. Plants in industrial and discrete manufacturing, automotive, life sciences, food and beverage, metals and energy and utilities. And enterprises in banking, financial services and insurance, retail and consumer goods, government and media."}}, {"@type": "Question", "name": "What is Aether?", "acceptedAnswer": {"@type": "Answer", "text": "Aether is the AI platform inside ITHENA, not a chatbot bolted on. It reads what your ERP, CRM, PLCs and MES already produce, learns what normal looks like on your plant, flags a drift with a severity and a risk window, explains what changed in plain language, and can raise the ticket, reserve the spare and open the work order itself. Every recommendation carries its evidence and its confidence, so your engineers can challenge it."}}, {"@type": "Question", "name": "Which products do you make?", "acceptedAnswer": {"@type": "Answer", "text": "Smart Service (iSERV), PanelOps industrial ERP, Digital Shopfloor (iGEMBA), Manufacturing Excellence (iMEX), Energy Management (iSEMS), B2B eCommerce, AI MRO and The Agentic OEM, plus iCRM, iCPQ, iHub and iSIP. They share the same data layer, the same AI layer and the same connectors, so you can start with the one you need and add the next without a second integration project."}}, {"@type": "Question", "name": "How long before we see something working?", "acceptedAnswer": {"@type": "Answer", "text": "Weeks, not years. Pre built accelerators and pre built connectors carry the discovery, deployment and scale steps, so the first results land in weeks rather than at the end of a multi year programme."}}, {"@type": "Question", "name": "Do you only sell software?", "acceptedAnswer": {"@type": "Answer", "text": "No. ITHENA also runs the work around it: advisory and AI strategy, big data and analytics, AI, machine learning and data science, cloud adoption and process integration, systems of engagement and customer experience, plant integration, manufacturing execution and industrial IoT. The people doing it have run production lines, service desks and ERP go lives."}}, {"@type": "Question", "name": "What results have customers reported?", "acceptedAnswer": {"@type": "Answer", "text": "The numbers our customers reported on their own operational KPIs: 27 percent faster response to service calls at a packaging OEM on Smart Service, 40 percent boost in operational visibility and 30 percent faster BOM and parts management at an industrial automation firm on PanelOps, 22 percent increase in production quality at a discrete manufacturer on Aether, 38 percent higher customer satisfaction at a sampling and analysis OEM on iSERV, and a 15 percent rise in productivity in the process industry on Aether."}}, {"@type": "Question", "name": "What happens in the 30 minute walkthrough?", "acceptedAnswer": {"@type": "Answer", "text": "No slide deck. You bring the process that hurts most, a quote that takes too long, a line you cannot see, or a fault that takes three visits, and an ITHENA specialist walks it through the platform on your own data. A specialist reaches out within one business day."}}]}</script>
+
+    <section class="sec pband2 rv hm-sec-partners" id="partners">
+      <div class="frame">
+        <div class="shead center rv"><p class="kicker">Technology partners</p><h2>Practical AI, <span class="hl">built on proven platforms.</span></h2><p class=lede>Eleven technology partners we integrate with to reduce risk and speed delivery.</p></div>
+        <div class="ptrack-wrap">
+          <ul class="ptrack"><li class="pcd rv"><a class="pcd-link" href="https://ithena.ai/ptc-partnership/" aria-label="PTC partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-ptc.png" alt="PTC" loading="lazy"></div><p class="pcd-desc">Accelerating the deployment of PTC Thingworx and Vuforia platform for digital agility and smart industry solutions.</p></li><li class="pcd rv"><a class="pcd-link" href="https://ithena.ai/partner-oracle/" aria-label="Oracle partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-oracle.png" alt="Oracle" loading="lazy"></div><p class="pcd-desc">Modernizing businesses with EBS upgrades and reducing the total cost of ownership with Oracle Fusion Apps.</p></li><li class="pcd rv"><a class="pcd-link" href="https://ithena.ai/partner-microsoft/" aria-label="Microsoft partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-microsoft.png" alt="Microsoft" loading="lazy"></div><p class="pcd-desc">Microsoft Power BI's data visualisation tools help businesses modernize apps and make better decisions.</p></li><li class="pcd rv"><a class="pcd-link" href="https://ithena.ai/partner-pozyx/" aria-label="Pozyx partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-pozyx.png" alt="Pozyx" loading="lazy"></div><p class="pcd-desc">Offering a dependable asset localization solution for manufacturing, industrial and commercial sectors.</p></li><li class="pcd rv"><a class="pcd-link" href="https://ithena.ai/partner-brightcove/" aria-label="Brightcove partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-brightcove.png" alt="Brightcove" loading="lazy"></div><p class="pcd-desc">Identifying high-performing content and creating successful strategies for OTT streaming services.</p></li><li class="pcd rv"><a class="pcd-link" href="https://ithena.ai/partner-google-cloud/" aria-label="Google Cloud partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-google-cloud.png" alt="Google Cloud" loading="lazy"></div><p class="pcd-desc">Transforming businesses with the best infrastructure, platform, industry solutions and expertise with Google Cloud.</p></li><li class="pcd rv"><a class="pcd-link" href="https://ithena.ai/partner-aws/" aria-label="AWS partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-aws.png" alt="AWS" loading="lazy"></div><p class="pcd-desc">Seamless transformation of all IT assets, regardless of complexity or synchronicity, at super-optimized costs.</p></li><li class="pcd rv"><a class="pcd-link" href="https://ithena.ai/incorta-partnership/" aria-label="Incorta partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-incorta.png" alt="Incorta" loading="lazy"></div><p class="pcd-desc">Empowering businesses to make data-driven decisions with unmatched speed with Incorta's Direct Data Platform.</p></li><li class="pcd rv"><a class="pcd-link" href="https://ithena.ai/partner-infor/" aria-label="Infor partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-infor.png" alt="Infor" loading="lazy"></div><p class="pcd-desc">Implementing pre-existing Infor solutions with customised maintenance, optimization and debugging services.</p></li><li class="pcd" aria-hidden="true"><a class="pcd-link" href="https://ithena.ai/ptc-partnership/" tabindex="-1" aria-label="PTC partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-ptc.png" alt="PTC" loading="lazy"></div><p class="pcd-desc">Accelerating the deployment of PTC Thingworx and Vuforia platform for digital agility and smart industry solutions.</p></li><li class="pcd" aria-hidden="true"><a class="pcd-link" href="https://ithena.ai/partner-oracle/" tabindex="-1" aria-label="Oracle partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-oracle.png" alt="Oracle" loading="lazy"></div><p class="pcd-desc">Modernizing businesses with EBS upgrades and reducing the total cost of ownership with Oracle Fusion Apps.</p></li><li class="pcd" aria-hidden="true"><a class="pcd-link" href="https://ithena.ai/partner-microsoft/" tabindex="-1" aria-label="Microsoft partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-microsoft.png" alt="Microsoft" loading="lazy"></div><p class="pcd-desc">Microsoft Power BI's data visualisation tools help businesses modernize apps and make better decisions.</p></li><li class="pcd" aria-hidden="true"><a class="pcd-link" href="https://ithena.ai/partner-pozyx/" tabindex="-1" aria-label="Pozyx partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-pozyx.png" alt="Pozyx" loading="lazy"></div><p class="pcd-desc">Offering a dependable asset localization solution for manufacturing, industrial and commercial sectors.</p></li><li class="pcd" aria-hidden="true"><a class="pcd-link" href="https://ithena.ai/partner-brightcove/" tabindex="-1" aria-label="Brightcove partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-brightcove.png" alt="Brightcove" loading="lazy"></div><p class="pcd-desc">Identifying high-performing content and creating successful strategies for OTT streaming services.</p></li><li class="pcd" aria-hidden="true"><a class="pcd-link" href="https://ithena.ai/partner-google-cloud/" tabindex="-1" aria-label="Google Cloud partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-google-cloud.png" alt="Google Cloud" loading="lazy"></div><p class="pcd-desc">Transforming businesses with the best infrastructure, platform, industry solutions and expertise with Google Cloud.</p></li><li class="pcd" aria-hidden="true"><a class="pcd-link" href="https://ithena.ai/partner-aws/" tabindex="-1" aria-label="AWS partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-aws.png" alt="AWS" loading="lazy"></div><p class="pcd-desc">Seamless transformation of all IT assets, regardless of complexity or synchronicity, at super-optimized costs.</p></li><li class="pcd" aria-hidden="true"><a class="pcd-link" href="https://ithena.ai/incorta-partnership/" tabindex="-1" aria-label="Incorta partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-incorta.png" alt="Incorta" loading="lazy"></div><p class="pcd-desc">Empowering businesses to make data-driven decisions with unmatched speed with Incorta's Direct Data Platform.</p></li><li class="pcd" aria-hidden="true"><a class="pcd-link" href="https://ithena.ai/partner-infor/" tabindex="-1" aria-label="Infor partnership"></a><div class="pcd-logo"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-infor.png" alt="Infor" loading="lazy"></div><p class="pcd-desc">Implementing pre-existing Infor solutions with customised maintenance, optimization and debugging services.</p></li></ul>
+          </div>
+      </div>
+    </section>
+
+    <section class="sec cta rv hm-sec-cta" id="contact">
+      <div class="frame">
+        <div class="copy">
+          <p class="kicker rv" style="color:var(--blue-soft)">Bring us one process</p>
+          <h2 class="rv">Pick the process that hurts most. <span class="hl">We will show it connected in 30 minutes.</span></h2>
+          <p class="lede rv">No slide deck. Bring a quote that takes too long, a line you cannot see, or a fault that takes three visits, and an ITHENA specialist will walk it through the platform on your data.</p>
+          <ul class="ex rv"><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>A quote to order flow for one product family</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>One line on the Digital Shopfloor</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>One machine on Smart Service with spares</li></ul>
+          <div class="btnrow rv"><a class="btn primary hm-btn-cta-demo" href="#demoform" data-modal="#demoModal">Schedule a demo<span class=arw><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="btn glass hm-btn-cta-offerings" href="tel:+18043990051">Call (804) 399-0051<span class=arw><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+        </div>
+        <div class="cmed">
+          <img class="cthumb" src="https://dev-website.ithena.app/wp-content/uploads/2026/10/videothumb-v2-scaled.webp" alt="" loading="lazy" decoding="async">
+          <button type="button" class="cplay hm-btn-cta-film" data-modal="#filmModal" aria-label="Play the ITHENA company film">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.2v13.6L19 12z"/></svg>
+            <span>Watch the film</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <dialog class="dmodal" id="demoModal" data-theme="light" aria-labelledby="demoTitle">
+      <div class="form" id="demoform">
+        <button type="button" class="dmx hm-btn-demo-close" data-dclose aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        <h3 id="demoTitle">Schedule a demo</h3><p>An ITHENA specialist will reach out within 1 business day.</p>
+        [formidable id=44]
+        <small>We never share your information.</small>
+      </div>
+    </dialog>
+
+    <dialog class="dmodal fmodal" id="filmModal" aria-label="ITHENA company film">
+      <div class="fwrap">
+        <button type="button" class="dmx hm-btn-film-close" data-dclose aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        <video class="film" controls playsinline preload="none" poster="https://dev-website.ithena.app/wp-content/uploads/2026/09/video-thumb.webp">
+          <source src="https://dev-website.ithena.app/wp-content/uploads/2026/10/ITHENA%20Company%20film%20-%20homepage%20%2830s%20loop%29.mp4" type="video/mp4">
+        </video>
+      </div>
+    </dialog>
+  
+  </main>
+
+  <!-- Libraries: GSAP + ScrollTrigger, Motion (used by the blocks below) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/motion@13.2.0/dist/motion.js"></script>
+
+  <!-- Core: scroll reveal, number count-up, tab groups, problem switch, Aether player, pause off-screen videos -->
+  <script>
+  (function(){
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hover = matchMedia('(hover:hover)').matches;
+    /* reveal */
+    var rv = [].slice.call(document.querySelectorAll('.hm .rv'));
+    if ('IntersectionObserver' in window && !reduce) {
+      var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:0, rootMargin:'0px 0px -12% 0px'});
+      rv.forEach(function(el){ io.observe(el); });
+    } else rv.forEach(function(el){ el.classList.add('in'); });
+    /* fallback: reveal what is on screen if the observer is late */
+    setTimeout(function(){ rv.forEach(function(el){ if (el.getBoundingClientRect().top < innerHeight*1.2) el.classList.add('in'); }); }, 700);
+    /* count up */
+    var cs = [].slice.call(document.querySelectorAll('[data-count]'));
+    function count(el){ var n = el.firstChild, fin = n.nodeValue, t = parseFloat(el.getAttribute('data-count')), d = (fin.split('.')[1]||'').length, st=null; function step(ts){ if(!st) st=ts; var p=Math.min((ts-st)/1100,1); p=1-Math.pow(1-p,3); n.nodeValue=(t*p).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}); if(p<1) requestAnimationFrame(step);} requestAnimationFrame(step); setTimeout(function(){ n.nodeValue=fin; },1300); }
+    if (cs.length && 'IntersectionObserver' in window && !reduce) { var co = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ count(e.target); co.unobserve(e.target);} }); },{threshold:.6}); cs.forEach(function(c){ co.observe(c); }); }
+    /* tab groups: hover + click (touch: click only) */
+    [].slice.call(document.querySelectorAll('[data-tabs]')).forEach(function(group){
+      var tabs = [].slice.call(group.querySelectorAll('[role="tab"]'));
+      function pick(tab){ tabs.forEach(function(t){ var on = t===tab; t.setAttribute('aria-selected', on?'true':'false'); var pane = document.getElementById(t.getAttribute('aria-controls')); if(!pane) return; pane.classList.toggle('on', on); if(on){ pane.classList.remove('on'); void pane.offsetWidth; pane.classList.add('on'); [].forEach.call(pane.querySelectorAll('.rv'),function(r){ r.classList.add('in'); }); } }); }
+      tabs.forEach(function(tab){ tab.addEventListener('click', function(){ pick(tab); }); if (hover) tab.addEventListener('mouseenter', function(){ if (tab.getAttribute('aria-selected')!=='true') pick(tab); }); });
+    });
+    /* problem switch */
+    var pv = document.querySelector('.pvis'), pb = [].slice.call(document.querySelectorAll('.pswitch button')), pt = [].slice.call(document.querySelectorAll('.pcopy .pt p'));
+    function mode(m){ if(!pv) return; pv.setAttribute('data-mode', m); pb.forEach(function(b){ var on=b.getAttribute('data-mode')===m; b.classList.toggle('on',on); b.setAttribute('aria-selected',on?'true':'false'); }); pt.forEach(function(p){ p.classList.toggle('on', p.getAttribute('data-mode')===m); }); }
+    pb.forEach(function(b){ b.addEventListener('click', function(){ mode(b.getAttribute('data-mode')); }); if (hover) b.addEventListener('mouseenter', function(){ mode(b.getAttribute('data-mode')); }); });
+    if (pv && 'IntersectionObserver' in window && !reduce) { var seenP=false; new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting && !seenP){ seenP=true; setTimeout(function(){ mode('conn'); }, 2200); } }); },{threshold:.5}).observe(pv); }
+    /* aether player */
+    var aec = document.getElementById('aec'), steps = [].slice.call(document.querySelectorAll('.ae .step')), timer=null, cur=-1;
+    function showStep(k, auto){ cur=k; steps.forEach(function(s,i){ s.classList.toggle('on', i===k); s.setAttribute('aria-selected', i===k?'true':'false'); });
+      [].slice.call(aec.querySelectorAll('[data-s]')).forEach(function(m){ var s=parseInt(m.getAttribute('data-s'),10); var show = s<=k; if (m.classList.contains('typing')) show = (k===1 && auto); m.classList.toggle('sh', show); });
+      if (k===1 && auto) { setTimeout(function(){ if(cur===1){ aec.querySelector('.typing').classList.remove('sh'); aec.querySelector('.msg.b[data-s="1"]').classList.add('sh'); } }, 900); }
+      clearTimeout(timer); if (auto && !reduce) timer = setTimeout(function(){ showStep((k+1)%3, true); }, k===0?1800:(k===1?4200:5200)); }
+    steps.forEach(function(s,i){ s.addEventListener('click', function(){ showStep(i,false); }); if (hover) s.addEventListener('mouseenter', function(){ showStep(i,false); }); });
+    if (aec && 'IntersectionObserver' in window) { var seenA=false; new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting && !seenA){ seenA=true; showStep(0,true); } }); },{threshold:.4}).observe(aec); } else if (aec) showStep(2,false);
+    /* pause videos off screen */
+    var vids = [].slice.call(document.querySelectorAll('.hm video'));
+    if ('IntersectionObserver' in window) { var vo = new IntersectionObserver(function(es){ es.forEach(function(e){ var v=e.target; if(e.isIntersecting){ v.play && v.play().catch(function(){}); } else v.pause(); }); },{threshold:.05}); vids.forEach(function(v){ vo.observe(v); }); }
+  })();
+  </script>
+
+  <!-- Hero: industry rotator, floating cards, wires between cards, background video -->
+  <script>
+  (function(){
+  var sc=document.getElementById('scene'); if(!sc) return;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var bgv=document.getElementById('bgv'), tags=[].slice.call(sc.querySelectorAll('.ptag>span')),
+      cards=[].slice.call(sc.querySelectorAll('.fc')), rail=[].slice.call(document.querySelectorAll('.irail button')),
+      rot=[].slice.call(document.querySelectorAll('#rot>span')), wires=sc.querySelector('.wires');
+  var N=rail.length, cur=0, timer=null, SEG=4.5, seen=false, live=false;
+  function show(i,user){ i=(i+N)%N; if(i===cur&&user===undefined) return; cur=i;
+    tags.forEach(function(t,k){ t.classList.toggle('on',k===i); });
+    rot.forEach(function(r,k){ r.classList.toggle('on',k===i); });
+    cards.forEach(function(c){ [].slice.call(c.children).forEach(function(d,k){ d.classList.toggle('on',k===i); }); });
+    rail.forEach(function(b,k){ var on=k===i; b.classList.toggle('on',on); b.setAttribute('aria-selected',on?'true':'false'); if(on){ var pg=b.querySelector('.pg'); pg.style.animation='none'; void pg.offsetWidth; pg.style.animation=''; } });
+    drawWires(true); }
+  function next(){ show(cur+1); }
+  function arm(){ clearTimeout(timer); if(reduce) return; timer=setTimeout(function(){ if(!live) next(); arm(); }, SEG*1000); }
+  if(bgv){
+    if(reduce){ bgv.removeAttribute('autoplay'); bgv.pause(); }
+    bgv.addEventListener('timeupdate',function(){ if(bgv.paused||bgv.seeking||bgv.readyState<2) return; live=true;
+      var i=Math.floor((bgv.currentTime+.3)/SEG)%N; if(i!==cur) show(i); });
+    bgv.addEventListener('pause',function(){ live=false; }); bgv.addEventListener('ended',function(){ live=false; });
+    bgv.addEventListener('error',function(){ live=false; },true);
+  }
+  rail.forEach(function(b,k){ b.addEventListener('click',function(){ show(k,true);
+    if(bgv&&live&&bgv.readyState>0){ try{ bgv.currentTime=k*SEG+.05; }catch(e){} } arm();
+    var tgt=document.getElementById('serve-'+k); if(tgt) tgt.scrollIntoView({behavior:'smooth',block:'center'}); }); });
+  /* wires: card 1 -> 2 -> 3, measured from layout */
+  function drawWires(animate){ if(!wires||getComputedStyle(wires).display==='none') return;
+    var R=sc.getBoundingClientRect(); wires.setAttribute('viewBox','0 0 '+R.width+' '+R.height); var out='';
+    for(var k=0;k<cards.length-1;k++){ var a=cards[k].getBoundingClientRect(), b=cards[k+1].getBoundingClientRect();
+      var ax=a.left-R.left+a.width/2, ay=a.bottom-R.top, bx=b.left-R.left+b.width/2, by=b.top-R.top, my=(ay+by)/2;
+      if(by<ay+8){ my=ay+14; }
+      out+='<path class="dash" d="M'+ax+','+ay+' L'+ax+','+my+' L'+bx+','+my+' L'+bx+','+by+'"/><circle cx="'+ax+'" cy="'+ay+'" r="3.2"/><circle cx="'+bx+'" cy="'+by+'" r="3.2"/>'; }
+    out+='<circle class="dot" r="2.6" cx="-10" cy="-10"/>';
+    wires.innerHTML=out;
+    if(animate&&window.gsap&&!reduce){ var ps=[].slice.call(wires.querySelectorAll('path')); ps.forEach(function(p,k){ var L=p.getTotalLength(); gsap.fromTo(p,{strokeDasharray:L,strokeDashoffset:L,opacity:.9},{strokeDashoffset:0,duration:.8,delay:.1+k*.35,ease:'power2.out',onComplete:function(){ p.style.strokeDasharray='5 6'; p.style.strokeDashoffset='0'; }}); });
+      var dot=wires.querySelector('.dot'); if(dot&&ps.length){ var tl=gsap.timeline({delay:.5}); tl.set(dot,{opacity:1}); ps.forEach(function(p){ var L=p.getTotalLength(); tl.to({t:0},{t:1,duration:1.1,ease:'power1.inOut',onUpdate:function(){ var pt=p.getPointAtLength(L*this.targets()[0].t); dot.setAttribute('cx',pt.x); dot.setAttribute('cy',pt.y); }}); }); tl.to(dot,{opacity:0,duration:.3}); } }
+  }
+  var rt; addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(function(){ drawWires(false); },120); });
+  function start(){ if(seen) return; seen=true; setTimeout(function(){ drawWires(true); },350); arm();
+    if(bgv&&!reduce){ var p=bgv.play(); if(p&&p.catch) p.catch(function(){}); } }
+  if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting&&!seen){ start(); } if(!e.isIntersecting){ clearTimeout(timer); if(bgv&&live) bgv.pause(); } else if(seen){ arm(); if(bgv&&bgv.paused&&!reduce){ var p=bgv.play(); if(p&&p.catch) p.catch(function(){}); } } }); },{threshold:.2}).observe(sc); }
+  /* start anyway if the observer never fires */
+  setTimeout(function(){ if(!seen&&sc.getBoundingClientRect().top<innerHeight) start(); },1500);
+  })();
+  </script>
+
+  <!-- Connector lines above the What we do and Our offerings card grids, drawn on scroll (GSAP ScrollTrigger) -->
+  <script>
+  (function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var groups=[{grid:'servecards',sel:'.wcard'},{grid:'ogrid',sel:'.ocard'}];
+  var built=[];
+  function build(g){ var grid=document.getElementById(g.grid); if(!grid) return null; var svg=grid.querySelector('.conn'); if(!svg||getComputedStyle(svg).display==='none') return null;
+    var R=grid.getBoundingClientRect(), cards=[].slice.call(grid.querySelectorAll(g.sel)); svg.setAttribute('viewBox','0 0 '+R.width+' '+R.height);
+    var top=-44, cx=R.width/2, bus=-22, d='M'+cx+','+top+' L'+cx+','+bus;
+    var xs=[], firstRow=cards.filter(function(c){ return Math.abs(c.getBoundingClientRect().top-cards[0].getBoundingClientRect().top)<4; });
+    firstRow.forEach(function(c){ var C=c.getBoundingClientRect(); xs.push(C.left-R.left+C.width/2); });
+    d+=' M'+Math.min.apply(null,xs)+','+bus+' L'+Math.max.apply(null,xs)+','+bus;
+    xs.forEach(function(x){ d+=' M'+x+','+bus+' L'+x+',0'; });
+    var out='<path class="m" id="'+g.grid+'m" d="'+d+'"/><path class="ln" d="'+d+'"/>'+'<circle class="hb" cx="'+cx+'" cy="'+top+'" r="4.5"/>';
+    xs.forEach(function(x){ out+='<circle cx="'+x+'" cy="0" r="3.5"/>'; });
+    svg.innerHTML='<defs><mask id="'+g.grid+'k"><rect x="-50%" y="-100%" width="200%" height="300%" fill="#000"/>'+out.split('<path class="ln"')[0].replace('class="m"','class="m" stroke="#fff"')+'</mask></defs>'+'<g mask="url(#'+g.grid+'k)"><path class="ln" d="'+d+'"/></g><circle class="hb" cx="'+cx+'" cy="'+top+'" r="4.5"/>'+xs.map(function(x){ return '<circle cx="'+x+'" cy="0" r="3.5"/>'; }).join('');
+    var m=svg.querySelector('mask path'); return {svg:svg,mask:m,grid:grid}; }
+  function setup(){ built.forEach(function(b){ if(b.st) b.st.kill(); }); built=[];
+    groups.forEach(function(g){ var b=build(g); if(!b) return; built.push(b);
+      var L=b.mask.getTotalLength(); b.mask.style.strokeDasharray=L;
+      if(window.gsap&&window.ScrollTrigger&&!reduce){ b.mask.style.strokeDashoffset=L;
+        b.st=gsap.to(b.mask,{strokeDashoffset:0,ease:'none',scrollTrigger:{trigger:b.grid,start:'top 88%',end:'top 45%',scrub:.5}}).scrollTrigger; }
+      else { b.mask.style.strokeDashoffset=0; } }); }
+  if(window.gsap&&window.ScrollTrigger){ gsap.registerPlugin(ScrollTrigger); }
+  setup(); var rt; addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(setup,150); });
+  /* architecture diagram: straight verticals from every cell into the ITHENA bar, measured from
+      the layout; drawn once it scrolls in, then packets travel up the lines (systems -> bar -> people) */
+  var arch=document.getElementById('arch'); if(arch){ var asvg=arch.querySelector('.alines'), bar=document.getElementById('archbar'), segs=[], packs=[];
+    function buildArch(){ packs.forEach(function(t){ t.kill(); }); packs=[]; segs=[];
+      var R=arch.getBoundingClientRect(), B=bar.getBoundingClientRect(); asvg.setAttribute('viewBox','0 0 '+R.width+' '+R.height);
+      [].slice.call(arch.querySelectorAll('.sys .cell')).forEach(function(c){ var C=c.getBoundingClientRect(); if(C.top-B.bottom>80) return;
+        segs.push({x:C.left-R.left+C.width/2, y1:C.top-R.top, y2:B.bottom-R.top}); });
+      [].slice.call(arch.querySelectorAll('.roles .cell')).forEach(function(c){ var C=c.getBoundingClientRect();
+        segs.push({x:C.left-R.left+C.width/2, y1:B.top-R.top, y2:C.bottom-R.top}); });
+      var out=''; segs.forEach(function(s){ out+='<path class="ln" d="M'+s.x+','+s.y1+' L'+s.x+','+s.y2+'"/>'; });
+      segs.forEach(function(s){ out+='<circle class="pt" cx="'+s.x+'" cy="'+s.y1+'" r="2.6"/><circle class="pt" cx="'+s.x+'" cy="'+s.y2+'" r="2.6"/>'; });
+      segs.forEach(function(s){ out+='<circle class="pk" cx="'+s.x+'" cy="'+s.y1+'" r="2.4"/>'; });
+      asvg.innerHTML=out; }
+    var drawn=false;
+    function drawArch(){ if(drawn) return; drawn=true; arch.classList.add('in');
+      if(!(window.gsap&&!reduce)) return;
+      var lines=[].slice.call(asvg.querySelectorAll('.ln')), pks=[].slice.call(asvg.querySelectorAll('.pk'));
+      lines.forEach(function(p,k){ var L=p.getTotalLength(); gsap.fromTo(p,{strokeDasharray:L,strokeDashoffset:L},{strokeDashoffset:0,duration:.7,delay:.1+k*.07,ease:'power2.out'}); });
+      pks.forEach(function(c,k){ var s=segs[k]; var tl=gsap.timeline({repeat:-1,repeatDelay:1.6+Math.random()*2.4,delay:1+Math.random()*3});
+        tl.set(c,{attr:{cy:s.y1},opacity:0}).to(c,{opacity:1,duration:.2}).to(c,{attr:{cy:s.y2},duration:1.1,ease:'power1.inOut'},'<').to(c,{opacity:0,duration:.25},'-=.2'); packs.push(tl); }); }
+    buildArch();
+    if(window.gsap&&!reduce){ [].slice.call(asvg.querySelectorAll('.ln')).forEach(function(p){ var L=p.getTotalLength(); p.style.strokeDasharray=L; p.style.strokeDashoffset=L; }); }
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(es,o){ es.forEach(function(e){ if(e.isIntersecting){ o.unobserve(e.target); drawArch(); } }); },{threshold:.3}).observe(arch); }
+    var chk=function(){ if(!drawn){ var r=arch.getBoundingClientRect(); if(r.top<innerHeight*.85&&r.bottom>0) drawArch(); } if(drawn) removeEventListener('scroll',chk); };
+    addEventListener('scroll',chk,{passive:true}); setTimeout(chk,1200);
+    var art; addEventListener('resize',function(){ clearTimeout(art); art=setTimeout(function(){ buildArch(); if(drawn){ drawn=false; drawArch(); } },160); }); }
+  })();
+  </script>
+
+  <!-- What we do cards: lazy-load and play card videos while on screen -->
+  <script>
+  (function(){
+  var vs=[].slice.call(document.querySelectorAll('.wcard video[data-src]')); if(!vs.length) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function on(v){ if(!v.getAttribute('src')){ v.setAttribute('src',v.getAttribute('data-src')); v.load(); } var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
+  function off(v){ if(!v.paused) v.pause(); }
+  vs.forEach(function(v){ v.addEventListener('playing',function(){ v.classList.add('on'); }); });
+  if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) on(e.target); else off(e.target); }); },{threshold:.1,rootMargin:'160px 0px'}); vs.forEach(function(v){ io.observe(v); }); }
+  var chk=function(){ vs.forEach(function(v){ var r=v.getBoundingClientRect(); if(r.top<innerHeight+160&&r.bottom>-160){ if(v.paused) on(v); } }); };
+  setTimeout(chk,1500); addEventListener('scroll',function(){ clearTimeout(chk._t); chk._t=setTimeout(chk,200); },{passive:true});
+  })();
+  </script>
+
+  <!-- Platform scheme: build-up animation of the isometric SVG (Motion) -->
+  <script>
+  (function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var scheme=document.getElementById('pfscheme'); if(!scheme||reduce||!window.Motion||!('IntersectionObserver' in window)) return;
+  var svg=scheme.querySelector('svg'); if(!svg) return;
+  var animate=Motion.animate, done=false;
+  var lyrs=[].slice.call(svg.querySelectorAll('g.lyr')), lines=[].slice.call(svg.querySelectorAll('path.ln, path.dsh')), pks=[].slice.call(svg.querySelectorAll('.pk'));
+  lyrs.forEach(function(g){ g.style.opacity='0'; g.style.transform='translateY(36px)'; });
+  lines.forEach(function(p){ var L=p.getTotalLength(); p.style.animation='none'; p.style.strokeDasharray=L; p.style.strokeDashoffset=L; });
+  pks.forEach(function(p){ p.style.visibility='hidden'; });
+  function finish(){ lyrs.forEach(function(g){ if(g.getAnimations) g.getAnimations().forEach(function(an){ an.cancel(); }); g.style.opacity=''; g.style.transform=''; });
+    if(window.gsap) gsap.killTweensOf(lines);
+    lines.forEach(function(p){ p.style.strokeDasharray=''; p.style.strokeDashoffset=''; p.style.animation=''; p.removeAttribute('stroke-dasharray'); p.removeAttribute('stroke-dashoffset'); });
+    pks.forEach(function(p){ p.style.visibility=''; }); }
+  function run(){ if(done) return; done=true;
+    try{
+      lyrs.forEach(function(g,i){ animate(g,{opacity:[0,1],transform:['translateY(36px)','translateY(0px)']},{type:'spring',stiffness:110,damping:16,mass:.9,delay:i*.22}); });
+      if(window.gsap){ lines.forEach(function(p,i){ gsap.to(p,{strokeDashoffset:0,duration:.7,delay:.8+i*.05,ease:'power2.out'}); }); }
+      else { lines.forEach(function(p){ p.style.strokeDasharray=''; p.style.strokeDashoffset=''; }); }
+    }catch(err){}
+    setTimeout(function(){ pks.forEach(function(p){ p.style.visibility=''; }); },2400);
+    setTimeout(finish,3800);
+  }
+  function ready(){ if(document.hidden){ document.addEventListener('visibilitychange',function v(){ if(!document.hidden){ document.removeEventListener('visibilitychange',v); setTimeout(run,120); } }); } else run(); }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ io.disconnect(); ready(); } }); },{threshold:.2});
+  io.observe(scheme);
+  setTimeout(function(){ if(!done){ var r=scheme.getBoundingClientRect(); if(r.top<innerHeight&&r.bottom>0) ready(); } },3000);
+  })();
+  </script>
+
+  <!-- Numbers band: staggered pop-in of the stats (Motion) -->
+  <script>
+  (function(){
+  var band=document.querySelector('.stats3'); if(!band) return;
+  var items=[].slice.call(band.querySelectorAll('.st3'));
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!items.length||reduce||!window.Motion||!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; io.disconnect();
+    items.forEach(function(el,i){
+      try{ Motion.animate(el,{opacity:[0,1],y:[18,0],filter:['blur(6px)','blur(0px)']},{duration:.7,delay:i*.09,ease:[.16,1,.3,1]}); }catch(err){}
+      setTimeout(function(){ el.style.opacity=''; el.style.transform=''; el.style.filter=''; },1500+i*90);
+    }); }); },{threshold:.3});
+  io.observe(band);
+  })();
+  </script>
+
+  <!-- Our offerings: 3D tilt on card hover, mouse only (Motion) -->
+  <script>
+  (function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var cards=[].slice.call(document.querySelectorAll('#offer .ocard'));
+  if(!cards.length||reduce||!fine||!window.Motion) return;
+  var animate=Motion.animate;
+  cards.forEach(function(card){
+    card.classList.add('jtilt');
+    var cur={rx:0,ry:0,y:0,s:1};
+    function move(e){
+      var r=card.getBoundingClientRect();
+      var px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+      var t={rx:py*-9,ry:px*11,y:-6,s:1.015};
+      animate(card,{rotateX:[cur.rx,t.rx],rotateY:[cur.ry,t.ry],y:[cur.y,t.y],scale:[cur.s,t.s]},{type:'spring',stiffness:260,damping:20,mass:.6});
+      cur=t;
+    }
+    card.addEventListener('pointermove',move);
+    card.addEventListener('pointerleave',function(){
+      animate(card,{rotateX:[cur.rx,0],rotateY:[cur.ry,0],y:[cur.y,0],scale:[cur.s,1]},{type:'spring',stiffness:200,damping:18});
+      cur={rx:0,ry:0,y:0,s:1};
+    });
+  });
+  })();
+  </script>
+
+  <!-- Demo form: style the Formidable form and focus it when the modal opens -->
+  <script>
+  (function(){
+  var card=document.getElementById('demoform'); if(!card) return;
+  function dress(){
+    var b=card.querySelector('.frm_submit button');
+    if(b && /^\s*(submit|send)\s*$/i.test(b.textContent||'')) b.textContent='Book my 30 minutes';
+    var src=card.querySelector('#field_submission-source')
+          || card.querySelector('input[type=hidden][id*="submission"]');
+    if(src && !src.value) src.value='Homepage closing CTA ('+location.pathname+')';
+  }
+  dress();
+  [400,1500,4000].forEach(function(t){ setTimeout(dress,t); });
+  ['frmFormComplete','frmFormErrors','frmPageChanged'].forEach(function(ev){
+    document.addEventListener(ev,function(){ setTimeout(dress,40); });
+  });
+  /* on open: re-dress the form, focus first field */
+  var dlg=document.getElementById('demoModal');
+  if(!dlg) return;
+  dlg.addEventListener('dopen',function(){
+    dress();
+    var f=card.querySelector('input[type=text],input[type=email]');
+    if(f) setTimeout(function(){ try{ f.focus({preventScroll:true}); }catch(x){ f.focus(); } },80);
+  });
+  })();
+  </script>
+
+  <!-- Modal shell: open/close <dialog> for the demo form and the film -->
+  <script>
+  /* modal shell: [data-modal="#id"] opens a <dialog>; adds scroll lock, backdrop close, focus return, dopen/dclose events */
+  (function(){
+  var opener=null, prevOv='';
+  function openDlg(dlg,e){
+    if(!dlg || !dlg.showModal) return;
+    if(e) e.preventDefault();
+    opener=document.activeElement;
+    prevOv=document.documentElement.style.overflow;
+    document.documentElement.style.overflow='hidden';
+    dlg.showModal();
+    dlg.dispatchEvent(new CustomEvent('dopen'));
+  }
+  document.addEventListener('click',function(e){
+    if(!e.target.closest) return;
+    var t=e.target.closest('[data-modal]');
+    if(t){ openDlg(document.querySelector(t.getAttribute('data-modal')),e); return; }
+    var x=e.target.closest('[data-dclose]');
+    if(x){ var d=x.closest('dialog'); if(d) d.close(); }
+  });
+  [].forEach.call(document.querySelectorAll('dialog.dmodal'),function(dlg){
+    dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+    dlg.addEventListener('close',function(){
+      document.documentElement.style.overflow=prevOv;
+      dlg.dispatchEvent(new CustomEvent('dclose'));
+      if(opener && opener.focus){ try{ opener.focus({preventScroll:true}); }catch(x2){ opener.focus(); } }
+    });
+  });
+  })();
+  </script>
+
+  <!-- Film modal: load and play the video only while open -->
+  <script>
+  /* film loads and plays only while its modal is open */
+  (function(){
+  var dlg=document.getElementById('filmModal'); if(!dlg) return;
+  var v=dlg.querySelector('video'); if(!v) return;
+  dlg.addEventListener('dopen',function(){ var pr=v.play(); if(pr && pr.catch) pr.catch(function(){}); });
+  dlg.addEventListener('dclose',function(){ v.pause(); try{ v.currentTime=0; }catch(e){} });
+  })();
+  </script>
+
+  <!-- WP theme fix: reset overflow/contain on the page's parent wrappers so nothing is clipped -->
+  <script>
+    (function(){var r=document.querySelector('.hm');if(!r)return;var e=r.parentElement;while(e&&e!==document.body){var s=getComputedStyle(e);if(s.overflow!=='visible'||s.overflowX!=='visible'||s.overflowY!=='visible'){e.style.overflow='visible';}if(s.contain!=='none')e.style.contain='none';e=e.parentElement;}})();
+  </script>
+  
+</div>

@@ -1,0 +1,312 @@
+<!-- iPLAN, powered by Ortems &mdash; dashboard animation. Self-contained fragment: paste it whole into an
+     HTML block or the "Animated HTML" field. One section, no document wrapper tags, every rule scoped to
+     .ithdash. Follows the host theme: OS preference by default, overridden by html.dark or a
+     [data-theme="dark"|"light"] ancestor (the ITHENA header toggle sets both). -->
+<section class="ithdash ithdash--gantt" aria-label="iPLAN planning, scheduling and predictive maintenance dashboard">
+<style>
+.ithdash{
+  color-scheme:light dark;
+  /* each token: light fallback first, then the light-dark() pair for browsers that have it */
+  --bg:#FFFFFF;        --bg:light-dark(#FFFFFF,#0E1116);
+  --surface:#FFFFFF;   --surface:light-dark(#FFFFFF,#15191F);
+  --surface2:#FAFCFE;  --surface2:light-dark(#FAFCFE,#11161C);
+  --chrome:#F3F6FA;    --chrome:light-dark(#F3F6FA,#1B212A);
+  --dot:#D5DCE5;       --dot:light-dark(#D5DCE5,#39424D);
+  --tile:#F6F9FB;      --tile:light-dark(#F6F9FB,#1B2128);
+  --wash:#EAF5FB;      --wash:light-dark(#EAF5FB,#10293C);
+  --wash2:#D7ECF6;     --wash2:light-dark(#D7ECF6,#1B4460);
+  --line:#E6EAEE;      --line:light-dark(#E6EAEE,#28303A);
+  --ink:#1F2023;       --ink:light-dark(#1F2023,#F0F3F6);
+  --ink2:#4B5259;      --ink2:light-dark(#4B5259,#B4BEC8);
+  --ink3:#6E767E;      --ink3:light-dark(#6E767E,#8E99A4);
+  --sep:#B4BFCB;       --sep:light-dark(#B4BFCB,#4A545F);
+  --blue:#0083C8;      --blue:light-dark(#0083C8,#33A1E0);
+  --blue-deep:#006AA3; --blue-deep:light-dark(#006AA3,#8CCFF5);
+  --btn-ink:#FFFFFF;   --btn-ink:light-dark(#FFFFFF,#08131C);
+  --g-bg:#E7F5EE;      --g-bg:light-dark(#E7F5EE,#0E2A22);
+  --g-ink:#177A54;     --g-ink:light-dark(#177A54,#54D6A2);
+  --a-bg:#FEF4E5;      --a-bg:light-dark(#FEF4E5,#2E2413);
+  --a-ink:#8A5A08;     --a-ink:light-dark(#8A5A08,#F0B45C);
+  --green:#2ED47A;     --green:light-dark(#2ED47A,#35D98A);
+  --amber:#E08A1E;     --amber:light-dark(#E08A1E,#E8A33E);
+  --amber-ink:#2A1C05; --amber-ink:light-dark(#2A1C05,#1A1204);
+  --red-soft:#E25D5D;  --red-soft:light-dark(#E25D5D,#E8736F);
+  --red-ink:#B42318;   --red-ink:light-dark(#B42318,#FF9E99);
+  --sh1:rgba(10,25,45,.5);  --sh1:light-dark(rgba(10,25,45,.5),rgba(0,0,0,.75));
+  --sh2:rgba(10,25,45,.05); --sh2:light-dark(rgba(10,25,45,.05),rgba(0,0,0,.4));
+  --ease:cubic-bezier(.16,1,.3,1);
+  display:block;margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+/* host theme wins over the OS preference */
+.ithdash[data-theme="dark"],[data-theme="dark"] .ithdash,html.dark .ithdash{color-scheme:dark}
+.ithdash[data-theme="light"],[data-theme="light"] .ithdash{color-scheme:light}
+
+.ithdash *{box-sizing:border-box}
+.ithdash .ithd{max-width:932px;margin:0 auto;padding:22px 16px}
+.ithdash button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.ithdash :focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){.ithdash *{animation:none!important;transition:none!important}}
+
+/* ---- browser-framed app window ---- */
+.ithdash .ap{position:relative;width:100%;max-width:900px;margin:0 auto;background:var(--surface);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:11.5px;line-height:1.3;
+  color:var(--ink2);text-align:left;box-shadow:0 34px 60px -34px var(--sh1),0 2px 6px var(--sh2)}
+.ithdash .apbar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:var(--chrome);border-bottom:1px solid var(--line)}
+.ithdash .apbar>i{width:9px;height:9px;border-radius:50%;background:var(--dot)}
+.ithdash .apbar .url{flex:1;min-width:0;margin-left:8px;display:flex;align-items:center;gap:6px;background:var(--surface);
+  border:1px solid var(--line);border-radius:7px;padding:4px 10px;font-size:10.5px;color:var(--ink3);
+  white-space:nowrap;overflow:hidden}
+.ithdash .apbar .url .i{width:11px;height:11px;color:var(--g-ink);flex:none}
+.ithdash .apbar .url em{font-style:normal;color:var(--ink)}
+.ithdash .aphd{display:flex;align-items:center;gap:14px;padding:8px 14px;border-bottom:1px solid var(--line)}
+.ithdash .aphd .lg{display:flex;align-items:center;gap:7px;font-weight:800;color:var(--ink);font-size:12px;
+  white-space:nowrap;letter-spacing:-.01em}
+.ithdash .aphd .lg em{width:20px;height:20px;border-radius:6px;background:var(--blue);color:var(--btn-ink);display:grid;
+  place-items:center;font-style:normal;font-size:11px;font-weight:800}
+.ithdash .aphd .nv{display:flex;gap:11px;color:var(--ink3);font-weight:600;font-size:11px;white-space:nowrap}
+.ithdash .aphd .nv b{color:var(--blue-deep)}
+.ithdash .aphd .sr{margin-left:auto;display:grid;place-items:center;width:26px;height:26px;border:1px solid var(--line);
+  border-radius:7px;color:var(--ink3);flex:none}
+.ithdash .aphd .sr .i{width:13px;height:13px}
+.ithdash .aphd .ct{position:relative;color:var(--ink2);flex:none}
+.ithdash .aphd .ct .i{width:16px;height:16px}
+.ithdash .aphd .ct i{position:absolute;top:-6px;right:-7px;min-width:14px;height:14px;padding:0 3px;border-radius:999px;
+  background:var(--blue);color:var(--btn-ink);font-size:9px;font-weight:800;font-style:normal;display:grid;place-items:center}
+.ithdash .aphd .av{width:24px;height:24px;border-radius:50%;background:var(--wash);color:var(--blue-deep);
+  font-weight:800;font-size:10px;display:grid;place-items:center;flex:none}
+@media(max-width:560px){.ithdash .aphd .nv{display:none}}
+.ithdash .apbody{padding:14px}
+.ithdash .apbc{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink3);margin-bottom:10px;
+  white-space:nowrap;overflow:hidden}
+.ithdash .apbc b{font-weight:600;color:var(--ink2)}
+.ithdash .apbc em{font-style:normal;color:var(--sep)}
+
+/* ---- cards, chips, buttons ---- */
+.ithdash .apcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:0}
+.ithdash .ap2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:12px;align-items:start;margin-top:12px}
+@media(max-width:760px){.ithdash .ap2{grid-template-columns:minmax(0,1fr)}}
+.ithdash .apcard>.h{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);
+  font-weight:700;color:var(--ink);font-size:11.5px;white-space:nowrap;overflow:hidden}
+.ithdash .apcard>.h .i{width:14px;height:14px;color:var(--ink3);flex:none}
+.ithdash .apcard>.h .apc{margin-left:auto}
+.ithdash .apcard .bd{padding:11px 12px}
+.ithdash .apc{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:999px;font-size:10px;
+  font-weight:700;white-space:nowrap;background:var(--tile);color:var(--ink2)}
+.ithdash .apc i{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
+.ithdash .apc.g{background:var(--g-bg);color:var(--g-ink)}
+.ithdash .apc.a{background:var(--a-bg);color:var(--a-ink)}
+.ithdash .apc.b{background:var(--wash);color:var(--blue-deep)}
+.ithdash .apb{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:6px 11px;border-radius:7px;
+  background:var(--blue);color:var(--btn-ink);font-weight:700;font-size:11px;white-space:nowrap;min-height:30px}
+.ithdash .apb.o{background:var(--surface);color:var(--blue-deep);border:1px solid var(--line)}
+.ithdash .apb .i{width:12px;height:12px}
+.ithdash .aplive{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink3);padding:7px 12px;
+  background:var(--surface2);border-top:1px solid var(--line);border-radius:0 0 10px 10px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.ithdash .aplive i{flex:none;width:6px;height:6px;border-radius:50%;background:var(--green);animation:ithBlink 1.6s ease-in-out infinite}
+@keyframes ithBlink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ---- KPI tiles ---- */
+.ithdash .pfk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}
+@media(max-width:560px){.ithdash .pfk{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ithdash .pfk div{background:var(--tile);border-radius:9px;padding:8px 10px;min-width:0}
+.ithdash .pfk b{display:block;font-size:15.5px;letter-spacing:-.02em;line-height:1.1;color:var(--ink);
+  font-variant-numeric:tabular-nums}
+.ithdash .pfk b em{font-style:normal;font-size:10px;color:var(--ink3);margin-left:2px;font-weight:600}
+.ithdash .pfk div>span{display:block;font-size:10px;color:var(--ink3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .pfk div.ok b{color:var(--g-ink)}
+.ithdash .pfk div.w b{color:var(--red-ink)}
+
+/* ---- gantt ---- */
+.ithdash .ruler{display:flex;justify-content:space-between;font-size:9.5px;color:var(--ink3);
+  margin:0 0 6px 68px;letter-spacing:.04em}
+.ithdash .gantt{display:grid;gap:6px}
+.ithdash .gantt>div{display:grid;grid-template-columns:62px minmax(0,1fr);align-items:center;gap:6px;font-size:11px;color:var(--ink2)}
+.ithdash .gantt>div>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .trk{position:relative;height:22px;border-radius:5px;background:var(--tile);overflow:hidden}
+.ithdash .trk b{position:absolute;top:2px;bottom:2px;left:var(--s);width:0;border-radius:4px;background:var(--blue);
+  color:var(--btn-ink);font-size:9px;font-weight:700;display:flex;align-items:center;padding:0 5px;
+  white-space:nowrap;overflow:hidden;transition:width .55s var(--ease);transition-delay:calc(var(--i) * 90ms)}
+.ithdash.on .trk b{width:var(--w)}
+.ithdash .trk b.late{background:var(--amber);color:var(--amber-ink)}
+.ithdash .trk b.pm{color:var(--ink2);background:repeating-linear-gradient(45deg,
+  var(--wash2),var(--wash2) 4px,var(--surface) 4px,var(--surface) 8px)}
+.ithdash .glegend{display:flex;gap:14px;flex-wrap:wrap;font-size:9.5px;color:var(--ink3);margin-top:9px}
+.ithdash .glegend s{text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.ithdash .glegend s::before{content:"";width:10px;height:8px;border-radius:2px;background:var(--blue)}
+.ithdash .glegend s.a::before{background:var(--amber)}
+.ithdash .glegend s.n::before{display:none}
+.ithdash .glegend s.p::before{background:repeating-linear-gradient(45deg,
+  var(--wash2),var(--wash2) 3px,var(--surface) 3px,var(--surface) 6px)}
+
+/* ---- load against capacity ---- */
+.ithdash .load{display:grid;gap:8px}
+.ithdash .load>div{display:grid;grid-template-columns:60px minmax(0,1fr) 38px;align-items:center;gap:8px;font-size:11px;color:var(--ink2)}
+.ithdash .load>div>span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .cap{position:relative;height:9px;border-radius:4px;background:var(--tile)}
+.ithdash .cap i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:4px;background:var(--blue);
+  transition:width 1s var(--ease) .15s}
+.ithdash.on .cap i{width:var(--w)}
+.ithdash .over .cap i{background:var(--red-soft)}
+.ithdash .cap::after{content:"";position:absolute;left:76.9%;top:-3px;bottom:-3px;width:1.5px;background:var(--ink3);opacity:.55}
+.ithdash .load b{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+.ithdash .over b{color:var(--red-ink)}
+.ithdash .capnote{font-size:9.5px;color:var(--ink3);margin-top:9px}
+
+/* ---- predictive maintenance ---- */
+.ithdash .pm{display:grid;gap:6px}
+.ithdash .pm>div{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;padding:8px 9px;
+  border-radius:9px;background:var(--tile);font-size:11px;color:var(--ink2);min-width:0}
+.ithdash .pm strong{display:block;font-size:11px;font-weight:700;color:var(--ink)}
+.ithdash .pm em{font-style:normal;display:block;font-size:10px;color:var(--ink3);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .pfact{display:flex;gap:8px;margin-top:10px}
+</style>
+<div class="ithd">
+  <div class="ap">
+    <div class="apbar"><i></i><i></i><i></i>
+      <span class="url">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        iplan.ithena.app<em>/cells/machining-b/day-plan</em>
+      </span>
+    </div>
+    <div class="aphd">
+      <span class="lg"><em>i</em>iPLAN</span>
+      <span class="nv"><span>Plants</span><b>Cells</b><span>Jobs</span><span>Maintenance</span></span>
+      <span class="sr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg></span>
+      <span class="ct"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4l2-2z"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg><i>4</i></span>
+      <span class="av">PL</span>
+    </div>
+    <div class="apbody">
+      <div class="apbc"><b>Cells</b><em>/</em>Machining cell B<em>/</em><b>Day plan, 06:00 to 18:00</b></div>
+
+      <div class="pfk">
+        <div><b><span data-count="214">0</span></b><span>Jobs scheduled</span></div>
+        <div class="ok"><b><span data-count="96.1" data-dp="1">0</span><em>%</em></b><span>On-time to promise</span></div>
+        <div class="w"><b><span data-count="2">0</span></b><span>Machines over capacity</span></div>
+        <div><b><span data-count="2">0</span></b><span>PM windows today</span></div>
+      </div>
+
+      <div class="apcard">
+        <div class="h">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+          Machine-level plan<span class="apc b"><i></i>Ortems, replanned 09:41</span>
+        </div>
+        <div class="bd">
+          <div class="ruler"><span>06:00</span><span>09:00</span><span>12:00</span><span>15:00</span><span>18:00</span></div>
+          <div class="gantt" role="img" aria-label="Twelve-hour plan for six machines in cell B: sixteen jobs, one running late on Mill 04, and two preventive maintenance windows.">
+            <div><span>Mill 04</span><div class="trk">
+              <b style="--s:0%;--w:22%;--i:0">FZ-2291</b><b style="--s:24%;--w:22%;--i:1">FZ-2288</b>
+              <b class="pm" style="--s:48%;--w:8%;--i:2">PM</b><b class="late" style="--s:58%;--w:42%;--i:3">IG-2301 late</b>
+            </div></div>
+            <div><span>Lathe 02</span><div class="trk">
+              <b style="--s:0%;--w:30%;--i:1">CS-2274</b><b style="--s:32%;--w:38%;--i:2">CS-2290</b><b style="--s:72%;--w:24%;--i:3">CS-2305</b>
+            </div></div>
+            <div><span>Grinder 1</span><div class="trk">
+              <b style="--s:6%;--w:28%;--i:2">IG-2266</b><b style="--s:38%;--w:36%;--i:3">FZ-2293</b><b style="--s:78%;--w:22%;--i:4">FZ-2310</b>
+            </div></div>
+            <div><span>EDM 3</span><div class="trk">
+              <b style="--s:0%;--w:26%;--i:3">IG-2281</b><b class="pm" style="--s:30%;--w:10%;--i:4">PM</b><b style="--s:44%;--w:44%;--i:5">IG-2298</b>
+            </div></div>
+            <div><span>Press 7</span><div class="trk">
+              <b style="--s:12%;--w:36%;--i:4">CS-2270</b><b style="--s:54%;--w:38%;--i:5">CS-2302</b>
+            </div></div>
+            <div><span>Broach 2</span><div class="trk">
+              <b style="--s:0%;--w:20%;--i:5">FZ-2277</b><b style="--s:26%;--w:32%;--i:6">IG-2295</b><b style="--s:66%;--w:28%;--i:7">FZ-2311</b>
+            </div></div>
+          </div>
+          <div class="glegend"><s>On plan</s><s class="a">At risk</s><s class="p">Preventive maintenance</s>
+            <s class="n">FZ fuze housings &middot; IG igniter bodies &middot; CS casings</s></div>
+        </div>
+        <div class="aplive"><i></i>Live from the cell, no spreadsheet in the loop &middot; replanned <span data-clock>09:41:07</span></div>
+      </div>
+
+      <div class="ap2">
+        <div class="apcard">
+          <div class="h">
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M7 20V9M12 20V4M17 20v-7"></path></svg>
+            Load against capacity<span class="apc a"><i></i>2 over</span>
+          </div>
+          <div class="bd">
+            <div class="load">
+              <div class="over"><span>Mill 04</span><span class="cap"><i style="--w:90.8%"></i></span><b>118%</b></div>
+              <div class="over"><span>Lathe 02</span><span class="cap"><i style="--w:80%"></i></span><b>104%</b></div>
+              <div><span>Grinder 1</span><span class="cap"><i style="--w:73.8%"></i></span><b>96%</b></div>
+              <div><span>EDM 3</span><span class="cap"><i style="--w:67.7%"></i></span><b>88%</b></div>
+              <div><span>Press 7</span><span class="cap"><i style="--w:55.4%"></i></span><b>72%</b></div>
+              <div><span>Broach 2</span><span class="cap"><i style="--w:46.9%"></i></span><b>61%</b></div>
+            </div>
+            <p class="capnote">The marker sits at 100% of rated capacity. Anything past it is work the plan has to move.</p>
+          </div>
+        </div>
+
+        <div class="apcard">
+          <div class="h">
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L5 16v3h3l4.3-4.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2.8-2.8z"></path></svg>
+            Predictive maintenance<span class="apc a"><i></i>1 due this week</span>
+          </div>
+          <div class="bd">
+            <div class="pm">
+              <div><span><strong>Mill 04 spindle</strong><em>Vibration signature climbing since Tuesday</em></span><span class="apc a"><i></i>4 days</span></div>
+              <div><span><strong>EDM 3 dielectric</strong><em>Filter load above the learned band</em></span><span class="apc"><i></i>9 days</span></div>
+              <div><span><strong>Press 7 hydraulics</strong><em>Oil temperature drifting on long runs</em></span><span class="apc"><i></i>16 days</span></div>
+              <div><span><strong>Lathe 02 bearings</strong><em>Signature clean, window can be pushed</em></span><span class="apc g"><i></i>41 days</span></div>
+            </div>
+            <div class="pfact">
+              <button type="button" class="apb"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h7l2-4 3 8 2-4h2"></path></svg>Replan the cell</button>
+              <button type="button" class="apb o">Book PM window</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var root = document.currentScript.closest(".ithdash");
+  if (!root) return;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function (s) { return root.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(root.querySelectorAll(s)); };
+  var comma = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); };
+
+  function count(el) {
+    var to = parseFloat(el.getAttribute("data-count")), dp = (el.getAttribute("data-dp") | 0);
+    if (reduce || !isFinite(to)) { el.textContent = comma(to.toFixed(dp)); return; }
+    var t0 = null, dur = 1200;
+    requestAnimationFrame(function step(now) {
+      if (t0 === null) t0 = now;
+      var p = Math.min(1, (now - t0) / dur);
+      el.textContent = comma((to * (1 - Math.pow(1 - p, 4))).toFixed(dp));
+      if (p < 1) requestAnimationFrame(step);
+    });
+  }
+
+  /* every timer below is opened on view and torn down off view or on a hidden tab */
+  function onView(start, stop) {
+    if (reduce || !("IntersectionObserver" in window)) { start(); return; }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.isIntersecting ? start() : stop(); });
+    }, { threshold: 0.2 }).observe(root);
+    document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); });
+  }
+
+  function pad(n) { return ("0" + n).slice(-2); }
+  var clock = null, secs = 9 * 3600 + 41 * 60 + 7;
+  function tick() {
+    secs = (secs + 5) % 86400;
+    $("[data-clock]").textContent = pad((secs / 3600) | 0) + ":" + pad(((secs / 60) | 0) % 60) + ":" + pad(secs % 60);
+  }
+
+  onView(function () {
+    if (clock) return;
+    root.classList.add("on");
+    $$("[data-count]").forEach(count);
+    clock = setInterval(tick, 1800);
+  }, function () { clearInterval(clock); clock = null; });
+})();
+</script>
+</section>

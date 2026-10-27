@@ -1,0 +1,476 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@500;600;700&display=swap">
+<style>
+section#main-section *,section#main-section *::before,section#main-section *::after{box-sizing:border-box!important}
+section#main-section{--blue:#0083C8;--blue-d:#006AA3;--blue-l:#3FA9E0;--acc-t:#006AA3;--navy:#0A192D;--ink:#0A192D;--body:#46586A;--muted:#5B6B7A;--sa:#FFFFFF;--sb:#F2F8FD;--card:#FFFFFF;--line:rgba(10,25,45,.10);--hair:rgba(10,25,45,.16);--tint:rgba(0,131,200,.08);--sh:0 18px 44px -24px rgba(0,45,80,.34);--ez:cubic-bezier(.22,.61,.36,1);--ff-head:"Noto Sans",system-ui,sans-serif;--ff-body:"Inter",system-ui,sans-serif;--scrollbar:0px;color-scheme:light!important}
+section#main-section[data-theme="dark"]{--acc-t:#3FA9E0;--ink:#F2F3F5;--body:rgba(228,230,235,.8);--muted:#9A9FA8;--sa:#0A0A0B;--sb:#111113;--card:#17181B;--line:rgba(255,255,255,.09);--hair:rgba(255,255,255,.16);--tint:rgba(63,169,224,.10);--sh:0 18px 44px -24px rgba(0,0,0,.62);color-scheme:dark!important}
+section#main-section .hero,section#main-section .cta{--acc-t:#3FA9E0;--ink:#FFFFFF;--body:rgba(228,236,245,.82);--muted:rgba(228,236,245,.66);--sb:#0A192D;--card:rgba(255,255,255,.04);--tint:rgba(63,169,224,.14);--line:rgba(255,255,255,.12);--hair:rgba(255,255,255,.24)}
+section#main-section{display:block!important;position:relative!important;margin-inline:calc(50% - 50vw + var(--scrollbar) / 2)!important;overflow-x:clip!important;background:var(--sa)!important;color:var(--body)!important;font:400 16px/1.65 var(--ff-body)!important;-webkit-font-smoothing:antialiased!important}
+section#main-section h1,section#main-section h2,section#main-section h3,section#main-section h4{margin:0!important;font-family:var(--ff-head)!important;font-weight:700!important;line-height:1.15!important;color:var(--ink)!important;text-wrap:balance!important}
+section#main-section h1 em,section#main-section h2 em{font-style:normal!important;color:var(--blue)!important;background:linear-gradient(90deg,var(--blue) 0%,var(--blue-l) 45%,var(--blue) 90%) 0 0 / 220% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important}
+section#main-section .hero h1 em,section#main-section .cta h2 em{color:var(--blue-l)!important;background-image:linear-gradient(90deg,var(--blue-l) 0%,#A9DCF7 45%,var(--blue-l) 90%)!important}
+section#main-section p,section#main-section ul,section#main-section ol,section#main-section dl,section#main-section dd,section#main-section figure,section#main-section blockquote{margin:0!important;padding:0!important}
+section#main-section li{list-style:none!important}
+section#main-section a{color:inherit!important;text-decoration:none!important}
+section#main-section img{display:block!important;max-width:100%!important;height:auto!important}
+section#main-section svg{display:block!important}
+section#main-section button{font:inherit!important;color:inherit!important;background:none!important;border:0!important;cursor:pointer!important}
+section#main-section :focus-visible{outline:2px solid var(--blue-l)!important;outline-offset:3px!important}
+section#main-section .sec{position:relative!important;padding:96px 24px!important;background:var(--sa)!important}
+section#main-section .sec--alt{background:var(--sb)!important}
+section#main-section .wrap{position:relative!important;max-width:1240px!important;margin-inline:auto!important}
+section#main-section .head{max-width:720px!important;margin-bottom:56px!important}
+section#main-section .head p + p{margin-top:16px!important}
+section#main-section .kick{display:inline-flex!important;align-items:center!important;gap:11px!important;margin-bottom:18px!important;font:700 12px/1.25 var(--ff-body)!important;letter-spacing:.17em!important;text-transform:uppercase!important;color:var(--acc-t)!important}
+section#main-section .kick::before{content:""!important;flex:none!important;width:28px!important;height:2px!important;border-radius:2px!important;background:linear-gradient(90deg,var(--blue),transparent)!important;transform-origin:left!important;transition:transform .9s var(--ez) .25s!important}
+section#main-section.js .rv:not(.in) .kick::before,section#main-section.js .kick.rv:not(.in)::before{transform:scaleX(0)!important}
+section#main-section .hero .kick::before,section#main-section .cta .kick::before{background:linear-gradient(90deg,var(--blue-l),transparent)!important}
+section#main-section .h2{font-size:clamp(28px,3.6vw,40px)!important;letter-spacing:-.015em!important}
+section#main-section .lede{margin-top:16px!important;font-size:18px!important;font-weight:300!important;line-height:1.6!important}
+section#main-section .btns{display:flex!important;flex-wrap:wrap!important;gap:12px!important}
+section#main-section .btn{display:inline-flex!important;align-items:center!important;gap:10px!important;min-height:48px!important;padding:12px 28px!important;border:1px solid var(--blue)!important;border-radius:999px!important;background:var(--blue)!important;color:#fff!important;font:600 16px/1.2 var(--ff-head)!important;transition:background .2s var(--ez),border-color .2s var(--ez),transform .2s var(--ez)!important}
+section#main-section .btn:hover{background:var(--blue-d)!important;border-color:var(--blue-d)!important;transform:translateY(-2px)!important}
+section#main-section .btn svg{transition:translate .3s var(--ez)!important}
+section#main-section .btn:hover svg{translate:4px 0!important}
+section#main-section .ico,section#main-section .ico--line{display:grid!important;place-items:center!important;flex:none!important;width:40px!important;height:40px!important;color:var(--acc-t)!important;transition:color .3s var(--ez),translate .4s var(--ez)!important}
+section#main-section .ico svg,section#main-section .ico--line svg{width:26px!important;height:26px!important;stroke-width:1.5!important}
+section#main-section .two{display:grid!important;grid-template-columns:1.1fr 1fr!important;gap:64px!important;align-items:center!important}
+section#main-section .two .head{margin-bottom:0!important}
+section#main-section .two--top{align-items:start!important}
+section#main-section .sticky{position:sticky!important;top:120px!important}
+section#main-section.js .rv{opacity:0!important;transform:translateY(32px)!important;transition:opacity .7s var(--ez) var(--d,0s),transform .7s var(--ez) var(--d,0s),background .4s var(--ez),border-color .4s var(--ez),translate .4s var(--ez),scale .4s var(--ez),box-shadow .4s var(--ez),color .3s var(--ez),padding .3s var(--ez)!important}
+section#main-section.js .rv.in{opacity:1!important;transform:none!important}
+section#main-section .hero{padding:144px 24px 96px!important;color:var(--body)!important;overflow:hidden!important;isolation:isolate!important;background:#05070A!important}
+section#main-section .hero-grid{position:relative!important;display:grid!important;grid-template-columns:1.05fr 1fr!important;gap:64px!important;align-items:center!important}
+section#main-section .h1{font-size:clamp(32px,5vw,50px)!important;letter-spacing:-.02em!important;line-height:1.1!important}
+section#main-section .hero .lede{max-width:540px!important;margin-block:24px 40px!important}
+@keyframes sheen{to{background-position:-220% 0}}
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.1) translate(-1.5%,-1%)}}
+@media (prefers-reduced-motion: no-preference){
+  section#main-section h1 em,section#main-section h2 em{animation:sheen 7s linear infinite!important}
+}
+@media (prefers-reduced-motion: reduce){
+  section#main-section.js .rv{opacity:1!important;transform:none!important;transition:none!important}
+}
+section#main-section .aia-theme-toggle{position:fixed!important;top:100px!important;right:20px!important;z-index:50!important;display:grid!important;place-items:center!important;width:44px!important;height:44px!important;border:1px solid var(--hair)!important;border-radius:50%!important;background:var(--card)!important;color:var(--blue)!important;box-shadow:var(--sh)!important;transition:transform .2s var(--ez)!important}
+section#main-section .aia-theme-toggle[hidden]{display:none!important}
+section#main-section .aia-theme-toggle:hover{transform:translateY(-2px)!important}
+section#main-section .aia-theme-toggle svg{width:18px!important;height:18px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+section#main-section .aia-theme-toggle .moon{display:none!important}
+section#main-section[data-theme="dark"] .aia-theme-toggle .sun{display:none!important}
+section#main-section[data-theme="dark"] .aia-theme-toggle .moon{display:block!important}
+@media (max-width: 900px){
+  section#main-section .hero-grid,section#main-section .two{grid-template-columns:1fr!important;gap:40px!important}
+  section#main-section .sticky{position:static!important}
+}
+@media (max-width: 600px){
+  section#main-section .sec{padding:64px 16px!important}
+  section#main-section .hero{padding:112px 16px 64px!important}
+}
+section#main-section .rows{border-top:1px solid var(--line)!important}
+section#main-section .row{display:grid!important;grid-template-columns:44px 1fr!important;gap:20px!important;padding:24px 0!important;border-bottom:1px solid var(--line)!important}
+section#main-section .row:hover{padding-left:10px!important}
+section#main-section .row:hover .ico--line{color:var(--blue-l)!important;translate:0 -3px!important}
+section#main-section .row h3{font-size:18px!important}
+section#main-section .row p{margin-top:4px!important;font-size:15px!important}
+section#main-section .plans{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:40px!important}
+section#main-section .plan{position:relative!important;display:flex!important;flex-direction:column!important;gap:12px!important;padding:30px 36px 0 0!important;border-top:1px solid var(--line)!important;color:var(--body)!important;text-align:left!important}
+section#main-section .plan::before{content:""!important;position:absolute!important;left:0!important;top:-1px!important;height:2px!important;width:0!important;background:linear-gradient(90deg,var(--blue),var(--blue-l))!important;transition:width .7s var(--ez)!important}
+section#main-section .plan:hover::before{width:30%!important}
+section#main-section .plan[aria-pressed="true"]::before{width:100%!important}
+section#main-section .plan::after{content:""!important;position:absolute!important;top:30px!important;right:0!important;width:16px!important;height:16px!important;border:2px solid var(--hair)!important;border-radius:50%!important;transition:border-color .3s,background .3s!important}
+section#main-section .plan[aria-pressed="true"]::after{border-color:var(--blue)!important;background:var(--blue)!important;box-shadow:inset 0 0 0 3px var(--sa)!important}
+section#main-section .plan-tag{font:700 11px/1 var(--ff-body)!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--acc-t)!important}
+section#main-section .plan h3{font-size:24px!important;transition:color .3s!important}
+section#main-section .plan[aria-pressed="true"] h3{color:var(--blue)!important}
+section#main-section .plan p{font-size:15px!important}
+section#main-section .matrix-wrap{margin-top:56px!important;overflow-x:auto!important}
+section#main-section .matrix{width:100%!important;min-width:600px!important;border-collapse:collapse!important;font-size:15px!important}
+section#main-section .matrix th,section#main-section .matrix td{padding:18px 20px 18px 0!important;border-bottom:1px solid var(--line)!important;text-align:left!important;vertical-align:middle!important;transition:color .4s var(--ez),opacity .4s var(--ez)!important}
+section#main-section .matrix thead th{border-bottom-color:var(--hair)!important;font:600 12px/1.3 var(--ff-head)!important;letter-spacing:.08em!important;text-transform:uppercase!important;color:var(--muted)!important}
+section#main-section .matrix tbody th{font:600 15px/1.4 var(--ff-head)!important;color:var(--ink)!important}
+section#main-section .matrix td{color:var(--body)!important;opacity:.55!important}
+section#main-section .own{display:inline-flex!important;align-items:center!important;gap:10px!important}
+section#main-section .own::before{content:""!important;flex:none!important;width:8px!important;height:8px!important;border-radius:50%!important;background:var(--blue)!important;transition:transform .4s var(--ez),box-shadow .4s!important}
+section#main-section .own--you::before{background:transparent!important;box-shadow:inset 0 0 0 2px var(--muted)!important}
+section#main-section [data-sel="0"] .matrix :is(th, td):nth-child(2),section#main-section [data-sel="1"] .matrix :is(th, td):nth-child(3),section#main-section [data-sel="2"] .matrix :is(th, td):nth-child(4){color:var(--ink)!important;opacity:1!important}
+section#main-section [data-sel="0"] .matrix td:nth-child(2) .own::before,section#main-section [data-sel="1"] .matrix td:nth-child(3) .own::before,section#main-section [data-sel="2"] .matrix td:nth-child(4) .own::before{transform:scale(1.3)!important;box-shadow:0 0 0 4px var(--tint)!important}
+@media (max-width: 900px){
+  section#main-section .plans{grid-template-columns:1fr!important;gap:28px!important}
+}
+@media (max-width: 600px){
+  section#main-section .matrix{min-width:0!important}
+  section#main-section [data-sel="0"] .matrix :is(th, td):is(:nth-child(3), :nth-child(4)),section#main-section [data-sel="1"] .matrix :is(th, td):is(:nth-child(2), :nth-child(4)),section#main-section [data-sel="2"] .matrix :is(th, td):is(:nth-child(2), :nth-child(3)){display:none!important}
+}
+section#main-section .bento{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:48px 40px!important}
+section#main-section .tile{display:flex!important;flex-direction:column!important;gap:10px!important;padding-top:28px!important;border-top:1px solid var(--line)!important}
+section#main-section .tile .ico--line{margin-bottom:12px!important}
+section#main-section .tile-k{font:700 12px/1 var(--ff-body)!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--acc-t)!important}
+section#main-section .tile h3{font-size:20px!important}
+section#main-section .tile p{font-size:15px!important}
+section#main-section .tile--hero{position:relative!important;grid-column:span 2!important;grid-row:span 2!important;justify-content:flex-end!important;min-height:460px!important;padding:40px!important;overflow:hidden!important;border-top:0!important;border-radius:6px!important;background:#0A192D!important;--ink:#FFFFFF;--body:rgba(228,236,245,.82);--acc-t:#3FA9E0}
+section#main-section .tile--hero img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;opacity:.6!important}
+section#main-section .tile--hero::after{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;background:linear-gradient(180deg,rgba(10,25,45,0) 10%,rgba(10,25,45,.94) 85%)!important}
+section#main-section .tile--hero > :not(img){position:relative!important;z-index:2!important}
+section#main-section .tile--hero h3{font-size:30px!important;letter-spacing:-.015em!important}
+section#main-section .tile--hero p{font-size:16px!important;max-width:460px!important}
+@media (prefers-reduced-motion: no-preference){
+  section#main-section .tile--hero img{animation:kenburns 18s ease-in-out infinite alternate!important}
+}
+@media (max-width: 1100px){
+  section#main-section .bento{grid-template-columns:repeat(2,1fr)!important}
+  section#main-section .tile--hero{grid-row:span 1!important;min-height:380px!important}
+}
+@media (max-width: 600px){
+  section#main-section .bento{grid-template-columns:1fr!important;gap:36px!important}
+  section#main-section .tile--hero{grid-column:span 1!important;min-height:340px!important;padding:28px!important}
+}
+section#main-section .acc-line{position:relative!important}
+section#main-section .acc-line::before{content:""!important;position:absolute!important;left:0!important;top:-1px!important;height:2px!important;width:32px!important;background:linear-gradient(90deg,var(--blue),var(--blue-l))!important;transition:width .6s var(--ez)!important}
+section#main-section .acc-line:hover::before{width:100%!important}
+section#main-section .acc-line:hover .ico,section#main-section .acc-line:hover .ico--line{color:var(--blue-l)!important;translate:0 -3px!important}
+section#main-section .tl{position:relative!important;padding-left:64px!important}
+section#main-section .tl::before,section#main-section .tl::after{content:""!important;position:absolute!important;left:19px!important;top:20px!important;width:2px!important}
+section#main-section .tl::before{bottom:20px!important;background:var(--line)!important}
+section#main-section .tl::after{height:calc((100% - 40px) * var(--p,0))!important;background:linear-gradient(var(--blue),var(--blue-l))!important;box-shadow:0 0 12px var(--blue-l)!important}
+section#main-section .tl li{position:relative!important;padding-bottom:44px!important}
+section#main-section .tl li:last-child{padding-bottom:0!important}
+section#main-section .tl-n{position:absolute!important;left:-64px!important;top:0!important;z-index:1!important;display:grid!important;place-items:center!important;width:40px!important;height:40px!important;border:2px solid var(--hair)!important;border-radius:50%!important;background:var(--sb)!important;font:700 13px/1 var(--ff-head)!important;color:var(--muted)!important;font-variant-numeric:tabular-nums!important;transition:background .4s var(--ez),border-color .4s var(--ez),color .4s var(--ez),box-shadow .4s var(--ez)!important}
+section#main-section .tl li.lit .tl-n{border-color:var(--blue)!important;background:var(--blue)!important;color:#fff!important;box-shadow:0 0 0 6px var(--tint)!important}
+section#main-section .tl h3{padding-top:7px!important;font-size:20px!important}
+section#main-section .tl p{margin-top:6px!important;max-width:520px!important;font-size:15px!important}
+section#main-section .logo-rail{display:flex!important;align-items:center!important;gap:20px!important}
+section#main-section .logo-track{flex:1!important;min-width:0!important;overflow-x:auto!important;scrollbar-width:none!important;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)!important;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)!important}
+section#main-section .logo-track::-webkit-scrollbar{display:none!important}
+section#main-section .logo-track ul{display:flex!important;align-items:center!important;gap:72px!important;width:max-content!important;padding:12px 36px!important}
+section#main-section .logo-track img{height:40px!important;width:auto!important;max-width:none!important;opacity:.72!important;transition:opacity .25s var(--ez),scale .3s var(--ez)!important}
+section#main-section .logo-track li:hover img{opacity:1!important;scale:1.06!important}
+section#main-section[data-theme="dark"] .logo-track img[data-fix="dk"]{filter:brightness(0) invert(1)!important}
+section#main-section[data-theme="light"] .logo-track img[data-fix="lt0"]{filter:brightness(0)!important}
+section#main-section[data-theme="light"] .logo-track img[data-fix="ltinv"]{filter:invert(1) hue-rotate(180deg)!important}
+section#main-section[data-theme="light"] .logo-track img[data-fix="ltdim"]{filter:brightness(.5)!important}
+@media (max-width: 900px){
+  section#main-section .logo-track ul{gap:48px!important}
+}
+section#main-section .svc-btn{display:grid!important;place-items:center!important;flex:none!important;width:44px!important;height:44px!important;border:1px solid var(--hair)!important;border-radius:50%!important;color:var(--ink)!important;transition:background .2s var(--ez),border-color .2s var(--ez),color .2s var(--ez)!important}
+section#main-section .svc-btn:hover{border-color:var(--blue)!important;background:var(--blue)!important;color:#fff!important}
+section#main-section .cta{padding:0!important;color:var(--body)!important;background:var(--navy)!important}
+section#main-section[data-theme="dark"] .cta{background:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px) 0 0/56px 56px,linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px) 0 0/56px 56px,radial-gradient(55% 70% at 100% 0%,rgba(0,131,200,.11),transparent 70%),linear-gradient(155deg,#16171A 0%,#0C0C0E 52%,#050506 100%)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)!important}
+section#main-section .cta-in{display:grid!important;grid-template-columns:1fr 1fr!important;align-items:stretch!important}
+section#main-section .cta-copy{max-width:644px!important;margin-left:auto!important;padding:clamp(56px,6.4vw,96px) clamp(26px,3.4vw,60px) clamp(56px,6.4vw,96px) 24px!important}
+section#main-section .cta-copy .btns{margin-top:32px!important}
+section#main-section .cta-med{position:relative!important;overflow:hidden!important;min-height:27.9vw!important;background:#0F2238!important}
+section#main-section .cta-med::after{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;background:rgba(0,0,0,.38)!important;pointer-events:none!important}
+section#main-section .cta-med img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important}
+section#main-section .cta-play{position:absolute!important;top:50%!important;left:50%!important;z-index:2!important;display:grid!important;place-items:center!important;width:66px!important;height:66px!important;padding:0!important;border:0!important;border-radius:50%!important;background:var(--blue)!important;color:#fff!important;cursor:pointer!important;transform:translate(-50%,-50%)!important;box-shadow:0 14px 34px -12px rgba(0,60,110,.6),0 0 0 8px rgba(0,131,200,.16)!important;transition:transform .2s var(--ez)!important}
+section#main-section .cta-play:hover{transform:translate(-50%,-50%) scale(1.07)!important}
+section#main-section .cta-play:focus-visible{outline:3px solid var(--blue-l)!important;outline-offset:3px!important}
+section#main-section .cta-play svg{width:22px!important;height:22px!important;margin-left:3px!important;fill:currentColor!important}
+@media (max-width: 900px){section#main-section .cta-in{grid-template-columns:1fr!important}section#main-section .cta-copy{max-width:none!important;margin:0!important;padding:64px 24px!important}section#main-section .cta-med{min-height:55.8vw!important;aspect-ratio:auto!important}section#main-section .cta-play{width:54px!important;height:54px!important}}
+@media (prefers-reduced-motion: reduce){section#main-section .cta-play{transition:none!important}}
+section#main-section .video-modal{position:fixed!important;top:50%!important;left:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;margin:0!important;width:min(960px,92vw)!important;max-width:none!important;padding:0!important;border:0!important;border-radius:16px!important;background:#000!important;overflow:hidden!important;box-shadow:0 40px 90px -30px rgba(0,0,0,.7)!important}
+section#main-section .video-modal::backdrop{background:rgba(0,0,0,.72)!important;-webkit-backdrop-filter:blur(6px)!important;backdrop-filter:blur(6px)!important}
+section#main-section .video-modal video{display:block!important;width:100%!important;height:auto!important;max-height:82vh!important;background:#000!important}
+section#main-section .video-modal-close{position:absolute!important;top:10px!important;right:10px!important;z-index:2!important;display:flex!important;align-items:center!important;justify-content:center!important;width:36px!important;height:36px!important;padding:0!important;border:0!important;border-radius:50%!important;background:rgba(0,0,0,.55)!important;color:#fff!important;cursor:pointer!important}
+section#main-section .video-modal-close:hover{background:rgba(0,0,0,.85)!important}
+section#main-section .hero::before{content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;background-image:linear-gradient(rgba(63,169,224,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(63,169,224,.1) 1px,transparent 1px)!important;background-size:56px 56px!important;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%)!important;mask-image:linear-gradient(180deg,#000 55%,transparent 100%)!important;pointer-events:none!important}
+section#main-section .hero::after{content:""!important;position:absolute!important;inset:0!important;z-index:-2!important;background:radial-gradient(55% 65% at 82% 38%,rgba(0,131,200,.24),transparent 70%),radial-gradient(40% 55% at 0% 100%,rgba(0,131,200,.1),transparent 70%),linear-gradient(180deg,#071120 0%,#05070A 100%)!important;pointer-events:none!important}
+section#main-section .dash{position:relative!important;width:100%!important;max-width:560px!important;margin-inline:auto!important;padding:16px!important;border:1px solid var(--line)!important;border-radius:18px!important;background:linear-gradient(180deg,rgba(13,30,52,.82),rgba(7,15,27,.88))!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important;box-shadow:0 40px 80px -40px rgba(0,0,0,.85),0 0 0 1px rgba(63,169,224,.06) inset,0 0 80px -30px rgba(0,131,200,.45)!important;font-family:var(--ff-body)!important;color:var(--body)!important}
+section#main-section .dash-top{display:flex!important;align-items:center!important;gap:12px!important;padding-bottom:14px!important;margin-bottom:14px!important;border-bottom:1px solid var(--line)!important}
+section#main-section .dash-dots{display:flex!important;gap:6px!important}
+section#main-section .dash-dots i{width:8px!important;height:8px!important;border-radius:50%!important;background:rgba(255,255,255,.18)!important}
+section#main-section .dash-title{flex:1!important;font:600 13px/1.2 var(--ff-head)!important;color:#fff!important;letter-spacing:.01em!important}
+section#main-section .dash-live{display:inline-flex!important;align-items:center!important;gap:6px!important;padding:4px 10px!important;border-radius:999px!important;background:rgba(34,197,94,.12)!important;color:#4ADE80!important;font:700 10px/1 var(--ff-body)!important;letter-spacing:.14em!important;text-transform:uppercase!important}
+section#main-section .dash-live::before{content:""!important;width:6px!important;height:6px!important;border-radius:50%!important;background:currentColor!important}
+section#main-section .dash-kpis{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important}
+section#main-section .dash-kpi{padding:12px!important;border:1px solid var(--line)!important;border-radius:12px!important;background:rgba(255,255,255,.03)!important;min-width:0!important}
+section#main-section .dash-k{display:block!important;font:500 11px/1.3 var(--ff-body)!important;color:var(--muted)!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+section#main-section .dash-kpi b{display:block!important;margin:6px 0 4px!important;font:700 clamp(18px,2vw,24px)/1.1 var(--ff-head)!important;color:#fff!important;font-variant-numeric:tabular-nums!important;white-space:nowrap!important}
+section#main-section .dash-d{font:600 11px/1.2 var(--ff-body)!important;color:#4ADE80!important}
+section#main-section .dash-d.dn{color:#7DD3FC!important}
+section#main-section .dash-main{display:grid!important;grid-template-columns:1.45fr 1fr!important;gap:10px!important;margin-top:10px!important}
+section#main-section .dash-panel{padding:12px!important;border:1px solid var(--line)!important;border-radius:12px!important;background:rgba(255,255,255,.03)!important;min-width:0!important}
+section#main-section .dash-ch{display:flex!important;justify-content:space-between!important;gap:8px!important;margin-bottom:10px!important;font:600 11px/1.3 var(--ff-body)!important;color:#fff!important}
+section#main-section .dash-leg{font-weight:500!important;color:var(--muted)!important;white-space:nowrap!important}
+section#main-section .dash-chart{display:block!important;width:100%!important;height:auto!important;overflow:visible!important}
+section#main-section .dash-grid{stroke:rgba(255,255,255,.07)!important;stroke-width:1!important;fill:none!important}
+section#main-section .dash-line{fill:none!important;stroke:#3FA9E0!important;stroke-width:2.5!important;stroke-linecap:round!important;stroke-linejoin:round!important;filter:drop-shadow(0 0 6px rgba(63,169,224,.7))!important}
+section#main-section .dash-fc{fill:none!important;stroke:rgba(255,255,255,.45)!important;stroke-width:1.5!important;stroke-dasharray:4 5!important}
+section#main-section .dash-scan{stroke:rgba(63,169,224,.55)!important;stroke-width:1!important;opacity:0}
+section#main-section .dash-pt{fill:#fff!important;filter:drop-shadow(0 0 6px #3FA9E0)!important}
+section#main-section .dash-bars{display:grid!important;gap:11px!important;margin:0!important;padding:0!important;list-style:none!important}
+section#main-section .dash-bars li{display:grid!important;grid-template-columns:1fr auto!important;row-gap:5px!important;margin:0!important;font:500 11px/1.2 var(--ff-body)!important;color:var(--body)!important}
+section#main-section .dash-bars em{font-style:normal!important;font-weight:700!important;color:#fff!important}
+section#main-section .dash-bars i{grid-column:1 / -1!important;position:relative!important;height:6px!important;border-radius:6px!important;background:rgba(255,255,255,.08)!important;overflow:hidden!important}
+section#main-section .dash-bars i::after{content:""!important;position:absolute!important;inset:0 auto 0 0!important;width:var(--v)!important;border-radius:inherit!important;background:linear-gradient(90deg,#0083C8,#3FA9E0)!important}
+section#main-section .dash-feed{display:flex!important;align-items:center!important;gap:10px!important;margin-top:10px!important;padding:10px 12px!important;border:1px solid var(--line)!important;border-radius:10px!important;background:rgba(63,169,224,.06)!important;font:500 12px/1.3 var(--ff-body)!important;color:var(--body)!important;overflow:hidden!important}
+section#main-section .dash-pulse{flex:none!important;width:8px!important;height:8px!important;border-radius:50%!important;background:#3FA9E0!important}
+section#main-section .dash-msg{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;transition:opacity .35s ease,transform .35s ease!important}
+section#main-section .dash-msg.out{opacity:0!important;transform:translateY(6px)!important}
+@media (prefers-reduced-motion: no-preference){
+  section#main-section .dash-line{stroke-dasharray:1!important;stroke-dashoffset:1;animation:dashDraw 1.8s var(--ez) .5s forwards!important}
+  section#main-section .dash-area,section#main-section .dash-fc{opacity:0;animation:dashFade 1s ease 1.6s forwards!important}
+  section#main-section .dash-scan{animation:dashScan 4.5s linear 2.3s infinite!important}
+  section#main-section .dash-bars i::after{transform:scaleX(0);transform-origin:left!important;animation:dashGrow 1.1s var(--ez) forwards!important}
+  section#main-section .dash-bars li:nth-child(1) i::after{animation-delay:.7s!important}
+  section#main-section .dash-bars li:nth-child(2) i::after{animation-delay:.85s!important}
+  section#main-section .dash-bars li:nth-child(3) i::after{animation-delay:1s!important}
+  section#main-section .dash-bars li:nth-child(4) i::after{animation-delay:1.15s!important}
+  section#main-section .dash-live::before,section#main-section .dash-pulse{animation:dashPing 1.6s ease-out infinite!important}
+  section#main-section .dash{animation:dashFloat 7s ease-in-out 2s infinite alternate!important}
+}
+@media (prefers-reduced-motion: reduce){section#main-section .dash-pt{display:none!important}}
+@keyframes dashDraw{to{stroke-dashoffset:0}}
+@keyframes dashFade{to{opacity:1}}
+@keyframes dashGrow{to{transform:scaleX(1)}}
+@keyframes dashScan{0%{opacity:0;transform:translateX(0)}10%{opacity:1}90%{opacity:1}100%{opacity:0;transform:translateX(320px)}}
+@keyframes dashPing{0%{box-shadow:0 0 0 0 rgba(63,169,224,.6)}100%{box-shadow:0 0 0 8px rgba(63,169,224,0)}}
+@keyframes dashFloat{from{translate:0 0}to{translate:0 -8px}}
+@media (max-width: 520px){section#main-section .dash{padding:12px!important}section#main-section .dash-main{grid-template-columns:1fr!important}section#main-section .dash-kpis{gap:6px!important}section#main-section .dash-kpi{padding:10px 8px!important}section#main-section .dash-kpi b{font-size:16px!important}}
+section#main-section .logo-rail .svc-btn{width:44px!important;height:44px!important;padding:0!important;border:0!important;border-radius:0!important;background:none!important;color:var(--ink)!important;transition:color .2s var(--ez),transform .2s var(--ez)!important}
+section#main-section .logo-rail .svc-btn:hover{background:none!important;color:var(--blue)!important;transform:scale(1.3)!important}
+section#main-section .logo-rail .svc-btn svg{width:22px!important;height:22px!important}
+.pk-schd{--sc-card:#FFFFFF;--sc-srf:#F4F7FA;--sc-ink:#1F2023;--sc-ink2:rgba(0,0,0,.70);--sc-line:#EAEAEA;--sc-blue:#0083C8;--sc-wash:#EDF7FC;--sc-ff:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--sc-ez:cubic-bezier(.2,0,0,1);position:fixed!important;inset:0!important;z-index:999999!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:20px!important;margin:0!important;background:rgba(13,27,46,.62)!important;-webkit-backdrop-filter:blur(6px)!important;backdrop-filter:blur(6px)!important;opacity:0!important;visibility:hidden!important;transition:opacity .25s var(--sc-ez),visibility .25s var(--sc-ez)!important;font-family:var(--sc-ff)!important;color:var(--sc-ink)!important;line-height:1.6!important}
+.pk-schd[data-theme="dark"]{--sc-card:#17181B;--sc-srf:#111113;--sc-ink:#F2F3F5;--sc-ink2:rgba(228,230,235,.8);--sc-line:rgba(255,255,255,.1);--sc-blue:#39A8DE;--sc-wash:rgba(0,131,200,.16)}
+.pk-schd[hidden]{display:flex!important}
+.pk-schd.is-open{opacity:1!important;visibility:visible!important}
+body:has(.pk-schd.is-open) #chatBubbleRoot{display:none!important}
+.pk-schd,.pk-schd *,.pk-schd *::before,.pk-schd *::after{box-sizing:border-box}
+.pk-schd-panel{position:relative!important;width:100%!important;max-width:480px!important;max-height:88vh!important;overflow-y:auto!important;background:var(--sc-card)!important;color:var(--sc-ink)!important;border-radius:24px!important;border:1px solid var(--sc-line)!important;box-shadow:0 40px 90px -30px rgba(0,0,0,.6)!important;padding:clamp(24px,4vw,36px)!important;transform:translateY(18px) scale(.98)!important;transition:transform .28s var(--sc-ez)!important}
+.pk-schd.is-open .pk-schd-panel{transform:none!important}
+.pk-schd-close{position:absolute!important;top:14px!important;right:14px!important;width:34px!important;height:34px!important;padding:0!important;border-radius:50%!important;display:grid!important;place-items:center!important;background:var(--sc-srf)!important;border:1px solid var(--sc-line)!important;color:var(--sc-ink)!important;cursor:pointer!important;transition:background-color .2s var(--sc-ez),border-color .2s var(--sc-ez)!important}
+.pk-schd-close:hover{background:var(--sc-wash)!important;border-color:var(--sc-blue)!important}
+.pk-schd-close svg{width:15px!important;height:15px!important;display:block!important}
+.pk-schd-head{padding-right:36px!important;margin-bottom:22px!important}
+.pk-schd-head .eyb{display:flex!important;align-items:center!important;gap:9px!important;margin:0 0 10px!important;padding:0!important;font-size:12px!important;font-weight:700!important;letter-spacing:.17em!important;text-transform:uppercase!important;color:var(--sc-blue)!important}
+.pk-schd-head .eyb::before{content:""!important;width:22px!important;height:2px!important;border-radius:2px!important;background:currentColor!important;flex:none!important}
+.pk-schd-head h3{font-size:24px!important;font-weight:700!important;letter-spacing:-.02em!important;line-height:1.2!important;margin:0 0 8px!important;padding:0!important;color:var(--sc-ink)!important}
+.pk-schd-head p{font-size:14px!important;line-height:1.6!important;color:var(--sc-ink2)!important;margin:0!important;padding:0!important}
+.pk-schd-form{width:100%!important}
+.pk-schd-form .frm_forms,.pk-schd-form .elementor-widget-shortcode{max-width:100%!important;margin:0!important}
+.pk-schd-form input[type=text],.pk-schd-form input[type=email],.pk-schd-form input[type=tel],.pk-schd-form input[type=number],.pk-schd-form input[type=url],.pk-schd-form select,.pk-schd-form textarea{font-family:var(--sc-ff)!important;font-size:15px!important;padding:12px 15px!important;border-radius:100px!important;border:1px solid var(--sc-line)!important;background:var(--sc-srf)!important;color:var(--sc-ink)!important;width:100%!important}
+.pk-schd-form textarea{border-radius:12px!important;resize:vertical!important}
+.pk-schd-form label{font-size:13px!important;font-weight:600!important;color:var(--sc-ink2)!important}
+.pk-schd-form .frm_submit button,.pk-schd-form button[type=submit],.pk-schd-form input[type=submit]{background:var(--sc-blue)!important;color:#fff!important;border:0!important;border-radius:100px!important;font-family:var(--sc-ff)!important;font-weight:700!important;font-size:15px!important;padding:14px 26px!important;cursor:pointer!important;width:auto!important}
+.pk-schd-empty{font-size:14px!important;line-height:1.6!important;color:var(--sc-ink2)!important;margin:0!important;padding:0!important}
+.pk-schd-empty a{color:var(--sc-blue)!important;font-weight:600!important;text-decoration:none!important}
+.pk-schd :focus-visible{outline:2px solid var(--sc-blue)!important;outline-offset:3px!important;border-radius:4px}
+@media (max-width:520px){
+ .pk-schd{padding:12px!important}
+ .pk-schd-panel{max-height:92vh!important}
+}
+@media (prefers-reduced-motion:reduce){
+ .pk-schd{transition:none!important}
+ .pk-schd-panel{transform:none!important;transition:none!important}
+}
+/* uniform bottom CTA: same title/subtitle size + font and section height on every service & industry page */
+#main-section#main-section .cta h2{font-family:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif!important;font-size:clamp(28px,2.8vw,40px)!important;font-weight:700!important;line-height:1.15!important;letter-spacing:-.02em!important}
+#main-section#main-section .cta .lede{font-family:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif!important;font-size:18px!important;font-weight:400!important;line-height:1.6!important}
+@media (min-width:1025px){#main-section#main-section .cta-in{min-height:660px!important}#main-section#main-section .cta-copy{display:flex!important;flex-direction:column!important;justify-content:center!important;padding-top:56px!important;padding-bottom:56px!important}}
+@media (max-width:1024px){section#main-section:not(.pkg) .cta-in{grid-template-columns:1fr!important}section#main-section:not(.pkg) .cta-copy{max-width:none!important;margin:0!important;padding:64px 24px!important}#main-section#main-section .cta-med{min-height:0!important;aspect-ratio:16/9!important}}
+/* brand title accent: solid brand blue (#0083C8, same in light + dark), no gradient, on every service & industry page */
+#main-section#main-section :is(h1,h2,h3) em{color:#0083C8!important;background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;-webkit-text-fill-color:#0083C8!important;animation:none!important;font-style:normal!important}
+</style>
+<section id="main-section" class="svc cla" data-theme="dark">
+<button type="button" class="aia-theme-toggle" id="aiaThemeToggle" aria-label="Switch to light theme" hidden><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg></button>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://ithena.ai/cloud-adoption/#service","name":"Cloud Adoption Services","serviceType":"Cloud migration, IaaS, PaaS, SaaS and cloud consulting","description":"ITHENA cloud services help businesses stay agile and scale on demand, from migration and infrastructure to development platforms and analytics.","url":"https://ithena.ai/cloud-adoption/","provider":{"@type":"Organization","name":"ITHENA","url":"https://ithena.ai/"},"areaServed":"Global","hasOfferCatalog":{"@type":"OfferCatalog","name":"Cloud Adoption Services offerings","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Cloud Migration"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Infrastructure as a Service"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Platform as a Service"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Software as a Service"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Cloud Consulting and Optimization"}}]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://ithena.ai/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://ithena.ai/services/"},{"@type":"ListItem","position":3,"name":"Cloud Adoption Services"}]}]}</script>
+<section class="sec hero" aria-labelledby="cla-h1">
+<div class="wrap hero-grid">
+<div>
+<p class="kick rv">Cloud modernization</p>
+<h1 class="h1 rv" id="cla-h1">Cloud <em>Adoption</em></h1>
+<p class="lede rv">Elevating business operations through cloud services: infrastructure, development and analytics delivered with the agility and scale to keep you ahead.</p>
+<div class="btns rv"><a class="btn" href="#cla-deploy">Compare deployment options <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</div>
+<div class="dash rv" role="img" aria-label="Cloud Migration Console dashboard: Workloads migrated 142, Uptime 99.98%, Infra cost -31%; Monthly infrastructure cost trending; Wave 1 100%, Wave 2 86%, Wave 3 54%, Wave 4 18%">
+<div class="dash-top"><span class="dash-dots"><i></i><i></i><i></i></span><span class="dash-title">Cloud Migration Console</span><span class="dash-live">Live</span></div>
+<div class="dash-kpis"><div class="dash-kpi"><span class="dash-k">Workloads migrated</span><b data-to="142" data-dec="0" data-pre="" data-suf="">142</b><span class="dash-d">&#9650; 18 this wave</span></div><div class="dash-kpi"><span class="dash-k">Uptime</span><b data-to="99.98" data-dec="2" data-pre="" data-suf="%">99.98%</b><span class="dash-d">&#9650; SLA met</span></div><div class="dash-kpi"><span class="dash-k">Infra cost</span><b data-to="31" data-dec="0" data-pre="-" data-suf="%">-31%</b><span class="dash-d dn">&#9660; vs on-prem</span></div></div>
+<div class="dash-main">
+<div class="dash-panel"><div class="dash-ch"><span>Monthly infrastructure cost</span><span class="dash-leg">On-prem &#8594; cloud</span></div>
+<svg class="dash-chart" viewBox="0 0 320 120"><defs><linearGradient id="cla-dash-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3FA9E0" stop-opacity=".38"/><stop offset="1" stop-color="#3FA9E0" stop-opacity="0"/></linearGradient></defs><path class="dash-grid" d="M0,30H320M0,60H320M0,90H320"/><path class="dash-area" fill="url(#cla-dash-fill)" d="M0.0,33.3 C4.8,33.6 19.4,34.6 29.1,35.2 C38.8,35.8 48.5,36.2 58.2,37.1 C67.9,38.1 77.6,39.7 87.3,41.0 C97.0,42.2 106.7,42.9 116.4,44.8 C126.1,46.7 135.8,50.1 145.5,52.5 C155.2,54.9 164.8,57.3 174.5,59.2 C184.2,61.1 193.9,62.6 203.6,64.0 C213.3,65.4 223.0,66.6 232.7,67.8 C242.4,69.1 252.1,70.7 261.8,71.7 C271.5,72.6 281.2,73.0 290.9,73.6 C300.6,74.2 315.2,75.2 320.0,75.5 L320,120 L0,120 Z"/><path class="dash-line" pathLength="1" d="M0.0,33.3 C4.8,33.6 19.4,34.6 29.1,35.2 C38.8,35.8 48.5,36.2 58.2,37.1 C67.9,38.1 77.6,39.7 87.3,41.0 C97.0,42.2 106.7,42.9 116.4,44.8 C126.1,46.7 135.8,50.1 145.5,52.5 C155.2,54.9 164.8,57.3 174.5,59.2 C184.2,61.1 193.9,62.6 203.6,64.0 C213.3,65.4 223.0,66.6 232.7,67.8 C242.4,69.1 252.1,70.7 261.8,71.7 C271.5,72.6 281.2,73.0 290.9,73.6 C300.6,74.2 315.2,75.2 320.0,75.5"/><line class="dash-scan" x1="0" y1="0" x2="0" y2="120"/><circle class="dash-pt" r="4"><animateMotion dur="7s" begin="2s" repeatCount="indefinite" path="M0.0,33.3 C4.8,33.6 19.4,34.6 29.1,35.2 C38.8,35.8 48.5,36.2 58.2,37.1 C67.9,38.1 77.6,39.7 87.3,41.0 C97.0,42.2 106.7,42.9 116.4,44.8 C126.1,46.7 135.8,50.1 145.5,52.5 C155.2,54.9 164.8,57.3 174.5,59.2 C184.2,61.1 193.9,62.6 203.6,64.0 C213.3,65.4 223.0,66.6 232.7,67.8 C242.4,69.1 252.1,70.7 261.8,71.7 C271.5,72.6 281.2,73.0 290.9,73.6 C300.6,74.2 315.2,75.2 320.0,75.5"/></circle></svg></div>
+<div class="dash-panel"><div class="dash-ch"><span>Migration waves</span></div><ul class="dash-bars"><li><span>Wave 1</span><em>100%</em><i style="--v:100%"></i></li><li><span>Wave 2</span><em>86%</em><i style="--v:86%"></i></li><li><span>Wave 3</span><em>54%</em><i style="--v:54%"></i></li><li><span>Wave 4</span><em>18%</em><i style="--v:18%"></i></li></ul></div>
+</div>
+<div class="dash-feed" data-feed="Migrated &#183; ERP database to Azure|Autoscale &#183; +4 nodes at peak|Backup &#183; snapshot verified|Security &#183; 0 critical findings"><span class="dash-pulse"></span><span class="dash-msg">Migrated &#183; ERP database to Azure</span></div>
+</div>
+</div>
+</section>
+<section class="sec" id="cla-intro" aria-labelledby="cla-intro-h">
+<div class="wrap"><div class="two"><div class="head rv"><p class="kick">Cloud adoption</p><h2 class="h2" id="cla-intro-h">Stay flexible in a <em>fast-changing</em> digital market</h2><p class="lede">ITHENA offers a broad set of cloud services that help businesses stay agile and scale on demand.</p><p>Our solutions are built to improve agility and scalability, so clients keep their competitive edge while the market keeps moving.</p></div>
+<ul class="rows"><li class="row rv"><span class="ico--line"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><div><h3>Infrastructure</h3><p>Scalable compute, storage and networking without the hardware overhead.</p></div></li><li class="row rv"><span class="ico--line"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg></span><div><h3>Development</h3><p>Ready platforms to build, test and deploy applications faster.</p></div></li><li class="row rv"><span class="ico--line"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4M4 20h16M8 16v-5M12 16V8M16 16v-3M20 16V6"/></svg></span><div><h3>Analytics</h3><p>Cloud data and insight services that grow with the business.</p></div></li></ul></div></div>
+</section>
+<section class="sec sec--alt" id="cla-deploy" aria-labelledby="cla-deploy-h">
+<div class="wrap"><div class="head rv"><p class="kick">Deployment options</p><h2 class="h2" id="cla-deploy-h">Choose how much of the cloud <em>we run for you</em></h2><p class="lede">Three ways to get started, each with a clear split of who owns what.</p></div>
+<div data-plans data-sel="0">
+<div class="plans"><button type="button" class="plan rv" aria-pressed="true"><span class="plan-tag">Fully managed</span><h3>Managed Cloud</h3><p>A fully managed service for your business applications, delivered on a shared-service model by ITHENA.</p></button><button type="button" class="plan rv" aria-pressed="false"><span class="plan-tag">Your account</span><h3>Your Cloud</h3><p>ITHENA deploys into your own cloud account and sets up infrastructure, access and security. Your team manages its applications.</p></button><button type="button" class="plan rv" aria-pressed="false"><span class="plan-tag">Certified</span><h3>Gov.Cloud</h3><p>Applications run in a certified, secure government cloud environment managed by ITHENA.</p></button></div>
+<div class="matrix-wrap rv"><table class="matrix" aria-label="Responsibilities by deployment option"><thead><tr><th scope="col">Who owns what</th><th scope="col">Managed Cloud</th><th scope="col">Your Cloud</th><th scope="col">Gov.Cloud</th></tr></thead><tbody><tr><th scope="row">Cloud environment</th><td><span class="own">ITHENA shared service</span></td><td><span class="own own--you">Your cloud account</span></td><td><span class="own">Certified government cloud</span></td></tr><tr><th scope="row">Infrastructure setup</th><td><span class="own">ITHENA</span></td><td><span class="own">ITHENA</span></td><td><span class="own">ITHENA</span></td></tr><tr><th scope="row">Access &amp; security</th><td><span class="own">ITHENA</span></td><td><span class="own">ITHENA</span></td><td><span class="own">ITHENA</span></td></tr><tr><th scope="row">Application management</th><td><span class="own">ITHENA</span></td><td><span class="own own--you">Your team</span></td><td><span class="own">ITHENA</span></td></tr></tbody></table></div>
+</div></div>
+</section>
+<section class="sec" id="cla-services" aria-labelledby="cla-services-h">
+<div class="wrap"><div class="head rv"><p class="kick">Services</p><h2 class="h2" id="cla-services-h">Cloud services that <em>move with you</em></h2><p class="lede">From the first migration to ongoing optimization.</p></div>
+<ul class="bento"><li class="tile tile--hero rv"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/fast-operation-1536x652.webp" alt="Data center corridor with workloads moving to the cloud" loading="lazy" decoding="async"><span class="tile-k">Migration</span><h3>Cloud migration</h3><p>Move existing infrastructure and applications to the cloud with minimal disruption to the business.</p></li><li class="tile acc-line rv"><span class="ico--line"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><span class="tile-k">IaaS</span><h3>Infrastructure as a Service</h3><p>Scalable infrastructure that cuts hardware maintenance and operating costs.</p></li><li class="tile acc-line rv"><span class="ico--line"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg></span><span class="tile-k">PaaS</span><h3>Platform as a Service</h3><p>A ready-to-use environment to build and deploy applications without managing infrastructure.</p></li><li class="tile acc-line rv"><span class="ico--line"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><span class="tile-k">SaaS</span><h3>Software as a Service</h3><p>Feature-rich, easy-to-use applications from the cloud that lift productivity and collaboration.</p></li><li class="tile acc-line rv"><span class="ico--line"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></span><span class="tile-k">Consulting</span><h3>Consulting &amp; optimization</h3><p>Experts assess your setup, find optimization opportunities and guide you to more value from the cloud.</p></li></ul></div>
+</section>
+<section class="sec sec--alt" id="cla-approach" aria-labelledby="cla-approach-h">
+<div class="wrap"><div class="two two--top"><div class="sticky"><div class="head rv"><p class="kick">Approach</p><h2 class="h2" id="cla-approach-h">Six steps from <em>assessment to adoption</em></h2><p class="lede">A plan built around your goals, then a migration you can verify, then teams ready to run it.</p></div></div>
+<ol class="tl" data-progress aria-label="Six-step cloud adoption approach"><li class="rv"><span class="tl-n">01</span><h3>Understand business requirements</h3><p>Identify business goals and challenges before any technology choice.</p></li><li class="rv"><span class="tl-n">02</span><h3>Assess existing infrastructure</h3><p>Evaluate the current IT environment and its dependencies.</p></li><li class="rv"><span class="tl-n">03</span><h3>Define the cloud strategy</h3><p>Shape a plan for a smooth migration or adoption.</p></li><li class="rv"><span class="tl-n">04</span><h3>Identify the right service model</h3><p>Choose the model that fits the business: IaaS, PaaS, SaaS or a mix.</p></li><li class="rv"><span class="tl-n">05</span><h3>Migrate &amp; validate</h3><p>Move databases and applications with minimal disruption, then verify the migrated data.</p></li><li class="rv"><span class="tl-n">06</span><h3>Train &amp; support</h3><p>Upskill your teams and stay on hand for issues and concerns after go-live.</p></li></ol></div></div>
+</section>
+<section class="sec" id="cla-partners" aria-labelledby="cla-partners-h">
+<div class="wrap"><div class="head rv"><p class="kick">Partnerships</p><h2 class="h2" id="cla-partners-h">A <em>robust ecosystem</em> of partners behind our solutions and services</h2><p class="lede">The cloud and data platforms we build on.</p></div>
+<div class="logo-rail rv"><button type="button" class="svc-btn" data-dir="-1" aria-label="Scroll partners back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><div class="logo-track"><ul aria-label="Technology partners"><li><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/Rectangle-821.png" alt="Oracle" width="150" height="46" loading="lazy" decoding="async"></li><li><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/Rectangle-820.png" alt="IBM" width="150" height="46" loading="lazy" decoding="async"></li><li><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/Rectangle-818.png" alt="Snowflake" width="150" height="46" loading="lazy" decoding="async"></li><li><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/Rectangle-817.png" alt="AWS" data-fix="ltinv" width="150" height="46" loading="lazy" decoding="async"></li><li><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/Group-267.png" alt="Microsoft" data-fix="ltdim" width="150" height="46" loading="lazy" decoding="async"></li><li><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/Rectangle-816.png" alt="Sisense" width="150" height="46" loading="lazy" decoding="async"></li><li><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/Rectangle-823.png" alt="SAP" width="150" height="46" loading="lazy" decoding="async"></li><li><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/Rectangle-822.png" alt="Tableau" data-fix="dk" width="150" height="46" loading="lazy" decoding="async"></li></ul></div><button type="button" class="svc-btn" data-dir="1" aria-label="Scroll partners forward"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+</section>
+<section class="sec cta" aria-labelledby="cla-cta-h">
+<div class="cta-in">
+<div class="cta-copy"><div class="rv"><p class="kick">Keep exploring</p><h2 class="h2" id="cla-cta-h">Move to the cloud <em>without the disruption</em></h2><p class="lede">Tell us where your workloads run today and we’ll map a phased migration that keeps the business running.</p></div><div class="btns rv"><button type="button" class="btn" data-schedule-demo>Plan your cloud move <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></div>
+<div class="cta-med">
+<img src="https://dev-website.ithena.app/wp-content/uploads/2026/10/Ithena-Services.webp" alt="" loading="lazy" decoding="async">
+<button type="button" class="cta-play" data-video="https://dev-website.ithena.app/wp-content/uploads/2026/10/Cloud%20Adoption.mp4" aria-label="Watch video: Cloud Adoption"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+</div>
+</div>
+<dialog class="video-modal" aria-label="Watch Video: Cloud Adoption">
+<button type="button" class="video-modal-close" data-video-close aria-label="Close video"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<video controls playsinline preload="none"></video>
+</dialog>
+</section>
+<div class="pk-schd" id="pkSchd" hidden>
+<div class="pk-schd-panel" role="dialog" aria-modal="true" aria-labelledby="pkSchdTitle" tabindex="-1">
+<button type="button" class="pk-schd-close" data-schedule-popup-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+<div class="pk-schd-head"><p class="eyb">Request a consultation</p><h3 id="pkSchdTitle">Plan your cloud adoption</h3><p>Tell us about your current infrastructure and our cloud team will follow up with a migration path that fits.</p></div>
+<div class="pk-schd-form" id="pkSchdForm"><p class="pk-schd-empty">The form did not load. Email <a href="mailto:sales@ithena.ai">sales@ithena.ai</a> and we will book the call for you.</p></div>
+</div>
+</div>
+
+</section>
+<script>
+(function () {
+var root = document.getElementById('main-section');
+if (!root) return;
+var tgl = document.getElementById('aiaThemeToggle');
+if (window.ithenaTheme) { var saved = null; try { saved = localStorage.getItem('ithena-theme'); } catch (e) {} if (!saved) document.documentElement.classList.add('dark'); window.ithenaTheme.sync(); } else {
+var tk = 'ithena-theme', ts = null; try { ts = localStorage.getItem(tk); } catch (e) {}
+var setTheme = function (m) { root.setAttribute('data-theme', m); tgl.setAttribute('aria-label', m === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'); try { localStorage.setItem(tk, m); } catch (e) {} };
+setTheme(ts === 'light' ? 'light' : 'dark');
+tgl.hidden = false;
+tgl.addEventListener('click', function () { setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); });
+}
+var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function sb() { root.style.setProperty('--scrollbar', (innerWidth - document.documentElement.clientWidth) + 'px'); }
+sb();
+addEventListener('resize', sb);
+var two = function (n) { return (n < 10 ? '0' : '') + n; };
+root.querySelectorAll('[data-plans]').forEach(function (pw) {
+var bs = [].slice.call(pw.querySelectorAll('.plan'));
+bs.forEach(function (b, i) { b.addEventListener('click', function () { bs.forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); pw.setAttribute('data-sel', i); }); });
+});
+root.querySelectorAll('[data-progress]').forEach(function (tl) {
+var items = [].slice.call(tl.children), ticking = false;
+function upd() {
+ticking = false;
+var r = tl.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight * .6 - r.top) / r.height));
+tl.style.setProperty('--p', p);
+items.forEach(function (li) { li.classList.toggle('lit', li.offsetTop <= p * r.height); });
+}
+addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(upd); } }, { passive: true });
+addEventListener('resize', upd);
+upd();
+});
+var lt = root.querySelector('.logo-track');
+if (lt) {
+var lu = lt.querySelector('ul'), orig = [].slice.call(lu.children), x = 0, paused = false;
+var cloneSet = function () { orig.forEach(function (li) { var c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); c.querySelector('img').alt = ''; lu.appendChild(c); }); };
+cloneSet();
+while (lu.scrollWidth < lt.clientWidth * 2.5) cloneSet();
+var setW = function () { return lu.children[orig.length].offsetLeft - lu.children[0].offsetLeft; };
+var wrapX = function () { var w = setW(); if (x >= w) x -= w; if (x < 0) x += w; lt.scrollLeft = x; };
+(function tick() { if (!paused && !reduce) { x += .5; wrapX(); } requestAnimationFrame(tick); })();
+lt.addEventListener('mouseenter', function () { paused = true; });
+lt.addEventListener('mouseleave', function () { x = lt.scrollLeft; paused = false; });
+lt.addEventListener('pointerdown', function () { paused = true; });
+lt.addEventListener('pointerup', function () { x = lt.scrollLeft; paused = false; });
+root.querySelectorAll('.logo-rail > .svc-btn').forEach(function (b) {
+b.addEventListener('click', function () {
+paused = true;
+x = lt.scrollLeft; if (x < 260) { x += setW(); lt.scrollLeft = x; }
+x += +b.getAttribute('data-dir') * 240;
+lt.scrollTo({ left: x, behavior: reduce ? 'auto' : 'smooth' });
+setTimeout(function () { wrapX(); paused = lt.matches(':hover'); }, 650);
+});
+});
+}
+var vm = root.querySelector('.video-modal'), vb = root.querySelector('.cta-play');
+if (vm && vb && vm.showModal) {
+var vp = vm.querySelector('video'), vClose = function () { vm.close(); };
+vb.addEventListener('click', function () { if (!vp.getAttribute('src')) vp.src = vb.getAttribute('data-video'); vm.showModal(); var p = vp.play(); if (p && p.catch) p.catch(function () {}); });
+vm.addEventListener('cancel', function () { vp.pause(); });
+vm.addEventListener('close', function () { vp.pause(); });
+vm.addEventListener('click', function (e) { if (e.target === vm) vClose(); });
+vm.querySelector('[data-video-close]').addEventListener('click', vClose);
+}
+root.querySelectorAll('.dash').forEach(function (d) {
+d.querySelectorAll('b[data-to]').forEach(function (b) {
+var to = +b.getAttribute('data-to'), dec = +b.getAttribute('data-dec'), pre = b.getAttribute('data-pre'), suf = b.getAttribute('data-suf');
+var show = function (v) { b.textContent = pre + v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + suf; };
+if (reduce) return show(to);
+var t0 = null; show(0);
+setTimeout(function () { requestAnimationFrame(function step(t) { if (t0 === null) t0 = t; var k = Math.min((t - t0) / 1600, 1); show(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); }); }, 400);
+});
+var fd = d.querySelector('[data-feed]');
+if (!fd || reduce) return;
+var msgs = fd.getAttribute('data-feed').split('|'), m = fd.querySelector('.dash-msg'), n = 0;
+setInterval(function () { m.classList.add('out'); setTimeout(function () { n = (n + 1) % msgs.length; m.textContent = msgs[n]; m.classList.remove('out'); }, 350); }, 2800);
+});
+if (!('IntersectionObserver' in window)) return;
+root.classList.add('js');
+var io = new IntersectionObserver(function (entries) {
+entries.forEach(function (e) { if (!e.isIntersecting) return; e.target.classList.add('in'); io.unobserve(e.target); });
+}, { threshold: .15, rootMargin: '0px 0px -8% 0px' });
+root.querySelectorAll('.rv').forEach(function (el) {
+var sibs = [].filter.call(el.parentNode.children, function (s) { return s.classList.contains('rv'); });
+el.style.setProperty('--d', (Math.max(sibs.indexOf(el), 0) % 6) * .09 + 's');
+io.observe(el);
+});
+})();
+</script>
+<script>
+/* schedule popup: same behaviour as the industry pages' [data-schedule-demo] popup */
+(function(){
+  var root=document.getElementById("main-section"),pop=document.getElementById("pkSchd");
+  if(!root||!pop||window.pkSchdInit) return;
+  window.pkSchdInit=1;
+  /* out of #main-section so a transformed Elementor ancestor cannot break position:fixed */
+  document.body.appendChild(pop);
+  var sync=function(){pop.setAttribute("data-theme",root.getAttribute("data-theme")||"dark");};
+  sync(); new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:["data-theme"]});
+  var slot=document.getElementById("pkSchdForm"),moved=false,lastFocus=null;
+  /* FORM SLOT: give the Elementor Shortcode widget rendering [formidable id="..."] the CSS ID schedule-demo-form; it is moved here as-is */
+  function adopt(){
+    if(moved||!slot) return;
+    var src=document.querySelector("#schedule-demo-form, .schedule-demo-form");
+    if(!src){var w=document.querySelectorAll(".elementor-widget-shortcode");for(var i=0;i<w.length;i++){if(w[i].querySelector(".frm_forms, form")){src=w[i];break;}}}
+    if(!src) src=document.querySelector(".frm_forms");
+    if(!src||pop.contains(src)) return;
+    slot.innerHTML=""; slot.appendChild(src); src.style.display="block"; moved=true;
+  }
+  adopt(); window.addEventListener("load",adopt);
+  function onKey(e){ if(e.key==="Escape") closePop(); }
+  function openPop(e){
+    if(e) e.preventDefault();
+    adopt(); lastFocus=document.activeElement;
+    pop.hidden=false; document.body.style.overflow="hidden";
+    document.addEventListener("keydown",onKey);
+    void pop.offsetWidth; pop.classList.add("is-open");
+    var f=pop.querySelector(".pk-schd-form input:not([type=hidden]):not([type=submit]):not([type=button]):not([disabled]), .pk-schd-form textarea:not([disabled]), .pk-schd-form select:not([disabled])")||pop.querySelector("[data-schedule-popup-close]");
+    if(f) f.focus();
+  }
+  function closePop(){
+    pop.classList.remove("is-open"); document.body.style.overflow="";
+    document.removeEventListener("keydown",onKey);
+    setTimeout(function(){pop.hidden=true;},250);
+    if(lastFocus&&lastFocus.focus) lastFocus.focus();
+  }
+  document.addEventListener("click",function(e){
+    if(!e.target.closest) return;
+    if(e.target.closest("[data-schedule-demo]")){ openPop(e); return; }
+    if(e.target===pop||e.target.closest("[data-schedule-popup-close]")) closePop();
+  });
+})();
+</script>

@@ -408,7 +408,7 @@
         "name": "cs_client_title",
         "type": "text",
         "required": 0,
-        "default_value": "A nationwide service network running out of hours in the day."
+        "default_value": "Meet the organization and understand the context behind the transformation."
       },
       {
         "key": "field_about_client",
@@ -483,7 +483,7 @@
       },
       {
         "key": "field_cs_tab_call_routing",
-        "label": "Call routing",
+        "label": "CS Solution animation",
         "name": "",
         "type": "tab",
         "placement": "top",
@@ -684,7 +684,7 @@
       },
       {
         "key": "field_cs_tab_console",
-        "label": "Console",
+        "label": "Dashboard Console",
         "name": "",
         "type": "tab",
         "placement": "top",
@@ -722,7 +722,7 @@
         "name": "cs_console_title",
         "type": "text",
         "required": 0,
-        "default_value": "A night shift, as the coordinators now see it."
+        "default_value": "The solution, brought into view."
       },
       {
         "key": "field_cs_console_lede",
@@ -730,7 +730,7 @@
         "name": "cs_console_lede",
         "type": "textarea",
         "required": 0,
-        "default_value": "One screen carries the queue, the conversation in progress and the shape of the day's volume, so an overnight window is supervised rather than merely survived.",
+        "default_value": "One dashboard brings the key information, activity, and insights together to show how the solution works in practice.",
         "rows": 2,
         "new_lines": ""
       },

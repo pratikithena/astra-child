@@ -1,0 +1,741 @@
+<!--
+  ITHENA partnership page template. Worked example: Microsoft.
+  Copy:    partnership/ms-partner.txt
+  Design:  ../ithena-big-data-analytics.html  (tokens, dark palette, hero, platform cards, approach zigzag)
+           ../aether-landing.html             (closing "Get started" split band)
+
+  TO REUSE FOR ANOTHER PARTNER, change only:
+    .hero-bg img + .lockup img   hero imagery and partner logo
+    hero h1 / .h-deck / .h-tags  headline, deck, one-line tag rail
+    .flow + .cards               the lifecycle rail and the offering cards (1:1, keep counts equal)
+    #review                      the featured offer and its checklist
+    .roles                       the approach steps
+    #faq + JSON-LD               questions (keep the two in sync)
+    [formidable id=..]           the two form IDs
+
+  UNRESOLVED, from the copy doc, before this goes live:
+   - Confirm current Microsoft partner designations + whether badges should be shown.
+   - Legal/licensing to approve the "up to 15%" claim and the disclaimer wording.
+   - Confirm the review is free with no obligation, and the 90-120 day recommended window.
+   - Name specific products (Dynamics 365, Azure OpenAI) if ITHENA sells them, for SEO.
+   - Add a customer quote or a licensing-savings example: this page has no proof block yet.
+   - Microsoft enquiry form needs 4 extra fields (products, seats, renewal date, billing
+     preference). Form 98 below is a placeholder until that is built.
+
+  SEO  Title: Microsoft Cloud, AI & Licensing Partner | ITHENA
+       Meta:  ITHENA is an authorized Microsoft reseller and Cloud & AI Solutions Partner.
+              Save up to 15% on your Microsoft subscriptions, and get ongoing security,
+              architecture and AI support.
+-->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;600;700&display=swap');
+section#main-section,section#main-section *,section#main-section *::before,section#main-section *::after{box-sizing:border-box!important}
+section#main-section{--blue:#0083C8!important;--blue-d:#006AA3!important;--blue-l:#3FA9E0!important;--acc:#BFE5F8!important;--acc-t:#006AA3!important;--navy:#0A192D!important;--navy-2:#152C46!important;--navy-acc:#BFE5F8!important;--ink:#0A192D!important;--body:#46586A!important;--muted:#5B6B7A!important;--sa:#FFFFFF!important;--sb:#F2F8FD!important;--card:#FFFFFF!important;--glass:rgba(255,255,255,.72)!important;--line:rgba(10,25,45,.10)!important;--hair:rgba(10,25,45,.16)!important;--deep:linear-gradient(155deg,#0B2038 0%,#0A192D 52%,#0C2542 100%)!important;--red:#C00000!important;--chip:rgba(0,131,200,.09)!important;--sh:0 18px 44px -24px rgba(0,45,80,.34)!important;--sh-lg:0 44px 90px -34px rgba(0,45,80,.46)!important;--ez:cubic-bezier(.22,.61,.36,1)!important;--font-head:"Noto Sans",sans-serif!important;--font-body:"Inter",sans-serif!important;--fs-xs:12px!important;--fs-sm:13px!important;--fs-md:14px!important;--fs-base:15px!important;--fs-body:16px!important;--fs-lg:17px!important;--fs-xl:19px!important;--fs-lead:clamp(16px,1.6vw,19px)!important;--fs-h3:clamp(17px,1.9vw,21px)!important;--fs-h2s:clamp(21px,2.4vw,27px)!important;--fs-h2:clamp(27px,3.6vw,44px)!important;--fs-h1:clamp(32px,5vw,50px)!important;--wrap:1240px!important;--hdr:96px!important;--z:1.3;display:block!important;position:relative!important;margin:0!important;font-family:var(--font-body)!important;font-size:var(--fs-body)!important;line-height:1.66!important;color:var(--body)!important;background:var(--sa)!important;-webkit-font-smoothing:antialiased!important;overflow-x:clip!important;color-scheme:light!important;transition:background-color .3s ease,color .3s ease!important}
+section#main-section[data-theme="dark"]{--acc-t:#3FA9E0!important;--ink:#F2F3F5!important;--body:rgba(228,230,235,.8)!important;--muted:#9A9FA8!important;--sa:#0A0A0B!important;--sb:#111113!important;--card:#17181B!important;--glass:rgba(255,255,255,.045)!important;--line:rgba(255,255,255,.09)!important;--hair:rgba(255,255,255,.16)!important;--deep:linear-gradient(155deg,#16171A 0%,#0C0C0E 52%,#050506 100%)!important;--chip:rgba(0,131,200,.2)!important;--sh:0 18px 44px -24px rgba(0,0,0,.62)!important;--sh-lg:0 44px 90px -34px rgba(0,0,0,.72)!important;color-scheme:dark!important}
+section#main-section ul,section#main-section ol{list-style:none!important;margin:0!important;padding:0!important}
+section#main-section li,section#main-section p,section#main-section dt,section#main-section dd{margin:0!important}
+section#main-section h1,section#main-section h2,section#main-section h3,section#main-section h4{font-family:var(--font-head)!important;color:var(--ink)!important;line-height:1.25!important;font-weight:700!important;letter-spacing:-.02em!important;margin:0!important}
+section#main-section a{color:var(--blue)!important;text-decoration:none!important}
+section#main-section img,section#main-section svg{max-width:100%!important}
+section#main-section :focus-visible{outline:2px solid var(--blue)!important;outline-offset:3px!important;border-radius:8px!important}
+section#main-section .wrap{max-width:var(--wrap)!important;margin:0 auto!important;padding:0 clamp(20px,4vw,44px)!important}
+section#main-section .pt-sec{display:block!important;position:relative!important;isolation:isolate!important;padding:clamp(60px,7.5vw,116px) 0!important;scroll-margin-top:calc(var(--hdr) + 66px)!important}
+section#main-section .shell .pt-sec::before{content:""!important;position:absolute!important;inset:0 auto 0 50%!important;width:100vw!important;margin-left:-50vw!important;z-index:-1!important;background:var(--sa)!important}
+section#main-section .shell .pt-sec.tint::before{background:var(--sb)!important}
+section#main-section .shell .pt-sec.deep::before{background:var(--deep)!important}
+section#main-section .pt-sec.deep{--ink:#FFFFFF!important;--body:rgba(214,235,246,.8)!important;--muted:#90B0C5!important;--card:rgba(255,255,255,.05)!important;--glass:rgba(255,255,255,.06)!important;--line:rgba(255,255,255,.13)!important;--hair:rgba(255,255,255,.2)!important}
+section#main-section[data-theme="dark"] .shell .pt-sec.deep::before{background:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px) 0 0/56px 56px,linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px) 0 0/56px 56px,radial-gradient(55% 70% at 100% 0%,rgba(0,131,200,.11),transparent 70%),var(--deep)!important}
+section#main-section[data-theme="dark"] .pt-sec.deep{--body:rgba(228,230,235,.8)!important;--muted:#9A9FA8!important;--card:rgba(255,255,255,.035)!important;--line:rgba(255,255,255,.1)!important}
+section#main-section[data-theme="dark"] .shell .pt-sec.tint::before{background:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.3px) 0 0/22px 22px,linear-gradient(180deg,#111113,#0C0C0E)!important}
+section#main-section .kick{display:inline-flex!important;align-items:center!important;gap:11px!important;font:700 var(--fs-xs)/1.25 var(--font-body)!important;letter-spacing:.17em!important;text-transform:uppercase!important;color:var(--acc-t)!important;margin-bottom:18px!important}
+section#main-section .kick::before{content:""!important;width:28px!important;height:2px!important;border-radius:2px!important;background:linear-gradient(90deg,var(--blue),transparent)!important;flex:none!important}
+section#main-section .deep .kick,section#main-section .pt-hero .kick{color:var(--blue-l)!important}
+section#main-section .deep .kick::before,section#main-section .pt-hero .kick::before{background:linear-gradient(90deg,var(--blue-l),transparent)!important}
+section#main-section h2{font-size:var(--fs-h2)!important;margin-bottom:16px!important}
+section#main-section h3{font-size:var(--fs-xl)!important}
+section#main-section .pt-sec h2 em{font-style:normal!important;color:var(--blue)!important}
+section#main-section .deep h2 em{color:var(--blue-l)!important}
+section#main-section .lead{font-size:var(--fs-lead)!important;font-weight:300!important;color:var(--body)!important;max-width:60ch!important}
+section#main-section p.body{margin-top:15px!important;max-width:68ch!important;color:var(--body)!important}
+section#main-section .btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;min-height:48px!important;padding:14px 28px!important;border-radius:10px!important;font-size:var(--fs-base)!important;font-weight:700!important;line-height:1!important;white-space:nowrap!important;border:1px solid transparent!important;cursor:pointer!important;transition:transform .22s var(--ez),background-color .22s var(--ez),border-color .22s var(--ez),box-shadow .22s var(--ez),color .22s var(--ez)!important}
+section#main-section .btn:hover{transform:translateY(-2px)!important}
+section#main-section .btn svg{width:17px!important;height:17px!important;flex:none!important}
+section#main-section .btn-p{background:linear-gradient(120deg,var(--blue),var(--blue-l))!important;color:#fff!important;box-shadow:0 14px 34px -16px rgba(0,131,200,.8)!important}
+section#main-section .btn-p:hover{box-shadow:0 20px 44px -16px rgba(0,131,200,.9)!important}
+section#main-section .btn-o{border-color:var(--hair)!important;color:var(--ink)!important}
+section#main-section .btn-o:hover{border-color:var(--blue)!important;color:var(--blue)!important}
+section#main-section .btns{display:flex!important;flex-wrap:wrap!important;gap:12px!important;margin-top:30px!important}
+section#main-section .btn-wide{width:100%!important}
+
+/* ======================= hero (big-data pattern) ======================= */
+section#main-section .pt-hero{padding:0!important;overflow:hidden!important;isolation:isolate!important;background:#06182A!important;--ink:#FFFFFF!important;--body:rgba(214,235,246,.82)!important}
+section#main-section[data-theme="dark"] .pt-hero{background:#07080A!important;--body:rgba(228,230,235,.84)!important}
+section#main-section .hero-bg{position:absolute!important;inset:0!important;z-index:0!important}
+section#main-section .hero-bg img{width:100%!important;height:100%!important;object-fit:cover!important;opacity:.5!important}
+section#main-section .hero-bg::after{content:""!important;position:absolute!important;inset:0!important;background:linear-gradient(100deg,rgba(6,24,42,.94) 0%,rgba(6,24,42,.86) 46%,rgba(6,24,42,.52) 100%),linear-gradient(180deg,transparent 58%,rgba(6,24,42,.9) 100%)!important}
+section#main-section[data-theme="dark"] .hero-bg::after{background:linear-gradient(100deg,rgba(7,8,10,.95) 0%,rgba(7,8,10,.88) 46%,rgba(7,8,10,.55) 100%),linear-gradient(180deg,transparent 58%,rgba(7,8,10,.94) 100%)!important}
+section#main-section .hero-in{position:relative!important;z-index:1!important;padding:clamp(78px,9vw,140px) clamp(20px,4vw,44px) clamp(64px,7vw,110px)!important;display:grid!important;grid-template-columns:minmax(0,1.24fr) minmax(290px,.76fr)!important;gap:clamp(34px,5vw,74px)!important;align-items:center!important}
+@media(max-width:960px){section#main-section .hero-in{grid-template-columns:minmax(0,1fr)!important;gap:38px!important;align-items:start!important}}
+section#main-section .h-title{font-size:var(--fs-h1)!important;line-height:1.25!important;letter-spacing:-.032em!important;color:#fff!important;max-width:16ch!important}
+section#main-section .h-title em{font-style:normal!important;display:block!important;background:linear-gradient(100deg,#3FA9E0,#BFE5F8 62%,#FFFFFF)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+section#main-section .h-deck{font-size:var(--fs-lead)!important;font-weight:300!important;color:rgba(214,235,246,.86)!important;max-width:52ch!important;margin-top:22px!important}
+/* h-tags stay on ONE line: no wrap, the rail scrolls instead of stacking */
+section#main-section .h-tags{display:flex!important;flex-wrap:nowrap!important;align-items:center!important;gap:0 24px!important;margin-top:28px!important;overflow-x:auto!important;scrollbar-width:none!important;-ms-overflow-style:none!important}
+section#main-section .h-tags::-webkit-scrollbar{display:none!important}
+section#main-section .h-tags li{position:relative!important;flex:none!important;white-space:nowrap!important;font-size:var(--fs-md)!important;font-weight:500!important;color:#CFE6F5!important}
+section#main-section .h-tags li+li::before{content:""!important;position:absolute!important;left:-14px!important;top:50%!important;width:4px!important;height:4px!important;border-radius:50%!important;background:var(--blue-l)!important;transform:translateY(-50%)!important}
+/* co-brand lockup: the one thing a partnership hero must say first */
+section#main-section .lockup{display:inline-flex!important;align-items:center!important;gap:16px!important;margin-bottom:24px!important}
+section#main-section .lockup .lk-us{font-family:var(--font-head)!important;font-weight:700!important;font-size:var(--fs-sm)!important;letter-spacing:.3em!important;color:#fff!important}
+section#main-section .lockup .lk-r{width:1px!important;height:18px!important;flex:none!important;background:rgba(255,255,255,.3)!important}
+section#main-section .lockup img{height:17px!important;width:auto!important;display:block!important;filter:brightness(0) invert(1)!important;opacity:.92!important}
+/* hero figure: the lead offer, counted up on entry */
+section#main-section .h-fig{position:relative!important;padding:clamp(28px,3vw,38px) clamp(26px,2.6vw,34px)!important;border-radius:20px!important;border:1px solid rgba(255,255,255,.14)!important;background:linear-gradient(152deg,rgba(0,131,200,.26),rgba(255,255,255,.04) 62%)!important;-webkit-backdrop-filter:blur(12px)!important;backdrop-filter:blur(12px)!important;box-shadow:0 44px 90px -42px rgba(0,0,0,.8)!important}
+section#main-section .h-fig::after{content:""!important;position:absolute!important;left:clamp(26px,2.6vw,34px)!important;right:clamp(26px,2.6vw,34px)!important;bottom:0!important;height:2px!important;border-radius:2px!important;background:linear-gradient(90deg,var(--blue-l),transparent)!important}
+section#main-section .h-fig .fig-cap{font:700 var(--fs-xs)/1.25 var(--font-body)!important;letter-spacing:.17em!important;text-transform:uppercase!important;color:rgba(191,229,248,.8)!important}
+section#main-section .h-fig .num{margin-top:10px!important;font:700 clamp(62px,8.4vw,96px)/.84 var(--font-head)!important;letter-spacing:-.055em!important;font-variant-numeric:tabular-nums!important;white-space:nowrap!important;background:linear-gradient(100deg,#FFFFFF,#BFE5F8 44%,#3FA9E0)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+section#main-section .h-fig .num i{font-style:normal!important;font-size:.46em!important}
+section#main-section .h-fig .fig-sub{margin-top:16px!important;font-size:var(--fs-base)!important;color:rgba(214,235,246,.88)!important}
+section#main-section .h-fig .fig-foot{margin-top:16px!important;padding-top:14px!important;border-top:1px solid rgba(255,255,255,.13)!important;font-size:var(--fs-xs)!important;color:rgba(214,235,246,.6)!important}
+
+/* =============== "On this page" rail (case-study-template pattern) ===============
+   The rail sits in a 210px gutter; the sections keep their full-bleed bands by
+   painting them on a ::before that breaks out to 100vw. */
+section#main-section .shell{display:grid!important;grid-template-columns:210px minmax(0,1fr)!important;gap:64px!important;max-width:var(--wrap)!important;margin:0 auto!important;padding:0 clamp(20px,4vw,44px)!important;align-items:start!important}
+section#main-section .shell .wrap{max-width:none!important;padding:0!important}
+section#main-section .shell main{min-width:0!important}
+@media(max-width:1080px){section#main-section .shell{grid-template-columns:minmax(0,1fr)!important;gap:0!important}section#main-section .rail{display:none!important}}
+section#main-section .rail{position:sticky!important;top:calc(var(--hdr) + 24px)!important;padding:clamp(60px,7.5vw,116px) 0 40px!important}
+section#main-section .rail-cap{display:block!important;font:700 var(--fs-xs)/1.25 var(--font-body)!important;letter-spacing:.13em!important;text-transform:uppercase!important;color:var(--muted)!important;margin-bottom:14px!important}
+section#main-section .rail-track{position:relative!important}
+section#main-section .rail-track::before{content:""!important;position:absolute!important;left:0!important;top:6px!important;bottom:6px!important;width:1px!important;background:var(--hair)!important}
+section#main-section .rail-thumb{position:absolute!important;left:-1px!important;width:3px!important;border-radius:2px!important;top:0!important;height:0!important;background:linear-gradient(180deg,var(--blue),var(--blue-l))!important;transition:transform .35s var(--ez),height .35s var(--ez)!important}
+section#main-section .rail ol a{display:grid!important;grid-template-columns:24px 1fr!important;gap:6px!important;align-items:baseline!important;padding:9px 0 9px 15px!important;font-size:var(--fs-sm)!important;font-weight:600!important;line-height:1.4!important;color:var(--muted)!important;transition:color .22s!important}
+section#main-section .rail ol a i{font-style:normal!important;font-size:var(--fs-xs)!important;color:var(--hair)!important;letter-spacing:.04em!important}
+section#main-section .rail ol a:hover{color:var(--body)!important}
+section#main-section .rail ol a.on{color:var(--ink)!important}
+section#main-section .rail ol a.on i{color:var(--acc-t)!important}
+section#main-section .rail-foot{margin-top:24px!important;padding-top:16px!important;border-top:1px solid var(--line)!important;font-size:var(--fs-sm)!important;color:var(--muted)!important}
+section#main-section .rail-foot a{font-weight:700!important;color:var(--acc-t)!important;white-space:nowrap!important}
+
+/* ======================= about: three pillars ======================= */
+section#main-section .pillars{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:clamp(24px,3vw,40px)!important;margin-top:clamp(40px,5vw,64px)!important}
+@media(max-width:860px){section#main-section .pillars{grid-template-columns:minmax(0,1fr)!important}}
+section#main-section .pillar{position:relative!important;padding:2px 0 4px 26px!important;border-left:1px solid var(--hair)!important}
+section#main-section .pillar::before{content:""!important;position:absolute!important;left:-1px!important;top:0!important;width:2px!important;height:44px!important;background:linear-gradient(180deg,var(--blue-l),var(--blue))!important;transition:height .45s var(--ez)!important}
+section#main-section .pillar:hover::before{height:100%!important}
+section#main-section .pillar i{display:block!important;font-style:normal!important;font:700 var(--fs-xs)/1.25 var(--font-body)!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:var(--acc-t)!important;margin-bottom:10px!important}
+section#main-section .pillar p{margin-top:10px!important;font-size:var(--fs-md)!important;color:var(--muted)!important}
+
+/* ============ platform: lifecycle rail + offering cards (ONE Data Platform pattern) ============ */
+section#main-section .flow{position:relative!important;display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;max-width:940px!important;margin-top:32px!important;counter-reset:fl!important}
+section#main-section .flow::before{content:""!important;position:absolute!important;left:0!important;right:0!important;top:3px!important;height:1px!important;background:linear-gradient(90deg,transparent,var(--blue-l),transparent) -20% 0/140px 100% no-repeat,linear-gradient(90deg,var(--blue),var(--hair) 85%,transparent)!important;animation:pt-sweep 5s linear infinite!important}
+section#main-section .flow li{position:relative!important;counter-increment:fl!important;padding:22px 12px 0 0!important;font:600 var(--fs-sm)/1.25 var(--font-body)!important;letter-spacing:.12em!important;text-transform:uppercase!important;color:var(--ink)!important;transition:color .4s var(--ez),opacity .4s var(--ez)!important}
+section#main-section .flow li::before{content:counter(fl,decimal-leading-zero)!important;display:block!important;margin-bottom:6px!important;font:500 11px/1 var(--font-body)!important;letter-spacing:.12em!important;color:var(--muted)!important}
+section#main-section .flow li::after{content:""!important;position:absolute!important;left:0!important;top:0!important;width:7px!important;height:7px!important;border-radius:50%!important;background:var(--blue-l)!important;box-shadow:0 0 0 4px rgba(0,131,200,.16),0 0 14px rgba(63,169,224,.7)!important;transition:transform .4s var(--ez),box-shadow .4s var(--ez)!important}
+@keyframes pt-sweep{from{background-position:-20% 0,0 0}to{background-position:120% 0,0 0}}
+section#main-section .flow.live li:not(.on){opacity:.45!important}
+section#main-section .flow li.on,section#main-section .flow li.on::before{color:var(--acc-t)!important}
+section#main-section .flow li.on::after{transform:scale(1.7)!important;box-shadow:0 0 0 5px rgba(0,131,200,.2),0 0 20px rgba(63,169,224,.95)!important}
+section#main-section .cards{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:clamp(36px,4.4vw,56px) clamp(24px,3vw,40px)!important;margin-top:clamp(40px,5vw,64px)!important}
+section#main-section .card{position:relative!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:12px!important;padding:2px 0 4px 26px!important;border-left:1px solid var(--hair)!important}
+section#main-section .card::before{content:""!important;position:absolute!important;left:-1px!important;top:0!important;width:2px!important;height:48px!important;background:linear-gradient(180deg,var(--blue-l),var(--blue))!important;transition:height .45s var(--ez)!important}
+section#main-section .card:hover::before,section#main-section .card.on::before{height:100%!important}
+section#main-section .badge{width:48px!important;height:48px!important;flex:none!important;border-radius:50%!important;display:grid!important;place-items:center!important;background:var(--blue)!important;color:#fff!important;margin-bottom:6px!important;transition:transform .35s var(--ez)!important}
+section#main-section .badge svg{width:22px!important;height:22px!important}
+section#main-section .card:hover .badge{transform:translateY(-3px)!important}
+section#main-section .card p{font-size:var(--fs-md)!important;color:var(--muted)!important}
+section#main-section .card .cnum{position:absolute!important;top:-6px!important;right:0!important;font:800 clamp(40px,4.2vw,56px)/1 var(--font-head)!important;letter-spacing:-.04em!important;background:linear-gradient(180deg,var(--blue-l) 0%,rgba(0,131,200,.08) 92%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important;opacity:.7!important;transition:opacity .35s var(--ez),transform .35s var(--ez)!important;pointer-events:none!important}
+section#main-section .card:hover .cnum,section#main-section .card.on .cnum{opacity:1!important;transform:translateY(-4px)!important}
+/* pop state: only the content scales, never a card surface (JS lights one every 2.4s) */
+section#main-section .pop-body{display:flex!important;flex-direction:column!important;gap:12px!important;max-width:calc(100% / var(--z))!important;transform-origin:0 0!important;transition:transform .5s var(--ez)!important}
+section#main-section .card.on .pop-body{transform:scale(var(--z))!important}
+section#main-section .card .tagx{display:inline-block!important;font:700 var(--fs-xs)/1 var(--font-body)!important;letter-spacing:.11em!important;text-transform:uppercase!important;color:var(--blue-l)!important}
+@media(max-width:1040px){section#main-section{--z:1.12}section#main-section .cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:640px){section#main-section .cards{grid-template-columns:minmax(0,1fr)!important}section#main-section .flow{grid-template-columns:repeat(3,minmax(0,1fr))!important;row-gap:22px!important}section#main-section .flow::before{display:none!important}section#main-section .flow li{border-top:1px solid var(--hair)!important}section#main-section .flow li::after{top:-4px!important}}
+
+/* ======================= featured offer: the review ======================= */
+section#main-section .review{display:grid!important;grid-template-columns:minmax(0,1.22fr) minmax(280px,.78fr)!important;gap:clamp(28px,4vw,52px)!important;margin-top:clamp(36px,4.4vw,56px)!important;align-items:start!important}
+@media(max-width:900px){section#main-section .review{grid-template-columns:minmax(0,1fr)!important}}
+/* popout: the row lifts onto its own card surface under the pointer */
+section#main-section .rv-list li{position:relative!important;isolation:isolate!important;display:grid!important;grid-template-columns:23px minmax(0,1fr)!important;gap:14px!important;align-items:start!important;padding:16px 0!important;border-bottom:1px solid var(--line)!important;transition:transform .4s var(--ez)!important}
+section#main-section .rv-list li::before{content:""!important;position:absolute!important;inset:-2px -22px!important;z-index:-1!important;border-radius:16px!important;background:var(--card)!important;border-left:2px solid var(--blue)!important;box-shadow:var(--sh-lg)!important;opacity:0!important;transform:scale(.96)!important;transition:opacity .3s var(--ez),transform .4s var(--ez)!important;pointer-events:none!important}
+section#main-section .rv-list li:hover,section#main-section .rv-list li:focus-within{transform:translateX(6px) scale(1.02)!important}
+section#main-section .rv-list li:hover::before,section#main-section .rv-list li:focus-within::before{opacity:1!important;transform:none!important}
+section#main-section .rv-list li:last-child{border-bottom:0!important}
+@media(prefers-reduced-motion:reduce){section#main-section .rv-list li:hover{transform:none!important}}
+section#main-section .rv-list .tick{width:23px!important;height:23px!important;border-radius:50%!important;background:var(--chip)!important;color:var(--acc-t)!important;display:grid!important;place-items:center!important;margin-top:2px!important;transition:background .3s,color .3s!important}
+section#main-section .rv-list .tick svg{width:13px!important;height:13px!important}
+section#main-section .rv-list li:hover .tick{background:var(--blue)!important;color:#fff!important}
+section#main-section .rv-list b{display:block!important;font-family:var(--font-head)!important;font-weight:700!important;font-size:var(--fs-base)!important;color:var(--ink)!important;letter-spacing:-.01em!important}
+section#main-section .rv-list span span{display:block!important;margin-top:3px!important;font-size:var(--fs-md)!important;color:var(--muted)!important}
+section#main-section .rv-cta{position:sticky!important;top:calc(var(--hdr) + 96px)!important;border:1px solid var(--hair)!important;border-radius:18px!important;background:var(--card)!important;box-shadow:var(--sh)!important;padding:28px 26px!important}
+@media(max-width:900px){section#main-section .rv-cta{position:static!important}}
+section#main-section .rv-cta p{margin-top:11px!important;font-size:var(--fs-md)!important;color:var(--muted)!important}
+section#main-section .rv-cta .btn{margin-top:22px!important}
+section#main-section .rv-note{margin-top:14px!important;font-size:var(--fs-xs)!important;color:var(--muted)!important;text-align:center!important}
+
+/* ======================= approach: zigzag steps ======================= */
+section#main-section .roles{--rg:96px;position:relative!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;grid-template-rows:1fr 1fr!important;column-gap:clamp(20px,2.6vw,38px)!important;row-gap:var(--rg)!important;margin-top:clamp(44px,5vw,64px)!important}
+section#main-section .roles::before{content:""!important;position:absolute!important;left:0!important;right:0!important;top:calc(50% - 1px)!important;height:2px!important;background:linear-gradient(90deg,var(--blue),var(--hair) 90%)!important}
+section#main-section .role{position:relative!important;isolation:isolate!important;min-width:0!important;grid-row:1!important;align-self:end!important}
+section#main-section .role:nth-child(even){grid-row:2!important;align-self:start!important}
+section#main-section .role:nth-child(1){grid-column:1!important}
+section#main-section .role:nth-child(2){grid-column:2!important}
+section#main-section .role:nth-child(3){grid-column:3!important}
+section#main-section .role:nth-child(4){grid-column:4!important}
+section#main-section .role:nth-child(5){grid-column:5!important}
+section#main-section .role::after{content:""!important;position:absolute!important;left:18px!important;top:100%!important;width:14px!important;height:calc(var(--rg)/2 + 7px)!important;background:linear-gradient(var(--hair),var(--hair)) 50% 0/2px calc(100% - 14px) no-repeat,radial-gradient(circle,var(--blue) 0 4px,rgba(0,131,200,.3) 4.5px 7px,transparent 7.5px) 50% 100%/14px 14px no-repeat!important;transition:background-image .3s var(--ez)!important}
+section#main-section .role:nth-child(even)::after{top:auto!important;bottom:100%!important;background-position:50% 100%,50% 0!important}
+section#main-section .role.on::after{background-image:linear-gradient(var(--blue),var(--blue)),radial-gradient(circle,var(--blue) 0 5px,rgba(0,131,200,.35) 5.5px 7px,transparent 7.5px)!important}
+section#main-section .role .pop-body{align-items:flex-start!important;gap:10px!important;transform-origin:0 100%!important}
+section#main-section .role:nth-child(even) .pop-body{transform-origin:0 0!important}
+section#main-section .role.on .pop-body{transform:translateY(-6px) scale(var(--z))!important}
+section#main-section .role:nth-child(even).on .pop-body{transform:translateY(6px) scale(var(--z))!important}
+section#main-section .rnum{font:700 clamp(38px,4.4vw,50px)/1 var(--font-head)!important;letter-spacing:-.05em!important;background:linear-gradient(130deg,var(--blue),var(--blue-l))!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+section#main-section .role h3{font-size:var(--fs-lg)!important}
+section#main-section .role p{font-size:var(--fs-md)!important;color:var(--muted)!important}
+@media(max-width:1040px){
+section#main-section .roles{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:none!important;row-gap:44px!important;padding-left:40px!important}
+section#main-section .roles::before{left:6px!important;right:auto!important;top:0!important;bottom:0!important;width:2px!important;height:auto!important;background:linear-gradient(180deg,var(--blue),var(--hair) 90%)!important}
+section#main-section .role,section#main-section .role:nth-child(n){grid-row:auto!important;grid-column:auto!important;align-self:auto!important}
+section#main-section .role::after,section#main-section .role:nth-child(n)::after{left:-40px!important;top:14px!important;bottom:auto!important;height:14px!important;background-size:0 0,14px 14px!important;background-position:0 0,50% 50%!important}
+section#main-section .role .pop-body,section#main-section .role:nth-child(even) .pop-body{transform-origin:0 0!important}
+section#main-section .role:nth-child(n).on .pop-body{transform:translateX(6px) scale(var(--z))!important}
+}
+
+/* ================= proof strip + included services ================= */
+section#main-section .stats{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;margin-top:clamp(48px,6vw,80px)!important;border-top:1px solid var(--line)!important}
+section#main-section .stat{padding:30px clamp(16px,2.4vw,34px) 0!important;position:relative!important;min-width:0!important}
+section#main-section .stat:first-child{padding-left:0!important}
+section#main-section .stat+.stat{border-left:1px solid var(--line)!important}
+@media(max-width:820px){section#main-section .stats{grid-template-columns:minmax(0,1fr)!important}section#main-section .stat,section#main-section .stat:first-child{padding:24px 0!important;border-left:0!important;border-top:1px solid var(--line)!important}section#main-section .stats{border-top:0!important}}
+section#main-section .stat .num{font:700 var(--fs-h1)/.95 var(--font-head)!important;letter-spacing:-.045em!important;color:var(--ink)!important;display:flex!important;align-items:flex-start!important;gap:2px!important;font-variant-numeric:tabular-nums!important;transition:color .4s var(--ez)!important}
+section#main-section .stat .num i{font-style:normal!important;color:var(--acc-t)!important;font-size:.44em!important;line-height:1.4!important}
+section#main-section .stat:hover .num{color:var(--acc-t)!important}
+section#main-section .stat h4{font-family:var(--font-head)!important;font-size:var(--fs-xs)!important;font-weight:700!important;letter-spacing:.13em!important;text-transform:uppercase!important;color:var(--ink)!important;margin-top:16px!important}
+section#main-section .stat p{font-size:var(--fs-md)!important;color:var(--muted)!important;margin-top:10px!important;max-width:36ch!important}
+section#main-section .why-h{font-size:var(--fs-h2s)!important;margin-top:clamp(48px,6vw,80px)!important;margin-bottom:0!important}
+section#main-section .why-h+p{margin-top:12px!important;max-width:70ch!important;color:var(--body)!important}
+section#main-section .svc{margin-top:24px!important;border:1px solid var(--line)!important;border-radius:14px!important;overflow:hidden!important}
+section#main-section .svc .srow{display:grid!important;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)!important;border-bottom:1px solid var(--line)!important;transition:background-color .28s!important}
+section#main-section .svc .srow:last-child{border-bottom:0!important}
+section#main-section .svc .srow:hover{background:var(--glass)!important}
+section#main-section .svc dt,section#main-section .svc dd{padding:15px 20px!important;font-size:var(--fs-md)!important}
+section#main-section .svc dt{font-family:var(--font-head)!important;font-weight:700!important;color:var(--ink)!important;border-right:1px solid var(--line)!important;display:flex!important;align-items:center!important;gap:10px!important}
+section#main-section .svc dt svg{width:16px!important;height:16px!important;color:var(--acc-t)!important;flex:none!important}
+section#main-section .svc dd{color:var(--muted)!important;display:flex!important;align-items:center!important}
+section#main-section .svc .shead dt,section#main-section .svc .shead dd{background:var(--glass)!important;font-family:var(--font-body)!important;font-weight:700!important;font-size:var(--fs-xs)!important;letter-spacing:.12em!important;text-transform:uppercase!important;color:var(--muted)!important}
+@media(max-width:680px){section#main-section .svc .srow{grid-template-columns:minmax(0,1fr)!important}section#main-section .svc dt{border-right:0!important;padding-bottom:4px!important}section#main-section .svc dd{padding-top:0!important;padding-left:46px!important}section#main-section .svc .shead{display:none!important}}
+
+/* ======================= FAQ ======================= */
+section#main-section .faq{margin-top:clamp(30px,3.6vw,44px)!important;border-top:1px solid var(--line)!important}
+section#main-section .faq details{border-bottom:1px solid var(--line)!important}
+section#main-section .faq summary{list-style:none!important;cursor:pointer!important;display:grid!important;grid-template-columns:minmax(0,1fr) 26px!important;gap:18px!important;align-items:center!important;padding:21px 0!important;font-family:var(--font-head)!important;font-weight:700!important;font-size:var(--fs-lg)!important;line-height:1.35!important;color:var(--ink)!important;letter-spacing:-.01em!important;transition:color .25s!important}
+section#main-section .faq summary::-webkit-details-marker{display:none!important}
+section#main-section .faq summary::marker{content:""!important}
+section#main-section .faq summary:hover{color:var(--acc-t)!important}
+section#main-section .faq .cr{width:26px!important;height:26px!important;border-radius:50%!important;border:1px solid var(--hair)!important;display:grid!important;place-items:center!important;flex:none!important;color:var(--muted)!important;transition:transform .4s var(--ez),border-color .25s,color .25s!important}
+section#main-section .faq .cr svg{width:11px!important;height:11px!important}
+section#main-section .faq details[open] .cr{transform:rotate(135deg)!important;border-color:var(--blue)!important;color:var(--acc-t)!important}
+section#main-section .faq .ans{padding:0 46px 24px 0!important;max-width:76ch!important;font-size:var(--fs-base)!important;color:var(--body)!important}
+
+/* ============ closing "Get started" band (aether-landing pattern) ============ */
+section#main-section .cta{padding:0!important;background:var(--navy)!important;--ink:#FFFFFF!important}
+section#main-section[data-theme="dark"] .cta{background:#0C0C0E!important}
+section#main-section .cta-in{display:grid!important;grid-template-columns:1fr 1fr!important}
+section#main-section .cta-copy{max-width:calc(var(--wrap)/2)!important;margin-left:auto!important;padding:clamp(56px,6.4vw,96px) clamp(26px,3.4vw,60px) clamp(56px,6.4vw,96px) clamp(20px,4vw,44px)!important}
+section#main-section .cta .kick{color:var(--navy-acc)!important}
+section#main-section .cta .kick::before{background:linear-gradient(90deg,var(--navy-acc),transparent)!important}
+section#main-section .cta h2{color:#fff!important}
+section#main-section .cta h2 em{color:var(--navy-acc)!important}
+section#main-section .cta .lead{color:rgba(255,255,255,.72)!important}
+section#main-section .ex{margin-top:26px!important;display:grid!important;gap:11px!important}
+section#main-section .ex li{display:flex!important;gap:11px!important;align-items:flex-start!important;font-size:var(--fs-base)!important;color:rgba(215,236,246,.9)!important}
+section#main-section .ex li svg{width:16px!important;height:16px!important;color:var(--navy-acc)!important;flex:none!important;margin-top:3px!important}
+section#main-section .cta .btn-o{border-color:rgba(255,255,255,.34)!important;color:#fff!important}
+section#main-section .cta .btn-o:hover{border-color:#fff!important;background:rgba(255,255,255,.1)!important;color:#fff!important}
+section#main-section .cta-med{position:relative!important;overflow:hidden!important;background:var(--navy-2)!important}
+section#main-section .cta-med img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;opacity:.62!important}
+@media(max-width:1024px){section#main-section .cta-in{grid-template-columns:1fr!important}section#main-section .cta-copy{max-width:var(--wrap)!important;margin:0 auto!important;padding:64px clamp(20px,4vw,44px)!important}section#main-section .cta-med{min-height:290px!important}}
+@media(max-width:899px){section#main-section .cta-med{display:none!important}}
+
+/* ================= entry animations: slow and visible ================= */
+section#main-section .rev{opacity:0!important;transform:translateY(46px) scale(.98)!important;transition:opacity 1.05s var(--ez),transform 1.05s var(--ez)!important;will-change:opacity,transform!important}
+section#main-section .rev.in{opacity:1!important;transform:none!important}
+section#main-section .stg>*{opacity:0!important;transform:translateY(34px)!important;transition:opacity .95s var(--ez),transform .95s var(--ez)!important}
+section#main-section .stg.in>*{opacity:1!important;transform:none!important}
+@media(max-width:560px){section#main-section .btn{width:100%!important}section#main-section .h-title{max-width:none!important}}
+@media(prefers-reduced-motion:reduce){
+section#main-section *,section#main-section *::before,section#main-section *::after{transition-duration:.001ms!important;animation:none!important}
+section#main-section .rev,section#main-section .stg>*{opacity:1!important;transform:none!important}
+}
+
+/* ================= form modals ================= */
+section#main-section .pt-modal{width:min(560px,calc(100vw - 32px))!important;max-width:none!important;max-height:calc(100dvh - 32px)!important;margin:auto!important;padding:0!important;border:1px solid var(--hair)!important;border-radius:18px!important;background:var(--card)!important;color:var(--ink)!important;box-shadow:0 30px 80px -20px rgba(0,0,0,.55)!important;overflow:hidden!important}
+section#main-section .pt-modal::backdrop{background:rgba(6,10,18,.66);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+section#main-section .pt-modal-in{position:relative!important;max-height:calc(100dvh - 34px)!important;overflow-y:auto!important;overscroll-behavior:contain!important;padding:30px 28px 26px!important}
+section#main-section .pt-modal-x{position:absolute!important;top:10px!important;right:10px!important;width:44px!important;height:44px!important;display:grid!important;place-items:center!important;padding:0!important;border:0!important;border-radius:50%!important;background:transparent!important;color:var(--body)!important;cursor:pointer!important;transition:background-color .2s,color .2s!important}
+section#main-section .pt-modal-x:hover,section#main-section .pt-modal-x:focus-visible{background:var(--chip)!important;color:var(--ink)!important}
+section#main-section .pt-modal-x svg{width:20px!important;height:20px!important}
+section#main-section .pt-modal h2{font-size:var(--fs-h3)!important;margin:0 48px 20px 0!important}
+section#main-section .pt-modal-form{font-family:var(--font-body)!important;font-size:var(--fs-base)!important;color:var(--body)!important}
+section#main-section .pt-modal-form .frm_forms,section#main-section .pt-modal-form form,section#main-section .pt-modal-form fieldset,section#main-section .pt-modal-form .frm_form_fields,section#main-section .pt-modal-form .frm_fields_container{max-width:100%!important;margin:0!important;background:transparent!important;background-image:none!important;box-shadow:none!important}
+section#main-section .pt-modal-form label,section#main-section .pt-modal-form .frm_primary_label,section#main-section .pt-modal-form .frm_description{color:var(--body)!important}
+section#main-section .pt-modal-form input:not([type=submit]):not([type=checkbox]):not([type=radio]):not([type=hidden]),section#main-section .pt-modal-form select,section#main-section .pt-modal-form textarea{width:100%!important;max-width:100%!important;box-sizing:border-box!important}
+section#main-section .pt-modal-form input:not([type=submit]):not([type=checkbox]):not([type=radio]):not([type=hidden]):not([type=button]),section#main-section .pt-modal-form select,section#main-section .pt-modal-form textarea{background:var(--sb)!important;background-image:none!important;color:var(--ink)!important;border:1px solid var(--hair)!important;border-radius:10px!important;box-shadow:none!important;font-family:var(--font-body)!important;font-size:var(--fs-base)!important;transition:border-color .2s,box-shadow .2s,background-color .3s,color .3s!important}
+section#main-section .pt-modal-form input:not([type=submit]):not([type=checkbox]):not([type=radio]):not([type=hidden]):not([type=button]):focus,section#main-section .pt-modal-form select:focus,section#main-section .pt-modal-form textarea:focus{outline:none!important;border-color:var(--blue)!important;box-shadow:0 0 0 3px var(--chip)!important}
+section#main-section .pt-modal-form input::placeholder,section#main-section .pt-modal-form textarea::placeholder{color:var(--muted)!important;opacity:1!important}
+section#main-section .pt-modal-form input:-webkit-autofill,section#main-section .pt-modal-form textarea:-webkit-autofill,section#main-section .pt-modal-form select:-webkit-autofill{-webkit-text-fill-color:var(--ink)!important;box-shadow:0 0 0 1000px var(--sb) inset!important;caret-color:var(--ink)!important}
+section#main-section .pt-modal-form select option{background:var(--card)!important;color:var(--ink)!important}
+section#main-section .pt-modal-form input[type=checkbox],section#main-section .pt-modal-form input[type=radio]{accent-color:var(--blue)!important}
+section#main-section .pt-modal-form .frm_required,section#main-section .pt-modal-form .frm_error,section#main-section .pt-modal-form .frm_error_style{color:var(--red)!important;background:transparent!important;border-color:transparent!important}
+section#main-section .pt-modal-form .frm_blank_field input,section#main-section .pt-modal-form .frm_blank_field select,section#main-section .pt-modal-form .frm_blank_field textarea{border-color:var(--red)!important}
+section#main-section .pt-modal-form .frm_message{background:var(--chip)!important;color:var(--ink)!important;border:1px solid var(--hair)!important;border-radius:10px!important;padding:14px 16px!important}
+section#main-section .pt-modal-form .frm_button_submit,section#main-section .pt-modal-form [type=submit]{background:var(--blue)!important;color:#fff!important;border:0!important;border-radius:10px!important;font-family:var(--font-body)!important;font-weight:600!important;cursor:pointer!important;transition:background-color .2s,box-shadow .2s!important}
+section#main-section .pt-modal-form .frm_button_submit:hover,section#main-section .pt-modal-form [type=submit]:hover,section#main-section .pt-modal-form .frm_button_submit:focus-visible,section#main-section .pt-modal-form [type=submit]:focus-visible{background:var(--blue-d)!important;box-shadow:0 0 0 3px var(--chip)!important}
+section#main-section[data-theme="dark"] .pt-modal-form .frm_error,section#main-section[data-theme="dark"] .pt-modal-form .frm_error_style,section#main-section[data-theme="dark"] .pt-modal-form .frm_required{color:#FF8A8A!important}
+section#main-section[data-theme="dark"] .pt-modal-form .frm_blank_field input,section#main-section[data-theme="dark"] .pt-modal-form .frm_blank_field select,section#main-section[data-theme="dark"] .pt-modal-form .frm_blank_field textarea{border-color:#FF8A8A!important}
+@media(max-width:640px){section#main-section .pt-modal{width:calc(100vw - 20px)!important;max-height:calc(100dvh - 20px)!important;border-radius:16px!important}section#main-section .pt-modal-in{max-height:calc(100dvh - 22px)!important;padding:24px 18px 20px!important}}
+</style>
+
+<section id="main-section" class="pt-page" data-theme="dark">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="p-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0l-7-7a2 2 0 01-.6-1.4V4.6A1.6 1.6 0 014.6 3h7.6a2 2 0 011.4.6l7 7a2 2 0 010 2.8z"/><circle cx="7.8" cy="7.8" r="1.2"/></symbol>
+<symbol id="p-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 18.4a4.4 4.4 0 01-.5-8.8 5.6 5.6 0 0110.9-1.6 4.2 4.2 0 01.7 8.2"/><path d="M12 11.4v7.8M9.3 14.2L12 11.2l2.7 3"/></symbol>
+<symbol id="p-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.6 3.1v5.5c0 4.3-3.1 7.7-7.6 9.1-4.5-1.4-7.6-4.8-7.6-9.1V6.1z"/><path d="M8.9 12l2.2 2.2 4-4.2"/></symbol>
+<symbol id="p-screen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="4" width="18.4" height="12.2" rx="1.8"/><path d="M8 20h8M12 16.4V20"/></symbol>
+<symbol id="p-net" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.6"/><circle cx="4.8" cy="5.6" r="2"/><circle cx="19.2" cy="5.6" r="2"/><circle cx="4.8" cy="18.4" r="2"/><circle cx="19.2" cy="18.4" r="2"/><path d="M6.4 7.1l3.4 3M17.6 7.1l-3.4 3M6.4 16.9l3.4-3M17.6 16.9l-3.4-3"/></symbol>
+<symbol id="p-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.4 7.6L4 12l4.4 4.4M15.6 7.6L20 12l-4.4 4.4M13.6 5l-3.2 14"/></symbol>
+<symbol id="p-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13.2 3L5.2 13.2H11l-1.2 7.8 8-10.2h-5.8z"/></symbol>
+<symbol id="p-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l4.8 4.8L20 6"/></symbol>
+<symbol id="p-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 19.6v-2a3.6 3.6 0 013.6-3.6h7.2a3.6 3.6 0 013.6 3.6v2"/><circle cx="12" cy="8" r="3.4"/></symbol>
+<symbol id="p-bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17.6V11M10 17.6V6.4M16 17.6v-4.2M3.4 20.6h17.2"/></symbol>
+<symbol id="p-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.4" width="16" height="14.2" rx="1.8"/><path d="M4 9.8h16M8.4 3.2v3.6M15.6 3.2v3.6"/></symbol>
+<symbol id="p-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 12h14.4M13.4 6.2l5.8 5.8-5.8 5.8"/></symbol>
+</defs></svg>
+
+<!-- ============================== HERO ============================== -->
+<header class="pt-sec pt-hero">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ms-banner.webp" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+  </div>
+  <div class="wrap hero-in">
+    <div class="rev">
+      <span class="lockup">
+        <span class="lk-us">ITHENA</span>
+        <span class="lk-r" aria-hidden="true"></span>
+        <img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-microsoft.png" alt="Microsoft" loading="lazy" width="120" height="19">
+      </span>
+      <h1 class="h-title">Same Microsoft. Smarter spend. <em>Real AI results.</em></h1>
+      <p class="h-deck">As an authorized Microsoft reseller and Cloud &amp; AI Solutions Partner, ITHENA helps you save up to 15% on your existing Microsoft subscriptions &mdash; and secure, optimize and get more out of every license.</p>
+      <ul class="h-tags">
+        <li>Authorized reseller</li>
+        <li>Cloud &amp; AI Solutions Partner</li>
+        <li>Licensing &amp; renewals</li>
+        <li>Security &amp; compliance</li>
+        <li>Data &amp; AI</li>
+      </ul>
+      <div class="btns">
+        <a class="btn btn-p" href="https://ithena.ai/contact-us/" data-pt-modal="ptModalReview" aria-haspopup="dialog">Get your free licensing review <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#p-arr"/></svg></a>
+        <a class="btn btn-o" href="https://ithena.ai/contact-us/" data-pt-modal="ptModalCall" aria-haspopup="dialog" style="border-color:rgba(255,255,255,.28)!important;color:#fff!important">Schedule a call</a>
+      </div>
+    </div>
+    <aside class="h-fig rev">
+      <p class="fig-cap">Save up to</p>
+      <p class="num"><span data-count="15">15</span><i>%</i></p>
+      <p class="fig-sub">off the Microsoft subscriptions you already run. Same products, same users, same experience &mdash; bought through ITHENA.</p>
+      <!-- disclaimer wording pending legal/licensing sign-off -->
+      <p class="fig-foot">Savings vary by product, seat count and agreement type.</p>
+    </aside>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="rail" aria-label="On this page">
+    <span class="rail-cap">On this page</span>
+    <div class="rail-track">
+      <span class="rail-thumb" id="ptThumb" aria-hidden="true"></span>
+      <ol id="ptNav">
+        <li><a href="#partnership"><i>01</i><span>The partnership</span></a></li>
+        <li><a href="#platform"><i>02</i><span>What we offer</span></a></li>
+        <li><a href="#review"><i>03</i><span>Free licensing review</span></a></li>
+        <li><a href="#approach"><i>04</i><span>Approach</span></a></li>
+        <li><a href="#faq"><i>05</i><span>FAQ</span></a></li>
+      </ol>
+    </div>
+    <p class="rail-foot">Renewal coming up?<br><a href="https://ithena.ai/contact-us/">Request a review &rarr;</a></p>
+  </aside>
+  <main>
+
+<!-- ===================== 01 THE PARTNERSHIP ===================== -->
+<section class="pt-sec" id="partnership">
+  <div class="wrap">
+    <div class="rev">
+      <p class="kick">About the partnership</p>
+      <h2>Where Microsoft's platform meets <em>ITHENA's expertise</em></h2>
+      <p class="lead">Microsoft gives enterprises a powerful foundation for cloud, productivity, security and AI. ITHENA helps you turn that foundation into results.</p>
+      <p class="body">Together, we help organizations connect data, processes and teams to drive revenue: intelligent CRM and ERP applications, secure cloud environments, modern productivity tools and AI-ready data platforms. Our joint approach supports your remote and hybrid workforce, streamlines operations and helps you build a resilient, purpose-driven organization.</p>
+    </div>
+    <div class="pillars stg">
+      <article class="pillar">
+        <i>01 &middot; Commercial</i>
+        <h3>Licensing expertise</h3>
+        <p>So you pay the right price for the right products, on the right agreement, with renewals planned instead of inherited.</p>
+      </article>
+      <article class="pillar">
+        <i>02 &middot; Technical</i>
+        <h3>Technical depth</h3>
+        <p>Across cloud migration, security, data and application development, delivered by engineers who have run these environments themselves.</p>
+      </article>
+      <article class="pillar">
+        <i>03 &middot; Sector</i>
+        <h3>Industry context</h3>
+        <p>From years of digital delivery across manufacturing, life sciences, automotive, energy and utilities, government and media.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 02 OFFERINGS (platform pattern) ===================== -->
+<section class="pt-sec deep" id="platform">
+  <div class="wrap">
+    <div class="rev">
+      <p class="kick">Our Microsoft offerings</p>
+      <h2>Everything you need to <em>get more from Microsoft</em></h2>
+      <p class="lead">One relationship that carries your Microsoft estate from the licence you buy all the way to the AI your teams actually use.</p>
+      <ol class="flow" aria-label="Microsoft estate lifecycle">
+        <li>Licence</li><li>Migrate</li><li>Secure</li><li>Work</li><li>Build</li><li>Enable</li>
+      </ol>
+    </div>
+    <ol class="cards rev">
+      <li class="card"><span class="cnum" aria-hidden="true">01</span><span class="badge"><svg aria-hidden="true"><use href="#p-tag"/></svg></span><div class="pop-body"><h3>Microsoft Licensing &amp; Renewals</h3><p>Buy your Microsoft subscriptions through ITHENA and save up to 15% on the exact same products. We handle purchasing, billing options and renewal planning so nothing lapses and nothing is overpaid.</p><span class="tagx">Lead offer</span></div></li>
+      <li class="card"><span class="cnum" aria-hidden="true">02</span><span class="badge"><svg aria-hidden="true"><use href="#p-cloud"/></svg></span><div class="pop-body"><h3>Cloud Adoption &amp; Migration</h3><p>Our experts deliver smooth migrations and cloud-native applications in a trusted, secure environment. You can also reduce costs by using your existing eligible Windows licenses.</p></div></li>
+      <li class="card"><span class="cnum" aria-hidden="true">03</span><span class="badge"><svg aria-hidden="true"><use href="#p-shield"/></svg></span><div class="pop-body"><h3>Security &amp; Compliance</h3><p>Protect your network activity and your people with Microsoft Defender, Entra ID and Intune, backed by built-in compliance tools and guidance from our team.</p></div></li>
+      <li class="card"><span class="cnum" aria-hidden="true">04</span><span class="badge"><svg aria-hidden="true"><use href="#p-screen"/></svg></span><div class="pop-body"><h3>Modern Workplace &amp; Productivity</h3><p>Give hybrid and remote teams secure, cloud-based tools for voice, collaboration, security and analytics. Set up once and supported continuously.</p></div></li>
+      <li class="card"><span class="cnum" aria-hidden="true">05</span><span class="badge"><svg aria-hidden="true"><use href="#p-net"/></svg></span><div class="pop-body"><h3>Business Applications &amp; DevOps</h3><p>Connect customer, financial and operational data in one place with intelligent CRM and ERP, then use Microsoft's DevOps tools across the application lifecycle so developers ship faster and the business sees value sooner.</p></div></li>
+      <li class="card"><span class="cnum" aria-hidden="true">06</span><span class="badge"><svg aria-hidden="true"><use href="#p-spark"/></svg></span><div class="pop-body"><h3>Data &amp; AI Enablement</h3><p>Prepare your data and your people for AI. ITHENA pairs Microsoft's platform with our own AI capabilities and hands-on AI workshops to move you from experiments to practical use.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================== 03 FEATURED OFFER ===================== -->
+<section class="pt-sec tint" id="review">
+  <div class="wrap">
+    <div class="rev">
+      <p class="kick">Featured offer</p>
+      <h2>Find your hidden Microsoft savings, <em>before your next renewal</em></h2>
+      <p class="lead">A quick, painless review to uncover hidden savings and eligible promotions before your next renewal arrives. It's free, and it doesn't require any changes to your environment.</p>
+    </div>
+    <div class="review">
+      <ul class="rv-list rev">
+        <li><span class="tick"><svg aria-hidden="true"><use href="#p-chk"/></svg></span><span><b>Your current products and seat counts</b><span>A clear picture of what you own and use today.</span></span></li>
+        <li><span class="tick"><svg aria-hidden="true"><use href="#p-chk"/></svg></span><span><b>Renewal and commitment dates</b><span>So you can evaluate options well ahead of time.</span></span></li>
+        <li><span class="tick"><svg aria-hidden="true"><use href="#p-chk"/></svg></span><span><b>Monthly vs. annual billing options</b><span>Choose the cash-flow model that works for you.</span></span></li>
+        <li><span class="tick"><svg aria-hidden="true"><use href="#p-chk"/></svg></span><span><b>Defender, Entra ID and Intune opportunities</b><span>Better security and better value from what you already license.</span></span></li>
+        <li><span class="tick"><svg aria-hidden="true"><use href="#p-chk"/></svg></span><span><b>A side-by-side comparison quote</b><span>See the difference through ITHENA in plain numbers.</span></span></li>
+        <li><span class="tick"><svg aria-hidden="true"><use href="#p-chk"/></svg></span><span><b>Recommended next steps</b><span>A practical action plan, not a sales pitch.</span></span></li>
+      </ul>
+      <aside class="rv-cta rev">
+        <h3>Request your free review</h3>
+        <!-- 90-120 day window still to be confirmed -->
+        <p>Best timed 90 to 120 days before your renewal date, though we can help at any point in the cycle. Approximate seat counts are enough to start.</p>
+        <a class="btn btn-p btn-wide" href="https://ithena.ai/contact-us/" data-pt-modal="ptModalReview" aria-haspopup="dialog">Request your free review</a>
+        <p class="rv-note">No cost. No obligation. No change to your environment.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 04 APPROACH ===================== -->
+<section class="pt-sec" id="approach">
+  <div class="wrap">
+    <div class="rev">
+      <p class="kick">Approach</p>
+      <h2>Simple, fast, <em>zero disruption</em></h2>
+      <p class="lead">Five stages, from the first conversation about your estate through to a subscription that costs less and is watched all year.</p>
+    </div>
+    <div class="roles rev">
+      <article class="role"><div class="pop-body"><span class="rnum" aria-hidden="true">01</span><h3>Share your details</h3><p>Your current Microsoft products, approximate seat counts and renewal dates</p></div></article>
+      <article class="role"><div class="pop-body"><span class="rnum" aria-hidden="true">02</span><h3>We review</h3><p>We look for savings, eligible promotions and security or value opportunities</p></div></article>
+      <article class="role"><div class="pop-body"><span class="rnum" aria-hidden="true">03</span><h3>Compare</h3><p>A side-by-side quote through ITHENA, with no obligation</p></div></article>
+      <article class="role"><div class="pop-body"><span class="rnum" aria-hidden="true">04</span><h3>Switch smoothly</h3><p>If it makes sense, we move your subscriptions with no interruption to users</p></div></article>
+      <article class="role"><div class="pop-body"><span class="rnum" aria-hidden="true">05</span><h3>Stay supported</h3><p>Reviews, tenant support and renewal assistance keep you optimized year-round</p></div></article>
+    </div>
+
+    <div class="stats stg">
+      <div class="stat">
+        <p class="num"><span data-count="70">70</span><i>+</i></p>
+        <h4>Digital projects delivered</h4>
+        <p>Across manufacturing, life sciences, automotive, energy, government and media.</p>
+      </div>
+      <div class="stat">
+        <p class="num"><span data-count="45">45</span><i>+</i></p>
+        <h4>Global customers</h4>
+        <p>Operations, manufacturing and service organizations we know how to work with.</p>
+      </div>
+      <div class="stat">
+        <p class="num"><span data-count="200">200</span><i>+</i></p>
+        <h4>Engineers and consultants</h4>
+        <p>The bench behind every licence, migration, security review and AI workshop.</p>
+      </div>
+    </div>
+
+    <div class="rev">
+      <h3 class="why-h">Ongoing support, not just a transaction</h3>
+      <p>Many resellers disappear after the sale. Every ITHENA Microsoft customer gets the full support program, included.</p>
+      <div class="svc">
+        <dl>
+          <div class="srow shead"><dt>Included service</dt><dd>What it means for you</dd></div>
+          <div class="srow"><dt><svg aria-hidden="true"><use href="#p-user"/></svg>Tenant Support Services</dt><dd>Expert help managing and troubleshooting your Microsoft environment.</dd></div>
+          <div class="srow"><dt><svg aria-hidden="true"><use href="#p-shield"/></svg>Quarterly Architecture &amp; Security Evaluations</dt><dd>Regular check-ups to keep your setup secure and well-designed.</dd></div>
+          <div class="srow"><dt><svg aria-hidden="true"><use href="#p-bars"/></svg>Bi-Annual Optimization Reviews</dt><dd>Make sure you're using, and paying for, only what you need.</dd></div>
+          <div class="srow"><dt><svg aria-hidden="true"><use href="#p-cal"/></svg>Renewal Assistance</dt><dd>No missed dates, no surprise price changes.</dd></div>
+          <div class="srow"><dt><svg aria-hidden="true"><use href="#p-spark"/></svg>Dedicated AI Workshops</dt><dd>Hands-on sessions to help your teams put AI to work.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 05 FAQ ===================== -->
+<section class="pt-sec tint" id="faq">
+  <div class="wrap">
+    <div class="rev">
+      <p class="kick">Questions</p>
+      <h2>What people ask <em>before they switch</em></h2>
+      <div class="faq">
+        <details>
+          <summary>Will switching to ITHENA change how my team uses Microsoft?<span class="cr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></span></summary>
+          <p class="ans">No. You keep the same subscriptions, users and applications. What changes is who you buy from, and how much you pay.</p>
+        </details>
+        <details>
+          <summary>Where does the "up to 15%" savings come from?<span class="cr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></span></summary>
+          <!-- exact wording pending licensing team approval -->
+          <p class="ans">As an authorized Microsoft reseller, ITHENA can offer pricing on your existing subscriptions that's lower than buying direct. Actual savings depend on your products, seat counts and agreement type.</p>
+        </details>
+        <details>
+          <summary>Is the Licensing &amp; Renewal Review really free, and when should I book it?<span class="cr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></span></summary>
+          <p class="ans">Yes, there's no cost and no obligation. Ideally book it 90 to 120 days before your renewal date, but we can help at any time. Approximate seat counts and products are enough to get started.</p>
+        </details>
+        <details>
+          <summary>Do you offer support after the sale?<span class="cr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></span></summary>
+          <p class="ans">Yes. Tenant support, quarterly architecture and security evaluations, bi-annual optimization reviews, renewal assistance and AI workshops are part of the partnership.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+</div>
+
+<!-- ===================== GET STARTED ===================== -->
+<section class="pt-sec cta" id="get-started">
+  <div class="cta-in">
+    <div class="cta-copy">
+      <div class="rev">
+        <p class="kick">Get started</p>
+        <h2>Ready to see <em>what you could save?</em></h2>
+        <p class="lead">Get a no-obligation licensing review and a side-by-side quote from ITHENA before your next renewal.</p>
+      </div>
+      <ul class="ex rev">
+        <li><svg aria-hidden="true"><use href="#p-chk"/></svg>Your current Microsoft products and approximate seat counts</li>
+        <li><svg aria-hidden="true"><use href="#p-chk"/></svg>Your next renewal or commitment date, if you know it</li>
+        <li><svg aria-hidden="true"><use href="#p-chk"/></svg>Nothing else: the review is free and changes nothing in your environment</li>
+      </ul>
+      <div class="btns rev">
+        <a class="btn btn-p" href="https://ithena.ai/contact-us/" data-pt-modal="ptModalReview" aria-haspopup="dialog">Get your free review <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#p-arr"/></svg></a>
+        <a class="btn btn-o" href="https://ithena.ai/partnerships/">See all partnerships</a>
+      </div>
+    </div>
+    <div class="cta-med" aria-hidden="true">
+      <img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/microsoft-6-scaled.webp" alt="" loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>
+
+<!-- Form 98 is the current Microsoft enquiry form. It still needs the four extra
+     fields (products in use, seat count, renewal date, billing preference). -->
+<dialog class="pt-modal" id="ptModalReview" aria-labelledby="ptModalReviewTitle">
+  <div class="pt-modal-in">
+    <button class="pt-modal-x" type="button" data-pt-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h2 id="ptModalReviewTitle">Request your free licensing review</h2>
+    <div class="pt-modal-form">[formidable id=98]</div>
+  </div>
+</dialog>
+<dialog class="pt-modal" id="ptModalCall" aria-labelledby="ptModalCallTitle">
+  <div class="pt-modal-in">
+    <button class="pt-modal-x" type="button" data-pt-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h2 id="ptModalCallTitle">Schedule a call</h2>
+    <div class="pt-modal-form">[formidable id=100]</div>
+  </div>
+</dialog>
+</section>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Will switching to ITHENA change how my team uses Microsoft?","acceptedAnswer":{"@type":"Answer","text":"No. You keep the same subscriptions, users and applications. What changes is who you buy from, and how much you pay."}},
+{"@type":"Question","name":"Where does the \"up to 15%\" savings come from?","acceptedAnswer":{"@type":"Answer","text":"As an authorized Microsoft reseller, ITHENA can offer pricing on your existing subscriptions that's lower than buying direct. Actual savings depend on your products, seat counts and agreement type."}},
+{"@type":"Question","name":"Is the Licensing & Renewal Review really free, and when should I book it?","acceptedAnswer":{"@type":"Answer","text":"Yes, there's no cost and no obligation. Ideally book it 90 to 120 days before your renewal date, but we can help at any time. Approximate seat counts and products are enough to get started."}},
+{"@type":"Question","name":"Do you offer support after the sale?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tenant support, quarterly architecture and security evaluations, bi-annual optimization reviews, renewal assistance and AI workshops are part of the partnership."}}]}
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var root = document.querySelector("section.pt-page");
+  if (!root) return;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var canAnimate = !reduce && "IntersectionObserver" in window;
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || root).querySelectorAll(s)); };
+  function css(el, k, v) { if (v === "") el.style.removeProperty(k); else el.style.setProperty(k, v, "important"); }
+
+  if (window.ithenaTheme) {
+    window.ithenaTheme.sync();
+  } else {
+    var toggle = document.getElementById("themeToggle");
+    var stored = null; try { stored = localStorage.getItem("fbb-theme"); } catch (e) {}
+    var setTheme = function (m) {
+      root.setAttribute("data-theme", m);
+      if (toggle) toggle.setAttribute("aria-pressed", m === "dark" ? "true" : "false");
+      try { localStorage.setItem("fbb-theme", m); } catch (e) {}
+    };
+    setTheme(stored || "dark");
+    if (toggle) toggle.addEventListener("click", function () { setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark"); });
+  }
+
+  /* sticky header offset, so the subnav and scroll-margins clear a fixed site header */
+  var hdr = document.getElementById("site-header") || document.querySelector("header.site-header");
+  function syncHdr() {
+    var h = 0;
+    if (hdr && /fixed|sticky/.test(getComputedStyle(hdr).position)) h = Math.max(0, Math.round(hdr.getBoundingClientRect().height));
+    css(root, "--hdr", h + "px");
+  }
+  syncHdr();
+  window.addEventListener("load", syncHdr);
+  window.addEventListener("resize", syncHdr);
+
+  /* "On this page" rail: active entry plus a thumb that slides to it */
+  var navLinks = $$("#ptNav a"), thumb = document.getElementById("ptThumb");
+  var navSecs = navLinks.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
+  function syncNav() {
+    var best = 0;
+    for (var i = 0; i < navSecs.length; i++) if (navSecs[i] && navSecs[i].getBoundingClientRect().top - 220 <= 0) best = i;
+    navLinks.forEach(function (a, i) { a.classList.toggle("on", i === best); });
+    var link = navLinks[best];
+    if (thumb && link) {
+      css(thumb, "height", link.offsetHeight + "px");
+      css(thumb, "transform", "translateY(" + link.offsetTop + "px)");
+    }
+  }
+  var ticking = false;
+  window.addEventListener("scroll", function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { syncNav(); ticking = false; });
+  }, { passive: true });
+  window.addEventListener("resize", syncNav);
+  syncNav();
+
+  /* entry animations: slow, staggered, one-shot */
+  if (canAnimate) {
+    $$(".stg").forEach(function (g) {
+      Array.prototype.forEach.call(g.children, function (el, i) { css(el, "transition-delay", 140 + i * 180 + "ms"); });
+    });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("in");
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+    $$(".rev, .stg").forEach(function (el) { io.observe(el); });
+  } else {
+    $$(".rev, .stg").forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* counters: hero figure and the proof strip */
+  function runCounter(host) {
+    var el = host.querySelector("[data-count]");
+    if (!el) return;
+    var target = parseInt(el.getAttribute("data-count"), 10);
+    if (host._done) return;
+    function finish() { if (host._done) return; host._done = true; el.textContent = target; document.removeEventListener("visibilitychange", onHide); }
+    function onHide() { if (document.hidden) finish(); }
+    if (reduce || !isFinite(target)) { finish(); return; }
+    var start = null, dur = 1600;
+    document.addEventListener("visibilitychange", onHide);
+    setTimeout(finish, dur + 260);
+    (function step(now) {
+      if (host._done) return;
+      if (start === null) start = now;
+      var p = Math.min(1, (now - start) / dur);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 4)));
+      if (p < 1) requestAnimationFrame(step); else finish();
+    })(performance.now());
+  }
+  var counters = $$(".h-fig, .stat");
+  if (canAnimate) {
+    var cio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (!e.isIntersecting) return; cio.unobserve(e.target); runCounter(e.target); });
+    }, { threshold: 0.5 });
+    counters.forEach(function (c) { cio.observe(c); });
+  } else {
+    counters.forEach(function (c) { var el = c.querySelector("[data-count]"); if (el) el.textContent = el.getAttribute("data-count"); });
+  }
+
+  /* offerings: card n and lifecycle stage n light up together; pauses off-screen */
+  var cards = $$("#platform .card"), flowLis = $$("#platform .flow li"), flow = root.querySelector("#platform .flow");
+  if (cards.length && !reduce) {
+    var at = -1, cyc = null;
+    function lightNext() {
+      at = (at + 1) % cards.length;
+      cards.forEach(function (c, i) { c.classList.toggle("on", i === at); });
+      flowLis.forEach(function (l, i) { l.classList.toggle("on", i === at); });
+    }
+    function play() { if (cyc) return; if (flow) flow.classList.add("live"); lightNext(); cyc = setInterval(lightNext, 2400); }
+    function stop() {
+      clearInterval(cyc); cyc = null;
+      if (flow) flow.classList.remove("live");
+      cards.forEach(function (c) { c.classList.remove("on"); });
+      flowLis.forEach(function (l) { l.classList.remove("on"); });
+    }
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) play(); else stop(); });
+      }, { threshold: 0.25 }).observe(cards[0].parentNode);
+    } else play();
+    document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); });
+  }
+
+  /* approach: one step at a time, same cadence */
+  var roles = $$("#approach .role");
+  if (roles.length && !reduce) {
+    var ra = -1, rcyc = null;
+    function rNext() { ra = (ra + 1) % roles.length; roles.forEach(function (r, i) { r.classList.toggle("on", i === ra); }); }
+    function rPlay() { if (rcyc) return; rNext(); rcyc = setInterval(rNext, 2400); }
+    function rStop() { clearInterval(rcyc); rcyc = null; roles.forEach(function (r) { r.classList.remove("on"); }); }
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) rPlay(); else rStop(); });
+      }, { threshold: 0.3 }).observe(roles[0].parentNode);
+    } else rPlay();
+    document.addEventListener("visibilitychange", function () { if (document.hidden) rStop(); });
+  }
+
+  $$(".pt-modal").forEach(function (d) {
+    if (typeof d.showModal !== "function") return;
+    function open() { if (!d.open) { d.showModal(); document.documentElement.style.overflow = "hidden"; } }
+    d.addEventListener("close", function () { if (!root.querySelector(".pt-modal[open]")) document.documentElement.style.overflow = ""; });
+    d.addEventListener("click", function (e) { if (e.target === d) d.close(); });
+    var x = d.querySelector("[data-pt-close]");
+    if (x) x.addEventListener("click", function () { d.close(); });
+    $$('[data-pt-modal="' + d.id + '"]').forEach(function (a) {
+      a.addEventListener("click", function (e) { e.preventDefault(); open(); });
+    });
+    if (d.querySelector(".frm_message, .frm_error_style, .frm_blank_field")) open();
+  });
+})();
+</script>

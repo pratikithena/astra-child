@@ -1,0 +1,702 @@
+[
+  {
+    "key": "group_bl_v2",
+    "title": "Blog v2",
+    "fields": [
+      {
+        "key": "field_bl_tab_hero",
+        "label": "Hero",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_blog_name",
+        "label": "Eyebrow / category label",
+        "name": "blog_name",
+        "type": "text",
+        "required": 0,
+        "default_value": "In the press"
+      },
+      {
+        "key": "field_blog_heading",
+        "label": "Title (H1) - falls back to the post title",
+        "name": "blog_heading",
+        "type": "textarea",
+        "required": 0,
+        "rows": 2,
+        "new_lines": "",
+        "default_value": "Aether in The Enterprise World, July 2026"
+      },
+      {
+        "key": "field_blog_sub_heading",
+        "label": "Subtitle",
+        "name": "blog_sub_heading",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": "",
+        "default_value": "A second consecutive feature, and a closer look at how Aether closes the distance between enterprise data, the decision it should inform, and the action that follows."
+      },
+      {
+        "key": "field_blog_heading_banner_image",
+        "label": "Banner image (full-width hero background)",
+        "name": "blog_heading_banner_image",
+        "type": "image",
+        "required": 0,
+        "instructions": "Empty = sample image: https://dev-website.ithena.app/wp-content/uploads/2026/07/ent-wrld-aether-blog-bannerv2.webp",
+        "return_format": "array",
+        "preview_size": "medium",
+        "library": "all",
+        "mime_types": "jpg,jpeg,png,webp,avif"
+      },
+      {
+        "key": "field_bl_blog_author",
+        "label": "Author shown in hero meta (defaults to ITHENA)",
+        "name": "blog_author",
+        "type": "text",
+        "required": 0,
+        "default_value": "ITHENA"
+      },
+      {
+        "key": "field_bl_blog_source",
+        "label": "Source / publication shown in hero meta (optional)",
+        "name": "blog_source",
+        "type": "text",
+        "required": 0,
+        "default_value": "The Enterprise World"
+      },
+      {
+        "key": "field_bl_tab_faq",
+        "label": "FAQ",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_bl_faq_eyebrow",
+        "label": "FAQ - eyebrow (also the sub nav label)",
+        "name": "faq_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "FAQ"
+      },
+      {
+        "key": "field_bl_faq_heading",
+        "label": "FAQ - heading",
+        "name": "faq_heading",
+        "type": "text",
+        "required": 0,
+        "default_value": "Questions people ask about Aether"
+      },
+      {
+        "key": "field_bl_faq_lede",
+        "label": "FAQ - lede",
+        "name": "faq_lede",
+        "type": "textarea",
+        "required": 0,
+        "rows": 2,
+        "new_lines": "",
+        "default_value": "Short answers to the questions that come up most often about the platform and the feature."
+      },
+      {
+        "key": "field_bl_faq_q_1",
+        "label": "Question 1",
+        "name": "faq_q_1",
+        "type": "text",
+        "required": 0,
+        "default_value": "What is Aether?"
+      },
+      {
+        "key": "field_bl_faq_a_1",
+        "label": "Answer 1",
+        "name": "faq_a_1",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": "",
+        "default_value": "Aether is ITHENA’s Agentic AI-powered advanced analytics platform. It combines Enterprise AI, Generative AI, Agentic AI and Intelligent Automation in one platform, so teams can move from a question to a decision, and from a decision to an action, without crossing a tool boundary."
+      },
+      {
+        "key": "field_bl_faq_q_2",
+        "label": "Question 2",
+        "name": "faq_q_2",
+        "type": "text",
+        "required": 0,
+        "default_value": "How is Aether different from a traditional BI dashboard?"
+      },
+      {
+        "key": "field_bl_faq_a_2",
+        "label": "Answer 2",
+        "name": "faq_a_2",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": "",
+        "default_value": "A traditional dashboard is built to describe what happened and stops there. Aether interprets the data, recommends what to do next, and can initiate the workflow, notification or operational action itself."
+      },
+      {
+        "key": "field_bl_faq_q_3",
+        "label": "Question 3",
+        "name": "faq_q_3",
+        "type": "text",
+        "required": 0,
+        "default_value": "Can you ask Aether questions in plain English?"
+      },
+      {
+        "key": "field_bl_faq_a_3",
+        "label": "Answer 3",
+        "name": "faq_a_3",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": "",
+        "default_value": "Yes. Questions asked in natural language return instant, contextual answers drawn from enterprise data - no query language, no report request and no queue - and where the answer implies an action, Aether can trigger it."
+      },
+      {
+        "key": "field_bl_faq_q_4",
+        "label": "Question 4",
+        "name": "faq_q_4",
+        "type": "text",
+        "required": 0,
+        "default_value": "Which industries is Aether built for?"
+      },
+      {
+        "key": "field_bl_faq_a_4",
+        "label": "Answer 4",
+        "name": "faq_a_4",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": "",
+        "default_value": "Aether is designed for data-intensive, time-sensitive operations, including manufacturing, supply chain, healthcare and finance."
+      },
+      {
+        "key": "field_bl_faq_q_5",
+        "label": "Question 5",
+        "name": "faq_q_5",
+        "type": "text",
+        "required": 0,
+        "default_value": "Where was Aether featured?"
+      },
+      {
+        "key": "field_bl_faq_a_5",
+        "label": "Answer 5",
+        "name": "faq_a_5",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": "",
+        "default_value": "In The Enterprise World, July 2026 edition, under the title “Talking to Your Data: How Aether Turns Enterprise Chaos into Clarity” - its second consecutive feature in the magazine."
+      },
+      {
+        "key": "field_bl_faq_q_6",
+        "label": "Question 6",
+        "name": "faq_q_6",
+        "type": "text",
+        "required": 0,
+        "default_value": "What does Agentic AI mean in Aether?"
+      },
+      {
+        "key": "field_bl_faq_a_6",
+        "label": "Answer 6",
+        "name": "faq_a_6",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": "",
+        "default_value": "Agentic AI recommends and initiates business actions from AI-generated insight, rather than leaving the follow-through to someone’s inbox."
+      },
+      {
+        "key": "field_bl_tab_tldr",
+        "label": "Key takeaways",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_bl_takeaways_heading",
+        "label": "Takeaways heading (default: The short version)",
+        "name": "takeaways_heading",
+        "type": "text",
+        "required": 0,
+        "default_value": "The short version"
+      },
+      {
+        "key": "field_bl_takeaway_1",
+        "label": "Takeaway 1",
+        "name": "takeaway_1",
+        "type": "textarea",
+        "required": 0,
+        "rows": 2,
+        "new_lines": "",
+        "default_value": "Aether unifies Enterprise, Generative and Agentic AI in one platform, so teams move from a question to a decision to an action without switching tools."
+      },
+      {
+        "key": "field_bl_takeaway_2",
+        "label": "Takeaway 2",
+        "name": "takeaway_2",
+        "type": "textarea",
+        "required": 0,
+        "rows": 2,
+        "new_lines": "",
+        "default_value": "Unlike a dashboard that only describes what happened, Aether recommends the next step and can execute it."
+      },
+      {
+        "key": "field_bl_takeaway_3",
+        "label": "Takeaway 3",
+        "name": "takeaway_3",
+        "type": "textarea",
+        "required": 0,
+        "rows": 2,
+        "new_lines": "",
+        "default_value": "Featured for a second consecutive time in The Enterprise World (July 2026), with the focus on closing the data-to-action gap."
+      },
+      {
+        "key": "field_bl_tab_sec1",
+        "label": "Section 1",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_bl_sec1_eyebrow",
+        "label": "Section 1 - eyebrow (also the sub nav label)",
+        "name": "sec1_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "The feature"
+      },
+      {
+        "key": "field_bl_sec1_heading",
+        "label": "Section 1 - heading",
+        "name": "sec1_heading",
+        "type": "text",
+        "required": 0,
+        "default_value": "Aether returns to The Enterprise World"
+      },
+      {
+        "key": "field_bl_sec1_lede",
+        "label": "Section 1 - lede",
+        "name": "sec1_lede",
+        "type": "textarea",
+        "required": 0,
+        "rows": 2,
+        "new_lines": "",
+        "default_value": "ITHENA’s Agentic AI-powered advanced analytics platform appears in the July 2026 edition, following its June appearance with a deeper look at the product itself."
+      },
+      {
+        "key": "field_first_content_text",
+        "label": "Section 1 - body",
+        "name": "first_content_text_",
+        "type": "wysiwyg",
+        "required": 0,
+        "tabs": "all",
+        "toolbar": "full",
+        "media_upload": 1,
+        "default_value": "<p>The June issue introduced Aether. July goes further, under the title <em>Talking to Your Data: How Aether Turns Enterprise Chaos into Clarity</em>, and takes up the question that decides whether an analytics investment pays back: not whether the data exists, but how quickly an organisation can move from that data to a decision, and from the decision to an action.</p>\n<p>The Enterprise World is a global business magazine covering the organisations, leaders and technologies shaping how businesses operate. The feature runs across a full spread in the July edition.</p>"
+      },
+      {
+        "key": "field_blog_middle_img",
+        "label": "Section 1 - image (right column)",
+        "name": "blog_middle_img",
+        "type": "image",
+        "required": 0,
+        "instructions": "Empty = sample image: https://ithena.ai/wp-content/uploads/2026/08/front.webp",
+        "return_format": "array",
+        "preview_size": "medium",
+        "library": "all",
+        "mime_types": "jpg,jpeg,png,webp,avif"
+      },
+      {
+        "key": "field_bl_sec1_caption",
+        "label": "Section 1 - image caption",
+        "name": "sec1_caption",
+        "type": "text",
+        "required": 0,
+        "default_value": "The opening spread of the July 2026 feature."
+      },
+      {
+        "key": "field_bl_tab_sec2",
+        "label": "Section 2",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_bl_sec2_eyebrow",
+        "label": "Section 2 - eyebrow (also the sub nav label)",
+        "name": "sec2_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "The problem"
+      },
+      {
+        "key": "field_bl_sec2_heading",
+        "label": "Section 2 - heading",
+        "name": "sec2_heading",
+        "type": "text",
+        "required": 0,
+        "default_value": "The data exists. The decision still waits."
+      },
+      {
+        "key": "field_bl_sec2_lede",
+        "label": "Section 2 - lede",
+        "name": "sec2_lede",
+        "type": "textarea",
+        "required": 0,
+        "rows": 2,
+        "new_lines": "",
+        "default_value": "Enterprises are not short of dashboards, reports or real-time feeds. What is missing sits between the chart and the thing somebody does about it."
+      },
+      {
+        "key": "field_second_content_text",
+        "label": "Section 2 - body",
+        "name": "second_content_text",
+        "type": "wysiwyg",
+        "required": 0,
+        "tabs": "all",
+        "toolbar": "full",
+        "media_upload": 1,
+        "default_value": "<p>Conventional analytics platforms deliver a view and stop there. Interpreting that view, deciding what it means for the shift, the plant or the quarter, and then initiating something - all of it stays manual, and all of it stays with whoever happens to be looking at the screen.</p>\n<p>That gap is where the July feature places the real cost of analytics. Every hour spent crossing it is an hour of operational efficiency, productivity and margin that the reporting layer has already been paid for and has not delivered.</p>\n<p>It is also a gap most tools have by design. A dashboard is built to describe. Nothing inside it is responsible for the next step.</p>"
+      },
+      {
+        "key": "field_bl_sec2_image",
+        "label": "Section 2 - image (left column)",
+        "name": "sec2_image",
+        "type": "image",
+        "required": 0,
+        "return_format": "array",
+        "preview_size": "medium",
+        "library": "all",
+        "mime_types": "jpg,jpeg,png,webp,avif",
+        "instructions": "Empty = sample image: https://dev-website.ithena.app/wp-content/uploads/2026/07/analysiss.webp"
+      },
+      {
+        "key": "field_bl_sec2_caption",
+        "label": "Section 2 - image caption",
+        "name": "sec2_caption",
+        "type": "text",
+        "required": 0,
+        "default_value": "A conventional dashboard answers what happened. Reading it, deciding what it means and acting on it all remain someone’s job."
+      },
+      {
+        "key": "field_bl_tab_sec3",
+        "label": "Section 3",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_bl_sec3_eyebrow",
+        "label": "Section 3 - eyebrow (also the sub nav label)",
+        "name": "sec3_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "Beyond analytics"
+      },
+      {
+        "key": "field_bl_sec3_heading",
+        "label": "Section 3 - heading",
+        "name": "sec3_heading",
+        "type": "text",
+        "required": 0,
+        "default_value": "Built to act, not only to explain"
+      },
+      {
+        "key": "field_bl_sec3_lede",
+        "label": "Section 3 - lede",
+        "name": "sec3_lede",
+        "type": "textarea",
+        "required": 0,
+        "rows": 2,
+        "new_lines": "",
+        "default_value": "Aether combines Enterprise AI, Generative AI, Agentic AI and Intelligent Automation in one platform, so the path from question to action does not cross a tool boundary."
+      },
+      {
+        "key": "field_bl_sec3_body",
+        "label": "Section 3 - body",
+        "name": "sec3_body",
+        "type": "wysiwyg",
+        "required": 0,
+        "tabs": "all",
+        "toolbar": "full",
+        "media_upload": 0,
+        "default_value": "<p>A user asks in natural language. The platform answers with context drawn from enterprise data rather than a static report, and where the answer implies something should happen, it can trigger the workflow, the notification or the operational action itself.</p>\n<p>That is the difference the July feature draws out. Traditional business intelligence describes what is happening. Aether is built to help an organisation determine what to do next, and then to do it.</p>"
+      },
+      {
+        "key": "field_bl_sec3_image",
+        "label": "Section 3 - image (right column)",
+        "name": "sec3_image",
+        "type": "image",
+        "required": 0,
+        "return_format": "array",
+        "preview_size": "medium",
+        "library": "all",
+        "mime_types": "jpg,jpeg,png,webp,avif",
+        "instructions": "Empty = sample image: https://ithena.ai/wp-content/uploads/2026/08/aether-chatbot.webp"
+      },
+      {
+        "key": "field_bl_sec3_caption",
+        "label": "Section 3 - image caption",
+        "name": "sec3_caption",
+        "type": "text",
+        "required": 0,
+        "default_value": "A question in plain English, a contextual answer, and a suggested action with one control to run it."
+      },
+      {
+        "key": "field_hightlight_quote_para",
+        "label": "Highlight quote (pull quote at the end of the last section)",
+        "name": "hightlight_quote_para",
+        "type": "textarea",
+        "required": 0,
+        "rows": 4,
+        "new_lines": "",
+        "default_value": "The companies pulling ahead are not the ones with the most data. They are the ones who move fastest from data to decision, and from decision to action."
+      },
+      {
+        "key": "field_bl_pull_quote_cite",
+        "label": "Pull quote source",
+        "name": "pull_quote_cite",
+        "type": "text",
+        "required": 0,
+        "default_value": "The Enterprise World, July 2026 edition"
+      },
+      {
+        "key": "field_bl_tab_next",
+        "label": "What comes next",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_bl_next_eyebrow",
+        "label": "What comes next - eyebrow (also the sub nav label)",
+        "name": "next_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "What comes next"
+      },
+      {
+        "key": "field_bl_next_heading",
+        "label": "What comes next - heading",
+        "name": "next_heading",
+        "type": "text",
+        "required": 0,
+        "default_value": "From reporting to intelligent execution"
+      },
+      {
+        "key": "field_bl_next_lede",
+        "label": "What comes next - lede",
+        "name": "next_lede",
+        "type": "textarea",
+        "required": 0,
+        "rows": 2,
+        "new_lines": "",
+        "default_value": "The July feature restates the direction ITHENA is building towards: AI that does not stop at the insight."
+      },
+      {
+        "key": "field_bl_next_body",
+        "label": "What comes next - body",
+        "name": "next_body",
+        "type": "wysiwyg",
+        "required": 0,
+        "tabs": "all",
+        "toolbar": "full",
+        "media_upload": 0,
+        "default_value": "<p>As enterprises adopt Agentic AI, the useful question stops being how much can be measured and becomes how much can be acted on without a person carrying the result from one system to the next. Aether is ITHENA’s answer to that, and the platform continues to develop against it.</p>\n<p>ITHENA values its continued association with The Enterprise World, and remains focused on practical AI that accelerates digital transformation and produces measurable business outcomes rather than another layer of reporting.</p>"
+      },
+      {
+        "key": "field_bl_tab_about",
+        "label": "About",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_bl_about_eyebrow",
+        "label": "About - eyebrow (also the sub nav label)",
+        "name": "about_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "About"
+      },
+      {
+        "key": "field_bl_about_heading",
+        "label": "About - heading",
+        "name": "about_heading",
+        "type": "text",
+        "required": 0,
+        "default_value": "The publication and the company"
+      },
+      {
+        "key": "field_bl_about_lede",
+        "label": "About - lede",
+        "name": "about_lede",
+        "type": "textarea",
+        "required": 0,
+        "rows": 2,
+        "new_lines": ""
+      },
+      {
+        "key": "field_bl_about1_name",
+        "label": "About 1 - name",
+        "name": "about1_name",
+        "type": "text",
+        "required": 0,
+        "default_value": "The Enterprise World"
+      },
+      {
+        "key": "field_bl_about1_text",
+        "label": "About 1 - text",
+        "name": "about1_text",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": "",
+        "default_value": "A global business magazine covering the organisations, industry leaders and technologies shaping the future of business through leadership, strategy and digital transformation."
+      },
+      {
+        "key": "field_bl_about1_url",
+        "label": "About 1 - URL",
+        "name": "about1_url",
+        "type": "url",
+        "required": 0,
+        "default_value": "https://theenterpriseworld.com/"
+      },
+      {
+        "key": "field_bl_about2_name",
+        "label": "About 2 - name",
+        "name": "about2_name",
+        "type": "text",
+        "required": 0,
+        "default_value": "ITHENA"
+      },
+      {
+        "key": "field_bl_about2_text",
+        "label": "About 2 - text",
+        "name": "about2_text",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": "",
+        "default_value": "A nimble technology company delivering persona-based AI solutions for manufacturing, life sciences, services and government organisations, combining AI, IoT, cloud and modern enterprise technologies to turn data into intelligent action."
+      },
+      {
+        "key": "field_bl_about2_url",
+        "label": "About 2 - URL",
+        "name": "about2_url",
+        "type": "url",
+        "required": 0,
+        "default_value": "https://ithena.ai/"
+      },
+      {
+        "key": "field_bl_tab_cta",
+        "label": "Bottom banner",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0
+      },
+      {
+        "key": "field_bottom_banner_text",
+        "label": "Banner heading",
+        "name": "bottom_banner_text",
+        "type": "text",
+        "required": 0,
+        "default_value": "Bring one system. Ask the questions. Get answers and take action in the same session."
+      },
+      {
+        "key": "field_bottom_banner_cta_text",
+        "label": "Button label",
+        "name": "bottom_banner_cta_text",
+        "type": "text",
+        "required": 0,
+        "default_value": "See Aether in Action"
+      },
+      {
+        "key": "field_bottom_banner_cta_url",
+        "label": "Button URL",
+        "name": "bottom_banner_cta_url",
+        "type": "url",
+        "required": 0,
+        "default_value": "https://dev-website.ithena.app/ithenas-aether/"
+      },
+      {
+        "key": "field_bl_cta_eyebrow",
+        "label": "CTA eyebrow",
+        "name": "cta_eyebrow",
+        "type": "text",
+        "required": 0,
+        "default_value": "Get started"
+      },
+      {
+        "key": "field_bl_cta_lede",
+        "label": "CTA lede",
+        "name": "cta_lede",
+        "type": "textarea",
+        "required": 0,
+        "rows": 2,
+        "new_lines": "",
+        "default_value": "A working session on your own data rather than a slide deck. Pick the questions that currently take a day to answer, and we will put Aether’s answers next to what the report said."
+      },
+      {
+        "key": "field_bl_cta2_text",
+        "label": "Second button label (outline)",
+        "name": "cta2_text",
+        "type": "text",
+        "required": 0,
+        "default_value": "Read the July edition"
+      },
+      {
+        "key": "field_bl_cta2_url",
+        "label": "Second button URL (opens in new tab)",
+        "name": "cta2_url",
+        "type": "url",
+        "required": 0,
+        "default_value": "https://theenterpriseworld.com/"
+      },
+      {
+        "key": "field_bl_cta_video",
+        "label": "Video URL (mp4, right column; hidden on mobile)",
+        "name": "cta_video",
+        "type": "url",
+        "required": 0,
+        "default_value": "https://dev-website.ithena.app/wp-content/uploads/2026/09/aether-hero.mp4"
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "blog-post"
+        }
+      ],
+      [
+        {
+          "param": "page_template",
+          "operator": "==",
+          "value": "template-parts/blog-v2.php"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Blog post layout (template-parts/blog-v2.php). Any empty field falls back to the sample content from ithena-singleblog-v2.html (except the title, which falls back to the post title).",
+    "show_in_rest": 0
+  }
+]

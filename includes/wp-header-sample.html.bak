@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ITHENA Header Sample</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Theme pre-init (= ithena_header_theme_preinit): applies saved/system theme before paint, exposes window.ithenaTheme -->
+<script>
+(function () {
+    var KEY = 'ithena-theme';
+    window.ithenaTheme = {
+        get: function () { try { return localStorage.getItem(KEY); } catch (e) { return null; } },
+        set: function (isDark) { try { localStorage.setItem(KEY, isDark ? 'dark' : 'light'); } catch (e) {} },
+        isDark: function () { return document.documentElement.classList.contains('dark'); },
+        apply: function (isDark) {
+            document.documentElement.classList.toggle('dark', isDark);
+            window.ithenaTheme.set(isDark);
+            window.ithenaTheme.sync();
+        },
+        toggle: function () { var next = !window.ithenaTheme.isDark(); window.ithenaTheme.apply(next); return next; },
+        /* mirrors the theme onto the toggle and #main-section; never changes it */
+        sync: function () {
+            var isDark = window.ithenaTheme.isDark();
+            var btn = document.getElementById('theme-toggle');
+            if (btn) {
+                btn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+                btn.setAttribute('aria-checked', isDark ? 'true' : 'false');
+            }
+            var main = document.getElementById('main-section');
+            if (main) main.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        }
+    };
+    var saved = window.ithenaTheme.get();
+    if (saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.classList.add('dark');
+})();
+</script>
+
+<style>
+/* ===== tokens: light default, html.dark overrides values only ===== */
+:root{
+    --ith-fw-1:600;--ith-fw-2:600;--ith-fw-3:500;--ith-fw-4:500;
+    --ih-bg:#FFFFFF;--ih-panel:#FFFFFF;--ih-ink:#1F2023;--ih-mute:#5B6B7E;--ih-line:#E6EAEF;
+    --ih-blue:#0083C8;--ih-blue-deep:#006AA3;--ih-link:#006AA3;--ih-tint:#EDF7FC;
+    --ih-head:rgba(255,255,255,.86);--ih-shadow:0 24px 48px -28px rgba(13,27,46,.35);
+    --ih-ease:cubic-bezier(.16,.8,.24,1);
+}
+html.dark{
+    --ih-bg:#07111F;--ih-panel:#0B1828;--ih-ink:#F4F8FB;--ih-mute:#9AABBF;--ih-line:rgba(255,255,255,.1);
+    --ih-link:#7FC8F2;--ih-tint:rgba(57,168,222,.12);
+    --ih-head:rgba(7,17,31,.86);--ih-shadow:0 24px 48px -24px rgba(0,0,0,.7);
+}
+
+/* ===== demo page only (not part of the shortcode) ===== */
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans",system-ui,sans-serif;background:var(--ih-bg);color:var(--ih-ink);transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+.demo-hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:140px 24px 80px;background:linear-gradient(180deg,var(--ih-tint),var(--ih-bg))}
+.demo-hero h1{font-size:clamp(32px,5vw,56px);line-height:1.1;margin:0 0 16px;letter-spacing:-.02em}
+.demo-hero p{color:var(--ih-mute);max-width:560px;margin:0 auto;line-height:1.6}
+.demo-fill{height:120vh;border-top:1px solid var(--ih-line)}
+
+/* ===== header bar ===== */
+header#site-header{position:fixed;inset:0 0 auto;z-index:999995;padding:14px 0;background:transparent;border-bottom:1px solid transparent;transition:padding .4s var(--ih-ease),background .4s var(--ih-ease),border-color .4s}
+header#site-header.scrolled{padding:6px 0;background:var(--ih-head);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px);border-bottom-color:var(--ih-line)}
+header#site-header .wrap{max-width:1280px;margin:0 auto;padding:10px 30px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo img{display:block;height:38px;width:auto}
+html.dark .logo img{filter:brightness(0) invert(1)}
+
+/* top-level links: underline indicator, no pill */
+.nav-menu{display:flex;align-items:center;gap:4px}
+.nav-item{position:relative}
+.nav-link{position:relative;display:flex;align-items:center;gap:6px;padding:12px 14px;font-size:14px;font-weight:var(--ith-fw-1);color:var(--ih-ink);transition:color .2s}
+.nav-link::after{content:"";position:absolute;left:14px;right:14px;bottom:4px;height:2px;background:var(--ih-blue);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ih-ease)}
+.nav-link:hover,.nav-item.open>.nav-link{color:var(--ih-link)}
+.nav-link:hover::after,.nav-item.open>.nav-link::after{transform:scaleX(1)}
+.nav-link svg{width:10px;height:10px;transition:transform .3s var(--ih-ease)}
+.nav-item.open>.nav-link svg{transform:rotate(180deg)}
+:is(.nav-link,.mega a,.mega summary,.btn,.theme-switch,.icon-btn,.mobile-toggle,.mobile-panel a,.m-toggle):focus-visible{outline:2px solid var(--ih-blue);outline-offset:2px}
+
+.nav-actions{display:flex;align-items:center;gap:12px}
+.nav-actions a.btn.btn-primary{display:inline-flex;align-items:center;height:42px;padding:0 22px;background:var(--ih-blue);color:#fff;font-size:14px;font-weight:600;letter-spacing:.01em;transition:background .2s}
+.nav-actions a.btn.btn-primary:hover{background:var(--ih-blue-deep)}
+
+/* theme switch: square track + thumb */
+.theme-switch{position:relative;flex-shrink:0;width:48px;height:26px;padding:0;border:1px solid var(--ih-line);background:var(--ih-tint);cursor:pointer}
+.theme-switch-thumb{position:absolute;top:2px;left:2px;width:20px;height:20px;background:var(--ih-blue);color:#fff;display:grid;place-items:center;transition:transform .35s var(--ih-ease)}
+html.dark .theme-switch-thumb{transform:translateX(22px)}
+.theme-switch-icon{position:absolute;width:12px;height:12px;transition:opacity .25s,transform .3s var(--ih-ease)}
+.theme-switch-icon.ts-moon,html.dark .theme-switch-icon.ts-sun{opacity:0;transform:scale(.5)}
+html.dark .theme-switch-icon.ts-moon{opacity:1;transform:none}
+
+.icon-btn,.mobile-toggle{width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--ih-line);color:var(--ih-ink);cursor:pointer}
+.mobile-toggle{display:none;flex-direction:column;gap:5px}
+.mobile-toggle span{display:block;width:18px;height:2px;background:currentColor}
+
+/* ===== mega panel ===== */
+.mega{position:fixed;top:var(--header-h,72px);left:50%;width:min(calc(100vw - 40px),1220px);background:var(--ih-panel);border:1px solid var(--ih-line);border-top:2px solid var(--ih-blue);box-shadow:var(--ih-shadow);opacity:0;visibility:hidden;pointer-events:none;transform:translateX(-50%) translateY(-6px);transition:opacity .25s var(--ih-ease),transform .25s var(--ih-ease),visibility .25s;z-index:150}
+.nav-item.open .mega{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%)}
+.mega-inner{padding:32px 36px}
+
+/* columns (branch children) */
+.mega-sol-cols{display:grid;grid-template-columns:repeat(3,1fr)}
+.mega-sol-row2{margin-top:28px;padding-top:28px;border-top:1px solid var(--ih-line)}
+.mega-sol-col{padding:0 28px;border-right:1px solid var(--ih-line)}
+.mega-sol-col:first-child{padding-left:0}
+.mega-sol-col:last-child{padding-right:0;border-right:0}
+.mega-sol-col-head{position:relative;display:flex;align-items:center;gap:12px;margin-bottom:10px;padding-bottom:14px;border-bottom:1px solid var(--ih-line)}
+.mega-sol-col-head::after{content:"";position:absolute;left:0;bottom:-1px;width:32px;height:2px;background:var(--ih-blue)}
+/* icon tiles: solid brand square, white glyph (cube-1.svg is white) */
+.mega-sol-col-icon,.mega-sol-item-icon,.mega-feat-icon,.mobile-panel .m-sub-link .ic{flex-shrink:0;display:grid;place-items:center;background:var(--ih-blue);color:#fff}
+.mega-sol-col-icon{width:36px;height:36px}
+.mega-sol-col-icon img,.mega-sol-item-icon img,.mega-feat-icon img{width:18px;height:18px}
+.mega-sol-col-head h4{margin:0 0 2px;font-size:15px;font-weight:var(--ith-fw-2);color:var(--ih-ink);white-space:nowrap}
+.mega-sol-col-sub{display:block;font-size:12px;color:var(--ih-mute);white-space:nowrap}
+
+/* groups: <details> accordion */
+.mega-sol-group{border-bottom:1px solid var(--ih-line)}
+.mega-sol-group:last-child{border-bottom:0}
+.mega-sol-group summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;font-size:12px;font-weight:var(--ith-fw-3);text-transform:uppercase;letter-spacing:.08em;color:var(--ih-mute);transition:color .2s}
+.mega-sol-group summary::-webkit-details-marker{display:none}
+.mega-sol-group summary:hover,.mega-sol-group[open] summary{color:var(--ih-link)}
+.mega-sol-group summary .chev{flex-shrink:0;transition:transform .25s var(--ih-ease)}
+.mega-sol-group[open] summary .chev{transform:rotate(180deg)}
+.mega-sol-group-items{display:flex;flex-direction:column;gap:2px;padding:2px 0 12px;overflow:hidden}
+.mega-sol-group-items.is-animating{transition:height .3s var(--ih-ease),opacity .3s var(--ih-ease)}
+
+/* leaf items: inset bar on hover */
+.mega-sol-item{display:flex;align-items:flex-start;gap:12px;padding:9px 10px;transition:background .2s,box-shadow .2s}
+.mega-sol-item:hover{background:var(--ih-tint);box-shadow:inset 2px 0 var(--ih-blue)}
+.mega-sol-item-icon{width:26px;height:26px}
+.mega-sol-item-icon img,.mega-sol-item-icon svg{width:14px;height:14px}
+.mega-sol-item-text{min-width:0}
+.mega-sol-item-name{display:block;font-size:14px;font-weight:var(--ith-fw-4);color:var(--ih-ink);transition:color .2s}
+.mega-sol-item:hover .mega-sol-item-name{color:var(--ih-link)}
+.mega-sol-item-sub{display:block;margin-top:2px;font-size:12px;color:var(--ih-mute);line-height:1.4}
+
+/* cards (leaf children) */
+.mega-feat-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.mega-feat{display:flex;gap:14px;align-items:flex-start;padding:20px;outline:1px solid var(--ih-line);outline-offset:-1px;opacity:0;transform:translateY(6px);transition:opacity .35s var(--ih-ease) .05s,transform .35s var(--ih-ease) .05s,background .2s}
+.nav-item.open .mega-feat{opacity:1;transform:none}
+.mega-feat:hover{background:var(--ih-tint)}
+.mega-feat-icon{width:40px;height:40px}
+.mega-feat-body h4{margin:0 0 4px;font-size:14px;font-weight:var(--ith-fw-2);color:var(--ih-ink)}
+.mega-feat-body p{margin:0 0 8px;font-size:12px;color:var(--ih-mute);line-height:1.5}
+.mega-feat-explore{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--ih-link)}
+.mega-feat-explore svg{transition:transform .25s var(--ih-ease)}
+.mega-feat:hover .mega-feat-explore svg{transform:translateX(3px)}
+
+/* ===== mobile panel ===== */
+.scrim{position:fixed;z-index:999996;inset:0;background:rgba(7,17,31,.5);opacity:0;visibility:hidden;transition:.3s}
+.scrim.open{opacity:1;visibility:visible}
+.mobile-panel{position:fixed;z-index:999997;top:0;right:0;width:min(380px,88vw);height:100dvh;padding:20px 24px 32px;overflow-y:auto;background:var(--ih-panel);border-left:1px solid var(--ih-line);transform:translateX(100%);transition:transform .4s var(--ih-ease)}
+.mobile-panel.open{transform:none}
+.mobile-panel .m-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--ih-line)}
+.mobile-panel>a,.mobile-panel .m-toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:52px;padding:0;font:inherit;font-size:16px;font-weight:var(--ith-fw-1);color:var(--ih-ink);background:none;border:0;border-bottom:1px solid var(--ih-line);text-align:left;cursor:pointer}
+.mobile-panel .m-top a{border:0;min-height:0}
+.mobile-panel .m-item{border-bottom:1px solid var(--ih-line)}
+.mobile-panel .m-item>.m-toggle{border-bottom:0}
+.mobile-panel .m-toggle svg{flex-shrink:0;color:var(--ih-mute);transition:transform .3s var(--ih-ease)}
+.mobile-panel .m-item.open>.m-toggle{color:var(--ih-link)}
+.mobile-panel .m-item.open>.m-toggle svg{transform:rotate(180deg);color:var(--ih-link)}
+.mobile-panel .m-submenu{max-height:0;overflow:hidden;transition:max-height .4s var(--ih-ease)}
+.mobile-panel .m-item.open>.m-submenu{max-height:1200px;padding-bottom:8px}
+.mobile-panel .m-item-nested{border:0;border-left:1px solid var(--ih-line);margin-left:2px;padding-left:12px}
+.mobile-panel .m-toggle-sub{min-height:44px;font-size:14px;font-weight:var(--ith-fw-3)}
+.mobile-panel .m-toggle-sub-1{font-weight:var(--ith-fw-2)}
+.mobile-panel .m-toggle-sub>span:first-child{display:flex;flex-direction:column;gap:2px}
+.mobile-panel .m-toggle-tag{font-size:12px;font-weight:400;color:var(--ih-mute)}
+.mobile-panel .m-sub-link{display:flex;align-items:flex-start;gap:10px;padding:10px 0;font-size:14px;color:var(--ih-ink)}
+.mobile-panel .m-sub-link:hover{color:var(--ih-link)}
+.mobile-panel .m-sub-link .ic{width:24px;height:24px}
+.mobile-panel .m-sub-text{display:flex;flex-direction:column;gap:2px}
+.mobile-panel .m-sub-text strong{font-weight:var(--ith-fw-4)}
+.mobile-panel .m-sub-text small{font-size:12px;color:var(--ih-mute);line-height:1.4}
+.mobile-panel>a:last-child{justify-content:center;margin-top:24px;border:0;background:var(--ih-blue);color:#fff;font-size:15px}
+
+/* ===== responsive / motion ===== */
+@media (max-width:1180px){
+    .mega-sol-cols{grid-template-columns:1fr}
+    .mega-sol-col{padding:18px 0;border-right:0;border-bottom:1px solid var(--ih-line)}
+    .mega-sol-col:last-child{border-bottom:0}
+    .mega-inner{max-height:calc(100vh - var(--header-h,72px) - 24px);overflow-y:auto}
+}
+@media (max-width:980px){
+    .mega,.nav-menu,.nav-actions .btn-primary{display:none}
+    .mobile-toggle{display:flex}
+}
+@media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== HEADER (static shell = shortcode markup; menu filled from DEMO_MENU below) ===================== -->
+<header id="site-header">
+    <div class="wrap nav-inner">
+        <a class="logo" href="#top"><img width="136" height="45" src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" alt="ITHENA home"></a>
+        <nav class="nav-menu" id="nav-menu" aria-label="Main"></nav>
+        <div class="nav-actions">
+            <button type="button" class="theme-switch" id="theme-toggle" role="switch" aria-checked="false" aria-label="Switch to dark theme">
+                <span class="theme-switch-thumb">
+                    <svg class="theme-switch-icon ts-sun" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M10 1.5v2M10 16.5v2M18.5 10h-2M3.5 10h-2M15.8 4.2l-1.4 1.4M5.6 14.4l-1.4 1.4M15.8 15.8l-1.4-1.4M5.6 5.6L4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    <svg class="theme-switch-icon ts-moon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M17 11.5A7.5 7.5 0 018.5 3 7.5 7.5 0 1017 11.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                </span>
+            </button>
+            <a href="/contact/" class="btn btn-primary">Contact Us</a>
+            <button class="mobile-toggle" id="mobile-open" aria-label="Open menu" aria-controls="mobile-panel" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="mobile-panel" id="mobile-panel" aria-label="Menu">
+    <div class="m-top">
+        <a class="logo" href="#top"><img width="136" height="45" src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" alt="ITHENA home"></a>
+        <button class="icon-btn" id="mobile-close" aria-label="Close menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></button>
+    </div>
+    <a href="/contact/">Contact</a>
+</div>
+
+<main id="main-section">
+    <section class="demo-hero" id="top">
+        <div>
+            <h1>Header sample</h1>
+            <p>Demo data shaped like the <code>new-ithena-menu</code> tree. Hover the menu, scroll for the compact state, toggle the theme, or narrow the window for the mobile panel.</p>
+        </div>
+    </section>
+    <section class="demo-fill"></section>
+</main>
+
+<!-- Demo menu: same tree shape wp_get_nav_menu_items() builds (t=title, d=menu_subtitle, c=children) and the PHP loops, ported to JS -->
+<script>
+(function () {
+    var CUBE = 'https://dev-website.ithena.app/wp-content/uploads/2026/08/cube-1.svg';
+    var I16 = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="16" height="16"/><path d="M8 12h8M12 8v8"/></svg>';
+    var CHEV = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6"/></svg>';
+    var CHEV_G = CHEV.replace('<svg', '<svg class="chev"');
+    var ARROW = '<svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6"/></svg>';
+    var IMG = '<img src="' + CUBE + '" alt="">';
+
+    function n(t, d, c) { return { t: t, d: d || '', u: '#', c: c }; }
+    function leaves(list) { return list.map(function (x) { return Array.isArray(x) ? n(x[0], x[1]) : n(x); }); }
+
+    var DEMO_MENU = [
+        n('Solutions', '', [
+            n('OEM | Distributors', 'Production | After Market', [
+                n('Production', '', leaves([['iCRM', 'Pipeline and account management'], ['iCPQ', 'Configure, price, quote'], ['iERP', 'Orders, inventory, finance']])),
+                n('After Market', '', leaves([['Performance Monitoring', 'Live fleet and asset health'], ['Service Portal', 'Tickets, warranty, field service'], ['B2B eCommerce', 'Spare parts ordering']]))
+            ]),
+            n('Manufacturer', 'Plan → Produce → Improve', [
+                n('Plan', '', leaves([['iPLAN', 'Planning and scheduling']])),
+                n('Produce', '', leaves([['iGEMBA', 'Shop-floor execution'], ['Performance Monitoring', 'OEE and downtime'], ['MES', 'Manufacturing execution']])),
+                n('Improve', '', leaves([['QMS', 'Quality management'], ['CMMS', 'Maintenance management'], ['iSEM', 'Energy monitoring']]))
+            ]),
+            n('Enterprise', 'Analytics | CX | SCM', [
+                n('Analytics', '', leaves([['Aether', 'Agentic AI analytics'], ['Analytics', 'Dashboards and reporting'], ['iHub', 'Data integration hub']])),
+                n('CX', '', leaves([['CRM', 'Customer engagement'], ['iSIP', 'Sales incentive planning']])),
+                n('SCM', '', leaves([['iTMS', 'Transport management'], ['iPLAN', 'Supply planning']]))
+            ])
+        ]),
+        n('Services', '', [
+            n('Advisory Consulting', 'Strategy & AI roadmaps', leaves(['AI Strategy'])),
+            n('Data Management', 'Analytics & intelligence', leaves(['Big Data & Analytics', 'AI/ML | Data Science'])),
+            n('Cloud Modernization', 'Migration & integration', leaves(['Cloud Adoption', 'Process Integration'])),
+            n('Business Transformation', 'CX & digital journeys', leaves(['Systems of Engagement', 'Customer Experience'])),
+            n('Manufacturing Integration', 'MES & IoT connectivity', leaves(['Manufacturing Execution', 'Industrial IoT']))
+        ]),
+        n('Industries', '', [
+            n('OEM', 'Equipment & machine builders', leaves(['Packaging', 'Food & Beverage | Bakery', 'Compressed Air', 'Custom Tool Builder'])),
+            n('Manufacturing', 'Plants & production operations', leaves(['Industrial', 'Discrete | Automotive', 'Pharmaceutical', 'Energy & Utility'])),
+            n('Strategic Industries', 'Commerce | Finance | Public', leaves(['Retail | CPG', 'FinTech', 'Government']))
+        ]),
+        n('Case Studies'),
+        n('Company', '', leaves([
+            ['Who We Are', 'Our story, team and values'], ['Blogs', 'Insights on AI and operations'], ['Announcements', 'Product and company news'],
+            ['Partnerships', 'Technology and channel partners'], ['Careers', 'Open roles at ITHENA']
+        ]))
+    ];
+
+    var hasKids = function (x) { return x.c && x.c.length; };
+    var isCards = function (node) { return !node.c.some(hasKids); };
+    var slug = function (s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, '-'); };
+    var sub = function (cls, d) { return d ? '<span class="' + cls + '">' + d + '</span>' : ''; };
+    var uid = 0;
+
+    function solItem(leaf, icon) {
+        return '<a href="' + leaf.u + '" class="mega-sol-item"><span class="mega-sol-item-icon">' + icon + '</span><span class="mega-sol-item-text">' +
+            '<span class="mega-sol-item-name">' + leaf.t + '</span>' + sub('mega-sol-item-sub', leaf.d) + '</span></a>';
+    }
+    function solCol(col) {
+        var body = col.c.some(hasKids)
+            ? col.c.map(function (g) { return '<details class="mega-sol-group"><summary>' + g.t + ' ' + CHEV_G + '</summary><div class="mega-sol-group-items">' + g.c.map(function (l) { return solItem(l, IMG); }).join('') + '</div></details>'; }).join('')
+            : '<div class="mega-sol-group-items">' + col.c.map(function (l) { return solItem(l, I16); }).join('') + '</div>';
+        return '<div class="mega-sol-col"><div class="mega-sol-col-head"><div class="mega-sol-col-icon">' + IMG + '</div><div><h4>' + col.t + '</h4>' + sub('mega-sol-col-sub', col.d) + '</div></div>' + body + '</div>';
+    }
+    function desktop(node) {
+        if (!hasKids(node)) return '<a class="nav-link" href="' + node.u + '">' + node.t + '</a>';
+        var inner;
+        if (isCards(node)) {
+            inner = '<div class="mega-feat-grid">' + node.c.map(function (c) {
+                return '<div class="mega-feat"><div class="mega-feat-icon">' + IMG + '</div><div class="mega-feat-body"><h4>' + c.t + '</h4>' + (c.d ? '<p>' + c.d + '</p>' : '') +
+                    '<a href="' + c.u + '" class="mega-feat-explore">Explore ' + ARROW + '</a></div></div>';
+            }).join('') + '</div>';
+        } else {
+            inner = '';
+            for (var r = 0; r < node.c.length; r += 3) {   /* = array_chunk(children, 3), short rows padded */
+                var row = node.c.slice(r, r + 3), pad = '';
+                for (var p = row.length; p < 3; p++) pad += '<div class="mega-sol-col" aria-hidden="true"></div>';
+                inner += '<div class="mega-sol-cols' + (r ? ' mega-sol-row2' : '') + '">' + row.map(solCol).join('') + pad + '</div>';
+            }
+        }
+        return '<div class="nav-item ' + slug(node.t) + '-menu"><a class="nav-link" href="' + node.u + '" aria-haspopup="true">' + node.t + ' ' + CHEV + '</a>' +
+            '<div class="mega mega-wide"><div class="mega-inner">' + inner + '</div></div></div>';
+    }
+
+    function mLink(leaf, rich) {
+        return '<a class="m-sub-link" href="' + leaf.u + '"><span class="ic">' + I16 + '</span>' +
+            (rich ? '<span class="m-sub-text"><strong>' + leaf.t + '</strong>' + (leaf.d ? '<small>' + leaf.d + '</small>' : '') + '</span>' : leaf.t) + '</a>';
+    }
+    function mItem(cls, btnCls, label, body) {
+        var id = 'm-' + (++uid);
+        return '<div class="' + cls + '"><button class="' + btnCls + '" data-target="' + id + '" aria-expanded="false" aria-controls="' + id + '">' + label + CHEV + '</button><div class="m-submenu" id="' + id + '">' + body + '</div></div>';
+    }
+    function mobile(node) {
+        if (!hasKids(node)) return '<a href="' + node.u + '">' + node.t + '</a>';
+        var body = isCards(node)
+            ? node.c.map(function (c) { return mLink(c, false); }).join('')
+            : node.c.map(function (col) {
+                var inner = col.c.some(hasKids)
+                    ? col.c.map(function (g) { return mItem('m-item m-item-nested', 'm-toggle m-toggle-sub', '<span>' + g.t + '</span>', g.c.map(function (l) { return mLink(l, true); }).join('')); }).join('')
+                    : col.c.map(function (l) { return mLink(l, true); }).join('');
+                return mItem('m-item m-item-nested', 'm-toggle m-toggle-sub m-toggle-sub-1', '<span>' + col.t + sub('m-toggle-tag', col.d) + '</span>', inner);
+            }).join('');
+        return mItem('m-item', 'm-toggle', node.t + ' ', body);
+    }
+
+    document.getElementById('nav-menu').innerHTML = DEMO_MENU.map(desktop).join('');
+    document.querySelector('#mobile-panel .m-top').insertAdjacentHTML('afterend', DEMO_MENU.map(mobile).join(''));
+})();
+</script>
+
+<!-- Header behaviour (= shortcode JS): body relocation, scroll state, mega open/close, theme toggle, mobile panel, mega accordion -->
+<script>
+(function () {
+    /* fixed elements must sit on <body>: a transformed Elementor wrapper would re-anchor position:fixed */
+    ['site-header', 'scrim', 'mobile-panel'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el && el.parentElement !== document.body) document.body.appendChild(el);
+    });
+
+    /* scroll state + --header-h (mega panel sits right under the header) */
+    var header = document.getElementById('site-header');
+    var hero = document.getElementById('top');
+    function sync() {
+        if (!header) return;
+        header.classList.toggle('scrolled', scrollY > (hero ? hero.offsetHeight / 8 : 40));
+        document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+    }
+    addEventListener('scroll', sync, { passive: true });
+    addEventListener('resize', sync);
+    if (header) header.addEventListener('transitionend', sync);
+    sync();
+
+    /* mega open/close: hover with close delay, plus keyboard focus and Escape */
+    var closeTimer = null;
+    var items = document.querySelectorAll('.nav-item');
+    function setOpen(item, on) {
+        item.classList.toggle('open', on);
+        var link = item.querySelector('.nav-link');
+        if (link) link.setAttribute('aria-expanded', on ? 'true' : 'false');
+    }
+    items.forEach(function (item) {
+        function open() {
+            clearTimeout(closeTimer);
+            items.forEach(function (i) { if (i !== item) setOpen(i, false); });
+            setOpen(item, true);
+        }
+        function close() { clearTimeout(closeTimer); closeTimer = setTimeout(function () { setOpen(item, false); }, 260); }
+        item.addEventListener('mouseenter', open);
+        item.addEventListener('mouseleave', close);
+        item.addEventListener('focusin', open);
+        item.addEventListener('focusout', function (e) { if (!item.contains(e.relatedTarget)) setOpen(item, false); });
+    });
+    addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        var openItem = document.querySelector('.nav-item.open');
+        if (openItem) { setOpen(openItem, false); openItem.querySelector('.nav-link').focus(); }
+        closeMobile();
+    });
+
+    /* theme toggle: thin caller of window.ithenaTheme */
+    var themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ithenaTheme.sync);
+        else ithenaTheme.sync();
+        themeToggle.addEventListener('click', ithenaTheme.toggle);
+    }
+
+    /* mobile panel + per-level accordion */
+    var mOpen = document.getElementById('mobile-open');
+    var panel = document.getElementById('mobile-panel');
+    var scrim = document.getElementById('scrim');
+    function openMobile() { if (panel) panel.classList.add('open'); if (scrim) scrim.classList.add('open'); if (mOpen) mOpen.setAttribute('aria-expanded', 'true'); }
+    function closeMobile() { if (panel) panel.classList.remove('open'); if (scrim) scrim.classList.remove('open'); if (mOpen) mOpen.setAttribute('aria-expanded', 'false'); }
+    if (mOpen) mOpen.addEventListener('click', openMobile);
+    var mClose = document.getElementById('mobile-close');
+    if (mClose) mClose.addEventListener('click', closeMobile);
+    if (scrim) scrim.addEventListener('click', closeMobile);
+    if (panel) {
+        panel.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMobile); });
+        panel.querySelectorAll('.m-toggle').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var item = btn.closest('.m-item'), on = !item.classList.contains('open');
+                item.parentElement.querySelectorAll(':scope > .m-item.open').forEach(function (s) {
+                    if (s !== item) { s.classList.remove('open'); s.querySelector('.m-toggle').setAttribute('aria-expanded', 'false'); }
+                });
+                item.classList.toggle('open', on);
+                btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+            });
+        });
+    }
+
+    /* mega <details> groups: one open per panel, animated height; timeout (not transitionend) so nothing sticks */
+    var GROUP = '.mega-sol-group', DURATION = 300;
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function body(d) { return d.querySelector('.mega-sol-group-items'); }
+    function settle(b) { b.classList.remove('is-animating'); b.style.height = b.style.opacity = ''; }
+    function animate(d, open) {
+        var b = body(d);
+        if (open) d.open = true;
+        if (!b || reduce) { d.open = open; return; }
+        clearTimeout(b._t);
+        var h = b.scrollHeight;
+        b.classList.add('is-animating');
+        b.style.height = (open ? 0 : h) + 'px';
+        b.style.opacity = open ? '0' : '1';
+        requestAnimationFrame(function () { b.style.height = (open ? h : 0) + 'px'; b.style.opacity = open ? '1' : '0'; });
+        b._t = setTimeout(function () { settle(b); d.open = open; }, DURATION + 40);
+    }
+    document.querySelectorAll(GROUP).forEach(function (d) {
+        d.querySelector('summary').addEventListener('click', function (e) {
+            e.preventDefault();
+            var wasOpen = d.open;
+            (d.closest('.mega') || document).querySelectorAll(GROUP).forEach(function (o) { if (o !== d && o.open) animate(o, false); });
+            animate(d, !wasOpen);
+        });
+    });
+    /* reset groups after a panel closes so it reopens clean */
+    items.forEach(function (item) {
+        item.addEventListener('mouseleave', function () {
+            setTimeout(function () {
+                if (item.classList.contains('open')) return;
+                item.querySelectorAll(GROUP).forEach(function (d) { var b = body(d); if (b) settle(b); d.open = false; });
+            }, 400);
+        });
+    });
+})();
+</script>
+</body>
+</html>

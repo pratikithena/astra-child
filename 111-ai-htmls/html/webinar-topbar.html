@@ -1,0 +1,63 @@
+<style>
+  /* Fixed, not sticky: sticky only pins inside its own parent, and pasted into an
+    Elementor widget that parent is strip-height, so it scrolled straight off.
+    Fixed is viewport-relative, so it stays put wherever the snippet lives. */
+  .ith-wb{position:fixed;top:0;left:0;right:0;z-index:2147483000;display:block;background:#0083C8;color:#fff;text-decoration:none;font-family:inherit;padding:env(safe-area-inset-top) 16px 0;box-shadow:0 1px 0 rgba(0,0,0,.12);transition:background .2s}
+  /* the strip is out of flow, so this holds its place and the header follows it */
+  .ith-wb-spacer{height:var(--ith-wb-h,44px)}
+  .ith-wb:hover,.ith-wb:focus-visible{background:#0075B3;color:#fff}
+  .ith-wb:focus-visible{outline:2px solid #fff;outline-offset:-3px}
+  .ith-wb-in{max-width:1220px;margin:0 auto;min-height:44px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;padding:8px 0;font-size:16px;line-height:1.35;text-align:center}
+  .ith-wb b{font-weight:700}
+  .ith-wb em{font-style:normal;font-weight:700;display:inline-flex;align-items:center;gap:6px;text-decoration:underline;text-underline-offset:3px}
+  .ith-wb svg{flex:none;transition:transform .2s}
+  .ith-wb:hover svg{transform:translateX(3px)}
+
+  /* Sticky Header Effects swaps two classes on the header section as you scroll:
+    at rest  -> .she-header-yes.header     (in flow, below the spacer already)
+    stuck    -> .she-header-yes.she-header (position:fixed, inline top:0 / 32px) */
+  .she-header-yes.she-header,.elementor-sticky--effects,header#site-header{top:var(--ith-wb-h,44px)!important}
+  /* the plugin animates `all`, so `top` would slide in over .4s and open a gap */
+  .she-header-yes.she-header{transition-property:background-color,border-bottom-color,border-bottom-width,height,padding!important}
+  .mega{top:calc(94px + var(--ith-wb-h, 44px))!important}
+
+  /* logged-in wp-admin bar owns top:0 (46px tall below 783px, where it also stops
+    being fixed, so the strip goes back to 0 there) */
+  body.admin-bar .ith-wb{top:32px}
+  @media(max-width:782px){body.admin-bar .ith-wb{top:0}}
+  @media(max-width:600px){.ith-wb-in{font-size:15px;gap:2px 8px}}
+  @media print{.ith-wb,.ith-wb-spacer{display:none}}
+</style>
+
+<!-- Sticky webinar strip. Paste above the header (Elementor HTML widget / wp_body_open). -->
+<a class="ith-wb" href="https://assets-can.mkt.dynamics.com/f500f09e-b9b8-40c9-9f91-31d21514bed3/digitalassets/standaloneforms/29cbec0c-d1b1-f111-aaac-7ced8da788d9?readableEventId=From_RFP_to_Shipping_Without_the_Spreadsheet_Chaos_Webinar977882361&amp;utm_source=website&amp;utm_medium=topbar&amp;utm_campaign=panelops_webinar" target="_blank" rel="noopener">
+  <span class="ith-wb-in">
+    <b>Webinar Alert:</b>
+    <em>Sign Up<svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h9M9 4l4 4-4 4"/></svg></em>
+    <span>to See PanelOps in Action</span>
+  </span>
+</a>
+<div class="ith-wb-spacer" aria-hidden="true"></div>
+
+<script>
+(function () {
+  var bar = document.querySelector('.ith-wb');
+  if (!bar) return;
+  // Sticky Header Effects rewrites the header's inline `top` on every scroll tick,
+  // so park it against the strip's real bottom edge each time rather than guessing
+  // a number: that also absorbs the wp-admin bar and the strip wrapping to 2 lines.
+  function sync() {
+    var box = bar.getBoundingClientRect();
+    document.documentElement.style.setProperty('--ith-wb-h', box.height + 'px');
+    Array.prototype.forEach.call(document.querySelectorAll('.she-header-yes'), function (h) {
+      if (h.classList.contains('she-header')) h.style.setProperty('top', Math.max(0, box.bottom) + 'px', 'important');
+      else h.style.removeProperty('top');
+    });
+  }
+  sync();
+  window.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+  window.addEventListener('load', sync);
+  if (window.ResizeObserver) new ResizeObserver(sync).observe(bar);
+})();
+</script>

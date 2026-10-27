@@ -1,0 +1,458 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@500;600;700;800&display=swap">
+<style>
+/* Manufacturers: product showcase (2026-10-22, sibling of OEM-Distributors-Showcase.html; same CSS, prefix mfg).
+   Funnel: hero > collective capabilities > products (filter) > benefits > FAQ > call.
+   No JS: the product filter is CSS radios and the FAQ is <details>, so both work before Airlift releases inline scripts. */
+section#main-section{--blue:#0083C8;--blue-d:#006AA3;--blue-l:#3FA9E0;--acc:#006AA3;--ink:#0A192D;--body:#46586A;--muted:#5B6B7A;--sa:#FFFFFF;--sb:#F2F8FD;--card:#FFFFFF;--line:rgba(10,25,45,.10);--hair:rgba(10,25,45,.16);--tint:rgba(0,131,200,.08);--ez:cubic-bezier(.22,.61,.36,1);--fh:"Noto Sans",system-ui,sans-serif;--fb:"Inter",system-ui,sans-serif;--scrollbar:0px;color-scheme:light}
+section#main-section[data-theme="dark"]{--acc:#3FA9E0;--ink:#F2F3F5;--body:rgba(228,230,235,.8);--muted:#9A9FA8;--sa:#0A0A0B;--sb:#111113;--card:#141518;--line:rgba(255,255,255,.09);--hair:rgba(255,255,255,.16);--tint:rgba(63,169,224,.10);color-scheme:dark}
+section#main-section .hero,section#main-section .cta{--acc:#3FA9E0;--ink:#FFFFFF;--body:rgba(228,236,245,.84);--muted:rgba(228,236,245,.62);--line:rgba(255,255,255,.14);--hair:rgba(255,255,255,.24);--tint:rgba(63,169,224,.14)}
+
+/* base: ID-scoped resets so Astra/Elementor globals (white h1..h6, button chrome) can't leak in */
+section#main-section{display:block!important;position:relative!important;margin-inline:calc(50% - 50vw + var(--scrollbar) / 2)!important;overflow-x:clip!important;background:var(--sa)!important;color:var(--body)!important;font:400 16px/1.65 var(--fb)!important;-webkit-font-smoothing:antialiased}
+section#main-section *,section#main-section *::before,section#main-section *::after{box-sizing:border-box!important}
+section#main-section :is(h1,h2,h3,h4){margin:0!important;padding:0!important;font-family:var(--fh)!important;font-weight:700!important;line-height:1.15!important;letter-spacing:-.015em;color:var(--ink)!important;text-wrap:balance}
+section#main-section :is(h1,h2,h3) em{font-style:normal!important;color:#0083C8!important}
+section#main-section :is(.hero,.cta) :is(h1,h2) em,section#main-section[data-theme="dark"] :is(h1,h2,h3) em{color:var(--blue-l)!important}
+section#main-section :is(p,ul,ol,figure){margin:0!important;padding:0!important}
+section#main-section li{list-style:none!important;margin:0!important}
+section#main-section a{color:inherit!important;text-decoration:none!important}
+section#main-section svg{display:block;max-width:100%}
+section#main-section :focus-visible{outline:2px solid var(--blue-l)!important;outline-offset:3px!important}
+section#main-section .sr{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
+
+section#main-section .sec{position:relative;padding:112px 24px;background:var(--sa)}
+section#main-section .sec.alt{background:var(--sb)}
+section#main-section .wrap{position:relative;max-width:1200px;margin-inline:auto}
+section#main-section .head{max-width:720px;margin-bottom:56px}
+section#main-section .head.c{margin-inline:auto;text-align:center}
+section#main-section .kick{display:inline-flex;align-items:center;gap:11px;margin-bottom:18px!important;font:700 12px/1.25 var(--fb);letter-spacing:.17em;text-transform:uppercase;color:var(--acc)}
+section#main-section .kick::before{content:"";flex:none;width:28px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--blue),transparent)}
+section#main-section :is(.hero,.cta) .kick::before{background:linear-gradient(90deg,var(--blue-l),transparent)}
+section#main-section .h2{font-size:clamp(28px,3.6vw,42px)!important}
+section#main-section .lede{margin-top:16px!important;font-size:18px;font-weight:300;line-height:1.6}
+section#main-section .btns{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+section#main-section .btn{display:inline-flex!important;align-items:center;gap:10px;min-height:50px;padding:13px 28px!important;border-radius:999px!important;background:var(--blue)!important;color:#fff!important;font:600 16px/1.2 var(--fh)!important;transition:background .2s var(--ez),transform .2s var(--ez)}
+section#main-section .btn:hover{background:var(--blue-d)!important;transform:translateY(-2px)}
+section#main-section .btn svg,section#main-section .more svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:translate .3s var(--ez)}
+section#main-section .btn:hover svg,section#main-section .more:hover svg{translate:4px 0}
+section#main-section .btn.ghost{background:transparent!important;color:var(--ink)!important;box-shadow:inset 0 0 0 1px var(--hair)!important;backdrop-filter:blur(6px)}
+section#main-section .btn.ghost:hover{box-shadow:inset 0 0 0 1px var(--blue-l)!important}
+section#main-section .chk{display:flex;gap:12px;align-items:flex-start}
+section#main-section .chk::before{content:"";flex:none;width:20px;height:20px;margin-top:2px;border-radius:50%;background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat}
+/* product mark (iCRM, iERP...) */
+section#main-section .tag{display:inline-flex;align-items:center;padding:4px 10px;border-radius:7px;background:var(--tint);box-shadow:inset 0 0 0 1px var(--line);color:var(--acc);font:700 13px/1.2 var(--fb);letter-spacing:.02em;white-space:nowrap}
+
+/* reveal: scroll-driven CSS only, so nothing waits on (delayed) JS; unsupported browsers just show content */
+@property --n{syntax:"<integer>";inherits:false;initial-value:0}
+@keyframes oeCount{from{--n:0}}
+@keyframes oeIn{from{opacity:0;translate:0 26px}}
+@keyframes oeKick{from{transform:scaleX(0)}}
+@keyframes oeCaret{50%{opacity:0}}
+@keyframes oeFlow{to{background-position:200% 0}}
+@supports (animation-timeline:view()){@media (prefers-reduced-motion:no-preference){
+  section#main-section .rv{animation:oeIn linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+  section#main-section .kick::before{transform-origin:left;animation:oeKick linear both;animation-timeline:view();animation-range:entry 20% entry 80%}
+}}
+
+/* 1 hero: banner video under a left-weighted scrim */
+section#main-section .hero{display:flex;flex-direction:column;justify-content:flex-end;min-height:min(820px,100svh);padding:160px 24px 56px;overflow:hidden;isolation:isolate;background:#05070A;color:var(--body)}
+section#main-section .hero video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+section#main-section .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,7,10,.94) 0%,rgba(5,7,10,.78) 42%,rgba(5,7,10,.25) 100%),linear-gradient(0deg,rgba(5,7,10,.92) 0%,transparent 45%)}
+section#main-section .hero .wrap{width:100%}
+section#main-section .h1{max-width:760px;font-size:clamp(36px,5.2vw,62px)!important;line-height:1.06!important;letter-spacing:-.025em}
+section#main-section .hero .lede{max-width:580px;margin:22px 0 34px!important}
+/* AI prompt: what you can ask across the suite */
+section#main-section .ask{display:inline-flex;align-items:center;gap:12px;max-width:100%;margin-bottom:28px!important;padding:10px 18px 10px 12px!important;border-radius:999px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);backdrop-filter:blur(10px);font-size:14px;color:#fff}
+section#main-section .ask b{display:inline-flex;align-items:center;gap:6px;flex:none;padding:4px 10px;border-radius:999px;background:linear-gradient(90deg,var(--blue),#33A1E0);font:700 11px/1.2 var(--fb);letter-spacing:.08em;text-transform:uppercase}
+section#main-section .ask b svg{width:13px;height:13px;fill:currentColor}
+section#main-section .ask span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+section#main-section .ask span::after{content:"";display:inline-block;width:2px;height:1em;margin-left:3px;vertical-align:-2px;background:var(--blue-l);animation:oeCaret 1s steps(1) infinite}
+/* product rail along the bottom of the hero */
+section#main-section .rail{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));margin-top:72px!important;border-top:1px solid var(--line)}
+section#main-section .rail a{display:flex;flex-direction:column;gap:6px;padding:20px 12px 4px 14px;border-left:1px solid var(--line);transition:color .2s}
+section#main-section .rail b{font:700 15px/1.2 var(--fh);color:#fff}
+section#main-section .rail span{font-size:14px;color:var(--muted)}
+section#main-section .rail a:hover b{color:var(--blue-l)}
+
+/* 2 collective capabilities: one record, four stages */
+section#main-section .flow{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+section#main-section .flow::before{content:"";position:absolute;top:27px;left:28px;right:calc((100% - 60px) / 4 - 28px);height:2px;background:linear-gradient(90deg,var(--blue),var(--blue-l),var(--blue)) 0 0/200% 100%;opacity:.55;animation:oeFlow 6s linear infinite}
+section#main-section .st{position:relative}
+section#main-section .st i{position:relative;display:grid;place-items:center;width:56px;height:56px;margin-bottom:22px;border-radius:50%;background:var(--sa);box-shadow:inset 0 0 0 1px var(--hair),0 0 0 6px var(--sa);color:var(--acc)}
+section#main-section .st i svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+section#main-section .st small{display:block;margin-bottom:6px;font:700 12px/1.2 var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+section#main-section .st h3{display:flex;align-items:center;gap:10px;font-size:22px!important}
+section#main-section .st p{margin-top:10px!important;font-size:15px}
+section#main-section .layer{display:flex;align-items:center;flex-wrap:wrap;gap:12px 28px;margin-top:56px!important;padding:22px 26px;border-radius:16px;background:linear-gradient(90deg,var(--tint),transparent);box-shadow:inset 0 0 0 1px var(--line)}
+section#main-section .layer>b{font:700 12px/1.2 var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+section#main-section .layer ul{display:flex;flex-wrap:wrap;gap:10px 24px}
+section#main-section .layer li{display:flex;align-items:center;gap:8px;font-weight:500;color:var(--ink)}
+section#main-section .layer li::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--blue)}
+
+/* 3 products: category filter (CSS radios) + cards */
+section#main-section .tabs{display:inline-flex;flex-wrap:wrap;gap:6px;margin-bottom:32px;padding:6px;border-radius:999px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+section#main-section .tabs label{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:999px;font:600 14px/1.2 var(--fh);color:var(--body);cursor:pointer;transition:background .2s,color .2s}
+section#main-section .tabs label:hover{color:var(--ink)}
+section#main-section .tabs label small{font:600 12px/1 var(--fb);opacity:.7}
+section#main-section #mfg-all:checked~.tabs [for="mfg-all"],section#main-section #mfg-plan:checked~.tabs [for="mfg-plan"],section#main-section #mfg-maint:checked~.tabs [for="mfg-maint"]{background:var(--blue);color:#fff}
+section#main-section #mfg-all:focus-visible~.tabs [for="mfg-all"],section#main-section #mfg-plan:focus-visible~.tabs [for="mfg-plan"],section#main-section #mfg-maint:focus-visible~.tabs [for="mfg-maint"]{outline:2px solid var(--blue-l);outline-offset:2px}
+section#main-section #mfg-plan:checked~.pgrid .pc:not(.plan),section#main-section #mfg-maint:checked~.pgrid .pc:not(.maint){display:none}
+/* odd count (all 7, or the 3 maintenance cards): the last card spans the row, image beside the text */
+@media (min-width:961px){
+  section#main-section .pgrid .pc:last-child:nth-child(odd){grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-auto-rows:min-content;column-gap:40px}
+  section#main-section .pgrid .pc:last-child:nth-child(odd)>*{grid-column:2}
+  section#main-section .pgrid .pc:last-child:nth-child(odd) .pc-img{grid-column:1;grid-row:1/span 7;margin:-32px 0 -32px -32px!important;aspect-ratio:auto;min-height:100%}
+  section#main-section .pgrid .pc:last-child:nth-child(odd) .pc-img::after{background:linear-gradient(270deg,var(--card),transparent 45%)}
+}
+section#main-section .pgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+section#main-section .pc{position:relative;display:flex;flex-direction:column;padding:32px;border-radius:20px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);overflow:hidden;transition:box-shadow .3s var(--ez),transform .3s var(--ez)}
+section#main-section .pc::before{content:"";position:absolute;top:-120px;right:-120px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(0,131,200,.18),transparent 70%);pointer-events:none}
+section#main-section .pc:hover{transform:translateY(-4px);box-shadow:inset 0 0 0 1px var(--blue-l),0 24px 48px -28px rgba(0,60,110,.45)}
+section#main-section .pc-img{position:relative;margin:-32px -32px 26px!important;aspect-ratio:16/7;overflow:hidden;background:var(--sb)}
+section#main-section .pc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ez)}
+section#main-section .pc-img::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--card),transparent 55%)}
+section#main-section .pc:hover .pc-img img{transform:scale(1.04)}
+section#main-section .pc-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
+section#main-section .pc-top small{font:700 11px/1.3 var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+section#main-section .pc h3{font-size:24px!important}
+section#main-section .pc>p{margin-top:10px!important}
+section#main-section .pc ul{display:grid;gap:10px;margin:22px 0 24px!important;font-size:15px;color:var(--ink)}
+section#main-section .pc .q{display:flex;align-items:flex-start;gap:10px;margin-top:auto!important;padding:12px 14px!important;border-radius:12px;background:var(--tint);font-size:14px;color:var(--ink)}
+section#main-section .pc .q svg{flex:none;width:16px;height:16px;margin-top:2px;fill:var(--acc)}
+section#main-section .more{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font:600 15px/1.2 var(--fh);color:var(--acc)!important}
+
+/* 4 benefits */
+section#main-section .bgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;border-radius:20px;overflow:hidden;background:var(--line);box-shadow:inset 0 0 0 1px var(--line)}
+section#main-section .bn{padding:36px 28px;background:var(--sa)}
+section#main-section .bn strong{display:block;font:800 clamp(36px,4vw,48px)/1 var(--fh);letter-spacing:-.03em;background:linear-gradient(90deg,var(--blue),var(--blue-l));-webkit-background-clip:text;background-clip:text;color:transparent}
+/* count-up: the final value is the base value, so without the script (Airlift delay) or with reduced motion it shows directly.
+   The script arms the counters (held at 0) and starts them when the stats scroll into view. */
+section#main-section .n{--n:var(--to);counter-reset:n var(--n);font-style:normal;font-variant-numeric:tabular-nums}
+section#main-section .n::before{content:counter(n)}
+section#main-section .bgrid.arm .n{animation:oeCount 1.8s var(--ez) both paused}
+section#main-section .bgrid.arm.go .n{animation-play-state:running}
+section#main-section .bn h3{margin-top:18px!important;font-size:18px!important}
+section#main-section .bn p{margin-top:8px!important;font-size:15px}
+
+/* 5 FAQ */
+section#main-section .faq-g{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start}
+section#main-section .faq-g .head{margin:0;position:sticky;top:120px}
+section#main-section .faq details{border-bottom:1px solid var(--line)}
+section#main-section .faq details:first-child{border-top:1px solid var(--line)}
+section#main-section .faq summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0;list-style:none;cursor:pointer;font:600 18px/1.35 var(--fh);color:var(--ink)}
+section#main-section .faq summary::-webkit-details-marker{display:none}
+section#main-section .faq summary::after{content:"";flex:none;width:28px;height:28px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--hair);background:linear-gradient(var(--acc),var(--acc)) center/10px 2px no-repeat,linear-gradient(var(--acc),var(--acc)) center/2px 10px no-repeat;transition:transform .3s var(--ez)}
+section#main-section .faq details[open] summary::after{transform:rotate(45deg)}
+section#main-section .faq details p{max-width:62ch;padding:0 44px 24px 0!important}
+
+/* in-page links (hero, call) glide instead of jumping */
+html:has(#main-section.mfg){scroll-behavior:smooth}
+
+/* 6 call */
+section#main-section .cta{padding:128px 24px;overflow:hidden;isolation:isolate;background:#05070A;text-align:center}
+section#main-section .cta video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+section#main-section .cta::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 90% at 50% 50%,rgba(5,7,10,.72),rgba(5,7,10,.94))}
+section#main-section .cta .wrap{max-width:780px}
+section#main-section .cta .lede{margin:18px auto 36px!important;max-width:600px}
+section#main-section .cta .btns{justify-content:center}
+
+@media (prefers-reduced-motion:reduce){section#main-section .flow::before,section#main-section .ask span::after{animation:none}}
+@media (max-width:1024px){
+  section#main-section .bgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  section#main-section .faq-g{grid-template-columns:1fr;gap:40px}
+  section#main-section .faq-g .head{position:static}
+}
+@media (max-width:960px){
+  section#main-section .rail{grid-template-columns:repeat(4,minmax(0,1fr))}
+  section#main-section .flow{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 24px}
+  section#main-section .flow::before{display:none}
+  section#main-section .pgrid{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  section#main-section .sec{padding:80px 16px}
+  section#main-section .hero{min-height:0;padding:132px 16px 40px}
+  section#main-section .cta{padding:96px 16px}
+  section#main-section .flow,section#main-section .bgrid{grid-template-columns:1fr}
+  section#main-section .rail{margin-top:48px!important}
+  section#main-section .rail{grid-template-columns:repeat(2,minmax(0,1fr))}
+  section#main-section .rail a{padding:14px 10px 6px 12px}
+  section#main-section .tabs{display:flex;border-radius:16px}
+  section#main-section .tabs label{flex:1 1 auto;justify-content:center}
+  section#main-section .pc{padding:24px}
+  section#main-section .pc-img{margin:-24px -24px 22px!important}
+  section#main-section .faq details p{padding-right:0!important}
+}
+
+/* "Explore More" popup: same component as the big data page (.pk-schd), Formidable form 123 */
+.pk-schd{--sc-card:#FFFFFF;--sc-srf:#F4F7FA;--sc-ink:#1F2023;--sc-ink2:rgba(0,0,0,.70);--sc-line:#EAEAEA;--sc-blue:#0083C8;--sc-wash:#EDF7FC;--sc-ff:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--sc-ez:cubic-bezier(.2,0,0,1);position:fixed!important;inset:0!important;z-index:999999!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:20px!important;margin:0!important;background:rgba(13,27,46,.62)!important;-webkit-backdrop-filter:blur(6px)!important;backdrop-filter:blur(6px)!important;opacity:0!important;visibility:hidden!important;transition:opacity .25s var(--sc-ez),visibility .25s var(--sc-ez)!important;font-family:var(--sc-ff)!important;color:var(--sc-ink)!important;line-height:1.6!important}
+.pk-schd[data-theme="dark"]{--sc-card:#17181B;--sc-srf:#111113;--sc-ink:#F2F3F5;--sc-ink2:rgba(228,230,235,.8);--sc-line:rgba(255,255,255,.1);--sc-blue:#39A8DE;--sc-wash:rgba(0,131,200,.16)}
+.pk-schd[hidden]{display:flex!important}
+.pk-schd.is-open{opacity:1!important;visibility:visible!important}
+body:has(.pk-schd.is-open) #chatBubbleRoot{display:none!important}
+.pk-schd,.pk-schd *,.pk-schd *::before,.pk-schd *::after{box-sizing:border-box}
+.pk-schd-panel{position:relative!important;width:100%!important;max-width:480px!important;max-height:88vh!important;overflow-y:auto!important;background:var(--sc-card)!important;color:var(--sc-ink)!important;border-radius:24px!important;border:1px solid var(--sc-line)!important;box-shadow:0 40px 90px -30px rgba(0,0,0,.6)!important;padding:clamp(24px,4vw,36px)!important;transform:translateY(18px) scale(.98)!important;transition:transform .28s var(--sc-ez)!important}
+.pk-schd.is-open .pk-schd-panel{transform:none!important}
+.pk-schd-close{position:absolute!important;top:14px!important;right:14px!important;width:34px!important;height:34px!important;padding:0!important;border-radius:50%!important;display:grid!important;place-items:center!important;background:var(--sc-srf)!important;border:1px solid var(--sc-line)!important;color:var(--sc-ink)!important;cursor:pointer!important;transition:background-color .2s var(--sc-ez),border-color .2s var(--sc-ez)!important}
+.pk-schd-close:hover{background:var(--sc-wash)!important;border-color:var(--sc-blue)!important}
+.pk-schd-close svg{width:15px!important;height:15px!important;display:block!important}
+.pk-schd-head{padding-right:36px!important;margin-bottom:22px!important}
+.pk-schd-head .eyb{display:flex!important;align-items:center!important;gap:9px!important;margin:0 0 10px!important;padding:0!important;font-size:12px!important;font-weight:700!important;letter-spacing:.17em!important;text-transform:uppercase!important;color:var(--sc-blue)!important}
+.pk-schd-head .eyb::before{content:""!important;width:22px!important;height:2px!important;border-radius:2px!important;background:currentColor!important;flex:none!important}
+.pk-schd-head h3{font-size:24px!important;font-weight:700!important;letter-spacing:-.02em!important;line-height:1.2!important;margin:0 0 8px!important;padding:0!important;color:var(--sc-ink)!important}
+.pk-schd-head p{font-size:14px!important;line-height:1.6!important;color:var(--sc-ink2)!important;margin:0!important;padding:0!important}
+.pk-schd-form{width:100%!important}
+.pk-schd-form .frm_forms,.pk-schd-form .elementor-widget-shortcode{max-width:100%!important;margin:0!important}
+.pk-schd-form input[type=text],.pk-schd-form input[type=email],.pk-schd-form input[type=tel],.pk-schd-form input[type=number],.pk-schd-form input[type=url],.pk-schd-form select,.pk-schd-form textarea{font-family:var(--sc-ff)!important;font-size:15px!important;padding:12px 15px!important;border-radius:100px!important;border:1px solid var(--sc-line)!important;background:var(--sc-srf)!important;color:var(--sc-ink)!important;width:100%!important}
+.pk-schd-form textarea{border-radius:12px!important;resize:vertical!important}
+.pk-schd-form label{font-size:13px!important;font-weight:600!important;color:var(--sc-ink2)!important}
+.pk-schd-form .frm_submit button,.pk-schd-form button[type=submit],.pk-schd-form input[type=submit]{background:var(--sc-blue)!important;color:#fff!important;border:0!important;border-radius:100px!important;font-family:var(--sc-ff)!important;font-weight:700!important;font-size:15px!important;padding:14px 26px!important;cursor:pointer!important;width:auto!important}
+.pk-schd-empty{font-size:14px!important;line-height:1.6!important;color:var(--sc-ink2)!important;margin:0!important;padding:0!important}
+.pk-schd-empty a{color:var(--sc-blue)!important;font-weight:600!important;text-decoration:none!important}
+.pk-schd :focus-visible{outline:2px solid var(--sc-blue)!important;outline-offset:3px!important;border-radius:4px}
+@media (max-width:520px){
+ .pk-schd{padding:12px!important}
+ .pk-schd-panel{max-height:92vh!important}
+}
+@media (prefers-reduced-motion:reduce){
+ .pk-schd{transition:none!important}
+ .pk-schd-panel{transform:none!important;transition:none!important}
+</style>
+
+<section id="main-section" class="mfg" data-theme="dark">
+
+<section class="sec hero" aria-labelledby="mfg-h1">
+  <video autoplay muted loop playsinline preload="metadata" poster="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-robot-cell-poster.jpg" aria-hidden="true"><source src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-robot-cell.mp4" type="video/mp4"></video>
+  <div class="wrap">
+    <p class="kick">Solutions for manufacturers</p>
+    <h1 class="h1" id="mfg-h1">Plan it, run it, keep it running. <em>One <span style="white-space:nowrap">AI-ready</span> plant.</em></h1>
+    <p class="lede">Seven connected products for the plant floor: planning, execution, live OEE, digital Gemba, maintenance, quality and energy, all reading the same machines and orders.</p>
+    <p class="ask"><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg>Ask</b><span>Which line will miss today's plan, and why?</span></p>
+    <div class="btns">
+      <a class="btn" href="#mfg-explore" data-schedule-demo>Explore More <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn ghost" href="#mfg-products">Explore the products</a>
+    </div>
+    <nav class="rail" aria-label="Manufacturer products">
+      <a href="/solutions/iplan-production-planning/"><b>iPLAN</b><span>Production planning</span></a>
+      <a href="/solutions/igemba-digital-gemba/"><b>iGEMBA</b><span>Digital Gemba walks</span></a>
+      <a href="/solutions/imex-manufacturing-excellence/"><b>iMEX</b><span>Manufacturing excellence</span></a>
+      <a href="/solutions/mes-manufacturing-execution/"><b>MES</b><span>Manufacturing execution</span></a>
+      <a href="/solutions/cmms-maintenance-management/"><b>CMMS</b><span>Maintenance management</span></a>
+      <a href="/solutions/qms-quality-management/"><b>QMS</b><span>Quality management</span></a>
+      <a href="/solutions/isems-smart-energy-management/"><b>iSEMS</b><span>Smart energy</span></a>
+    </nav>
+  </div>
+</section>
+
+<section class="sec" id="mfg-caps" aria-labelledby="mfg-caps-h">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kick">Collective capabilities</p>
+      <h2 class="h2" id="mfg-caps-h">Seven products. <em>One plant record</em> from the plan to the meter.</h2>
+      <p class="lede">Each product runs on its own. Together they share the same orders, assets and machine signals, so the plan, the line, the maintenance team and the quality gate all see the same facts.</p>
+    </div>
+    <ol class="flow">
+      <li class="st rv"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M7 13h4M7 17h7"/></svg></i><small>01 Plan</small><h3>iPLAN</h3><p>A finite-capacity schedule that re-plans when an order or a machine changes.</p></li>
+      <li class="st rv"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V10l5 3v-3l5 3v-3l5 3v7zM17 10V4h3v6M3 20h18"/></svg></i><small>02 Run</small><h3>MES</h3><p>Every order from release to finished goods, traced batch by batch.</p></li>
+      <li class="st rv"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg></i><small>03 Improve</small><h3>iMEX + iGEMBA</h3><p>Live OEE on every line, and a daily walk that turns losses into closed actions.</p></li>
+      <li class="st rv"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></i><small>04 Sustain</small><h3>CMMS, QMS, iSEMS</h3><p>Machines maintained, parts inspected at the station, energy metered per asset.</p></li>
+    </ol>
+    <div class="layer rv"><b>Shared across all seven</b>
+      <ul><li>One plant data model</li><li>Aether AI assistant</li><li>OPC UA, Modbus, MQTT, S7</li><li>Runs with Ignition</li><li>Mobile at the machine</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="mfg-products" aria-labelledby="mfg-products-h">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kick">Product showcase</p>
+      <h2 class="h2" id="mfg-products-h">Start on the line that hurts most. <em>Add the rest</em> when you're ready.</h2>
+      <p class="lede">Four products plan and run production, three keep machines, parts and energy in check. Pick one, and each one you add later reads the same machines and orders.</p>
+    </div>
+    <input class="sr" type="radio" name="mfg-cat" id="mfg-all" checked>
+    <input class="sr" type="radio" name="mfg-cat" id="mfg-plan">
+    <input class="sr" type="radio" name="mfg-cat" id="mfg-maint">
+    <div class="tabs" role="group" aria-label="Filter products by category">
+      <label for="mfg-all">All products <small>7</small></label>
+      <label for="mfg-plan">Planning and production <small>4</small></label>
+      <label for="mfg-maint">Maintenance and quality <small>3</small></label>
+    </div>
+    <div class="pgrid">
+      <article class="pc plan rv">
+        <figure class="pc-img"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/perf-role-manager.webp" alt="Planner checking the schedule on the shop floor" loading="lazy" decoding="async"></figure>
+        <div class="pc-top"><small>Planning and production</small><span class="tag">iPLAN</span></div>
+        <h3>Production planning</h3>
+        <p>Advanced planning and scheduling, powered by Ortems. A schedule that holds when Monday changes.</p>
+        <ul><li class="chk">Finite-capacity schedule for machines, crews and tools</li><li class="chk">Re-plans rush orders and breakdowns, and shows the impact first</li><li class="chk">Maintenance scheduled in the same model</li></ul>
+        <p class="q"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg>"What happens if line 2 goes down tomorrow?"</p>
+        <a class="more" href="/solutions/iplan-production-planning/">Explore iPLAN <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pc plan rv">
+        <figure class="pc-img"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/06/igemba-bannerv2.webp" alt="Supervisor on a Gemba walk beside the SQDP board" loading="lazy" decoding="async"></figure>
+        <div class="pc-top"><small>Planning and production</small><span class="tag">iGEMBA</span></div>
+        <h3>Digital Gemba walks</h3>
+        <p>Gemba walks that leave a record, not a paper trail, from the daily walk to the huddle after it.</p>
+        <ul><li class="chk">Every department's KPIs on one board, coloured against your limits</li><li class="chk">Huddle actions tracked on Kanban until they are closed</li><li class="chk">Trends and root cause from the KPI history</li></ul>
+        <p class="q"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg>"What did last month's red days have in common?"</p>
+        <a class="more" href="/solutions/igemba-digital-gemba/">Explore iGEMBA <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pc plan rv">
+        <figure class="pc-img"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/imex-hero-oee.webp" alt="iMEX live OEE beside a machining centre" loading="lazy" decoding="async"></figure>
+        <div class="pc-top"><small>Planning and production</small><span class="tag">iMEX</span></div>
+        <h3>Manufacturing excellence</h3>
+        <p>The Industrial IoT platform that shows live OEE on every line and predicts the stop before it happens.</p>
+        <ul><li class="chk">Connects machines over OPC UA and Euromap 63</li><li class="chk">Live OEE and SQDP, with downtime causes by line</li><li class="chk">An AI/ML engine that predicts and prevents downtime</li></ul>
+        <p class="q"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg>"Why did line 3 lose OEE on shift B?"</p>
+        <a class="more" href="/solutions/imex-manufacturing-excellence/">Explore iMEX <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pc plan rv">
+        <figure class="pc-img"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/04/igemba-solutionspage-v3.jpg" alt="Central production control room" loading="lazy" decoding="async"></figure>
+        <div class="pc-top"><small>Planning and production</small><span class="tag">MES</span></div>
+        <h3>Manufacturing execution</h3>
+        <p>MES implemented and integrated across your plants, so every order runs from release to finished goods.</p>
+        <ul><li class="chk">Real-time visibility of every line from one central view</li><li class="chk">Full traceability and batch genealogy</li><li class="chk">Rollouts that reuse one standard plant to plant</li></ul>
+        <p class="q"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg>"Which batches used lot 4471?"</p>
+        <a class="more" href="/solutions/mes-manufacturing-execution/">Explore MES <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pc maint rv">
+        <figure class="pc-img"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/05/cmms-top-img.webp" alt="Technician working on a machine with live data" loading="lazy" decoding="async"></figure>
+        <div class="pc-top"><small>Maintenance and quality</small><span class="tag">CMMS</span></div>
+        <h3>Maintenance management</h3>
+        <p>Preventive, predictive and breakdown maintenance from one asset register, with every repair on record.</p>
+        <ul><li class="chk">Plans by calendar, run hours or live condition</li><li class="chk">Technicians sign jobs off on their phone</li><li class="chk">Every change kept and attributed, audit-ready</li></ul>
+        <p class="q"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg>"Which assets failed most this quarter?"</p>
+        <a class="more" href="/solutions/cmms-maintenance-management/">Explore CMMS <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pc maint rv">
+        <figure class="pc-img"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/08/isems-panel-metering.jpg" alt="Engineer inspecting at the station" loading="lazy" decoding="async"></figure>
+        <div class="pc-top"><small>Maintenance and quality</small><span class="tag">QMS</span></div>
+        <h3>Quality management</h3>
+        <p>A quality gate at every station, so the defect is caught there and not at the customer.</p>
+        <ul><li class="chk">Inline and AI visual inspection</li><li class="chk">Digital SPC flags drift while the part is still in spec</li><li class="chk">NCR and CAPA with e-signatures, genealogy from lot to serial</li></ul>
+        <p class="q"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg>"Which lots are suspect after this NCR?"</p>
+        <a class="more" href="/solutions/qms-quality-management/">Explore QMS <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pc maint rv">
+        <figure class="pc-img"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/04/isems-solutionspage-v3.jpg" alt="Energy meters and gauges" loading="lazy" decoding="async"></figure>
+        <div class="pc-top"><small>Maintenance and quality</small><span class="tag">iSEMS</span></div>
+        <h3>Smart energy</h3>
+        <p>Energy metered per asset, not per bill, across water, air, gas, electricity and steam.</p>
+        <ul><li class="chk">Per-asset energy use and power quality alerts</li><li class="chk">Energy cost of every unit produced</li><li class="chk">Scope 1, 2 and 3 emissions from the same meters</li></ul>
+        <p class="q"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg>"Which asset drove last night's peak?"</p>
+        <a class="more" href="/solutions/isems-smart-energy-management/">Explore iSEMS <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="mfg-benefits" aria-labelledby="mfg-benefits-h">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kick">Benefits</p>
+      <h2 class="h2" id="mfg-benefits-h">What changes when the plan, the line and the assets <em>share one record</em>.</h2>
+      <p class="lede">Losses show up while the shift can still recover them, not in next week's report. These are results from plants running the products.</p>
+    </div>
+    <div class="bgrid rv">
+      <div class="bn"><strong><i class="n" style="--to:27" aria-hidden="true"></i><span class="sr">27</span>%</strong><h3>Shorter lead time</h3><p>For a US defense manufacturer scheduling on iPLAN.</p></div>
+      <div class="bn"><strong><i class="n" style="--to:48" aria-hidden="true"></i><span class="sr">48</span>%</strong><h3>Higher availability</h3><p>With live OEE and downtime visibility on iMEX.</p></div>
+      <div class="bn"><strong><i class="n" style="--to:27" aria-hidden="true"></i><span class="sr">27</span>%</strong><h3>Lower maintenance costs</h3><p>With preventive and predictive work planned in CMMS.</p></div>
+      <div class="bn"><strong><i class="n" style="--to:37" aria-hidden="true"></i><span class="sr">37</span>%</strong><h3>Lower energy costs</h3><p>With waste found asset by asset in iSEMS.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="mfg-faq" aria-labelledby="mfg-faq-h">
+  <div class="wrap faq-g">
+    <div class="head rv">
+      <p class="kick">FAQs</p>
+      <h2 class="h2" id="mfg-faq-h">Manufacturing software, <em>answered</em>.</h2>
+      <p class="lede">Can't find your question? <a href="/contact-us/" style="color:var(--acc)!important;font-weight:600">Ask our team</a>.</p>
+    </div>
+    <div class="faq">
+      <details name="mfg-faq" open><summary>Which products are in the Manufacturers suite?</summary><p>Seven. Planning and production: iPLAN (production planning), iGEMBA (digital Gemba walks), iMEX (manufacturing excellence) and MES (manufacturing execution). Maintenance and quality: CMMS (maintenance management), QMS (quality management) and iSEMS (smart energy).</p></details>
+      <details name="mfg-faq"><summary>Do we have to deploy all of them?</summary><p>No. Each product runs on its own. Most plants start with the lines or assets that hurt most, and each product added later reads the same machines, assets and orders.</p></details>
+      <details name="mfg-faq"><summary>Which machines and systems can it connect to?</summary><p>Machines, HMIs and databases over OPC UA, Modbus, MQTT, Siemens S7 and Euromap 63, and through Ignition where you already run it. Order and calendar data comes from your ERP.</p></details>
+      <details name="mfg-faq"><summary>How is iMEX different from an MES?</summary><p>An MES runs the order from release to finished goods. iMEX sits beside it to make the factory reliable: live OEE, downtime causes, digital logbooks and prediction, so you can act before a loss compounds.</p></details>
+      <details name="mfg-faq"><summary>Where does AI fit in?</summary><p>You ask the plan, the maintenance history or the energy data a question in plain language, with no SQL. iMEX predicts downtime before it happens, and QMS runs AI visual inspection at the station.</p></details>
+      <details name="mfg-faq"><summary>How long does go-live take?</summary><p>Weeks, not quarters. iMEX starts with performance monitoring on the lines that hurt most, and iSEMS goes live in about six weeks.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec cta" aria-labelledby="mfg-cta-h">
+  <video autoplay muted loop playsinline preload="none" poster="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-control-room-poster.jpg" aria-hidden="true"><source src="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-control-room.mp4" type="video/mp4"></video>
+  <div class="wrap rv">
+    <p class="kick">See it on your data</p>
+    <h2 class="h2" id="mfg-cta-h">Bring one line, one asset or one KPI sheet. <em>We'll run it live.</em></h2>
+    <p class="lede">A walkthrough of the products you pick, set up around your machines and your plant.</p>
+    <div class="btns">
+      <a class="btn" href="#mfg-explore" data-schedule-demo>Explore More <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn ghost" href="#mfg-products">See the platform</a>
+    </div>
+  </div>
+</section>
+
+
+<div class="pk-schd" id="pkSchd" hidden>
+<div class="pk-schd-panel" role="dialog" aria-modal="true" aria-labelledby="pkSchdTitle" tabindex="-1">
+<button type="button" class="pk-schd-close" data-schedule-popup-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+<div class="pk-schd-head"><p class="eyb">Explore more</p><h3 id="pkSchdTitle">Find the right solution for your plant</h3><p>Tell us which lines, assets or KPIs hurt most. Our team will follow up with the products that fit and a walkthrough on your data.</p></div>
+<div class="pk-schd-form" id="pkSchdForm">[formidable id=123]</div>
+</div>
+</div>
+</section>
+
+<script>
+/* schedule popup: same behaviour as the industry pages' [data-schedule-demo] popup */
+(function(){
+  var root=document.getElementById("main-section"),pop=document.getElementById("pkSchd");
+  if(!root||!pop||window.pkSchdInit) return;
+  window.pkSchdInit=1;
+  /* out of #main-section so a transformed Elementor ancestor cannot break position:fixed */
+  document.body.appendChild(pop);
+  var sync=function(){pop.setAttribute("data-theme",root.getAttribute("data-theme")||"dark");};
+  sync(); new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:["data-theme"]});
+  var slot=document.getElementById("pkSchdForm"),moved=false,lastFocus=null,
+      fallback='<p class="pk-schd-empty">The form did not load. Email <a href="mailto:request@ithena.ai">request@ithena.ai</a> and we will follow up.</p>';
+  /* FORM SLOT: give the Elementor Shortcode widget rendering the Formidable form the CSS ID schedule-demo-form; it is moved here as-is */
+  function adopt(){
+    if(moved||!slot) return;
+    if(slot.querySelector(".frm_forms, form")){ moved=true; return; } /* Formidable form 123 rendered in place */
+    var src=document.querySelector("#schedule-demo-form, .schedule-demo-form");
+    if(!src){var w=document.querySelectorAll(".elementor-widget-shortcode");for(var i=0;i<w.length;i++){if(w[i].querySelector(".frm_forms, form")){src=w[i];break;}}}
+    if(!src) src=document.querySelector(".frm_forms");
+    if(!src||pop.contains(src)){ if(!slot.querySelector("form")) slot.innerHTML=fallback; return; }
+    slot.innerHTML=""; slot.appendChild(src); src.style.display="block"; moved=true;
+  }
+  adopt(); window.addEventListener("load",adopt);
+  function onKey(e){ if(e.key==="Escape") closePop(); }
+  function openPop(e){
+    if(e) e.preventDefault();
+    adopt(); lastFocus=document.activeElement;
+    pop.hidden=false; document.body.style.overflow="hidden";
+    document.addEventListener("keydown",onKey);
+    void pop.offsetWidth; pop.classList.add("is-open");
+    var f=pop.querySelector(".pk-schd-form input:not([type=hidden]):not([type=submit]):not([type=button]):not([disabled]), .pk-schd-form textarea:not([disabled]), .pk-schd-form select:not([disabled])")||pop.querySelector("[data-schedule-popup-close]");
+    /* after the visibility transition starts; focus() on a still-hidden overlay is ignored */
+    if(f) setTimeout(function(){f.focus();},40);
+  }
+  function closePop(){
+    pop.classList.remove("is-open"); document.body.style.overflow="";
+    document.removeEventListener("keydown",onKey);
+    setTimeout(function(){pop.hidden=true;},250);
+    if(lastFocus&&lastFocus.focus) lastFocus.focus();
+  }
+  document.addEventListener("click",function(e){
+    if(!e.target.closest) return;
+    if(e.target.closest("[data-schedule-demo]")){ openPop(e); return; }
+    if(e.target===pop||e.target.closest("[data-schedule-popup-close]")) closePop();
+  });
+})();
+</script>
+<script>
+(function(){var g=document.querySelector('#main-section .bgrid');if(!g||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+g.classList.add('arm');new IntersectionObserver(function(e,o){if(e[0].isIntersecting){g.classList.add('go');o.disconnect();}},{threshold:.4}).observe(g);})();
+</script>
+

@@ -1,0 +1,461 @@
+<!-- ITHENA header (widget-ready). Paste into an Elementor HTML widget. Needs Noto Sans loaded site-wide. -->
+<script>
+    /* theme pre-init (= ithena_header_theme_preinit): saved/system theme before paint, exposes window.ithenaTheme */
+    (function () {
+        var KEY = 'ithena-theme', root = document.documentElement;
+        var t = window.ithenaTheme = {
+            get: function () { try { return localStorage.getItem(KEY); } catch (e) { return null; } },   /* used by service pages */
+            isDark: function () { return root.classList.contains('dark'); },
+            apply: function (isDark) {
+                root.classList.toggle('dark', isDark);
+                try { localStorage.setItem(KEY, isDark ? 'dark' : 'light'); } catch (e) {}
+                t.sync();
+            },
+            toggle: function () { t.apply(!t.isDark()); },
+            /* mirrors the theme onto the switch and #main-section; never changes it */
+            sync: function () {
+                var isDark = t.isDark(), btn = document.getElementById('iw-theme'), main = document.getElementById('main-section');
+                if (btn) { btn.setAttribute('aria-checked', isDark); btn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme'); }
+                if (main) main.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            }
+        };
+        var saved; try { saved = localStorage.getItem(KEY); } catch (e) {}
+        if (saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches) root.classList.add('dark');
+    })();
+</script>
+
+<style>
+  /* ===== tokens ===== */
+  .iw-root{
+      --iw-panel:#FFFFFF;--iw-raise:#FFFFFF;
+      --iw-ink:#1F2023;--iw-ink2:#4B5259;--iw-mute:#7A8289;--iw-line:#E6EAEE;
+      --iw-blue:#0083C8;--iw-blue-deep:#006AA3;--iw-link:#0083C8;--iw-tint:#EAF5FB;
+      --iw-head:rgba(255,255,255,.86);
+      --iw-sh1:0 1px 2px rgba(10,25,45,.06);--iw-sh2:0 8px 24px -16px rgba(10,25,45,.35);--iw-shadow:0 32px 80px -32px rgba(10,25,45,.35);
+      --iw-ease:cubic-bezier(.16,1,.3,1);
+      --iw-div:color-mix(in srgb,var(--iw-link) 45%,transparent);
+  }
+  /* dark = services/ithena-big-data-analytics.html: black + graphite neutrals, #3FA9E0 accent */
+  html.dark .iw-root{
+      --iw-panel:#111113;--iw-raise:#17181B;
+      --iw-ink:#F2F3F5;--iw-ink2:rgba(228,230,235,.8);--iw-mute:#9A9FA8;--iw-line:rgba(255,255,255,.09);
+      --iw-link:#3FA9E0;--iw-tint:rgba(63,169,224,.12);
+      --iw-head:rgba(10,10,11,.86);
+      --iw-sh1:0 1px 2px rgba(0,0,0,.5);--iw-sh2:0 18px 44px -24px rgba(0,0,0,.62);--iw-shadow:0 44px 90px -34px rgba(0,0,0,.72);
+  }
+
+  /* ===== scoped resets (class-only, so theme/Elementor tag styles can't leak in).
+  Hover/focus resets touch paint only, so component padding/size never jumps on hover. ===== */
+  .iw-root{display:block;margin:0;padding:0;font-family:"Noto Sans",system-ui,sans-serif;font-size:14px;line-height:1.45;color:var(--iw-ink);-webkit-font-smoothing:antialiased}
+  .iw-root,.iw-root *,.iw-root *::before,.iw-root *::after{box-sizing:border-box}
+  .iw-a{color:inherit;text-decoration:none}
+  .iw-a:hover,.iw-a:focus,.iw-a:visited{color:inherit;text-decoration:none}
+  .iw-b{margin:0;padding:0;font:inherit;color:inherit;letter-spacing:normal;text-transform:none;background:none;border:0;border-radius:0;box-shadow:none;cursor:pointer}
+  .iw-b:hover,.iw-b:focus{color:inherit;background:none;border-color:transparent;box-shadow:none}
+  .iw-i{display:block;flex:none;width:18px;height:18px}
+  .iw-root .iw-a:focus-visible,.iw-root .iw-b:focus-visible{outline:2px solid var(--iw-blue);outline-offset:2px;border-radius:8px}
+  @keyframes iw-in{from{opacity:0;transform:translateY(10px)}}
+
+  /* ===== bar: transparent, glass once scrolled ===== */
+  .iw-bar{position:fixed;inset:0 0 auto;z-index:999995;padding:14px 0;border-bottom:1px solid transparent;transition:padding .4s var(--iw-ease),background .4s var(--iw-ease),border-color .4s,box-shadow .4s}
+  .iw-bar.is-scrolled{padding:6px 0;background:var(--iw-head);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px);border-bottom-color:var(--iw-line);box-shadow:var(--iw-sh1)}
+  .iw-wrap{max-width:1280px;margin:0 auto;padding:10px 30px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .iw-logo-img{display:block;height:40px;width:auto;max-width:none}
+  /* html.dark .iw-logo-img{filter:brightness(0) invert(1)} */
+
+  /* top-level links: pill with wash on hover/open */
+  .iw-nav{display:flex;align-items:center;gap:4px}
+  .iw-item{position:relative}
+  .iw-link{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 14px;border-radius:999px;font-size:15px;font-weight:600;color:var(--iw-ink);white-space:nowrap;transition:background .2s,color .2s}
+  .iw-link .iw-ni-ic{color:var(--iw-link)}
+  .iw-link .iw-ch{width:14px;height:14px;color:var(--iw-mute);transition:transform .25s var(--iw-ease),color .2s}
+  .iw-link:hover,.iw-item.is-open>.iw-link{background:var(--iw-tint);color:var(--iw-link)}
+  .iw-item.is-open>.iw-link .iw-ch{transform:rotate(180deg);color:var(--iw-link)}
+
+  .iw-actions{display:flex;align-items:center;gap:12px}
+  .iw-btn,.iw-btn:hover,.iw-btn:focus{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;background:var(--iw-blue);color:#fff;font-size:14px;font-weight:700;white-space:nowrap;transition:background .2s,transform .15s}
+  .iw-btn:hover{background:var(--iw-blue-deep)}
+  .iw-btn:active{transform:translateY(1px)}
+  .iw-btn .iw-i{width:16px;height:16px;transition:transform .2s var(--iw-ease)}
+  .iw-btn:hover .iw-i{transform:translateX(3px)}
+
+  /* theme switch: pill track + round thumb */
+  .iw-theme,.iw-theme:hover,.iw-theme:focus{position:relative;flex-shrink:0;width:48px;height:26px;border:1px solid var(--iw-line);border-radius:999px;background:var(--iw-tint)}
+  .iw-thumb{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:var(--iw-blue);color:#fff;display:grid;place-items:center;box-shadow:var(--iw-sh1);transition:transform .35s var(--iw-ease)}
+  html.dark .iw-thumb{transform:translateX(22px)}
+  .iw-thumb .iw-i{position:absolute;width:12px;height:12px;transition:opacity .25s,transform .3s var(--iw-ease)}
+  .iw-moon,html.dark .iw-sun{opacity:0;transform:scale(.5)}
+  html.dark .iw-moon{opacity:1;transform:none}
+
+  .iw-icon-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:10px;color:var(--iw-ink);transition:background .2s}
+  .iw-icon-btn:hover{background:var(--iw-tint)}
+  .iw-icon-btn .iw-i{width:22px;height:22px}
+  .iw-burger{display:none}
+
+  /* ===== mega panel: floating card ===== */
+  .iw-mega{position:fixed;top:calc(var(--iw-header-h,72px) + 8px);left:50%;width:min(calc(100vw - 32px),1220px);background:var(--iw-panel);border:1px solid var(--iw-line);border-radius:24px;overflow:hidden;box-shadow:var(--iw-shadow);opacity:0;visibility:hidden;pointer-events:none;transform:translateX(-50%) translateY(-8px);transition:opacity .22s,transform .28s var(--iw-ease),visibility .28s;z-index:150}
+  .iw-item.is-open .iw-mega{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%)}
+  .iw-mega-in{padding:10px}
+
+  /* columns (branch children): no bg, separated by brand dividers */
+  .iw-cols{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .iw-row2{margin-top:10px}
+  .iw-row2::before{content:"";position:absolute;top:-6px;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,var(--iw-div),transparent)}
+  .iw-col{position:relative;padding:16px 14px}
+  .iw-col+.iw-col:not(:empty)::before{content:"";position:absolute;left:-6px;top:16px;bottom:16px;width:1px;background:linear-gradient(180deg,transparent,var(--iw-div),transparent)}
+  /* parent: icon + bold title */
+  .iw-col-head{display:flex;align-items:center;gap:12px;margin-bottom:8px;padding:0 10px 6px}
+  .iw-col-head .iw-i{width:22px;height:22px;color:var(--iw-link)}
+  .iw-col-t{display:block;margin:0 0 2px;font-size:16px;font-weight:700;letter-spacing:-.01em;color:var(--iw-ink);white-space:nowrap}
+  .iw-col-d{display:block;font-size:12.5px;color:var(--iw-mute);white-space:nowrap}
+  /* children start under the title text (10px pad + 22px icon + 12px gap = 44px; minus their own 10px pad) */
+  .iw-col>.iw-group,.iw-col>.iw-gitems{margin-left:34px}
+
+  /* groups (middle level): accordion, kicker labels */
+  .iw-gsum{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin:2px 0;padding:10px;border-radius:10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;text-align:left;color:var(--iw-ink2);transition:background .18s,color .18s}
+  .iw-gsum:hover,.iw-group.is-open>.iw-gsum{color:var(--iw-link);background:var(--iw-tint)}
+  .iw-gsum .iw-ch{width:14px;height:14px;transition:transform .25s var(--iw-ease)}
+  .iw-group.is-open>.iw-gsum .iw-ch{transform:rotate(180deg)}
+  .iw-gitems{display:flex;flex-direction:column;gap:2px;padding:2px 0 8px;overflow:hidden}
+  .iw-group:not(.is-open)>.iw-gitems{display:none}
+  .iw-group .iw-gitems{padding-left:14px}
+  .iw-gitems.is-animating{transition:height .3s var(--iw-ease),opacity .3s var(--iw-ease)}
+
+  /* leaf items (last child): no icon, lighter text, lift on hover, press on active */
+  .iw-it{position:relative;display:block;padding:8px 30px 8px 10px;border-radius:10px;transition:background .18s,box-shadow .18s,transform .18s var(--iw-ease)}
+  .iw-it:hover,.iw-it:focus-visible{background:var(--iw-raise);box-shadow:var(--iw-sh2)}
+  .iw-root .iw-it:focus-visible{outline:0}
+  .iw-it:active{transform:scale(.99)}
+  .iw-it-t{display:block;font-size:14px;font-weight:500;line-height:1.3;color:var(--iw-ink2);transition:color .18s}
+  .iw-it:hover .iw-it-t,.iw-it:focus-visible .iw-it-t{color:var(--iw-link)}
+  .iw-it-d{display:block;margin-top:2px;font-size:12.5px;color:var(--iw-mute);line-height:1.35}
+  .iw-it .iw-go{position:absolute;right:8px;top:50%;margin-top:-9px;color:var(--iw-link);opacity:0;transform:translateX(-6px);transition:opacity .18s,transform .18s var(--iw-ease)}
+  .iw-it:hover .iw-go,.iw-it:focus-visible .iw-go{opacity:1;transform:none}
+
+  /* cards (leaf children): no bg, brand dividers between, no icon */
+  .iw-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .iw-card{position:relative;padding:18px 20px;border-radius:14px;transition:background .18s,box-shadow .18s,transform .18s var(--iw-ease)}
+  .iw-card:not(:nth-child(3n+1))::before{content:"";position:absolute;left:-6px;top:16px;bottom:16px;width:1px;background:linear-gradient(180deg,transparent,var(--iw-div),transparent)}
+  .iw-card:nth-child(n+4)::after{content:"";position:absolute;top:-6px;left:20px;right:20px;height:1px;background:linear-gradient(90deg,transparent,var(--iw-div),transparent)}
+  .iw-card:hover{background:var(--iw-raise);box-shadow:var(--iw-sh2)}
+  .iw-card:active{transform:scale(.99)}
+  .iw-card-t{display:block;margin:0 0 4px;font-size:15px;font-weight:700;color:var(--iw-ink);transition:color .18s}
+  .iw-card:hover .iw-card-t{color:var(--iw-link)}
+  .iw-card-d{display:block;margin:0 0 8px;font-size:12.5px;color:var(--iw-mute);line-height:1.45}
+  .iw-explore,.iw-explore:hover,.iw-explore:focus{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--iw-link)}
+  .iw-explore .iw-i{width:12px;height:12px;transition:transform .2s var(--iw-ease)}
+  .iw-card:hover .iw-explore .iw-i{transform:translateX(3px)}
+
+  /* entry animation: --c = column index, --i = position in its list (set in markup).
+  "backwards" fill only holds the start frame during the delay, so hover/press transforms still work after. */
+  .iw-item.is-open :is(.iw-col-head,.iw-gsum,.iw-card),
+  .iw-item.is-open .iw-col>.iw-gitems>.iw-it{animation:iw-in .45s var(--iw-ease) backwards;animation-delay:calc(80ms + var(--c,0) * 70ms + var(--i,0) * 45ms)}
+  /* group items replay each time their group opens */
+  .iw-item.is-open .iw-group.is-open .iw-it{animation:iw-in .4s var(--iw-ease) backwards;animation-delay:calc(var(--i,0) * 45ms)}
+
+  /* ===== mobile panel ===== */
+  .iw-scrim{position:fixed;z-index:999996;inset:0;background:rgba(10,10,11,.5);opacity:0;visibility:hidden;transition:.3s}
+  .iw-scrim.is-open{opacity:1;visibility:visible}
+  .iw-panel{position:fixed;z-index:999997;top:0;right:0;width:min(420px,100vw);height:100dvh;padding:10px 20px 28px;overflow-y:auto;overscroll-behavior:contain;background:var(--iw-panel);transform:translateX(100%);transition:transform .3s var(--iw-ease)}
+  .iw-panel.is-open{transform:none}
+  .iw-mtop{display:flex;justify-content:space-between;align-items:center;margin:0 -20px 8px;padding:0 20px 10px;border-bottom:1px solid var(--iw-line)}
+  .iw-mtop .iw-logo-img{height:36px}
+  .iw-mt,.iw-mflat{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:52px;padding:10px 8px;font-size:16px;font-weight:700;color:var(--iw-ink);text-align:left}
+  .iw-mt .iw-ch{color:var(--iw-mute);transition:transform .25s var(--iw-ease)}
+  .iw-mi.is-open>.iw-mt .iw-ch{transform:rotate(180deg);color:var(--iw-link)}
+  .iw-sub{max-height:0;overflow:hidden;transition:max-height .4s var(--iw-ease)}
+  .iw-mi.is-open>.iw-sub{max-height:1200px;padding:0 0 14px 8px}
+  /* each nested level steps in 16px */
+  .iw-mi-nested.is-open>.iw-sub{padding:0 0 6px 16px}
+  /* brand divider between top-level sections */
+  .iw-panel>.iw-mi,.iw-panel>.iw-mflat{background:linear-gradient(90deg,var(--iw-div),transparent) bottom/100% 1px no-repeat}
+  /* level 1 (columns): bold, no bg */
+  .iw-mt-sub1{min-height:44px;padding:8px;font-size:15px}
+  .iw-mi.is-open>.iw-mt-sub1{color:var(--iw-link)}
+  /* level 2 (groups): blue kicker */
+  .iw-mt-sub:not(.iw-mt-sub1){min-height:40px;padding:12px 8px 4px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--iw-link)}
+  .iw-mt-l{display:flex;flex-direction:column;gap:2px}
+  .iw-mt-tag{font-size:12.5px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--iw-mute)}
+  /* leaf links (last child): no icon, indented, lighter */
+  .iw-ml{display:flex;align-items:center;min-height:44px;padding:8px 8px 8px 12px;border-radius:10px;font-size:14px;font-weight:500;color:var(--iw-ink2);transition:background .15s}
+  .iw-ml:hover{color:var(--iw-link)}
+  .iw-ml:active{background:var(--iw-tint)}
+  .iw-ml-text{display:flex;flex-direction:column;gap:2px}
+  .iw-ml-d{font-size:12.5px;color:var(--iw-mute);line-height:1.35}
+  .iw-mcta{width:100%;height:48px;margin-top:24px;font-size:15px}
+  /* entry animation: top level when the panel opens, children each time their section opens */
+  .iw-panel.is-open>:not(.iw-mtop),.iw-mi.is-open>.iw-sub>*{animation:iw-in .4s var(--iw-ease) backwards;animation-delay:calc(60ms + var(--i,0) * 45ms)}
+
+  /* ===== responsive / motion ===== */
+  @media (max-width:1180px){
+      .iw-cols{grid-template-columns:1fr}
+      .iw-col:empty{display:none}
+      .iw-col+.iw-col:not(:empty)::before{left:24px;right:24px;top:-6px;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,var(--iw-div),transparent)}
+      .iw-mega-in{max-height:calc(100vh - var(--iw-header-h,72px) - 24px);overflow-y:auto}
+  }
+  @media (max-width:980px){
+      .iw-mega,.iw-nav,.iw-actions>.iw-btn{display:none}
+      .iw-burger{display:flex}
+      .iw-logo-img{height:36px}
+  }
+  @media (prefers-reduced-motion:reduce){
+      .iw-root *,.iw-root *::before,.iw-root *::after{transition-duration:.01ms!important;animation:none!important}
+  }
+</style>
+
+<section class="iw-root" id="iw-root" role="banner">
+    <div class="iw-bar" id="iw-bar">
+        <div class="iw-wrap">
+            <a class="iw-a iw-logo" href="/"><img class="iw-logo-img" width="136" height="45" 
+                src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" alt="ITHENA home"></a>
+            <div class="iw-nav" id="iw-nav" role="navigation" aria-label="Main"></div>
+            <div class="iw-actions">
+                <button type="button" class="iw-b iw-theme" id="iw-theme" role="switch" aria-checked="false" aria-label="Switch to dark theme">
+                    <span class="iw-thumb">
+                        <svg class="iw-i iw-sun" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M10 1.5v2M10 16.5v2M18.5 10h-2M3.5 10h-2M15.8 4.2l-1.4 1.4M5.6 14.4l-1.4 1.4M15.8 15.8l-1.4-1.4M5.6 5.6L4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                        <svg class="iw-i iw-moon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M17 11.5A7.5 7.5 0 018.5 3 7.5 7.5 0 1017 11.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                    </span>
+                </button>
+                <a href="/contact/" class="iw-a iw-btn">Contact Us <svg class="iw-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <button type="button" class="iw-b iw-icon-btn iw-burger" id="iw-open" aria-label="Open menu" aria-controls="iw-panel" aria-expanded="false"><svg class="iw-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="iw-scrim" id="iw-scrim"></div>
+
+    <div class="iw-panel" id="iw-panel" role="navigation" aria-label="Menu">
+        <div class="iw-mtop">
+            <a class="iw-a iw-logo" href="/"><img class="iw-logo-img" width="136" height="45" src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" alt="ITHENA home"></a>
+            <button type="button" class="iw-b iw-icon-btn" id="iw-close" aria-label="Close menu"><svg class="iw-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        </div>
+        <a href="/contact/" class="iw-a iw-btn iw-mcta" style="--i:5">Contact Us</a>
+    </div>
+</section>
+
+<script>
+  (function () {
+      var root = document.getElementById('iw-root');
+      if (!root) return;
+      /* fixed children must sit on <body>: a transformed Elementor wrapper would re-anchor position:fixed */
+      if (root.parentElement !== document.body) document.body.prepend(root);
+
+      /* ---- menu data: same tree shape wp_get_nav_menu_items() builds (t=title, d=menu_subtitle, c=children) ---- */
+      function n(t, d, c) { return { t: t, d: d || '', u: '#', c: c }; }
+      function leaves(list) { return list.map(function (x) { return Array.isArray(x) ? n(x[0], x[1]) : n(x); }); }
+      var MENU = [
+          n('Solutions', '', [
+              n('OEM | Distributors', 'Build or sell equipment', [
+                  n('Production', '', leaves([['Customer & dealer CRM', 'iCRM'], ['Configure, price & quote', 'iCPQ'], ['Distributor ERP','iERP']])),
+                  n('After-market service', '', leaves([['Equipment monitoring', 'iSERV'], ['Field service portal', 'iSERV'], ['Parts & service store', 'B2B eCommerce']])),
+              ]),
+              n('Manufacturer', 'Run plants and lines', [
+                  n('Planning & Production', '', leaves([['Production planning', 'iPLAN'], ['Digital Gemba walks','iGEMBA'], ['Line performance', 'iSERV'], ['Manufacturing execution', 'MES']])),
+                  n('Maintenance & Quality', '', leaves([['CMMS', 'Maintenance management'], ['Quality management', 'QMS'], ['Smart Energy', 'iSEMS']]))
+              ]),
+              n('Enterprise', 'Run many sites as one', [
+                  n('Data & AI', '', leaves([['Practical AI platform', 'Aether'], ['Plant analytics', 'Analytics'], ['Enterprise data hub', 'iHub']])),
+                  n('Enterprise apps', '', leaves([['Customer relationships', 'CRM'], ['Social analytics', 'iSIP'], ['Supply chain planning', 'iPLAN'], ['Transportation', 'iTMS']])),
+              ])
+          ]),
+          n('Services', '', [
+              n('Data & AI', 'Make data answer back', [
+                  n('Data & AI', '', leaves([['AI strategy', 'A roadmap tied to plant numbers'], ['Big data & analytics','Warehouse, models and dashboards'], ['AI / ML & data science', 'Predictions from your own history']])),
+              ]),
+              n('Transformation', 'Move and modernise', [
+                  n('Cloud & integration', '', leaves([['Cloud adoption', 'Migrate the systems that should move'], ['Process integration','ERP, MES and CRM in one flow']])),
+                  n('Customer side', '', leaves([['Systems of engagement', 'Portals and apps on top of your ERP'], ['Customer experience','Journeys that end in a repeat order']])),
+              ]),
+              n('Plant integration', 'Machines into systems', [
+                  n('Plant integration', '', leaves([['Manufacturing execution', 'MES rolled out line by line'], ['Industrial IoT','Sensors, gateways and the data path']])),
+              ]),
+          ]),
+          n('Industries', '', [
+              n('Equipment builders', 'OEMs and distributors', leaves([['Packaging machinery', 'Lines, changeovers and uptime'], ['Food & Beverage Machines', 'Hygiene, Recipes And Traceability'], ['Compressed Air','Fleet Monitoring And Service'], ['Custom Tool Builders', 'Engineer-to-order, Quoted Right']])),
+              n('Plants', 'Plants Running Lines', leaves([['Industrial', 'Discrete and process plants'], ['Discrete & Automotive', 'Take, Quality and Supplier Flow'], ['Pharmaceutical','Batch Records And Compliance'], ['Energy And Utilities', 'Assets, Outages and Field Crews']])),
+              n('Other Sectors', 'Retail, Finance, Public', leaves([['FinTech And Insurance', 'Data Platforms And Analytics'], ['Government', 'Modernised Citizen Services'], ['Compressed Air','Fleet Monitoring And Service'], ['Retail And CPG', 'Demand, Stock And Fulfilment']])),
+          ]),
+          n('Case Studies'),
+          n('Company', '', [
+              n('About ITHENA', 'Team And Partners', leaves([['Who we are', 'Mission, Values And The Team'], ['Partnerships', 'Rockwell, PTC, Infor, Oracle, more'], ['Compressed Air','Fleet Monitoring And Service'], ['Custom Tool Builders', 'Engineer-to-order, Quoted Right']])),
+              n('News & insights', 'What We Write And Ship', leaves([['Blog', 'Practical Writing On Industrial AI'], ['Announcements', 'Releases, Launches And News']])),
+              n('Work With Us', 'Open Roles And Contact', leaves([['Careers', 'Open roles and life at ITHENA'], ['Contact us', 'Talk To An engineer, Not A Form']])),
+          ]),
+      ];
+
+      /* ---- line icons; in WP these would come from the menu item ---- */
+      function svg(d, cls) { return '<svg class="iw-i' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + d + '"/></svg>'; }
+      var P = {
+          layers: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 17l9 5 9-5', compass: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM15 9l-2 5-5 2 2-5z',
+          factory: 'M3 20V10l5 3v-3l5 3v-3l5 3v7zM7 20v-3M12 20v-3M17 20v-3M17 10V4h3v6', chart: 'M4 20V4M4 20h16M8 16v-5M12 16V8M16 16v-3M20 16V6',
+          building: 'M4 21V5l8-2v18M12 21h8V9h-8M8 8h1M8 12h1M8 16h1M16 12h1M16 16h1', cube: 'M12 3l8 4v10l-8 4-8-4V7zM4 7l8 4 8-4M12 11v10',
+          users: 'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M21 20a6 6 0 0 0-4-5.6',
+          db: 'M12 3c5 0 8 1.3 8 3s-3 3-8 3-8-1.3-8-3 3-3 8-3zM4 6v12c0 1.7 3 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3 3 8 3s8-1.3 8-3',
+          cloud: 'M7 18a4 4 0 0 1-.5-8A6 6 0 0 1 18 9a4 4 0 0 1 0 9z', bolt: 'M13 2L4 14h7l-1 8 9-12h-7z',
+          shield: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4',
+          wrench: 'M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.7 2.7-2-2z'
+      };
+      var ICON_FOR = {
+          'Solutions': 'layers', 'Services': 'compass', 'Industries': 'factory', 'Case Studies': 'chart', 'Company': 'building',
+          'OEM | Distributors': 'wrench', 'Manufacturer': 'factory', 'Enterprise': 'building',
+          'Advisory Consulting': 'compass', 'Data Management': 'db', 'Cloud Modernization': 'cloud', 'Business Transformation': 'users', 'Manufacturing Integration': 'bolt',
+          'OEM': 'wrench', 'Manufacturing': 'factory', 'Strategic Industries': 'shield'
+      };
+      function icon(title, cls) { return svg(P[ICON_FOR[title] || 'cube'], cls); }
+      var CHEV = svg('M6 9l6 6 6-6', 'iw-ch'), ARR = 'M5 12h14M13 6l6 6-6 6';
+
+      /* ---- builders (= the shortcode's PHP loops) ---- */
+      var hasKids = function (x) { return x.c && x.c.length; };
+      var isCards = function (node) { return !node.c.some(hasKids); };
+      var sub = function (cls, d) { return d ? '<span class="' + cls + '">' + d + '</span>' : ''; };
+      var st = function (i) { return ' style="--i:' + i + '"'; };   /* stagger index for the entry animation */
+      var uid = 0;
+
+      function it(leaf, i) {
+          return '<a href="' + leaf.u + '" class="iw-a iw-it"' + st(i) + '><span class="iw-it-t">' + leaf.t + '</span>' + sub('iw-it-d', leaf.d) + svg(ARR, 'iw-go') + '</a>';
+      }
+      function col(c, ci) {
+          var body = c.c.some(hasKids)
+              ? c.c.map(function (g, gi) { return '<div class="iw-group"' + st(gi + 1) + '><button type="button" class="iw-b iw-gsum" aria-expanded="false">' + g.t + CHEV + '</button><div class="iw-gitems">' + g.c.map(it).join('') + '</div></div>'; }).join('')
+              : '<div class="iw-gitems">' + c.c.map(function (l, i) { return it(l, i + 1); }).join('') + '</div>';
+          return '<div class="iw-col" style="--c:' + ci + '"><div class="iw-col-head">' + icon(c.t) + '<div><span class="iw-col-t">' + c.t + '</span>' + sub('iw-col-d', c.d) + '</div></div>' + body + '</div>';
+      }
+      function desktop(node) {
+          if (!hasKids(node)) return '<a class="iw-a iw-link" href="' + node.u + '">' + icon(node.t, 'iw-ni-ic') + node.t + '</a>';
+          var inner = '';
+          if (isCards(node)) {
+              inner = '<div class="iw-cards">' + node.c.map(function (c, i) {
+                  return '<div class="iw-card"' + st(i) + '><span class="iw-card-t">' + c.t + '</span>' + sub('iw-card-d', c.d) +
+                      '<a href="' + c.u + '" class="iw-a iw-explore">Explore ' + svg(ARR) + '</a></div>';
+              }).join('') + '</div>';
+          } else {
+              for (var r = 0; r < node.c.length; r += 3) {   /* = array_chunk(children, 3), short rows padded */
+                  var row = node.c.slice(r, r + 3), pad = '';
+                  for (var p = row.length; p < 3; p++) pad += '<div class="iw-col" aria-hidden="true"></div>';
+                  inner += '<div class="iw-cols' + (r ? ' iw-row2' : '') + '">' + row.map(col).join('') + pad + '</div>';
+              }
+          }
+          return '<div class="iw-item"><a class="iw-a iw-link" href="' + node.u + '" aria-haspopup="true" aria-expanded="false">' + icon(node.t, 'iw-ni-ic') + node.t + CHEV + '</a>' +
+              '<div class="iw-mega"><div class="iw-mega-in">' + inner + '</div></div></div>';
+      }
+      function mLink(leaf, rich, i) {
+          return '<a class="iw-a iw-ml" href="' + leaf.u + '"' + st(i) + '>' +
+              (rich ? '<span class="iw-ml-text"><span>' + leaf.t + '</span>' + sub('iw-ml-d', leaf.d) + '</span>' : leaf.t) + '</a>';
+      }
+      function mItem(cls, btnCls, label, body, i) {
+          var id = 'iw-m-' + (++uid);
+          return '<div class="' + cls + '"' + st(i) + '><button type="button" class="iw-b ' + btnCls + '" aria-expanded="false" aria-controls="' + id + '">' + label + CHEV + '</button><div class="iw-sub" id="' + id + '">' + body + '</div></div>';
+      }
+      function mobile(node, k) {
+          if (!hasKids(node)) return '<a class="iw-a iw-mflat" href="' + node.u + '"' + st(k) + '>' + node.t + '</a>';
+          var body = isCards(node)
+              ? node.c.map(function (c, i) { return mLink(c, false, i); }).join('')
+              : node.c.map(function (c, ci) {
+                  var inner = c.c.some(hasKids)
+                      ? c.c.map(function (g, gi) { return mItem('iw-mi iw-mi-nested', 'iw-mt iw-mt-sub', '<span class="iw-mt-l">' + g.t + '</span>', g.c.map(function (l, i) { return mLink(l, true, i); }).join(''), gi); }).join('')
+                      : c.c.map(function (l, i) { return mLink(l, true, i); }).join('');
+                  return mItem('iw-mi iw-mi-nested', 'iw-mt iw-mt-sub iw-mt-sub1', '<span class="iw-mt-l">' + c.t + sub('iw-mt-tag', c.d) + '</span>', inner, ci);
+              }).join('');
+          return mItem('iw-mi', 'iw-mt', node.t, body, k);
+      }
+      root.querySelector('#iw-nav').innerHTML = MENU.map(desktop).join('');
+      root.querySelector('.iw-mtop').insertAdjacentHTML('afterend', MENU.map(mobile).join(''));
+
+      /* ---- scroll state + --iw-header-h (mega panel sits right under the bar) ---- */
+      var bar = root.querySelector('#iw-bar');
+      function sync() {
+          bar.classList.toggle('is-scrolled', scrollY > 40);
+          root.style.setProperty('--iw-header-h', bar.offsetHeight + 'px');
+      }
+      addEventListener('scroll', sync, { passive: true });
+      addEventListener('resize', sync);
+      bar.addEventListener('transitionend', sync);
+      sync();
+
+      /* ---- mega open/close: hover with close delay, plus keyboard focus and Escape ---- */
+      var closeTimer = null;
+      var items = root.querySelectorAll('.iw-item');
+      function setOpen(item, on) {
+          item.classList.toggle('is-open', on);
+          item.querySelector('.iw-link').setAttribute('aria-expanded', on ? 'true' : 'false');
+      }
+      items.forEach(function (item) {
+          function open() {
+              clearTimeout(closeTimer);
+              items.forEach(function (i) { if (i !== item) setOpen(i, false); });
+              setOpen(item, true);
+          }
+          function close() { clearTimeout(closeTimer); closeTimer = setTimeout(function () { setOpen(item, false); }, 260); }
+          item.addEventListener('mouseenter', open);
+          item.addEventListener('mouseleave', close);
+          item.addEventListener('focusin', open);
+          item.addEventListener('focusout', function (e) { if (!item.contains(e.relatedTarget)) setOpen(item, false); });
+      });
+      addEventListener('keydown', function (e) {
+          if (e.key !== 'Escape') return;
+          var openItem = root.querySelector('.iw-item.is-open');
+          if (openItem) { setOpen(openItem, false); openItem.querySelector('.iw-link').focus(); }
+          closeMobile();
+      });
+
+      /* ---- theme switch: thin caller of window.ithenaTheme ---- */
+      ithenaTheme.sync();
+      root.querySelector('#iw-theme').addEventListener('click', ithenaTheme.toggle);
+
+      /* ---- mobile panel + per-level accordion ---- */
+      var mOpen = root.querySelector('#iw-open'), panel = root.querySelector('#iw-panel'), scrim = root.querySelector('#iw-scrim');
+      function openMobile() { panel.classList.add('is-open'); scrim.classList.add('is-open'); mOpen.setAttribute('aria-expanded', 'true'); }
+      function closeMobile() { panel.classList.remove('is-open'); scrim.classList.remove('is-open'); mOpen.setAttribute('aria-expanded', 'false'); }
+      mOpen.addEventListener('click', openMobile);
+      root.querySelector('#iw-close').addEventListener('click', closeMobile);
+      scrim.addEventListener('click', closeMobile);
+      panel.querySelectorAll('.iw-a').forEach(function (a) { a.addEventListener('click', closeMobile); });
+      panel.querySelectorAll('.iw-mt').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+              var item = btn.parentElement, on = !item.classList.contains('is-open');
+              item.parentElement.querySelectorAll(':scope > .iw-mi.is-open').forEach(function (s) {
+                  if (s !== item) { s.classList.remove('is-open'); s.querySelector('.iw-mt').setAttribute('aria-expanded', 'false'); }
+              });
+              item.classList.toggle('is-open', on);
+              btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+          });
+      });
+
+      /* ---- mega groups: one open per panel, animated height; timeout (not transitionend) so nothing sticks ---- */
+      var DURATION = 300, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function body(g) { return g.querySelector('.iw-gitems'); }
+      function settle(b) { b.classList.remove('is-animating'); b.style.height = b.style.opacity = ''; }
+      function setGroup(g, open) {
+          g.classList.toggle('is-open', open);
+          g.querySelector('.iw-gsum').setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      function animate(g, open) {
+          var b = body(g);
+          if (open) setGroup(g, true);
+          if (reduce) { setGroup(g, open); return; }
+          clearTimeout(b._t);
+          var h = b.scrollHeight;
+          b.classList.add('is-animating');
+          b.style.height = (open ? 0 : h) + 'px';
+          b.style.opacity = open ? '0' : '1';
+          requestAnimationFrame(function () { b.style.height = (open ? h : 0) + 'px'; b.style.opacity = open ? '1' : '0'; });
+          b._t = setTimeout(function () { settle(b); setGroup(g, open); }, DURATION + 40);
+      }
+      root.querySelectorAll('.iw-group').forEach(function (g) {
+          g.querySelector('.iw-gsum').addEventListener('click', function () {
+              var wasOpen = g.classList.contains('is-open');
+              g.closest('.iw-mega').querySelectorAll('.iw-group.is-open').forEach(function (o) { if (o !== g) animate(o, false); });
+              animate(g, !wasOpen);
+          });
+      });
+      /* reset groups after a panel closes so it reopens clean */
+      items.forEach(function (item) {
+          item.addEventListener('mouseleave', function () {
+              setTimeout(function () {
+                  if (item.classList.contains('is-open')) return;
+                  item.querySelectorAll('.iw-group').forEach(function (g) { settle(body(g)); setGroup(g, false); });
+              }, 400);
+          });
+      });
+  })();
+</script>

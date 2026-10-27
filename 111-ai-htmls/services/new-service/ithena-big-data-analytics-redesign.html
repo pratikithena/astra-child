@@ -1,0 +1,710 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@500;600;700;800&display=swap">
+<style>
+/* Enterprise intelligence: Big Data & Analytics, redesign (2026-10-21). Funnel: promise > why > platform > features > AI > offerings > delivery > proof > partners > call.
+   Interactions (services, maturity) are CSS-only radios so they work before Airlift releases inline scripts. */
+@property --n{syntax:"<integer>";inherits:false;initial-value:0}
+@property --ni{syntax:"<integer>";inherits:false;initial-value:0}
+@property --nd{syntax:"<integer>";inherits:false;initial-value:0}
+@property --r0{syntax:"<integer>";inherits:true;initial-value:72}
+@property --a1{syntax:"<integer>";inherits:true;initial-value:78}
+@property --a2{syntax:"<integer>";inherits:true;initial-value:64}
+@property --a3{syntax:"<integer>";inherits:true;initial-value:52}
+@property --a4{syntax:"<integer>";inherits:true;initial-value:70}
+section#main-section{--blue:#0083C8;--blue-d:#006AA3;--blue-l:#3FA9E0;--acc:#006AA3;--ink:#0A192D;--body:#46586A;--muted:#5B6B7A;--sa:#FFFFFF;--sb:#F2F8FD;--line:rgba(10,25,45,.10);--hair:rgba(10,25,45,.16);--tint:rgba(0,131,200,.08);--ez:cubic-bezier(.22,.61,.36,1);--fh:"Noto Sans",system-ui,sans-serif;--fb:"Inter",system-ui,sans-serif;--scrollbar:0px;color-scheme:light}
+section#main-section[data-theme="dark"]{--acc:#3FA9E0;--ink:#F2F3F5;--body:rgba(228,230,235,.8);--muted:#9A9FA8;--sa:#0A0A0B;--sb:#111113;--line:rgba(255,255,255,.09);--hair:rgba(255,255,255,.16);--tint:rgba(63,169,224,.10);color-scheme:dark}
+section#main-section .hero,section#main-section .cta{--acc:#3FA9E0;--ink:#FFFFFF;--body:rgba(228,236,245,.82);--muted:rgba(228,236,245,.62);--line:rgba(255,255,255,.12);--hair:rgba(255,255,255,.22);--tint:rgba(63,169,224,.14)}
+
+/* base: ID-scoped resets so Astra/Elementor globals (white h1..h6, button chrome) can't leak in */
+section#main-section{display:block!important;position:relative!important;margin-inline:calc(50% - 50vw + var(--scrollbar) / 2)!important;overflow-x:clip!important;background:var(--sa)!important;color:var(--body)!important;font:400 16px/1.65 var(--fb)!important;-webkit-font-smoothing:antialiased}
+section#main-section *,section#main-section *::before,section#main-section *::after{box-sizing:border-box!important}
+section#main-section :is(h1,h2,h3,h4){margin:0!important;padding:0!important;font-family:var(--fh)!important;font-weight:700!important;line-height:1.15!important;letter-spacing:-.015em;color:var(--ink)!important;text-wrap:balance}
+section#main-section :is(h1,h2,h3) em{font-style:normal!important;color:#0083C8!important}
+section#main-section :is(p,ul,ol,figure){margin:0!important;padding:0!important}
+section#main-section li{list-style:none!important;margin:0!important}
+section#main-section a{color:inherit!important;text-decoration:none!important}
+section#main-section img,section#main-section svg{display:block;max-width:100%}
+section#main-section button{font:inherit!important;color:inherit!important;background:none!important;border:0!important;padding:0!important;cursor:pointer!important;box-shadow:none!important;text-transform:none!important;letter-spacing:normal!important}
+section#main-section :focus-visible{outline:2px solid var(--blue-l)!important;outline-offset:3px!important}
+section#main-section .sr{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
+
+section#main-section .sec{position:relative;padding:112px 24px;background:var(--sa)}
+section#main-section .sec.alt{background:var(--sb)}
+section#main-section .wrap{position:relative;max-width:1200px;margin-inline:auto}
+section#main-section .head{max-width:720px;margin-bottom:64px}
+section#main-section .head.c{margin-inline:auto;text-align:center}
+section#main-section .kick{display:inline-flex;align-items:center;gap:11px;margin-bottom:18px!important;font:700 12px/1.25 var(--fb);letter-spacing:.17em;text-transform:uppercase;color:var(--acc)}
+section#main-section .kick::before{content:"";flex:none;width:28px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--blue),transparent)}
+section#main-section :is(.hero,.cta) .kick::before{background:linear-gradient(90deg,var(--blue-l),transparent)}
+section#main-section .h2{font-size:clamp(28px,3.6vw,42px)!important}
+section#main-section .lede{margin-top:16px!important;font-size:18px;font-weight:300;line-height:1.6}
+section#main-section .btns{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+section#main-section .btn{display:inline-flex!important;align-items:center;gap:10px;min-height:50px;padding:13px 28px!important;border-radius:999px!important;background:var(--blue)!important;color:#fff!important;font:600 16px/1.2 var(--fh)!important;transition:background .2s var(--ez),transform .2s var(--ez)}
+section#main-section .btn:hover{background:var(--blue-d)!important;transform:translateY(-2px)}
+section#main-section .btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:translate .3s var(--ez)}
+section#main-section .btn:hover svg{translate:4px 0}
+section#main-section .btn.ghost{background:transparent!important;color:var(--ink)!important;box-shadow:inset 0 0 0 1px var(--hair)!important}
+section#main-section .btn.ghost:hover{box-shadow:inset 0 0 0 1px var(--blue-l)!important}
+section#main-section .ic{display:grid;place-items:center;flex:none;width:52px;height:52px;border-radius:50%;color:var(--acc);background:var(--tint);box-shadow:inset 0 0 0 1px var(--line)}
+section#main-section .ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+section#main-section .chk{display:flex;gap:12px;align-items:flex-start}
+section#main-section .chk::before{content:"";flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/13px no-repeat}
+
+/* reveal: scroll-driven CSS only, so nothing waits on (delayed) JS; unsupported browsers just show content */
+@keyframes axIn{from{opacity:0;translate:0 26px}}
+@keyframes axKick{from{transform:scaleX(0)}}
+@supports (animation-timeline:view()){@media (prefers-reduced-motion:no-preference){
+  section#main-section .rv{animation:axIn linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+  section#main-section .kick::before{transform-origin:left;animation:axKick linear both;animation-timeline:view();animation-range:entry 20% entry 80%}
+}}
+
+/* count-up numbers: the final value is the base value, so reduced motion / no animation shows it directly */
+@keyframes axCount{from{--n:0}}
+section#main-section .n{--n:var(--to);counter-reset:n var(--n);font-style:normal;font-variant-numeric:tabular-nums;animation:axCount 2s var(--ez) .3s both}
+section#main-section .n::before{content:counter(n)}
+section#main-section .n.dec{--ni:calc((var(--n) - 4.5) / 10);--nd:calc(var(--n) - var(--ni) * 10);counter-reset:ni var(--ni) nd var(--nd)}
+section#main-section .n.dec::before{content:counter(ni) "." counter(nd)}
+
+/* 1 hero */
+section#main-section .hero{padding:150px 24px 0;overflow:hidden;isolation:isolate;color:var(--body);background:radial-gradient(60% 70% at 80% 40%,rgba(0,131,200,.22),transparent 70%),radial-gradient(40% 50% at 0% 100%,rgba(63,169,224,.10),transparent 70%),#05070A}
+section#main-section .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:repeating-radial-gradient(circle at 76% 44%,transparent 0 89px,rgba(63,169,224,.07) 90px 91px);-webkit-mask-image:radial-gradient(circle at 76% 44%,#000 20%,transparent 62%);mask-image:radial-gradient(circle at 76% 44%,#000 20%,transparent 62%)}
+section#main-section .hero::after{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.5px) 0 0/22px 22px;-webkit-mask-image:linear-gradient(105deg,#000 0,rgba(0,0,0,.55) 55%,#000 100%);mask-image:linear-gradient(105deg,#000 0,rgba(0,0,0,.55) 55%,#000 100%)}
+section#main-section .hero-g{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+section#main-section .h1{font-size:clamp(34px,5vw,56px)!important;line-height:1.08!important;letter-spacing:-.025em}
+section#main-section .hero .lede{max-width:540px;margin:22px 0 36px!important}
+section#main-section .hero-note{margin-top:20px!important;font-size:14px;color:var(--muted)}
+/* hero devices: laptop (16:10) + phone (9:19.5) showing the readiness dashboard. Screens are size containers,
+   so the dashboard's type and spacing (cqw) keep their proportions at every device size. */
+section#main-section .devs{--dv-bezel:#0E1116;--dv-frame:#C9D1DB;--dv-frame2:#A9B3BF;--db-bg:#FFFFFF;--db-card:#F3F7FB;--db-ink:#0A192D;--db-mut:#5B6B7A;--db-line:rgba(10,25,45,.10);--db-track:rgba(10,25,45,.08);--db-ok:#15803D;--db-sh:rgba(10,25,45,.28);
+  --r0:72;--a1:78;--a2:64;--a3:52;--a4:70;position:relative;max-width:580px;margin-inline:auto;padding-bottom:7%;animation:axRingIn 1.8s var(--ez) .2s both,axRing 14s ease-in-out 2.6s infinite}
+section#main-section[data-theme="dark"] .devs{--dv-bezel:#05070A;--dv-frame:#2B3038;--dv-frame2:#1A1E24;--db-bg:#0B1322;--db-card:rgba(255,255,255,.04);--db-ink:#F2F3F5;--db-mut:#94A0AE;--db-line:rgba(255,255,255,.09);--db-track:rgba(255,255,255,.08);--db-ok:#4ADE80;--db-sh:rgba(0,0,0,.7)}
+@keyframes axRingIn{from{--r0:0;--a1:0;--a2:0;--a3:0;--a4:0}}
+@keyframes axRing{0%,100%{--r0:72;--a1:78;--a2:64;--a3:52;--a4:70}30%,42%{--r0:77;--a1:84;--a2:70;--a3:59;--a4:74}64%,76%{--r0:69;--a1:75;--a2:61;--a3:56;--a4:67}}
+@keyframes axFloat{50%{translate:0 -8px}}
+section#main-section .lap{position:relative;width:86%}
+section#main-section .lap-scr{container-type:inline-size;aspect-ratio:16/10;padding:2.2%;border-radius:14px 14px 4px 4px;background:var(--dv-bezel);box-shadow:inset 0 0 0 1.5px var(--dv-frame),0 34px 60px -34px var(--db-sh)}
+section#main-section .lap-base{position:relative;width:116%;margin-left:-8%;aspect-ratio:30/1;border-radius:0 0 50% 50% / 0 0 100% 100%;background:linear-gradient(var(--dv-frame),var(--dv-frame2));box-shadow:0 18px 30px -18px var(--db-sh)}
+section#main-section .lap-base::before{content:"";position:absolute;top:0;left:50%;width:16%;height:40%;margin-left:-8%;border-radius:0 0 8px 8px;background:var(--dv-frame2)}
+section#main-section .mob{position:absolute;right:0;bottom:0;width:23%;animation:axFloat 7s ease-in-out 2s infinite}
+section#main-section .mob-scr{container-type:inline-size;aspect-ratio:9/19.5;padding:4.5%;border-radius:16% / 7.4%;background:var(--dv-bezel);box-shadow:inset 0 0 0 1.5px var(--dv-frame),0 30px 50px -22px var(--db-sh)}
+section#main-section .db{position:relative;display:flex;flex-direction:column;gap:2.4cqw;height:100%;padding:3.2cqw;border-radius:1.4cqw;background:var(--db-bg);color:var(--db-mut);font:500 2.1cqw/1.3 var(--fb);text-align:left;overflow:hidden}
+section#main-section .db-top{display:flex;align-items:center;gap:2cqw;padding-bottom:2cqw;border-bottom:1px solid var(--db-line)}
+section#main-section .db-dots{display:flex;gap:1cqw}
+section#main-section .db-dots i{width:1.5cqw;height:1.5cqw;border-radius:50%;background:var(--db-mut);opacity:.35}
+section#main-section .db-top b{flex:1;font:600 2.6cqw/1.2 var(--fh);color:var(--db-ink)}
+section#main-section .db-live{display:inline-flex;align-items:center;gap:1cqw;padding:.7cqw 1.8cqw;border-radius:99px;background:rgba(34,197,94,.14);color:var(--db-ok);font:700 1.6cqw/1 var(--fb);letter-spacing:.12em;text-transform:uppercase}
+section#main-section .db-live::before{content:"";width:1.2cqw;height:1.2cqw;border-radius:50%;background:currentColor;animation:axPing 1.6s ease-out infinite}
+@keyframes axPing{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}100%{box-shadow:0 0 0 1.4cqw rgba(74,222,128,0)}}
+section#main-section .db-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2cqw}
+section#main-section .db-kpis>div,section#main-section .db-pn,section#main-section .db-chip{border-radius:1.8cqw;background:var(--db-card);box-shadow:inset 0 0 0 1px var(--db-line)}
+section#main-section .db-kpis>div{padding:2.2cqw;min-width:0}
+section#main-section .db-kpis span{display:block;font-size:1.9cqw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+section#main-section .db-kpis b{display:block;margin:1cqw 0 .6cqw;font:700 4.6cqw/1.1 var(--fh);color:var(--db-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+section#main-section .db-kpis b small{font-size:.5em;font-weight:600;color:var(--db-mut)}
+section#main-section .db-kpis em{font-style:normal;font-weight:600;font-size:1.8cqw;color:var(--db-ok)}
+section#main-section .db-main{flex:1;display:grid;grid-template-columns:1.4fr 1fr;gap:2cqw;min-height:0}
+section#main-section .db-pn{display:flex;flex-direction:column;padding:2.2cqw;min-width:0;min-height:0}
+section#main-section .db-h{display:flex;justify-content:space-between;gap:1cqw;margin-bottom:1.6cqw!important;font:600 2cqw/1.3 var(--fb);color:var(--db-ink)}
+section#main-section .db-h small{font-weight:500;color:var(--db-mut)}
+section#main-section .db-pn svg{flex:1;width:100%;min-height:0;overflow:visible}
+section#main-section .db-grid{fill:none;stroke:var(--db-line);stroke-width:.6}
+section#main-section .db-area{fill:url(#axDbFill);animation:axTrendA 9s ease-in-out 2.4s infinite}
+section#main-section .db-line{fill:none;stroke:#3FA9E0;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;animation:axLineIn 1.6s var(--ez) .5s both,axTrend 9s ease-in-out 2.4s infinite}
+@keyframes axLineIn{from{stroke-dashoffset:1}}
+@keyframes axTrend{50%{d:path("M0 72L40 58L80 60L120 40L160 36L200 16")}}
+@keyframes axTrendA{50%{d:path("M0 72L40 58L80 60L120 40L160 36L200 16V90H0Z")}}
+section#main-section .db-bars{display:grid;gap:2cqw;align-content:start}
+section#main-section .db-bars li{display:grid;grid-template-columns:1fr auto;row-gap:.9cqw;font-size:1.9cqw}
+section#main-section .db-bars em{font-style:normal;font-weight:700;color:var(--db-ink);counter-reset:n var(--v);font-variant-numeric:tabular-nums}
+section#main-section .db-bars em::before{content:counter(n) "%"}
+section#main-section .db-bars i{position:relative;grid-column:1/-1;height:1.2cqw;border-radius:9px;background:var(--db-track);overflow:hidden}
+section#main-section .db-bars i::after{content:"";position:absolute;inset:0 auto 0 0;width:calc(var(--v) * 1%);border-radius:inherit;background:linear-gradient(90deg,#0083C8,#3FA9E0)}
+section#main-section .devs .r0{counter-reset:n var(--r0);font-style:normal;font-variant-numeric:tabular-nums}
+section#main-section .devs .r0::before{content:counter(n)}
+/* phone: same dashboard, stacked; cqw here is the phone screen width */
+section#main-section .db-m{gap:5cqw;padding:15cqw 7cqw 7cqw;border-radius:12cqw;font-size:6cqw}
+section#main-section .mob-notch{position:absolute;top:4.5cqw;left:50%;width:30cqw;height:6.5cqw;margin-left:-15cqw;border-radius:99px;background:var(--dv-bezel)}
+section#main-section .db-m .db-h{margin:0!important;font-size:7cqw}
+section#main-section .db-gauge{position:relative;display:grid;place-content:center;width:62cqw;aspect-ratio:1;margin:0 auto;text-align:center}
+section#main-section .db-gauge::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(#0083C8,#3FA9E0 calc(var(--r0) * 1%),var(--db-track) 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 6cqw),#000 calc(100% - 5.6cqw));mask:radial-gradient(farthest-side,transparent calc(100% - 6cqw),#000 calc(100% - 5.6cqw))}
+section#main-section .db-gauge b{font:800 16cqw/1 var(--fh);color:var(--db-ink)}
+section#main-section .db-gauge small{font-size:5.5cqw}
+section#main-section .db-m .db-bars{gap:4cqw}
+section#main-section .db-m .db-bars li{row-gap:2cqw;font-size:6cqw}
+section#main-section .db-m .db-bars i{height:3cqw}
+section#main-section .db-chip{margin-top:auto;padding:4cqw;font-size:6cqw;color:var(--db-ink);text-align:center}
+section#main-section .devs-cap{width:76%;margin-top:18px!important;text-align:center;font-size:12px;color:var(--muted)}
+
+/* 2 three questions: one curved path, three round stops */
+section#main-section .qs{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+section#main-section .qs-line{position:absolute;top:0;left:16%;width:68%;height:120px;pointer-events:none}
+section#main-section .qs-line path{fill:none;stroke:var(--blue-l);stroke-width:2;stroke-dasharray:2 8;stroke-linecap:round;opacity:.7;animation:axDash 1s linear infinite}
+@keyframes axDash{to{stroke-dashoffset:-10}}
+section#main-section .q-n::after{content:"";position:absolute;inset:-9px;border-radius:50%;box-shadow:0 0 0 2px var(--blue-l),0 0 0 12px var(--tint);opacity:0;pointer-events:none;animation:axStepRing 7.5s var(--ez) infinite}
+section#main-section .q-n{animation:axStep 7.5s var(--ez) infinite}
+section#main-section .q:nth-of-type(2) .q-n,section#main-section .q:nth-of-type(2) .q-n::after{animation-delay:2.5s}
+section#main-section .q:nth-of-type(3) .q-n,section#main-section .q:nth-of-type(3) .q-n::after{animation-delay:5s}
+@keyframes axStep{0%,36%,100%{scale:1}6%,30%{scale:1.07}}
+@keyframes axStepRing{0%{opacity:0;scale:.9}6%,30%{opacity:1;scale:1}36%,100%{opacity:0;scale:1.08}}
+section#main-section .q{position:relative;text-align:center}
+section#main-section .q-n{position:relative;display:grid;place-items:center;width:120px;height:120px;margin:0 auto 28px;border-radius:50%;background:radial-gradient(circle at 30% 25%,var(--sa),var(--sb));box-shadow:inset 0 0 0 1px var(--hair),0 24px 50px -28px rgba(0,80,140,.45)}
+section#main-section .q-n svg{width:40px;height:40px;fill:none;stroke:var(--acc);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+section#main-section .q-n i{position:absolute;top:2px;right:2px;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;font:700 12px/1 var(--fh);font-style:normal}
+section#main-section .q .tag{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+section#main-section .q h3{margin:8px 0 12px!important;font-size:26px!important}
+section#main-section .q p{max-width:340px;margin-inline:auto!important}
+
+/* 4 alignment: four layers around one core */
+section#main-section .al{display:grid;grid-template-columns:1fr auto 1fr;gap:40px 56px;align-items:center}
+section#main-section .al-core{grid-column:2;grid-row:1/3;position:relative;display:grid;place-items:center;width:260px;height:260px;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 31px,var(--line) 32px 33px)}
+section#main-section .al-core b{position:relative;z-index:1;display:grid;place-items:center;width:112px;height:112px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#3FA9E0,#0083C8 60%,#006AA3);color:#fff;font:700 15px/1.25 var(--fh);text-align:center;box-shadow:0 20px 50px -18px rgba(0,131,200,.6);animation:axBreath 4s ease-in-out infinite}
+section#main-section .al-core{--orb:98px}
+section#main-section .al-core::before,section#main-section .al-core::after{content:"";position:absolute;top:50%;left:50%;width:112px;height:112px;margin:-56px 0 0 -56px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--blue-l);opacity:0;pointer-events:none;animation:axRipple 4s ease-out infinite}
+section#main-section .al-core::after{animation-delay:2s}
+section#main-section .al-core b::before{content:"";position:absolute;top:50%;left:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#4FE0D0;box-shadow:0 0 0 5px rgba(79,224,208,.18),0 0 18px rgba(79,224,208,.7);animation:axOrbit 9s linear infinite}
+@keyframes axBreath{50%{scale:1.05;box-shadow:0 24px 60px -14px rgba(0,131,200,.75)}}
+@keyframes axRipple{0%{opacity:.7;scale:1}100%{opacity:0;scale:2.3}}
+@keyframes axOrbit{from{transform:rotate(0) translateX(var(--orb)) rotate(0)}to{transform:rotate(360deg) translateX(var(--orb)) rotate(-360deg)}}
+section#main-section .al-i{display:flex;gap:18px;align-items:flex-start}
+section#main-section .al-i:nth-child(1){grid-area:1/1}
+section#main-section .al-i:nth-child(2){grid-area:1/3}
+section#main-section .al-i:nth-child(4){grid-area:2/1}
+section#main-section .al-i:nth-child(5){grid-area:2/3}
+section#main-section .al-i:is(:nth-child(1),:nth-child(4)){flex-direction:row-reverse;text-align:right}
+section#main-section .al-i h3{margin-bottom:8px!important;font-size:19px!important}
+section#main-section .al-i p{font-size:15px}
+
+/* 5 services: radios + labels (no JS) */
+section#main-section .sv{display:grid;grid-template-columns:minmax(0,1fr);gap:36px;align-items:start}
+section#main-section .sv-nav{display:grid;gap:10px}
+section#main-section .sv-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-left:248px}
+section#main-section .sv-g{flex:none;width:240px;margin:0 0 0 -248px!important;white-space:nowrap;padding:0!important;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+section#main-section .sv-g:first-child{margin-top:0!important}
+section#main-section .sv-g span{color:var(--muted)}
+section#main-section .sv-t{position:relative;display:block;padding:10px 18px;box-shadow:inset 0 0 0 1px var(--line);border-radius:999px;cursor:pointer;transition:background .25s var(--ez),color .25s var(--ez)}
+section#main-section .sv-t input{position:absolute;opacity:0;pointer-events:none}
+section#main-section .sv-t b{display:block;font:600 16px/1.3 var(--fh);color:var(--ink)}
+section#main-section .sv-t small{display:none}
+section#main-section .sv-t:hover{background:var(--tint)}
+section#main-section .sv-t:has(input:checked){background:var(--blue)}
+section#main-section .sv-t:has(input:checked) :is(b,small){color:#fff}
+section#main-section .sv-t:has(input:focus-visible){outline:2px solid var(--blue-l);outline-offset:2px}
+section#main-section .sv-p{position:relative;padding:48px 52px;border-radius:40px;background:radial-gradient(120% 90% at 100% 0%,var(--tint),transparent 60%),var(--sa);box-shadow:inset 0 0 0 1px var(--line),0 40px 80px -50px rgba(0,60,110,.35)}
+section#main-section .sv-p+.sv-p{margin-top:24px}
+section#main-section .sv-p::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line),0 0 0 30px transparent;background:repeating-radial-gradient(circle,transparent 0 23px,var(--line) 24px 25px);opacity:.8;pointer-events:none}
+section#main-section .sv-p .tag{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+section#main-section .sv-p h3{margin:10px 0 14px!important;font-size:clamp(24px,2.6vw,32px)!important}
+section#main-section .sv-p>p{max-width:560px;font-size:17px}
+section#main-section .sv-p h4{margin:32px 0 16px!important;font-size:13px!important;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)!important}
+section#main-section .sv-p ul{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
+section#main-section .sv-p li{color:var(--ink);font-weight:500}
+section#main-section .sv-p .btn{margin-top:36px}
+@supports selector(:has(*)){
+  section#main-section .sv-p{display:none}
+  section#main-section .sv-p+.sv-p{margin-top:0}
+  section#main-section .sv:has(#of1:checked) [data-p="1"],section#main-section .sv:has(#of2:checked) [data-p="2"],section#main-section .sv:has(#of3:checked) [data-p="3"],section#main-section .sv:has(#of4:checked) [data-p="4"]{display:block;animation:axFade .45s var(--ez)}
+}
+@keyframes axFade{from{opacity:0;translate:12px 0}}
+section#main-section .nudge{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;margin-top:72px;padding:22px 22px 22px 36px;border-radius:999px;background:linear-gradient(90deg,var(--tint),transparent 80%);box-shadow:inset 0 0 0 1px var(--line)}
+section#main-section .nudge p{max-width:640px;color:var(--ink);font-size:17px}
+section#main-section .nudge p b{font-weight:700}
+
+
+/* hero copy */
+section#main-section .hsub{margin-top:18px!important;font:600 clamp(18px,2vw,22px)/1.4 var(--fh);color:var(--ink)}
+section#main-section .hero .lede{margin-top:14px!important}
+
+/* platform flow under the hero: the seven stages as one connected strip, a highlight travels along it */
+section#main-section .flow-w{margin-top:88px;padding:34px 0 48px;border-top:1px solid var(--line);text-align:center}
+section#main-section .flow-cap{margin-bottom:22px!important;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+section#main-section .flow{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;row-gap:14px}
+section#main-section .flow li{display:flex;align-items:center;font:600 15px/1.2 var(--fh);color:var(--ink)}
+section#main-section .flow li+li::before{content:"";width:30px;height:2px;margin-inline:4px;background:repeating-linear-gradient(90deg,var(--blue-l) 0 4px,transparent 4px 8px);opacity:.7}
+section#main-section .flow span{padding:10px 18px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--hair);animation:axLit 7s var(--ez) infinite}
+section#main-section .flow li:nth-child(2) span{animation-delay:1s}
+section#main-section .flow li:nth-child(3) span{animation-delay:2s}
+section#main-section .flow li:nth-child(4) span{animation-delay:3s}
+section#main-section .flow li:nth-child(5) span{animation-delay:4s}
+section#main-section .flow li:nth-child(6) span{animation-delay:5s}
+section#main-section .flow li:nth-child(7) span{animation-delay:6s}
+@keyframes axLit{0%,18%,100%{background:transparent;color:var(--ink)}4%,12%{background:var(--blue);color:#fff;box-shadow:inset 0 0 0 1px var(--blue),0 0 0 6px rgba(0,131,200,.18)}}
+
+/* 2 outcome path: data -> delighted customers on one rising wave */
+section#main-section .jr{position:relative;margin-bottom:88px}
+section#main-section .jr>svg{position:absolute;top:0;left:0;width:100%;height:150px;overflow:visible}
+section#main-section .jr path{fill:none;stroke:var(--blue-l);stroke-width:2;stroke-dasharray:2 8;stroke-linecap:round;opacity:.75;vector-effect:non-scaling-stroke;animation:axDash 1s linear infinite}
+section#main-section .jr ol{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:12px;min-height:200px}
+section#main-section .jr li{display:flex;flex-direction:column;align-items:center;text-align:center}
+section#main-section .jr i{flex:none;width:18px;height:18px;margin-top:calc(var(--y) * 1px - 9px);border-radius:50%;background:var(--sa);box-shadow:inset 0 0 0 3px var(--blue-l),0 0 0 6px var(--tint)}
+section#main-section .jr li:first-child i,section#main-section .jr li:last-child i{width:26px;height:26px;margin-top:calc(var(--y) * 1px - 13px);background:var(--blue);box-shadow:0 0 0 8px var(--tint)}
+section#main-section .jr b{margin-top:14px;font:700 16px/1.3 var(--fh);color:var(--ink);max-width:150px}
+
+/* 3 platform layers: a horizontal zigzag, odd layers read above the line, even below */
+section#main-section .lz{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:auto 112px auto}
+section#main-section .lz ol{display:contents}
+section#main-section .lz-line{grid-column:1/-1;grid-row:2;width:100%;height:112px;overflow:visible;pointer-events:none}
+section#main-section .lz-line path{fill:none;stroke:var(--blue-l);stroke-width:2;stroke-dasharray:2 8;stroke-linecap:round;stroke-linejoin:round;opacity:.8;vector-effect:non-scaling-stroke;animation:axDash 1s linear infinite}
+section#main-section .lz li{display:grid;grid-row:1/4;grid-template-rows:subgrid;justify-items:center;text-align:center}
+section#main-section .lz li:nth-child(1){grid-column:1}
+section#main-section .lz li:nth-child(2){grid-column:2}
+section#main-section .lz li:nth-child(3){grid-column:3}
+section#main-section .lz li:nth-child(4){grid-column:4}
+section#main-section .lz li:nth-child(5){grid-column:5}
+section#main-section .lz li:nth-child(6){grid-column:6}
+section#main-section .lz .nd{grid-row:2;align-self:start;position:relative;z-index:1;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--sb);box-shadow:inset 0 0 0 2px var(--blue-l),0 0 0 8px var(--sb);font:700 14px/1 var(--fh);color:var(--acc);animation:axNodeLit 6s var(--ez) infinite}
+section#main-section .lz li:nth-child(even) .nd{align-self:end}
+section#main-section .lz li:nth-child(2) .nd{animation-delay:1s}
+section#main-section .lz li:nth-child(3) .nd{animation-delay:2s}
+section#main-section .lz li:nth-child(4) .nd{animation-delay:3s}
+section#main-section .lz li:nth-child(5) .nd{animation-delay:4s}
+section#main-section .lz li:nth-child(6) .nd{animation-delay:5s}
+@keyframes axNodeLit{0%,20%,100%{background:var(--sb);color:var(--acc)}5%,14%{background:var(--blue);color:#fff}}
+section#main-section .lz .tx{grid-row:1;align-self:end;padding:0 11px 20px}
+section#main-section .lz li:nth-child(even) .tx{grid-row:3;align-self:start;padding:20px 11px 0}
+section#main-section .lz h3{margin-bottom:8px!important;font-size:18px!important}
+section#main-section .lz p{font-size:14px;line-height:1.55}
+
+/* 5 four AI pillars on the circle-step path */
+section#main-section .qs.q4{grid-template-columns:repeat(4,1fr);gap:36px}
+section#main-section .qs.q4 .qs-line{left:12%;width:76%}
+section#main-section .q4 .q-n,section#main-section .q4 .q-n::after{animation-duration:10s}
+section#main-section .q4 .q:nth-of-type(2) .q-n,section#main-section .q4 .q:nth-of-type(2) .q-n::after{animation-delay:2.5s}
+section#main-section .q4 .q:nth-of-type(3) .q-n,section#main-section .q4 .q:nth-of-type(3) .q-n::after{animation-delay:5s}
+section#main-section .q4 .q:nth-of-type(4) .q-n,section#main-section .q4 .q:nth-of-type(4) .q-n::after{animation-delay:7.5s}
+section#main-section .q4 .q h3{font-size:20px!important}
+section#main-section .q4 .q p{font-size:15px}
+
+/* 6 offerings: one row of four tabs */
+section#main-section .sv-nav.one{display:flex;flex-wrap:wrap;gap:10px}
+section#main-section .sv-t i{margin-right:8px;font-style:normal;font-weight:700;color:var(--acc)}
+section#main-section .sv-t:has(input:checked) i{color:#fff}
+section#main-section .sv-p p+p{margin-top:12px!important}
+
+/* 7 delivery: progressive steps, each bar rises higher than the last */
+section#main-section .ps ol{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0 22px;background:linear-gradient(var(--hair),var(--hair)) 0 280px/100% 1px no-repeat}
+section#main-section .ps li{display:grid;grid-template-rows:280px auto auto;justify-items:center;text-align:center}
+section#main-section .ps .bar{align-self:end;display:flex;justify-content:center;width:64px;height:calc(76px + var(--i) * 32px);border-radius:999px 999px 14px 14px;background:linear-gradient(180deg,rgba(0,131,200,calc(.35 + var(--i) * .11)),rgba(0,131,200,.06));box-shadow:inset 0 0 0 1px rgba(63,169,224,.4)}
+section#main-section .ps .num{display:grid;place-items:center;width:44px;height:44px;margin-top:10px;border-radius:50%;background:#fff;color:#0083C8;font:700 14px/1 var(--fh);box-shadow:0 8px 18px -10px rgba(0,60,110,.6)}
+section#main-section .ps li:last-child .num{background:#0083C8;color:#fff;box-shadow:0 0 0 6px rgba(0,131,200,.22)}
+section#main-section .ps h3{margin-top:22px!important;font-size:18px!important}
+section#main-section .ps p{max-width:190px;margin-top:8px!important;font-size:14px;line-height:1.5;color:var(--muted)}
+@keyframes axRise{from{clip-path:inset(100% 0 0 0 round 999px 999px 14px 14px)}to{clip-path:inset(0 0 0 0 round 999px 999px 14px 14px)}}
+@supports (animation-timeline:view()){@media (prefers-reduced-motion:no-preference){
+  section#main-section .ps .bar{animation:axRise linear both;animation-timeline:view();animation-range:entry 20% cover 30%}
+  section#main-section .ps li:nth-child(2) .bar{animation-range:entry 30% cover 34%}
+  section#main-section .ps li:nth-child(3) .bar{animation-range:entry 40% cover 38%}
+  section#main-section .ps li:nth-child(4) .bar{animation-range:entry 50% cover 42%}
+  section#main-section .ps li:nth-child(5) .bar{animation-range:entry 60% cover 46%}
+  section#main-section .ps li:nth-child(6) .bar{animation-range:entry 70% cover 50%}
+}}
+
+/* 8 success stories: a scroll-snap rail of rounded photos, no cards */
+section#main-section .stry{display:grid;grid-auto-flow:column;grid-auto-columns:min(400px,80vw);gap:40px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:24px;margin-inline:-24px!important;padding:6px 24px 28px!important;scrollbar-width:thin;scrollbar-color:var(--hair) transparent;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 72px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 72px),transparent)}
+section#main-section .stry li{scroll-snap-align:start}
+section#main-section .stry figure{position:relative;aspect-ratio:4/3;margin-bottom:22px!important;border-radius:32px;overflow:hidden;background:var(--sb)}
+section#main-section .stry img{width:100%;height:100%;object-fit:cover;transition:scale .6s var(--ez)}
+section#main-section .stry li:hover img{scale:1.04}
+section#main-section .stry .ind{position:absolute;left:16px;top:16px;padding:6px 14px;border-radius:999px;background:rgba(5,7,10,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+section#main-section .stry h3{margin-bottom:10px!important;font-size:20px!important}
+section#main-section .stry p{font-size:15px}
+section#main-section .stry-hint{display:flex;align-items:center;gap:10px;margin-top:8px!important;font-size:14px;color:var(--muted)}
+section#main-section .stry-hint::after{content:"";width:40px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--blue-l),transparent);animation:axNudge 1.6s ease-in-out infinite}
+@keyframes axNudge{50%{translate:8px 0}}
+
+/* 9 partners: round logo + name + what we do together, as a flowing list */
+section#main-section .pl{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 24px}
+section#main-section .pl a{display:flex;gap:16px;align-items:flex-start;padding:16px 18px;border-radius:32px;transition:background .25s var(--ez)}
+section#main-section .pl a:hover{background:var(--tint)}
+section#main-section .pl .lg{flex:none;display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1px rgba(10,25,45,.08),0 12px 26px -18px rgba(0,40,80,.5)}
+section#main-section .pl .lg img{max-width:44px;max-height:38px;object-fit:contain}
+section#main-section .pl b{display:flex;align-items:center;gap:6px;font:700 16px/1.3 var(--fh);color:var(--ink)}
+section#main-section .pl b svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0;translate:-4px 0;transition:opacity .25s var(--ez),translate .25s var(--ez)}
+section#main-section .pl a:hover b svg{opacity:1;translate:0 0}
+section#main-section .pl span{display:block;margin-top:4px;font-size:14px;line-height:1.5}
+/* 9 CTA (uniform bottom CTA: 40/28px title, 18px lede, Noto Sans, 660px desktop min-height) */
+section#main-section .cta{padding:0;background:#05070A;color:#fff}
+section#main-section .cta-in{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch;min-height:660px;overflow:hidden;background:radial-gradient(70% 90% at 0% 100%,rgba(0,131,200,.28),transparent 70%),repeating-radial-gradient(circle at 0% 100%,transparent 0 79px,rgba(63,169,224,.06) 80px 81px),#0A192D}
+section#main-section .cta-copy{display:flex;flex-direction:column;justify-content:center;padding:64px clamp(28px,5vw,80px)}
+section#main-section .cta h2{font-size:40px!important;font-family:"Noto Sans",system-ui,sans-serif!important}
+section#main-section .cta .lede{max-width:520px;font-size:18px}
+section#main-section .cta .btns{margin-top:34px}
+section#main-section .cta-li{display:grid;gap:12px;margin-top:30px!important}
+section#main-section .cta-li li{color:#fff}
+section#main-section .cta-med{position:relative;margin:24px 24px 24px 0;border-radius:32px;overflow:hidden;background:#0F2238}
+section#main-section .cta-med img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+section#main-section .cta-med::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(5,7,10,.55))}
+section#main-section .cta-play{position:absolute!important;top:50%;left:50%;z-index:2;display:grid!important;place-items:center;width:76px;height:76px;border-radius:50%!important;background:var(--blue)!important;color:#fff!important;transform:translate(-50%,-50%);box-shadow:0 0 0 12px rgba(0,131,200,.22),0 20px 40px -12px rgba(0,0,0,.6)!important;transition:transform .25s var(--ez)}
+section#main-section .cta-play:hover{transform:translate(-50%,-50%) scale(1.07)}
+section#main-section .cta-play svg{width:24px;height:24px;margin-left:3px;fill:currentColor}
+section#main-section .cta-med figcaption{position:absolute;left:28px;bottom:24px;z-index:2;font-size:14px;font-weight:600;color:#fff}
+section#main-section .video-modal{position:fixed;inset:50% auto auto 50%;transform:translate(-50%,-50%);margin:0;width:min(960px,92vw);padding:0;border:0;border-radius:20px;background:#000;overflow:hidden}
+section#main-section .video-modal::backdrop{background:rgba(0,0,0,.75);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+section#main-section .video-modal video{display:block;width:100%;max-height:82vh;background:#000}
+section#main-section .video-modal-close{position:absolute!important;top:12px;right:12px;z-index:2;display:grid!important;place-items:center;width:38px;height:38px;border-radius:50%!important;background:rgba(0,0,0,.6)!important;color:#fff!important}
+section#main-section .video-modal-close svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+
+/* theme toggle (only shown when the site header doesn't own theming) */
+section#main-section .ax-tgl{position:fixed;top:100px;right:20px;z-index:50;display:grid!important;place-items:center;width:44px;height:44px;border-radius:50%!important;background:var(--sa)!important;color:var(--ink)!important;box-shadow:inset 0 0 0 1px var(--hair),0 10px 24px -12px rgba(0,0,0,.5)!important}
+section#main-section .ax-tgl[hidden]{display:none!important}
+section#main-section .ax-tgl svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+section#main-section .ax-tgl .moon,section#main-section[data-theme="dark"] .ax-tgl .sun{display:none}
+section#main-section[data-theme="dark"] .ax-tgl .moon{display:block}
+
+
+@media (max-width:1024px){
+  section#main-section .hero-g{grid-template-columns:1fr;gap:56px}
+  section#main-section .devs{max-width:520px}
+  section#main-section .sv{grid-template-columns:1fr;gap:28px}
+  section#main-section .sv-nav.one{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-24px;padding:4px 24px}
+  section#main-section .sv-t{flex:none}
+  section#main-section .al{grid-template-columns:1fr 1fr;gap:40px}
+  section#main-section .al-core{grid-column:1/-1;grid-row:auto;width:200px;height:200px;margin-inline:auto;--orb:76px}
+  section#main-section .al-i:nth-child(n){grid-area:auto;flex-direction:row;text-align:left}
+  section#main-section .qs.q4{grid-template-columns:1fr 1fr;gap:48px 36px}
+  section#main-section .qs.q4 .qs-line{display:none}
+  section#main-section .pl{grid-template-columns:1fr 1fr}
+  section#main-section .lz{grid-template-columns:1fr;grid-template-rows:none}
+  section#main-section .lz::before{content:"";position:absolute;left:25px;top:26px;bottom:26px;width:2px;background:linear-gradient(var(--blue-l),rgba(63,169,224,.15))}
+  section#main-section .lz-line{display:none}
+  section#main-section .lz li{grid-row:auto;grid-column:1!important;grid-template-columns:52px 1fr;grid-template-rows:none;column-gap:20px;justify-items:start;text-align:left}
+  section#main-section .lz .nd,section#main-section .lz li:nth-child(even) .nd{grid-row:1;grid-column:1;align-self:start}
+  section#main-section .lz .tx,section#main-section .lz li:nth-child(even) .tx{grid-row:1;grid-column:2;align-self:start;padding:12px 0 26px}
+  section#main-section .cta-in{grid-template-columns:1fr;min-height:0}
+  section#main-section .cta-med{margin:0 20px 20px;aspect-ratio:16/9}
+  section#main-section .cta h2{font-size:28px!important}
+}
+@media (max-width:760px){
+  section#main-section .sec{padding:80px 16px}
+  section#main-section .hero{padding:120px 16px 0}
+  section#main-section .head{margin-bottom:44px}
+  section#main-section .flow-w{margin-top:64px}
+  section#main-section .flow li+li::before{width:14px}
+  section#main-section .flow span{padding:8px 14px;font-size:14px}
+  section#main-section .qs,section#main-section .qs.q4{grid-template-columns:1fr;gap:40px}
+  section#main-section .qs-line{display:none}
+  section#main-section .jr>svg{display:none}
+  section#main-section .jr ol{grid-template-columns:1fr;gap:18px;min-height:0;padding-left:8px!important}
+  section#main-section .jr ol::before{content:"";position:absolute;left:20px;top:10px;bottom:10px;width:2px;background:repeating-linear-gradient(var(--blue-l) 0 4px,transparent 4px 10px)}
+  section#main-section .jr li{flex-direction:row;gap:16px;text-align:left}
+  section#main-section .jr i,section#main-section .jr li:first-child i,section#main-section .jr li:last-child i{margin-top:0;margin-left:3px;width:18px;height:18px}
+  section#main-section .jr b{margin-top:0;max-width:none}
+  section#main-section .al{grid-template-columns:1fr}
+  section#main-section .sv-p{padding:32px 24px;border-radius:28px}
+  section#main-section .sv-p ul{grid-template-columns:1fr}
+  section#main-section .ps ol{grid-template-columns:1fr;gap:26px;background:none}
+  section#main-section .ps li{grid-template-columns:44px 1fr;grid-template-rows:auto auto;column-gap:16px;justify-items:start;text-align:left}
+  section#main-section .ps .bar{grid-row:1/3;align-self:start;width:auto;height:auto;background:none;box-shadow:none;animation:none!important}
+  section#main-section .ps .num{margin:0}
+  section#main-section .ps h3{margin-top:8px!important}
+  section#main-section .ps p{max-width:none}
+  section#main-section .ps p::after{content:"";display:block;width:calc(var(--i) * 16.66%);height:4px;margin-top:12px;border-radius:4px;background:linear-gradient(90deg,#0083C8,#3FA9E0)}
+  section#main-section .stry{gap:24px;margin-inline:-16px!important;padding-inline:16px!important;scroll-padding-inline:16px}
+  section#main-section .pl{grid-template-columns:1fr}
+  section#main-section .cta-copy{padding:56px 24px 32px}
+  section#main-section .cta-med{margin:0 12px 12px;border-radius:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  section#main-section *{animation:none!important;transition:none!important}
+}
+
+/* schedule popup (copied verbatim from the live service pages) */
+.pk-schd{--sc-card:#FFFFFF;--sc-srf:#F4F7FA;--sc-ink:#1F2023;--sc-ink2:rgba(0,0,0,.70);--sc-line:#EAEAEA;--sc-blue:#0083C8;--sc-wash:#EDF7FC;--sc-ff:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--sc-ez:cubic-bezier(.2,0,0,1);position:fixed!important;inset:0!important;z-index:999999!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:20px!important;margin:0!important;background:rgba(13,27,46,.62)!important;-webkit-backdrop-filter:blur(6px)!important;backdrop-filter:blur(6px)!important;opacity:0!important;visibility:hidden!important;transition:opacity .25s var(--sc-ez),visibility .25s var(--sc-ez)!important;font-family:var(--sc-ff)!important;color:var(--sc-ink)!important;line-height:1.6!important}
+.pk-schd[data-theme="dark"]{--sc-card:#17181B;--sc-srf:#111113;--sc-ink:#F2F3F5;--sc-ink2:rgba(228,230,235,.8);--sc-line:rgba(255,255,255,.1);--sc-blue:#39A8DE;--sc-wash:rgba(0,131,200,.16)}
+.pk-schd[hidden]{display:flex!important}
+.pk-schd.is-open{opacity:1!important;visibility:visible!important}
+body:has(.pk-schd.is-open) #chatBubbleRoot{display:none!important}
+.pk-schd,.pk-schd *,.pk-schd *::before,.pk-schd *::after{box-sizing:border-box}
+.pk-schd-panel{position:relative!important;width:100%!important;max-width:480px!important;max-height:88vh!important;overflow-y:auto!important;background:var(--sc-card)!important;color:var(--sc-ink)!important;border-radius:24px!important;border:1px solid var(--sc-line)!important;box-shadow:0 40px 90px -30px rgba(0,0,0,.6)!important;padding:clamp(24px,4vw,36px)!important;transform:translateY(18px) scale(.98)!important;transition:transform .28s var(--sc-ez)!important}
+.pk-schd.is-open .pk-schd-panel{transform:none!important}
+.pk-schd-close{position:absolute!important;top:14px!important;right:14px!important;width:34px!important;height:34px!important;padding:0!important;border-radius:50%!important;display:grid!important;place-items:center!important;background:var(--sc-srf)!important;border:1px solid var(--sc-line)!important;color:var(--sc-ink)!important;cursor:pointer!important;transition:background-color .2s var(--sc-ez),border-color .2s var(--sc-ez)!important}
+.pk-schd-close:hover{background:var(--sc-wash)!important;border-color:var(--sc-blue)!important}
+.pk-schd-close svg{width:15px!important;height:15px!important;display:block!important}
+.pk-schd-head{padding-right:36px!important;margin-bottom:22px!important}
+.pk-schd-head .eyb{display:flex!important;align-items:center!important;gap:9px!important;margin:0 0 10px!important;padding:0!important;font-size:12px!important;font-weight:700!important;letter-spacing:.17em!important;text-transform:uppercase!important;color:var(--sc-blue)!important}
+.pk-schd-head .eyb::before{content:""!important;width:22px!important;height:2px!important;border-radius:2px!important;background:currentColor!important;flex:none!important}
+.pk-schd-head h3{font-size:24px!important;font-weight:700!important;letter-spacing:-.02em!important;line-height:1.2!important;margin:0 0 8px!important;padding:0!important;color:var(--sc-ink)!important}
+.pk-schd-head p{font-size:14px!important;line-height:1.6!important;color:var(--sc-ink2)!important;margin:0!important;padding:0!important}
+.pk-schd-form{width:100%!important}
+.pk-schd-form .frm_forms,.pk-schd-form .elementor-widget-shortcode{max-width:100%!important;margin:0!important}
+.pk-schd-form input[type=text],.pk-schd-form input[type=email],.pk-schd-form input[type=tel],.pk-schd-form input[type=number],.pk-schd-form input[type=url],.pk-schd-form select,.pk-schd-form textarea{font-family:var(--sc-ff)!important;font-size:15px!important;padding:12px 15px!important;border-radius:100px!important;border:1px solid var(--sc-line)!important;background:var(--sc-srf)!important;color:var(--sc-ink)!important;width:100%!important}
+.pk-schd-form textarea{border-radius:12px!important;resize:vertical!important}
+.pk-schd-form label{font-size:13px!important;font-weight:600!important;color:var(--sc-ink2)!important}
+.pk-schd-form .frm_submit button,.pk-schd-form button[type=submit],.pk-schd-form input[type=submit]{background:var(--sc-blue)!important;color:#fff!important;border:0!important;border-radius:100px!important;font-family:var(--sc-ff)!important;font-weight:700!important;font-size:15px!important;padding:14px 26px!important;cursor:pointer!important;width:auto!important}
+.pk-schd-empty{font-size:14px!important;line-height:1.6!important;color:var(--sc-ink2)!important;margin:0!important;padding:0!important}
+.pk-schd-empty a{color:var(--sc-blue)!important;font-weight:600!important;text-decoration:none!important}
+.pk-schd :focus-visible{outline:2px solid var(--sc-blue)!important;outline-offset:3px!important;border-radius:4px}
+@media (max-width:520px){
+ .pk-schd{padding:12px!important}
+ .pk-schd-panel{max-height:92vh!important}
+}
+@media (prefers-reduced-motion:reduce){
+ .pk-schd{transition:none!important}
+ .pk-schd-panel{transform:none!important;transition:none!important}
+}
+</style>
+
+<section id="main-section" class="svc ax bda" data-theme="dark">
+<button type="button" class="ax-tgl" id="axTheme" aria-label="Switch to light theme" hidden><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg></button> -->
+
+<!-- 1 · Promise -->
+<section class="sec hero" aria-labelledby="bda-h1">
+<div class="wrap">
+<div class="hero-g">
+<div>
+<p class="kick">Enterprise intelligence · Data &amp; AI</p>
+<h1 class="h1" id="bda-h1">Big data &amp; analytics services for <em>smarter decisions</em></h1>
+<p class="hsub">Harness the power of ONE Data Platform to drive business outcomes</p>
+<p class="lede">Ingestion, modeling, semantic layer, KPIs, analytics, workflows and AI, on one platform.</p>
+<div class="btns">
+<button type="button" class="btn" data-schedule-demo>Book a consultation <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+<a class="btn ghost" href="#bda-offer">Explore offerings</a>
+</div>
+</div>
+<figure class="devs" role="img" aria-label="Illustrative ONE Data Platform dashboard on a laptop and a phone: sources connected, records ingested per day, KPIs tracked, insights over time and pipeline health by stage.">
+<div class="lap" aria-hidden="true"><div class="lap-scr"><div class="db">
+<div class="db-top"><span class="db-dots"><i></i><i></i><i></i></span><b>ONE Data Platform</b><span class="db-live">Live</span></div>
+<div class="db-kpis"><div><span>Sources connected</span><b><i class="n" style="--to:42"></i></b><em>▲ 6 this month</em></div><div><span>Records ingested / day</span><b><i class="n dec" style="--to:186"></i>M</b><em>▲ 12%</em></div><div><span>Data health</span><b><i class="r0"></i><small> /100</small></b><em>▲ 9 pts</em></div></div>
+<div class="db-main">
+<div class="db-pn"><p class="db-h">Insights generated <small>Last 6 months</small></p><svg viewBox="0 0 200 90"><defs><linearGradient id="axDbFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3FA9E0" stop-opacity=".35"/><stop offset="1" stop-color="#3FA9E0" stop-opacity="0"/></linearGradient></defs><path class="db-grid" d="M0 22H200M0 45H200M0 68H200"/><path class="db-area" d="M0 70L40 62L80 55L120 44L160 33L200 22V90H0Z"/><path class="db-line" pathLength="1" d="M0 70L40 62L80 55L120 44L160 33L200 22"/></svg></div>
+<div class="db-pn"><p class="db-h">Pipeline health</p><ul class="db-bars"><li style="--v:var(--a1)"><span>Ingestion</span><em></em><i></i></li><li style="--v:var(--a2)"><span>Modeling</span><em></em><i></i></li><li style="--v:var(--a3)"><span>Semantic layer</span><em></em><i></i></li><li style="--v:var(--a4)"><span>AI models</span><em></em><i></i></li></ul></div>
+</div>
+</div></div><div class="lap-base"></div></div>
+<div class="mob" aria-hidden="true"><div class="mob-scr"><div class="db db-m"><span class="mob-notch"></span>
+<p class="db-h">Data health</p>
+<div class="db-gauge"><b><i class="r0"></i></b><small>/100</small></div>
+<ul class="db-bars"><li style="--v:var(--a1)"><span>Ingestion</span><em></em><i></i></li><li style="--v:var(--a2)"><span>Modeling</span><em></em><i></i></li><li style="--v:var(--a3)"><span>Semantic layer</span><em></em><i></i></li><li style="--v:var(--a4)"><span>AI models</span><em></em><i></i></li></ul>
+<div class="db-chip">Data harnessed from every source</div>
+</div></div></div>
+<figcaption class="devs-cap">Illustrative view of the ONE Data Platform</figcaption>
+</figure>
+</div>
+<div class="flow-w">
+<p class="flow-cap">One platform, end to end</p>
+<ol class="flow" aria-label="ONE Data Platform stages"><li><span>Ingestion</span></li><li><span>Modeling</span></li><li><span>Semantic layer</span></li><li><span>KPIs</span></li><li><span>Analytics</span></li><li><span>Workflows</span></li><li><span>AI</span></li></ol>
+</div>
+</div>
+</section>
+
+<!-- 2 · Why it matters -->
+<section class="sec" id="bda-why" aria-labelledby="bda-why-h">
+<div class="wrap">
+<div class="head c rv"><p class="kick">The big picture</p><h2 class="h2" id="bda-why-h">AI-driven <em>big data &amp; analytics</em></h2><p class="lede">ITHENA’s big data &amp; analytics capabilities help organizations harness their data and use it to identify new opportunities. That, in turn, leads to intelligent business moves, more efficient operations, much higher profits and delighted customers.</p></div>
+<div class="jr rv">
+<svg viewBox="0 0 1000 150" preserveAspectRatio="none" aria-hidden="true"><path d="M0 128C40 124 60 120 83 120S200 92 250 90S370 100 417 100S540 62 583 60S700 70 750 70S880 32 917 30S980 26 1000 24"/></svg>
+<ol aria-label="What your data turns into"><li style="--y:120"><i></i><b>Your data</b></li><li style="--y:90"><i></i><b>New opportunities</b></li><li style="--y:100"><i></i><b>Intelligent business moves</b></li><li style="--y:60"><i></i><b>More efficient operations</b></li><li style="--y:70"><i></i><b>Much higher profits</b></li><li style="--y:30"><i></i><b>Delighted customers</b></li></ol>
+</div>
+<div class="qs">
+<svg class="qs-line" viewBox="0 0 680 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 C110 0 230 0 340 60 S570 120 680 60"/></svg>
+<div class="q rv"><div class="q-n"><i>01</i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z"/><path d="M18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></div><span class="tag">Insights</span><h3>Auto-generated insights</h3><p>Insights surface from your data on their own, without waiting for someone to build the report.</p></div>
+<div class="q rv"><div class="q-n"><i>02</i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v10H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg></div><span class="tag">Language</span><h3>Natural language processing</h3><p>Ask questions of your data in plain language and read the answers the same way.</p></div>
+<div class="q rv"><div class="q-n"><i>03</i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l2.8 2.8M16.2 16.2 19 19M5 19l2.8-2.8M16.2 7.8 19 5"/></svg></div><span class="tag">Action</span><h3>Agentic AI</h3><p>AI that moves from insight to the next step, so findings turn into action.</p></div>
+</div>
+</div>
+</section>
+
+<!-- 3 · How the platform works -->
+<section class="sec alt" id="bda-platform" aria-labelledby="bda-platform-h">
+<div class="wrap">
+<div class="head c rv"><p class="kick">How the platform works</p><h2 class="h2" id="bda-platform-h">ONE Data Platform <em>framework</em></h2><p class="lede">Six layers take data from its source to a decision, each one building on the layer below.</p></div>
+<div class="lz rv">
+<svg class="lz-line" viewBox="0 0 600 112" preserveAspectRatio="none" aria-hidden="true"><path d="M50 26L150 86L250 26L350 86L450 26L550 86"/></svg>
+<ol role="list">
+<li><span class="nd">01</span><div class="tx"><h3>Data source connectivity</h3><p>One interface to manage every data source, keeping credentials apart from data use.</p></div></li>
+<li><span class="nd">02</span><div class="tx"><h3>Data ingestion and live streams</h3><p>Ingest batch sources and live streams through one UI, ready to organize, access and analyze.</p></div></li>
+<li><span class="nd">03</span><div class="tx"><h3>Data enrichment in the lake</h3><p>Builds a data lake with rich metadata, upserts and multiple versions for consistent reads.</p></div></li>
+<li><span class="nd">04</span><div class="tx"><h3>Semantic layer for discovery</h3><p>Hides data complexity so end users can discover, explore, access and analyze it on their own.</p></div></li>
+<li><span class="nd">05</span><div class="tx"><h3>End-user visualization</h3><p>Visualizes data consistently, showing the live status of enterprise metrics and KPIs.</p></div></li>
+<li><span class="nd">06</span><div class="tx"><h3>Realize true AI outcomes</h3><p>Takes machine learning beyond data science teams, delivering clear outcomes to users.</p></div></li>
+</ol>
+</div>
+</div>
+</section>
+
+<!-- 4 · Why teams choose it -->
+<section class="sec" id="bda-features" aria-labelledby="bda-features-h">
+<div class="wrap">
+<div class="head c rv"><p class="kick">Why teams choose it</p><h2 class="h2" id="bda-features-h">Key features of the integrated <em>ONE Data Platform</em></h2></div>
+<div class="al">
+<div class="al-i rv"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 7v10c0 1.7 3.6 3 8 3M20 7v4"/><path d="M15 17h6M18 14l3 3-3 3"/></svg></span><div><h3>Massive data ingestion</h3><p>At incredible speeds.</p></div></div>
+<div class="al-i rv"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5l3 8M16 7.5l-3 8M8.5 6h7"/></svg></span><div><h3>Complex modeling</h3><p>With multi-source integration.</p></div></div>
+<div class="al-core" aria-hidden="true"><b>ONE Data<br>Platform</b></div>
+<div class="al-i rv"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></span><div><h3>End-user self-service</h3><p>Best in class.</p></div></div>
+<div class="al-i rv"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><div><h3>Data security and audit</h3><p>Enhanced across the platform.</p></div></div>
+</div>
+</div>
+</section>
+
+<!-- 5 · Where AI is heading -->
+<section class="sec alt" id="bda-ai" aria-labelledby="bda-ai-h">
+<div class="wrap">
+<div class="head c rv"><p class="kick">Where AI is heading</p><h2 class="h2" id="bda-ai-h">Unforgettable <em>AI experiences</em></h2><p class="lede">As the world moves beyond automation towards autonomy, AI/ML is fast becoming a cornerstone of an organization’s future readiness. See how customers use ITHENA’s AI capabilities, integrated across human and machine learning.</p></div>
+<div class="qs q4">
+<svg class="qs-line" viewBox="0 0 680 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 C110 0 230 0 340 60 S570 120 680 60"/></svg>
+<div class="q rv"><div class="q-n"><i>01</i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M6 16v-5M11 16V7M16 16v-8M21 16V4"/></svg></div><span class="tag">Functional</span><h3>AI-driven functional use cases</h3><p>Analytics for sales and promotions, supply chain operations, manufacturing and service, built on your industrial IoT data sets.</p></div>
+<div class="q rv"><div class="q-n"><i>02</i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div><span class="tag">Digital technology</span><h3>AI-based digital technology solutions</h3><p>Machine, vision, image, video and text AI capabilities that get far more value out of your ERP, big data and telematics datasets.</p></div>
+<div class="q rv"><div class="q-n"><i>03</i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 010-7M15.5 8.5a5 5 0 010 7M5.6 18.4a9 9 0 010-12.8M18.4 5.6a9 9 0 010 12.8"/></svg></div><span class="tag">IoT &amp; telematics</span><h3>AI across IoT and telematics data feeds</h3><p>Turn event streams, equipment and telematics feeds into pattern recognition, early warnings and predictive intelligence.</p></div>
+<div class="q rv"><div class="q-n"><i>04</i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><span class="tag">Experiences</span><h3>Engaging experiences with AI</h3><p>Bring complex AI outcomes into easy-to-use visualizations, and feed machine learning results straight into your BI tools.</p></div>
+</div>
+</div>
+</section>
+
+<!-- 6 · Offerings -->
+<section class="sec" id="bda-offer" aria-labelledby="bda-offer-h">
+<div class="wrap">
+<div class="head rv"><p class="kick">What we offer</p><h2 class="h2" id="bda-offer-h">The transformational power of <em>data-embedded intelligence</em></h2><p class="lede">In today’s data-centered world, it’s easier to acquire vast amounts of data than to manage, organize and extract valuable insights from it. Four services help you use the transformational power of data-embedded intelligence.</p></div>
+<div class="sv">
+<div class="sv-nav one" role="radiogroup" aria-label="Big data and analytics services"><label class="sv-t"><input type="radio" name="bdaof" id="of1" checked><b><i>01</i>Advisory &amp; consultancy services</b></label><label class="sv-t"><input type="radio" name="bdaof" id="of2"><b><i>02</i>Data management</b></label><label class="sv-t"><input type="radio" name="bdaof" id="of3"><b><i>03</i>Enterprise BI</b></label><label class="sv-t"><input type="radio" name="bdaof" id="of4"><b><i>04</i>Data visualization</b></label></div>
+<div aria-live="polite">
+<article class="sv-p" data-p="1"><span class="tag">01 · Advise</span><h3>Advisory &amp; consultancy services</h3><p>ITHENA engages with leaders to define data-driven business models, digital strategy and transformation roadmaps. Our seasoned consultants have worked with global organizations on:</p><h4>What it covers</h4><ul><li class="chk">ROI &amp; business case identification and development</li><li class="chk">Design &amp; architecture of data strategy and roadmap</li><li class="chk">Technology evaluation, prototyping and benchmarking</li><li class="chk">Change management and training</li></ul><button type="button" class="btn" data-schedule-demo>Discuss advisory services <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
+<article class="sv-p" data-p="2"><span class="tag">02 · Manage</span><h3>Data management</h3><p>ITHENA implements policies and procedures that put the organization in control of its business data, wherever it resides. Our offerings cover:</p><h4>What it covers</h4><ul><li class="chk">Data engineering &amp; enterprise data integration</li><li class="chk">IT &amp; OT data integration</li><li class="chk">Master data management implementation</li><li class="chk">Setup of enterprise data stores, data warehouses and data lakes</li><li class="chk">Information architecture on cloud, hybrid and on-premise</li><li class="chk">Migration and integration with a big data platform</li></ul><button type="button" class="btn" data-schedule-demo>Discuss data management <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
+<article class="sv-p" data-p="3"><span class="tag">03 · Report</span><h3>Enterprise BI</h3><p>ITHENA’s enterprise BI helps small and large organizations increase productivity and efficiency. We help customers set up an enterprise-wide business intelligence platform covering:</p><h4>What it covers</h4><ul><li class="chk">Reporting, dashboarding and workflows for business &amp; functions</li><li class="chk">Advanced analytics using machine learning, AI and data science</li><li class="chk">Self-service BI frameworks</li><li class="chk">Mobile business intelligence</li><li class="chk">Migration of BI platforms</li></ul><button type="button" class="btn" data-schedule-demo>Discuss enterprise BI <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
+<article class="sv-p" data-p="4"><span class="tag">04 · Visualize</span><h3>Data visualization</h3><p>ITHENA’s data visualization communicates business insights through visual representation, distilling large datasets into graphics that make complex relationships in the data easy to understand.</p><p>These analytics offerings focus on specific business areas and problems, including sales, service logistics, inventory, manufacturing and quality.</p><h4>What it covers</h4><ul><li class="chk">Enterprise real-time IoT analytics</li><li class="chk">Social intelligence &amp; analytics</li><li class="chk">Real-time vehicle analytics platform</li><li class="chk">Departmental analytics</li></ul><button type="button" class="btn" data-schedule-demo>Discuss data visualization <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 7 · How we deliver -->
+<section class="sec alt" id="bda-deliver" aria-labelledby="bda-deliver-h">
+<div class="wrap">
+<div class="head rv"><p class="kick">How we deliver</p><h2 class="h2" id="bda-deliver-h">How we run <em>big data programs</em></h2><p class="lede">A holistic approach to shaping and implementing big data and analytics programs, in six steps.</p></div>
+<div class="ps rv">
+<ol><li style="--i:1"><span class="bar"><span class="num">01</span></span><h3>Ideate</h3><p>Interview, empathize and ideate to clearly define needs</p></li><li style="--i:2"><span class="bar"><span class="num">02</span></span><h3>Understand</h3><p>Understand the business to achieve maximum impact</p></li><li style="--i:3"><span class="bar"><span class="num">03</span></span><h3>Acquire</h3><p>Data acquisition, modeling and ingestion</p></li><li style="--i:4"><span class="bar"><span class="num">04</span></span><h3>Build pipeline</h3><p>Create repeatable ETL-based data pipelines</p></li><li style="--i:5"><span class="bar"><span class="num">05</span></span><h3>Data modeling</h3><p>Model data to business requirements for high impact</p></li><li style="--i:6"><span class="bar"><span class="num">06</span></span><h3>Deployment</h3><p>Deploy and stage instances into production</p></li></ol>
+</div>
+</div>
+</section>
+
+<!-- 8 · Proof -->
+<section class="sec" id="bda-stories" aria-labelledby="bda-stories-h">
+<div class="wrap">
+<div class="head rv"><p class="kick">Success stories</p><h2 class="h2" id="bda-stories-h">Where our analytics <em>delivered value</em></h2><p class="lede">Selected success stories where our big data &amp; analytics helped clients create and deliver value.</p></div>
+<ul class="stry" tabindex="0" aria-label="Success stories, scroll sideways for more">
+<li><figure><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/1-2.jpg" alt="Caregiver in protective gear handling a COVID-19 test" loading="lazy" decoding="async"><span class="ind">Healthcare</span></figure><h3>COVID-19 risk analytics for a medical caregiving organization</h3><p>Live thermographic video analytics and face recognition gave the organization non-invasive, real-time health screening at every entrance, flagging potential cases early and minimizing the risk of transmission.</p></li>
+<li><figure><img src="https://dev-website.ithena.app/wp-content/uploads/2025/10/isat-banner-1536x858.jpg" alt="Trucks and trailers tracked by fleet telematics" loading="lazy" decoding="async"><span class="ind">Fleet &amp; logistics</span></figure><h3>Fleet optimization analytics for a US-based fleet service provider</h3><p>IoT analytics on telematics and cargo-load data helped the provider optimize routes across its fleet, reduce unplanned downtime of its trailers and improve the safety of the drivers on the road every day.</p></li>
+<li><figure><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/3-1.jpg" alt="Customer paying online with a card for an FMCG e-commerce order" loading="lazy" decoding="async"><span class="ind">FMCG</span></figure><h3>Data and analytics platform for an FMCG e-commerce company</h3><p>Customer profiling, basket analysis, web analytics and SEO/SCM integration across vast transaction data revealed distinct customer segments, each with its own behaviors, preferences and buying patterns.</p></li>
+<li><figure><img src="https://dev-website.ithena.app/wp-content/uploads/2026/08/custom-tools-1536x1237.webp" alt="Machinist at production equipment monitored with advanced analytics" loading="lazy" decoding="async"><span class="ind">Manufacturing</span></figure><h3>Less machine downtime with advanced analytics for a manufacturer</h3><p>Analytics on IoT machine data tracked real-time performance and early failure indicators, so the team resolved issues before they became disruptions, cutting unplanned downtime and lifting productivity.</p></li>
+<li><figure><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ecommerce-role-sales-1024x640.webp" alt="Business team reviewing BI insights for a conglomerate" loading="lazy" decoding="async"><span class="ind">Conglomerate</span></figure><h3>Data and BI strategy and implementation for a conglomerate</h3><p>A data-driven self-analytics system transformed how the business team works, giving it the insight and strategic decision-making capability it needs across customers, sales, inventories and logistics.</p></li>
+</ul>
+<p class="stry-hint" aria-hidden="true">Five stories, scroll for more</p>
+</div>
+</section>
+
+<!-- 9 · Partners -->
+<section class="sec alt" id="bda-partners" aria-labelledby="bda-partners-h">
+<div class="wrap">
+<div class="head c rv"><p class="kick">Technology partners</p><h2 class="h2" id="bda-partners-h">Built on <em>proven platforms</em></h2><p class="lede">Nine technology partners we integrate with to reduce risk and speed up delivery.</p></div>
+<ul class="pl">
+<li><a href="https://ithena.ai/ptc-partnership/" target="_blank" rel="noopener"><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-ptc.png" alt="" loading="lazy" decoding="async"></span><span><b>PTC <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></b><span>Accelerating the deployment of PTC ThingWorx and Vuforia for digital agility and smart industry solutions.</span></span></a></li>
+<li><a href="https://ithena.ai/partner-oracle/" target="_blank" rel="noopener"><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-oracle.png" alt="" loading="lazy" decoding="async"></span><span><b>Oracle <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></b><span>Modernizing businesses with EBS upgrades and reducing total cost of ownership with Oracle Fusion Apps.</span></span></a></li>
+<li><a href="https://ithena.ai/partner-microsoft/" target="_blank" rel="noopener"><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-microsoft.png" alt="" loading="lazy" decoding="async"></span><span><b>Microsoft <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></b><span>Microsoft Power BI’s data visualization tools help businesses modernize apps and make better decisions.</span></span></a></li>
+<li><a href="https://ithena.ai/partner-pozyx/" target="_blank" rel="noopener"><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-pozyx.png" alt="" loading="lazy" decoding="async"></span><span><b>Pozyx <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></b><span>A dependable asset localization solution for the manufacturing, industrial and commercial sectors.</span></span></a></li>
+<li><a href="https://ithena.ai/partner-brightcove/" target="_blank" rel="noopener"><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-brightcove.png" alt="" loading="lazy" decoding="async"></span><span><b>Brightcove <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></b><span>Identifying high-performing content and creating successful strategies for OTT streaming services.</span></span></a></li>
+<li><a href="https://ithena.ai/partner-google-cloud/" target="_blank" rel="noopener"><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-google-cloud.png" alt="" loading="lazy" decoding="async"></span><span><b>Google Cloud <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></b><span>Transforming businesses with Google Cloud’s infrastructure, platform, industry solutions and expertise.</span></span></a></li>
+<li><a href="https://ithena.ai/partner-aws/" target="_blank" rel="noopener"><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-aws.png" alt="" loading="lazy" decoding="async"></span><span><b>AWS <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></b><span>Seamless transformation of all IT assets, regardless of complexity or synchronicity, at optimized costs.</span></span></a></li>
+<li><a href="https://ithena.ai/incorta-partnership/" target="_blank" rel="noopener"><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-incorta.png" alt="" loading="lazy" decoding="async"></span><span><b>Incorta <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></b><span>Data-driven decisions at speed with Incorta’s Direct Data Platform.</span></span></a></li>
+<li><a href="https://ithena.ai/partner-infor/" target="_blank" rel="noopener"><span class="lg"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-partners-infor.png" alt="" loading="lazy" decoding="async"></span><span><b>Infor <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></b><span>Implementing Infor solutions with customized maintenance, optimization and debugging services.</span></span></a></li>
+</ul>
+</div>
+</section>
+
+<!-- 10 · Decision -->
+<section class="sec cta" aria-labelledby="bda-cta-h">
+<div class="cta-in">
+<div class="cta-copy rv">
+<p class="kick">Keep exploring</p>
+<h2 id="bda-cta-h">Put your data to work for <em>new opportunities</em></h2>
+<p class="lede">Connect with us to discuss how you can best use the transformational power of data-embedded intelligence.</p>
+<div class="btns"><button type="button" class="btn" data-schedule-demo>Talk to a data expert <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+</div>
+<figure class="cta-med">
+<img src="https://dev-website.ithena.app/wp-content/uploads/2026/10/Ithena-Services.webp" alt="" loading="lazy" decoding="async">
+<button type="button" class="cta-play" data-video="https://dev-website.ithena.app/wp-content/uploads/2026/10/Big%20Data%20%26%20Analytics.mp4" aria-label="Watch video: Big data &amp; analytics"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+<figcaption>Watch: big data &amp; analytics at ITHENA</figcaption>
+</figure>
+</div>
+<dialog class="video-modal" aria-label="Video: Big data &amp; analytics">
+<button type="button" class="video-modal-close" data-video-close aria-label="Close video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<video controls playsinline preload="none"></video>
+</dialog>
+</section>
+
+<div class="pk-schd" id="pkSchd" hidden>
+<div class="pk-schd-panel" role="dialog" aria-modal="true" aria-labelledby="pkSchdTitle" tabindex="-1">
+<button type="button" class="pk-schd-close" data-schedule-popup-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+<div class="pk-schd-head"><p class="eyb">Request a consultation</p><h3 id="pkSchdTitle">Plan your data &amp; analytics roadmap</h3><p>Tell us where your data lives today and our team will follow up to map the fastest path to insight.</p></div>
+<div class="pk-schd-form" id="pkSchdForm"><p class="pk-schd-empty">The form did not load. Email <a href="mailto:sales@ithena.ai">sales@ithena.ai</a> and we will book the call for you.</p></div>
+</div>
+</div>
+</section>
+<script>
+(function () {
+var root = document.getElementById('main-section');
+if (!root) return;
+var tgl = document.getElementById('axTheme');
+if (window.ithenaTheme) { var saved = null; try { saved = localStorage.getItem('ithena-theme'); } catch (e) {} if (!saved) document.documentElement.classList.add('dark'); window.ithenaTheme.sync(); } else {
+var tk = 'ithena-theme', ts = null; try { ts = localStorage.getItem(tk); } catch (e) {}
+var setTheme = function (m) { root.setAttribute('data-theme', m); tgl.setAttribute('aria-label', m === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'); try { localStorage.setItem(tk, m); } catch (e) {} };
+setTheme(ts === 'light' ? 'light' : 'dark');
+tgl.hidden = false;
+tgl.addEventListener('click', function () { setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); });
+}
+var sb = function () { root.style.setProperty('--scrollbar', (innerWidth - document.documentElement.clientWidth) + 'px'); };
+sb(); addEventListener('resize', sb);
+var vm = root.querySelector('.video-modal'), vb = root.querySelector('.cta-play');
+if (vm && vb && vm.showModal) {
+var vp = vm.querySelector('video');
+vb.addEventListener('click', function () { if (!vp.getAttribute('src')) vp.src = vb.getAttribute('data-video'); vm.showModal(); var p = vp.play(); if (p && p.catch) p.catch(function () {}); });
+vm.addEventListener('close', function () { vp.pause(); });
+vm.addEventListener('click', function (e) { if (e.target === vm) vm.close(); });
+vm.querySelector('[data-video-close]').addEventListener('click', function () { vm.close(); });
+}
+})();
+</script>
+<script>
+/* schedule popup: same behaviour as the industry pages' [data-schedule-demo] popup */
+(function(){
+  var root=document.getElementById("main-section"),pop=document.getElementById("pkSchd");
+  if(!root||!pop||window.pkSchdInit) return;
+  window.pkSchdInit=1;
+  /* out of #main-section so a transformed Elementor ancestor cannot break position:fixed */
+  document.body.appendChild(pop);
+  var sync=function(){pop.setAttribute("data-theme",root.getAttribute("data-theme")||"dark");};
+  sync(); new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:["data-theme"]});
+  var slot=document.getElementById("pkSchdForm"),moved=false,lastFocus=null;
+  /* FORM SLOT: give the Elementor Shortcode widget rendering [formidable id="..."] the CSS ID schedule-demo-form; it is moved here as-is */
+  function adopt(){
+    if(moved||!slot) return;
+    var src=document.querySelector("#schedule-demo-form, .schedule-demo-form");
+    if(!src){var w=document.querySelectorAll(".elementor-widget-shortcode");for(var i=0;i<w.length;i++){if(w[i].querySelector(".frm_forms, form")){src=w[i];break;}}}
+    if(!src) src=document.querySelector(".frm_forms");
+    if(!src||pop.contains(src)) return;
+    slot.innerHTML=""; slot.appendChild(src); src.style.display="block"; moved=true;
+  }
+  adopt(); window.addEventListener("load",adopt);
+  function onKey(e){ if(e.key==="Escape") closePop(); }
+  function openPop(e){
+    if(e) e.preventDefault();
+    adopt(); lastFocus=document.activeElement;
+    pop.hidden=false; document.body.style.overflow="hidden";
+    document.addEventListener("keydown",onKey);
+    void pop.offsetWidth; pop.classList.add("is-open");
+    var f=pop.querySelector(".pk-schd-form input:not([type=hidden]):not([type=submit]):not([type=button]):not([disabled]), .pk-schd-form textarea:not([disabled]), .pk-schd-form select:not([disabled])")||pop.querySelector("[data-schedule-popup-close]");
+    /* after the visibility transition starts; focus() on a still-hidden overlay is ignored */
+    if(f) setTimeout(function(){f.focus();},40);
+  }
+  function closePop(){
+    pop.classList.remove("is-open"); document.body.style.overflow="";
+    document.removeEventListener("keydown",onKey);
+    setTimeout(function(){pop.hidden=true;},250);
+    if(lastFocus&&lastFocus.focus) lastFocus.focus();
+  }
+  document.addEventListener("click",function(e){
+    if(!e.target.closest) return;
+    if(e.target.closest("[data-schedule-demo]")){ openPop(e); return; }
+    if(e.target===pop||e.target.closest("[data-schedule-popup-close]")) closePop();
+  });
+})();
+</script>
+
+

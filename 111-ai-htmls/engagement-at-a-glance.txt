@@ -1,0 +1,130 @@
+ENGAGEMENT AT A GLANCE — six ITHENA case studies
+Source: page body content fetched from ithena.ai on 2026-09-28.
+
+NOTE ON WHY THIS FILE EXISTS
+All six live pages currently render the SAME hero facts block:
+  Client = "Case Study" / Footprint = "Nationwide dealer & parts network." /
+  Solution = "ITHENA Agentic OEM AI Agents." / Coverage = "24 / 7, including after hours." /
+  Parts catalogue = "35,000 lines, checked live on the call."
+That is the template's demo fallback ($GLOBALS['cs_demo'] in case-study-v2/v3.php), not
+authored data — the cs_fact_* ACF fields are empty on every one of the six. The same is true
+of the three stat DESCRIPTIONS under "Opportunity for impact" (every page repeats "Routine
+fault and parts questions closed by the agent..."). The stat NUMBERS and LABELS are real and
+per-page; they are reproduced below verbatim.
+Only case study 3 (Agentic AI OEM Service) legitimately owns the forklift / 35,000-line /
+24-7 facts — the demo fallback was written from it.
+
+Field order matches the template: 5 facts, dt = label, dd = one sentence.
+
+================================================================================
+1. iCRM SALES PIPELINE MANAGEMENT
+   https://ithena.ai/case-study/icrm-sales-pipeline-management/
+   "Unifying Global Sales and Accelerating Growth with iCRM for a Leading Baking
+    Equipment OEM"
+--------------------------------------------------------------------------------
+Client          Global OEM for commercial bakery equipment — rotating rack ovens,
+                proofers and accessories.
+Footprint       Bakeries in 100+ countries, served by one global sales network.
+Solution        ITHENA iCRM, unified pipeline and account intelligence.
+Pipeline        Visual drag-and-drop stages with automated stalled-deal nudges.
+Forecasting     Real-time revenue dashboards, replacing manual data pulls.
+
+Impact (verbatim)   35% Improvement in forecast accuracy
+                    40% Reduction in manual reporting
+                    28% Boost in conversion rate
+
+================================================================================
+2. MANUFACTURING DOWNTIME REDUCTION
+   https://ithena.ai/case-study/manufacturing-downtime-reduction-case-study/
+   "Reducing Downtime and Enabling Real-Time Intelligence via iMEX and FactoryGPT
+    for a U.S. Cabinet Manufacturer"
+--------------------------------------------------------------------------------
+Client          Leading U.S. cabinet manufacturer supplying top retailers and
+                homebuilders.
+Footprint       16 plants, over 10 million cabinets produced a year.
+Solution        ITHENA iMEX with FactoryGPT.
+Visibility      Persona-based OEE dashboards, live on every line.
+Quality         Paper logbooks and checklists replaced by digital inspection
+                workflows.
+
+Impact (verbatim)   48% Increase in machine availability
+                    2 hrs Saved per operator shift
+                    30% Reduction in unplanned downtime
+
+================================================================================
+3. AGENTIC AI OEM SERVICE
+   https://ithena.ai/case-study/agentic-ai-oem-service-case-study/
+   "Enabling 24/7 Service Coverage and Faster Resolution with Agentic AI Agents
+    for a Leading Heavy-Duty Forklift OEM"
+--------------------------------------------------------------------------------
+Client          Global heavy-duty forklift and material handling equipment OEM.
+Footprint       Nationwide dealers, parts centres and factory-trained technicians.
+Solution        ITHENA Agentic OEM AI Agents.
+Coverage        24 / 7, including after hours.
+Parts catalogue 35,000 lines, checked live on the call.
+
+Impact (verbatim)   70% Reduction in live call volume
+                    3x Faster issue resolution
+                    40% Reduction in missed appointments
+
+================================================================================
+4. AI-POWERED AFTERMARKET SERVICE
+   https://ithena.ai/case-study/ai-aftermarket-service-case-study/
+   "AI-Powered Aftermarket Service Transformation for a Leading Woodworking
+    Machinery Provider"
+--------------------------------------------------------------------------------
+Client          Provider of woodworking and industrial manufacturing machinery, software and services.
+Footprint       Distributed field network across regional service centres.
+Solution        ITHENA iSERV with FactoryGPT.
+Self-service    Knowledge portal of guides, machine schematics and training manuals.
+Detection       Machine data scanned continuously, work orders raised before the floor fails.
+
+Impact (verbatim)   42% Boost in self-service resolutions
+                    35% Reduction in ticket resolution time
+                    40% Reduction in unplanned downtime
+
+================================================================================
+5. AI SPARE PARTS COMMERCE
+   https://ithena.ai/case-study/ai-spare-parts-commerce-case-study/
+   "Spare Parts Commerce with AI-Powered Self-Service for a Leading U.S. Bakery
+    Equipment Manufacturer"
+--------------------------------------------------------------------------------
+Client          The largest U.S. bakery equipment manufacturer.
+Footprint       Nationwide dealer and distributor parts network.
+Solution        ITHENA iSERV with the Aether AI Platform.
+Storefront      Interactive 2D / 3D equipment views and 360° exploded BOMs.
+Support         24 / 7 AI chatbot for part identification, ordering and order status.
+
+Impact (verbatim)   32% Increase in spare parts revenue
+                    27% Boost in customer satisfaction
+                    37% Reduction in order cycle time
+
+================================================================================
+6. PANELOPS FOR A LEADING INDUSTRIAL AUTOMATION FIRM
+   https://ithena.ai/case-study/panelops-for-a-leading-industrial-automation-firm/
+   "Achieving Real-Time Project Control and Profitability Visibility with PanelOps
+    for a Leading Industrial Automation Firm"
+--------------------------------------------------------------------------------
+Client          Industrial automation, instrumentation and process control engineering and consulting firm.
+Footprint       100+ years of combined industry experience, 150+ projects delivered.
+Solution        ITHENA PanelOps.
+Scope           Structured workflows for E&I, PLC, SCADA and DCS projects.
+Traceability    Multi-level BOMs tracked from procurement through delivery.
+
+Impact (verbatim)   30% Faster BOM and parts management
+                    25% Increase in project scalability
+                    35% Improvement in parts traceability
+
+================================================================================
+MATCHING DASHBOARD FRAGMENTS
+Each case study has a paired self-contained animation block in this folder:
+  1  dashboard-icrm-sales-pipeline-management.html      deal funnel + region mix
+  2  dashboard-manufacturing-downtime-reduction.html    16-plant OEE heatmap + Pareto
+  3  dashboard-agentic-ai-oem-service.html              24h call-volume area chart
+  4  dashboard-ai-aftermarket-service.html              anomaly signal chart
+  5  dashboard-ai-spare-parts-commerce.html             exploded BOM hotspots
+  6  dashboard-panelops-industrial-automation.html      project Gantt
+All six follow the palette and element placement of
+dashboard-system-mapping-visualization-automotive-software.html. Figures inside the
+dashboards other than the verbatim impact numbers above are illustrative operating
+detail, sized to each client's stated scale.

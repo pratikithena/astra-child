@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Case Study v2 (ACF)
+Template Name: Case Study v3 (Gutenberg or ACF, default header/footer)
 Template Post Type: page, case-study-test
 */
 
@@ -24,6 +24,8 @@ if (!function_exists('cs_f')) {
         return isset($map[$k]) ? cs_f($map[$k]) : '';
     }
     function cs_f($k) {
+        // Gutenberg mode: hero/CTA values come from their Cover blocks only (no ACF, legacy or demo fallback).
+        if (isset($GLOBALS['cs_gbv']) && array_key_exists($k, $GLOBALS['cs_gbv'])) return $GLOBALS['cs_gbv'][$k];
         $v = cs_raw($k);
         if ($v === '') $v = cs_legacy($k);
         if ($v === '') $v = isset($GLOBALS['cs_demo'][$k]) ? $GLOBALS['cs_demo'][$k] : '';
@@ -106,7 +108,7 @@ $GLOBALS['cs_demo'] = array(
     'cs_stat_3_text' => 'Visits booked against real technician availability, then confirmed automatically.',
     'cs_client_nav' => 'About the client',
     'cs_client_eyebrow' => 'About the client',
-    'cs_client_title' => 'A nationwide service network running out of hours in the day.',
+    'cs_client_title' => 'Meet the organization and understand the context behind the transformation.',
     'about_client' => 'A global heavy-duty forklift and material handling equipment manufacturer, supporting a nationwide network of dealers, parts centers and factory-trained technicians.
 
 The organization struggled to keep pace with call volume, after-hours requests and missed service appointments. Partnering with ITHENA, it put Agentic AI agents on first contact, sorting what arrives, working the fault through with the caller, closing the loop on bookings without a coordinator, and reaching out ahead of due service intervals and safety campaigns.
@@ -134,8 +136,8 @@ What followed was a quicker turnaround, appointments that hold, and a desk that 
     'solution_4_description' => 'Stock and cover are read straight out of the 35,000-line catalogue while the conversation is still open, in place of a manual search.',
     'cs_console_nav' => 'Live console',
     'cs_console_eyebrow' => 'Inside the console',
-    'cs_console_title' => 'A night shift, as the coordinators now see it.',
-    'cs_console_lede' => 'One screen carries the queue, the conversation in progress and the shape of the day\'s volume, so an overnight window is supervised rather than merely survived.',
+    'cs_console_title' => 'The solution, brought into view.',
+    'cs_console_lede' => 'One dashboard brings the key information, activity, and insights together to show how the solution works in practice.',
     'cs_shift_nav' => 'What changed',
     'cs_shift_eyebrow' => 'What changed',
     'cs_shift_title' => 'The same network, a different service desk.',
@@ -154,6 +156,21 @@ What followed was a quicker turnaround, appointments that hold, and a desk that 
 );
 if (have_posts()) the_post();
 
+// Gutenberg mode once the post content has section blocks (see cs_gb_* below). A stray paragraph left in
+// post_content by the old editor does not count: the template never showed post_content before.
+$cs_gb = has_block('core/group') || has_block('core/cover');
+// Demo copy is only for an empty template. Gutenberg posts and the editor-only ?cs_nodemo=1 view (which the
+// block converter reads) keep just the generic labels and media, so sample text never shows on a real case study.
+$cs_nodemo = $cs_gb || (isset($_GET['cs_nodemo']) && current_user_can('edit_posts'));
+if ($cs_nodemo) $GLOBALS['cs_demo'] = array_intersect_key($GLOBALS['cs_demo'], array_flip(array(
+    'cs_hero_eyebrow', 'cs_hero_btn1_label', 'cs_hero_btn2_label', 'cs_hero_btn2_url', 'cs_hero_video', 'heading_banner_image_', 'cs_hero_credit',
+    'cs_facts_caption', 'cs_fact_1_label', 'cs_fact_2_label', 'cs_fact_3_label', 'cs_fact_4_label', 'cs_fact_5_label',
+    'cs_rail_caption', 'cs_rail_foot_text', 'cs_rail_foot_label',
+    'cs_impact_nav', 'cs_impact_eyebrow', 'cs_client_nav', 'cs_client_eyebrow', 'cs_words_nav', 'cs_words_eyebrow', 'cs_challenge_nav', 'cs_challenge_eyebrow',
+    'cs_routing_nav', 'cs_routing_eyebrow', 'cs_solution_nav', 'cs_solution_eyebrow', 'cs_console_nav', 'cs_console_eyebrow', 'cs_shift_nav', 'cs_shift_eyebrow',
+    'cs_modal_download_title', 'cs_modal_expert_title', 'cs_cta_btn2_label', 'cs_cta_btn2_url', 'cs_cta_video', 'cs_cta_poster',
+)));
+
 $cs_svg = '<svg %s viewBox="0 0 %d %d" fill="none" stroke="currentColor" stroke-width="%s" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">%s</svg>';
 $cs_fact_icons = array(
     '<path d="M3.2 17h13.6M5.4 17V8.2L10 5.4l4.6 2.8V17M8.6 17v-3.6h2.8V17"/>',
@@ -170,30 +187,179 @@ foreach (array('impact' => 'impact', 'client' => 'client', 'words' => 'words', '
         if (cs_on("cs_{$cs_k}_enable")) $cs_nav[$cs_id] = $cs_k;
     } elseif (cs_f($cs_k === 'words' ? 'quote' : "cs_{$cs_k}_title")) {
         $cs_nav[$cs_id] = $cs_k;
+    } elseif ($cs_nodemo) {
+        // Without the demo title, keep a section that still has real content.
+        $cs_body = array(
+            'impact' => array('cs_impact_lede', 'impact_value_1', 'impact_value_2', 'impact_value_3'),
+            'client' => array('about_client', 'about_client_image_impact_value'),
+            'challenge' => array('cs_challenge_lede', 'key_challenges'),
+            'solution' => array('solution_description', 'solution_1_heading', 'solution_2_heading', 'solution_3_heading', 'solution_4_heading', 'solution_5_heading'),
+        );
+        foreach (isset($cs_body[$cs_k]) ? $cs_body[$cs_k] : array() as $k) if (cs_f($k) !== '') { $cs_nav[$cs_id] = $cs_k; break; }
     }
+}
+
+// ---- Gutenberg mode -------------------------------------------------------------------------------
+// Top-level blocks, in order:
+// - Cover "Case study hero": video background; Hero meta paragraph = credit, Eyebrow, H1, plain paragraph = deck,
+//   Buttons (1st = Download, 2nd = Talk to an expert), Table (caption + Label | Text rows = facts), Image = poster.
+// - Group per section: HTML anchor = section id, block name (List View rename) = sub nav label (else the Eyebrow).
+//   Eyebrow / H2 / Lede paragraphs, then Columns (h4 cards = stat counters, h3 cards = solution cards),
+//   Image, Quote, Group "cs-gaps" (challenge list), Custom HTML (embed), or any other block as-is.
+// - Cover "CTA banner": video background, H2, paragraph, Buttons (1st opens the expert form), Image = poster.
+// Top-level blocks with the class "bl-hidden" are skipped. Output matches the ACF markup below exactly.
+if (!function_exists('cs_gb_text')) {
+    function cs_gb_text($b) {
+        return trim(wp_strip_all_tags(render_block($b)));
+    }
+    function cs_gb_inner_html($b) { // a block's HTML without its outer tag
+        return preg_replace(array('#^\s*<[a-z0-9]+[^>]*>#i', '#</[a-z0-9]+>\s*$#i'), '', trim(render_block($b)));
+    }
+    function cs_gb_img($b) {
+        return preg_match('/<img[^>]+src="([^"]+)"/', $b['innerHTML'], $m) ? html_entity_decode($m[1]) : '';
+    }
+    function cs_gb_buttons($b) {
+        $out = array();
+        foreach ($b['innerBlocks'] as $btn) {
+            if (!preg_match('/<a[^>]*>(.*?)<\/a>/is', $btn['innerHTML'], $m)) continue;
+            $href = preg_match('/href="([^"]*)"/', $m[0], $h) ? html_entity_decode($h[1]) : '';
+            $out[] = array(trim(wp_strip_all_tags($m[1])), $href === '#' ? '' : $href);
+        }
+        return $out;
+    }
+    function cs_gb_list($b) {
+        return str_replace(' class="wp-block-list"', '', trim(render_block($b)));
+    }
+    function cs_gb_block($b, &$eyebrow) {
+        $cls = isset($b['attrs']['className']) ? $b['attrs']['className'] : '';
+        switch ($b['blockName']) {
+            case 'core/paragraph':
+                if (strpos($cls, 'is-style-eyebrow') !== false) {
+                    if ($eyebrow === '') $eyebrow = cs_gb_text($b);
+                    return '<span class="eyebrow">' . esc_html(cs_gb_text($b)) . '</span>';
+                }
+                if (strpos($cls, 'is-style-lede') !== false) return '<p class="lede">' . esc_html(cs_gb_text($b)) . '</p>';
+                return trim(render_block($b));
+            case 'core/heading':
+                $l = isset($b['attrs']['level']) ? (int) $b['attrs']['level'] : 2;
+                return "<h$l>" . esc_html(cs_gb_text($b)) . "</h$l>";
+            case 'core/image':
+                return '<img class="client-img" src="' . esc_url(cs_gb_img($b)) . '" alt="" loading="lazy">';
+            case 'core/quote':
+                $ps = array_values(array_filter($b['innerBlocks'], function ($x) { return $x['blockName'] === 'core/paragraph'; }));
+                $q = count($ps) === 1 ? cs_gb_inner_html($ps[0]) : implode('', array_map(function ($x) { return trim(render_block($x)); }, $ps));
+                return '<figure class="quote"><blockquote>' . wp_kses_post($q) . '</blockquote></figure>';
+            case 'core/list':
+                return cs_gb_list($b);
+            case 'core/html':
+                return '<div class="cons-embed">' . $b['innerHTML'] . '</div>';
+            case 'core/group':
+                if (strpos($cls, 'cs-gaps') === false) break;
+                $g = '';
+                // Lists as plain <ul>; paragraphs as bare text (the old key_challenges field was a lead-in line + list).
+                foreach ($b['innerBlocks'] as $x) $g .= $x['blockName'] === 'core/list' ? cs_gb_list($x) : ($x['blockName'] === 'core/paragraph' ? cs_gb_inner_html($x) . ' ' : trim(render_block($x)));
+                return '<div class="gaps">' . wp_kses_post($g) . '</div>';
+            case 'core/columns':
+                $stats = strpos(serialize_blocks($b['innerBlocks']), '"level":4') !== false;
+                $o = '';
+                foreach ($b['innerBlocks'] as $col) {
+                    $num = $head = $text = '';
+                    foreach ($col['innerBlocks'] as $x) {
+                        if ($x['blockName'] === 'core/heading') $head = cs_gb_text($x);
+                        elseif ($stats && $num === '' && $head === '') $num = cs_gb_text($x);
+                        else $text = cs_gb_text($x);
+                    }
+                    if ($stats) {
+                        preg_match('/^\s*(-?\d+)\s*(.*)$/s', $num, $m);
+                        $v = isset($m[1]) ? (int) $m[1] : 0;
+                        $o .= '<div class="stat reveal"><div class="num"><em data-count="' . $v . '">' . $v . '</em><span>' . esc_html(isset($m[2]) ? trim($m[2]) : '') . '</span></div><i class="rule" aria-hidden="true"></i><h4>' . esc_html($head) . '</h4><p>' . esc_html($text) . '</p></div>';
+                    } else {
+                        $o .= '<div class="cx"><h3>' . esc_html($head) . '</h3><p>' . esc_html($text) . '</p></div>';
+                    }
+                }
+                return '<div class="' . ($stats ? 'stats' : 'capx') . '">' . $o . '</div>';
+        }
+        return trim(render_block($b));
+    }
+    // Cover block -> the cs_f() keys the hero / CTA markup reads ($p = 'cs_hero' or 'cs_cta').
+    function cs_gb_cover($b, $p, &$v) {
+        if (!empty($b['attrs']['url'])) $v[$p . '_video'] = $b['attrs']['url'];
+        $btn = 0;
+        foreach ($b['innerBlocks'] as $x) {
+            $cls = isset($x['attrs']['className']) ? $x['attrs']['className'] : '';
+            switch ($x['blockName']) {
+                case 'core/image': $v[$p . '_poster'] = cs_gb_img($x); break;
+                case 'core/heading': $v[$p === 'cs_hero' ? 'case_study_heading' : 'cs_cta_title'] = cs_gb_text($x); break;
+                case 'core/buttons':
+                    foreach (cs_gb_buttons($x) as $bt) { $btn++; $v["{$p}_btn{$btn}_label"] = $bt[0]; $v["{$p}_btn{$btn}_url"] = $bt[1]; }
+                    break;
+                case 'core/table':
+                    if (preg_match('/<figcaption[^>]*>(.*?)<\/figcaption>/is', $x['innerHTML'], $m)) $v['cs_facts_caption'] = trim(wp_strip_all_tags($m[1]));
+                    preg_match_all('/<tr>(.*?)<\/tr>/is', $x['innerHTML'], $rows);
+                    $n = 0;
+                    foreach ($rows[1] as $r) {
+                        preg_match_all('/<t[dh][^>]*>(.*?)<\/t[dh]>/is', $r, $c);
+                        if (++$n > 5) break; // ponytail: the facts panel has 5 icons; add icons to allow more rows
+                        $v["cs_fact_{$n}_label"] = isset($c[1][0]) ? trim(wp_strip_all_tags($c[1][0])) : '';
+                        $v["cs_fact_{$n}_text"] = isset($c[1][1]) ? trim(wp_strip_all_tags($c[1][1])) : '';
+                    }
+                    break;
+                case 'core/paragraph':
+                    if (strpos($cls, 'is-style-hero-meta') !== false) $v[$p . '_credit'] = cs_gb_text($x);
+                    elseif (strpos($cls, 'is-style-eyebrow') !== false) $v[$p . '_eyebrow'] = cs_gb_text($x);
+                    else $v[$p === 'cs_hero' ? 'cs_hero_deck' : 'cs_cta_text'] = cs_gb_text($x);
+                    break;
+            }
+        }
+    }
+}
+
+if ($cs_gb) {
+    $cs_gbv = array();
+    foreach (array('cs_hero_eyebrow', 'case_study_heading', 'cs_hero_deck', 'cs_hero_btn1_label', 'cs_hero_btn1_url', 'cs_hero_btn2_label', 'cs_hero_btn2_url', 'cs_hero_video', 'cs_hero_poster', 'cs_hero_credit',
+        'cs_cta_title', 'cs_cta_text', 'cs_cta_btn1_label', 'cs_cta_btn1_url', 'cs_cta_btn2_label', 'cs_cta_btn2_url', 'cs_cta_video', 'cs_cta_poster') as $k) $cs_gbv[$k] = '';
+    for ($n = 1; $n <= 5; $n++) $cs_gbv["cs_fact_{$n}_label"] = $cs_gbv["cs_fact_{$n}_text"] = '';
+    // cs_facts_caption is left out: a Table block with no rows saves nothing, caption included, so a hero
+    // without a facts table keeps the ACF / generic caption.
+    $cs_nav = array();
+    $cs_main = '';
+    $cs_has_cta = false;
+    foreach (parse_blocks(get_post()->post_content) as $b) {
+        $cls = isset($b['attrs']['className']) ? ' ' . $b['attrs']['className'] . ' ' : '';
+        if (!$b['blockName'] || strpos($cls, ' bl-hidden ') !== false) continue;
+        if ($b['blockName'] === 'core/cover' && strpos($cls, ' is-style-cs-hero ') !== false) { cs_gb_cover($b, 'cs_hero', $cs_gbv); continue; }
+        if ($b['blockName'] === 'core/cover' && strpos($cls, ' is-style-cta-banner ') !== false) { cs_gb_cover($b, 'cs_cta', $cs_gbv); $cs_has_cta = true; continue; }
+        if ($b['blockName'] !== 'core/group') { $cs_main .= do_shortcode(trim(render_block($b))); continue; }
+        $eb = '';
+        $html = '';
+        foreach ($b['innerBlocks'] as $x) $html .= cs_gb_block($x, $eb);
+        $id = preg_match('/^\s*<\w+[^>]*?\sid="([^"]+)"/', $b['innerHTML'], $m) ? $m[1] : sanitize_title($eb);
+        if ($id === '' || isset($cs_nav[$id])) $id .= ($id === '' ? 'sec-' : '-') . (count($cs_nav) + 1);
+        $label = !empty($b['attrs']['metadata']['name']) ? $b['attrs']['metadata']['name'] : $eb;
+        $kinds = array('impact' => 'impact', 'client' => 'client', 'words' => 'words', 'challenge' => 'challenge', 'howitworks' => 'routing', 'solution' => 'solution', 'console' => 'console', 'shift' => 'shift');
+        if ($label !== '') $cs_nav[$id] = $label;
+        $cs_main .= '<section class="cs-sec ' . (isset($kinds[$id]) ? 'cs-' . $kinds[$id] . ' ' : '') . 'sec" id="' . esc_attr($id) . '">' . $html . '</section>';
+    }
+    $GLOBALS['cs_gbv'] = $cs_gbv;
 }
 
 ?>
 
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-  <head>
-    <meta charset="<?php bloginfo('charset'); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php wp_head(); ?>
-  </head>
+<?php
+// Astra renders #content > .ast-container boxed by default; 'page-builder' is Astra's own
+// full-bleed content layout (max-width:100%; padding:0) - no CSS override needed.
+add_filter('astra_get_content_layout', function () { return 'page-builder'; });
+add_filter('astra_page_layout', function () { return 'no-sidebar'; });
+// A transparent header sits on top of the content; force it opaque so the page starts below it.
+add_filter('astra_is_transparent_header', '__return_false');
 
-  <body <?php body_class(); ?>>
-    <?php
-    wp_body_open();
-    
-    if (shortcode_exists('new_ithena_header')) echo do_shortcode('[new_ithena_header]');
-    elseif (function_exists('child_theme_custom_headmenu')) echo child_theme_custom_headmenu();
-    
-    ?>
+get_header();
+?>
 
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;600;700&display=swap');
+      /* Astra's flex container squeezes the full-bleed template; keep it a plain block. */
+      .site-content .ast-container{display:block!important}
       section#main-section{--fh:"Noto Sans",sans-serif!important;--fb:"Inter",sans-serif!important;--fs-xs:12px!important;--fs-sm:13px!important;--fs-md:14px!important;--fs-base:15px!important;--fs-body:16px!important;--fs-lg:17px!important;--fs-h3:clamp(17px,1.9vw,21px)!important;--fs-h2s:clamp(21px,2.4vw,27px)!important;--fs-h2:clamp(27px,3.6vw,44px)!important;--fs-h1:clamp(32px,5vw,50px)!important;--bg:#FFFFFF!important;--bg-2:#F6FAFD!important;--soft-a:#FFFFFF!important;--soft-b:#D7ECF6!important;--card:#FFFFFF!important;--ink:#0A192D!important;--ink-2:#4A5A6E!important;--ink-3:#76889C!important;--line:rgba(10,25,45,.12)!important;--line-2:rgba(10,25,45,.22)!important;--brand:#0083C8!important;--brand-deep:#0067A0!important;--brand-ink:#0067A0!important;--brand-glow:#00A8E8!important;--teal:#4FE0D0!important;--red:#C00000!important;--chip:rgba(0,131,200,.09)!important;--shadow-card:0 1px 2px rgba(10,25,45,.05)!important;--ease:cubic-bezier(.16,.8,.24,1)!important;--sh-facts:rgba(10,25,45,.5)!important;--sh-facts-2:rgba(10,25,45,.06)!important;--sh-cons:rgba(10,25,45,.55)!important;--bk-ink:#0B7C70!important;--cta-a:#04101F!important;--cta-b:#0A2C46!important;--cta-c:#083048!important;--cta-line:rgba(0,168,232,.35)!important;--scrim-1:rgba(4,16,31,.82)!important;--scrim-2:rgba(4,16,31,.56)!important;--scrim-3:rgba(4,16,31,.30)!important;color-scheme:light!important}
       section#main-section[data-theme="dark"]{--bg:#0A0A0B!important;--bg-2:#111113!important;--soft-a:#07080A!important;--soft-b:#111113!important;--card:#17181B!important;--ink:#F2F3F5!important;--ink-2:rgba(228,230,235,.8)!important;--ink-3:#9A9FA8!important;--line:rgba(255,255,255,.09)!important;--line-2:rgba(255,255,255,.16)!important;--brand-ink:#3FA9E0!important;--chip:rgba(0,131,200,.2)!important;--shadow-card:0 1px 2px rgba(0,0,0,.5)!important;--sh-facts:rgba(0,0,0,.75)!important;--sh-facts-2:rgba(0,0,0,.4)!important;--sh-cons:rgba(0,0,0,.72)!important;--bk-ink:#4FE0D0!important;--cta-a:#07080A!important;--cta-b:#16171A!important;--cta-c:#111113!important;--cta-line:rgba(255,255,255,.16)!important;--scrim-1:rgba(6,6,8,.84)!important;--scrim-2:rgba(6,6,8,.6)!important;--scrim-3:rgba(6,6,8,.34)!important;--deep:linear-gradient(155deg,#16171A 0%,#0C0C0E 52%,#050506 100%)!important;color-scheme:dark!important;background:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px) 0 0/56px 56px,linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px) 0 0/56px 56px,radial-gradient(55% 70% at 100% 0%,rgba(0,131,200,.11),transparent 70%),var(--deep)!important}
       section#main-section[data-theme="dark"] .cs-sec{box-shadow:inset 0 1px 0 rgba(255,255,255,.06)!important}
@@ -227,20 +393,26 @@ foreach (array('impact' => 'impact', 'client' => 'client', 'words' => 'words', '
       section#main-section .hero{position:relative!important;overflow:hidden!important;isolation:isolate!important;background:radial-gradient(1100px 620px at 82% -20%,rgba(0,131,200,.20),transparent 62%),radial-gradient(900px 520px at -12% 12%,rgba(79,224,208,.13),transparent 58%),linear-gradient(180deg,var(--soft-a),var(--soft-b) 62%,var(--bg))!important;border-bottom:1px solid var(--line)!important}
       section#main-section .hero-video{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;z-index:0!important;opacity:.46!important;filter:saturate(.6) contrast(1.02)!important}
       section#main-section .hero-veil{position:absolute!important;inset:0!important;z-index:1!important;pointer-events:none!important;background:linear-gradient(100deg,color-mix(in srgb,var(--soft-a) 93%,transparent) 0%,color-mix(in srgb,var(--soft-a) 86%,transparent) 34%,color-mix(in srgb,var(--soft-b) 64%,transparent) 68%,color-mix(in srgb,var(--soft-b) 72%,transparent) 100%),linear-gradient(180deg,transparent 62%,var(--bg) 100%)!important}
+      section#main-section .hero{--bg:var(--cta-a)!important;--soft-a:var(--cta-a)!important;--soft-b:var(--cta-b)!important;--card:#0D2238!important;--ink:#FFFFFF!important;--ink-2:rgba(255,255,255,.84)!important;--ink-3:rgba(255,255,255,.62)!important;--line:rgba(255,255,255,.12)!important;--line-2:rgba(255,255,255,.2)!important;--brand-ink:#3FA9E0!important;--chip:rgba(0,131,200,.24)!important;--sh-facts:rgba(0,0,0,.6)!important;--sh-facts-2:rgba(0,0,0,.35)!important;color:var(--ink)!important}
+      section#main-section[data-theme="dark"] .hero{--card:#17181B!important}
       section#main-section .hero > .wrap{position:relative!important;z-index:2!important}
       section#main-section .hero-credit{position:absolute!important;right:22px!important;bottom:12px!important;z-index:2!important;font-family:var(--fb)!important;font-size:var(--fs-xs)!important;letter-spacing:.08em!important;text-transform:uppercase!important;color:var(--ink-3)!important;opacity:.75!important;pointer-events:none!important}
-      section#main-section .hero-in{padding-top:calc(var(--cs-hdr,0px) + 40px)!important;padding-bottom:26px!important;display:grid!important;grid-template-columns:minmax(0,1.35fr) minmax(280px,.85fr)!important;gap:56px!important;align-items:center!important}
+      section#main-section .hero-in{padding-top:calc(var(--cs-hdr,var(--cs-hdr-fb)) + clamp(48px,6.5vw,88px))!important;padding-bottom:clamp(36px,4vw,54px)!important;display:grid!important;grid-template-columns:minmax(0,1.35fr) minmax(280px,.85fr)!important;gap:56px!important;align-items:center!important}
       section#main-section .hero h1{font-size:var(--fs-h1)!important;margin:18px 0 0!important;letter-spacing:-.028em!important}
       section#main-section .hero .deck{margin-top:20px!important;max-width:60ch!important;font-size:var(--fs-lg)!important;color:var(--ink-2)!important}
       section#main-section .hero-actions{display:flex!important;flex-wrap:wrap!important;gap:12px!important;margin-top:28px!important}
       section#main-section .hero-pad{height:56px!important}
-      @media(max-width:960px){section#main-section .hero-in{grid-template-columns:minmax(0,1fr)!important;gap:34px!important;align-items:start!important;padding-top:calc(var(--cs-hdr,0px) + 28px)!important}}
+      /* fixed ITH header height until the script measures #imenu-bar (Airlift delays inline JS until the first interaction) */
+      section#main-section{--cs-hdr-fb:89px}
+      @media(max-width:960px){section#main-section{--cs-hdr-fb:93px}}
+      @media(max-width:960px){section#main-section .hero-in{grid-template-columns:minmax(0,1fr)!important;gap:34px!important;align-items:start!important;padding-top:calc(var(--cs-hdr,var(--cs-hdr-fb)) + 40px)!important}}
       section#main-section .facts-float{perspective:1200px!important}
       section#main-section[data-anim="on"] .facts-float{animation:panelFloat 7.5s ease-in-out infinite!important}
       @keyframes panelFloat{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-10px,0)}}
       section#main-section .facts-float:hover,section#main-section .facts-float:focus-within{animation-play-state:paused!important}
       section#main-section .hero-facts{position:relative!important;display:grid!important;border:1px solid var(--line)!important;border-radius:16px!important;background:var(--card)!important;overflow:hidden!important;box-shadow:0 30px 56px -34px var(--sh-facts),0 2px 8px var(--sh-facts-2)!important;transform-style:preserve-3d!important;will-change:transform!important;transition:transform .55s var(--ease),box-shadow .55s var(--ease)!important}
       section#main-section .facts-float:hover .hero-facts{box-shadow:0 38px 66px -34px rgba(0,131,200,.55),0 2px 8px rgba(10,25,45,.08)!important}
+      section#main-section:not([data-theme="dark"]) .hero-facts{--card:#FFFFFF!important;--bg-2:#F6FAFD!important;--ink:#0A192D!important;--ink-2:#4A5A6E!important;--ink-3:#4A5A6E!important;--line:rgba(10,25,45,.12)!important;--brand-ink:#0067A0!important}
       section#main-section .hero-facts dl{margin:0!important}
       section#main-section .hero-facts::after{content:""!important;position:absolute!important;left:0!important;right:0!important;bottom:0!important;height:3px!important;background:linear-gradient(90deg,var(--brand),var(--teal))!important;transform-origin:left!important;transition:transform .7s var(--ease) .3s!important}
       section#main-section[data-anim="on"] .hero-facts:not(.in)::after{transform:scaleX(0)!important}
@@ -514,7 +686,7 @@ foreach (array('impact' => 'impact', 'client' => 'client', 'words' => 'words', '
               <span class="facts-rule" aria-hidden="true"></span>
             </div>
             <dl>
-              <?php for ($n = 1; $n <= 5; $n++) : if (!cs_f("cs_fact_{$n}_label")) continue; ?>
+              <?php for ($n = 1; $n <= 5; $n++) : if (!cs_f("cs_fact_{$n}_label") || ($cs_nodemo && !cs_f("cs_fact_{$n}_text"))) continue; ?>
               <div class="fact"><dt><?php printf($cs_svg, 'class="fi"', 20, 20, '1.5', $cs_fact_icons[$n - 1]); cs_e("cs_fact_{$n}_label"); ?></dt><dd><?php cs_e("cs_fact_{$n}_text"); ?></dd></div>
               <?php endfor; ?>
             </dl>
@@ -532,7 +704,7 @@ foreach (array('impact' => 'impact', 'client' => 'client', 'words' => 'words', '
             <span class="rail-thumb" id="railThumb" aria-hidden="true"></span>
             <ol id="rail">
               <?php $n = 0; foreach ($cs_nav as $cs_id => $cs_k) : ?>
-              <li><a href="#<?php echo esc_attr($cs_id); ?>"><i><?php printf('%02d', ++$n); ?></i><span><?php echo esc_html(cs_f("cs_{$cs_k}_nav") ? cs_f("cs_{$cs_k}_nav") : cs_f("cs_{$cs_k}_eyebrow")); ?></span></a></li>
+              <li><a href="#<?php echo esc_attr($cs_id); ?>"><i><?php printf('%02d', ++$n); ?></i><span><?php echo esc_html($cs_gb ? $cs_k : (cs_f("cs_{$cs_k}_nav") ? cs_f("cs_{$cs_k}_nav") : cs_f("cs_{$cs_k}_eyebrow"))); ?></span></a></li>
               <?php endforeach; ?>
             </ol>
           </div>
@@ -542,10 +714,11 @@ foreach (array('impact' => 'impact', 'client' => 'client', 'words' => 'words', '
         </aside>
         
         <main>
+          <?php if ($cs_gb) : echo $cs_main; else : ?>
           <?php if (isset($cs_nav['impact'])) : ?>
           <section class="cs-sec cs-impact sec" id="impact">
             <span class="eyebrow"><?php cs_e('cs_impact_eyebrow'); ?></span>
-            <h2><?php cs_e('cs_impact_title'); ?></h2>
+            <?php if (!$cs_nodemo || cs_f('cs_impact_title')) : ?><h2><?php cs_e('cs_impact_title'); ?></h2><?php endif; ?>
             <?php if (cs_f('cs_impact_lede')) : ?><p class="lede"><?php cs_e('cs_impact_lede'); ?></p><?php endif; ?>
             <div class="stats">
               <?php for ($n = 1; $n <= 3; $n++) : $v = cs_f("impact_value_{$n}"); if ($v === null || $v === false || $v === '') continue; ?>
@@ -562,7 +735,7 @@ foreach (array('impact' => 'impact', 'client' => 'client', 'words' => 'words', '
           <?php if (isset($cs_nav['client'])) : ?>
           <section class="cs-sec cs-client sec" id="client">
             <span class="eyebrow"><?php cs_e('cs_client_eyebrow'); ?></span>
-            <h2><?php cs_e('cs_client_title'); ?></h2>
+            <?php if (!$cs_nodemo || cs_f('cs_client_title')) : ?><h2><?php cs_e('cs_client_title'); ?></h2><?php endif; ?>
             <?php cs_paras('about_client', 'lede'); ?>
             <?php $cs_ci = cs_url('about_client_image_impact_value'); if ($cs_ci !== '') : ?><img class="client-img" src="<?php echo esc_url($cs_ci); ?>" alt="" loading="lazy"><?php endif; ?>
           </section>
@@ -578,7 +751,7 @@ foreach (array('impact' => 'impact', 'client' => 'client', 'words' => 'words', '
           <?php if (isset($cs_nav['challenge'])) : ?>
           <section class="cs-sec cs-challenge sec" id="challenge">
             <span class="eyebrow"><?php cs_e('cs_challenge_eyebrow'); ?></span>
-            <h2><?php cs_e('cs_challenge_title'); ?></h2>
+            <?php if (!$cs_nodemo || cs_f('cs_challenge_title')) : ?><h2><?php cs_e('cs_challenge_title'); ?></h2><?php endif; ?>
             <?php if (cs_f('cs_challenge_lede')) : ?><p class="lede"><?php cs_e('cs_challenge_lede'); ?></p><?php endif; ?>
             <div class="gaps"><?php echo wp_kses_post(cs_f('key_challenges')); ?></div>
           </section>
@@ -586,7 +759,7 @@ foreach (array('impact' => 'impact', 'client' => 'client', 'words' => 'words', '
           <?php if (isset($cs_nav['howitworks'])) : ?>
           <section class="cs-sec cs-routing sec" id="howitworks">
             <span class="eyebrow"><?php cs_e('cs_routing_eyebrow'); ?></span>
-            <h2><?php cs_e('cs_routing_title'); ?></h2>
+            <?php if (!$cs_nodemo || cs_f('cs_routing_title')) : ?><h2><?php cs_e('cs_routing_title'); ?></h2><?php endif; ?>
             <?php if (cs_f('cs_routing_lede')) : ?><p class="lede"><?php cs_e('cs_routing_lede'); ?></p><?php endif; ?>
             <?php $cs_routing_html = (string) cs_f('cs_routing_html'); if ($cs_routing_html !== '') : ?>
             <div class="cons-embed"><?php echo $cs_routing_html; ?></div>
@@ -596,7 +769,7 @@ foreach (array('impact' => 'impact', 'client' => 'client', 'words' => 'words', '
           <?php if (isset($cs_nav['solution'])) : ?>
           <section class="cs-sec cs-solution sec" id="solution">
             <span class="eyebrow"><?php cs_e('cs_solution_eyebrow'); ?></span>
-            <h2><?php cs_e('cs_solution_title'); ?></h2>
+            <?php if (!$cs_nodemo || cs_f('cs_solution_title')) : ?><h2><?php cs_e('cs_solution_title'); ?></h2><?php endif; ?>
             <?php if (cs_f('solution_description')) : ?><p class="lede"><?php cs_e('solution_description'); ?></p><?php endif; ?>
             <div class="capx">
               <?php for ($n = 1; $n <= 5; $n++) : if (!cs_f("solution_{$n}_heading")) continue; ?>
@@ -611,7 +784,7 @@ foreach (array('impact' => 'impact', 'client' => 'client', 'words' => 'words', '
           <?php if (isset($cs_nav['console'])) : ?>
           <section class="cs-sec cs-console sec" id="console">
             <span class="eyebrow"><?php cs_e('cs_console_eyebrow'); ?></span>
-            <h2><?php cs_e('cs_console_title'); ?></h2>
+            <?php if (!$cs_nodemo || cs_f('cs_console_title')) : ?><h2><?php cs_e('cs_console_title'); ?></h2><?php endif; ?>
             <?php if (cs_f('cs_console_lede')) : ?><p class="lede"><?php cs_e('cs_console_lede'); ?></p><?php endif; ?>
             <?php $cs_console_html = (string) cs_f('cs_console_html'); if ($cs_console_html !== '') : ?>
             <div class="cons-embed"><?php echo $cs_console_html; ?></div>
@@ -621,21 +794,22 @@ foreach (array('impact' => 'impact', 'client' => 'client', 'words' => 'words', '
           <?php if (isset($cs_nav['shift'])) : ?>
           <section class="cs-sec cs-shift sec" id="shift">
             <span class="eyebrow"><?php cs_e('cs_shift_eyebrow'); ?></span>
-            <h2><?php cs_e('cs_shift_title'); ?></h2>
+            <?php if (!$cs_nodemo || cs_f('cs_shift_title')) : ?><h2><?php cs_e('cs_shift_title'); ?></h2><?php endif; ?>
             <?php if (cs_f('cs_shift_lede')) : ?><p class="lede"><?php cs_e('cs_shift_lede'); ?></p><?php endif; ?>
             <?php $cs_shift_html = (string) cs_f('cs_shift_html'); if ($cs_shift_html !== '') : ?>
             <div class="cons-embed"><?php echo $cs_shift_html; ?></div>
             <?php endif; ?>
           </section>
           <?php endif; ?>
+          <?php endif; // $cs_gb ?>
         </main>
 
       </div>
 
-      <?php if (cs_f('cs_cta_title')) : ?>
+      <?php if ($cs_gb ? $cs_has_cta : (cs_f('cs_cta_title') || ($cs_nodemo && cs_f('cs_cta_text')))) : ?>
         <section class="cs-sec cs-cta cta-banner">
           <?php cs_video('cs_cta', 'cta-video'); ?>
-          <h2><?php cs_e('cs_cta_title'); ?></h2>
+          <?php if (!$cs_nodemo || cs_f('cs_cta_title')) : ?><h2><?php cs_e('cs_cta_title'); ?></h2><?php endif; ?>
           <?php if (cs_f('cs_cta_text')) : ?><p><?php cs_e('cs_cta_text'); ?></p><?php endif; ?>
           <div class="cta-actions">
             <?php cs_btn('cs_cta_btn1', 'btn btn-red', '', 'csModalExpert'); ?>
@@ -677,10 +851,10 @@ foreach (array('impact' => 'impact', 'client' => 'client', 'words' => 'words', '
           if (themeToggle) themeToggle.addEventListener("click", function () { setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark"); });
         }
         function css(el, k, v) { if (v === "") el.style.removeProperty(k); else el.style.setProperty(k, v, "important"); }
-        var hdr = document.getElementById("site-header") || document.querySelector("header");
+        var hdr = document.getElementById("imenu-bar") || document.getElementById("site-header") || document.querySelector("header");
         function syncHdr() {
           var h = 0;
-          if (hdr && /fixed|sticky/.test(getComputedStyle(hdr).position)) h = Math.max(0, Math.round(hdr.getBoundingClientRect().bottom - (root.getBoundingClientRect().top + window.pageYOffset)));
+          if (hdr && /fixed|sticky|absolute/.test(getComputedStyle(hdr).position)) h = Math.max(0, Math.round(hdr.getBoundingClientRect().bottom - (root.getBoundingClientRect().top + window.pageYOffset)));
           css(root, "--cs-hdr", h + "px");
         }
         syncHdr();
@@ -946,10 +1120,4 @@ foreach (array('impact' => 'impact', 'client' => 'client', 'words' => 'words', '
       })();
     </script>
 
-    <?php
-    if (function_exists('child_theme_custom_footer')) echo child_theme_custom_footer();
-    wp_footer();
-    ?>
-  </body>
-
-</html>
+<?php get_footer(); ?>

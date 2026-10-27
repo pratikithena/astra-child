@@ -1,0 +1,313 @@
+<!-- PanelOps project control and profitability &mdash; dashboard animation. Self-contained fragment: paste it whole into an
+     HTML block or the "Animated HTML" field. One section, no document wrapper tags, every rule scoped to
+     .ithdash. Follows the host theme: OS preference by default, overridden by html.dark or a
+     [data-theme="dark"|"light"] ancestor (the ITHENA header toggle sets both). -->
+<section class="ithdash ithdash--gantt" aria-label="PanelOps project portfolio and profitability dashboard">
+<style>
+
+.ithdash{
+  color-scheme:light dark;
+  /* each token: light fallback first, then the light-dark() pair for browsers that have it */
+  --bg:#FFFFFF;        --bg:light-dark(#FFFFFF,#0E1116);
+  --surface:#FFFFFF;   --surface:light-dark(#FFFFFF,#15191F);
+  --surface2:#FAFCFE;  --surface2:light-dark(#FAFCFE,#11161C);
+  --chrome:#F3F6FA;    --chrome:light-dark(#F3F6FA,#1B212A);
+  --dot:#D5DCE5;       --dot:light-dark(#D5DCE5,#39424D);
+  --tile:#F6F9FB;      --tile:light-dark(#F6F9FB,#1B2128);
+  --wash:#EAF5FB;      --wash:light-dark(#EAF5FB,#10293C);
+  --wash2:#D7ECF6;     --wash2:light-dark(#D7ECF6,#1B4460);
+  --line:#E6EAEE;      --line:light-dark(#E6EAEE,#28303A);
+  --ink:#1F2023;       --ink:light-dark(#1F2023,#F0F3F6);
+  --ink2:#4B5259;      --ink2:light-dark(#4B5259,#B4BEC8);
+  --ink3:#6E767E;      --ink3:light-dark(#6E767E,#8E99A4);
+  --sep:#B4BFCB;       --sep:light-dark(#B4BFCB,#4A545F);
+  --blue:#0083C8;      --blue:light-dark(#0083C8,#33A1E0);
+  --blue-deep:#006AA3; --blue-deep:light-dark(#006AA3,#8CCFF5);
+  --btn-ink:#FFFFFF;   --btn-ink:light-dark(#FFFFFF,#08131C);
+  --g-bg:#E7F5EE;      --g-bg:light-dark(#E7F5EE,#0E2A22);
+  --g-ink:#177A54;     --g-ink:light-dark(#177A54,#54D6A2);
+  --a-bg:#FEF4E5;      --a-bg:light-dark(#FEF4E5,#2E2413);
+  --a-ink:#8A5A08;     --a-ink:light-dark(#8A5A08,#F0B45C);
+  --green:#2ED47A;     --green:light-dark(#2ED47A,#35D98A);
+  --amber:#E08A1E;     --amber:light-dark(#E08A1E,#E8A33E);
+  --red-soft:#E25D5D;  --red-soft:light-dark(#E25D5D,#E8736F);
+  --red-ink:#B42318;   --red-ink:light-dark(#B42318,#FF9E99);
+  --bad-fill:#FDF2F2;  --bad-fill:light-dark(#FDF2F2,#2A1719);
+  --link:#AFC9DC;      --link:light-dark(#AFC9DC,#3D4C5A);
+  --sh1:rgba(10,25,45,.5);  --sh1:light-dark(rgba(10,25,45,.5),rgba(0,0,0,.75));
+  --sh2:rgba(10,25,45,.05); --sh2:light-dark(rgba(10,25,45,.05),rgba(0,0,0,.4));
+  --ease:cubic-bezier(.16,1,.3,1);
+  display:block;margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+/* host theme wins over the OS preference */
+.ithdash[data-theme="dark"],[data-theme="dark"] .ithdash,html.dark .ithdash{color-scheme:dark}
+.ithdash[data-theme="light"],[data-theme="light"] .ithdash{color-scheme:light}
+
+.ithdash *{box-sizing:border-box}
+.ithdash .ithd{max-width:932px;margin:0 auto;padding:22px 16px}
+.ithdash button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.ithdash :focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){.ithdash *{animation:none!important;transition:none!important}}
+
+/* ---- browser-framed app window ---- */
+.ithdash .ap{position:relative;width:100%;max-width:900px;margin:0 auto;background:var(--surface);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:11.5px;line-height:1.3;
+  color:var(--ink2);text-align:left;box-shadow:0 34px 60px -34px var(--sh1),0 2px 6px var(--sh2)}
+.ithdash .apbar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:var(--chrome);border-bottom:1px solid var(--line)}
+.ithdash .apbar>i{width:9px;height:9px;border-radius:50%;background:var(--dot)}
+.ithdash .apbar .url{flex:1;min-width:0;margin-left:8px;display:flex;align-items:center;gap:6px;background:var(--surface);
+  border:1px solid var(--line);border-radius:7px;padding:4px 10px;font-size:10.5px;color:var(--ink3);
+  white-space:nowrap;overflow:hidden}
+.ithdash .apbar .url .i{width:11px;height:11px;color:var(--g-ink);flex:none}
+.ithdash .apbar .url em{font-style:normal;color:var(--ink)}
+.ithdash .aphd{display:flex;align-items:center;gap:14px;padding:8px 14px;border-bottom:1px solid var(--line)}
+.ithdash .aphd .lg{display:flex;align-items:center;gap:7px;font-weight:800;color:var(--ink);font-size:12px;
+  white-space:nowrap;letter-spacing:-.01em}
+.ithdash .aphd .lg em{width:20px;height:20px;border-radius:6px;background:var(--blue);color:var(--btn-ink);display:grid;
+  place-items:center;font-style:normal;font-size:11px;font-weight:800}
+.ithdash .aphd .nv{display:flex;gap:11px;color:var(--ink3);font-weight:600;font-size:11px;white-space:nowrap}
+.ithdash .aphd .nv b{color:var(--blue-deep)}
+.ithdash .aphd .sr{margin-left:auto;display:grid;place-items:center;width:26px;height:26px;border:1px solid var(--line);
+  border-radius:7px;color:var(--ink3);flex:none}
+.ithdash .aphd .sr .i{width:13px;height:13px}
+.ithdash .aphd .ct{position:relative;color:var(--ink2);flex:none}
+.ithdash .aphd .ct .i{width:16px;height:16px}
+.ithdash .aphd .ct i{position:absolute;top:-6px;right:-7px;min-width:14px;height:14px;padding:0 3px;border-radius:999px;
+  background:var(--blue);color:var(--btn-ink);font-size:9px;font-weight:800;font-style:normal;display:grid;place-items:center}
+.ithdash .aphd .av{width:24px;height:24px;border-radius:50%;background:var(--wash);color:var(--blue-deep);
+  font-weight:800;font-size:10px;display:grid;place-items:center;flex:none}
+@media(max-width:560px){.ithdash .aphd .nv{display:none}}
+.ithdash .apbody{padding:14px}
+.ithdash .apbc{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink3);margin-bottom:10px;
+  white-space:nowrap;overflow:hidden}
+.ithdash .apbc b{font-weight:600;color:var(--ink2)}
+.ithdash .apbc em{font-style:normal;color:var(--sep)}
+
+/* ---- cards, chips, buttons ---- */
+.ithdash .apcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:0}
+.ithdash .apcard>.h{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);
+  font-weight:700;color:var(--ink);font-size:11.5px;white-space:nowrap;overflow:hidden}
+.ithdash .apcard>.h .i{width:14px;height:14px;color:var(--ink3);flex:none}
+.ithdash .apcard>.h .apc{margin-left:auto}
+.ithdash .apcard .bd{padding:11px 12px}
+.ithdash .ap2{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:12px;align-items:start;margin-top:12px}
+@media(max-width:760px){.ithdash .ap2{grid-template-columns:minmax(0,1fr)}}
+.ithdash .apc{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:999px;font-size:10px;
+  font-weight:700;white-space:nowrap;background:var(--tile);color:var(--ink2)}
+.ithdash .apc i{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
+.ithdash .apc.g{background:var(--g-bg);color:var(--g-ink)}
+.ithdash .apc.a{background:var(--a-bg);color:var(--a-ink)}
+.ithdash .apc.b{background:var(--wash);color:var(--blue-deep)}
+.ithdash .apb{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:6px 11px;border-radius:7px;
+  background:var(--blue);color:var(--btn-ink);font-weight:700;font-size:11px;white-space:nowrap;min-height:30px}
+.ithdash .apb.o{background:var(--surface);color:var(--blue-deep);border:1px solid var(--line)}
+.ithdash .apb .i{width:12px;height:12px}
+.ithdash .aplive{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink3);padding:7px 12px;
+  background:var(--surface2);border-top:1px solid var(--line);border-radius:0 0 10px 10px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.ithdash .aplive i{flex:none;width:6px;height:6px;border-radius:50%;background:var(--green);animation:ithBlink 1.6s ease-in-out infinite}
+@keyframes ithBlink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ---- KPI tiles / domain bars / fault list ---- */
+.ithdash .pfk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:10px}
+.ithdash .pfk div{background:var(--tile);border-radius:9px;padding:8px 10px;min-width:0}
+.ithdash .pfk b{display:block;font-size:15.5px;letter-spacing:-.02em;line-height:1.1;color:var(--ink);
+  font-variant-numeric:tabular-nums}
+.ithdash .pfk b em{font-style:normal;font-size:10px;color:var(--ink3);margin-left:2px;font-weight:600}
+.ithdash .pfk div>span{display:block;font-size:10px;color:var(--ink3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .pfk div.w b{color:var(--red-ink)}
+.ithdash .pfsub{font-size:10.5px;color:var(--ink3);margin:2px 0 8px}
+.ithdash .pfbar{display:grid;gap:7px}
+.ithdash .pfbar>div{display:grid;grid-template-columns:76px minmax(0,1fr) 30px;align-items:center;gap:8px;
+  font-size:11px;color:var(--ink2)}
+.ithdash .pfbar>div>span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .pfbar i{display:block;height:7px;border-radius:4px;background:var(--wash2);overflow:hidden;position:relative}
+.ithdash .pfbar i::after{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--blue);
+  border-radius:4px;transition:width 1.1s var(--ease)}
+.ithdash.on .pfbar i::after{width:var(--w)}
+.ithdash .pfbar b{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+.ithdash .pfbar .lo b{color:var(--red-ink)}
+.ithdash .pfbar .lo i::after{background:var(--red-soft)}
+.ithdash .pfal{display:grid;gap:6px}
+.ithdash .pfal>div{display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:9px;background:var(--tile);
+  font-size:11px;color:var(--ink2);min-width:0}
+.ithdash .pfal>div i{width:7px;height:7px;border-radius:50%;background:var(--red-soft);flex:none}
+.ithdash .pfal>div i.a{background:var(--amber)}
+.ithdash .pfal>div i.g{background:var(--green)}
+.ithdash .pfal>div span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .pfal>div em{font-style:normal;color:var(--ink3);white-space:nowrap}
+.ithdash .pfact{display:flex;gap:8px;margin-top:10px}
+
+/* ---- project portfolio Gantt ---- */
+.ithdash .gt{padding:12px}
+.ithdash .gth{display:grid;grid-template-columns:140px minmax(0,1fr);gap:10px;margin-bottom:7px}
+.ithdash .gth>span{font-size:9.5px;color:var(--ink3)}
+.ithdash .gtm{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));font-size:9px;color:var(--ink3);text-align:center}
+.ithdash .gr{display:grid;grid-template-columns:140px minmax(0,1fr);gap:10px;align-items:center;
+  margin-bottom:8px;cursor:pointer;outline:none}
+.ithdash .gr>span{font-size:11px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .2s}
+.ithdash .gtrack{position:relative;height:21px;border-radius:6px;background:var(--tile);
+  background-image:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 16.6667%);
+  transition:box-shadow .2s}
+.ithdash .gbar{position:absolute;top:3px;bottom:3px;left:var(--l);width:0;border-radius:5px;
+  background:linear-gradient(90deg,var(--blue-deep),var(--blue));
+  transition:width 1s var(--ease) var(--d,0ms),filter .2s}
+.ithdash.on .gbar{width:var(--w)}
+.ithdash .gbar.over{background:linear-gradient(90deg,#B42318,var(--red-soft))}
+.ithdash .gbar.done{background:linear-gradient(90deg,var(--g-ink),var(--green))}
+.ithdash .gnow{position:absolute;top:-2px;bottom:-2px;left:58%;width:2px;background:var(--amber);border-radius:2px;opacity:.85}
+.ithdash .gr.sel>span{color:var(--blue-deep);font-weight:700}
+.ithdash .gr.sel .gtrack{box-shadow:0 0 0 2px var(--wash2)}
+.ithdash .gr.sel .gbar{filter:brightness(1.12)}
+.ithdash .gtx{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;
+  padding:2px 12px 12px;font-size:9.5px;color:var(--ink3)}
+</style>
+<div class="ithd">
+  <div class="ap">
+    <div class="apbar"><i></i><i></i><i></i>
+      <span class="url">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        panelops.ithena.app<em>/projects/portfolio</em>
+      </span>
+    </div>
+    <div class="aphd">
+      <span class="lg"><em>o</em>PanelOps</span>
+      <span class="nv"><span>Projects</span><b>Portfolio</b><span>BOM</span><span>Costing</span></span>
+      <span class="sr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg></span>
+      <span class="ct"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4l2-2z"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg><i>3</i></span>
+      <span class="av">EO</span>
+    </div>
+    <div class="apbody">
+      <div class="apbc"><b>Portfolio</b><em>/</em>Live projects<em>/</em><b>Apr &ndash; Sep</b></div>
+
+      <div class="apcard">
+        <div class="h">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h9M4 12h14M4 18h6M2 3v18"></path></svg>
+          Project portfolio<span class="apc a" data-sel><i></i>DCS retrofit &middot; 108% of budget</span>
+        </div>
+        <div class="gt">
+          <div class="gth"><span>Project</span><span class="gtm"><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span></span></div>
+            <div class="gr" data-s="E&amp;I upgrade, Refinery B|closed out, margin 21%|g" style="--d:0ms" tabindex="0" role="button"><span>E&amp;I upgrade, Refinery B</span><div class="gtrack"><div class="gbar done" style="--l:0%;--w:30%"></div><span class="gnow" aria-hidden="true"></span></div></div>
+            <div class="gr" data-s="PLC migration, Line 4|on budget, 74% complete|b" style="--d:90ms" tabindex="0" role="button"><span>PLC migration, Line 4</span><div class="gtrack"><div class="gbar " style="--l:8%;--w:28%"></div><span class="gnow" aria-hidden="true"></span></div></div>
+            <div class="gr" data-s="SCADA rollout, Plant C|91% of budget consumed|b" style="--d:180ms" tabindex="0" role="button"><span>SCADA rollout, Plant C</span><div class="gtrack"><div class="gbar " style="--l:22%;--w:34%"></div><span class="gnow" aria-hidden="true"></span></div></div>
+            <div class="gr" data-s="DCS retrofit, Unit 12|108% of budget, overrun|a" style="--d:270ms" tabindex="0" role="button"><span>DCS retrofit, Unit 12</span><div class="gtrack"><div class="gbar over" style="--l:30%;--w:40%"></div><span class="gnow" aria-hidden="true"></span></div></div>
+            <div class="gr" data-s="Panel build, MCC-208|3 BOM lines unconfirmed|b" style="--d:360ms" tabindex="0" role="button"><span>Panel build, MCC-208</span><div class="gtrack"><div class="gbar " style="--l:44%;--w:24%"></div><span class="gnow" aria-hidden="true"></span></div></div>
+            <div class="gr" data-s="Instrumentation, Tank farm|procurement released|b" style="--d:450ms" tabindex="0" role="button"><span>Instrumentation, Tank farm</span><div class="gtrack"><div class="gbar " style="--l:52%;--w:30%"></div><span class="gnow" aria-hidden="true"></span></div></div>
+            <div class="gr" data-s="Commissioning, Site D|starts next month|b" style="--d:540ms" tabindex="0" role="button"><span>Commissioning, Site D</span><div class="gtrack"><div class="gbar " style="--l:66%;--w:26%"></div><span class="gnow" aria-hidden="true"></span></div></div>
+        </div>
+        <div class="gtx"><span>Amber marker is today</span><span>Actuals posted against budget nightly</span></div>
+        <div class="aplive"><i></i>Actuals posted nightly across 150+ delivered projects &middot; <span data-clock>10:33:41</span></div>
+      </div>
+
+      <div class="ap2">
+        <div class="apcard">
+          <div class="h">
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M2 20h20"></path></svg>
+            Operations, against baseline<span class="apc g"><i></i>Live</span>
+          </div>
+          <div class="bd">
+            <div class="pfk">
+              <div><b><span data-count="30">0</span><em>%</em></b><span>Faster BOM and parts work</span></div>
+              <div><b><span data-count="25">0</span><em>%</em></b><span>Project scalability, up</span></div>
+              <div><b><span data-count="35">0</span><em>%</em></b><span>Parts traceability, up</span></div>
+              <div><b><span data-count="150">0</span><em>+</em></b><span>Projects delivered</span></div>
+            </div>
+            <div class="pfsub">Actuals against budget by project type, % consumed</div>
+            <div class="pfbar">
+              <div class="lo"><span>DCS</span><i style="--w:98%"></i><b>108</b></div>
+              <div><span>SCADA</span><i style="--w:83%"></i><b>91</b></div>
+              <div><span>E&amp;I</span><i style="--w:75%"></i><b>82</b></div>
+              <div><span>PLC</span><i style="--w:69%"></i><b>76</b></div>
+              <div><span>Panel build</span><i style="--w:62%"></i><b>68</b></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="apcard">
+          <div class="h">
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.9l8 4.1-8 4.1-8-4.1zM4 11l8 4.1L20 11M4 15.1l8 4.1 8-4.1"></path></svg>
+            Procurement and traceability<span class="apc a"><i></i>2 to action</span>
+          </div>
+          <div class="bd">
+            <div class="pfal">
+              <div><i></i><span>DCS retrofit, Unit 12 &mdash; actuals at 108% of budget</span><em>today</em></div>
+              <div><i class="a"></i><span>MCC-208 &mdash; 3 BOM lines awaiting vendor confirmation</span><em>1d</em></div>
+              <div><i class="g"></i><span>Serial numbers captured for 240 components</span><em>1d</em></div>
+              <div><i></i><span>SCADA rollout &mdash; stock reserved against WO-3312</span><em>2d</em></div>
+              <div><i class="g"></i><span>E&amp;I upgrade closed out, margin 21%</span><em>3d</em></div>
+            </div>
+            <div class="pfact">
+              <button type="button" class="apb"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l14 8-6 1.6L10 19z"></path></svg>Open project</button>
+              <button type="button" class="apb o">Export BOM</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+(function () {
+  var root = document.currentScript.closest(".ithdash");
+  if (!root) return;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function (s, c) { return (c || root).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || root).querySelectorAll(s)); };
+  var comma = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); };
+
+  /* count every [data-count] up once, easing out */
+  function count(el) {
+    var to = parseFloat(el.getAttribute("data-count"));
+    if (reduce || !isFinite(to)) { el.textContent = comma(to); return; }
+    var t0 = null, dur = 1100;
+    requestAnimationFrame(function step(now) {
+      if (t0 === null) t0 = now;
+      var p = Math.min(1, (now - t0) / dur);
+      el.textContent = comma(Math.round(to * (1 - Math.pow(1 - p, 4))));
+      if (p < 1) requestAnimationFrame(step);
+    });
+  }
+
+  /* every timer below is opened on view and torn down off view or on a hidden tab */
+  function onView(start, stop) {
+    if (reduce || !("IntersectionObserver" in window)) { start(); return; }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.isIntersecting ? start() : stop(); });
+    }, { threshold: 0.2 }).observe(root);
+    document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); });
+  }
+
+  /* project rows: hover, focus, or let the board walk the portfolio */
+  var rws = $$(".gr"), sel = $("[data-sel]"), at = 0, cyc = null;
+  function pick(i) {
+    at = i;
+    rws.forEach(function (n, j) { n.classList.toggle("sel", j === i); });
+    var s = rws[i].getAttribute("data-s").split("|");
+    sel.className = "apc " + s[2];
+    sel.innerHTML = "<i></i>" + s[0] + " &middot; " + s[1];
+  }
+  rws.forEach(function (n, i) {
+    n.addEventListener("mouseenter", function () { pick(i); });
+    n.addEventListener("focus", function () { pick(i); });
+  });
+
+  var clock = null, secs = 10 * 3600 + 33 * 60 + 41;
+  function pad(n) { return ("0" + n).slice(-2); }
+  function tick() {
+    secs = (secs + 10) % 86400;
+    $("[data-clock]").textContent = pad((secs / 3600) | 0) + ":" + pad(((secs / 60) | 0) % 60) + ":" + pad(secs % 60);
+  }
+  onView(function () {
+    if (clock) return;
+    root.classList.add("on");
+    $$("[data-count]").forEach(count);
+    pick(3);
+    cyc = setInterval(function () { pick((at + 1) % rws.length); }, 2100);
+    clock = setInterval(tick, 1500);
+  }, function () { clearInterval(cyc); cyc = null; clearInterval(clock); clock = null; });
+})();
+</script>
+</section>

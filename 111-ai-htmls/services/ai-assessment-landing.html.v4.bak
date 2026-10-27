@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Strategic Consulting | ITHENA</title>
+  <meta name="description" content="ITHENA AI assessment and strategic consulting: readiness, gap analysis, use case prioritization, roadmap and governance, from discovery to activation in 12 weeks.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@500;600;700&display=swap">
+  <link rel="preload" as="image" href="https://dev-website.ithena.app/wp-content/uploads/2026/06/aether-bg.webp">
+
+  <style>
+    /* =========================================================================
+       ITHENA / AI Assessment landing block
+       Paste the style, main and script blocks into a WP Custom HTML block or an
+       Elementor HTML widget. Layout follows the PanelOps landing; colours are
+       the ithena-ai-ml-data-science tokens (light default, dark via toggle).
+       Everything is scoped to main.aia; all:revert seals off theme styles.
+       ========================================================================= */
+
+    /* ---------- isolation ---------- */
+    /* :where() keeps the reset at (0,1,1) so every rule below outranks it */
+    main.aia, main.aia :where(*:not(svg, svg *)) { all: revert; }
+    main.aia *, main.aia *::before, main.aia *::after { box-sizing: border-box; }
+
+    /* ---------- tokens: light (default) ---------- */
+    main.aia {
+      --blue: #0083C8;
+      --blue-d: #006AA3;
+      --blue-l: #3FA9E0;
+      --acc-t: #006AA3;
+      --navy: #0A192D;
+      --ink: #0A192D;
+      --body: #46586A;
+      --muted: #5B6B7A;
+      --sa: #FFFFFF;
+      --sb: #F2F8FD;
+      --card: #FFFFFF;
+      --line: rgba(10, 25, 45, .10);
+      --hair: rgba(10, 25, 45, .16);
+      --tint: rgba(0, 131, 200, .08);
+      --sh: 0 18px 44px -24px rgba(0, 45, 80, .34);
+      --sh-lg: 0 -8px 24px -18px rgba(0, 45, 80, .10), 0 30px 70px -30px rgba(0, 45, 80, .32);
+      --ez: cubic-bezier(.22, .61, .36, 1);
+      --ff-head: "Noto Sans", system-ui, sans-serif;
+      --ff-body: "Inter", system-ui, sans-serif;
+      --scrollbar: 0px;
+      color-scheme: light;
+    }
+
+    /* ---------- tokens: dark ---------- */
+    main.aia[data-theme="dark"] {
+      --acc-t: #3FA9E0;
+      --ink: #F2F3F5;
+      --body: rgba(228, 230, 235, .8);
+      --muted: #9A9FA8;
+      --sa: #0A0A0B;
+      --sb: #111113;
+      --card: #17181B;
+      --line: rgba(255, 255, 255, .09);
+      --hair: rgba(255, 255, 255, .16);
+      --tint: rgba(63, 169, 224, .10);
+      --sh: 0 18px 44px -24px rgba(0, 0, 0, .62);
+      --sh-lg: 0 30px 70px -30px rgba(0, 0, 0, .8);
+      color-scheme: dark;
+    }
+
+    /* hero and CTA sit on photography, so they are always dark */
+    main.aia .hero, main.aia .cta {
+      --acc-t: #3FA9E0;
+      --ink: #FFFFFF;
+      --body: rgba(228, 236, 245, .82);
+      --muted: rgba(228, 236, 245, .66);
+      --sb: #0A192D;
+      --tint: rgba(63, 169, 224, .14);
+      --hair: rgba(255, 255, 255, .24);
+    }
+
+    /* ---------- base ---------- */
+    main.aia {
+      display: block;
+      position: relative;
+      margin-inline: calc(50% - 50vw + var(--scrollbar) / 2);
+      overflow-x: clip;
+      background: var(--sa);
+      color: var(--body);
+      font: 400 16px/1.65 var(--ff-body);
+      -webkit-font-smoothing: antialiased;
+    }
+    main.aia h1, main.aia h2, main.aia h3, main.aia h4 {
+      margin: 0;
+      font-family: var(--ff-head);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+    main.aia h1 em, main.aia h2 em { font-style: normal; color: var(--blue); }
+    main.aia .hero h1 em, main.aia .cta h2 em { color: var(--blue-l); }
+    main.aia p, main.aia ul, main.aia ol { margin: 0; padding: 0; }
+    main.aia li { list-style: none; }
+    main.aia a { color: inherit; text-decoration: none; }
+    main.aia img { display: block; max-width: 100%; height: auto; }
+    main.aia svg { display: block; }
+    main.aia button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    main.aia :focus-visible { outline: 2px solid var(--blue-l); outline-offset: 3px; }
+
+    /* ---------- layout ---------- */
+    main.aia .sec { position: relative; padding: 96px 24px; background: var(--sa); }
+    main.aia .sec--alt { background: var(--sb); }
+    main.aia .wrap { position: relative; max-width: 1240px; margin-inline: auto; }
+    main.aia .head { max-width: 720px; margin-bottom: 56px; }
+    main.aia .kick {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 18px;
+      font: 700 12px/1.25 var(--ff-body);
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      color: var(--acc-t);
+    }
+    main.aia .kick::before {
+      content: "";
+      flex: none;
+      width: 28px;
+      height: 2px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--blue), transparent);
+    }
+    main.aia .hero .kick::before, main.aia .cta .kick::before { background: linear-gradient(90deg, var(--blue-l), transparent); }
+    main.aia .h2 { font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -.015em; }
+    main.aia .lede { margin-top: 16px; font-size: 18px; font-weight: 300; line-height: 1.6; }
+
+    /* ---------- buttons ---------- */
+    main.aia .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    main.aia .btn {
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
+      padding: 12px 28px;
+      border: 1px solid var(--blue);
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+      font: 600 16px/1.2 var(--ff-head);
+      transition: background .2s var(--ez), border-color .2s var(--ez), transform .2s var(--ez);
+    }
+    main.aia .btn:hover { background: var(--blue-d); border-color: var(--blue-d); transform: translateY(-2px); }
+    main.aia .btn--ghost { background: transparent; color: var(--acc-t); border-color: var(--hair); }
+    main.aia .btn--ghost:hover { background: var(--tint); border-color: var(--blue-l); }
+    main.aia .hero .btn--ghost, main.aia .cta .btn--ghost { color: #fff; }
+
+    /* ---------- theme toggle ---------- */
+    main.aia .theme {
+      position: fixed;
+      top: 96px;
+      right: 24px;
+      z-index: 50;
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--hair);
+      border-radius: 4px;
+      background: var(--card);
+      color: var(--ink);
+      box-shadow: var(--sh);
+    }
+    main.aia .theme .moon, main.aia[data-theme="dark"] .theme .sun { display: none; }
+    main.aia[data-theme="dark"] .theme .moon { display: block; }
+
+    /* ---------- scroll reveal (only once JS has armed it) ---------- */
+    main.aia.js .rv {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s var(--ez) var(--d, 0s), transform .7s var(--ez) var(--d, 0s),
+        /* keep the hover/active transitions of the cards this class sits on */
+        background .4s var(--ez), border-color .4s var(--ez), translate .4s var(--ez), scale .4s var(--ez), box-shadow .4s var(--ez);
+    }
+    main.aia.js .rv.in { opacity: 1; transform: none; }
+
+    /* ---------- hero ---------- */
+    main.aia .hero {
+      padding: 144px 24px 96px;
+      color: var(--body);
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(10, 25, 45, .96) 0%, rgba(10, 25, 45, .82) 45%, rgba(10, 25, 45, .45) 100%),
+        url("https://dev-website.ithena.app/wp-content/uploads/2026/07/Gradient-Overlay-Banner_1174px-X-556px.webp") center / cover no-repeat,
+        #0A192D;
+    }
+    main.aia .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--tint) 1px, transparent 1px),
+        linear-gradient(90deg, var(--tint) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse at 70% 40%, #000 0%, transparent 70%);
+      pointer-events: none;
+    }
+    main.aia .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    main.aia .h1 { font-size: clamp(32px, 5vw, 50px); letter-spacing: -.02em; line-height: 1.1; }
+    main.aia .hero .lede { max-width: 540px; margin-block: 24px 40px; }
+
+    /* hero diagram: the three realities */
+    main.aia .venn { width: 100%; max-width: 520px; margin-inline: auto; overflow: visible; }
+    main.aia .venn .ring { fill: var(--tint); stroke: var(--blue-l); stroke-width: 1.5; }
+    main.aia .venn .core { fill: var(--blue); }
+    main.aia .venn text { font-family: var(--ff-head); fill: var(--ink); paint-order: stroke; stroke: var(--sb); stroke-width: 4px; stroke-linejoin: round; }
+    main.aia .venn .t-ring { font-size: 16px; font-weight: 700; }
+    main.aia .venn .t-sub { font-family: var(--ff-body); font-size: 12px; fill: var(--muted); }
+    main.aia .venn .t-lap { font-size: 12px; font-weight: 600; fill: var(--blue-l); }
+    main.aia .venn .t-core { font-size: 12px; font-weight: 700; fill: #fff; stroke: none; }
+
+    /* ---------- stats strip ---------- */
+    main.aia .stats { padding: 40px 24px; border-bottom: 1px solid var(--line); }
+    main.aia .stats ul { display: grid; grid-template-columns: repeat(4, 1fr); }
+    main.aia .stats li { padding: 8px 24px; border-left: 1px solid var(--line); }
+    main.aia .stats li:first-child { border-left: 0; padding-left: 0; }
+    main.aia .stats b {
+      display: block;
+      font: 700 clamp(32px, 3.6vw, 40px)/1 var(--ff-head);
+      color: var(--blue);
+      font-variant-numeric: tabular-nums;
+    }
+    main.aia .stats li > span { display: block; margin-top: 8px; font-size: 14px; color: var(--muted); }
+
+    /* ---------- framework: stacked sticky cards (PanelOps "The challenge") ---------- */
+    main.aia .pdeck { display: flex; flex-direction: column; gap: 18vh; }
+    main.aia .pcard {
+      position: sticky;
+      top: calc(112px + var(--i, 0) * 20px);
+      display: grid;
+      grid-template-columns: 1.08fr 1fr;
+      align-items: center;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--card);
+      box-shadow: var(--sh-lg);
+    }
+    main.aia .pcard figure { margin: 0; aspect-ratio: 640 / 336; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; }
+    main.aia .pcard img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ez); }
+    main.aia .pcard:hover img { transform: scale(1.04); }
+    main.aia .pcard .fit { background: #fff; }
+    main.aia .pcard .fit img { object-fit: contain; }
+    main.aia .ptxt { padding: 12px 8px 12px 44px; }
+    main.aia .pn { display: block; margin-bottom: 12px; font: 700 12px/1 var(--ff-body); letter-spacing: .16em; text-transform: uppercase; color: var(--blue); }
+    main.aia .pcard h3 { margin-bottom: 12px; font-size: 32px; letter-spacing: -.015em; }
+    main.aia .pcard p { max-width: 440px; }
+
+    /* ---------- intersection legend ---------- */
+    main.aia .legend { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 32px; }
+    main.aia .legend li { display: flex; gap: 16px; }
+    main.aia .legend svg { flex: none; width: 48px; height: 44px; overflow: visible; transform-origin: 24px 19.7px; }
+    main.aia .legend .o { fill: none; stroke: var(--hair); stroke-width: 1.2; }
+    main.aia .legend .f { fill: var(--blue); }
+    main.aia .legend h3 { font-size: 18px; }
+    main.aia .legend p { margin-top: 4px; font-size: 14px; }
+
+    /* ---------- pillars ---------- */
+    main.aia .pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    main.aia .pillar { padding: 32px 24px; border: 1px solid var(--line); border-radius: 4px; background: var(--card); transition: border-color .3s var(--ez), translate .3s var(--ez), scale .3s var(--ez), box-shadow .3s var(--ez); }
+    main.aia .pillar:hover { border-color: var(--blue); translate: 0 -4px; scale: 1.04; box-shadow: var(--sh); }
+    main.aia .ico {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+      background: var(--blue);
+      color: #fff;
+    }
+    main.aia .pillar h3 { margin-bottom: 12px; font-size: 18px; }
+    main.aia .pillar p { font-size: 14px; }
+
+    /* ---------- services: cell grid (PanelOps "Integrated modules") ---------- */
+    main.aia .cells { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    main.aia .mcell {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 16px 16px 24px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--sb);
+      transition: background .3s var(--ez), scale .3s var(--ez), box-shadow .3s var(--ez);
+    }
+    main.aia .mcell::after {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s var(--ez);
+    }
+    main.aia .mcell:hover { z-index: 1; background: var(--card); scale: 1.04; box-shadow: var(--sh-lg); }
+    main.aia .mcell:hover::after { transform: scaleX(1); }
+    main.aia .mcell figure { margin: 0 0 20px; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; background: var(--navy); }
+    main.aia .mcell img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ez); }
+    main.aia .mcell:hover img { transform: scale(1.06); }
+    main.aia .mcell h3 { padding-inline: 8px; font-size: 18px; transition: color .25s; }
+    main.aia .mcell:hover h3 { color: var(--blue); }
+    main.aia .mcell > p { margin-top: 8px; padding-inline: 8px; font-size: 14px; }
+    main.aia .mcell details { margin-top: auto; padding: 16px 8px 0; }
+    main.aia .mcell summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 44px;
+      border-top: 1px solid var(--line);
+      font: 600 14px/1.4 var(--ff-head);
+      color: var(--acc-t);
+      cursor: pointer;
+      list-style: none;
+    }
+    main.aia .mcell summary::-webkit-details-marker { display: none; }
+    main.aia .mcell summary svg { transition: transform .2s var(--ez); }
+    main.aia .mcell details[open] summary svg { transform: rotate(45deg); }
+    main.aia .mcell details li { position: relative; padding: 4px 0 4px 18px; font-size: 14px; color: var(--ink); }
+    main.aia .mcell details li::before { content: ""; position: absolute; left: 0; top: 13px; width: 8px; height: 2px; background: var(--blue); }
+
+    /* ---------- maturity curve ---------- */
+    main.aia .curve { display: grid; grid-template-columns: repeat(5, 1fr); align-items: end; gap: 8px; }
+    main.aia .stage { display: flex; flex-direction: column; justify-content: flex-end; cursor: default; outline-offset: 6px; }
+    main.aia .stage .bar {
+      position: relative;
+      height: calc(var(--lv) * 40px);
+      margin-top: 16px;
+      background: var(--blue);
+      opacity: .28;
+      transform-origin: bottom;
+      transition: opacity .5s var(--ez), transform 1s var(--ez) calc(var(--lv) * .12s), box-shadow .5s var(--ez);
+    }
+    main.aia.js .curve:not(.in) .bar { transform: scaleY(0); }
+    main.aia .stage.on .bar { opacity: 1; box-shadow: 0 16px 32px -16px var(--blue); }
+    main.aia .stage .bar::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .35), transparent 60%);
+      opacity: 0;
+      transition: opacity .5s;
+    }
+    main.aia .stage.on .bar::before { opacity: 1; }
+    main.aia .stage-n { font: 700 12px/1 var(--ff-body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    main.aia .stage h3 { margin: 8px 0 4px; font-size: 18px; transition: color .3s; }
+    main.aia .stage.on h3, main.aia .stage.on .stage-n { color: var(--blue); }
+    main.aia .stage p { font-size: 14px; }
+    main.aia .dims { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--line); }
+    main.aia .dims li { display: flex; flex-direction: column; }
+    main.aia .dims h3 { font-size: 16px; }
+    main.aia .dims p { margin-top: 4px; font-size: 14px; }
+    main.aia .dims-t { grid-column: 1 / -1; font: 600 14px/1.4 var(--ff-head); color: var(--acc-t); }
+    main.aia .meter { display: flex; align-items: center; gap: 12px; margin-top: auto; padding-top: 12px; }
+    main.aia .meter span { flex: 1; height: 6px; border-radius: 3px; background: var(--tint); overflow: hidden; }
+    main.aia .meter i { display: block; height: 100%; width: var(--v, 0%); background: var(--blue); transition: width .8s var(--ez); }
+    main.aia .meter b { min-width: 3ch; font: 700 14px/1 var(--ff-head); color: var(--ink); font-variant-numeric: tabular-nums; text-align: right; }
+
+    /* ---------- engagement calendar ---------- */
+    main.aia .plan { display: grid; grid-template-columns: 1fr 340px; gap: 32px; align-items: start; }
+    main.aia .cal { display: grid; grid-template-columns: auto repeat(4, 1fr); gap: 8px; }
+    main.aia .mo { align-self: center; padding-right: 8px; font: 700 12px/1.3 var(--ff-body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); writing-mode: vertical-rl; rotate: 180deg; }
+    main.aia .wk {
+      --pc: var(--blue);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-height: 128px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--pc);
+      border-radius: 6px;
+      background: var(--card);
+      outline-offset: 3px;
+      transition: background .4s var(--ez), translate .4s var(--ez), box-shadow .4s var(--ez), opacity .4s var(--ez);
+    }
+    main.aia .wk[data-ph="0"] { --pc: var(--blue-l); }
+    main.aia .wk[data-ph="2"] { --pc: var(--blue-d); }
+    main.aia .wk[data-ph="3"] { --pc: var(--navy); }
+    main.aia[data-theme="dark"] .wk[data-ph="3"] { --pc: #F2F3F5; }
+    main.aia .wk-n { font: 700 12px/1 var(--ff-body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    main.aia .wk-p { font: 600 12px/1 var(--ff-head); color: var(--pc); }
+    main.aia .wk p { margin-top: auto; font-size: 14px; line-height: 1.45; color: var(--ink); }
+    main.aia .cal.live .wk:not(.inph) { opacity: .7; }
+    main.aia .wk.inph { background: var(--tint); }
+    main.aia .wk.on { background: var(--blue); border-color: var(--blue); translate: 0 -4px; box-shadow: var(--sh); opacity: 1; }
+    main.aia .wk.on .wk-n, main.aia .wk.on .wk-p, main.aia .wk.on p { color: #fff; }
+    main.aia .phases { display: grid; gap: 8px; }
+    main.aia .phases li { padding: 16px 18px; border-left: 3px solid var(--line); transition: border-color .4s var(--ez), background .4s var(--ez); }
+    main.aia .phases li.on { border-left-color: var(--blue); background: var(--card); box-shadow: var(--sh); }
+    main.aia .phases h3 { display: flex; justify-content: space-between; gap: 12px; font-size: 18px; }
+    main.aia .phases h3 small { font: 600 12px/1.6 var(--ff-body); color: var(--muted); }
+    main.aia .why { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s var(--ez); }
+    main.aia .why > div { overflow: hidden; }
+    main.aia .why p { padding-top: 8px; font-size: 14px; }
+    main.aia .why b { display: block; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); font: 600 14px/1.5 var(--ff-head); color: var(--ink); }
+    main.aia .phases li.on .why { grid-template-rows: 1fr; }
+
+    /* ---------- cta ---------- */
+    main.aia .cta {
+      color: var(--body);
+      background:
+        linear-gradient(100deg, rgba(10, 25, 45, .96) 0%, rgba(10, 25, 45, .85) 50%, rgba(10, 25, 45, .55) 100%),
+        url("https://dev-website.ithena.app/wp-content/uploads/2026/06/aether-bottom-bgiv2.webp") center / cover no-repeat,
+        #0A192D;
+    }
+    main.aia .cta .wrap { display: grid; gap: 32px; max-width: 1240px; }
+    main.aia .cta .wrap > div:first-child { max-width: 720px; }
+
+    /* ---------- motion ---------- */
+    @media (prefers-reduced-motion: no-preference) {
+      /* hero diagram draws itself once */
+      main.aia .venn .ring { stroke-dasharray: 943; stroke-dashoffset: 943; animation: aiaDraw 1.2s var(--ez) forwards; }
+      main.aia .venn .ring:nth-of-type(2) { animation-delay: .15s; }
+      main.aia .venn .ring:nth-of-type(3) { animation-delay: .3s; }
+      main.aia .venn .labels { opacity: 0; animation: aiaFade .6s var(--ez) .9s forwards; }
+      main.aia .venn .core { transform-box: fill-box; transform-origin: center; animation: aiaPulse 3s ease-in-out 1.5s infinite; }
+
+      /* intersection icons: circles converge, then the region breathes */
+      main.aia .legend .o { transition: transform .9s var(--ez) var(--d, 0s); }
+      main.aia.js .legend li:not(.in) .o:nth-of-type(1) { transform: translate(-5px, -3px); }
+      main.aia.js .legend li:not(.in) .o:nth-of-type(2) { transform: translate(5px, -3px); }
+      main.aia.js .legend li:not(.in) .o:nth-of-type(3) { transform: translate(0, 6px); }
+      main.aia .legend svg { animation: aiaTurn 6s var(--ez) infinite; animation-delay: calc(var(--k, 0) * -.33s); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      main.aia.js .rv { opacity: 1; transform: none; transition: none; }
+      main.aia .stage .bar, main.aia .meter i, main.aia .wk, main.aia .phases li, main.aia .why { transition: none; }
+      main.aia.js .curve:not(.in) .bar { transform: none; }
+    }
+    @keyframes aiaDraw { to { stroke-dashoffset: 0; } }
+    @keyframes aiaFade { to { opacity: 1; } }
+    @keyframes aiaPulse { 50% { transform: scale(1.08); } }
+    /* hold, then a 120deg step every 2s */
+    @keyframes aiaTurn { 0%, 22% { rotate: 0deg; } 33%, 55% { rotate: 120deg; } 66%, 88% { rotate: 240deg; } 100% { rotate: 360deg; } }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 1100px) {
+      main.aia .pillars, main.aia .dims { grid-template-columns: repeat(2, 1fr); }
+      main.aia .cells, main.aia .legend { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 900px) {
+      main.aia .hero-grid { grid-template-columns: 1fr; }
+      main.aia .pdeck { gap: 12vh; }
+      main.aia .pcard { grid-template-columns: 1fr; top: calc(88px + var(--i, 0) * 12px); padding: 14px; }
+      main.aia .ptxt { padding: 20px 8px 8px; }
+      main.aia .pcard h3 { font-size: 24px; }
+      main.aia .stats ul { grid-template-columns: repeat(2, 1fr); row-gap: 24px; }
+      main.aia .stats li:nth-child(3) { border-left: 0; padding-left: 0; }
+      main.aia .curve { grid-template-columns: 1fr; gap: 16px; }
+      main.aia .stage .bar { order: -1; width: calc(var(--lv) * 20%); height: 6px; margin: 0 0 12px; transform-origin: left; }
+      main.aia.js .curve:not(.in) .bar { transform: scaleX(0); }
+      main.aia .plan { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      main.aia .sec { padding: 64px 16px; }
+      main.aia .hero { padding: 112px 16px 64px; }
+      main.aia .stats { padding: 32px 16px; }
+      main.aia .pillars, main.aia .dims, main.aia .cells, main.aia .legend { grid-template-columns: 1fr; }
+      main.aia .cal { grid-template-columns: repeat(2, 1fr); }
+      main.aia .mo { grid-column: 1 / -1; writing-mode: horizontal-tb; rotate: none; padding: 8px 0 0; }
+      main.aia .theme { top: auto; bottom: 16px; right: 16px; }
+    }
+  </style>
+
+</head>
+
+<body style="margin:0">
+  <main class="aia" id="aia" data-theme="light">
+
+    <button class="theme" type="button" aria-label="Switch to dark theme">
+      <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+
+    <!-- clip shapes for the small legend diagrams -->
+    <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+      <defs>
+        <clipPath id="aiaA"><circle cx="18" cy="16" r="12"/></clipPath>
+        <clipPath id="aiaB"><circle cx="30" cy="16" r="12"/></clipPath>
+      </defs>
+    </svg>
+
+    <!-- ===== Hero ===== -->
+    <section class="sec hero" aria-labelledby="aia-h1">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="kick rv">AI strategic consulting</p>
+          <h1 class="h1 rv" id="aia-h1">Transform your enterprise with <em>intelligent strategy</em></h1>
+          <p class="lede rv">We architect your AI transformation journey from current state to AI-native operations, aligning technology, people and process with measurable business outcomes.</p>
+          <div class="btns rv">
+            <a class="btn" href="https://ithena.ai/contact-us/">Schedule assessment</a>
+            <a class="btn btn--ghost" href="#why">Explore the framework</a>
+          </div>
+        </div>
+
+        <svg class="venn" viewBox="0 0 520 470" role="img" aria-labelledby="aia-venn-t">
+          <title id="aia-venn-t">Your AI roadmap sits where current maturity, technology stack and business wishlist overlap</title>
+          <circle class="ring" cx="190" cy="175" r="150"/>
+          <circle class="ring" cx="330" cy="175" r="150"/>
+          <circle class="ring" cx="260" cy="295" r="150"/>
+          <g class="labels">
+            <text class="t-ring" x="110" y="105" text-anchor="middle">Current maturity</text>
+            <text class="t-sub" x="110" y="124" text-anchor="middle">What you have</text>
+            <text class="t-ring" x="410" y="105" text-anchor="middle">Technology stack</text>
+            <text class="t-sub" x="410" y="124" text-anchor="middle">What you use</text>
+            <text class="t-ring" x="260" y="400" text-anchor="middle">Your wishlist</text>
+            <text class="t-sub" x="260" y="419" text-anchor="middle">Where you want to go</text>
+            <text class="t-lap" x="260" y="118" text-anchor="middle">Upgrade path</text>
+            <text class="t-lap" x="170" y="290" text-anchor="middle">Ambition gap</text>
+            <text class="t-lap" x="350" y="290" text-anchor="middle">Feasibility zone</text>
+            <circle class="core" cx="260" cy="215" r="44"/>
+            <text class="t-core" x="260" y="211" text-anchor="middle">ITHENA</text>
+            <text class="t-core" x="260" y="227" text-anchor="middle">strategy</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ===== Stats ===== -->
+    <section class="stats" aria-label="ITHENA consulting in numbers">
+      <ul class="wrap">
+        <li class="rv"><b><span data-count="150">150</span>+</b><span>Enterprise assessments</span></li>
+        <li class="rv"><b><span data-count="40">40</span>%</b><span>Average cost reduction</span></li>
+        <li class="rv"><b><span data-count="6">6</span>–<span data-count="12">12</span> wk</b><span>Time to first value</span></li>
+        <li class="rv"><b><span data-count="4">4</span></b><span>Industries of deep expertise</span></li>
+      </ul>
+    </section>
+
+    <!-- ===== Framework (stacked cards) ===== -->
+    <section class="sec" id="why" aria-labelledby="aia-why">
+      <div class="wrap">
+        <div class="head rv">
+          <p class="kick">Strategic framework</p>
+          <h2 class="h2" id="aia-why">Three questions that define every <em>AI transformation</em></h2>
+          <p class="lede">Before tools or models, clarity. These questions separate successes from expensive experiments.</p>
+        </div>
+        <ol class="pdeck">
+          <li class="pcard" style="--i:0">
+            <figure><img src="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-cta-meeting-poster-768x432.jpg" alt="Executives agreeing the business case behind an AI initiative" width="768" height="432" loading="lazy" decoding="async"></figure>
+            <div class="ptxt">
+              <span class="pn">01 · Purpose</span>
+              <h3>The why</h3>
+              <p>Root every AI initiative in business purpose. We uncover the strategic imperatives, such as revenue pressure, competitive gaps and talent bottlenecks, that make transformation non-optional.</p>
+            </div>
+          </li>
+          <li class="pcard" style="--i:1">
+            <figure><img src="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-journey-diagnose-768x432.webp" alt="Diagnostic readout of an asset, showing the gap between current and target state" width="768" height="432" loading="lazy" decoding="async"></figure>
+            <div class="ptxt">
+              <span class="pn">02 · Diagnosis</span>
+              <h3>The what</h3>
+              <p>Map the precise delta between today and your AI-native target state. We audit data maturity, tech stack, team skills and readiness to define what needs to change.</p>
+            </div>
+          </li>
+          <li class="pcard" style="--i:2">
+            <figure class="fit"><img src="https://dev-website.ithena.app/wp-content/uploads/2026/07/planing-768x768.webp" alt="Roadmap path with milestones leading to a goal flag" width="768" height="768" loading="lazy" decoding="async"></figure>
+            <div class="ptxt">
+              <span class="pn">03 · Execution</span>
+              <h3>The how</h3>
+              <p>A phased blueprint balancing quick wins with long-term architecture: prioritized use cases, build-vs-buy decisions, change management and governance built to scale.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Strategic intersection ===== -->
+    <section class="sec sec--alt" aria-labelledby="aia-int">
+      <div class="wrap">
+        <div class="head rv">
+          <p class="kick">Strategic intersection</p>
+          <h2 class="h2" id="aia-int">Where <em>strategy emerges</em></h2>
+          <p class="lede">Your AI strategy lives at the intersection of three realities: what you have, what you use and where you want to go.</p>
+        </div>
+        <ul class="legend">
+          <li class="rv" style="--k:0">
+            <svg viewBox="0 0 48 44" aria-hidden="true"><circle class="o" cx="18" cy="16" r="12"/><circle class="o" cx="30" cy="16" r="12"/><circle class="o" cx="24" cy="27" r="12"/><circle class="f" cx="18" cy="16" r="12"/></svg>
+            <div><h3>Current maturity</h3><p>Data readiness, team skills, process maturity</p></div>
+          </li>
+          <li class="rv" style="--k:1">
+            <svg viewBox="0 0 48 44" aria-hidden="true"><circle class="o" cx="18" cy="16" r="12"/><circle class="o" cx="30" cy="16" r="12"/><circle class="o" cx="24" cy="27" r="12"/><circle class="f" cx="30" cy="16" r="12"/></svg>
+            <div><h3>Technology stack</h3><p>Existing tools, platforms, infrastructure</p></div>
+          </li>
+          <li class="rv" style="--k:2">
+            <svg viewBox="0 0 48 44" aria-hidden="true"><circle class="o" cx="18" cy="16" r="12"/><circle class="o" cx="30" cy="16" r="12"/><circle class="o" cx="24" cy="27" r="12"/><circle class="f" cx="24" cy="27" r="12"/></svg>
+            <div><h3>Your wishlist</h3><p>Business goals, competitive ambitions</p></div>
+          </li>
+          <li class="rv" style="--k:3">
+            <svg viewBox="0 0 48 44" aria-hidden="true"><circle class="o" cx="18" cy="16" r="12"/><circle class="o" cx="30" cy="16" r="12"/><circle class="o" cx="24" cy="27" r="12"/><circle class="f" cx="30" cy="16" r="12" clip-path="url(#aiaA)"/></svg>
+            <div><h3>Upgrade path</h3><p>What maturity allows your stack to become</p></div>
+          </li>
+          <li class="rv" style="--k:4">
+            <svg viewBox="0 0 48 44" aria-hidden="true"><circle class="o" cx="18" cy="16" r="12"/><circle class="o" cx="30" cy="16" r="12"/><circle class="o" cx="24" cy="27" r="12"/><circle class="f" cx="24" cy="27" r="12" clip-path="url(#aiaA)"/></svg>
+            <div><h3>Ambition gap</h3><p>Where vision exceeds current capability</p></div>
+          </li>
+          <li class="rv" style="--k:5">
+            <svg viewBox="0 0 48 44" aria-hidden="true"><circle class="o" cx="18" cy="16" r="12"/><circle class="o" cx="30" cy="16" r="12"/><circle class="o" cx="24" cy="27" r="12"/><circle class="f" cx="24" cy="27" r="12" clip-path="url(#aiaB)"/></svg>
+            <div><h3>Feasibility zone</h3><p>What tools can deliver toward your goals</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Organizational alignment ===== -->
+    <section class="sec" aria-labelledby="aia-org">
+      <div class="wrap">
+        <div class="head rv">
+          <p class="kick">Organizational alignment</p>
+          <h2 class="h2" id="aia-org">AI aligned to <em>every layer</em> of your organization</h2>
+          <p class="lede">Transformation doesn't happen in silos. We align to the pillars that matter most.</p>
+        </div>
+        <ul class="pillars">
+          <li class="pillar rv">
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10M19 21V10M9 21V10M15 21V10M2 10l10-6 10 6z"/></svg></span>
+            <h3>Executive and business strategy</h3>
+            <p>Align AI investments to boardroom KPIs: revenue growth, margin expansion, market share. Every initiative maps to P&amp;L impact.</p>
+          </li>
+          <li class="pillar rv">
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></span>
+            <h3>Operations and process excellence</h3>
+            <p>Identify automation across supply chain, manufacturing and service delivery. Quantify efficiency gains before investment.</p>
+          </li>
+          <li class="pillar rv">
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span>
+            <h3>People and culture readiness</h3>
+            <p>Assess team maturity, upskilling needs and change management. Build internal AI champions and sustainable adoption.</p>
+          </li>
+          <li class="pillar rv">
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.7-4 3-9 3s-9-1.3-9-3M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></svg></span>
+            <h3>Technology and data infrastructure</h3>
+            <p>Evaluate platforms, data pipelines and architectural readiness. Identify technical debt and design future-state architecture.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Services (module cells) ===== -->
+    <section class="sec sec--alt" aria-labelledby="aia-svc">
+      <div class="wrap">
+        <div class="head rv">
+          <p class="kick">Consulting services</p>
+          <h2 class="h2" id="aia-svc">AI advisory and <em>transformation services</em></h2>
+          <p class="lede">Nine services that share one assessment baseline, from initial assessment to scaled adoption, so every phase builds on the last.</p>
+        </div>
+        <ul class="cells">
+          <li class="mcell rv">
+            <figure><img src="https://dev-website.ithena.app/wp-content/uploads/2024/02/ai-ml-1-768x364.jpg" alt="" width="768" height="364" loading="lazy" decoding="async"></figure>
+            <h3>AI readiness assessment</h3>
+            <p>Comprehensive evaluation of preparedness to adopt and scale AI across people, process, data and technology.</p>
+            <details><summary>What you get<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+              <ul><li>Organizational readiness scorecard</li><li>Data maturity evaluation</li><li>Infrastructure capability audit</li><li>Executive summary and recommendations</li></ul>
+            </details>
+          </li>
+          <li class="mcell rv">
+            <figure><img src="https://dev-website.ithena.app/wp-content/uploads/2026/08/compressed-air-768x619.webp" alt="" width="768" height="619" loading="lazy" decoding="async"></figure>
+            <h3>Gap analysis</h3>
+            <p>Identify the delta between current state and AI-native target across all organizational dimensions.</p>
+            <details><summary>What you get<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+              <ul><li>Current vs. future state mapping</li><li>Skill and capability gap matrix</li><li>Technology gap assessment</li><li>Prioritized remediation roadmap</li></ul>
+            </details>
+          </li>
+          <li class="mcell rv">
+            <figure><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/agentic-flow-pump-768x960.webp" alt="" width="768" height="960" loading="lazy" decoding="async"></figure>
+            <h3>Technical debt assessment</h3>
+            <p>Uncover hidden technical debt blocking AI adoption: legacy systems, data silos, integration bottlenecks.</p>
+            <details><summary>What you get<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+              <ul><li>Legacy system dependency mapping</li><li>Data silo identification</li><li>Integration complexity scoring</li><li>Debt reduction roadmap with ROI</li></ul>
+            </details>
+          </li>
+          <li class="mcell rv">
+            <figure><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ecommerce-hero-parts-poster-768x432.jpg" alt="" width="768" height="432" loading="lazy" decoding="async"></figure>
+            <h3>Use case prioritization</h3>
+            <p>Systematically identify, evaluate and rank AI use cases by impact, feasibility and strategic alignment.</p>
+            <details><summary>What you get<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+              <ul><li>Use case discovery workshop</li><li>Impact vs. feasibility scoring</li><li>ROI modeling per use case</li><li>Sequenced implementation pipeline</li></ul>
+            </details>
+          </li>
+          <li class="mcell rv">
+            <figure><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ecommerce-role-maintenance-768x480.webp" alt="" width="768" height="480" loading="lazy" decoding="async"></figure>
+            <h3>Current tools assessment</h3>
+            <p>Evaluate your existing tech stack for AI integration readiness, overlap and optimization opportunities.</p>
+            <details><summary>What you get<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+              <ul><li>Tool landscape inventory</li><li>AI integration readiness scores</li><li>Redundancy and overlap analysis</li><li>Consolidation recommendations</li></ul>
+            </details>
+          </li>
+          <li class="mcell rv">
+            <figure><img src="https://dev-website.ithena.app/wp-content/uploads/2026/08/air-comp2-768x619.webp" alt="" width="768" height="619" loading="lazy" decoding="async"></figure>
+            <h3>Tech team maturity review</h3>
+            <p>Assess engineering and data teams' capabilities and readiness to build, deploy and maintain AI/ML at scale.</p>
+            <details><summary>What you get<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+              <ul><li>Skills matrix assessment</li><li>Team structure evaluation</li><li>Upskilling program design</li><li>Hiring strategy recommendations</li></ul>
+            </details>
+          </li>
+          <li class="mcell rv">
+            <figure><img src="https://dev-website.ithena.app/wp-content/uploads/2026/09/ith-home-factorygpt-night-shift-768x432.jpg" alt="" width="768" height="432" loading="lazy" decoding="async"></figure>
+            <h3>AI strategy and roadmap</h3>
+            <p>Board-ready, multi-year AI transformation strategy with phased milestones and measurable outcomes.</p>
+            <details><summary>What you get<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+              <ul><li>3-year strategic AI roadmap</li><li>Investment and resource planning</li><li>KPI framework with success metrics</li><li>Quarterly milestone definitions</li></ul>
+            </details>
+          </li>
+          <li class="mcell rv">
+            <figure><img src="https://dev-website.ithena.app/wp-content/uploads/2026/08/ith-home-control-room-poster-768x432.jpg" alt="" width="768" height="432" loading="lazy" decoding="async"></figure>
+            <h3>Vendor and platform selection</h3>
+            <p>Navigate the AI vendor landscape with objective, requirements-driven evaluation and selection support.</p>
+            <details><summary>What you get<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+              <ul><li>Requirements specification</li><li>Vendor shortlisting and scoring</li><li>POC design and evaluation criteria</li><li>Contract negotiation support</li></ul>
+            </details>
+          </li>
+          <li class="mcell rv">
+            <figure><img src="https://dev-website.ithena.app/wp-content/uploads/2024/02/ai-ml-768x364.jpg" alt="" width="768" height="364" loading="lazy" decoding="async"></figure>
+            <h3>AI governance framework</h3>
+            <p>Establish responsible AI practices: ethics, risk management, compliance and organizational governance.</p>
+            <details><summary>What you get<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+              <ul><li>AI ethics policy development</li><li>Risk assessment framework</li><li>Compliance and regulatory alignment</li><li>Governance committee structure</li></ul>
+            </details>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Maturity model ===== -->
+    <section class="sec" aria-labelledby="aia-mat">
+      <div class="wrap">
+        <div class="head rv">
+          <p class="kick">Maturity model</p>
+          <h2 class="h2" id="aia-mat">Where are you on the <em>AI maturity curve?</em></h2>
+          <p class="lede">We assess against a five-stage model, pinpointing where you are and what it takes to advance.</p>
+        </div>
+        <ol class="curve" data-cycle="3200">
+          <li class="stage on" tabindex="0" style="--lv:1"><span class="stage-n">Stage 1</span><h3>Ad hoc</h3><p>Experimentation without strategy or governance</p><span class="bar"></span></li>
+          <li class="stage" tabindex="0" style="--lv:2"><span class="stage-n">Stage 2</span><h3>Aware</h3><p>Leadership buy-in, initial data strategy forming</p><span class="bar"></span></li>
+          <li class="stage" tabindex="0" style="--lv:3"><span class="stage-n">Stage 3</span><h3>Operational</h3><p>AI in production, dedicated team established</p><span class="bar"></span></li>
+          <li class="stage" tabindex="0" style="--lv:4"><span class="stage-n">Stage 4</span><h3>Systematic</h3><p>Scaled deployment with MLOps and monitoring</p><span class="bar"></span></li>
+          <li class="stage" tabindex="0" style="--lv:5"><span class="stage-n">Stage 5</span><h3>AI-native</h3><p>AI embedded in all decisions, continuous learning</p><span class="bar"></span></li>
+        </ol>
+        <ul class="dims rv">
+          <li class="dims-t" aria-live="polite">Typical readiness at stage <span class="dims-s">1, Ad hoc</span>, by dimension</li>
+          <li><h3>Data maturity</h3><p>Quality, governance, accessibility, pipeline readiness</p><div class="meter"><span><i style="--v:15%"></i></span><b>15</b></div></li>
+          <li><h3>Infrastructure</h3><p>Cloud, compute, MLOps, deployment architecture</p><div class="meter"><span><i style="--v:20%"></i></span><b>20</b></div></li>
+          <li><h3>Talent and skills</h3><p>Team capabilities, training, hiring readiness</p><div class="meter"><span><i style="--v:10%"></i></span><b>10</b></div></li>
+          <li><h3>Governance</h3><p>Ethics, compliance, risk, responsible AI</p><div class="meter"><span><i style="--v:5%"></i></span><b>5</b></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Engagement model ===== -->
+    <section class="sec sec--alt" aria-labelledby="aia-eng">
+      <div class="wrap">
+        <div class="head rv">
+          <p class="kick">Engagement model</p>
+          <h2 class="h2" id="aia-eng">From discovery to transformation <em>in 12 weeks</em></h2>
+          <p class="lede">Structured, time-boxed engagements designed to deliver strategic clarity, fast.</p>
+        </div>
+        <div class="plan">
+          <ol class="cal rv" data-cycle="1800" aria-label="12-week engagement calendar">
+            <li class="mo" aria-hidden="true">Month 1</li>
+            <li class="wk" tabindex="0" data-ph="0"><span class="wk-n">Week 1</span><span class="wk-p">Discovery</span><p>Kickoff and stakeholder interviews</p></li>
+            <li class="wk" tabindex="0" data-ph="0"><span class="wk-n">Week 2</span><span class="wk-p">Discovery</span><p>Data mapping and strategic alignment</p></li>
+            <li class="wk" tabindex="0" data-ph="1"><span class="wk-n">Week 3</span><span class="wk-p">Assessment</span><p>Tech and data deep-dive</p></li>
+            <li class="wk" tabindex="0" data-ph="1"><span class="wk-n">Week 4</span><span class="wk-p">Assessment</span><p>People and process review, baseline scorecard</p></li>
+            <li class="mo" aria-hidden="true">Month 2</li>
+            <li class="wk" tabindex="0" data-ph="2"><span class="wk-n">Week 5</span><span class="wk-p">Strategy</span><p>Use case long list and scoring</p></li>
+            <li class="wk" tabindex="0" data-ph="2"><span class="wk-n">Week 6</span><span class="wk-p">Strategy</span><p>Prioritization workshop</p></li>
+            <li class="wk" tabindex="0" data-ph="2"><span class="wk-n">Week 7</span><span class="wk-p">Strategy</span><p>Roadmap and build-vs-buy decisions</p></li>
+            <li class="wk" tabindex="0" data-ph="2"><span class="wk-n">Week 8</span><span class="wk-p">Strategy</span><p>Investment model and sign-off</p></li>
+            <li class="mo" aria-hidden="true">Month 3</li>
+            <li class="wk" tabindex="0" data-ph="3"><span class="wk-n">Week 9</span><span class="wk-p">Activation</span><p>Quick-win build starts</p></li>
+            <li class="wk" tabindex="0" data-ph="3"><span class="wk-n">Week 10</span><span class="wk-p">Activation</span><p>Team enablement and training</p></li>
+            <li class="wk" tabindex="0" data-ph="3"><span class="wk-n">Week 11</span><span class="wk-p">Activation</span><p>Governance setup</p></li>
+            <li class="wk" tabindex="0" data-ph="3"><span class="wk-n">Week 12</span><span class="wk-p">Activation</span><p>Results review and next-quarter plan</p></li>
+          </ol>
+          <ol class="phases rv" aria-live="polite">
+            <li class="on"><h3>Discovery <small>Weeks 1–2</small></h3><div class="why"><div><p>Stakeholder interviews, data mapping, strategic alignment</p><b>Why it matters: everyone agrees on the goal before money is spent.</b></div></div></li>
+            <li><h3>Assessment <small>Weeks 3–4</small></h3><div class="why"><div><p>Deep-dive across tech, data, people and process</p><b>Why it matters: a scored baseline shows where to invest first.</b></div></div></li>
+            <li><h3>Strategy <small>Weeks 5–8</small></h3><div class="why"><div><p>Use case prioritization, roadmap, investment modeling</p><b>Why it matters: a funded roadmap ranked by ROI, not by hype.</b></div></div></li>
+            <li><h3>Activation <small>Weeks 9–12</small></h3><div class="why"><div><p>Quick-win execution, enablement, governance setup</p><b>Why it matters: first value lands inside the quarter.</b></div></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="sec cta" aria-labelledby="aia-cta">
+      <div class="wrap">
+        <div class="rv">
+          <p class="kick">Get started</p>
+          <h2 class="h2" id="aia-cta">Ready to build your <em>AI-native future?</em></h2>
+          <p class="lede">Start with a complimentary 30-minute discovery call. We'll discuss your objectives, assess readiness signals and outline a tailored engagement path.</p>
+        </div>
+        <div class="btns rv">
+          <a class="btn" href="https://ithena.ai/contact-us/">Book a discovery call</a>
+          <a class="btn btn--ghost" href="#why">Review the framework</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    (function () {
+      var root = document.getElementById('aia');
+      var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---- theme toggle ---- */
+      var btn = root.querySelector('.theme');
+      var KEY = 'aia-theme';
+      function applyTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+      }
+      try { applyTheme(localStorage.getItem(KEY) || 'light'); } catch (e) { applyTheme('light'); }
+      btn.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        try { localStorage.setItem(KEY, next); } catch (e) {}
+      });
+
+      /* ---- full-bleed breakout: subtract the scrollbar so 100vw doesn't overflow ---- */
+      function sb() { root.style.setProperty('--scrollbar', (innerWidth - document.documentElement.clientWidth) + 'px'); }
+      sb();
+      addEventListener('resize', sb);
+
+      if (!('IntersectionObserver' in window)) return; // old browsers: static, fully visible page
+
+      /* ---- counters ---- */
+      function count(el) {
+        var to = +el.getAttribute('data-count');
+        if (reduce) { el.textContent = to; return; }
+        var t0 = performance.now();
+        (function step() {
+          var p = Math.min((performance.now() - t0) / 1600, 1);
+          el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+          if (p < 1) requestAnimationFrame(step);
+        })();
+      }
+
+      /* ---- scroll reveal: stagger siblings, fire counters, unhide once ---- */
+      root.classList.add('js');
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('in');
+          e.target.querySelectorAll('[data-count]').forEach(count);
+          io.unobserve(e.target);
+        });
+      }, { threshold: .15, rootMargin: '0px 0px -8% 0px' });
+
+      root.querySelectorAll('[data-count]').forEach(function (el) { el.textContent = '0'; });
+      root.querySelectorAll('.rv, .curve').forEach(function (el) {
+        var sibs = [].filter.call(el.parentNode.children, function (s) { return s.classList.contains('rv'); });
+        el.style.setProperty('--d', (Math.max(sibs.indexOf(el), 0) % 6) * .09 + 's');
+        io.observe(el);
+      });
+
+      /* ---- auto-advancing highlight: runs only on screen, pauses on hover/focus ---- */
+      function cycle(list, sel, onShow) {
+        var items = [].slice.call(list.querySelectorAll(sel));
+        var i = 0, visible = false, hold = false;
+        function show(n) {
+          i = n % items.length;
+          items.forEach(function (el, k) {
+            el.classList.toggle('on', k === i);
+            el.setAttribute('aria-current', k === i ? 'step' : 'false');
+          });
+          onShow(i, items[i]);
+        }
+        items.forEach(function (el, k) {
+          el.addEventListener('mouseenter', function () { show(k); });
+          el.addEventListener('focus', function () { show(k); });
+        });
+        list.addEventListener('mouseenter', function () { hold = true; });
+        list.addEventListener('mouseleave', function () { hold = false; });
+        list.addEventListener('focusin', function () { hold = true; });
+        list.addEventListener('focusout', function () { hold = false; });
+        new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(list);
+        if (!reduce) setInterval(function () { if (visible && !hold) show(i + 1); }, +list.getAttribute('data-cycle'));
+        show(0);
+      }
+
+      // maturity: typical score per dimension (data, infra, talent, governance) at each stage
+      var SCORES = [[15, 20, 10, 5], [35, 30, 25, 20], [60, 55, 50, 40], [80, 85, 70, 65], [95, 95, 90, 90]];
+      var meters = root.querySelectorAll('.meter');
+      var stageLabel = root.querySelector('.dims-s');
+      cycle(root.querySelector('.curve'), '.stage', function (i, el) {
+        stageLabel.textContent = (i + 1) + ', ' + el.querySelector('h3').textContent;
+        meters.forEach(function (m, k) {
+          m.querySelector('i').style.setProperty('--v', SCORES[i][k] + '%');
+          m.querySelector('b').textContent = SCORES[i][k];
+        });
+      });
+
+      // engagement: walk the calendar week by week; that week's phase lights up alongside
+      var cal = root.querySelector('.cal');
+      var weeks = cal.querySelectorAll('.wk');
+      var phases = root.querySelectorAll('.phases li');
+      cal.classList.add('live');
+      cycle(cal, '.wk', function (i, el) {
+        var ph = el.getAttribute('data-ph');
+        weeks.forEach(function (w) { w.classList.toggle('inph', w.getAttribute('data-ph') === ph); });
+        phases.forEach(function (p, k) { p.classList.toggle('on', String(k) === ph); });
+      });
+    })();
+  </script>
+</body>
+</html>

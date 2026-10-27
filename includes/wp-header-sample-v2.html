@@ -1,0 +1,424 @@
+<!-- ITHENA header v2 (widget-ready): full-width mega panels, every link visible (no accordions). Paste into an Elementor HTML widget. Needs Noto Sans loaded site-wide. -->
+<script>
+    /* theme pre-init (= ithena_header_theme_preinit): saved/system theme before paint, exposes window.ithenaTheme */
+    (function () {
+        var KEY = 'ithena-theme', root = document.documentElement;
+        var t = window.ithenaTheme = {
+            get: function () { try { return localStorage.getItem(KEY); } catch (e) { return null; } },   /* used by service pages */
+            isDark: function () { return root.classList.contains('dark'); },
+            apply: function (isDark) {
+                root.classList.toggle('dark', isDark);
+                try { localStorage.setItem(KEY, isDark ? 'dark' : 'light'); } catch (e) {}
+                t.sync();
+            },
+            toggle: function () { t.apply(!t.isDark()); },
+            /* mirrors the theme onto the switch and #main-section; never changes it */
+            sync: function () {
+                var isDark = t.isDark(), btn = document.getElementById('iw-theme'), main = document.getElementById('main-section');
+                if (btn) { btn.setAttribute('aria-checked', isDark); btn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme'); }
+                if (main) main.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            }
+        };
+        var saved; try { saved = localStorage.getItem(KEY); } catch (e) {}
+        if (saved !== 'light')   /* dark by default; light only when chosen */ root.classList.add('dark');
+    })();
+</script>
+
+<style>
+  /* ===== tokens (v2: small text darkened to pass WCAG AA 4.5:1 on its panel) ===== */
+  .iw-root{
+      --iw-panel:#FFFFFF;--iw-raise:#F4F8FB;--iw-soft:#F7F9FB;
+      --iw-ink:#15171A;--iw-ink2:#3B4249;--iw-mute:#5C646C;--iw-line:#E3E8ED;
+      --iw-blue:#0077B6;--iw-blue-deep:#005F92;--iw-link:#0071AD;--iw-tint:#E8F3FA;
+      --iw-head:rgba(255,255,255,.9);
+      --iw-sh1:0 1px 2px rgba(10,25,45,.06);--iw-sh2:0 10px 28px -18px rgba(10,25,45,.4);--iw-shadow:0 40px 80px -40px rgba(10,25,45,.45);
+      --iw-ease:cubic-bezier(.16,1,.3,1);
+      --iw-div:color-mix(in srgb,var(--iw-link) 40%,transparent);
+  }
+  html.dark .iw-root{
+      --iw-panel:#0F1012;--iw-raise:#191B1F;--iw-soft:#141518;
+      --iw-ink:#F4F5F7;--iw-ink2:#D3D6DC;--iw-mute:#A3A8B0;--iw-line:rgba(255,255,255,.09);
+      --iw-link:#4DB3E8;--iw-tint:rgba(77,179,232,.13);
+      --iw-head:rgba(10,10,11,.88);
+      --iw-sh1:0 1px 2px rgba(0,0,0,.5);--iw-sh2:0 18px 44px -24px rgba(0,0,0,.7);--iw-shadow:0 44px 90px -34px rgba(0,0,0,.8);
+  }
+
+  /* ===== scoped resets (class-only, so theme/Elementor tag styles can't leak in) ===== */
+  .iw-root{display:block;margin:0;padding:0;font-family:"Noto Sans",system-ui,sans-serif;font-size:14px;line-height:1.45;color:var(--iw-ink);-webkit-font-smoothing:antialiased}
+  .iw-root,.iw-root *,.iw-root *::before,.iw-root *::after{box-sizing:border-box}
+  .iw-a{color:inherit;text-decoration:none}
+  .iw-a:hover,.iw-a:focus,.iw-a:visited{color:inherit;text-decoration:none}
+  .iw-b{margin:0;padding:0;font:inherit;color:inherit;letter-spacing:normal;text-transform:none;background:none;border:0;border-radius:0;box-shadow:none;cursor:pointer}
+  .iw-b:hover,.iw-b:focus{color:inherit;background:none;border-color:transparent;box-shadow:none}
+  .iw-ul{list-style:none;margin:0;padding:0}
+  .iw-i{display:block;flex:none;width:18px;height:18px}
+  .iw-root .iw-a:focus-visible,.iw-root .iw-b:focus-visible{outline:2px solid var(--iw-link);outline-offset:2px;border-radius:8px}
+  @keyframes iw-in{from{opacity:0;transform:translateY(8px)}}
+
+  /* ===== bar: transparent, glass once scrolled, solid while a panel is open ===== */
+  .iw-bar{position:fixed;inset:0 0 auto;z-index:999995;padding:14px 0;border-bottom:1px solid transparent;transition:padding .4s var(--iw-ease),background .25s,border-color .25s,box-shadow .4s}
+  .iw-bar.is-scrolled{padding:6px 0;background:var(--iw-head);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px);border-bottom-color:var(--iw-line);box-shadow:var(--iw-sh1)}
+  .iw-root.is-mega .iw-bar{background:var(--iw-panel);border-bottom-color:var(--iw-line)}
+  .iw-wrap{max-width:1320px;margin:0 auto;padding:10px 30px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .iw-logo-img{display:block;height:40px;width:auto;max-width:none}
+
+  /* top-level links: label + chevron, brand underline on hover/open */
+  .iw-nav{display:flex;align-items:center;gap:2px}
+  .iw-link{position:relative;display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 14px;font-size:15px;font-weight:600;color:var(--iw-ink);white-space:nowrap;transition:color .2s}
+  .iw-link::after{content:"";position:absolute;left:14px;right:14px;bottom:4px;height:2px;border-radius:2px;background:var(--iw-link);transform:scaleX(0);transition:transform .3s var(--iw-ease)}
+  .iw-link .iw-ch{width:14px;height:14px;color:var(--iw-mute);transition:transform .25s var(--iw-ease),color .2s}
+  .iw-link:hover,.iw-item.is-open>.iw-link{color:var(--iw-link)}
+  .iw-link:hover::after,.iw-item.is-open>.iw-link::after{transform:none}
+  .iw-item.is-open>.iw-link .iw-ch{transform:rotate(180deg);color:var(--iw-link)}
+
+  .iw-actions{display:flex;align-items:center;gap:12px}
+  .iw-btn,.iw-btn:hover,.iw-btn:focus{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 20px;border-radius:999px;background:var(--iw-blue);color:#fff;font-size:14px;font-weight:700;white-space:nowrap;transition:background .2s,transform .15s}
+  .iw-btn:hover{background:var(--iw-blue-deep)}
+  .iw-btn:active{transform:translateY(1px)}
+  .iw-btn .iw-i{width:16px;height:16px;transition:transform .2s var(--iw-ease)}
+  .iw-btn:hover .iw-i{transform:translateX(3px)}
+
+  /* theme switch: pill track + round thumb */
+  .iw-theme,.iw-theme:hover,.iw-theme:focus{position:relative;flex-shrink:0;width:48px;height:26px;border:1px solid var(--iw-line);border-radius:999px;background:var(--iw-tint)}
+  .iw-thumb{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:var(--iw-blue);color:#fff;display:grid;place-items:center;box-shadow:var(--iw-sh1);transition:transform .35s var(--iw-ease)}
+  html.dark .iw-thumb{transform:translateX(22px)}
+  .iw-thumb .iw-i{position:absolute;width:12px;height:12px;transition:opacity .25s,transform .3s var(--iw-ease)}
+  .iw-moon,html.dark .iw-sun{opacity:0;transform:scale(.5)}
+  html.dark .iw-moon{opacity:1;transform:none}
+
+  .iw-icon-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:10px;color:var(--iw-ink);transition:background .2s}
+  .iw-icon-btn:hover{background:var(--iw-tint)}
+  .iw-icon-btn .iw-i{width:22px;height:22px}
+  .iw-burger{display:none}
+
+  /* ===== mega panel: edge-to-edge sheet under the bar ===== */
+  .iw-dim{position:fixed;inset:0;z-index:999994;background:rgba(8,12,18,.42);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+  .iw-root.is-mega .iw-dim{opacity:1;visibility:visible}
+  .iw-mega{position:fixed;left:0;right:0;top:var(--iw-header-h,72px);max-height:calc(100vh - var(--iw-header-h,72px));overflow-y:auto;overscroll-behavior:contain;background:var(--iw-panel);box-shadow:var(--iw-shadow);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);transition:opacity .2s,transform .3s var(--iw-ease),visibility .3s}
+  .iw-item.is-open .iw-mega{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+  /* switching between panels: the old one vanishes at once, only the new one fades in */
+  .iw-root.is-mega .iw-item:not(.is-open) .iw-mega{transition:none}
+  .iw-mega-in{max-width:1320px;margin:0 auto;padding:32px 30px 36px;display:grid;grid-template-columns:300px minmax(0,1fr);gap:44px}
+
+  /* left: featured card (marketing slot, copy in INTRO) */
+  .iw-feat{position:relative;display:flex;flex-direction:column;padding:26px 24px;border-radius:18px;overflow:hidden;color:#fff;background:radial-gradient(120% 80% at 100% 0%,rgba(255,255,255,.16),transparent 60%),linear-gradient(155deg,#0077B6 0%,#00507D 100%)}
+  .iw-feat .iw-i{width:30px;height:30px;margin-bottom:18px;opacity:.95}
+  .iw-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+  .iw-feat-t{margin:8px 0 10px;font-size:21px;font-weight:700;line-height:1.25;letter-spacing:-.015em}
+  .iw-feat-d{margin:0 0 22px;font-size:14px;line-height:1.55;color:rgba(255,255,255,.92)}
+  .iw-feat-cta,.iw-feat-cta:hover,.iw-feat-cta:focus{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;background:#fff;color:#00507D;font-size:13.5px;font-weight:700}
+  .iw-feat-cta .iw-i{width:15px;height:15px;margin:0;transition:transform .2s var(--iw-ease)}
+  .iw-feat-cta:hover .iw-i{transform:translateX(3px)}
+
+  /* right: every column and group expanded */
+  .iw-grid{display:grid;grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:0 36px}
+  .iw-col{position:relative;min-width:0}
+  .iw-col+.iw-col::before{content:"";position:absolute;left:-18px;top:4px;bottom:4px;width:1px;background:linear-gradient(180deg,var(--iw-div),transparent)}
+  .iw-col-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--iw-line)}
+  .iw-col-ic{display:grid;place-items:center;flex:none;width:38px;height:38px;border-radius:10px;background:var(--iw-blue);color:#fff;box-shadow:0 6px 16px -8px var(--iw-blue)}
+  .iw-col-ic .iw-i{width:20px;height:20px}
+  .iw-col-t{display:block;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--iw-link)}
+  .iw-col-d{display:block;margin-top:2px;font-size:13px;color:var(--iw-mute)}
+  .iw-col-head:is(a):hover .iw-col-t{text-decoration:underline}
+  .iw-col-head{border-bottom-color:var(--iw-div)}
+  .iw-group+.iw-group{margin-top:14px}
+  .iw-gl{display:block;margin:0 0 4px;padding:0 10px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--iw-mute)}
+
+  /* leaf links: title + product tag, or title + one-line description */
+  .iw-it{position:relative;display:block;padding:8px 30px 8px 10px;border-radius:10px;transition:background .18s,transform .18s var(--iw-ease)}
+  .iw-it:hover,.iw-it:focus-visible{background:var(--iw-raise)}
+  .iw-it:active{transform:scale(.99)}
+  .iw-it-t{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:14.5px;font-weight:500;line-height:1.35;color:var(--iw-ink2);transition:color .18s}
+  .iw-it:hover .iw-it-t,.iw-it:focus-visible .iw-it-t{color:var(--iw-link)}
+  .iw-tag{padding:1px 7px;border-radius:999px;border:1px solid var(--iw-div);font-size:11px;font-weight:700;letter-spacing:.02em;color:var(--iw-link)}
+  .iw-it-d{display:block;margin-top:2px;font-size:13px;line-height:1.4;color:var(--iw-mute)}
+  .iw-it .iw-go{position:absolute;right:8px;top:50%;width:16px;height:16px;margin-top:-8px;color:var(--iw-link);opacity:0;transform:translateX(-6px);transition:opacity .18s,transform .18s var(--iw-ease)}
+  .iw-it:hover .iw-go,.iw-it:focus-visible .iw-go{opacity:1;transform:none}
+
+  /* bottom strip: one conversion line per panel */
+  .iw-mfoot{border-top:1px solid var(--iw-line);background:var(--iw-soft)}
+  .iw-mfoot-in{max-width:1320px;margin:0 auto;padding:14px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:14px;color:var(--iw-ink2)}
+  .iw-mfoot-in b{color:var(--iw-ink)}
+  .iw-mfoot .iw-btn{height:38px}
+
+  /* entry animation: --c = column index, --i = position in its list (set in markup) */
+  .iw-item.is-open :is(.iw-feat,.iw-col-head,.iw-gl,.iw-it){animation:iw-in .45s var(--iw-ease) backwards;animation-delay:calc(60ms + var(--c,0) * 60ms + var(--i,0) * 30ms)}
+
+  /* ===== mobile panel (unchanged from v1) ===== */
+  .iw-scrim{position:fixed;z-index:999996;inset:0;background:rgba(10,10,11,.5);opacity:0;visibility:hidden;transition:.3s}
+  .iw-scrim.is-open{opacity:1;visibility:visible}
+  .iw-panel{position:fixed;z-index:999997;top:0;right:0;width:min(420px,100vw);height:100dvh;padding:10px 20px 28px;overflow-y:auto;overscroll-behavior:contain;background:var(--iw-panel);transform:translateX(100%);transition:transform .3s var(--iw-ease)}
+  .iw-panel.is-open{transform:none}
+  .iw-mtop{display:flex;justify-content:space-between;align-items:center;margin:0 -20px 8px;padding:0 20px 10px;border-bottom:1px solid var(--iw-line)}
+  .iw-mtop .iw-logo-img{height:36px}
+  .iw-mt,.iw-mflat{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:52px;padding:10px 8px;font-size:16px;font-weight:700;color:var(--iw-ink);text-align:left}
+  .iw-mt .iw-ch{color:var(--iw-mute);transition:transform .25s var(--iw-ease)}
+  .iw-mi.is-open>.iw-mt .iw-ch{transform:rotate(180deg);color:var(--iw-link)}
+  .iw-sub{max-height:0;overflow:hidden;transition:max-height .4s var(--iw-ease)}
+  .iw-mi.is-open>.iw-sub{max-height:1200px;padding:0 0 14px 8px}
+  .iw-mi-nested.is-open>.iw-sub{padding:0 0 6px 16px}
+  .iw-panel>.iw-mi,.iw-panel>.iw-mflat{background:linear-gradient(90deg,var(--iw-div),transparent) bottom/100% 1px no-repeat}
+  /* level 1 (second parent): brand colour + left accent so it reads as a heading */
+  .iw-mt-sub1{min-height:46px;margin:4px 0;padding:8px 10px;border-left:3px solid var(--iw-link);border-radius:0 10px 10px 0;background:var(--iw-tint);font-size:15px;color:var(--iw-link)}
+  .iw-mt-sub:not(.iw-mt-sub1){min-height:40px;padding:12px 8px 4px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--iw-link)}
+  .iw-mt-l{display:flex;flex-direction:column;gap:2px}
+  .iw-mt-tag{font-size:12.5px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--iw-mute)}
+  .iw-ml{display:flex;align-items:center;min-height:44px;padding:8px 8px 8px 12px;border-radius:10px;font-size:14px;font-weight:500;color:var(--iw-ink2);transition:background .15s}
+  .iw-ml:hover{color:var(--iw-link)}
+  .iw-ml:active{background:var(--iw-tint)}
+  .iw-ml-text{display:flex;flex-direction:column;gap:2px}
+  .iw-ml-d{font-size:12.5px;color:var(--iw-mute);line-height:1.35}
+  .iw-mcta{width:100%;height:48px;margin-top:24px;font-size:15px}
+  .iw-panel.is-open>:not(.iw-mtop),.iw-mi.is-open>.iw-sub>*{animation:iw-in .4s var(--iw-ease) backwards;animation-delay:calc(60ms + var(--i,0) * 45ms)}
+
+  /* ===== responsive / motion ===== */
+  @media (max-width:1240px){
+      .iw-mega-in{grid-template-columns:240px minmax(0,1fr);gap:32px}
+      .iw-grid{gap:0 28px}
+      .iw-col+.iw-col::before{left:-14px}
+  }
+  @media (max-width:1100px){
+      .iw-mega-in{grid-template-columns:1fr}
+      .iw-feat{display:none}
+  }
+  @media (max-width:980px){
+      .iw-mega,.iw-dim,.iw-nav,.iw-actions>.iw-btn{display:none}
+      .iw-burger{display:flex}
+      .iw-logo-img{height:36px}
+  }
+  @media (prefers-reduced-motion:reduce){
+      .iw-root *,.iw-root *::before,.iw-root *::after{transition-duration:.01ms!important;animation:none!important}
+  }
+</style>
+
+<section class="iw-root" id="iw-root" role="banner">
+    <div class="iw-bar" id="iw-bar">
+        <div class="iw-wrap">
+            <a class="iw-a iw-logo" href="/"><img class="iw-logo-img" width="136" height="45" fetchpriority="high"
+                src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" alt="ITHENA home"></a>
+            <nav class="iw-nav" id="iw-nav" aria-label="Main"></nav>
+            <div class="iw-actions">
+                <button type="button" class="iw-b iw-theme" id="iw-theme" role="switch" aria-checked="false" aria-label="Switch to dark theme">
+                    <span class="iw-thumb">
+                        <svg class="iw-i iw-sun" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M10 1.5v2M10 16.5v2M18.5 10h-2M3.5 10h-2M15.8 4.2l-1.4 1.4M5.6 14.4l-1.4 1.4M15.8 15.8l-1.4-1.4M5.6 5.6L4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                        <svg class="iw-i iw-moon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M17 11.5A7.5 7.5 0 018.5 3 7.5 7.5 0 1017 11.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                    </span>
+                </button>
+                <a href="/contact/" class="iw-a iw-btn">Contact Us <svg class="iw-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <button type="button" class="iw-b iw-icon-btn iw-burger" id="iw-open" aria-label="Open menu" aria-controls="iw-panel" aria-expanded="false"><svg class="iw-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="iw-dim" id="iw-dim" aria-hidden="true"></div>
+    <div class="iw-scrim" id="iw-scrim"></div>
+
+    <nav class="iw-panel" id="iw-panel" aria-label="Menu">
+        <div class="iw-mtop">
+            <a class="iw-a iw-logo" href="/"><img class="iw-logo-img" width="136" height="45" src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" alt="ITHENA home"></a>
+            <button type="button" class="iw-b iw-icon-btn" id="iw-close" aria-label="Close menu"><svg class="iw-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        </div>
+        <a href="/contact/" class="iw-a iw-btn iw-mcta" style="--i:5">Contact Us</a>
+    </nav>
+</section>
+
+<script>
+  (function () {
+      var root = document.getElementById('iw-root');
+      if (!root) return;
+      /* fixed children must sit on <body>: a transformed Elementor wrapper would re-anchor position:fixed */
+      if (root.parentElement !== document.body) document.body.prepend(root);
+
+      /* ---- menu data: same tree shape wp_get_nav_menu_items() builds (t=title, d=menu_subtitle, c=children) ---- */
+      function n(t, d, c) { return { t: t, d: d || '', u: '#', c: c }; }
+      function leaves(list) { return list.map(function (x) { return Array.isArray(x) ? n(x[0], x[1]) : n(x); }); }
+      var MENU = [
+          n('Solutions', '', [
+              n('OEM | Distributors', 'Build or sell equipment', [
+                  n('Production', '', leaves([['Customer & dealer CRM', 'iCRM'], ['Configure, price & quote', 'iCPQ'], ['Distributor ERP','iERP']])),
+                  n('After-market service', '', leaves([['Equipment monitoring', 'iSERV'], ['Field service portal', 'iSERV'], ['Parts & service store', 'B2B eCommerce']])),
+              ]),
+              n('Manufacturer', 'Run plants and lines', [
+                  n('Planning & Production', '', leaves([['Production planning', 'iPLAN'], ['Digital Gemba walks','iGEMBA'], ['Line performance', 'iSERV'], ['Manufacturing execution', 'MES']])),
+                  n('Maintenance & Quality', '', leaves([['CMMS', 'Maintenance management'], ['Quality management', 'QMS'], ['Smart Energy', 'iSEMS']]))
+              ]),
+              n('Enterprise', 'Run many sites as one', [
+                  n('Data & AI', '', leaves([['Practical AI platform', 'Aether'], ['Plant analytics', 'Analytics'], ['Enterprise data hub', 'iHub']])),
+                  n('Enterprise apps', '', leaves([['Customer relationships', 'CRM'], ['Social analytics', 'iSIP'], ['Supply chain planning', 'iPLAN'], ['Transportation', 'iTMS']])),
+              ])
+          ]),
+          n('Services', '', [
+              n('Data & AI', 'Make data answer back', [
+                  n('Data & AI', '', leaves([['AI strategy', 'A roadmap tied to plant numbers'], ['Big data & analytics','Warehouse, models and dashboards'], ['AI / ML & data science', 'Predictions from your own history']])),
+              ]),
+              n('Transformation', 'Move and modernise', [
+                  n('Cloud & integration', '', leaves([['Cloud adoption', 'Migrate the systems that should move'], ['Process integration','ERP, MES and CRM in one flow']])),
+                  n('Customer side', '', leaves([['Systems of engagement', 'Portals and apps on top of your ERP'], ['Customer experience','Journeys that end in a repeat order']])),
+              ]),
+              n('Plant integration', 'Machines into systems', [
+                  n('Plant integration', '', leaves([['Manufacturing execution', 'MES rolled out line by line'], ['Industrial IoT','Sensors, gateways and the data path']])),
+              ]),
+          ]),
+          n('Industries', '', [
+              n('Equipment builders', 'OEMs and distributors', leaves([['Packaging machinery', 'Lines, changeovers and uptime'], ['Food & Beverage Machines', 'Hygiene, Recipes And Traceability'], ['Compressed Air','Fleet Monitoring And Service'], ['Custom Tool Builders', 'Engineer-to-order, Quoted Right']])),
+              n('Plants', 'Plants Running Lines', leaves([['Industrial', 'Discrete and process plants'], ['Discrete & Automotive', 'Take, Quality and Supplier Flow'], ['Pharmaceutical','Batch Records And Compliance'], ['Energy And Utilities', 'Assets, Outages and Field Crews']])),
+              n('Other Sectors', 'Retail, Finance, Public', leaves([['FinTech And Insurance', 'Data Platforms And Analytics'], ['Government', 'Modernised Citizen Services'], ['Compressed Air','Fleet Monitoring And Service'], ['Retail And CPG', 'Demand, Stock And Fulfilment']])),
+          ]),
+          n('Case Studies'),
+          n('Company', '', [
+              n('About ITHENA', 'Team And Partners', leaves([['Who we are', 'Mission, Values And The Team'], ['Partnerships', 'Rockwell, PTC, Infor, Oracle, more'], ['Compressed Air','Fleet Monitoring And Service'], ['Custom Tool Builders', 'Engineer-to-order, Quoted Right']])),
+              n('News & insights', 'What We Write And Ship', leaves([['Blog', 'Practical Writing On Industrial AI'], ['Announcements', 'Releases, Launches And News']])),
+              n('Work With Us', 'Open Roles And Contact', leaves([['Careers', 'Open roles and life at ITHENA'], ['Contact us', 'Talk To An engineer, Not A Form']])),
+          ]),
+      ];
+
+      /* ---- featured card + bottom strip per panel [headline, text, CTA label, CTA url, strip text]; in WP: ACF on the top-level item ---- */
+      var INTRO = {
+          'Solutions': ['One platform from dealer to plant floor', 'CRM, quoting, service, planning and AI on a single data model, so every team works from the same numbers.', 'Explore the platform', '/our-platform/', 'Not sure which product fits? <b>Get a 30-minute walkthrough</b> for your setup.'],
+          'Services': ['Engineers who ship working systems', 'Strategy, data, cloud and plant integration, scoped to measurable outcomes on your lines.', 'See how we work', '/services/', 'Have a project in mind? <b>Talk to an engineer</b>, not a sales script.'],
+          'Industries': ['Built for how your industry runs', 'Templates and data models shaped by equipment builders, plants and regulated sectors.', 'Read case studies', '/case-studies/', 'See what teams like yours achieved. <b>Browse case studies</b> by industry.'],
+          'Company': ['Practical AI for industry', 'A team across the US and India building software for equipment builders, plants and enterprises.', 'About ITHENA', '/about-us/', 'Want to build with us? <b>See open roles</b> or get in touch.']
+      };
+      var FALLBACK = ['', '', 'Explore', '#', 'Questions? <b>Talk to our team.</b>'];
+
+      /* ---- line icons; in WP these would come from the menu item ---- */
+      function svg(d, cls) { return '<svg class="iw-i' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + d + '"/></svg>'; }
+      var P = {
+          layers: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 17l9 5 9-5', compass: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM15 9l-2 5-5 2 2-5z',
+          factory: 'M3 20V10l5 3v-3l5 3v-3l5 3v7zM7 20v-3M12 20v-3M17 20v-3M17 10V4h3v6', chart: 'M4 20V4M4 20h16M8 16v-5M12 16V8M16 16v-3M20 16V6',
+          building: 'M4 21V5l8-2v18M12 21h8V9h-8M8 8h1M8 12h1M8 16h1M16 12h1M16 16h1', cube: 'M12 3l8 4v10l-8 4-8-4V7zM4 7l8 4 8-4M12 11v10',
+          users: 'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M21 20a6 6 0 0 0-4-5.6',
+          db: 'M12 3c5 0 8 1.3 8 3s-3 3-8 3-8-1.3-8-3 3-3 8-3zM4 6v12c0 1.7 3 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3 3 8 3s8-1.3 8-3',
+          cloud: 'M7 18a4 4 0 0 1-.5-8A6 6 0 0 1 18 9a4 4 0 0 1 0 9z', bolt: 'M13 2L4 14h7l-1 8 9-12h-7z',
+          shield: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4',
+          wrench: 'M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.7 2.7-2-2z'
+      };
+      var ICON_FOR = {
+          'Solutions': 'layers', 'Services': 'compass', 'Industries': 'factory', 'Case Studies': 'chart', 'Company': 'building',
+          'OEM | Distributors': 'wrench', 'Manufacturer': 'factory', 'Enterprise': 'building',
+          'Data & AI': 'db', 'Transformation': 'cloud', 'Plant integration': 'bolt',
+          'Equipment builders': 'wrench', 'Plants': 'factory', 'Other Sectors': 'shield',
+          'About ITHENA': 'users', 'News & insights': 'chart', 'Work With Us': 'building'
+      };
+      function icon(title, cls) { return svg(P[ICON_FOR[title] || 'cube'], cls); }
+      var CHEV = svg('M6 9l6 6 6-6', 'iw-ch'), ARR = 'M5 12h14M13 6l6 6-6 6';
+
+      /* ---- builders (= the shortcode's PHP loops) ---- */
+      var hasKids = function (x) { return x.c && x.c.length; };
+      var isCards = function (node) { return !node.c.some(hasKids); };
+      var sub = function (cls, d) { return d ? '<span class="' + cls + '">' + d + '</span>' : ''; };
+      var st = function (i) { return ' style="--i:' + i + '"'; };   /* stagger index for the entry animation */
+      var uid = 0;
+
+      /* subtitle shorter than 16 chars = product name (iCRM, MES...) -> tag chip; longer = description line */
+      function it(leaf, i) {
+          var tag = leaf.d && leaf.d.length < 16;
+          return '<li><a href="' + leaf.u + '" class="iw-a iw-it"' + st(i) + '><span class="iw-it-t">' + leaf.t + (tag ? '<span class="iw-tag">' + leaf.d + '</span>' : '') + '</span>' +
+              (tag ? '' : sub('iw-it-d', leaf.d)) + svg(ARR, 'iw-go') + '</a></li>';
+      }
+      function list(ls, from) { return '<ul class="iw-ul">' + ls.map(function (l, i) { return it(l, from + i); }).join('') + '</ul>'; }
+      function col(c, ci) {
+          var k = 1, body;
+          if (!hasKids(c)) body = '';   /* leaf column (cards layout): head only, links itself */
+          else if (c.c.some(hasKids)) body = c.c.map(function (g) {
+              /* skip a group label that only repeats the column title (Services > Data & AI > Data & AI) */
+              var o = '<div class="iw-group">' + (g.t !== c.t ? '<span class="iw-gl"' + st(k) + '>' + g.t + '</span>' : '') + list(g.c, k + 1) + '</div>';
+              k += g.c.length + 1;
+              return o;
+          }).join('');
+          else body = list(c.c, 1);
+          var head = '<span class="iw-col-ic">' + icon(c.t) + '</span><span><span class="iw-col-t">' + c.t + '</span>' + sub('iw-col-d', c.d) + '</span>';
+          return '<div class="iw-col" style="--c:' + ci + '">' + (body ? '<div class="iw-col-head">' + head + '</div>' + body : '<a class="iw-a iw-col-head" href="' + c.u + '">' + head + '</a>') + '</div>';
+      }
+      function desktop(node) {
+          if (!hasKids(node)) return '<a class="iw-a iw-link" href="' + node.u + '">' + node.t + '</a>';
+          var x = INTRO[node.t] || FALLBACK, id = 'iw-mega-' + (++uid);
+          var feat = x[0] ? '<aside class="iw-feat">' + icon(node.t) + '<span class="iw-eyebrow">' + node.t + '</span><p class="iw-feat-t">' + x[0] + '</p><p class="iw-feat-d">' + x[1] + '</p>' +
+              '<a class="iw-a iw-feat-cta" href="' + x[3] + '">' + x[2] + svg(ARR) + '</a></aside>' : '';
+          return '<div class="iw-item"><a class="iw-a iw-link" href="' + node.u + '" aria-expanded="false" aria-controls="' + id + '">' + node.t + CHEV + '</a>' +
+              '<div class="iw-mega" id="' + id + '" role="region" aria-label="' + node.t + '"><div class="iw-mega-in">' + feat +
+              '<div class="iw-grid" style="--n:' + Math.min(node.c.length, isCards(node) ? 4 : 3) + '">' + node.c.map(col).join('') + '</div></div>' +
+              '<div class="iw-mfoot"><div class="iw-mfoot-in"><span>' + x[4] + '</span><a class="iw-a iw-btn" href="/contact/">Book a call ' + svg(ARR) + '</a></div></div></div></div>';
+      }
+      function mLink(leaf, rich, i) {
+          return '<a class="iw-a iw-ml" href="' + leaf.u + '"' + st(i) + '>' +
+              (rich ? '<span class="iw-ml-text"><span>' + leaf.t + '</span>' + sub('iw-ml-d', leaf.d) + '</span>' : leaf.t) + '</a>';
+      }
+      function mItem(cls, btnCls, label, body, i) {
+          var id = 'iw-m-' + (++uid);
+          return '<div class="' + cls + '"' + st(i) + '><button type="button" class="iw-b ' + btnCls + '" aria-expanded="false" aria-controls="' + id + '">' + label + CHEV + '</button><div class="iw-sub" id="' + id + '">' + body + '</div></div>';
+      }
+      function mobile(node, k) {
+          if (!hasKids(node)) return '<a class="iw-a iw-mflat" href="' + node.u + '"' + st(k) + '>' + node.t + '</a>';
+          var body = isCards(node)
+              ? node.c.map(function (c, i) { return mLink(c, false, i); }).join('')
+              : node.c.map(function (c, ci) {
+                  var inner = c.c.some(hasKids)
+                      ? c.c.map(function (g, gi) { return g.t === c.t ? g.c.map(function (l, i) { return mLink(l, true, i); }).join('') : mItem('iw-mi iw-mi-nested', 'iw-mt iw-mt-sub', '<span class="iw-mt-l">' + g.t + '</span>', g.c.map(function (l, i) { return mLink(l, true, i); }).join(''), gi); }).join('')
+                      : c.c.map(function (l, i) { return mLink(l, true, i); }).join('');
+                  return mItem('iw-mi iw-mi-nested', 'iw-mt iw-mt-sub iw-mt-sub1', '<span class="iw-mt-l">' + c.t + sub('iw-mt-tag', c.d) + '</span>', inner, ci);
+              }).join('');
+          return mItem('iw-mi', 'iw-mt', node.t, body, k);
+      }
+      root.querySelector('#iw-nav').innerHTML = MENU.map(desktop).join('');
+      root.querySelector('.iw-mtop').insertAdjacentHTML('afterend', MENU.map(mobile).join(''));
+
+      /* ---- scroll state + --iw-header-h (mega sheet sits right under the bar) ---- */
+      var bar = root.querySelector('#iw-bar');
+      function sync() {
+          bar.classList.toggle('is-scrolled', scrollY > 40);
+          root.style.setProperty('--iw-header-h', bar.offsetHeight + 'px');
+      }
+      addEventListener('scroll', sync, { passive: true });
+      addEventListener('resize', sync);
+      bar.addEventListener('transitionend', sync);
+      sync();
+
+      /* ---- mega: hover intent (short open delay so passing over the bar doesn't flash panels), instant switch, keyboard, tap ---- */
+      var items = root.querySelectorAll('.iw-item'), cur = null, openT, closeT;
+      function setOpen(item) {
+          if (cur === item) return;
+          if (cur) { cur.classList.remove('is-open'); cur.firstChild.setAttribute('aria-expanded', 'false'); }
+          cur = item;
+          if (item) { item.classList.add('is-open'); item.firstChild.setAttribute('aria-expanded', 'true'); }
+          root.classList.toggle('is-mega', !!item);
+      }
+      items.forEach(function (item) {
+          item.addEventListener('mouseenter', function () { clearTimeout(closeT); clearTimeout(openT); openT = setTimeout(function () { setOpen(item); }, cur ? 0 : 90); });
+          item.addEventListener('mouseleave', function () { clearTimeout(openT); closeT = setTimeout(function () { setOpen(null); }, 220); });
+          item.addEventListener('focusin', function () { clearTimeout(closeT); setOpen(item); });
+          item.addEventListener('focusout', function (e) { if (!item.contains(e.relatedTarget)) setOpen(null); });
+          /* touch / no-hover: first tap opens the panel, second tap follows the link */
+          item.firstChild.addEventListener('click', function (e) { if (cur !== item) { e.preventDefault(); setOpen(item); } });
+      });
+      root.querySelector('#iw-dim').addEventListener('click', function () { setOpen(null); });
+      addEventListener('keydown', function (e) {
+          if (e.key !== 'Escape') return;
+          if (cur) { var link = cur.firstChild; setOpen(null); link.focus(); }
+          closeMobile();
+      });
+
+      /* ---- theme switch: thin caller of window.ithenaTheme ---- */
+      ithenaTheme.sync();
+      root.querySelector('#iw-theme').addEventListener('click', ithenaTheme.toggle);
+
+      /* ---- mobile panel + per-level accordion ---- */
+      var mOpen = root.querySelector('#iw-open'), panel = root.querySelector('#iw-panel'), scrim = root.querySelector('#iw-scrim');
+      function openMobile() { panel.classList.add('is-open'); scrim.classList.add('is-open'); mOpen.setAttribute('aria-expanded', 'true'); }
+      function closeMobile() { panel.classList.remove('is-open'); scrim.classList.remove('is-open'); mOpen.setAttribute('aria-expanded', 'false'); }
+      mOpen.addEventListener('click', openMobile);
+      root.querySelector('#iw-close').addEventListener('click', closeMobile);
+      scrim.addEventListener('click', closeMobile);
+      panel.querySelectorAll('.iw-a').forEach(function (a) { a.addEventListener('click', closeMobile); });
+      panel.querySelectorAll('.iw-mt').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+              var item = btn.parentElement, on = !item.classList.contains('is-open');
+              item.parentElement.querySelectorAll(':scope > .iw-mi.is-open').forEach(function (s) {
+                  if (s !== item) { s.classList.remove('is-open'); s.querySelector('.iw-mt').setAttribute('aria-expanded', 'false'); }
+              });
+              item.classList.toggle('is-open', on);
+              btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+          });
+      });
+  })();
+</script>

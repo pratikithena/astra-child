@@ -1,0 +1,339 @@
+<!-- Agentic OEM AI Agents, 24/7 service desk &mdash; dashboard animation. Self-contained fragment: paste it whole into an
+     HTML block or the "Animated HTML" field. One section, no document wrapper tags, every rule scoped to
+     .ithdash. Follows the host theme: OS preference by default, overridden by html.dark or a
+     [data-theme="dark"|"light"] ancestor (the ITHENA header toggle sets both). -->
+<section class="ithdash ithdash--calls" aria-label="Agentic OEM AI Agents service desk dashboard">
+<style>
+
+.ithdash{
+  color-scheme:light dark;
+  /* each token: light fallback first, then the light-dark() pair for browsers that have it */
+  --bg:#FFFFFF;        --bg:light-dark(#FFFFFF,#0E1116);
+  --surface:#FFFFFF;   --surface:light-dark(#FFFFFF,#15191F);
+  --surface2:#FAFCFE;  --surface2:light-dark(#FAFCFE,#11161C);
+  --chrome:#F3F6FA;    --chrome:light-dark(#F3F6FA,#1B212A);
+  --dot:#D5DCE5;       --dot:light-dark(#D5DCE5,#39424D);
+  --tile:#F6F9FB;      --tile:light-dark(#F6F9FB,#1B2128);
+  --wash:#EAF5FB;      --wash:light-dark(#EAF5FB,#10293C);
+  --wash2:#D7ECF6;     --wash2:light-dark(#D7ECF6,#1B4460);
+  --line:#E6EAEE;      --line:light-dark(#E6EAEE,#28303A);
+  --ink:#1F2023;       --ink:light-dark(#1F2023,#F0F3F6);
+  --ink2:#4B5259;      --ink2:light-dark(#4B5259,#B4BEC8);
+  --ink3:#6E767E;      --ink3:light-dark(#6E767E,#8E99A4);
+  --sep:#B4BFCB;       --sep:light-dark(#B4BFCB,#4A545F);
+  --blue:#0083C8;      --blue:light-dark(#0083C8,#33A1E0);
+  --blue-deep:#006AA3; --blue-deep:light-dark(#006AA3,#8CCFF5);
+  --btn-ink:#FFFFFF;   --btn-ink:light-dark(#FFFFFF,#08131C);
+  --g-bg:#E7F5EE;      --g-bg:light-dark(#E7F5EE,#0E2A22);
+  --g-ink:#177A54;     --g-ink:light-dark(#177A54,#54D6A2);
+  --a-bg:#FEF4E5;      --a-bg:light-dark(#FEF4E5,#2E2413);
+  --a-ink:#8A5A08;     --a-ink:light-dark(#8A5A08,#F0B45C);
+  --green:#2ED47A;     --green:light-dark(#2ED47A,#35D98A);
+  --amber:#E08A1E;     --amber:light-dark(#E08A1E,#E8A33E);
+  --red-soft:#E25D5D;  --red-soft:light-dark(#E25D5D,#E8736F);
+  --red-ink:#B42318;   --red-ink:light-dark(#B42318,#FF9E99);
+  --bad-fill:#FDF2F2;  --bad-fill:light-dark(#FDF2F2,#2A1719);
+  --link:#AFC9DC;      --link:light-dark(#AFC9DC,#3D4C5A);
+  --sh1:rgba(10,25,45,.5);  --sh1:light-dark(rgba(10,25,45,.5),rgba(0,0,0,.75));
+  --sh2:rgba(10,25,45,.05); --sh2:light-dark(rgba(10,25,45,.05),rgba(0,0,0,.4));
+  --ease:cubic-bezier(.16,1,.3,1);
+  display:block;margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+/* host theme wins over the OS preference */
+.ithdash[data-theme="dark"],[data-theme="dark"] .ithdash,html.dark .ithdash{color-scheme:dark}
+.ithdash[data-theme="light"],[data-theme="light"] .ithdash{color-scheme:light}
+
+.ithdash *{box-sizing:border-box}
+.ithdash .ithd{max-width:932px;margin:0 auto;padding:22px 16px}
+.ithdash button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.ithdash :focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){.ithdash *{animation:none!important;transition:none!important}}
+
+/* ---- browser-framed app window ---- */
+.ithdash .ap{position:relative;width:100%;max-width:900px;margin:0 auto;background:var(--surface);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:11.5px;line-height:1.3;
+  color:var(--ink2);text-align:left;box-shadow:0 34px 60px -34px var(--sh1),0 2px 6px var(--sh2)}
+.ithdash .apbar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:var(--chrome);border-bottom:1px solid var(--line)}
+.ithdash .apbar>i{width:9px;height:9px;border-radius:50%;background:var(--dot)}
+.ithdash .apbar .url{flex:1;min-width:0;margin-left:8px;display:flex;align-items:center;gap:6px;background:var(--surface);
+  border:1px solid var(--line);border-radius:7px;padding:4px 10px;font-size:10.5px;color:var(--ink3);
+  white-space:nowrap;overflow:hidden}
+.ithdash .apbar .url .i{width:11px;height:11px;color:var(--g-ink);flex:none}
+.ithdash .apbar .url em{font-style:normal;color:var(--ink)}
+.ithdash .aphd{display:flex;align-items:center;gap:14px;padding:8px 14px;border-bottom:1px solid var(--line)}
+.ithdash .aphd .lg{display:flex;align-items:center;gap:7px;font-weight:800;color:var(--ink);font-size:12px;
+  white-space:nowrap;letter-spacing:-.01em}
+.ithdash .aphd .lg em{width:20px;height:20px;border-radius:6px;background:var(--blue);color:var(--btn-ink);display:grid;
+  place-items:center;font-style:normal;font-size:11px;font-weight:800}
+.ithdash .aphd .nv{display:flex;gap:11px;color:var(--ink3);font-weight:600;font-size:11px;white-space:nowrap}
+.ithdash .aphd .nv b{color:var(--blue-deep)}
+.ithdash .aphd .sr{margin-left:auto;display:grid;place-items:center;width:26px;height:26px;border:1px solid var(--line);
+  border-radius:7px;color:var(--ink3);flex:none}
+.ithdash .aphd .sr .i{width:13px;height:13px}
+.ithdash .aphd .ct{position:relative;color:var(--ink2);flex:none}
+.ithdash .aphd .ct .i{width:16px;height:16px}
+.ithdash .aphd .ct i{position:absolute;top:-6px;right:-7px;min-width:14px;height:14px;padding:0 3px;border-radius:999px;
+  background:var(--blue);color:var(--btn-ink);font-size:9px;font-weight:800;font-style:normal;display:grid;place-items:center}
+.ithdash .aphd .av{width:24px;height:24px;border-radius:50%;background:var(--wash);color:var(--blue-deep);
+  font-weight:800;font-size:10px;display:grid;place-items:center;flex:none}
+@media(max-width:560px){.ithdash .aphd .nv{display:none}}
+.ithdash .apbody{padding:14px}
+.ithdash .apbc{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink3);margin-bottom:10px;
+  white-space:nowrap;overflow:hidden}
+.ithdash .apbc b{font-weight:600;color:var(--ink2)}
+.ithdash .apbc em{font-style:normal;color:var(--sep)}
+
+/* ---- cards, chips, buttons ---- */
+.ithdash .apcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:0}
+.ithdash .apcard>.h{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);
+  font-weight:700;color:var(--ink);font-size:11.5px;white-space:nowrap;overflow:hidden}
+.ithdash .apcard>.h .i{width:14px;height:14px;color:var(--ink3);flex:none}
+.ithdash .apcard>.h .apc{margin-left:auto}
+.ithdash .apcard .bd{padding:11px 12px}
+.ithdash .ap2{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:12px;align-items:start;margin-top:12px}
+@media(max-width:760px){.ithdash .ap2{grid-template-columns:minmax(0,1fr)}}
+.ithdash .apc{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:999px;font-size:10px;
+  font-weight:700;white-space:nowrap;background:var(--tile);color:var(--ink2)}
+.ithdash .apc i{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
+.ithdash .apc.g{background:var(--g-bg);color:var(--g-ink)}
+.ithdash .apc.a{background:var(--a-bg);color:var(--a-ink)}
+.ithdash .apc.b{background:var(--wash);color:var(--blue-deep)}
+.ithdash .apb{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:6px 11px;border-radius:7px;
+  background:var(--blue);color:var(--btn-ink);font-weight:700;font-size:11px;white-space:nowrap;min-height:30px}
+.ithdash .apb.o{background:var(--surface);color:var(--blue-deep);border:1px solid var(--line)}
+.ithdash .apb .i{width:12px;height:12px}
+.ithdash .aplive{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink3);padding:7px 12px;
+  background:var(--surface2);border-top:1px solid var(--line);border-radius:0 0 10px 10px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.ithdash .aplive i{flex:none;width:6px;height:6px;border-radius:50%;background:var(--green);animation:ithBlink 1.6s ease-in-out infinite}
+@keyframes ithBlink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ---- KPI tiles / domain bars / fault list ---- */
+.ithdash .pfk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:10px}
+.ithdash .pfk div{background:var(--tile);border-radius:9px;padding:8px 10px;min-width:0}
+.ithdash .pfk b{display:block;font-size:15.5px;letter-spacing:-.02em;line-height:1.1;color:var(--ink);
+  font-variant-numeric:tabular-nums}
+.ithdash .pfk b em{font-style:normal;font-size:10px;color:var(--ink3);margin-left:2px;font-weight:600}
+.ithdash .pfk div>span{display:block;font-size:10px;color:var(--ink3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .pfk div.w b{color:var(--red-ink)}
+.ithdash .pfsub{font-size:10.5px;color:var(--ink3);margin:2px 0 8px}
+.ithdash .pfbar{display:grid;gap:7px}
+.ithdash .pfbar>div{display:grid;grid-template-columns:76px minmax(0,1fr) 30px;align-items:center;gap:8px;
+  font-size:11px;color:var(--ink2)}
+.ithdash .pfbar>div>span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .pfbar i{display:block;height:7px;border-radius:4px;background:var(--wash2);overflow:hidden;position:relative}
+.ithdash .pfbar i::after{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--blue);
+  border-radius:4px;transition:width 1.1s var(--ease)}
+.ithdash.on .pfbar i::after{width:var(--w)}
+.ithdash .pfbar b{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+.ithdash .pfbar .lo b{color:var(--red-ink)}
+.ithdash .pfbar .lo i::after{background:var(--red-soft)}
+.ithdash .pfal{display:grid;gap:6px}
+.ithdash .pfal>div{display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:9px;background:var(--tile);
+  font-size:11px;color:var(--ink2);min-width:0}
+.ithdash .pfal>div i{width:7px;height:7px;border-radius:50%;background:var(--red-soft);flex:none}
+.ithdash .pfal>div i.a{background:var(--amber)}
+.ithdash .pfal>div i.g{background:var(--green)}
+.ithdash .pfal>div span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ithdash .pfal>div em{font-style:normal;color:var(--ink3);white-space:nowrap}
+.ithdash .pfact{display:flex;gap:8px;margin-top:10px}
+
+/* ---- 24 hour call volume, agent against human ---- */
+.ithdash .ac{padding:12px}
+.ithdash .ac svg{display:block;width:100%;height:auto;overflow:visible}
+.ithdash .ac .night{fill:var(--wash);opacity:.6}
+.ithdash .ac .gl{stroke:var(--line);stroke-width:1}
+.ithdash .ac .a1{fill:var(--blue);opacity:.18}
+.ithdash .ac .a2{fill:var(--red-soft);opacity:.22}
+.ithdash .ac .l1{fill:none;stroke:var(--blue);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+.ithdash .ac .l2{fill:none;stroke:var(--red-soft);stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.ithdash .ac .ax{fill:var(--ink3);font-size:9px;font-family:inherit}
+.ithdash .ac .nl{fill:var(--ink3);font-size:8.5px;font-family:inherit;font-weight:700;letter-spacing:.06em}
+.ithdash .ac .cur{stroke:var(--blue-deep);stroke-width:1.2;stroke-dasharray:3 3;opacity:0;transition:opacity .3s}
+.ithdash.on .ac .cur{opacity:1}
+.ithdash .ac .dot{fill:var(--blue-deep);r:0;transition:r .3s var(--ease)}
+.ithdash.on .ac .dot{r:3.6}
+.ithdash .lgd{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:9px;font-size:10px;color:var(--ink3)}
+.ithdash .lgd b{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--ink2)}
+.ithdash .lgd b i{width:10px;height:10px;border-radius:3px;flex:none}
+.ithdash .lgd b.k1 i{background:var(--blue)}
+.ithdash .lgd b.k2 i{background:var(--red-soft)}
+.ithdash .lgd b.k3 i{background:var(--wash);box-shadow:inset 0 0 0 1px var(--line)}
+</style>
+<div class="ithd">
+  <div class="ap">
+    <div class="apbar"><i></i><i></i><i></i>
+      <span class="url">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        agents.ithena.app<em>/service-desk/live</em>
+      </span>
+    </div>
+    <div class="aphd">
+      <span class="lg"><em>a</em>OEM Agents</span>
+      <span class="nv"><span>Calls</span><b>Triage</b><span>Appointments</span><span>Fleet</span></span>
+      <span class="sr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg></span>
+      <span class="ct"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4l2-2z"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg><i>2</i></span>
+      <span class="av">CS</span>
+    </div>
+    <div class="apbody">
+      <div class="apbc"><b>Triage</b><em>/</em>Nationwide desk<em>/</em><b>Last 24 hours</b></div>
+
+      <div class="apcard">
+        <div class="h">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h3l2.5-7 4 14L15 12h6"></path></svg>
+          Call load, agent against human<span class="apc b" data-sel><i></i>02:00 &middot; 12 calls</span>
+        </div>
+        <div class="ac">
+          <svg viewBox="0 0 800 150" role="img" aria-label="Calls over 24 hours. The agent absorbs the overnight and daytime load while escalations to a person stay flat and low, including the 18:00 to 06:00 after-hours band.">
+            <rect class="night" x="0" y="0" width="200" height="126" rx="4"></rect>
+            <rect class="night" x="600" y="0" width="200" height="126" rx="4"></rect>
+            <text class="nl" x="8" y="13">AFTER HOURS</text>
+            <text class="nl" x="608" y="13">AFTER HOURS</text>
+            <line class="gl" x1="0" y1="126" x2="800" y2="126"></line>
+            <path class="a1" data-a1></path>
+            <path class="a2" data-a2></path>
+            <path class="l1" data-l1></path>
+            <path class="l2" data-l2></path>
+            <line class="cur" data-cur x1="0" y1="0" x2="0" y2="126"></line>
+            <circle class="dot" data-dot cx="0" cy="0"></circle>
+            <text class="ax" x="0" y="142">00:00</text>
+            <text class="ax" x="356" y="142">12:00</text>
+            <text class="ax" x="746" y="142">24:00</text>
+          </svg>
+          <div class="lgd">
+            <b class="k1"><i></i>Resolved by the agent</b>
+            <b class="k2"><i></i>Escalated to a person</b>
+            <b class="k3"><i></i>Outside business hours</b>
+          </div>
+        </div>
+        <div class="aplive"><i></i>Agents on duty, no human queue overnight &middot; <span data-clock>02:41:06</span></div>
+      </div>
+
+      <div class="ap2">
+        <div class="apcard">
+          <div class="h">
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M2 20h20"></path></svg>
+            Against pre-deployment baseline<span class="apc g"><i></i>Live</span>
+          </div>
+          <div class="bd">
+            <div class="pfk">
+              <div><b><span data-count="70">0</span><em>%</em></b><span>Live call volume, down</span></div>
+              <div><b><span data-count="3">0</span><em>x</em></b><span>Faster issue resolution</span></div>
+              <div><b><span data-count="40">0</span><em>%</em></b><span>Missed appointments, down</span></div>
+              <div><b><span data-count="35000">0</span></b><span>Parts lines checked live</span></div>
+            </div>
+            <div class="pfsub">Share of agent-closed calls by capability, %</div>
+            <div class="pfbar">
+              <div><span>Parts &amp; stock</span><i style="--w:100%"></i><b>31</b></div>
+              <div><span>Fault triage</span><i style="--w:77%"></i><b>24</b></div>
+              <div><span>Appointments</span><i style="--w:61%"></i><b>19</b></div>
+              <div><span>Warranty check</span><i style="--w:45%"></i><b>14</b></div>
+              <div><span>PM outreach</span><i style="--w:39%"></i><b>12</b></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="apcard">
+          <div class="h">
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4l2-2z"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg>
+            Live queue<span class="apc a"><i></i>1 escalated</span>
+          </div>
+          <div class="bd">
+            <div class="pfal">
+              <div><i></i><span>Reach truck 4T, hydraulic fault &mdash; on-call tech paged</span><em>02:41</em></div>
+              <div><i class="g"></i><span>Visit confirmed, dealer 118 &mdash; Tue 08:30</span><em>02:38</em></div>
+              <div><i></i><span>Unit 77-204 &mdash; no response to diagnostic ping</span><em>02:29</em></div>
+              <div><i class="g"></i><span>Warranty verified on the call, claim pre-filled</span><em>02:17</em></div>
+              <div><i class="a"></i><span>Preventive outreach &mdash; 34 fleets due this week</span><em>01:55</em></div>
+            </div>
+            <div class="pfact">
+              <button type="button" class="apb"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l14 8-6 1.6L10 19z"></path></svg>Open call console</button>
+              <button type="button" class="apb o">Replay triage</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+(function () {
+  var root = document.currentScript.closest(".ithdash");
+  if (!root) return;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function (s, c) { return (c || root).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || root).querySelectorAll(s)); };
+  var comma = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); };
+
+  /* count every [data-count] up once, easing out */
+  function count(el) {
+    var to = parseFloat(el.getAttribute("data-count"));
+    if (reduce || !isFinite(to)) { el.textContent = comma(to); return; }
+    var t0 = null, dur = 1100;
+    requestAnimationFrame(function step(now) {
+      if (t0 === null) t0 = now;
+      var p = Math.min(1, (now - t0) / dur);
+      el.textContent = comma(Math.round(to * (1 - Math.pow(1 - p, 4))));
+      if (p < 1) requestAnimationFrame(step);
+    });
+  }
+
+  /* every timer below is opened on view and torn down off view or on a hidden tab */
+  function onView(start, stop) {
+    if (reduce || !("IntersectionObserver" in window)) { start(); return; }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.isIntersecting ? start() : stop(); });
+    }, { threshold: 0.2 }).observe(root);
+    document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); });
+  }
+
+  /* 24 hourly call counts: what the agent closed, and what still reached a person */
+  var AGENT = [18,14,11,9,8,7,12,26,41,58,67,72,69,74,71,66,57,44,33,27,24,22,21,19];
+  var HUMAN = [2,1,1,1,1,1,2,5,8,11,13,14,13,14,13,12,10,8,6,5,4,3,3,2];
+  var W = 800, H = 126, MAX = 80;
+  function xy(v, i) { return [i * (W / (AGENT.length - 1)), H - (v / MAX) * (H - 16)]; }
+  function d(a) {
+    return a.map(function (v, i) {
+      var p = xy(v, i);
+      return (i ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1);
+    }).join(" ");
+  }
+  var dA = d(AGENT), dH = d(HUMAN), floor = " L" + W + "," + H + " L0," + H + " Z";
+  $("[data-l1]").setAttribute("d", dA);
+  $("[data-l2]").setAttribute("d", dH);
+  $("[data-a1]").setAttribute("d", dA + floor);
+  $("[data-a2]").setAttribute("d", dH + floor);
+
+  /* a cursor walking the day, driving the header chip */
+  var cur = $("[data-cur]"), dot = $("[data-dot]"), sel = $("[data-sel]"), at = 2, walk = null;
+  function pad(n) { return ("0" + n).slice(-2); }
+  function moveTo(i) {
+    at = i;
+    var p = xy(AGENT[i], i), total = AGENT[i] + HUMAN[i];
+    cur.setAttribute("x1", p[0]); cur.setAttribute("x2", p[0]);
+    dot.setAttribute("cx", p[0]); dot.setAttribute("cy", p[1]);
+    var night = i < 6 || i >= 18;
+    sel.className = "apc " + (night ? "a" : "b");
+    sel.innerHTML = "<i></i>" + pad(i) + ":00 &middot; " + total + " calls, " + HUMAN[i] +
+      " to a person" + (night ? ", after hours" : "");
+  }
+
+  var clock = null, secs = 2 * 3600 + 41 * 60 + 6;
+  function tick() {
+    secs = (secs + 13) % 86400;
+    $("[data-clock]").textContent = pad((secs / 3600) | 0) + ":" + pad(((secs / 60) | 0) % 60) + ":" + pad(secs % 60);
+  }
+  onView(function () {
+    if (clock) return;
+    root.classList.add("on");
+    $$("[data-count]").forEach(count);
+    moveTo(2);
+    walk = setInterval(function () { moveTo((at + 1) % AGENT.length); }, 900);
+    clock = setInterval(tick, 1400);
+  }, function () { clearInterval(walk); walk = null; clearInterval(clock); clock = null; });
+})();
+</script>
+</section>

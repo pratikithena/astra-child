@@ -1,0 +1,225 @@
+<!-- ITHENA footer. Paste as-is into an Elementor HTML widget (footer template 98) or echo from a shortcode.
+     Theme follows the ITH Header: section#imenu-root[data-theme], localStorage "fbb-theme", dark default.
+     The :has() selector keeps it in step with the header even before this footer's script runs (Airlift delays inline JS). -->
+
+<footer id="ithf" class="ithf" data-theme="dark">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@500;600;700;800&display=swap">
+
+  <style>
+  #ithf{--bg:#0B0C0E;--card:#141518;--card2:#1B1C20;--ink:#F2F3F5;--ink2:rgba(228,230,235,.74);--mute:#8D939C;--line:rgba(255,255,255,.09);--link:#3FA9E0;--blue:#0083C8;--tint:rgba(63,169,224,.13);--tint-line:rgba(63,169,224,.28);--ez:cubic-bezier(.16,1,.3,1);
+    background:var(--bg);color:var(--ink2);font:400 14px/1.55 Inter,system-ui,sans-serif;padding:48px 24px 0;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+  #ithf[data-theme="light"],body:has(#imenu-root[data-theme="light"]) #ithf{--bg:#F6F8FA;--card:#FFFFFF;--card2:#EEF3F7;--ink:#0A192D;--ink2:#46586A;--mute:#6B7885;--line:#E1E7ED;--link:#006AA3;--tint:#E6F3FA;--tint-line:#C5E3F3}
+  #ithf *{box-sizing:border-box;margin:0;padding:0}
+  #ithf a{color:inherit;text-decoration:none}
+  #ithf a:focus-visible,#ithf button:focus-visible,#ithf summary:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:6px}
+  #ithf ul{list-style:none}
+  #ithf .w{max-width:1200px;margin:0 auto}
+
+  /* Body: brand rail + link grid */
+  #ithf .body{display:grid;grid-template-columns:232px 1fr;gap:48px;padding-bottom:36px}
+  #ithf .rail{display:flex;flex-direction:column;gap:14px}
+  #ithf .logo img{display:block;height:40px;width:auto}
+  #ithf .rail>p{font-size:13px;color:var(--mute)}
+  #ithf .plat{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:14px;background:var(--tint);box-shadow:inset 0 0 0 1px var(--tint-line);color:var(--ink);font:700 14px/1.3 "Noto Sans",system-ui,sans-serif;transition:transform .3s var(--ez)}
+  #ithf .plat small{display:block;margin-top:2px;font:400 12px/1.4 Inter,system-ui,sans-serif;color:var(--ink2)}
+  #ithf .plat svg{flex:none;width:18px;height:18px;color:var(--link)}
+  #ithf .plat:hover{transform:translateY(-2px)}
+  #ithf .card{padding:14px;border-radius:14px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+  #ithf .card h3{margin-bottom:10px;font:700 11px/1 "Noto Sans",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+  #ithf .soc{display:flex;gap:8px}
+  #ithf .soc a{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--card2);color:var(--ink);transition:background .25s,color .25s,transform .3s var(--ez)}
+  #ithf .soc a:hover{background:var(--blue);color:#fff;transform:translateY(-2px)}
+  #ithf .soc svg{width:16px;height:16px;fill:currentColor}
+  #ithf .btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:999px;background:var(--blue);color:#fff!important;font:700 14px/1 "Noto Sans",system-ui,sans-serif;transition:background .3s var(--ez)}
+  #ithf .btn:hover{background:#006AA3}
+  #ithf .btn svg{width:16px;height:16px;transition:transform .3s var(--ez)}
+  #ithf .btn:hover svg{transform:translateX(3px)}
+
+  /* Link sections */
+  #ithf .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 32px}
+  #ithf .sec{min-width:0}
+  #ithf .sec.sol{grid-column:1/-1}
+  #ithf summary{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;margin-bottom:14px;border-bottom:1px solid var(--line);list-style:none;cursor:default}
+  #ithf summary::-webkit-details-marker{display:none}
+  #ithf h2{font:700 17px/1.2 "Noto Sans",system-ui,sans-serif;letter-spacing:-.01em;color:var(--ink)}
+  #ithf .chev{display:none;width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .3s var(--ez)}
+  #ithf .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 32px}
+  #ithf .aud>b{display:block;margin-bottom:10px;font:700 11px/1 "Noto Sans",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+  #ithf .grp+.grp{margin-top:14px}
+  /* Mid-level menu items (Front office, Data & AI, Plants...) use the service pages' .kick eyebrow */
+  #ithf .grp>span{display:flex;align-items:center;gap:11px;margin-bottom:8px;font:700 12px/1.25 Inter,system-ui,sans-serif;letter-spacing:.17em;text-transform:uppercase;color:var(--link)}
+  #ithf .grp>span::before{content:"";flex:none;width:28px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--blue),transparent)}
+  #ithf .lk{padding-left:2px}
+  #ithf .lk a{display:inline-flex;align-items:center;padding:3px 0;color:var(--ink2);transition:color .2s}
+  #ithf .lk a::before{content:"";width:0;height:2px;margin-right:0;border-radius:2px;background:var(--link);transition:width .3s var(--ez),margin .3s var(--ez)}
+  #ithf .lk a:hover{color:var(--ink)}
+  #ithf .lk a:hover::before{width:10px;margin-right:6px}
+
+  /* Bottom bar */
+  #ithf .bar{display:flex;align-items:center;justify-content:space-between;gap:12px 16px;flex-wrap:wrap;padding:16px 0 20px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
+  #ithf .bar nav{display:flex;align-items:center;gap:20px}
+  #ithf .bar a:hover{color:var(--ink)}
+
+  @media (max-width:1080px){
+    #ithf .body{grid-template-columns:1fr;gap:32px}
+    #ithf .rail{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+    #ithf .rail>.logo,#ithf .rail>p,#ithf .rail>.plat{grid-column:1/-1}
+    #ithf .grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:720px){
+    #ithf{padding:40px 16px 0}
+    #ithf .rail{grid-template-columns:1fr}
+    #ithf .grid{grid-template-columns:1fr;gap:0}
+    #ithf .sec{border-bottom:1px solid var(--line)}
+    #ithf summary{margin:0;padding:16px 0;border:0;cursor:pointer}
+    #ithf .chev{display:block}
+    #ithf details[open] .chev{transform:rotate(180deg)}
+    #ithf details[open]>summary+*{padding-bottom:20px}
+    #ithf .cols{grid-template-columns:1fr;gap:18px}
+  }
+  @media (prefers-reduced-motion:reduce){#ithf,#ithf *{transition:none!important}}
+  </style>
+
+  <div class="w">
+    <div class="body">
+      <div class="rail">
+        <a class="logo" href="/"><img src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" width="136" height="45" alt="ITHENA home" loading="lazy" decoding="async"></a>
+        <p>Practical AI and software for equipment builders, plants and enterprises.</p>
+        <a class="plat" href="/our-platform/"><span>Our Platform<small>See how the pieces fit together</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        <div class="card">
+          <h3>Follow us</h3>
+          <div class="soc">
+            <a href="https://www.linkedin.com/company/ithenaus" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg></a>
+            <a href="https://www.youtube.com/@ithena1" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1z"/></svg></a>
+            <a href="https://www.facebook.com/people/ITHENA/100064033092851/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></svg></a>
+            <a href="https://x.com/ITHENA1" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.3l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></svg></a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Get in touch</h3>
+          <a class="btn" href="/contact-us/">Contact us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <nav class="grid" aria-label="Footer">
+        <details class="sec sol" open>
+          <summary><h2>Solutions</h2><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="cols">
+            <div class="aud"><b>OEM &amp; Distributors</b>
+              <div class="grp"><span>Front office</span><ul class="lk">
+                <li><a href="/solutions/crm-cpq/">Customer &amp; dealer CRM</a></li>
+                <li><a href="/solutions/crm-cpq/">Configure, price &amp; quote</a></li>
+                <li><a href="/solutions/ierp-panelops-industrial-erp/">Distributor ERP</a></li></ul></div>
+              <div class="grp"><span>After-market services</span><ul class="lk">
+                <li><a href="/solutions/iserv-smart-service/">Equipment monitoring</a></li>
+                <li><a href="/solutions/iserv-smart-service/">Field service portal</a></li>
+                <li><a href="/solutions/b2b-ecommerce-spare-parts/">Parts &amp; service store</a></li></ul></div>
+            </div>
+            <div class="aud"><b>Manufacturers</b>
+              <div class="grp"><span>Planning &amp; production</span><ul class="lk">
+                <li><a href="/solutions/iplan-production-planning/">Production planning</a></li>
+                <li><a href="/solutions/igemba-digital-gemba/">Digital Gemba walks</a></li>
+                <li><a href="/solutions/iserv-smart-service/">Line performance</a></li>
+                <li><a href="/solutions/imex-manufacturing-excellence/">Manufacturing excellence</a></li>
+                <li><a href="/solutions/mes-manufacturing-execution/">Manufacturing execution</a></li></ul></div>
+              <div class="grp"><span>Maintenance &amp; quality</span><ul class="lk">
+                <li><a href="/solutions/cmms-maintenance-management/">Maintenance management</a></li>
+                <li><a href="/solutions/qms-quality-management/">Quality management</a></li>
+                <li><a href="/solutions/isems-smart-energy-management/">Smart energy</a></li></ul></div>
+            </div>
+            <div class="aud"><b>Enterprise</b>
+              <div class="grp"><span>Data &amp; AI</span><ul class="lk">
+                <li><a href="/solutions/aether-ai-platform/">Practical AI platform</a></li>
+                <li><a href="/solutions/plant-analytics/">Plant analytics</a></li>
+                <li><a href="/solutions/ihub-enterprise-data-hub/">Enterprise data hub</a></li></ul></div>
+              <div class="grp"><span>Enterprise apps</span><ul class="lk">
+                <li><a href="/solutions/crm-cpq/">Customer relationships</a></li>
+                <li><a href="/solutions/isip-social-intelligence/">Social analytics</a></li>
+                <li><a href="/solutions/iplan-production-planning/">Supply chain planning</a></li>
+                <li><a href="/solutions/itms-transportation-tracking/">Transportation</a></li></ul></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="sec" open>
+          <summary><h2>Services</h2><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div>
+            <div class="grp"><span>Data &amp; AI</span><ul class="lk">
+              <li><a href="/ai-strategy/">AI strategy</a></li>
+              <li><a href="/big-data-analytics/">Big data &amp; analytics</a></li>
+              <li><a href="/ai-ml-data-science/">AI / ML &amp; data science</a></li></ul></div>
+            <div class="grp"><span>Transformation</span><ul class="lk">
+              <li><a href="/cloud-adoption/">Cloud adoption</a></li>
+              <li><a href="/process-integration/">Process integration</a></li>
+              <li><a href="/systems-of-engagement/">Systems of engagement</a></li>
+              <li><a href="/customer-experience/">Customer experience</a></li></ul></div>
+            <div class="grp"><span>Plant integration</span><ul class="lk">
+              <li><a href="/manufacturing-execution/">Manufacturing execution</a></li>
+              <li><a href="/industrial-iot/">Industrial IoT</a></li></ul></div>
+          </div>
+        </details>
+
+        <details class="sec" open>
+          <summary><h2>Industries</h2><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div>
+            <div class="grp"><span>Equipment builders</span><ul class="lk">
+              <li><a href="/packaging/">Packaging machinery</a></li>
+              <li><a href="/food-beverage-bakery/">Food &amp; beverage machines</a></li>
+              <li><a href="/compressed-air/">Compressed air</a></li>
+              <li><a href="/custom-tool-builders/">Custom tool builders</a></li></ul></div>
+            <div class="grp"><span>Plants</span><ul class="lk">
+              <li><a href="/industrial/">Industrial</a></li>
+              <li><a href="/discrete-automotive/">Discrete &amp; automotive</a></li>
+              <li><a href="/pharmaceutical/">Pharmaceutical</a></li>
+              <li><a href="/energy-utilities/">Energy &amp; utilities</a></li></ul></div>
+            <div class="grp"><span>Other sectors</span><ul class="lk">
+              <li><a href="/fintech-insurance/">FinTech &amp; insurance</a></li>
+              <li><a href="/government/">Government</a></li>
+              <li><a href="/retail-cpg/">Retail &amp; CPG</a></li></ul></div>
+          </div>
+        </details>
+
+        <details class="sec" open>
+          <summary><h2>Company</h2><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div>
+            <div class="grp"><span>About ITHENA</span><ul class="lk">
+              <li><a href="/company/about-us/#about">Who we are</a></li>
+              <li><a href="/company/partnerships/">Partnerships</a></li>
+              <li><a href="/company/careers/">Careers</a></li></ul></div>
+            <div class="grp"><span>News &amp; insights</span><ul class="lk">
+              <li><a href="/case-studies/">Case studies</a></li>
+              <li><a href="/blogs/">Blog</a></li>
+              <li><a href="/company/announcements/">Announcements</a></li></ul></div>
+          </div>
+        </details>
+      </nav>
+    </div>
+
+    <div class="bar">
+      <p>&copy; <span class="yr">2026</span> ITHENA. All rights reserved.</p>
+      <nav aria-label="Legal">
+        <a href="/privacy-policy/">Privacy policy</a>
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var f=document.getElementById('ithf'); if(!f) return;
+      var hdr=document.getElementById('imenu-root');
+      function stored(){try{return localStorage.getItem('fbb-theme')}catch(e){}}
+      function sync(){var m=(hdr&&hdr.getAttribute('data-theme'))||stored()||'dark';f.setAttribute('data-theme',m==='light'?'light':'dark');}
+      sync(); if(hdr) new MutationObserver(sync).observe(hdr,{attributes:true,attributeFilter:['data-theme']});
+      f.querySelector('.yr').textContent=new Date().getFullYear();
+      // Sections are accordions on phones only; markup ships open so nothing hides if this script is delayed.
+      var mq=matchMedia('(max-width:720px)'), ds=f.querySelectorAll('details');
+      function fit(){ds.forEach(function(d){d.open=!mq.matches;});}
+      fit(); mq.addEventListener('change',fit);
+      f.querySelectorAll('summary').forEach(function(s){s.addEventListener('click',function(e){if(!mq.matches)e.preventDefault();});});
+    })();
+  </script>
+
+</footer>

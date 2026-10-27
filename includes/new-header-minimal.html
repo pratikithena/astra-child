@@ -1,0 +1,437 @@
+<!-- ITHENA header (widget-ready). Paste into an Elementor HTML widget. Needs Noto Sans loaded site-wide. -->
+<script>
+/* theme pre-init: saved/system theme before paint, exposes window.ithenaTheme */
+(function () {
+    var KEY = 'ithena-theme', root = document.documentElement;
+    var t = window.ithenaTheme = {
+        get: function () { try { return localStorage.getItem(KEY); } catch (e) { return null; } },   /* used by service pages */
+        isDark: function () { return root.classList.contains('dark'); },
+        apply: function (isDark) {
+            root.classList.toggle('dark', isDark);
+            try { localStorage.setItem(KEY, isDark ? 'dark' : 'light'); } catch (e) {}
+            t.sync();
+        },
+        toggle: function () { t.apply(!t.isDark()); },
+        /* mirrors the theme onto the switch and #main-section; never changes it */
+        sync: function () {
+            var isDark = t.isDark(), btn = document.getElementById('ih-theme'), main = document.getElementById('main-section');
+            if (btn) { btn.setAttribute('aria-checked', isDark); btn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme'); }
+            if (main) main.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        }
+    };
+    var saved; try { saved = localStorage.getItem(KEY); } catch (e) {}
+    if (saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches) root.classList.add('dark');
+})();
+</script>
+
+<style>
+/* ===== tokens ===== */
+.ih-root{
+    --ih-bg:#FFFFFF;--ih-panel:#FFFFFF;--ih-raise:#FFFFFF;
+    --ih-ink:#1F2023;--ih-ink2:#4B5259;--ih-mute:#7A8289;--ih-line:#E6EAEE;
+    --ih-blue:#0083C8;--ih-blue-deep:#006AA3;--ih-link:#0083C8;--ih-tint:#EAF5FB;
+    --ih-head:rgba(255,255,255,.86);
+    --ih-sh1:0 1px 2px rgba(10,25,45,.06);--ih-sh2:0 8px 24px -16px rgba(10,25,45,.35);--ih-shadow:0 32px 80px -32px rgba(10,25,45,.35);
+    --ih-ease:cubic-bezier(.16,1,.3,1);
+    --ih-div:color-mix(in srgb,var(--ih-link) 45%,transparent);
+}
+html.dark .ih-root{
+    --ih-bg:#0A0A0B;--ih-panel:#111113;--ih-raise:#17181B;
+    --ih-ink:#F2F3F5;--ih-ink2:rgba(228,230,235,.8);--ih-mute:#9A9FA8;--ih-line:rgba(255,255,255,.09);
+    --ih-link:#3FA9E0;--ih-tint:rgba(63,169,224,.12);
+    --ih-head:rgba(10,10,11,.86);
+    --ih-sh1:0 1px 2px rgba(0,0,0,.5);--ih-sh2:0 18px 44px -24px rgba(0,0,0,.62);--ih-shadow:0 44px 90px -34px rgba(0,0,0,.72);
+}
+
+/* ===== scoped resets (class-only, so theme/Elementor tag styles can't leak in) ===== */
+.ih-root{display:block;height:68px;margin:0;padding:0;font-family:"Noto Sans",system-ui,sans-serif;font-size:14px;line-height:1.45;color:var(--ih-ink);-webkit-font-smoothing:antialiased}
+.ih-root,.ih-root *,.ih-root *::before,.ih-root *::after{box-sizing:border-box}
+.ih-a,.ih-a:hover,.ih-a:focus,.ih-a:visited{color:inherit;text-decoration:none}
+.ih-b{margin:0;padding:0;font:inherit;color:inherit;letter-spacing:normal;text-transform:none;background:none;border:0;border-radius:0;box-shadow:none;cursor:pointer}
+.ih-b:hover,.ih-b:focus{color:inherit;background:none;border-color:transparent;box-shadow:none}   /* paint only, so padding never jumps on hover */
+.ih-menu{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.ih-ni{margin:0;padding:0}
+.ih-i{display:block;flex:none;width:18px;height:18px}
+.ih-root .ih-a:focus-visible,.ih-root .ih-b:focus-visible{outline:2px solid var(--ih-blue);outline-offset:2px;border-radius:8px}
+@keyframes ih-in{from{opacity:0;transform:translateY(10px)}}
+
+/* ===== bar ===== */
+.ih-bar{position:fixed;inset:0 0 auto;z-index:1000;background:var(--ih-head);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid var(--ih-line);transition:box-shadow .3s}
+.ih-bar.is-scrolled{box-shadow:var(--ih-sh1)}
+.ih-barin{max-width:1280px;height:68px;margin:0 auto;padding:0 30px;display:flex;align-items:center;gap:24px}
+.ih-logo-img{display:block;height:40px;width:auto;max-width:none}
+/* html.dark .ih-logo-img{filter:brightness(0) invert(1)} */
+.ih-nav{flex:1;display:flex;justify-content:center}
+.ih-nl{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 14px;border-radius:999px;font-size:15px;font-weight:600;white-space:nowrap;transition:background .2s,color .2s}
+.ih-nl .ih-ni-ic{color:var(--ih-link)}
+.ih-nl .ih-ch{width:14px;height:14px;color:var(--ih-mute);transition:transform .25s var(--ih-ease)}
+.ih-nl:hover,.ih-ni.is-open .ih-nl{background:var(--ih-tint);color:var(--ih-link)}
+.ih-ni.is-open .ih-nl .ih-ch{transform:rotate(180deg);color:var(--ih-link)}
+.ih-right{display:flex;align-items:center;gap:12px}
+.ih-btn,.ih-btn:hover,.ih-btn:focus{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;background:var(--ih-blue);color:#fff;font-weight:700;white-space:nowrap;transition:background .2s,transform .15s}
+.ih-btn:hover{background:var(--ih-blue-deep)}
+.ih-btn:active{transform:translateY(1px)}
+.ih-btn .ih-i{width:16px;height:16px;transition:transform .2s var(--ih-ease)}
+.ih-btn:hover .ih-i{transform:translateX(3px)}
+.ih-theme,.ih-theme:hover,.ih-theme:focus{position:relative;width:48px;height:26px;border:1px solid var(--ih-line);border-radius:999px;background:var(--ih-tint)}
+.ih-thumb{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:var(--ih-blue);color:#fff;display:grid;place-items:center;box-shadow:var(--ih-sh1);transition:transform .35s var(--ih-ease)}
+html.dark .ih-thumb{transform:translateX(22px)}
+.ih-thumb .ih-i{position:absolute;width:12px;height:12px;transition:opacity .25s,transform .3s var(--ih-ease)}
+.ih-moon,html.dark .ih-sun{opacity:0;transform:scale(.5)}
+html.dark .ih-moon{opacity:1;transform:none}
+.ih-icon-btn{width:44px;height:44px;display:grid;place-items:center;border-radius:10px;transition:background .2s}
+.ih-icon-btn:hover{background:var(--ih-tint)}
+.ih-icon-btn .ih-i{width:22px;height:22px}
+.ih-burger{display:none}
+
+/* ===== panel: tabs | offerings | CTA, brand dividers between, no section bg ===== */
+.ih-mm{position:absolute;left:50%;top:100%;margin-top:8px;width:min(1220px,calc(100% - 32px));background:var(--ih-panel);border:1px solid var(--ih-line);border-radius:24px;box-shadow:var(--ih-shadow);opacity:0;transform:translate(-50%,-8px);transition:opacity .22s,transform .28s var(--ih-ease)}
+.ih-mm[hidden]{display:none}
+.ih-ni.is-open .ih-mm{opacity:1;transform:translate(-50%,0)}
+.ih-mp{display:grid;grid-template-columns:296px minmax(0,1fr) 248px;padding:12px}
+.ih-mp.ih-flat{grid-template-columns:minmax(0,1fr) 248px}
+.ih-mp>*{position:relative}
+.ih-mp>*+*::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:1px;background:linear-gradient(180deg,transparent,var(--ih-div),transparent)}
+
+/* parent level: section tabs */
+.ih-ptabs{display:flex;flex-direction:column;gap:2px;padding:12px 16px 12px 4px}
+.ih-ptab,.ih-ptab:focus{position:relative;display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:12px;align-items:center;text-align:left;padding:10px 32px 10px 10px;border-radius:12px;transition:background .18s,box-shadow .18s}
+.ih-ptab .ih-tab-ic{grid-row:1/3;width:22px;height:22px;color:var(--ih-link)}
+.ih-ptab-t{font-size:15px;font-weight:700;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ih-ptab-d{font-size:12.5px;color:var(--ih-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ih-ptab .ih-ar{position:absolute;right:10px;top:50%;margin-top:-9px;color:var(--ih-link);opacity:0;transform:translateX(-6px);transition:opacity .18s,transform .18s var(--ih-ease)}
+.ih-ptab:hover{background:var(--ih-tint)}
+.ih-ptab.is-on{background:var(--ih-raise);box-shadow:var(--ih-sh2)}
+.ih-ptab.is-on .ih-ptab-t{color:var(--ih-link)}
+.ih-ptab.is-on .ih-ar{opacity:1;transform:none}
+
+/* offerings: panes share one grid cell so the panel height never jumps */
+.ih-ppanes{display:grid;padding:16px 24px}
+.ih-pp{grid-area:1/1;visibility:hidden}
+.ih-pp.is-on{visibility:visible}
+.ih-stgs,.ih-flow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 32px;align-content:start}
+.ih-stgs{grid-template-columns:repeat(var(--n,2),minmax(0,1fr));gap:16px 24px}
+/* middle level: group kicker, its items step in */
+.ih-stg-t{padding:0 10px 6px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ih-link)}
+.ih-its{display:flex;flex-direction:column;gap:2px;margin-left:12px}
+/* leaf level: no icon, lighter text, lift on hover, press on active */
+.ih-it{position:relative;display:block;padding:8px 30px 8px 10px;border-radius:10px;transition:background .18s,box-shadow .18s,transform .18s var(--ih-ease)}
+.ih-it-t{display:block;font-size:14px;font-weight:500;line-height:1.3;color:var(--ih-ink2);transition:color .18s}
+.ih-it-d{display:block;margin-top:2px;font-size:12.5px;line-height:1.35;color:var(--ih-mute)}
+.ih-it .ih-go{position:absolute;right:8px;top:50%;margin-top:-9px;color:var(--ih-link);opacity:0;transform:translateX(-6px);transition:opacity .18s,transform .18s var(--ih-ease)}
+.ih-it:hover,.ih-it:focus-visible{background:var(--ih-raise);box-shadow:var(--ih-sh2)}
+.ih-root .ih-it:focus-visible{outline:0}
+.ih-it:hover .ih-it-t,.ih-it:focus-visible .ih-it-t{color:var(--ih-link)}
+.ih-it:hover .ih-go,.ih-it:focus-visible .ih-go{opacity:1;transform:none}
+.ih-it:active{transform:scale(.99)}
+
+/* CTA column */
+.ih-spot{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:20px 20px 20px 28px}
+.ih-kick{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ih-link)}
+.ih-spot-t{flex:1;font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty}
+
+/* entry animation: --i = position in its list; replays on tab switch (.ih-pp.is-on newly matches) */
+.ih-ni.is-open :is(.ih-ptab,.ih-spot>*),.ih-ni.is-open .ih-pp.is-on :is(.ih-stg,.ih-flow>.ih-it,.ih-its>.ih-it){animation:ih-in .4s var(--ih-ease) backwards;animation-delay:calc(60ms + var(--i,0) * 45ms)}
+
+/* ===== drawer (mobile) ===== */
+.ih-veil{position:fixed;inset:0;z-index:1001;background:rgba(10,10,11,.5);opacity:0;transition:opacity .3s}
+.ih-veil.is-on{opacity:1}
+.ih-drawer{position:fixed;inset:0 0 0 auto;z-index:1002;width:min(420px,100%);display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;background:var(--ih-panel);transform:translateX(100%);transition:transform .3s var(--ih-ease)}
+.ih-drawer.is-on{transform:none}
+.ih-veil[hidden],.ih-drawer[hidden]{display:none}
+.ih-dtop{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-bottom:1px solid var(--ih-line)}
+.ih-dtop .ih-logo-img{height:36px}
+.ih-dnav{flex:1;padding:8px 20px}
+/* brand divider between top-level sections */
+.ih-dnav>*{background:linear-gradient(90deg,var(--ih-div),transparent) bottom/100% 1px no-repeat}
+.ih-dh,.ih-dh:hover,.ih-dh:focus,.ih-dflat{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:52px;padding:10px 8px;font-size:16px;font-weight:700;text-align:left}
+.ih-dh .ih-ch{color:var(--ih-mute);transition:transform .25s var(--ih-ease)}
+.ih-dh[aria-expanded="true"]{color:var(--ih-link)}
+.ih-dh[aria-expanded="true"] .ih-ch{transform:rotate(180deg);color:var(--ih-link)}
+.ih-db{display:none;padding:0 0 12px 8px}
+.ih-dh[aria-expanded="true"]+.ih-db{display:block}
+.ih-dsub .ih-dh{min-height:44px;font-size:15px}
+.ih-dh-t{display:flex;flex-direction:column;gap:2px}
+.ih-dh-d{font-size:12.5px;font-weight:400;color:var(--ih-mute)}
+.ih-dsub .ih-db{padding-left:16px}
+.ih-dstage{padding:10px 8px 4px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ih-link)}
+.ih-dstage~.ih-dit{margin-left:12px}
+.ih-dit{display:flex;align-items:center;min-height:44px;padding:8px 12px;border-radius:10px;font-size:14px;font-weight:500;color:var(--ih-ink2)}
+.ih-dit:hover{color:var(--ih-link)}
+.ih-dit:active{background:var(--ih-tint)}
+.ih-dcta{padding:16px 20px 28px}
+.ih-dcta .ih-btn{width:100%;height:48px}
+.ih-drawer.is-on .ih-dnav>*,.ih-dh[aria-expanded="true"]+.ih-db>*{animation:ih-in .4s var(--ih-ease) backwards;animation-delay:calc(60ms + var(--i,0) * 40ms)}
+
+/* ===== responsive / motion ===== */
+@media (max-width:1180px){
+    .ih-mp{grid-template-columns:232px minmax(0,1fr)}
+    .ih-mp.ih-flat{grid-template-columns:minmax(0,1fr)}
+    /* CTA becomes a band under the offerings, divider turns horizontal */
+    .ih-spot{grid-column:1/-1;flex-direction:row;align-items:center;gap:20px;padding:16px 20px}
+    .ih-mp>.ih-spot::before{left:24px;right:24px;top:0;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,var(--ih-div),transparent)}
+}
+@media (max-width:980px){
+    .ih-root,.ih-barin{height:60px}
+    .ih-nav,.ih-right>.ih-btn{display:none}
+    .ih-burger{display:grid}
+    .ih-barin{padding:0 20px}
+    .ih-logo-img{height:36px}
+}
+@media (prefers-reduced-motion:reduce){
+    .ih-root *,.ih-root *::before,.ih-root *::after{transition-duration:.01ms!important;animation:none!important}
+}
+</style>
+
+<section class="ih-root" id="ih-root" role="banner">
+    <div class="ih-bar">
+        <div class="ih-barin">
+            <a class="ih-a ih-logo" href="/"><img class="ih-logo-img" width="136" height="45" src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" alt="ITHENA home"></a>
+            <div class="ih-nav" role="navigation" aria-label="Main"><ul class="ih-menu" id="ih-menu"></ul></div>
+            <div class="ih-right">
+                <button type="button" class="ih-b ih-theme" id="ih-theme" role="switch" aria-checked="false" aria-label="Switch to dark theme">
+                    <span class="ih-thumb">
+                        <svg class="ih-i ih-sun" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M10 1.5v2M10 16.5v2M18.5 10h-2M3.5 10h-2M15.8 4.2l-1.4 1.4M5.6 14.4l-1.4 1.4M15.8 15.8l-1.4-1.4M5.6 5.6L4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                        <svg class="ih-i ih-moon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M17 11.5A7.5 7.5 0 018.5 3 7.5 7.5 0 1017 11.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                    </span>
+                </button>
+                <a href="/contact/" class="ih-a ih-btn">Contact Us <svg class="ih-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <button type="button" class="ih-b ih-icon-btn ih-burger" aria-label="Open menu" aria-expanded="false" aria-controls="ih-drawer"><svg class="ih-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ih-veil" data-ih-close hidden></div>
+    <div class="ih-drawer" id="ih-drawer" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+        <div class="ih-dtop">
+            <a class="ih-a ih-logo" href="/"><img class="ih-logo-img" width="136" height="45" src="https://dev-website.ithena.app/wp-content/uploads/2023/03/Ithena-Logo-new.webp" alt="ITHENA home"></a>
+            <button type="button" class="ih-b ih-icon-btn ih-dx" data-ih-close aria-label="Close menu"><svg class="ih-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        </div>
+        <div class="ih-dnav" id="ih-dnav" role="navigation" aria-label="Mobile"></div>
+        <div class="ih-dcta"><a href="/contact/" class="ih-a ih-btn">Contact Us</a></div>
+    </div>
+</section>
+
+<script>
+(function () {
+    var root = document.getElementById('ih-root');
+    if (!root) return;
+    /* fixed children must sit on <body>: a transformed Elementor wrapper would re-anchor position:fixed */
+    if (root.parentElement !== document.body) document.body.prepend(root);
+
+    /* ---- menu data (t=title, d=menu_subtitle, c=children); in WP this comes from new-ithena-menu ---- */
+    function n(t, d, c) { return { t: t, d: d || '', u: '#', c: c }; }
+    function leaves(list) { return list.map(function (x) { return Array.isArray(x) ? n(x[0], x[1]) : n(x); }); }
+    var MENU = [
+        n('Solutions', '', [
+            n('OEM | Distributors', 'Production | After Market', [
+                n('Production', '', leaves([['iCRM', 'Pipeline and account management'], ['iCPQ', 'Configure, price, quote'], ['iERP', 'Orders, inventory, finance']])),
+                n('After Market', '', leaves([['Performance Monitoring', 'Live fleet and asset health'], ['Service Portal', 'Tickets, warranty, field service'], ['B2B eCommerce', 'Spare parts ordering']]))
+            ]),
+            n('Manufacturer', 'Plan → Produce → Improve', [
+                n('Plan', '', leaves([['iPLAN', 'Planning and scheduling']])),
+                n('Produce', '', leaves([['iGEMBA', 'Shop-floor execution'], ['Performance Monitoring', 'OEE and downtime'], ['MES', 'Manufacturing execution']])),
+                n('Improve', '', leaves([['QMS', 'Quality management'], ['CMMS', 'Maintenance management'], ['iSEM', 'Energy monitoring']]))
+            ]),
+            n('Enterprise', 'Analytics | CX | SCM', [
+                n('Analytics', '', leaves([['Aether', 'Agentic AI analytics'], ['Analytics', 'Dashboards and reporting'], ['iHub', 'Data integration hub']])),
+                n('CX', '', leaves([['CRM', 'Customer engagement'], ['iSIP', 'Sales incentive planning']])),
+                n('SCM', '', leaves([['iTMS', 'Transport management'], ['iPLAN', 'Supply planning']]))
+            ])
+        ]),
+        n('Services', '', [
+            n('Advisory Consulting', 'Strategy & AI roadmaps', leaves(['AI Strategy'])),
+            n('Data Management', 'Analytics & intelligence', leaves(['Big Data & Analytics', 'AI/ML | Data Science'])),
+            n('Cloud Modernization', 'Migration & integration', leaves(['Cloud Adoption', 'Process Integration'])),
+            n('Business Transformation', 'CX & digital journeys', leaves(['Systems of Engagement', 'Customer Experience'])),
+            n('Manufacturing Integration', 'MES & IoT connectivity', leaves(['Manufacturing Execution', 'Industrial IoT']))
+        ]),
+        n('Industries', '', [
+            n('OEM', 'Equipment & machine builders', leaves(['Packaging', 'Food & Beverage | Bakery', 'Compressed Air', 'Custom Tool Builder'])),
+            n('Manufacturing', 'Plants & production operations', leaves(['Industrial', 'Discrete | Automotive', 'Pharmaceutical', 'Energy & Utility'])),
+            n('Strategic Industries', 'Commerce | Finance | Public', leaves(['Retail | CPG', 'FinTech', 'Government']))
+        ]),
+        n('Case Studies'),
+        n('Company', '', leaves([
+            ['Who We Are', 'Our story, team and values'], ['Blogs', 'Insights on AI and operations'], ['Announcements', 'Product and company news'],
+            ['Partnerships', 'Technology and channel partners'], ['Careers', 'Open roles at ITHENA']
+        ]))
+    ];
+    var SPOT = {
+        'Solutions': 'Find the right platform for your plant, aftermarket or enterprise.',
+        'Services': 'Plan, build and run AI with ITHENA experts.',
+        'Industries': 'See how we work in your industry.',
+        'Company': 'Meet the team behind ITHENA.'
+    };
+
+    /* ---- icons ---- */
+    function svg(d, cls) { return '<svg class="ih-i' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + d + '"/></svg>'; }
+    var P = {
+        layers: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 17l9 5 9-5', compass: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM15 9l-2 5-5 2 2-5z',
+        factory: 'M3 20V10l5 3v-3l5 3v-3l5 3v7zM7 20v-3M12 20v-3M17 20v-3M17 10V4h3v6', chart: 'M4 20V4M4 20h16M8 16v-5M12 16V8M16 16v-3M20 16V6',
+        building: 'M4 21V5l8-2v18M12 21h8V9h-8M8 8h1M8 12h1M8 16h1M16 12h1M16 16h1', cube: 'M12 3l8 4v10l-8 4-8-4V7zM4 7l8 4 8-4M12 11v10',
+        users: 'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M21 20a6 6 0 0 0-4-5.6',
+        db: 'M12 3c5 0 8 1.3 8 3s-3 3-8 3-8-1.3-8-3 3-3 8-3zM4 6v12c0 1.7 3 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3 3 8 3s8-1.3 8-3',
+        cloud: 'M7 18a4 4 0 0 1-.5-8A6 6 0 0 1 18 9a4 4 0 0 1 0 9z', bolt: 'M13 2L4 14h7l-1 8 9-12h-7z',
+        shield: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4',
+        wrench: 'M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.7 2.7-2-2z'
+    };
+    var ICON_FOR = {
+        'Solutions': 'layers', 'Services': 'compass', 'Industries': 'factory', 'Case Studies': 'chart', 'Company': 'building',
+        'OEM | Distributors': 'wrench', 'Manufacturer': 'factory', 'Enterprise': 'building',
+        'Advisory Consulting': 'compass', 'Data Management': 'db', 'Cloud Modernization': 'cloud', 'Business Transformation': 'users', 'Manufacturing Integration': 'bolt',
+        'OEM': 'wrench', 'Manufacturing': 'factory', 'Strategic Industries': 'shield'
+    };
+    function icon(title, cls) { return svg(P[ICON_FOR[title] || 'cube'], cls); }
+    var CHEV = svg('M6 9l6 6 6-6', 'ih-ch'), ARR = 'M5 12h14M13 6l6 6-6 6';
+
+    /* ---- builders ---- */
+    var hasKids = function (x) { return x.c && x.c.length; };
+    var isFlat = function (node) { return !node.c.some(hasKids); };   /* leaf children only: no tabs */
+    var st = function (i) { return ' style="--i:' + i + '"'; };       /* stagger index for the entry animation */
+
+    function items(list) {
+        return list.map(function (l, i) {
+            return '<a class="ih-a ih-it" href="' + l.u + '"' + st(i) + '><span class="ih-it-t">' + l.t + '</span>' + (l.d ? '<span class="ih-it-d">' + l.d + '</span>' : '') + svg(ARR, 'ih-go') + '</a>';
+        }).join('');
+    }
+    function offerings(col) {
+        return col.c.some(hasKids)
+            ? '<div class="ih-stgs" style="--n:' + Math.min(col.c.length, 3) + '">' + col.c.map(function (g, i) { return '<div class="ih-stg"' + st(i) + '><div class="ih-stg-t">' + g.t + '</div><div class="ih-its">' + items(g.c) + '</div></div>'; }).join('') + '</div>'
+            : '<div class="ih-flow">' + items(col.c) + '</div>';
+    }
+    function panel(node, k) {
+        var mid = isFlat(node)
+            ? '<div class="ih-ppanes"><div class="ih-pp is-on">' + offerings(node) + '</div></div>'
+            : '<div class="ih-ptabs" role="tablist" aria-label="' + node.t + '">' + node.c.map(function (col, i) {
+                  return '<button type="button" class="ih-b ih-ptab' + (i ? '' : ' is-on') + '" role="tab" aria-selected="' + !i + '" data-p="' + i + '"' + st(i) + '>' +
+                      icon(col.t, 'ih-tab-ic') + '<span class="ih-ptab-t">' + col.t + '</span><span class="ih-ptab-d">' + col.d + '</span>' + svg(ARR, 'ih-ar') + '</button>';
+              }).join('') + '</div>' +
+              '<div class="ih-ppanes">' + node.c.map(function (col, i) { return '<div class="ih-pp' + (i ? '' : ' is-on') + '" role="tabpanel" data-p="' + i + '">' + offerings(col) + '</div>'; }).join('') + '</div>';
+        var spot = '<div class="ih-spot"><span class="ih-kick"' + st(1) + '>' + node.t + '</span><div class="ih-spot-t"' + st(2) + '>' + (SPOT[node.t] || '') + '</div>' +
+            '<a href="/contact/" class="ih-a ih-btn"' + st(3) + '>Contact Us ' + svg(ARR) + '</a></div>';
+        return '<div class="ih-mm" id="ih-mm-' + k + '" hidden><div class="ih-mp' + (isFlat(node) ? ' ih-flat' : '') + '">' + mid + spot + '</div></div>';
+    }
+    function desktop(node, k) {
+        if (!hasKids(node)) return '<li class="ih-ni"><a class="ih-a ih-nl" href="' + node.u + '">' + icon(node.t, 'ih-ni-ic') + node.t + '</a></li>';
+        return '<li class="ih-ni ih-has"><button type="button" class="ih-b ih-nl" aria-expanded="false" aria-controls="ih-mm-' + k + '">' + icon(node.t, 'ih-ni-ic') + node.t + CHEV + '</button>' + panel(node, k) + '</li>';
+    }
+    function dItems(list) { return list.map(function (l, i) { return '<a class="ih-a ih-dit" href="' + l.u + '"' + st(i) + '>' + l.t + '</a>'; }).join(''); }
+    function dAcc(label, body, cls, i) {
+        return '<div class="ih-dacc' + (cls || '') + '"' + st(i) + '><button type="button" class="ih-b ih-dh" aria-expanded="false">' + label + CHEV + '</button><div class="ih-db">' + body + '</div></div>';
+    }
+    function mobile(node, k) {
+        if (!hasKids(node)) return '<a class="ih-a ih-dflat" href="' + node.u + '"' + st(k) + '>' + node.t + '</a>';
+        var body = isFlat(node) ? dItems(node.c) : node.c.map(function (col, ci) {
+            var inner = col.c.some(hasKids)
+                ? col.c.map(function (g) { return '<div class="ih-dstage">' + g.t + '</div>' + dItems(g.c); }).join('')
+                : dItems(col.c);
+            return dAcc('<span class="ih-dh-t">' + col.t + (col.d ? '<span class="ih-dh-d">' + col.d + '</span>' : '') + '</span>', inner, ' ih-dsub', ci);
+        }).join('');
+        return dAcc(node.t, body, '', k);
+    }
+    root.querySelector('#ih-menu').innerHTML = MENU.map(desktop).join('');
+    root.querySelector('#ih-dnav').innerHTML = MENU.map(mobile).join('');
+
+    /* ---- mega panel: hover intent, click, Escape, focus leaving ---- */
+    var bar = root.querySelector('.ih-bar');
+    var tops = [].slice.call(root.querySelectorAll('.ih-has'));
+    var openItem = null, openT = null, closeT = null;
+    var fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+    function show(ni) {
+        if (openItem === ni) return;
+        hide();
+        ni.querySelector('.ih-mm').hidden = false;
+        requestAnimationFrame(function () { requestAnimationFrame(function () { ni.classList.add('is-open'); }); });   /* two frames so the transition runs */
+        ni.querySelector('.ih-nl').setAttribute('aria-expanded', 'true');
+        openItem = ni;
+    }
+    function hide() {
+        if (!openItem) return;
+        var ni = openItem, mm = ni.querySelector('.ih-mm');
+        ni.classList.remove('is-open');
+        ni.querySelector('.ih-nl').setAttribute('aria-expanded', 'false');
+        setTimeout(function () { if (!ni.classList.contains('is-open')) mm.hidden = true; }, 230);
+        openItem = null;
+    }
+    function cancel() { clearTimeout(openT); clearTimeout(closeT); }
+    tops.forEach(function (ni) {
+        ni.querySelector('.ih-nl').addEventListener('click', function () { cancel(); openItem === ni ? hide() : show(ni); });
+        if (fine) {
+            ni.addEventListener('mouseenter', function () { cancel(); openT = setTimeout(function () { show(ni); }, openItem ? 0 : 90); });
+            ni.addEventListener('mouseleave', function () { cancel(); closeT = setTimeout(hide, 160); });
+        }
+    });
+    document.addEventListener('click', function (e) { if (openItem && !openItem.contains(e.target)) hide(); });
+    document.addEventListener('focusin', function (e) { if (openItem && !openItem.contains(e.target)) hide(); });
+    document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        if (openItem) { var nl = openItem.querySelector('.ih-nl'); hide(); nl.focus(); }
+        if (drawer.classList.contains('is-on')) closeDrawer();
+    });
+
+    /* ---- section tabs: hover on fine pointers, click/focus/arrow keys everywhere ---- */
+    root.querySelectorAll('.ih-ptabs').forEach(function (tl) {
+        var tabs = [].slice.call(tl.querySelectorAll('.ih-ptab'));
+        var panes = tl.parentNode.querySelectorAll('.ih-pp');
+        function pick(t) {
+            tabs.forEach(function (x) { var on = x === t; x.classList.toggle('is-on', on); x.setAttribute('aria-selected', on); });
+            panes.forEach(function (p) { p.classList.toggle('is-on', p.dataset.p === t.dataset.p); });
+        }
+        tabs.forEach(function (t, i) {
+            t.addEventListener('click', function () { pick(t); });
+            t.addEventListener('focus', function () { pick(t); });
+            if (fine) t.addEventListener('mouseenter', function () { pick(t); });
+            t.addEventListener('keydown', function (e) {
+                var n = e.key === 'ArrowDown' ? i + 1 : e.key === 'ArrowUp' ? i - 1 : -1;
+                if (n >= 0 && n < tabs.length) { e.preventDefault(); tabs[n].focus(); }
+            });
+        });
+    });
+
+    /* ---- drawer ---- */
+    var burger = root.querySelector('.ih-burger'), drawer = root.querySelector('.ih-drawer'), veil = root.querySelector('.ih-veil'), lastFocus = null;
+    function openDrawer() {
+        lastFocus = document.activeElement;
+        drawer.hidden = veil.hidden = false;
+        requestAnimationFrame(function () { requestAnimationFrame(function () { drawer.classList.add('is-on'); veil.classList.add('is-on'); }); });
+        burger.setAttribute('aria-expanded', 'true');
+        document.documentElement.style.overflow = 'hidden';
+        drawer.querySelector('.ih-dx').focus();
+    }
+    function closeDrawer() {
+        drawer.classList.remove('is-on'); veil.classList.remove('is-on');
+        burger.setAttribute('aria-expanded', 'false');
+        document.documentElement.style.overflow = '';
+        setTimeout(function () { drawer.hidden = veil.hidden = true; }, 320);
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    burger.addEventListener('click', openDrawer);
+    root.querySelectorAll('[data-ih-close]').forEach(function (b) { b.addEventListener('click', closeDrawer); });
+    drawer.querySelectorAll('.ih-a').forEach(function (a) { a.addEventListener('click', closeDrawer); });
+    drawer.querySelectorAll('.ih-dh').forEach(function (h) {
+        h.addEventListener('click', function () {
+            var on = h.getAttribute('aria-expanded') === 'true';
+            [].forEach.call(h.parentNode.parentNode.children, function (s) {   /* one open per level */
+                var b = s.querySelector && s.querySelector(':scope > .ih-dh'); if (b) b.setAttribute('aria-expanded', 'false');
+            });
+            h.setAttribute('aria-expanded', on ? 'false' : 'true');
+        });
+    });
+    drawer.addEventListener('keydown', function (e) {   /* focus trap */
+        if (e.key !== 'Tab') return;
+        var f = [].slice.call(drawer.querySelectorAll('.ih-a,.ih-b')).filter(function (x) { return x.offsetParent; });
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+    addEventListener('resize', function () { if (innerWidth > 980 && drawer.classList.contains('is-on')) closeDrawer(); });
+
+    /* ---- scroll state + theme switch ---- */
+    function onScroll() { bar.classList.toggle('is-scrolled', scrollY > 8); }
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    ithenaTheme.sync();
+    root.querySelector('#ih-theme').addEventListener('click', ithenaTheme.toggle);
+})();
+</script>

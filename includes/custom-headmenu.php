@@ -36,11 +36,19 @@ function child_theme_custom_headmenu() {
         --ith-transition: .3s ease;
     }
 
+    /* DARK MODE - palette mirrors ithena-big-data-analytics.html [data-theme="dark"] */
     header.dark-mode{
-        --color-black: #ffffff; /* light text */
-        --color-white: #000000; /* dark bg */
-        --text-ithena-white: #000000;
-        --text-ithena-black: #ffffff;
+        --color-black: #F2F3F5;   /* ink: primary text */
+        --color-white: #0A0A0B;   /* --sa: header surface */
+        --color-blue: #3FA9E0;    /* --acc-t: accent lifted off the dark ground */
+        --color-maroon: #E0645F;  /* #c00000 is ~3:1 on black, lifted to ~5:1 */
+        --text-ithena-white: #0A0A0B;
+        --text-ithena-black: #F2F3F5;
+        --ith-panel: #111113;     /* --sb: raised panel above the header surface */
+        --ith-line: rgba(255,255,255,.09);
+        --ith-body: rgba(228,230,235,.8);
+        color-scheme: dark;
+        border-bottom: 1px solid var(--ith-line);
     }
 
     /* HEADER */
@@ -99,7 +107,8 @@ function child_theme_custom_headmenu() {
         left: 0;
         right: 0;
         top: var(--ith-header-height);
-        background: var(--color-white);
+        background: var(--ith-panel, var(--color-white));
+        border-top: 1px solid var(--ith-line, transparent);
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
@@ -136,7 +145,7 @@ function child_theme_custom_headmenu() {
         display: block;
         padding: 6px 0;
         text-decoration: none;
-        color: var(--color-black);
+        color: var(--ith-body, var(--color-black));
         cursor: pointer;
     }
 
@@ -156,7 +165,7 @@ function child_theme_custom_headmenu() {
         padding: 4px 0;
         font-size: 16px;
         text-decoration: none;
-        color: var(--color-black);
+        color: var(--ith-body, var(--color-black));
     }
 
     .ith-sub-link:hover { color: var(--color-blue); }
@@ -167,7 +176,7 @@ function child_theme_custom_headmenu() {
 
     /* SPECIAL LAYOUT */
     .ith-special-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-    .ith-special-right { color: var(--color-black); border-left: 1px solid var(--color-black); padding-left: 30px; }
+    .ith-special-right { color: var(--ith-body, var(--color-black)); border-left: 1px solid var(--ith-line, var(--color-black)); padding-left: 30px; }
 
     /* MOBILE */
     .ith-mobile-toggle { display: none; flex-direction: column; cursor: pointer; }
@@ -183,7 +192,7 @@ function child_theme_custom_headmenu() {
             left: -100%;
             width: 100%;
             height: 100vh;
-            background: var(--color-white);
+            background: var(--ith-panel, var(--color-white));
             flex-direction: column;
             padding: 30px;
             transition: var(--ith-transition);

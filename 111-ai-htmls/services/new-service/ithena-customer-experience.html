@@ -1,0 +1,541 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@500;600;700&display=swap">
+<style>
+section#main-section *,section#main-section *::before,section#main-section *::after{box-sizing:border-box!important}
+section#main-section{--blue:#0083C8;--blue-d:#006AA3;--blue-l:#3FA9E0;--acc-t:#006AA3;--navy:#0A192D;--ink:#0A192D;--body:#46586A;--muted:#5B6B7A;--sa:#FFFFFF;--sb:#F2F8FD;--card:#FFFFFF;--line:rgba(10,25,45,.10);--hair:rgba(10,25,45,.16);--tint:rgba(0,131,200,.08);--sh:0 18px 44px -24px rgba(0,45,80,.34);--ez:cubic-bezier(.22,.61,.36,1);--ff-head:"Noto Sans",system-ui,sans-serif;--ff-body:"Inter",system-ui,sans-serif;--scrollbar:0px;color-scheme:light!important}
+section#main-section[data-theme="dark"]{--acc-t:#3FA9E0;--ink:#F2F3F5;--body:rgba(228,230,235,.8);--muted:#9A9FA8;--sa:#0A0A0B;--sb:#111113;--card:#17181B;--line:rgba(255,255,255,.09);--hair:rgba(255,255,255,.16);--tint:rgba(63,169,224,.10);--sh:0 18px 44px -24px rgba(0,0,0,.62);color-scheme:dark!important}
+section#main-section .hero,section#main-section .cta{--acc-t:#3FA9E0;--ink:#FFFFFF;--body:rgba(228,236,245,.82);--muted:rgba(228,236,245,.66);--sb:#0A192D;--card:rgba(255,255,255,.04);--tint:rgba(63,169,224,.14);--line:rgba(255,255,255,.12);--hair:rgba(255,255,255,.24)}
+section#main-section{display:block!important;position:relative!important;margin-inline:calc(50% - 50vw + var(--scrollbar) / 2)!important;overflow-x:clip!important;background:var(--sa)!important;color:var(--body)!important;font:400 16px/1.65 var(--ff-body)!important;-webkit-font-smoothing:antialiased!important}
+section#main-section h1,section#main-section h2,section#main-section h3,section#main-section h4{margin:0!important;font-family:var(--ff-head)!important;font-weight:700!important;line-height:1.15!important;color:var(--ink)!important;text-wrap:balance!important}
+section#main-section h1 em,section#main-section h2 em{font-style:normal!important;color:var(--blue)!important;background:linear-gradient(90deg,var(--blue) 0%,var(--blue-l) 45%,var(--blue) 90%) 0 0 / 220% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important}
+section#main-section .hero h1 em,section#main-section .cta h2 em{color:var(--blue-l)!important;background-image:linear-gradient(90deg,var(--blue-l) 0%,#A9DCF7 45%,var(--blue-l) 90%)!important}
+section#main-section p,section#main-section ul,section#main-section ol,section#main-section dl,section#main-section dd,section#main-section figure,section#main-section blockquote{margin:0!important;padding:0!important}
+section#main-section li{list-style:none!important}
+section#main-section a{color:inherit!important;text-decoration:none!important}
+section#main-section img{display:block!important;max-width:100%!important;height:auto!important}
+section#main-section svg{display:block!important}
+section#main-section button{font:inherit!important;color:inherit!important;background:none!important;border:0!important;cursor:pointer!important}
+section#main-section :focus-visible{outline:2px solid var(--blue-l)!important;outline-offset:3px!important}
+section#main-section .sec{position:relative!important;padding:96px 24px!important;background:var(--sa)!important}
+section#main-section .sec--alt{background:var(--sb)!important}
+section#main-section .wrap{position:relative!important;max-width:1240px!important;margin-inline:auto!important}
+section#main-section .head{max-width:720px!important;margin-bottom:56px!important}
+section#main-section .head p + p{margin-top:16px!important}
+section#main-section .kick{display:inline-flex!important;align-items:center!important;gap:11px!important;margin-bottom:18px!important;font:700 12px/1.25 var(--ff-body)!important;letter-spacing:.17em!important;text-transform:uppercase!important;color:var(--acc-t)!important}
+section#main-section .kick::before{content:""!important;flex:none!important;width:28px!important;height:2px!important;border-radius:2px!important;background:linear-gradient(90deg,var(--blue),transparent)!important;transform-origin:left!important;transition:transform .9s var(--ez) .25s!important}
+section#main-section.js .rv:not(.in) .kick::before,section#main-section.js .kick.rv:not(.in)::before{transform:scaleX(0)!important}
+section#main-section .hero .kick::before,section#main-section .cta .kick::before{background:linear-gradient(90deg,var(--blue-l),transparent)!important}
+section#main-section .h2{font-size:clamp(28px,3.6vw,40px)!important;letter-spacing:-.015em!important}
+section#main-section .lede{margin-top:16px!important;font-size:18px!important;font-weight:300!important;line-height:1.6!important}
+section#main-section .btns{display:flex!important;flex-wrap:wrap!important;gap:12px!important}
+section#main-section .btn{display:inline-flex!important;align-items:center!important;gap:10px!important;min-height:48px!important;padding:12px 28px!important;border:1px solid var(--blue)!important;border-radius:999px!important;background:var(--blue)!important;color:#fff!important;font:600 16px/1.2 var(--ff-head)!important;transition:background .2s var(--ez),border-color .2s var(--ez),transform .2s var(--ez)!important}
+section#main-section .btn:hover{background:var(--blue-d)!important;border-color:var(--blue-d)!important;transform:translateY(-2px)!important}
+section#main-section .btn svg{transition:translate .3s var(--ez)!important}
+section#main-section .btn:hover svg{translate:4px 0!important}
+section#main-section .ico,section#main-section .ico--line{display:grid!important;place-items:center!important;flex:none!important;width:40px!important;height:40px!important;color:var(--acc-t)!important;transition:color .3s var(--ez),translate .4s var(--ez)!important}
+section#main-section .ico svg,section#main-section .ico--line svg{width:26px!important;height:26px!important;stroke-width:1.5!important}
+section#main-section .chips{display:flex!important;flex-wrap:wrap!important;gap:10px 24px!important}
+section#main-section .chip{display:inline-flex!important;align-items:center!important;gap:9px!important;font:500 14px/1.4 var(--ff-body)!important;color:var(--ink)!important;transition:color .25s var(--ez)!important}
+section#main-section .chip::before{content:""!important;flex:none!important;width:5px!important;height:5px!important;border-radius:50%!important;background:var(--blue-l)!important;transition:transform .3s var(--ez)!important}
+section#main-section .chip:hover{color:var(--acc-t)!important}
+section#main-section .chip:hover::before{transform:scale(1.6)!important}
+section#main-section .pn{display:block!important;margin-bottom:14px!important;font:700 12px/1 var(--ff-body)!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--acc-t)!important}
+section#main-section.js .rv{opacity:0!important;transform:translateY(32px)!important;transition:opacity .7s var(--ez) var(--d,0s),transform .7s var(--ez) var(--d,0s),background .4s var(--ez),border-color .4s var(--ez),translate .4s var(--ez),scale .4s var(--ez),box-shadow .4s var(--ez),color .3s var(--ez),padding .3s var(--ez)!important}
+section#main-section.js .rv.in{opacity:1!important;transform:none!important}
+section#main-section .hero{padding:144px 24px 96px!important;color:var(--body)!important;overflow:hidden!important;isolation:isolate!important;background:#05070A!important}
+section#main-section .hero-grid{position:relative!important;display:grid!important;grid-template-columns:1.05fr 1fr!important;gap:64px!important;align-items:center!important}
+section#main-section .h1{font-size:clamp(32px,5vw,50px)!important;letter-spacing:-.02em!important;line-height:1.1!important}
+section#main-section .hero .lede{max-width:540px!important;margin-block:24px 40px!important}
+@keyframes panelIn{from{opacity:0;translate:0 12px}}
+@keyframes sheen{to{background-position:-220% 0}}
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.1) translate(-1.5%,-1%)}}
+@media (prefers-reduced-motion: no-preference){
+  section#main-section h1 em,section#main-section h2 em{animation:sheen 7s linear infinite!important}
+}
+@media (prefers-reduced-motion: reduce){
+  section#main-section.js .rv{opacity:1!important;transform:none!important;transition:none!important}
+}
+section#main-section .aia-theme-toggle{position:fixed!important;top:100px!important;right:20px!important;z-index:50!important;display:grid!important;place-items:center!important;width:44px!important;height:44px!important;border:1px solid var(--hair)!important;border-radius:50%!important;background:var(--card)!important;color:var(--blue)!important;box-shadow:var(--sh)!important;transition:transform .2s var(--ez)!important}
+section#main-section .aia-theme-toggle[hidden]{display:none!important}
+section#main-section .aia-theme-toggle:hover{transform:translateY(-2px)!important}
+section#main-section .aia-theme-toggle svg{width:18px!important;height:18px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+section#main-section .aia-theme-toggle .moon{display:none!important}
+section#main-section[data-theme="dark"] .aia-theme-toggle .sun{display:none!important}
+section#main-section[data-theme="dark"] .aia-theme-toggle .moon{display:block!important}
+@media (max-width: 900px){
+  section#main-section .hero-grid{grid-template-columns:1fr!important;gap:40px!important}
+}
+@media (max-width: 600px){
+  section#main-section .sec{padding:64px 16px!important}
+  section#main-section .hero{padding:112px 16px 64px!important}
+}
+section#main-section .chan{display:grid!important;grid-template-columns:repeat(4,1fr)!important;border-top:1px solid var(--line)!important}
+section#main-section .chan > li{display:flex!important}
+section#main-section .chan > li + li{border-left:1px solid var(--line)!important}
+section#main-section .ch{position:relative!important;flex:1!important;display:flex!important;flex-direction:column!important;gap:12px!important;padding:32px 28px 8px!important}
+section#main-section .chan > li:first-child .ch{padding-left:0!important}
+section#main-section .ch::before{content:""!important;position:absolute!important;left:0!important;top:-1px!important;height:2px!important;width:0!important;background:linear-gradient(90deg,var(--blue),var(--blue-l))!important;transition:width .6s var(--ez)!important}
+section#main-section .ch:hover::before{width:100%!important}
+section#main-section .ch:hover .ico--line{color:var(--blue-l)!important;translate:0 -3px!important}
+section#main-section .ch h3{font-size:18px!important}
+section#main-section .ch p{font-size:14px!important}
+section#main-section .ch-go{display:flex!important;align-items:center!important;gap:8px!important;margin-top:auto!important;padding-top:8px!important;font:600 13px/1 var(--ff-head)!important;color:var(--acc-t)!important}
+section#main-section .ch-go svg{transition:translate .3s var(--ez)!important}
+section#main-section .ch:hover .ch-go svg{translate:5px 0!important}
+@media (max-width: 1100px){
+  section#main-section .chan{grid-template-columns:repeat(2,1fr)!important}
+  section#main-section .chan > li:nth-child(3){border-left:0!important}
+  section#main-section .chan > li:nth-child(3) .ch{padding-left:0!important}
+  section#main-section .chan > li:nth-child(n+3){border-top:1px solid var(--line)!important}
+}
+@media (max-width: 600px){
+  section#main-section .chan{grid-template-columns:1fr!important}
+  section#main-section .chan > li + li{border-left:0!important;border-top:1px solid var(--line)!important}
+  section#main-section .ch,section#main-section .chan > li:first-child .ch{padding:28px 0 20px!important}
+}
+section#main-section .acc{border-top:1px solid var(--line)!important}
+section#main-section .acc details{border-bottom:1px solid var(--line)!important}
+section#main-section .acc summary{display:grid!important;grid-template-columns:64px 1fr auto!important;align-items:center!important;gap:16px!important;padding:28px 0!important;cursor:pointer!important;list-style:none!important}
+section#main-section .acc summary::-webkit-details-marker{display:none!important}
+section#main-section .acc-n{font:600 14px/1 var(--ff-head)!important;color:var(--muted)!important;font-variant-numeric:tabular-nums!important}
+section#main-section .acc summary h3{font-size:26px!important;letter-spacing:-.015em!important;transition:color .25s!important}
+section#main-section .acc summary p{margin-top:4px!important;font-size:15px!important;color:var(--muted)!important}
+section#main-section .acc-x{display:grid!important;place-items:center!important;width:44px!important;height:44px!important;border:1px solid var(--hair)!important;border-radius:50%!important;color:var(--ink)!important;transition:transform .3s var(--ez),background .3s var(--ez),border-color .3s var(--ez),color .3s var(--ez)!important}
+section#main-section .acc summary:hover h3,section#main-section .acc details[open] summary h3{color:var(--blue)!important}
+section#main-section .acc details[open] .acc-x{transform:rotate(45deg)!important;background:var(--blue)!important;border-color:var(--blue)!important;color:#fff!important}
+section#main-section .acc-body{display:grid!important;grid-template-columns:1fr 1.5fr!important;gap:48px!important;padding:0 0 44px 80px!important}
+section#main-section .acc-body figure{align-self:start!important;aspect-ratio:16 / 10!important;overflow:hidden!important;border-radius:6px!important;background:var(--navy)!important}
+section#main-section .acc-body figure img{width:100%!important;height:100%!important;object-fit:cover!important}
+section#main-section .acc-body > div > p{font-size:16px!important}
+section#main-section .mini{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:16px 28px!important;margin-top:24px!important}
+section#main-section .mini li{display:grid!important;grid-template-columns:30px 1fr!important;gap:8px!important;font-size:14px!important}
+section#main-section .mini i{padding-top:2px!important;font:700 12px/1.3 var(--ff-head)!important;font-style:normal!important;color:var(--acc-t)!important}
+section#main-section .mini b{display:block!important;margin-bottom:2px!important;font:600 15px/1.35 var(--ff-head)!important;color:var(--ink)!important}
+section#main-section .chip-label{display:block!important;margin:28px 0 12px!important;font:700 11px/1 var(--ff-body)!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--muted)!important}
+@media (prefers-reduced-motion: no-preference){
+  section#main-section .acc details[open] .acc-body figure,section#main-section .acc details[open] .acc-body > div > p,section#main-section .acc details[open] .mini li,section#main-section .acc details[open] .chip-label,section#main-section .acc details[open] .chips{animation:panelIn .55s var(--ez) backwards!important}
+  section#main-section .acc details[open] .acc-body figure img{animation:kenburns 16s ease-in-out infinite alternate!important}
+  section#main-section .acc details[open] .mini li:nth-child(2){animation-delay:.05s!important}
+  section#main-section .acc details[open] .mini li:nth-child(3){animation-delay:.1s!important}
+  section#main-section .acc details[open] .mini li:nth-child(4){animation-delay:.15s!important}
+  section#main-section .acc details[open] .mini li:nth-child(5){animation-delay:.2s!important}
+  section#main-section .acc details[open] .mini li:nth-child(6){animation-delay:.25s!important}
+  section#main-section .acc details[open] .mini li:nth-child(n+7){animation-delay:.3s!important}
+}
+@media (max-width: 900px){
+  section#main-section .acc summary{grid-template-columns:44px 1fr auto!important;padding:22px 0!important}
+  section#main-section .acc summary h3{font-size:20px!important}
+  section#main-section .acc-body{grid-template-columns:1fr!important;gap:24px!important;padding:0 0 32px!important}
+}
+@media (max-width: 600px){
+  section#main-section .mini{grid-template-columns:1fr!important}
+  section#main-section .acc summary p{display:none!important}
+}
+section#main-section .deck{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:48px 40px!important}
+section#main-section .dk{position:relative!important;min-height:200px!important;padding-top:28px!important;overflow:hidden!important;border-top:1px solid var(--line)!important}
+section#main-section .dk-n{position:absolute!important;right:0!important;bottom:-24px!important;font:700 128px/1 var(--ff-head)!important;color:transparent!important;-webkit-text-stroke:1px var(--line)!important;transition:-webkit-text-stroke-color .4s var(--ez),translate .5s var(--ez)!important}
+section#main-section .dk:hover .dk-n{-webkit-text-stroke-color:var(--blue)!important;translate:0 -8px!important}
+section#main-section .dk .pn{position:relative!important;margin-bottom:24px!important}
+section#main-section .dk h3{position:relative!important;font-size:20px!important}
+section#main-section .dk p{position:relative!important;max-width:78%!important;margin-top:8px!important;font-size:15px!important}
+@media (max-width: 1100px){
+  section#main-section .deck{grid-template-columns:repeat(2,1fr)!important}
+}
+@media (max-width: 600px){
+  section#main-section .deck{grid-template-columns:1fr!important;gap:36px!important}
+  section#main-section .dk{min-height:0!important}
+}
+section#main-section .acc-line{position:relative!important}
+section#main-section .acc-line::before{content:""!important;position:absolute!important;left:0!important;top:-1px!important;height:2px!important;width:32px!important;background:linear-gradient(90deg,var(--blue),var(--blue-l))!important;transition:width .6s var(--ez)!important}
+section#main-section .acc-line:hover::before{width:100%!important}
+section#main-section .acc-line:hover .ico,section#main-section .acc-line:hover .ico--line{color:var(--blue-l)!important;translate:0 -3px!important}
+section#main-section .slides{display:grid!important;grid-auto-flow:column!important;grid-auto-columns:100%!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;scroll-behavior:smooth!important;overscroll-behavior-x:contain!important;scrollbar-width:none!important;outline-offset:4px!important}
+section#main-section .slides::-webkit-scrollbar{display:none!important}
+section#main-section .slide{display:grid!important;grid-template-columns:1.05fr 1fr!important;gap:64px!important;align-items:center!important;scroll-snap-align:start!important}
+section#main-section .s-media{position:relative!important;aspect-ratio:4 / 3!important;overflow:hidden!important;border-radius:6px!important;background:#0A192D!important}
+section#main-section .s-media img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
+section#main-section .s-media::after{content:""!important;position:absolute!important;inset:0!important;background:linear-gradient(200deg,rgba(10,25,45,0) 40%,rgba(10,25,45,.55))!important}
+section#main-section .stx h3{margin-bottom:14px!important;font-size:28px!important;letter-spacing:-.015em!important}
+section#main-section .stx > p{font-size:16px!important}
+section#main-section .metric{display:flex!important;align-items:baseline!important;gap:12px!important;margin-top:24px!important;padding-top:20px!important;border-top:1px solid var(--line)!important}
+section#main-section .metric b{font:700 44px/1 var(--ff-head)!important;color:var(--blue)!important;letter-spacing:-.02em!important}
+section#main-section .metric span{font-size:14px!important;color:var(--muted)!important}
+@media (prefers-reduced-motion: no-preference){
+  section#main-section .slide.on .s-media img{animation:kenburns 9s ease-out forwards!important}
+  section#main-section .slide.on .stx > *{animation:panelIn .6s var(--ez) backwards!important}
+  section#main-section .slide.on .stx > :nth-child(2){animation-delay:.08s!important}
+  section#main-section .slide.on .stx > :nth-child(3){animation-delay:.16s!important}
+  section#main-section .slide.on .stx > :nth-child(4){animation-delay:.24s!important}
+}
+@media (prefers-reduced-motion: reduce){
+  section#main-section .slides{scroll-behavior:auto!important}
+}
+@media (max-width: 900px){
+  section#main-section .slide{grid-template-columns:1fr!important;gap:28px!important;align-content:start!important}
+  section#main-section .s-media{aspect-ratio:16 / 9!important}
+  section#main-section .stx h3{font-size:22px!important}
+}
+section#main-section .svc-nav{display:flex!important;align-items:center!important;gap:20px!important;margin-top:40px!important}
+section#main-section .svc-count{font:600 14px/1 var(--ff-head)!important;color:var(--muted)!important;font-variant-numeric:tabular-nums!important}
+section#main-section .svc-count b{color:var(--ink)!important}
+section#main-section .svc-bar{position:relative!important;flex:1!important;height:2px!important;overflow:hidden!important;background:var(--line)!important}
+section#main-section .svc-bar b{position:absolute!important;inset:0!important;background:linear-gradient(90deg,var(--blue),var(--blue-l))!important;transform:scaleX(0)!important;transform-origin:left!important}
+section#main-section .slider.run .svc-bar b{animation:timer var(--ms) linear forwards!important}
+section#main-section .slider:hover .svc-bar b,section#main-section .slider:focus-within .svc-bar b,section#main-section .slider.idle .svc-bar b{animation-play-state:paused!important}
+@keyframes timer{to{transform:none}}
+section#main-section .svc-btn{display:grid!important;place-items:center!important;flex:none!important;width:44px!important;height:44px!important;border:1px solid var(--hair)!important;border-radius:50%!important;color:var(--ink)!important;transition:background .2s var(--ez),border-color .2s var(--ez),color .2s var(--ez)!important}
+section#main-section .svc-btn:hover{border-color:var(--blue)!important;background:var(--blue)!important;color:#fff!important}
+section#main-section .logo-rail{display:flex!important;align-items:center!important;gap:20px!important}
+section#main-section .logo-track{flex:1!important;min-width:0!important;overflow-x:auto!important;scrollbar-width:none!important;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)!important;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)!important}
+section#main-section .logo-track::-webkit-scrollbar{display:none!important}
+section#main-section .logo-track ul{display:flex!important;align-items:center!important;gap:72px!important;width:max-content!important;padding:12px 36px!important}
+section#main-section .logo-track img{height:40px!important;width:auto!important;max-width:none!important;opacity:.72!important;transition:opacity .25s var(--ez),scale .3s var(--ez)!important}
+section#main-section .logo-track li:hover img{opacity:1!important;scale:1.06!important}
+section#main-section[data-theme="dark"] .logo-track img[data-fix="dk"]{filter:brightness(0) invert(1)!important}
+section#main-section[data-theme="light"] .logo-track img[data-fix="lt0"]{filter:brightness(0)!important}
+section#main-section[data-theme="light"] .logo-track img[data-fix="ltinv"]{filter:invert(1) hue-rotate(180deg)!important}
+section#main-section[data-theme="light"] .logo-track img[data-fix="ltdim"]{filter:brightness(.5)!important}
+@media (max-width: 900px){
+  section#main-section .logo-track ul{gap:48px!important}
+}
+section#main-section .cta{padding:0!important;color:var(--body)!important;background:var(--navy)!important}
+section#main-section[data-theme="dark"] .cta{background:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px) 0 0/56px 56px,linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px) 0 0/56px 56px,radial-gradient(55% 70% at 100% 0%,rgba(0,131,200,.11),transparent 70%),linear-gradient(155deg,#16171A 0%,#0C0C0E 52%,#050506 100%)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)!important}
+section#main-section .cta-in{display:grid!important;grid-template-columns:1fr 1fr!important;align-items:stretch!important}
+section#main-section .cta-copy{max-width:644px!important;margin-left:auto!important;padding:clamp(56px,6.4vw,96px) clamp(26px,3.4vw,60px) clamp(56px,6.4vw,96px) 24px!important}
+section#main-section .cta-copy .btns{margin-top:32px!important}
+section#main-section .cta-med{position:relative!important;overflow:hidden!important;min-height:27.9vw!important;background:#0F2238!important}
+section#main-section .cta-med::after{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;background:rgba(0,0,0,.38)!important;pointer-events:none!important}
+section#main-section .cta-med img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important}
+section#main-section .cta-play{position:absolute!important;top:50%!important;left:50%!important;z-index:2!important;display:grid!important;place-items:center!important;width:66px!important;height:66px!important;padding:0!important;border:0!important;border-radius:50%!important;background:var(--blue)!important;color:#fff!important;cursor:pointer!important;transform:translate(-50%,-50%)!important;box-shadow:0 14px 34px -12px rgba(0,60,110,.6),0 0 0 8px rgba(0,131,200,.16)!important;transition:transform .2s var(--ez)!important}
+section#main-section .cta-play:hover{transform:translate(-50%,-50%) scale(1.07)!important}
+section#main-section .cta-play:focus-visible{outline:3px solid var(--blue-l)!important;outline-offset:3px!important}
+section#main-section .cta-play svg{width:22px!important;height:22px!important;margin-left:3px!important;fill:currentColor!important}
+@media (max-width: 900px){section#main-section .cta-in{grid-template-columns:1fr!important}section#main-section .cta-copy{max-width:none!important;margin:0!important;padding:64px 24px!important}section#main-section .cta-med{min-height:55.8vw!important;aspect-ratio:auto!important}section#main-section .cta-play{width:54px!important;height:54px!important}}
+@media (prefers-reduced-motion: reduce){section#main-section .cta-play{transition:none!important}}
+section#main-section .video-modal{position:fixed!important;top:50%!important;left:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;margin:0!important;width:min(960px,92vw)!important;max-width:none!important;padding:0!important;border:0!important;border-radius:16px!important;background:#000!important;overflow:hidden!important;box-shadow:0 40px 90px -30px rgba(0,0,0,.7)!important}
+section#main-section .video-modal::backdrop{background:rgba(0,0,0,.72)!important;-webkit-backdrop-filter:blur(6px)!important;backdrop-filter:blur(6px)!important}
+section#main-section .video-modal video{display:block!important;width:100%!important;height:auto!important;max-height:82vh!important;background:#000!important}
+section#main-section .video-modal-close{position:absolute!important;top:10px!important;right:10px!important;z-index:2!important;display:flex!important;align-items:center!important;justify-content:center!important;width:36px!important;height:36px!important;padding:0!important;border:0!important;border-radius:50%!important;background:rgba(0,0,0,.55)!important;color:#fff!important;cursor:pointer!important}
+section#main-section .video-modal-close:hover{background:rgba(0,0,0,.85)!important}
+section#main-section .hero::before{content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;background-image:linear-gradient(rgba(63,169,224,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(63,169,224,.1) 1px,transparent 1px)!important;background-size:56px 56px!important;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%)!important;mask-image:linear-gradient(180deg,#000 55%,transparent 100%)!important;pointer-events:none!important}
+section#main-section .hero::after{content:""!important;position:absolute!important;inset:0!important;z-index:-2!important;background:radial-gradient(55% 65% at 82% 38%,rgba(0,131,200,.24),transparent 70%),radial-gradient(40% 55% at 0% 100%,rgba(0,131,200,.1),transparent 70%),linear-gradient(180deg,#071120 0%,#05070A 100%)!important;pointer-events:none!important}
+section#main-section .dash{position:relative!important;width:100%!important;max-width:560px!important;margin-inline:auto!important;padding:16px!important;border:1px solid var(--line)!important;border-radius:18px!important;background:linear-gradient(180deg,rgba(13,30,52,.82),rgba(7,15,27,.88))!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important;box-shadow:0 40px 80px -40px rgba(0,0,0,.85),0 0 0 1px rgba(63,169,224,.06) inset,0 0 80px -30px rgba(0,131,200,.45)!important;font-family:var(--ff-body)!important;color:var(--body)!important}
+section#main-section .dash-top{display:flex!important;align-items:center!important;gap:12px!important;padding-bottom:14px!important;margin-bottom:14px!important;border-bottom:1px solid var(--line)!important}
+section#main-section .dash-dots{display:flex!important;gap:6px!important}
+section#main-section .dash-dots i{width:8px!important;height:8px!important;border-radius:50%!important;background:rgba(255,255,255,.18)!important}
+section#main-section .dash-title{flex:1!important;font:600 13px/1.2 var(--ff-head)!important;color:#fff!important;letter-spacing:.01em!important}
+section#main-section .dash-live{display:inline-flex!important;align-items:center!important;gap:6px!important;padding:4px 10px!important;border-radius:999px!important;background:rgba(34,197,94,.12)!important;color:#4ADE80!important;font:700 10px/1 var(--ff-body)!important;letter-spacing:.14em!important;text-transform:uppercase!important}
+section#main-section .dash-live::before{content:""!important;width:6px!important;height:6px!important;border-radius:50%!important;background:currentColor!important}
+section#main-section .dash-kpis{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important}
+section#main-section .dash-kpi{padding:12px!important;border:1px solid var(--line)!important;border-radius:12px!important;background:rgba(255,255,255,.03)!important;min-width:0!important}
+section#main-section .dash-k{display:block!important;font:500 11px/1.3 var(--ff-body)!important;color:var(--muted)!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+section#main-section .dash-kpi b{display:block!important;margin:6px 0 4px!important;font:700 clamp(18px,2vw,24px)/1.1 var(--ff-head)!important;color:#fff!important;font-variant-numeric:tabular-nums!important;white-space:nowrap!important}
+section#main-section .dash-d{font:600 11px/1.2 var(--ff-body)!important;color:#4ADE80!important}
+section#main-section .dash-d.dn{color:#7DD3FC!important}
+section#main-section .dash-main{display:grid!important;grid-template-columns:1.45fr 1fr!important;gap:10px!important;margin-top:10px!important}
+section#main-section .dash-panel{padding:12px!important;border:1px solid var(--line)!important;border-radius:12px!important;background:rgba(255,255,255,.03)!important;min-width:0!important}
+section#main-section .dash-ch{display:flex!important;justify-content:space-between!important;gap:8px!important;margin-bottom:10px!important;font:600 11px/1.3 var(--ff-body)!important;color:#fff!important}
+section#main-section .dash-leg{font-weight:500!important;color:var(--muted)!important;white-space:nowrap!important}
+section#main-section .dash-chart{display:block!important;width:100%!important;height:auto!important;overflow:visible!important}
+section#main-section .dash-grid{stroke:rgba(255,255,255,.07)!important;stroke-width:1!important;fill:none!important}
+section#main-section .dash-line{fill:none!important;stroke:#3FA9E0!important;stroke-width:2.5!important;stroke-linecap:round!important;stroke-linejoin:round!important;filter:drop-shadow(0 0 6px rgba(63,169,224,.7))!important}
+section#main-section .dash-fc{fill:none!important;stroke:rgba(255,255,255,.45)!important;stroke-width:1.5!important;stroke-dasharray:4 5!important}
+section#main-section .dash-scan{stroke:rgba(63,169,224,.55)!important;stroke-width:1!important;opacity:0}
+section#main-section .dash-pt{fill:#fff!important;filter:drop-shadow(0 0 6px #3FA9E0)!important}
+section#main-section .dash-bars{display:grid!important;gap:11px!important;margin:0!important;padding:0!important;list-style:none!important}
+section#main-section .dash-bars li{display:grid!important;grid-template-columns:1fr auto!important;row-gap:5px!important;margin:0!important;font:500 11px/1.2 var(--ff-body)!important;color:var(--body)!important}
+section#main-section .dash-bars em{font-style:normal!important;font-weight:700!important;color:#fff!important}
+section#main-section .dash-bars i{grid-column:1 / -1!important;position:relative!important;height:6px!important;border-radius:6px!important;background:rgba(255,255,255,.08)!important;overflow:hidden!important}
+section#main-section .dash-bars i::after{content:""!important;position:absolute!important;inset:0 auto 0 0!important;width:var(--v)!important;border-radius:inherit!important;background:linear-gradient(90deg,#0083C8,#3FA9E0)!important}
+section#main-section .dash-feed{display:flex!important;align-items:center!important;gap:10px!important;margin-top:10px!important;padding:10px 12px!important;border:1px solid var(--line)!important;border-radius:10px!important;background:rgba(63,169,224,.06)!important;font:500 12px/1.3 var(--ff-body)!important;color:var(--body)!important;overflow:hidden!important}
+section#main-section .dash-pulse{flex:none!important;width:8px!important;height:8px!important;border-radius:50%!important;background:#3FA9E0!important}
+section#main-section .dash-msg{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;transition:opacity .35s ease,transform .35s ease!important}
+section#main-section .dash-msg.out{opacity:0!important;transform:translateY(6px)!important}
+@media (prefers-reduced-motion: no-preference){
+  section#main-section .dash-line{stroke-dasharray:1!important;stroke-dashoffset:1;animation:dashDraw 1.8s var(--ez) .5s forwards!important}
+  section#main-section .dash-area,section#main-section .dash-fc{opacity:0;animation:dashFade 1s ease 1.6s forwards!important}
+  section#main-section .dash-scan{animation:dashScan 4.5s linear 2.3s infinite!important}
+  section#main-section .dash-bars i::after{transform:scaleX(0);transform-origin:left!important;animation:dashGrow 1.1s var(--ez) forwards!important}
+  section#main-section .dash-bars li:nth-child(1) i::after{animation-delay:.7s!important}
+  section#main-section .dash-bars li:nth-child(2) i::after{animation-delay:.85s!important}
+  section#main-section .dash-bars li:nth-child(3) i::after{animation-delay:1s!important}
+  section#main-section .dash-bars li:nth-child(4) i::after{animation-delay:1.15s!important}
+  section#main-section .dash-live::before,section#main-section .dash-pulse{animation:dashPing 1.6s ease-out infinite!important}
+  section#main-section .dash{animation:dashFloat 7s ease-in-out 2s infinite alternate!important}
+}
+@media (prefers-reduced-motion: reduce){section#main-section .dash-pt{display:none!important}}
+@keyframes dashDraw{to{stroke-dashoffset:0}}
+@keyframes dashFade{to{opacity:1}}
+@keyframes dashGrow{to{transform:scaleX(1)}}
+@keyframes dashScan{0%{opacity:0;transform:translateX(0)}10%{opacity:1}90%{opacity:1}100%{opacity:0;transform:translateX(320px)}}
+@keyframes dashPing{0%{box-shadow:0 0 0 0 rgba(63,169,224,.6)}100%{box-shadow:0 0 0 8px rgba(63,169,224,0)}}
+@keyframes dashFloat{from{translate:0 0}to{translate:0 -8px}}
+@media (max-width: 520px){section#main-section .dash{padding:12px!important}section#main-section .dash-main{grid-template-columns:1fr!important}section#main-section .dash-kpis{gap:6px!important}section#main-section .dash-kpi{padding:10px 8px!important}section#main-section .dash-kpi b{font-size:16px!important}}
+section#main-section .svc-btn{width:44px!important;height:44px!important;padding:0!important;border:0!important;border-radius:0!important;background:none!important;color:var(--ink)!important;transition:color .2s var(--ez),transform .2s var(--ez)!important}
+section#main-section .svc-btn:hover{background:none!important;color:var(--blue)!important;transform:scale(1.3)!important}
+section#main-section .svc-btn svg{width:22px!important;height:22px!important}
+.pk-schd{--sc-card:#FFFFFF;--sc-srf:#F4F7FA;--sc-ink:#1F2023;--sc-ink2:rgba(0,0,0,.70);--sc-line:#EAEAEA;--sc-blue:#0083C8;--sc-wash:#EDF7FC;--sc-ff:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--sc-ez:cubic-bezier(.2,0,0,1);position:fixed!important;inset:0!important;z-index:999999!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:20px!important;margin:0!important;background:rgba(13,27,46,.62)!important;-webkit-backdrop-filter:blur(6px)!important;backdrop-filter:blur(6px)!important;opacity:0!important;visibility:hidden!important;transition:opacity .25s var(--sc-ez),visibility .25s var(--sc-ez)!important;font-family:var(--sc-ff)!important;color:var(--sc-ink)!important;line-height:1.6!important}
+.pk-schd[data-theme="dark"]{--sc-card:#17181B;--sc-srf:#111113;--sc-ink:#F2F3F5;--sc-ink2:rgba(228,230,235,.8);--sc-line:rgba(255,255,255,.1);--sc-blue:#39A8DE;--sc-wash:rgba(0,131,200,.16)}
+.pk-schd[hidden]{display:flex!important}
+.pk-schd.is-open{opacity:1!important;visibility:visible!important}
+body:has(.pk-schd.is-open) #chatBubbleRoot{display:none!important}
+.pk-schd,.pk-schd *,.pk-schd *::before,.pk-schd *::after{box-sizing:border-box}
+.pk-schd-panel{position:relative!important;width:100%!important;max-width:480px!important;max-height:88vh!important;overflow-y:auto!important;background:var(--sc-card)!important;color:var(--sc-ink)!important;border-radius:24px!important;border:1px solid var(--sc-line)!important;box-shadow:0 40px 90px -30px rgba(0,0,0,.6)!important;padding:clamp(24px,4vw,36px)!important;transform:translateY(18px) scale(.98)!important;transition:transform .28s var(--sc-ez)!important}
+.pk-schd.is-open .pk-schd-panel{transform:none!important}
+.pk-schd-close{position:absolute!important;top:14px!important;right:14px!important;width:34px!important;height:34px!important;padding:0!important;border-radius:50%!important;display:grid!important;place-items:center!important;background:var(--sc-srf)!important;border:1px solid var(--sc-line)!important;color:var(--sc-ink)!important;cursor:pointer!important;transition:background-color .2s var(--sc-ez),border-color .2s var(--sc-ez)!important}
+.pk-schd-close:hover{background:var(--sc-wash)!important;border-color:var(--sc-blue)!important}
+.pk-schd-close svg{width:15px!important;height:15px!important;display:block!important}
+.pk-schd-head{padding-right:36px!important;margin-bottom:22px!important}
+.pk-schd-head .eyb{display:flex!important;align-items:center!important;gap:9px!important;margin:0 0 10px!important;padding:0!important;font-size:12px!important;font-weight:700!important;letter-spacing:.17em!important;text-transform:uppercase!important;color:var(--sc-blue)!important}
+.pk-schd-head .eyb::before{content:""!important;width:22px!important;height:2px!important;border-radius:2px!important;background:currentColor!important;flex:none!important}
+.pk-schd-head h3{font-size:24px!important;font-weight:700!important;letter-spacing:-.02em!important;line-height:1.2!important;margin:0 0 8px!important;padding:0!important;color:var(--sc-ink)!important}
+.pk-schd-head p{font-size:14px!important;line-height:1.6!important;color:var(--sc-ink2)!important;margin:0!important;padding:0!important}
+.pk-schd-form{width:100%!important}
+.pk-schd-form .frm_forms,.pk-schd-form .elementor-widget-shortcode{max-width:100%!important;margin:0!important}
+.pk-schd-form input[type=text],.pk-schd-form input[type=email],.pk-schd-form input[type=tel],.pk-schd-form input[type=number],.pk-schd-form input[type=url],.pk-schd-form select,.pk-schd-form textarea{font-family:var(--sc-ff)!important;font-size:15px!important;padding:12px 15px!important;border-radius:100px!important;border:1px solid var(--sc-line)!important;background:var(--sc-srf)!important;color:var(--sc-ink)!important;width:100%!important}
+.pk-schd-form textarea{border-radius:12px!important;resize:vertical!important}
+.pk-schd-form label{font-size:13px!important;font-weight:600!important;color:var(--sc-ink2)!important}
+.pk-schd-form .frm_submit button,.pk-schd-form button[type=submit],.pk-schd-form input[type=submit]{background:var(--sc-blue)!important;color:#fff!important;border:0!important;border-radius:100px!important;font-family:var(--sc-ff)!important;font-weight:700!important;font-size:15px!important;padding:14px 26px!important;cursor:pointer!important;width:auto!important}
+.pk-schd-empty{font-size:14px!important;line-height:1.6!important;color:var(--sc-ink2)!important;margin:0!important;padding:0!important}
+.pk-schd-empty a{color:var(--sc-blue)!important;font-weight:600!important;text-decoration:none!important}
+.pk-schd :focus-visible{outline:2px solid var(--sc-blue)!important;outline-offset:3px!important;border-radius:4px}
+@media (max-width:520px){
+ .pk-schd{padding:12px!important}
+ .pk-schd-panel{max-height:92vh!important}
+}
+@media (prefers-reduced-motion:reduce){
+ .pk-schd{transition:none!important}
+ .pk-schd-panel{transform:none!important;transition:none!important}
+}
+/* uniform bottom CTA: same title/subtitle size + font and section height on every service & industry page */
+#main-section#main-section .cta h2{font-family:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif!important;font-size:clamp(28px,2.8vw,40px)!important;font-weight:700!important;line-height:1.15!important;letter-spacing:-.02em!important}
+#main-section#main-section .cta .lede{font-family:"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif!important;font-size:18px!important;font-weight:400!important;line-height:1.6!important}
+@media (min-width:1025px){#main-section#main-section .cta-in{min-height:660px!important}#main-section#main-section .cta-copy{display:flex!important;flex-direction:column!important;justify-content:center!important;padding-top:56px!important;padding-bottom:56px!important}}
+@media (max-width:1024px){section#main-section:not(.pkg) .cta-in{grid-template-columns:1fr!important}section#main-section:not(.pkg) .cta-copy{max-width:none!important;margin:0!important;padding:64px 24px!important}#main-section#main-section .cta-med{min-height:0!important;aspect-ratio:16/9!important}}
+/* brand title accent: solid brand blue (#0083C8, same in light + dark), no gradient, on every service & industry page */
+#main-section#main-section :is(h1,h2,h3) em{color:#0083C8!important;background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;-webkit-text-fill-color:#0083C8!important;animation:none!important;font-style:normal!important}
+</style>
+<section id="main-section" class="svc cx" data-theme="dark">
+<button type="button" class="aia-theme-toggle" id="aiaThemeToggle" aria-label="Switch to light theme" hidden><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg></button>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://ithena.ai/customer-experience/#service","name":"Customer Experience Services","serviceType":"CX modernization: e-commerce, mobility, web and UI/UX","description":"ITHENA builds modern digital experiences across e-commerce, mobile apps, websites and UI/UX that help brands stand out and engage customers.","url":"https://ithena.ai/customer-experience/","provider":{"@type":"Organization","name":"ITHENA","url":"https://ithena.ai/"},"areaServed":"Global","hasOfferCatalog":{"@type":"OfferCatalog","name":"Customer Experience Services offerings","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"E-Commerce"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Mobility"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Web"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"UI/UX"}}]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://ithena.ai/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://ithena.ai/services/"},{"@type":"ListItem","position":3,"name":"Customer Experience Services"}]}]}</script>
+<section class="sec hero" aria-labelledby="cx-h1">
+<div class="wrap hero-grid">
+<div>
+<p class="kick rv">CX modernization</p>
+<h1 class="h1 rv" id="cx-h1">Customer <em>Experience</em></h1>
+<p class="lede rv">Elevating customer experience through engagement, innovation and excellence: modern digital experiences that set your brand apart.</p>
+<div class="btns rv"><a class="btn" href="#cx-offerings">Explore offerings <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</div>
+<div class="dash rv" role="img" aria-label="Customer Experience Hub dashboard: Conversion rate 4.8%, CSAT 4.6/5, Mobile sessions 62%; Daily sessions trending; Web store 46%, Mobile app 38%, Dealer portal 24%, Self-service 17%">
+<div class="dash-top"><span class="dash-dots"><i></i><i></i><i></i></span><span class="dash-title">Customer Experience Hub</span><span class="dash-live">Live</span></div>
+<div class="dash-kpis"><div class="dash-kpi"><span class="dash-k">Conversion rate</span><b data-to="4.8" data-dec="1" data-pre="" data-suf="%">4.8%</b><span class="dash-d">&#9650; 1.3%</span></div><div class="dash-kpi"><span class="dash-k">CSAT</span><b data-to="4.6" data-dec="1" data-pre="" data-suf="/5">4.6/5</b><span class="dash-d">&#9650; 0.4</span></div><div class="dash-kpi"><span class="dash-k">Mobile sessions</span><b data-to="62" data-dec="0" data-pre="" data-suf="%">62%</b><span class="dash-d">&#9650; 11%</span></div></div>
+<div class="dash-main">
+<div class="dash-panel"><div class="dash-ch"><span>Daily sessions</span><span class="dash-leg">Web + mobile + portal</span></div>
+<svg class="dash-chart" viewBox="0 0 320 120"><defs><linearGradient id="cx-dash-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3FA9E0" stop-opacity=".38"/><stop offset="1" stop-color="#3FA9E0" stop-opacity="0"/></linearGradient></defs><path class="dash-grid" d="M0,30H320M0,60H320M0,90H320"/><path class="dash-area" fill="url(#cx-dash-fill)" d="M0.0,83.2 C4.8,82.2 19.4,77.9 29.1,77.4 C38.8,77.0 48.5,81.6 58.2,80.3 C67.9,79.0 77.6,72.5 87.3,69.8 C97.0,67.0 106.7,64.3 116.4,64.0 C126.1,63.7 135.8,68.6 145.5,67.8 C155.2,67.0 164.8,61.9 174.5,59.2 C184.2,56.5 193.9,52.3 203.6,51.5 C213.3,50.7 223.0,55.5 232.7,54.4 C242.4,53.3 252.1,47.4 261.8,44.8 C271.5,42.2 281.2,41.3 290.9,39.0 C300.6,36.8 315.2,32.6 320.0,31.4 L320,120 L0,120 Z"/><path class="dash-line" pathLength="1" d="M0.0,83.2 C4.8,82.2 19.4,77.9 29.1,77.4 C38.8,77.0 48.5,81.6 58.2,80.3 C67.9,79.0 77.6,72.5 87.3,69.8 C97.0,67.0 106.7,64.3 116.4,64.0 C126.1,63.7 135.8,68.6 145.5,67.8 C155.2,67.0 164.8,61.9 174.5,59.2 C184.2,56.5 193.9,52.3 203.6,51.5 C213.3,50.7 223.0,55.5 232.7,54.4 C242.4,53.3 252.1,47.4 261.8,44.8 C271.5,42.2 281.2,41.3 290.9,39.0 C300.6,36.8 315.2,32.6 320.0,31.4"/><line class="dash-scan" x1="0" y1="0" x2="0" y2="120"/><circle class="dash-pt" r="4"><animateMotion dur="7s" begin="2s" repeatCount="indefinite" path="M0.0,83.2 C4.8,82.2 19.4,77.9 29.1,77.4 C38.8,77.0 48.5,81.6 58.2,80.3 C67.9,79.0 77.6,72.5 87.3,69.8 C97.0,67.0 106.7,64.3 116.4,64.0 C126.1,63.7 135.8,68.6 145.5,67.8 C155.2,67.0 164.8,61.9 174.5,59.2 C184.2,56.5 193.9,52.3 203.6,51.5 C213.3,50.7 223.0,55.5 232.7,54.4 C242.4,53.3 252.1,47.4 261.8,44.8 C271.5,42.2 281.2,41.3 290.9,39.0 C300.6,36.8 315.2,32.6 320.0,31.4"/></circle></svg></div>
+<div class="dash-panel"><div class="dash-ch"><span>Orders by channel</span></div><ul class="dash-bars"><li><span>Web store</span><em>46%</em><i style="--v:46%"></i></li><li><span>Mobile app</span><em>38%</em><i style="--v:38%"></i></li><li><span>Dealer portal</span><em>24%</em><i style="--v:24%"></i></li><li><span>Self-service</span><em>17%</em><i style="--v:17%"></i></li></ul></div>
+</div>
+<div class="dash-feed" data-feed="Order #48213 &#183; confirmed|Page speed &#183; LCP 1.4s|Release &#183; checkout v2 live|Review &#183; 5&#9733; on mobile app"><span class="dash-pulse"></span><span class="dash-msg">Order #48213 &#183; confirmed</span></div>
+</div>
+</div>
+</section>
+<section class="sec" id="cx-intro" aria-labelledby="cx-intro-h">
+<div class="wrap"><div class="head rv"><p class="kick">CX modernization</p><h2 class="h2" id="cx-intro-h">Turn legacy systems into <em>modern, responsive</em> experiences</h2><p class="lede">ITHENA builds modern digital experiences that help clients stay ahead of competitors, build a distinctive brand and engage their customers.</p></div>
+<ul class="chan"><li class="rv"><a class="ch" href="#cx-ecom" data-open="cx-ecom"><span class="ico--line"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg></span><h3>E-commerce</h3><p>Storefronts with cataloging, merchandising and omnichannel built in.</p><span class="ch-go">Explore <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li><li class="rv"><a class="ch" href="#cx-mobile" data-open="cx-mobile"><span class="ico--line"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><h3>Mobility</h3><p>Cross-platform apps and legacy portfolios moved to modern stacks.</p><span class="ch-go">Explore <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li><li class="rv"><a class="ch" href="#cx-web" data-open="cx-web"><span class="ico--line"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><h3>Web</h3><p>Fast, easy-to-use websites shipped on time and kept current.</p><span class="ch-go">Explore <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li><li class="rv"><a class="ch" href="#cx-uiux" data-open="cx-uiux"><span class="ico--line"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16zM14 6l3 3"/></svg></span><h3>UI/UX</h3><p>Human-centric research and design as your extended UX team.</p><span class="ch-go">Explore <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li></ul></div>
+</section>
+<section class="sec sec--alt" id="cx-offerings" aria-labelledby="cx-offerings-h">
+<div class="wrap"><div class="head rv"><p class="kick">Offerings</p><h2 class="h2" id="cx-offerings-h">E-commerce, mobility, web and UI/UX in <em>one ecosystem</em></h2><p class="lede">Applications integrated with mobility and polished UI/UX that fit into your existing ecosystem, improving innovation, operational efficiency and customer experience.</p></div>
+<div class="acc"><details class="rv" id="cx-ecom" name="cx-acc" open><summary><span class="acc-n">01</span><div><h3>E-commerce</h3><p>Storefronts that sell across every channel</p></div><span class="acc-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+<div class="acc-body"><figure><img src="https://dev-website.ithena.app/wp-content/uploads/2026/02/B2B-ecommerce-BNPL-1024x683.jpg" alt="E-commerce storefront on multiple devices" loading="lazy" decoding="async"></figure><div><p>End-to-end services to build storefronts on WordPress, Magento, WooCommerce or NopCommerce, including cataloging, merchandising, content management and omnichannel capabilities.</p><ol class="mini"><li><i>01</i><span><b>Identify market &amp; strategies</b>Find gaps, understand customer needs, set pricing.</span></li><li><i>02</i><span><b>Selection &amp; implementation</b>Recommend and implement the right platform.</span></li><li><i>03</i><span><b>Hosting &amp; testing</b>Functional and load testing, plus a recommendation engine for cross-sell and upsell.</span></li><li><i>04</i><span><b>Adapt &amp; grow</b>Adjust to customer needs and boost sales.</span></li><li><i>05</i><span><b>Payment functionality</b>Integrate the gateways your customers use.</span></li><li><i>06</i><span><b>Customer analytics</b>Analyze behavior to drive sales.</span></li></ol><span class="chip-label">Platforms</span><ul class="chips"><li class="chip">WordPress</li><li class="chip">Magento</li><li class="chip">WooCommerce</li><li class="chip">NopCommerce</li></ul><span class="chip-label">Payment gateways</span><ul class="chips"><li class="chip">PayPal</li><li class="chip">Square</li><li class="chip">Clover</li><li class="chip">Stripe</li></ul></div></div></details>
+<details class="rv" id="cx-mobile" name="cx-acc"><summary><span class="acc-n">02</span><div><h3>Mobility</h3><p>Cross-platform apps, built or migrated</p></div><span class="acc-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+<div class="acc-body"><figure><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/mobality-2-1024x652.jpg" alt="Mobile applications on a smartphone" loading="lazy" decoding="async"></figure><div><p>Cross-platform apps built from scratch, and legacy application portfolios migrated to richer, more flexible systems while project risk stays managed.</p><ol class="mini"><li><i>01</i><span><b>Migration &amp; app design</b>Move apps to new platforms, integrate mobility with existing systems, and design, build and maintain feature-rich apps.</span></li><li><i>02</i><span><b>Enterprise mobility architecture</b>User access, data backup and archival, reporting, hosting, remote monitoring and security compliance.</span></li><li><i>03</i><span><b>Mobility strategy</b>Roadmaps, adoption success factors, platform selection and emerging-tech research through a mobile center of excellence.</span></li><li><i>04</i><span><b>Testing &amp; maintenance</b>Collect and analyze app data with analytics and reporting tools.</span></li></ol><span class="chip-label">App types</span><ul class="chips"><li class="chip">OTT</li><li class="chip">Music</li><li class="chip">E-commerce</li><li class="chip">Business listing</li><li class="chip">Utility</li><li class="chip">Ticketing</li><li class="chip">Telematics &amp; logistics</li><li class="chip">Mobile games</li></ul></div></div></details>
+<details class="rv" id="cx-web" name="cx-acc"><summary><span class="acc-n">03</span><div><h3>Web</h3><p>Websites that load fast and ship on time</p></div><span class="acc-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+<div class="acc-body"><figure><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/Web-1-1024x652.jpg" alt="Responsive website design" loading="lazy" decoding="async"></figure><div><p>Professional, engaging, easy-to-use websites with end-to-end development, migration, updates and ongoing maintenance.</p><ol class="mini"><li><i>01</i><span><b>Strategic analysis &amp; planning</b></span></li><li><i>02</i><span><b>Information architecture</b></span></li><li><i>03</i><span><b>Wireframes</b></span></li><li><i>04</i><span><b>Technical system definition</b></span></li><li><i>05</i><span><b>Graphic &amp; UI design</b></span></li><li><i>06</i><span><b>Content management</b></span></li><li><i>07</i><span><b>Implementation &amp; testing</b>Including Selenium automation, browser, responsiveness and load testing.</span></li><li><i>08</i><span><b>Training &amp; documentation</b></span></li><li><i>09</i><span><b>Launch</b></span></li><li><i>10</i><span><b>Post-launch support &amp; maintenance</b></span></li></ol></div></div></details>
+<details class="rv" id="cx-uiux" name="cx-acc"><summary><span class="acc-n">04</span><div><h3>UI/UX</h3><p>Human-centric design as your extended team</p></div><span class="acc-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+<div class="acc-body"><figure><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/uiux-3-1024x652.jpg" alt="UX research and interface design" loading="lazy" decoding="async"></figure><div><p>A human-centric approach: we work as an extended UX team for companies and startups to produce digital products that meet business goals.</p><ol class="mini"><li><i>01</i><span><b>User research</b>Competitive research, interviews, surveys, contextual inquiry, personas and customer journey maps.</span></li><li><i>02</i><span><b>UX/UI design</b>Research turned into information architecture, wireframes and rapid prototypes, then tested and refined.</span></li><li><i>03</i><span><b>Usability testing</b>Usability audits, test plans, participant recruitment and clickable prototypes.</span></li></ol></div></div></details></div></div>
+</section>
+<section class="sec" id="cx-approach" aria-labelledby="cx-approach-h">
+<div class="wrap"><div class="head rv"><p class="kick">Approach</p><h2 class="h2" id="cx-approach-h">Design thinking from <em>first workshop</em> to deployment</h2><p class="lede">A holistic six-step method for shaping and implementing CX modernization.</p></div>
+<ol class="deck" aria-label="Six-step CX approach"><li class="dk acc-line rv"><span class="dk-n" aria-hidden="true">1</span><span class="pn">Step 01</span><h3>Business understanding</h3><p>Grasp the business to deliver high-impact solutions.</p></li><li class="dk acc-line rv"><span class="dk-n" aria-hidden="true">2</span><span class="pn">Step 02</span><h3>Requirements elicitation</h3><p>Gather and clarify business requirements.</p></li><li class="dk acc-line rv"><span class="dk-n" aria-hidden="true">3</span><span class="pn">Step 03</span><h3>Design thinking</h3><p>Ideate, design and create solutions.</p></li><li class="dk acc-line rv"><span class="dk-n" aria-hidden="true">4</span><span class="pn">Step 04</span><h3>Workshops</h3><p>Find gaps through detailed business workshops.</p></li><li class="dk acc-line rv"><span class="dk-n" aria-hidden="true">5</span><span class="pn">Step 05</span><h3>Development</h3><p>Build with proven best practices.</p></li><li class="dk acc-line rv"><span class="dk-n" aria-hidden="true">6</span><span class="pn">Step 06</span><h3>Deployment</h3><p>Deliver with flexibility and scalability.</p></li></ol></div>
+</section>
+<section class="sec sec--alt" id="cx-stories" aria-labelledby="cx-stories-h">
+<div class="wrap"><div class="head rv"><p class="kick">Success stories</p><h2 class="h2" id="cx-stories-h">Experiences that <em>convert</em></h2><p class="lede">Selected CX modernization work across commerce, media and logistics.</p></div>
+<div class="slider rv" data-auto="7000">
+<ul class="slides" tabindex="0" aria-label="Success stories, scroll for more"><li class="slide"><figure class="s-media"><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/ecommerce-3-1024x652.jpg" alt="Online grocery order parcels on a laptop" loading="lazy" decoding="async"></figure><div class="stx"><span class="pn">01 · FMCG distribution</span><h3>Web &amp; e-commerce for a US-based online FMCG distributor</h3><p>Customer and product hierarchies, with e-commerce integrated with email, Google Analytics, SEO/SCM and QR codes, for better efficiency, stronger marketing and a richer customer journey.</p></div></li><li class="slide"><figure class="s-media"><img src="https://dev-website.ithena.app/wp-content/uploads/2023/05/vecteezy_popcorn-and-television-remote-control-on-tv-screen_3522708_17-1536x1022.jpg" alt="Streaming app on a TV with remote and popcorn" loading="lazy" decoding="async"></figure><div class="stx"><span class="pn">02 · Media &amp; OTT</span><h3>OTT platform for Android TV</h3><p>The video library organized into explore categories by genre, theme and topic, plus backend and frontend optimizations that made content easier to find.</p><div class="metric"><b data-count>~30%</b><span>faster browsing and app access</span></div></div></li><li class="slide"><figure class="s-media"><img src="https://dev-website.ithena.app/wp-content/uploads/2025/10/isat-banner-1536x858.jpg" alt="Trucks and trailers at a logistics yard" loading="lazy" decoding="async"></figure><div class="stx"><span class="pn">03 · Logistics</span><h3>Website modernization for a truck &amp; trailer tracking provider</h3><p>An informative website for a US-based tracking solutions provider, with email communications, Google Analytics and SEO/SCM integration.</p></div></li></ul>
+<div class="svc-nav"><span class="svc-count" aria-hidden="true"><b>01</b> / <span>03</span></span><span class="svc-bar" aria-hidden="true"><b></b></span><button type="button" class="svc-btn" data-dir="-1" aria-label="Previous story"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><button type="button" class="svc-btn" data-dir="1" aria-label="Next story"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>
+</div></div>
+</section>
+<section class="sec" id="cx-partners" aria-labelledby="cx-partners-h">
+<div class="wrap"><div class="head rv"><p class="kick">Partnerships</p><h2 class="h2" id="cx-partners-h">A <em>robust ecosystem</em> of partners behind our solutions and services</h2><p class="lede">The commerce, web and mobile platforms we build on.</p></div>
+<div class="logo-rail rv"><button type="button" class="svc-btn" data-dir="-1" aria-label="Scroll partners back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><div class="logo-track"><ul aria-label="Technology partners"><li><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/Group-261.png" alt="Magento" width="150" height="46" loading="lazy" decoding="async"></li><li><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/Group-262.png" alt="WordPress" width="150" height="46" loading="lazy" decoding="async"></li><li><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/Group-263.png" alt="Android" width="150" height="46" loading="lazy" decoding="async"></li><li><img src="https://dev-website.ithena.app/wp-content/uploads/2023/06/Rectangle-803.png" alt="Apple iOS" data-fix="lt0" width="150" height="46" loading="lazy" decoding="async"></li></ul></div><button type="button" class="svc-btn" data-dir="1" aria-label="Scroll partners forward"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+</section>
+<section class="sec cta" aria-labelledby="cx-cta-h">
+<div class="cta-in">
+<div class="cta-copy"><div class="rv"><p class="kick">Keep exploring</p><h2 class="h2" id="cx-cta-h">Build experiences <em>customers come back to</em></h2><p class="lede">Tell us about your storefront, app or website and we’ll plan the build with you.</p></div><div class="btns rv"><button type="button" class="btn" data-schedule-demo>Start your CX project <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></div>
+<div class="cta-med">
+<img src="https://dev-website.ithena.app/wp-content/uploads/2026/10/Ithena-Services.webp" alt="" loading="lazy" decoding="async">
+<button type="button" class="cta-play" data-video="https://dev-website.ithena.app/wp-content/uploads/2026/10/Customer%20Experience.mp4" aria-label="Watch video: Customer Experience"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+</div>
+</div>
+<dialog class="video-modal" aria-label="Watch Video: Customer Experience">
+<button type="button" class="video-modal-close" data-video-close aria-label="Close video"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<video controls playsinline preload="none"></video>
+</dialog>
+</section>
+<div class="pk-schd" id="pkSchd" hidden>
+<div class="pk-schd-panel" role="dialog" aria-modal="true" aria-labelledby="pkSchdTitle" tabindex="-1">
+<button type="button" class="pk-schd-close" data-schedule-popup-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+<div class="pk-schd-head"><p class="eyb">Request a consultation</p><h3 id="pkSchdTitle">Shape your next digital experience</h3><p>Tell us about your storefront, app or website and our team will follow up to plan the build.</p></div>
+<div class="pk-schd-form" id="pkSchdForm"><p class="pk-schd-empty">The form did not load. Email <a href="mailto:sales@ithena.ai">sales@ithena.ai</a> and we will book the call for you.</p></div>
+</div>
+</div>
+
+</section>
+<script>
+(function () {
+var root = document.getElementById('main-section');
+if (!root) return;
+var tgl = document.getElementById('aiaThemeToggle');
+if (window.ithenaTheme) { var saved = null; try { saved = localStorage.getItem('ithena-theme'); } catch (e) {} if (!saved) document.documentElement.classList.add('dark'); window.ithenaTheme.sync(); } else {
+var tk = 'ithena-theme', ts = null; try { ts = localStorage.getItem(tk); } catch (e) {}
+var setTheme = function (m) { root.setAttribute('data-theme', m); tgl.setAttribute('aria-label', m === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'); try { localStorage.setItem(tk, m); } catch (e) {} };
+setTheme(ts === 'light' ? 'light' : 'dark');
+tgl.hidden = false;
+tgl.addEventListener('click', function () { setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); });
+}
+var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function sb() { root.style.setProperty('--scrollbar', (innerWidth - document.documentElement.clientWidth) + 'px'); }
+sb();
+addEventListener('resize', sb);
+var two = function (n) { return (n < 10 ? '0' : '') + n; };
+root.querySelectorAll('[data-open]').forEach(function (a) {
+a.addEventListener('click', function () { var d = document.getElementById(a.getAttribute('data-open')); if (d) d.open = true; });
+});
+root.querySelectorAll('.slider').forEach(function (sl) {
+var track = sl.querySelector('.slides'), items = [].slice.call(track.children), sCur = sl.querySelector('.svc-count b'), bar = sl.querySelector('.svc-bar b'), k = 0, ms = +sl.getAttribute('data-auto'), t, lock = 0;
+sl.querySelector('.svc-count span').textContent = two(items.length);
+sl.style.setProperty('--ms', ms + 'ms');
+function mark(n) {
+k = n; sCur.textContent = two(k + 1);
+items.forEach(function (it, j) { it.classList.toggle('on', j === k); it.setAttribute('aria-hidden', j !== k); });
+if (ms && !reduce) { sl.classList.remove('run'); void bar.offsetWidth; sl.classList.add('run'); }
+}
+function go(n) { n = (n + items.length) % items.length; lock = Date.now() + 900; track.scrollTo({ left: items[n].offsetLeft - items[0].offsetLeft }); mark(n); }
+sl.querySelectorAll('.svc-btn').forEach(function (b) { b.addEventListener('click', function () { go(k + +b.getAttribute('data-dir')); }); });
+track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(function () { if (Date.now() < lock) return; var n = Math.round(track.scrollLeft / track.clientWidth); if (n !== k) mark(n); }, 140); }, { passive: true });
+bar.addEventListener('animationend', function () { go(k + 1); });
+if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { sl.classList.toggle('idle', !es[0].isIntersecting); }).observe(sl);
+mark(0);
+});
+var lt = root.querySelector('.logo-track');
+if (lt) {
+var lu = lt.querySelector('ul'), orig = [].slice.call(lu.children), x = 0, paused = false;
+var cloneSet = function () { orig.forEach(function (li) { var c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); c.querySelector('img').alt = ''; lu.appendChild(c); }); };
+cloneSet();
+while (lu.scrollWidth < lt.clientWidth * 2.5) cloneSet();
+var setW = function () { return lu.children[orig.length].offsetLeft - lu.children[0].offsetLeft; };
+var wrapX = function () { var w = setW(); if (x >= w) x -= w; if (x < 0) x += w; lt.scrollLeft = x; };
+(function tick() { if (!paused && !reduce) { x += .5; wrapX(); } requestAnimationFrame(tick); })();
+lt.addEventListener('mouseenter', function () { paused = true; });
+lt.addEventListener('mouseleave', function () { x = lt.scrollLeft; paused = false; });
+lt.addEventListener('pointerdown', function () { paused = true; });
+lt.addEventListener('pointerup', function () { x = lt.scrollLeft; paused = false; });
+root.querySelectorAll('.logo-rail > .svc-btn').forEach(function (b) {
+b.addEventListener('click', function () {
+paused = true;
+x = lt.scrollLeft; if (x < 260) { x += setW(); lt.scrollLeft = x; }
+x += +b.getAttribute('data-dir') * 240;
+lt.scrollTo({ left: x, behavior: reduce ? 'auto' : 'smooth' });
+setTimeout(function () { wrapX(); paused = lt.matches(':hover'); }, 650);
+});
+});
+}
+var vm = root.querySelector('.video-modal'), vb = root.querySelector('.cta-play');
+if (vm && vb && vm.showModal) {
+var vp = vm.querySelector('video'), vClose = function () { vm.close(); };
+vb.addEventListener('click', function () { if (!vp.getAttribute('src')) vp.src = vb.getAttribute('data-video'); vm.showModal(); var p = vp.play(); if (p && p.catch) p.catch(function () {}); });
+vm.addEventListener('cancel', function () { vp.pause(); });
+vm.addEventListener('close', function () { vp.pause(); });
+vm.addEventListener('click', function (e) { if (e.target === vm) vClose(); });
+vm.querySelector('[data-video-close]').addEventListener('click', vClose);
+}
+root.querySelectorAll('.dash').forEach(function (d) {
+d.querySelectorAll('b[data-to]').forEach(function (b) {
+var to = +b.getAttribute('data-to'), dec = +b.getAttribute('data-dec'), pre = b.getAttribute('data-pre'), suf = b.getAttribute('data-suf');
+var show = function (v) { b.textContent = pre + v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + suf; };
+if (reduce) return show(to);
+var t0 = null; show(0);
+setTimeout(function () { requestAnimationFrame(function step(t) { if (t0 === null) t0 = t; var k = Math.min((t - t0) / 1600, 1); show(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); }); }, 400);
+});
+var fd = d.querySelector('[data-feed]');
+if (!fd || reduce) return;
+var msgs = fd.getAttribute('data-feed').split('|'), m = fd.querySelector('.dash-msg'), n = 0;
+setInterval(function () { m.classList.add('out'); setTimeout(function () { n = (n + 1) % msgs.length; m.textContent = msgs[n]; m.classList.remove('out'); }, 350); }, 2800);
+});
+if (!('IntersectionObserver' in window)) return;
+root.classList.add('js');
+var io = new IntersectionObserver(function (entries) {
+entries.forEach(function (e) { if (!e.isIntersecting) return; e.target.classList.add('in'); io.unobserve(e.target); });
+}, { threshold: .15, rootMargin: '0px 0px -8% 0px' });
+root.querySelectorAll('.rv').forEach(function (el) {
+var sibs = [].filter.call(el.parentNode.children, function (s) { return s.classList.contains('rv'); });
+el.style.setProperty('--d', (Math.max(sibs.indexOf(el), 0) % 6) * .09 + 's');
+io.observe(el);
+});
+var cio = new IntersectionObserver(function (es) {
+es.forEach(function (e) {
+if (!e.isIntersecting) return;
+cio.unobserve(e.target);
+var el = e.target, m = el.textContent.match(/^([^0-9]*)([0-9.]+)(.*)$/);
+if (!m || reduce) return;
+var to = +m[2], t0 = performance.now();
+(function f(t) { var p = Math.min(1, (t - t0) / 1400), v = to * (1 - Math.pow(1 - p, 3)); el.textContent = m[1] + (to % 1 ? v.toFixed(1) : Math.round(v)) + m[3]; if (p < 1) requestAnimationFrame(f); })(t0);
+});
+}, { threshold: .6 });
+root.querySelectorAll('[data-count]').forEach(function (el) { cio.observe(el); });
+})();
+</script>
+<script>
+/* schedule popup: same behaviour as the industry pages' [data-schedule-demo] popup */
+(function(){
+  var root=document.getElementById("main-section"),pop=document.getElementById("pkSchd");
+  if(!root||!pop||window.pkSchdInit) return;
+  window.pkSchdInit=1;
+  /* out of #main-section so a transformed Elementor ancestor cannot break position:fixed */
+  document.body.appendChild(pop);
+  var sync=function(){pop.setAttribute("data-theme",root.getAttribute("data-theme")||"dark");};
+  sync(); new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:["data-theme"]});
+  var slot=document.getElementById("pkSchdForm"),moved=false,lastFocus=null;
+  /* FORM SLOT: give the Elementor Shortcode widget rendering [formidable id="..."] the CSS ID schedule-demo-form; it is moved here as-is */
+  function adopt(){
+    if(moved||!slot) return;
+    var src=document.querySelector("#schedule-demo-form, .schedule-demo-form");
+    if(!src){var w=document.querySelectorAll(".elementor-widget-shortcode");for(var i=0;i<w.length;i++){if(w[i].querySelector(".frm_forms, form")){src=w[i];break;}}}
+    if(!src) src=document.querySelector(".frm_forms");
+    if(!src||pop.contains(src)) return;
+    slot.innerHTML=""; slot.appendChild(src); src.style.display="block"; moved=true;
+  }
+  adopt(); window.addEventListener("load",adopt);
+  function onKey(e){ if(e.key==="Escape") closePop(); }
+  function openPop(e){
+    if(e) e.preventDefault();
+    adopt(); lastFocus=document.activeElement;
+    pop.hidden=false; document.body.style.overflow="hidden";
+    document.addEventListener("keydown",onKey);
+    void pop.offsetWidth; pop.classList.add("is-open");
+    var f=pop.querySelector(".pk-schd-form input:not([type=hidden]):not([type=submit]):not([type=button]):not([disabled]), .pk-schd-form textarea:not([disabled]), .pk-schd-form select:not([disabled])")||pop.querySelector("[data-schedule-popup-close]");
+    if(f) f.focus();
+  }
+  function closePop(){
+    pop.classList.remove("is-open"); document.body.style.overflow="";
+    document.removeEventListener("keydown",onKey);
+    setTimeout(function(){pop.hidden=true;},250);
+    if(lastFocus&&lastFocus.focus) lastFocus.focus();
+  }
+  document.addEventListener("click",function(e){
+    if(!e.target.closest) return;
+    if(e.target.closest("[data-schedule-demo]")){ openPop(e); return; }
+    if(e.target===pop||e.target.closest("[data-schedule-popup-close]")) closePop();
+  });
+})();
+</script>
